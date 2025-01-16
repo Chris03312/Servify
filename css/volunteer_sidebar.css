@@ -136,7 +136,7 @@ li {
         left: 0;
         height: 100%;
         width: 300px;
-        background-color: white; /* Adjust as needed */
+        background-color: #ffffff; /* Adjust as needed */
         margin-left: -300px; /* Hide by default */
         z-index: 1111; /* Ensure it overlays content */
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);

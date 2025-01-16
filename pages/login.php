@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <form action="" class="row mt-5">
+                    <form action="/login/submit" method="POST" class="row mt-5">
                    <div class="mb-3">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                     </div>
@@ -61,12 +61,12 @@
                     <a href="#" class="mb-3 text-decoration-none">Forgot Password</a>
 
                     <div class="mb-3 text-center">
-                        <input type="submit" class="btn btn-primary px-5" value="Sign in">
+                        <button type="submit" class="btn btn-primary px-5">Sign in</button>
                     </div>
                    </form>
 
                    <div class="mb-3 text-center form">
-                    <p>Don't have an account? <a href="../signup" class="text-danger text-decoration-none">Sign Up!</a></p>
+                    <p>Don't have an account? <a href="/signup" class="text-danger text-decoration-none">Sign Up!</a></p>
                    </div>
 
                    <div class="mt-5">

@@ -51,15 +51,15 @@
                         </div>
                     </div>
 
-                    <form action="" class="row mt-5 needs-validation" novalidate>
+                    <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST" >
 
                         <div class="col-md-12 mb-3">
                             <label for="roleInOrganization" class="form-label">Role in Organization<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="roleInOrganization" class="form-select" required>
+                            <select id="roleInOrganization" class="form-select" name="role" required>
                                 <option selected disabled value="">Select Role</option>
-                                <option value="Volunteer" name="volunteer">Volunteer</option>
-                                <option value="Coordinator" name="coordinator">Coordinator</option>
-                                <option value="Admin" name="admin">Admin</option>
+                                <option value="Volunteer">Volunteer</option>
+                                <option value="Coordinator">Coordinator</option>
+                                <option value="Admin">Admin</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a role.
@@ -92,9 +92,8 @@
 
                         <strong class="mb-3">Birth Day</strong>
                         <div class="col-md-4 mb-3">
-
                             <label for="birthMonth" class="form-label">Month<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="birthMonth" class="form-select" required>
+                            <select id="birthMonth" class="form-select" name="birthMonth" required>
                                 <option selected disabled value="">Select month</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -129,13 +128,12 @@
                             </div>
                         </div>
 
-
                         <strong class="mb-3">Address</strong>
                         <div class="col-md-12 mb-3">
                             <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="city" class="form-select" required>
+                            <select id="city" class="form-select" name="city" required>
                                 <option selected disabled value="">Select City</option>
-                                <option value="...">Quezon City</option>
+                                <option value="Quezon City">Quezon City</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select City.
@@ -149,9 +147,9 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="barangay" class="form-select" required>
+                            <select id="barangay" class="form-select" name="barangay" required>
                                 <option selected disabled value="">Select Barangay</option>
-                                <option value="...">PPP</option>
+                                <option value="PPP">PPP</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select Barangay.
@@ -165,7 +163,6 @@
                                 Please input zipcode.
                             </div>
                         </div>
-
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
@@ -202,35 +199,34 @@
                             <button class="btn btn-primary px-4" type="submit">Sign Up</button>
                         </div>
 
-                         <!--SUCCESS MODAL-->
-                    <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary p-2">
-                                </div>
-                                <div class="modal-body">
-                                    <div class="text-center">
-                                        <img src="../img/icons8-checkmark-90 (1).png" alt="">
-                                        <h3 class="text-primary">SUCCESS</h3>
-                                        <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
-                                        has been created.
-                                        </p>
-                                        <p class="text-muted">Check your email for more details.</p>
-
-                                        <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                        <!--SUCCESS MODAL-->
+                        <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary p-2">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <img src="../img/icons8-checkmark-90 (1).png" alt="">
+                                            <h3 class="text-primary">SUCCESS</h3>
+                                            <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
+                                            has been created.</p>
+                                            <p class="text-muted">Check your email for more details.</p>
+                                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    </form>
+                        </form>
+
 
 
                    
 
                     <div class="mb-3 text-center">
-                        <p>Already registered? <a href="../pages/login.php" class="text-danger text-decoration-none">Sign in!</a></p>
+                        <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a></p>
                     </div>
 
                     <div class="mt-5">
