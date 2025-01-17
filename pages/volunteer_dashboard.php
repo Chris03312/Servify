@@ -23,7 +23,7 @@
 
 <body>
 
-    <?php
+    <?php       
     include('includes/volunteer_sidebar.php');
     ?>
 
@@ -33,9 +33,9 @@
 
         <!--DASHBOARD BANNER-->
         <div class="dashboardBanner mb-4">
-            <p>January 15, 2025</p>
-            <h4>Welcome back, Vicmar!</h4>
-        </div>
+            <p><?php echo $currentDate; ?></p>
+            <h4>Welcome back, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Guest'); ?>!</h4>
+            </div>
 
         <div class="container-fluid">
             <!--COUNTDOWN, ANNOUNCEMENT, BADGE-->
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <h2 class="countdown p-2">25</h2>
+                                        <h2 class="countdown p-2" id="days"><?php echo $days; ?></h2>
                                         <span class="text-danger fw-bold">DAYS</span>
                                     </div>
                                     <div>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <h2 class="countdown p-2">25</h2>
+                                        <h2 class="countdown p-2" id="hours"><?php echo $hours; ?></h2>
                                         <span class="text-danger fw-bold">HRS</span>
                                     </div>
                                     <div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <h2 class="countdown p-2">25</h2>
+                                        <h2 class="countdown p-2" id="minutes"><?php echo $minutes; ?></h2>
                                         <span class="text-danger fw-bold">MNS</span>
                                     </div>
                                     <div>
@@ -76,9 +76,17 @@
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-                                    <h2 class="countdown p-2">25</h2>
+                                    <h2 class="countdown p-2" id="seconds"><?php echo $seconds; ?></h2>
                                     <span class="text-danger fw-bold">SEC</span>
                                 </div>
+                                <script>
+                                // Pass the initial time values from PHP to JavaScript
+                                var days = <?php echo $days; ?>;
+                                var hours = <?php echo $hours; ?>;
+                                var minutes = <?php echo $minutes; ?>;
+                                var seconds = <?php echo $seconds; ?>;
+                            </script>
+                            <script src="../js/countdown.js"></script>
                             </div>
                         </div>
                     </div>
@@ -122,11 +130,11 @@
                 </div>
             </div>
 
-
             <!--VOLUNTEER ASSIGNMENT-->
             <div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-                <!--VOLUNTEER ASSIGNMENT-->
                 <div class="col-md-8">
+
+                    <!--VOLUNTEER ASSIGNMENT-->
                     <div class="card">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
                             <img src="../img/icons8-pin-90.png" alt="Announcement Icon" class="img-fluid" height="30" width="30">
@@ -137,13 +145,13 @@
                                 <h4 class="text-light">You are currently assigned as:</h4>
                             </div>
                             <div>
-                                <h2>POLL WATCHER</h2>
+                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT']); ?></h2>
                             </div>
                             <div class="bg-primary p-2 rounded">
                                 <h4 class="text-light">Designated at:</h4>
                             </div>
                             <div>
-                                <h2>Maligaya Elementary School</h3>
+                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_MISSION']); ?></h3>
                             </div>
                         </div>
                     </div>
@@ -157,7 +165,7 @@
                             <div class="ratio ratio-16x9 mt-2">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph"
-                                    style="border:0;"
+                                    style="border:10;"
                                     allowfullscreen=""
                                     loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade">
@@ -175,53 +183,28 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                            <div class="time">
-                                                <p class="text-center">Today, 11:11 PM</p>
+                                <?php if(!empty($activities)): ?>
+                                    <?php foreach($activities as $activity): ?>
+                                    <li class="list-group-item">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                                <div class="time">
+                                                    <p class="text-center"><?php echo $activity['FORMATTED_DATE']; ?></p>
+                                                </div>
+                                                <div class="time">
+                                                    <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION']); ?></p>
+                                                </div>
+                                                <div class="time">
+                                                    <p><i class="bi bi-chevron-right"></i></p>
+                                                </div>
                                             </div>
-                                            <div class="time">
-                                                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, illo.</p>
-                                            </div>
-                                            <div class="time">
-                                                <p><i class="bi bi-chevron-right"></i></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                            <div class="time">
-                                                <p class="text-center">Today, 11:11 PM</p>
-                                            </div>
-                                            <div class="time">
-                                                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, illo.</p>
-                                            </div>
-                                            <div class="time">
-                                                <p><i class="bi bi-chevron-right"></i></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                            <div class="time">
-                                                <p class="text-center">Today, 11:11 PM</p>
-                                            </div>
-                                            <div class="time">
-                                                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, illo.</p>
-                                            </div>
-                                            <div class="time">
-                                                <p><i class="bi bi-chevron-right"></i></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p class ="text-center"> No Activities</p>
+                                <?php endif; ?>
                             </ul>
-
                         </div>
                     </div>
 
@@ -235,54 +218,20 @@
                             <!--TIMELINE CONTENT-->
                             <section class="px-2">
                                 <ul class="timeline-with-icons">
+                                <?php foreach ($timelines as $timeline): ?>
                                     <li class="timeline-item mb-5">
                                         <span class="timeline-year">
-                                            2022
+                                            <?php echo $timeline['YEAR']; ?> <!-- Display the extracted year -->
                                         </span>
 
                                         <div class="timeline-content">
-                                            <h5 class="fw-bold">Poll Watcher</h5>
+                                            <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT']; ?></h5>
                                             <p class="text-muted">
-                                                Maligaya Elementary School
+                                                <?php echo $timeline['ASSIGNED_MISSION']; ?> <!-- Display assigned mission -->
                                             </p>
                                         </div>
                                     </li>
-                                    <li class="timeline-item mb-5">
-                                        <span class="timeline-year">
-                                            2022
-                                        </span>
-
-                                        <div class="timeline-content">
-                                            <h5 class="fw-bold">Poll Watcher</h5>
-                                            <p class="text-muted">
-                                                Maligaya Elementary School
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item mb-5">
-                                        <span class="timeline-year">
-                                            2022
-                                        </span>
-
-                                        <div class="timeline-content">
-                                            <h5 class="fw-bold">Poll Watcher</h5>
-                                            <p class="text-muted">
-                                                Maligaya Elementary School
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item mb-5">
-                                        <span class="timeline-year">
-                                            2022
-                                        </span>
-
-                                        <div class="timeline-content">
-                                            <h5 class="fw-bold">Poll Watcher</h5>
-                                            <p class="text-muted">
-                                                Maligaya Elementary School
-                                            </p>
-                                        </div>
-                                    </li>
+                                <?php endforeach; ?>
                                 </ul>
                             </section>
 

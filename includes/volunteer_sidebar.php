@@ -13,10 +13,10 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="volunteer_dashboard.php" class="nav-link">
+                    <a href="/volunteer_dashboard" class="nav-link">
                     <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
-                <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i></i>My Application</a>
+                <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i></i>My Application</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a href="missions.php" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
@@ -84,7 +84,8 @@
                 <button type="button" class="btn bellBtn position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-bell-fill fs-4"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-top: 15px;">
-                      99+</span>
+                        <?php echo $unread_count; ?>
+                    </span>
                       <span class="visually-hidden">unread messages</span>
                     
                   </button>
@@ -94,23 +95,33 @@
                         <h3>Notifications</h3>
                     </div>
 
-                    
-                    <a href="" class="btn btn-sm">
-                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
-                        <div class="col-md-2"><img src="../img/DPPAM LOGO.png" alt="" style="width: 50px; height: 50px;"></div>
-                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
-                        
-                        <div class="position-relative col-md-1">
-                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
-                                <span class="visually-hidden">New alerts</span>
-                              </span>
-                        </div>
-                    </div>
-                    </a>
+                    <?php if(!$notifications): ?>
+                        <p>No notifications</p> <!-- Message when there are no notifications -->
+                    <?php else: ?>
+                        <?php foreach ($notifications as $notif): ?>
+                            <a href="" class="btn btn-sm">
+                                <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                                    <div class="col-md-2"><img src="../img/DPPAM LOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                                    <div class="col-md-8">
+                                        <span>
+                                            <?php echo $notif['FROM'] . 
+                                            "<br>" . $notif['MESSAGE'] . 
+                                            "<br>" . $notif['FORMATTED_DATE']; 
+                                            ?>
+                                        </span>
+                                    </div>
                                     
+                                    <div class="position-relative col-md-1">
+                                        <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                   </div>
             </div>
-
 
                 <!--PROFILE-->
 
@@ -121,8 +132,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-flex flex-column">
-                            <span>Vicmar Guzman</span>
-                            <small>Volunteer</small>
+                            <span><?php echo htmlspecialchars($userInfo['FIRST_NAME'] . ' ' . $userInfo['SURNAME']); ?></span>
+                            <small><?php echo htmlspecialchars($userInfo['ROLE']); ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

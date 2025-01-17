@@ -2,7 +2,7 @@
 
 class LandingPageController {
 
-    public static function showlandingpage() {
+    public static function Showlandingpage() {
 
         view('landingpage');
     }

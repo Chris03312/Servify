@@ -59,6 +59,10 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                     </div>
                     <a href="#" class="mb-3 text-decoration-none">Forgot Password</a>
+                    <div>
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                        <label for="remember_me">Remember Me</label>
+                    </div>
 
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-primary px-5">Sign in</button>

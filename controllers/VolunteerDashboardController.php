@@ -1,16 +1,42 @@
 <?php 
 
-class VolunteerDashboardController{
+require_once __DIR__ . '/../models/Dashboard.php';
+require_once __DIR__ . '/../models/Notification.php';
+
+
+class VolunteerDashboardController {
 
     public static function VolunteerDashboard() {
-        // If already logged in, redirect to dashboard
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+
+        LoginController::checkRememberMe();
+
+        // If not logged in, redirect to login
+        if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
             redirect('/login');
         }
 
-        // Render the login form
-        view('volunteer_dashboard', [[
-            'username' => $_SESSION['username']
-        ]] );
+        // Get countdown data
+        $countdown = Dashboard::CountDownElectionDay();
+        // Get other data
+        $notifications = Notification::getNotification();
+        $activities = Dashboard::getActivityLog();
+        $userInfo = Dashboard::getinfodashboard();
+        $currentDate = date('F j, Y');
+        $timelines = Dashboard::MyTimeline();
+
+        // Render the dashboard and pass all the necessary data
+        view('volunteer_dashboard', [
+            'username' => $_SESSION['username'] ?? 'Guest',
+            'userInfo' => $userInfo,
+            'activities' => $activities,
+            'currentDate' => $currentDate,
+            'days' => $countdown['days'],
+            'hours' => $countdown['hours'],
+            'minutes' => $countdown['minutes'],
+            'seconds' => $countdown['seconds'],
+            'timelines' => $timelines,
+            'notifications' => $notifications['notifications'],  // List of notifications
+            'unread_count' => $notifications['unread_count']
+        ]);
     }
 }

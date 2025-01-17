@@ -4,6 +4,8 @@ require_once __DIR__ . '/../core/helpers.php';
 require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../models/Parish.php';
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
+require_once __DIR__ . '/../controllers/VolunteerRegistrationStatusController.php';
+require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
@@ -19,19 +21,22 @@ $router = new Router();
 $router->add('/', function () use ($router) {
     $router->redirect('/index'); // Now $router is available inside the closure
 });
-$router->add('/index', [LandingPageController::class, 'showLandingPage']);
-
-$router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'VolunteerDashboard']);
-$router->add('/signup', [SignUpController::class, 'showSignUp']);
-$router->add('/signup/submit', [SignUpController::class, 'signup']);
+$router->add('/index', [LandingPageController::class, 'ShowLandingPage']);
+$router->add('/signup', [SignUpController::class, 'ShowSignUp']);
+$router->add('/signup/submit', [SignUpController::class, 'SignUp']);
 $router->add('/login', [LoginController::class, 'ShowLoginForm']);
-$router->add('/login/submit', [LoginController::class, 'login']);
+$router->add('/login/submit', [LoginController::class, 'Login']);
+    
+$router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'VolunteerDashboard']);
+$router->add('/volunteer_registration_status', [VolunteerRegistrationStatusController::class, 'VolunteerRegistrationStatus']);
+$router->add('/volunteer_new_application', [VolunteerNewApplicationController::class, 'VolunteerNewApplication']);
+
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
 // $router->add('/profile/submit', [ProfileController::class,'updateProfile']);
 // $router->add('/profile', [ProfileController::class,'profile']);
 // $router->add('/heatmap', [HeatmapController::class, 'showHeatmap']);
-$router->add('/logout', [LogoutController::class, 'logout']);
+$router->add('/logout', [LogoutController::class, 'Logout']);
 
 $router->run();
 

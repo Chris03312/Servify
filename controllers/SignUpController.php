@@ -2,11 +2,11 @@
 
 class SignUpController {
 
-        public static function showSignUp() {
+        public static function ShowSignUp() {
             view('signup');
         }
 
-        public static function signup() {
+        public static function SignUp() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
                 // Capture form data
@@ -25,18 +25,19 @@ class SignUpController {
                 $email = $_POST['email'] ?? '';
                 $username = $_POST['username'] ?? '';
                 $password = $_POST['password'] ?? '';
-                $confirmPassword = $_POST['confirmPassword'] ?? ''; // Ensure the name matches form field
-        
+                $confirmPassword = $_POST['confirmPassword'] ?? '';
+                $registration_date = date('F d, Y'); // Registration date format
+                
                 // Validation: Check if email or username already exists
                 $db = Database::getConnection();
                 
                 // Check for existing email
-                $stmtEmail = $db->prepare('SELECT COUNT(*) FROM REGISTRATION WHERE email = :email');
+                $stmtEmail = $db->prepare('SELECT COUNT(*) FROM REGISTRATION WHERE EMAIL = :email');
                 $stmtEmail->execute([':email' => $email]);
                 $emailExists = $stmtEmail->fetchColumn() > 0;
         
                 // Check for existing username
-                $stmtUsername = $db->prepare('SELECT COUNT(*) FROM ACCOUNTS WHERE username = :username');
+                $stmtUsername = $db->prepare('SELECT COUNT(*) FROM ACCOUNTS WHERE USERNAME = :username');
                 $stmtUsername->execute([':username' => $username]);
                 $usernameExists = $stmtUsername->fetchColumn() > 0;
         
@@ -51,27 +52,29 @@ class SignUpController {
                 if ($password !== $confirmPassword) {
                     $errors[] = 'Passwords do not match.';
                 }
-                
+        
                 // If no errors, proceed with insertion
                 try {
                     // Insert user details into the REGISTRATION table
                     $stmt = $db->prepare('INSERT INTO REGISTRATION 
                     (
-                        role, 
-                        surname, 
-                        firstname, 
-                        middlename, 
-                        name_suffix,
-                        birthmonth, 
-                        birthdate, 
-                        birthyear,
-                        city,
-                        streetaddress, 
-                        barangay, 
-                        zipcode, 
-                        email
+                        REGISTRATION_DATE,
+                        ROLE, 
+                        SURNAME, 
+                        FIRST_NAME, 
+                        MIDDLE_NAME, 
+                        NAME_SUFFIX,
+                        BIRTHMONTH, 
+                        BIRTHDATE, 
+                        BIRTHYEAR,
+                        CITY,
+                        STREETADDRESS, 
+                        BARANGAY, 
+                        ZIPCODE, 
+                        EMAIL
                     ) VALUES
                     (
+                        :registration_date,
                         :role, 
                         :surname, 
                         :firstName, 
@@ -88,6 +91,7 @@ class SignUpController {
                     )');
                 
                     $stmt->execute([
+                        ':registration_date' => $registration_date,
                         ':role' => $role,
                         ':surname' => $surname,
                         ':firstName' => $firstName,
@@ -103,27 +107,30 @@ class SignUpController {
                         ':email' => $email
                     ]);
         
-                    // Insert account credentials into the ACCOUNTS table
+                    // Get the last inserted registration_id
                     $registrationId = $db->lastInsertId();
-
-                    // Insert account credentials into the ACCOUNTS table with the registration ID
+        
+                    // Insert account credentials into the ACCOUNTS table using registration_id as account_id
                     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-                    $stmt = $db->prepare('INSERT INTO ACCOUNTS (username, password, registration_id) VALUES (:username, :password, :registrationId)');
+                    $stmt = $db->prepare('INSERT INTO ACCOUNTS (ACCOUNT_ID, USERNAME, EMAIL, PASSWORD) VALUES (:account_id, :username, :email, :password)');
                     $stmt->execute([
+                        ':account_id' => $registrationId,  // Insert registration_id as account_id
                         ':username' => $username,
-                        ':password' => $hashedPassword,
-                        ':registrationId' => $registrationId // Insert the last inserted registration ID
+                        ':email' => $email,
+                        ':password' => $hashedPassword
                     ]);
-
+        
                     redirect('/login');
                 } catch (PDOException $e) {
-                    // Log the error (you can log to a file or to your database)
+                    // Log the error (you can log to a file or display it)
+                    error_log('Error in signup: ' . $e->getMessage());
                     // Return to the signup page with the errors
                     redirect('/signup');
                 }
             }
-        }
-
+        }        
+    
 }
 
 ?>
+ 
