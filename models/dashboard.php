@@ -43,14 +43,15 @@ class Dashboard {
     public static function getActivityLog() {
         try {
             // Retrieve username from the session
+            $email = $_SESSION['email'];
             $username = $_SESSION['username'];
     
             // Establish database connection
             $db = Database::getConnection();
     
             // Query activities for the specific username
-            $stmt = $db->prepare('SELECT DESCRIPTION, CREATED_AT FROM ACTIVITIES WHERE username = :username ORDER BY created_at DESC');
-            $stmt->execute(['username' => $username]);
+            $stmt = $db->prepare('SELECT DESCRIPTION, CREATED_AT FROM ACTIVITIES WHERE username = :username OR EMAIL = :email ORDER BY created_at DESC');
+            $stmt->execute(['username' => $username, 'email' => $email]);
     
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
@@ -128,7 +129,7 @@ class Dashboard {
     
             return $timelines; // Return the combined array with the year included
         } catch (PDOException $e) {
-            error_log('Timeline Error: ' . $e->getMessage());
+            error_log(message: 'Timeline Error: ' . $e->getMessage());
             return []; // Return an empty array in case of error
         }
     }

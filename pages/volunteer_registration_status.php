@@ -24,48 +24,46 @@
 <body>
 
     <?php
-    include('../includes/volunteer_sidebar.php');
+    include('includes/volunteer_sidebar.php');
     ?>
-
 
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
         <h4>Volunteer Registration Status</h4>
 
-            <div class="timeline mb-5">
-                <div class="timeline-progress"></div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 1">
-                    <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
-                </div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 2">
-                    <div class="progress-step" data-content="To be reviewed by DPPAM Team"></div>
-                </div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 3">
-                    <div class="progress-step" data-content="Application Approved"></div>
-                </div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 4">
-                    <div class="progress-step" data-content="Submit Additional Requirements"></div>
-                </div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 5">
-                    <div class="progress-step" data-content="Orientation and Training"></div>
-                </div>
-                <div class="timeline-item">
-                    <img src="../img/icons8-announcement-90.png" alt="Step 6">
-                    <div class="progress-step" data-content="Start Volunteering"></div>
-                </div>
+        <div class="timeline mb-5">
+            <div class="timeline-progress" 
+                style="width: <?php echo $statusInfo['PROGRESS']; ?>%;"></div> <!-- Dynamically adjust width -->
+            
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 20) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 1">
+                <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
             </div>
-
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 37) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 2">
+                <div class="progress-step" data-content="To be reviewed by DPPAM Team"></div>
+            </div>
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 53) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 3">
+                <div class="progress-step" data-content="Application Approved"></div>
+            </div>
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 80) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 4">
+                <div class="progress-step" data-content="Submit Additional Requirements"></div>
+            </div>
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 100) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 5">
+                <div class="progress-step" data-content="Orientation and Training"></div>
+            </div>
+            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] == 100) ? 'active' : ''; ?>">
+                <img src="../img/icons8-announcement-90.png" alt="Step 6">
+                <div class="progress-step" data-content="Start Volunteering"></div>
+            </div>
+        </div>
 
             <!--TABLE-->
             <div class="mt-5">
-                <h5 class="text-center text-danger">This user has no existing application.</h5>
-
-
+                    <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR']; ?></h5>
                 <div class="table-responsive">
                 <table class="table table-bordered align-middle">
                     <thead class="table-primary">
@@ -78,10 +76,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        <?php if (isset($statusInfo['REGISTRATION_ID'])): ?>
+                            <th scope="row"><?php echo $statusInfo['REGISTRATION_ID']; ?></th>
+                        <?php endif; ?>
+                            <td><?php echo $statusInfo['FIRST_NAME']." ".$statusInfo['MIDDLE_NAME']." ".$statusInfo['SURNAME']; ?></td>
+                            <td><?php echo $statusInfo['STATUS']; ?></td>
+                            <!-- <td></td> -->
                         </tr>
                     </tbody>
                 </table>

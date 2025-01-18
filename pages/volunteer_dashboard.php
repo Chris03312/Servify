@@ -145,13 +145,13 @@
                                 <h4 class="text-light">You are currently assigned as:</h4>
                             </div>
                             <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT']); ?></h2>
+                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT'] ?? " "); ?></h2>
                             </div>
                             <div class="bg-primary p-2 rounded">
                                 <h4 class="text-light">Designated at:</h4>
                             </div>
                             <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_MISSION']); ?></h3>
+                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_MISSION'] ?? " "); ?></h3>
                             </div>
                         </div>
                     </div>
@@ -189,10 +189,10 @@
                                         <a href="#" class="text-decoration-none text-dark">
                                             <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                                                 <div class="time">
-                                                    <p class="text-center"><?php echo $activity['FORMATTED_DATE']; ?></p>
+                                                    <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
                                                 </div>
                                                 <div class="time">
-                                                    <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION']); ?></p>
+                                                    <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
                                                 </div>
                                                 <div class="time">
                                                     <p><i class="bi bi-chevron-right"></i></p>
@@ -218,20 +218,24 @@
                             <!--TIMELINE CONTENT-->
                             <section class="px-2">
                                 <ul class="timeline-with-icons">
-                                <?php foreach ($timelines as $timeline): ?>
-                                    <li class="timeline-item mb-5">
-                                        <span class="timeline-year">
-                                            <?php echo $timeline['YEAR']; ?> <!-- Display the extracted year -->
-                                        </span>
+                                <?php if(!empty($timelines)): ?>
+                                    <?php foreach ($timelines as $timeline): ?>
+                                        <li class="timeline-item mb-5">
+                                            <span class="timeline-year">
+                                                <?php echo $timeline['YEAR'] ?? " "; ?> <!-- Display the extracted year -->
+                                            </span>
 
-                                        <div class="timeline-content">
-                                            <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT']; ?></h5>
-                                            <p class="text-muted">
-                                                <?php echo $timeline['ASSIGNED_MISSION']; ?> <!-- Display assigned mission -->
-                                            </p>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
+                                            <div class="timeline-content">
+                                                <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
+                                                <p class="text-muted">
+                                                    <?php echo $timeline['ASSIGNED_MISSION'] ?? ""; ?> <!-- Display assigned mission -->
+                                                </p>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p class ="text-center">No Timelines</p>
+                                <?php endif; ?>    
                                 </ul>
                             </section>
 

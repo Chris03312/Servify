@@ -1,6 +1,7 @@
 <?php 
 
 require_once __DIR__ . '/../models/Dashboard.php';
+require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Notification.php';
 
 
@@ -20,6 +21,7 @@ class VolunteerDashboardController {
         // Get other data
         $notifications = Notification::getNotification();
         $activities = Dashboard::getActivityLog();
+        $sidebarinfo = Sidebarinfo::getsidebarinfo();
         $userInfo = Dashboard::getinfodashboard();
         $currentDate = date('F j, Y');
         $timelines = Dashboard::MyTimeline();
@@ -28,6 +30,7 @@ class VolunteerDashboardController {
         view('volunteer_dashboard', [
             'username' => $_SESSION['username'] ?? 'Guest',
             'userInfo' => $userInfo,
+            'sidebarinfo' => $sidebarinfo,
             'activities' => $activities,
             'currentDate' => $currentDate,
             'days' => $countdown['days'],

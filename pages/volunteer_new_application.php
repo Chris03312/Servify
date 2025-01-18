@@ -23,7 +23,7 @@
 <body>
 
     <?php
-    include('../includes/volunteer_sidebar.php');
+    include('includes/volunteer_sidebar.php');
     ?>
 
 
@@ -33,7 +33,7 @@
 
 
         <div class="container-fluid">
-            <form method="POST" action="" class="needs-validation" novalidate>
+            <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data"needs-validation novalidate>
                 <!--FORM-->
                 <!--PHOTO AND NAME-->
                 <div class="d-flex flex-row justify-content-start align-items-center mb-3">
@@ -41,7 +41,7 @@
                     <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
                     <!--NAME-->
-                    <p>Vicmar M. Guzman</p>
+                    <p><?php echo $userInfo['FIRST_NAME'] ." ". $userInfo['MIDDLE_NAME'] ." ". $userInfo['SURNAME'] ?></p>
                 </div>
 
                 <!--VOLUNTEER INFO-->
@@ -80,7 +80,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                <input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $userInfo['FIRST_NAME'] ?? " "; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input first name.
                                 </div>
@@ -88,7 +88,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="middlename" name="middlename" required>
+                                <input type="text" class="form-control" id="middlename" name="middlename" value="<?php echo $userInfo['MIDDLE_NAME'] ?? " "; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -96,7 +96,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="surname" name="surname" required>
+                                <input type="text" class="form-control" id="surname" name="surname" value="<?php echo $userInfo['SURNAME'] ?? " "; ?>"required>
                                 <div class="invalid-feedback">
                                     Please input surname.
                                 </div>
@@ -104,7 +104,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="suffix" name="suffix" required>
+                                <input type="text" class="form-control" id="suffix" name="suffix" value="<?php echo $userInfo['NAME_SUFFIX'] ?? " "; ?>"required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -112,7 +112,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="sex" class="form-label">Sex<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select" required>
+                                <select id="sex" name="sex" class="form-select" required>
                                     <option selected disabled value="">Select Sex</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -132,7 +132,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="civilStauts" class="form-label">Civil Status<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="civilStatus" class="form-select" required>
+                                <select id="civilStatus" name="civilStatus" class="form-select" required>
                                     <option selected disabled value="">Select Status</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -150,7 +150,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="birthDate" class="form-label">Birth Day</label>
-                                <input type="text" class="form-control" disabled id="birthDate" name="birthDate" placeholder="Date" required>
+                                <input type="text" class="form-control" disabled id="birthDate" name="birthDate" placeholder="Date" value="<?php echo $userInfo['BIRTHDATE'] ?? " "; ?>"required>
                                 <div class="invalid-feedback">
                                     Please input birth date.
                                 </div>
@@ -158,20 +158,19 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" class="form-select" disabled required>
-                                    <option selected disabled value="">Select month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                <select id="birthMonth" name="birthMonth" class="form-select" disabled aria-readonly="true" required>
+                                    <option value="January" <?php echo ($userInfo['BIRTHMONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
+                                    <option value="February" <?php echo ($userInfo['BIRTHMONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
+                                    <option value="March" <?php echo ($userInfo['BIRTHMONTH'] === 'March') ? 'selected' : " "; ?>>March</option>
+                                    <option value="April" <?php echo ($userInfo['BIRTHMONTH'] === 'April') ? 'selected' : " "; ?>>April</option>
+                                    <option value="May" <?php echo ($userInfo['BIRTHMONTH'] === 'May') ? 'selected' : " "; ?>>May</option>
+                                    <option value="June" <?php echo ($userInfo['BIRTHMONTH'] === 'June') ? 'selected' : " "; ?>>June</option>
+                                    <option value="July" <?php echo ($userInfo['BIRTHMONTH'] === 'July') ? 'selected' : " "; ?>>July</option>
+                                    <option value="August" <?php echo ($userInfo['BIRTHMONTH'] === 'August') ? 'selected' : " "; ?>>August</option>
+                                    <option value="September" <?php echo ($userInfo['BIRTHMONTH'] === 'September') ? 'selected' : " "; ?>>September</option>
+                                    <option value="October" <?php echo ($userInfo['BIRTHMONTH'] === 'October') ? 'selected' : " "; ?>>October</option>
+                                    <option value="November" <?php echo ($userInfo['BIRTHMONTH'] === 'November') ? 'selected' : " "; ?>>November</option>
+                                    <option value="December" <?php echo ($userInfo['BIRTHMONTH'] === 'December') ? 'selected' : " "; ?>>December</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select birth month.
@@ -180,7 +179,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" disabled id="birthYear" name="birthYear" placeholder="Year" required>
+                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" value="<?php echo $userInfo['BIRTHYEAR'] ?? " "; ?>" required  oninput="calculateAge()" disabled>
                                 <div class="invalid-feedback">
                                     Please input birth year.
                                 </div>
@@ -188,8 +187,66 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="age" class="form-label">Age<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="age" name="age">
+                                <input type="text" class="form-control" id="age" name="age" value="" disabled>
                             </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    // Function to calculate Age
+                                    function calculateAge() {
+                                        const birthYearInput = document.getElementById('birthYear');
+                                        const ageInput = document.getElementById('age');
+                                        
+                                        const birthYear = parseInt(birthYearInput.value, 10);
+                                        const currentYear = new Date().getFullYear();
+
+                                        // Validate the birth year and calculate the age
+                                        if (!isNaN(birthYear) && birthYear > 1900 && birthYear <= currentYear) {
+                                            ageInput.value = currentYear - birthYear;
+                                        } else {
+                                            ageInput.value = ''; // Clear the age input for invalid birth years
+                                        }
+                                    }
+
+                                    // Function to calculate Year of Service
+                                    function calculateYearOfService() {
+                                        const prevExperienceYearInput = document.getElementById('prevExperienceYear');
+                                        const yearOfServiceInput = document.getElementById('yearOfService');
+                                        
+                                        // Get the value of the previous experience year and the current year
+                                        const prevExperienceYear = parseInt(prevExperienceYearInput.value, 10);
+                                        const currentYear = new Date().getFullYear();
+
+                                        // Validate the previous experience year and calculate the year of service
+                                        if (!isNaN(prevExperienceYear) && prevExperienceYear > 1900 && prevExperienceYear <= currentYear) {
+                                            // Calculate the year of service
+                                            yearOfServiceInput.value = currentYear - prevExperienceYear;
+                                        } else {
+                                            // Clear the year of service input for invalid year input
+                                            yearOfServiceInput.value = ''; 
+                                        }
+                                    }
+
+                                    // Attach the event listeners for input fields
+                                    const birthYearInput = document.getElementById('birthYear');
+                                    if (birthYearInput) {
+                                        birthYearInput.addEventListener('input', calculateAge);
+                                    }
+
+                                    const prevExperienceYearInput = document.getElementById('prevExperienceYear');
+                                    if (prevExperienceYearInput) {
+                                        prevExperienceYearInput.addEventListener('input', calculateYearOfService);
+                                    }
+
+                                    // Initialize calculation if birthYear or prevExperienceYear has value on page load
+                                    if (birthYearInput.value) {
+                                        calculateAge();
+                                    }
+                                    if (prevExperienceYearInput.value) {
+                                        calculateYearOfService();
+                                    }
+                                });
+                            </script>
 
                             <div class="col-md-3 mb-3">
                                 <label for="citizenship" class="form-label">Citizenship<sup class="text-danger fw-bold">*</sup></label>
@@ -223,22 +280,22 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                                <input type="text" class="form-control" disabled id="street" name="street">
+                                <input type="text" class="form-control" disabled id="street" name="streetAddress" value="<?php echo $userInfo['STREETADDRESS'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="city" name="city" required>
+                                <input type="text" class="form-control" disabled id="city" name="city" value="<?php echo $userInfo['CITY'] ?? " "; ?>" required >
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="barangay" name="barangay" required>
+                                <input type="text" class="form-control" disabled id="barangay" name="barangay" value="<?php echo $userInfo['BARANGAY'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="zipcode" name="zipcode" required>
+                                <input type="text" class="form-control" disabled id="zipcode" name="zipcode" value="<?php echo $userInfo['ZIPCODE'] ?? " "; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -246,12 +303,12 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="email" class="form-control" disabled id="email" name="email" required>
+                                <input type="email" class="form-control" disabled id="email" name="email" value="<?php echo $userInfo['EMAIL'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"  required>
                                 <div class="invalid-feedback">
                                     Please input mobile number.
                                 </div>
@@ -273,7 +330,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="orgMembership" class="form-label">Parish Organization Membership<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="orgMembership" class="form-select" required>
+                                <select id="orgMembership" name="parish_org_membership" class="form-select" required>
                                     <option selected disabled value="">Select Membership</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
@@ -303,7 +360,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
-                                <select id="prevExperienceMonth" class="form-select" required>
+                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select" required>
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
@@ -325,7 +382,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceYear" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required>
+                                <input type="number" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required oninput="calculateYearOfService()">
                                 <div class="invalid-feedback">
                                     Please input year.
                                 </div>
@@ -338,7 +395,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="prevAssignment" class="form-label">Previous PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="prevAssignment" class="form-select" required>
+                                <select id="prevAssignment" name="prevPpcrvVolAss" class="form-select" required>
                                     <option selected disabled value="">Select previous assignment</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
@@ -368,7 +425,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="prefAssignment" class="form-label">Preferred PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="prefAssignment" class="form-select" required>
+                                <select id="prefAssignment" name="prefPpcrvVolAss" class="form-select" required>
                                     <option selected disabled value="">Select preferred assignment</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
@@ -388,7 +445,7 @@
                             </div>
 
                             <div class="mb-3 text-center">
-                                <button class="btn btn-outline-secondary px-4" id="nextBtn">Nexttttt</button>
+                                <button class="btn btn-outline-secondary px-4" id="nextBtn">Next</button>
                             </div>
 
                         </div>

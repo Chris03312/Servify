@@ -21,15 +21,20 @@ $router = new Router();
 $router->add('/', function () use ($router) {
     $router->redirect('/index'); // Now $router is available inside the closure
 });
+
 $router->add('/index', [LandingPageController::class, 'ShowLandingPage']);
-$router->add('/signup', [SignUpController::class, 'ShowSignUp']);
-$router->add('/signup/submit', [SignUpController::class, 'SignUp']);
+
 $router->add('/login', [LoginController::class, 'ShowLoginForm']);
 $router->add('/login/submit', [LoginController::class, 'Login']);
-    
+
+$router->add('/signup', [SignUpController::class, 'ShowSignUp']);
+$router->add('/signup/submit', [SignUpController::class, 'SignUp']);
+
 $router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'VolunteerDashboard']);
 $router->add('/volunteer_registration_status', [VolunteerRegistrationStatusController::class, 'VolunteerRegistrationStatus']);
 $router->add('/volunteer_new_application', [VolunteerNewApplicationController::class, 'VolunteerNewApplication']);
+$router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
+
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
