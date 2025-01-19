@@ -4,14 +4,14 @@ const sidebar = document.querySelector("#sidebar");
 const content = document.querySelector(".content");
 
 // Add event listener to the toggle button
-toggler.addEventListener("click", function() {
+toggler.addEventListener("click", function () {
     // Toggle the collapsed class on sidebar and overlay-active on content
     sidebar.classList.toggle("collapsed");
     content.classList.toggle("overlay-active");
 });
 
 // Close sidebar when pressing the Esc key
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && sidebar.classList.contains("collapsed")) {
         sidebar.classList.remove("collapsed");
         content.classList.remove("overlay-active");
@@ -19,14 +19,24 @@ document.addEventListener("keydown", function(e) {
 });
 
 // Close sidebar when clicking outside of it on smaller screens
-document.addEventListener("click", function(event) {
-    if (window.innerWidth <= 768) { // Adjust as needed for your responsive breakpoint
+document.addEventListener("click", function (event) {
+    if (window.innerWidth <= 992) { // Applies to small and medium screens
         if (!sidebar.contains(event.target) && !toggler.contains(event.target) && sidebar.classList.contains("collapsed")) {
             sidebar.classList.remove("collapsed");
             content.classList.remove("overlay-active");
         }
     }
 });
+
+// Reset sidebar behavior when resizing the window
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 992) {
+        // Reset sidebar and content styles for larger screens
+        sidebar.classList.remove("collapsed");
+        content.classList.remove("overlay-active");
+    }
+});
+
 
 
 

@@ -13,42 +13,39 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="/volunteer_dashboard" class="nav-link">
-                    <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
+                    <a href="volunteer_dashboard.php" class="nav-link">
+                        <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
-                <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i></i>My Application</a>
+                <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i>My Application</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="/volunteer_new_application" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>New Application</a>
+                            <a href="/volunteer_new_application" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>New Application</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="/volunteer_registration_status" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>Registration Status</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="list_of_volunteers.php" class="nav-link"><i class="fa-solid fa-list-ul pe-2"></i>View Volunteers</a>
+                            <a href="renewal_application.php" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Renewal</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="submissions.php" class="nav-link">
-                    <i class="fa-solid fa-award me-2"></i>Achievements</a>
+                    <a href="achievements.php" class="nav-link">
+                        <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="assignment_management.php" class="nav-link">
-                    <i class="fa-solid fa-file-circle-check me-2"></i>Attendance</a>
+                    <a href="attendance.php" class="nav-link">
+                        <i class="fa-solid fa-file-circle-check me-2"></i>Attendance</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+                    <a href="announcements.php" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="contact_us.php" class="nav-link">
+                        <i class="bi bi-send-fill me-2"></i>Contact Us</a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="nav-link">
-                    <i class="bi bi-send-fill me-2"></i>Contact Us</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="nav-link">
-                    <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback</a>
+                        <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback</a>
                 </li>
             </ul>
 

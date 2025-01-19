@@ -11,7 +11,6 @@
     max-width: 300px;
     min-width: 300px;
     transition: all 0.35s ease-in-out;
-    z-index: 1111;
     padding: 0 12px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -110,47 +109,43 @@ li {
 
 /* Responsive */
 
-@media (min-width:768px) {
+/* Adjust styles for larger screens */
+@media (min-width: 768px) {
     .content {
         width: auto;
     }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 992px) {
     #sidebar {
         margin-left: -300px; /* Hide the sidebar */
-    }
-    #sidebar.collapsed {
-        margin-left: 0; /* Show the sidebar when collapsed class is toggled */
-    }
-    .main {
-        margin-left: 0; /* Adjust main content margin */
-    }
-}
-
-/* Sidebar default hidden on small screens */
-@media (max-width: 768px) {
-    #sidebar {
+        background-color: white; /* Sidebar background color */
+        z-index: 1111; /* Ensure it overlays content */
+        height: 100%; /* Full height */
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
         width: 300px;
-        background-color: #ffffff; /* Adjust as needed */
-        margin-left: -300px; /* Hide by default */
-        z-index: 1111; /* Ensure it overlays content */
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Optional: shadow effect */
+        transition: margin-left 0.3s ease; /* Smooth toggle */
     }
 
-    /* Show sidebar when 'collapsed' class is toggled */
     #sidebar.collapsed {
-        margin-left: 0;
+        margin-left: 0; /* Show sidebar when toggled */
     }
 
-    /* Darken the main content when sidebar is visible */
+    .main {
+        margin-left: 0; /* Adjust main content margin */
+    }
+
+    /* Darken the main content when the sidebar is visible */
     .content.overlay-active {
         background-color: rgba(0, 0, 0, 0.5); /* Dim the background */
     }
 }
 
-/**END OF SIDEBAR STYLE**/
+@media (max-width: 768px) {
+    #sidebar {
+        /* Sidebar styles already defined in 992px breakpoint */
+    }
+}
