@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/volunteer_sidebar.php');
+    include('includes/volunteer_sidebar.php');
     ?>
 
 

@@ -23,7 +23,7 @@
 <body>
 
     <?php
-    include('../includes/volunteer_sidebar.php');
+    include('includes/volunteer_sidebar.php');
     ?>
 
 
@@ -37,9 +37,9 @@
                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                             <div><img src="../img/DPPAM LOGO.png" alt="Profile picture" class="img-fluid" width="100px;"></div>
                             <div>
-                                <h4>Vicmar M. Guzman</h4>
-                            <p><strong>Membership no:</strong>1234</p>
-                            <p>Poll Watcher - Maligaya Elementary School</p>
+                                <h4><?php echo $attendances['FIRST_NAME'] . " " . $attendances['MIDDLE_NAME'] ." " . $attendances['SURNAME'] ?? " "; ?></h4>
+                            <p><strong>Membership no:</strong> <?php echo $attendances['VOLUNTEERS_ID'] ?? " "; ?></p>
+                            <p><?php echo $attendances['ROLE'] ." - ".$attendances['ASSIGNED_MISSION'] ?? " "; ?></p>
                         </div>
                         </div>
 
@@ -51,17 +51,25 @@
 
                 <div class="col-12 mb-3">
                     <div class="container-fluid text-center border p-3">
-                        <h5>YOU STILL HAVE <span class="text-danger">20:10:15</span></h5>
+                    <h5><span class="text-danger" id="message">Loading...</span></h5>
                     </div>
+                    <script>
+                        var attendanceData = {
+                            timeIn: "<?php echo $timeIn; ?>",  // Example: "14:30:00" or null
+                            timeOut: "<?php echo $timeOut; ?>", // Example: "17:00:00" or null
+                            targetTime: "17:00:00"  // Fixed target time
+                        };
+                    </script>
+                     <script src="js/attendancetime.js"></script>   
                 </div>
 
                 <div class="col-12">
                     <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
-                        <h5 class="text-center">MON, JAN. 13, 2025</h5>
+                        <h5 class="text-center"><?php echo $formattedDate ?? " "; ?></h5>
 
                         <div>
-                            <div class="time-in"><h3>TIME IN: </h3></div>
-                            <div class="time-out"><h3>TIME OUT: </h3></div>
+                            <div class="time-in"><h3>TIME IN:    <?php echo $timeIn ?? " "; ?> </h3></div>
+                            <div class="time-out"><h3>TIME OUT:  <?php echo $timeOut ?? " "; ?> </h3></div>
                         </div>
                     </div>
                 </div>

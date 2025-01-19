@@ -8,7 +8,7 @@ require_once __DIR__ . '/../models/Notification.php';
 
 class VolunteerRegistrationStatusController {
     public static function VolunteerRegistrationStatus() {
-        if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
         
