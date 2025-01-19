@@ -382,7 +382,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceYear" class="form-label">&nbsp;</label>
-                                <input type="number" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required oninput="calculateYearOfService()">
+                                <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required oninput="calculateYearOfService()">
                                 <div class="invalid-feedback">
                                     Please input year.
                                 </div>
