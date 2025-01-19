@@ -10,7 +10,7 @@ class Registrationstatus {
     
             $db = Database::getConnection();
             
-            $stmt = $db->prepare("SELECT * FROM REGISTRATION_INFO WHERE EMAIL = :email");
+            $stmt = $db->prepare("SELECT * FROM APPLICATION_INFO WHERE EMAIL = :email");
             $stmt->execute([':email' => $email]);
             $registrationstatus = $stmt->fetch(PDO::FETCH_ASSOC);
     
@@ -19,11 +19,11 @@ class Registrationstatus {
                 // Return default values and halt further processing
                 return [
                     'ERROR' => "This user has no existing application",
-                    'REGISTRATION_NO' => '',
-                    'FIRST_NAME' => '',
-                    'MIDDLE_NAME' => '',
+                    'REGISTRATION_NO' => ' ',
+                    'FIRST_NAME' => ' ',
+                    'MIDDLE_NAME' => ' ',
                     'SURNAME' => ' ',
-                    'STATUS' => 'No application',  // Set default status
+                    'STATUS' => ' ',  // Set default status
                     'PROGRESS' => 0               // Default progress
                 ];
             }
@@ -57,11 +57,11 @@ class Registrationstatus {
             error_log('Registration status error: ' . $e->getMessage());
             return [
                 'ERROR' => "This user has no existing application",
-                'REGISTRATION_NO' => '',
-                'FIRST_NAME' => '',
-                'MIDDLE_NAME' => '',
+                'REGISTRATION_NO' => ' ',
+                'FIRST_NAME' => ' ',
+                'MIDDLE_NAME' => ' ',
                 'SURNAME' => ' ',
-                'STATUS' => '',  // Default status for error
+                'STATUS' => ' ',  // Default status for error
                 'PROGRESS' => 0  // Default progress for error
             ];
         }

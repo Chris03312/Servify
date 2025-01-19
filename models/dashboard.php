@@ -133,5 +133,19 @@ class Dashboard {
             return []; // Return an empty array in case of error
         }
     }
-    
+
+
+    public static function getvalidId(){
+        try {
+            
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare('SELECT NAME FROM VALID_ID ');
+            $stmt->execute();
+            $validId = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $validId;
+        }catch (PDOException $e) {
+        }
+    }
 }

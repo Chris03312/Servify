@@ -19,10 +19,10 @@
                 <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i></i>My Application</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="/volunteer_new_application" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
+                            <a href="/volunteer_new_application" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>New Application</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="/volunteer_registration_status" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>Add New Volunteers</a>
+                            <a href="/volunteer_registration_status" class="nav-link"><i class="fa-solid fa-user-plus pe-2"></i>Registration Status</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="list_of_volunteers.php" class="nav-link"><i class="fa-solid fa-list-ul pe-2"></i>View Volunteers</a>

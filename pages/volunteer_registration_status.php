@@ -63,7 +63,7 @@
 
             <!--TABLE-->
             <div class="mt-5">
-                    <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR']; ?></h5>
+                    <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR'] ?? " "; ?></h5>
                 <div class="table-responsive">
                 <table class="table table-bordered align-middle">
                     <thead class="table-primary">

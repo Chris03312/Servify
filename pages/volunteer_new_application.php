@@ -80,7 +80,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $userInfo['FIRST_NAME'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" id="firstname" name="firstName" value="<?php echo $userInfo['FIRST_NAME'] ?? " "; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input first name.
                                 </div>
@@ -88,7 +88,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="middlename" name="middlename" value="<?php echo $userInfo['MIDDLE_NAME'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" id="middlename" name="middleName" value="<?php echo $userInfo['MIDDLE_NAME']; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -150,15 +150,15 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="birthDate" class="form-label">Birth Day</label>
-                                <input type="text" class="form-control" disabled id="birthDate" name="birthDate" placeholder="Date" value="<?php echo $userInfo['BIRTHDATE'] ?? " "; ?>"required>
+                                <input type="text" class="form-control" readonly id="birthDate" name="birthDate" placeholder="Date" value="<?php echo $userInfo['BIRTHDATE'] ?? " "; ?>"required>
                                 <div class="invalid-feedback">
                                     Please input birth date.
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-3 mb-3"> 
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" name="birthMonth" class="form-select" disabled aria-readonly="true" required>
+                                <select id="birthMonth" name="birthMonth" class="form-select" readonly aria-readonly="true" required>
                                     <option value="January" <?php echo ($userInfo['BIRTHMONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
                                     <option value="February" <?php echo ($userInfo['BIRTHMONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
                                     <option value="March" <?php echo ($userInfo['BIRTHMONTH'] === 'March') ? 'selected' : " "; ?>>March</option>
@@ -179,7 +179,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" value="<?php echo $userInfo['BIRTHYEAR'] ?? " "; ?>" required  oninput="calculateAge()" disabled>
+                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" value="<?php echo $userInfo['BIRTHYEAR'] ?? " "; ?>" required  oninput="calculateAge()" readonly>
                                 <div class="invalid-feedback">
                                     Please input birth year.
                                 </div>
@@ -187,7 +187,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="age" class="form-label">Age<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="age" name="age" value="" disabled>
+                                <input type="text" class="form-control" id="age" name="age" value="" readonly>
                             </div>
 
                             <script>
@@ -280,22 +280,22 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                                <input type="text" class="form-control" disabled id="street" name="streetAddress" value="<?php echo $userInfo['STREETADDRESS'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="street" name="streetAddress" value="<?php echo $userInfo['STREETADDRESS'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="city" name="city" value="<?php echo $userInfo['CITY'] ?? " "; ?>" required >
+                                <input type="text" class="form-control" readonly id="city" name="city" value="<?php echo $userInfo['CITY'] ?? " "; ?>" required >
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="barangay" name="barangay" value="<?php echo $userInfo['BARANGAY'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="barangay" name="barangay" value="<?php echo $userInfo['BARANGAY'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" disabled id="zipcode" name="zipcode" value="<?php echo $userInfo['ZIPCODE'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" value="<?php echo $userInfo['ZIPCODE'] ?? " "; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -303,7 +303,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="email" class="form-control" disabled id="email" name="email" value="<?php echo $userInfo['EMAIL'] ?? " "; ?>" required>
+                                <input type="email" class="form-control" readonly id="email" name="email" value="<?php echo $userInfo['EMAIL'] ?? " "; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
@@ -530,14 +530,18 @@
 
                             <div class="col-md-7 mb-3">
                                 <label for="sex" class="form-label">Type of ID<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select mb-2" required>
+                                <select id="sex" class="form-select mb-2" name="nameofId" required>
                                     <option selected disabled value="">Select type of ID</option>
-                                    <option value="...">...</option>
+
+                                    <?php foreach ($validId as $id): ?>
+                                        <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->
+                                        <option value="<?= $id['NAME']; ?>"><?= $id['NAME']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
+
                                 <div class="invalid-feedback">
                                     Please select type of ID.
                                 </div>
-
 
 
                                 <div class="file-upload">
@@ -555,7 +559,7 @@
                                         <p>Drag and drop your ID here</p>
                                         <p><strong>OR</strong></p>
                                         <label for="file-input" class="file-label btn btn-primary px-5">UPLOAD</label>
-                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none" required />
+                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none" name="validId" required />
 
 
                                         <div class="invalid-feedback">
