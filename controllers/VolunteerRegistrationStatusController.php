@@ -11,7 +11,7 @@ class VolunteerRegistrationStatusController {
         if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
             redirect('/login');
         }
-
+        
         // Get necessary data
         $sidebarinfo = Sidebarinfo::getsidebarinfo();
         $notifications = Notification::getNotification();

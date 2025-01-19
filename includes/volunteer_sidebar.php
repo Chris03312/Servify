@@ -22,7 +22,10 @@
                             <a href="/volunteer_new_application" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>New Application</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="renewal_application.php" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Renewal</a>
+                            <a href="/volunteer_registration_status" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Status</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="/volunteer_renewal_application" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Renewal</a>
                         </li>
                     </ul>
                 </li>
@@ -81,7 +84,7 @@
                 <button type="button" class="btn bellBtn position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-bell-fill fs-4"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-top: 15px;">
-                        <?php echo $unread_count; ?>
+                        <?php echo $unread_count ?? "0"; ?>
                     </span>
                       <span class="visually-hidden">unread messages</span>
                     
