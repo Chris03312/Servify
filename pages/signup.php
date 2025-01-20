@@ -51,18 +51,47 @@
                         </div>
                     </div>
 
-                    <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST" >
+                    <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST">
 
                         <div class="col-md-12 mb-3">
-                            <label for="roleInOrganization" class="form-label">Role in Organization<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="roleInOrganization" class="form-select" name="role" required>
-                                <option selected disabled value="">Select Role</option>
-                                <option value="Volunteer">Volunteer</option>
-                                <option value="Coordinator">Coordinator</option>
-                                <option value="Admin">Admin</option>
-                            </select>
+                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:</strong></label>
+                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" placeholder="Type to search..." required>
+                            <datalist id="parishNameOptions">
+                                <option value="St. Francis of Assisi – Sta Quiteria Parish">
+                                <option value="Birhen ng Lourdes Parish">
+                                <option value="Our Lady of Lujan Parish">
+                                <option value="Sacred Heart of Jesus Parish">
+                                <option value="St. Peter & John Parish">
+                                <option value="St. Gabriel the Archangel Parish">
+                                <option value="Shrine of Our Lady of Grace">
+                                <option value="Sagrada Familia Parish">
+                                <option value="San Jose Parish (Agudo)">
+                                <option value="San Pancracio Parish">
+                                <option value="Hearts of Jesus & Mary Parish">
+                                <option value="Immaculate of Heart & Mary Parish">
+                                <option value="Mary Help of Christians Parish">
+                                <option value="Sacred Heart of Jesus Parish (Tugatog)">
+                                <option value="St. Joseph the Workman Parish">
+                                <option value="San Roque Cathedral">
+                                <option value="Holy Trinity Quasi-Parish">
+                                <option value="Exaltation of the Holy Cross Parish">
+                                <option value="Diocesan Shrine & Parish of Immaculate Concepcion">
+                                <option value="San Antonio de Padua Parish">
+                                <option value="San Bartolome Parish">
+                                <option value="Santa Cruz Parish">
+                                <option value="Sto. Rosario Parish">
+                                <option value="San Exequiel Moreno Parish">
+                                <option value="San Ildefonso Parish">
+                                <option value="Diocesan Shrine & Parish of San Jose de Navotas">
+                                <option value="San Lorenzo Ruiz & Companion Martyrs Parish">
+                                <option value="San Roque Parish de Navotas">
+                                <option value="St. Clare of Assisi Parish">
+                                <option value="Sto. Niño de Pasion Parish">
+                                <option value="Nustra Senora delos Remedios Quasi-Parish">
+                            </datalist>
+
                             <div class="invalid-feedback">
-                                Please select a role.
+                                Please input Parish.
                             </div>
                         </div>
 
@@ -210,7 +239,7 @@
                                             <img src="../img/icons8-checkmark-90 (1).png" alt="">
                                             <h3 class="text-primary">SUCCESS</h3>
                                             <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
-                                            has been created.</p>
+                                                has been created.</p>
                                             <p class="text-muted">Check your email for more details.</p>
                                             <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
                                         </div>
@@ -219,11 +248,11 @@
                             </div>
                         </div>
 
-                        </form>
+                    </form>
 
 
 
-                   
+
 
                     <div class="mb-3 text-center">
                         <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a></p>
