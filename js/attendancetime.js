@@ -1,56 +1,77 @@
-// attendance_time.js
+document.addEventListener("DOMContentLoaded", function () {
+    const messageEl = document.getElementById("message");
 
-// Extract variables from attendanceData
-const { timeIn, timeOut, targetTime } = attendanceData;
-
-// Function to format time as hh:mm:ss
-function formatTime(date) {
-    return date.toLocaleTimeString('en-US', { hour12: false });
-}
-
-// Function to show live current time
-function showCurrentTime() {
-    const now = new Date();
-    document.getElementById("message").innerHTML = `<span class="text-success">${formatTime(now)}</span>`; // Changed to "text-success" for green color
-}
-
-// Function to calculate and display the countdown
-function updateCountdown(timeIn, targetTime) {
-    const now = new Date();
-    const [hours, minutes, seconds] = timeIn.split(':');
-    const startDate = new Date();
-    startDate.setHours(hours, minutes, seconds, 0);
-
-    const [targetHours, targetMinutes, targetSeconds] = targetTime.split(':');
-    const targetDate = new Date();
-    targetDate.setHours(targetHours, targetMinutes, targetSeconds, 0);
-
-    const timeDifference = targetDate - now;
-
-    if (timeDifference <= 0) {
-        document.getElementById("message").innerHTML = "Countdown finished!";
-        clearInterval(countdownInterval);
-        return;
+    // Utility function to format time as HH:mm:ss
+    function formatTime(date) {
+        const hours = date.getHours().toString().padStart(2, "0");
+        const minutes = date.getMinutes().toString().padStart(2, "0");
+        const seconds = date.getSeconds().toString().padStart(2, "0");
+        return `${hours}:${minutes}:${seconds}`;
     }
 
-    const diffHours = Math.floor(timeDifference / (1000 * 60 * 60));
-    const diffMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const diffSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    function updateClock() {
+        const now = new Date();
+        const today = now.toISOString().split("T")[0]; // Format: YYYY-MM-DD
 
-    document.getElementById("message").innerHTML =
-        `YOU STILL HAVE <span class="text-danger">${diffHours.toString().padStart(2, '0')}:${diffMinutes.toString().padStart(2, '0')}:${diffSeconds.toString().padStart(2, '0')}</span>`;
-}
+        const midnight = new Date(`${today}T00:00:00`);
+        const targetTimeIn = new Date(`${today}T${attendanceData.targetTimeIn}`);
+        const targetTimeOut = new Date(`${today}T${attendanceData.targetTimeOut}`);
+        const endOfDay = new Date(`${today}T23:59:59`);
 
-// Initialize the attendance logic
-function initializeAttendanceTimer(timeIn, timeOut, targetTime) {
-    if (timeOut) {
-        setInterval(showCurrentTime, 1000); // Show live current time in green
-    } else if (timeIn) {
-        const countdownInterval = setInterval(() => updateCountdown(timeIn, targetTime), 1000);
-    } else {
-        document.getElementById("message").innerHTML = "No attendance data available.";
+        let message = "";
+        let colorClass = "text-black";  // Default to black
+
+        // Parse user clock in/out times
+        const userTimeIn = attendanceData.timeIn ? new Date(`${today}T${attendanceData.timeIn}`) : null;
+        const userTimeOut = attendanceData.timeOut ? new Date(`${today}T${attendanceData.timeOut}`) : null;
+
+        // Scenario 1: Before clocking in (midnight to 8:00 AM)
+        if (now >= midnight && now < targetTimeIn) {
+            const diff = targetTimeIn - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            message = `Countdown to clock in: ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            colorClass = "text-primary";  // Blue for clock in countdown
+        }
+
+        // Scenario 2: User didn't clock in by 8:00 AM (even past 5:00 PM)
+        else if (!userTimeIn && now >= targetTimeIn) {
+            message = "You're Late!";
+            colorClass = "text-danger";  // Red for late
+        }
+
+        // Scenario 3: User clocked in and counting down to clock out
+        else if (userTimeIn && now >= userTimeIn && now < targetTimeOut) {
+            const diff = targetTimeOut - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            message = `You still have ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")} to clock out.`;
+            colorClass = "text-warning";  // Orange for countdown to clock out
+        }
+
+        // Scenario 4: User didn't clock out by 5:00 PM
+        else if (!userTimeOut && now >= targetTimeOut && now <= endOfDay) {
+            const diff = now - targetTimeOut;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            message = `OVERTIME BY ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            colorClass = "text-danger";  // Red for overtime
+        }
+
+        // Scenario 5: User clocked in and out
+        else if (userTimeIn && userTimeOut) {
+            message = `Current Time: ${formatTime(now)}`;
+            colorClass = "text-success";  // Green for current time
+        }
+
+        // Update message and class
+        messageEl.textContent = message;
+        messageEl.className = colorClass;  // Apply the correct color class
     }
-}
 
-// Run the initialization
-initializeAttendanceTimer(timeIn, timeOut, targetTime);
+    // Run the clock every second
+    setInterval(updateClock, 1000);
+});

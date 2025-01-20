@@ -37,7 +37,7 @@
                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                             <div><img src="../img/DPPAM LOGO.png" alt="Profile picture" class="img-fluid" width="100px;"></div>
                             <div>
-                                <h4><?php echo $attendances['FIRST_NAME'] . " " . $attendances['MIDDLE_NAME'] ." " . $attendances['SURNAME'] ?? " "; ?></h4>
+                                <h4><?php echo $attendances['FIRST_NAME'] . " " . $attendances['MIDDLE_NAME'] ." ". $attendances['SURNAME'] ?? " "; ?></h4>
                             <p><strong>Membership no:</strong> <?php echo $attendances['VOLUNTEERS_ID'] ?? " "; ?></p>
                             <p><?php echo $attendances['ROLE'] ." - ".$attendances['ASSIGNED_MISSION'] ?? " "; ?></p>
                         </div>
@@ -55,24 +55,40 @@
                     </div>
                     <script>
                         var attendanceData = {
-                            timeIn: "<?php echo $timeIn; ?>",  // Example: "14:30:00" or null
-                            timeOut: "<?php echo $timeOut; ?>", // Example: "17:00:00" or null
-                            targetTime: "17:00:00"  // Fixed target time
+                            timeIn: "<?php echo $attendance['timeIn']; ?>",  // Example: "14:30:00" or null
+                            timeOut: "<?php echo $attendance['timeOut']; ?>", // Example: "17:00:00" or null
+                            targetTimeOut: "17:00:00",
+                            targetTimeIn: "08:00:00"  // Fixed target time
                         };
                     </script>
                      <script src="js/attendancetime.js"></script>   
                 </div>
 
-                <div class="col-12">
-                    <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
-                        <h5 class="text-center"><?php echo $formattedDate ?? " "; ?></h5>
+                <?php if (!empty($attendance['allAttendances'])): ?>
+                    <?php foreach ($attendance['allAttendances'] as $attendanceRecord): ?>
+                        <div class="col-12">
+                            <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
+                                <!-- Display formatted date -->
+                                <h5 class="text-center">
+                                    <?php echo htmlspecialchars(date("D, M d, Y", strtotime($attendanceRecord['DATE']))) ?? "N/A"; ?>
+                                </h5>
 
-                        <div>
-                            <div class="time-in"><h3>TIME IN:    <?php echo $timeIn ?? " "; ?> </h3></div>
-                            <div class="time-out"><h3>TIME OUT:  <?php echo $timeOut ?? " "; ?> </h3></div>
+                                <div>
+                                    <!-- Display time-in and time-out -->
+                                    <div class="time-in">
+                                        <h3>TIME IN: <?php echo htmlspecialchars($attendanceRecord['TIME_IN'] ?? "N/A"); ?> </h3>
+                                    </div>
+                                    <div class="time-out">
+                                        <h3>TIME OUT: <?php echo htmlspecialchars($attendanceRecord['TIME_OUT'] ?? "N/A"); ?> </h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No attendance records found.</p>
+                <?php endif; ?>
+
             </div>
         </div>
 

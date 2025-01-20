@@ -15,17 +15,17 @@ class VolunteerAttendanceController {
         $sidebarinfo = Sidebarinfo::getsidebarinfo();
         $notifications = Notification::getNotification();
         $attendanceInfo = Attendance::getAttendanceInfo();
-        $latestAttendance = Attendance::getAttendances();  // Fetch the latest attendance directly
-        
+        $attendanceData = Attendance::getAttendances();  // Fetch the latest attendance directly
+
         view('attendance', [
             'email' => $_SESSION['email'],
             'sidebarinfo' => $sidebarinfo,
-            'notifications' => $notifications['notifications'],  // List of notifications
-            'unread_count' => $notifications['unread_count'],
+            'notifications' => $notifications['notifications'] ?? [],
+            'unread_count' => $notifications['unread_count'] ?? 0,
             'attendances' => $attendanceInfo,
-            'formattedDate' => $latestAttendance['formattedDate'],
-            'timeIn' => $latestAttendance['timeIn'],
-            'timeOut' => $latestAttendance['timeOut'],
+            'attendance' => $attendanceData,
+            'timeIn' => $latestAttendance['timeIn'] ?? "",
+            'timeOut' => $latestAttendance['timeOut'] ?? ""  // Pass all attendance records to the view
         ]);
     }
 }
