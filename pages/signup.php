@@ -52,9 +52,9 @@
                     </div>
 
                     <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST">
-
+                        <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
-                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:</strong></label>
+                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
                             <input class="form-control" list="parishNameOptions" id="parishNameDataList" placeholder="Type to search..." required>
                             <datalist id="parishNameOptions">
                                 <option value="St. Francis of Assisi – Sta Quiteria Parish">
