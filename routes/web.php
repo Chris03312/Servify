@@ -40,6 +40,7 @@ $router->add('/volunteer_new_application', [VolunteerNewApplicationController::c
 $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
 $router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationController::class, 'RenewalApplication']);
 $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'VolunteerAttendances']);
+
 $router->add('/announcements', [AnnouncementsController::class, 'Announcements']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 

@@ -55,7 +55,7 @@
                         <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
                             <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
-                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" placeholder="Type to search..." required>
+                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish" placeholder="Type to search..." required>
                             <datalist id="parishNameOptions">
                                 <option value="St. Francis of Assisi – Sta Quiteria Parish">
                                 <option value="Birhen ng Lourdes Parish">
@@ -162,7 +162,11 @@
                             <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
                             <select id="city" class="form-select" name="city" required>
                                 <option selected disabled value="">Select City</option>
-                                <option value="Quezon City">Quezon City</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY']); ?>">
+                                        <?php echo htmlspecialchars($city['MUNICIPALITY']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">
                                 Please select City.
@@ -173,18 +177,23 @@
                             <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
                             <input type="text" class="form-control" id="street" name="street">
                         </div>
-
                         <div class="col-md-4 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
                             <select id="barangay" class="form-select" name="barangay" required>
                                 <option selected disabled value="">Select Barangay</option>
-                                <option value="PPP">PPP</option>
+                                <!-- Barangay options will be populated dynamically using JavaScript -->
                             </select>
                             <div class="invalid-feedback">
                                 Please select Barangay.
                             </div>
+                            <script>
+                                // Pass the cities and barangays data to JavaScript
+                                var cities = <?php echo json_encode($cities); ?>;
+                                var barangays = <?php echo json_encode($barangays); ?>;
+                                console.log(barangays);  // Log barangays to check the data
+                            </script>
+                            <script src="js/signup.js"></script>
                         </div>
-
                         <div class="col-md-4 mb-3">
                             <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="zipcode" name="zipcode" required>
@@ -249,10 +258,6 @@
                         </div>
 
                     </form>
-
-
-
-
 
                     <div class="mb-3 text-center">
                         <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a></p>

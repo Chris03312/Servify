@@ -5,7 +5,7 @@ session_start();
 class LoginController {
 
     public static function ShowLoginForm() {
-
+        
         view('login'); // Ensure this helper correctly renders the view
     }
     
