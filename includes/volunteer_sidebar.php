@@ -43,7 +43,7 @@
                     <a href="/announcements" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="contact_us.php" class="nav-link">
+                    <a href="/ContactUs" class="nav-link">
                         <i class="bi bi-send-fill me-2"></i>Contact Us</a>
                 </li>
                 <li class="sidebar-item">

@@ -25,6 +25,7 @@ class VolunteerDashboardController {
         $userInfo = Dashboard::getinfodashboard();
         $currentDate = date('F j, Y');
         $timelines = Dashboard::MyTimeline();
+        $locations = Dashboard::mapOverview();
 
         // Render the dashboard and pass all the necessary data
         view('volunteer_dashboard', [
@@ -33,12 +34,13 @@ class VolunteerDashboardController {
             'userInfo' => $userInfo,
             'activities' => $activities,
             'currentDate' => $currentDate,
+            'timelines' => $timelines,
+            'sidebarinfo' => $sidebarinfo,
+            'location' => $locations,
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            'timelines' => $timelines,
-            'sidebarinfo' => $sidebarinfo,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count']
         ]);

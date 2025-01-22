@@ -4,56 +4,72 @@ require_once __DIR__ . '/../configuration/Database.php';
 
 class Dashboard {
 
-        public static function getinfodashboard() {
-            try {
-                $email = $_SESSION['email'];
-    
-                $db = Database::getConnection();
-                
-                // Check if the email exists in the VOLUNTEER table
-                $stmt = $db->prepare('SELECT COUNT(*) FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
-                $stmt->execute(['email' => $email]);
-                $existsInVolunteer = $stmt->fetchColumn() > 0;
-    
-                if ($existsInVolunteer) {
-                    // Fetch data from VOLUNTEER table
-                    $stmt = $db->prepare('SELECT * FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
-                } else {
-                    // Fetch data from REGISTRATION table
-                    $stmt = $db->prepare('SELECT * FROM REGISTRATION WHERE EMAIL = :email');
-                }
-                
-                $stmt->execute(['email' => $email]);
-                $userData = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch single row since email is unique
-                
-                // If data is from REGISTRATION table, set 'volunteer_assignment' and 'assigned_mission' to "not assigned yet"
-                if (!$existsInVolunteer) {
-                    $userData['ASSIGNED_ASSIGNMENT'] = 'not assigned yet';
-                    $userData['ASSIGNED_MISSION'] = 'not assigned yet';
-                }
+    public static function getinfodashboard() {
+        try {
+            $email = $_SESSION['email'];
 
-                return $userData;
-            } catch (PDOException $e) {
-                error_log('Dashboard error: ' . $e->getMessage());
-                return null;
+            $db = Database::getConnection();
+            
+            // Check if the email exists in the VOLUNTEER table
+            $stmt = $db->prepare('SELECT COUNT(*) FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
+            $stmt->execute(['email' => $email]);
+            $existsInVolunteer = $stmt->fetchColumn() > 0;
+
+            if ($existsInVolunteer) {
+                // Fetch data from VOLUNTEER table
+                $stmt = $db->prepare('SELECT * FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
+            } else {
+                // Fetch data from REGISTRATION table
+                $stmt = $db->prepare('SELECT * FROM REGISTRATION WHERE EMAIL = :email');
             }
+            
+            $stmt->execute(['email' => $email]);
+            $userData = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch single row since email is unique
+            
+            // If data is from REGISTRATION table, set 'volunteer_assignment' and 'assigned_mission' to "not assigned yet"
+            if (!$existsInVolunteer) {
+                $userData['ASSIGNED_ASSIGNMENT'] = 'not assigned yet';
+                $userData['ASSIGNED_MISSION'] = 'not assigned yet';
+            }
+
+            return $userData;
+        } catch (PDOException $e) {
+            error_log('Dashboard error: ' . $e->getMessage());
+            return null;
         }
+    }
+    
     
 
     public static function getActivityLog() {
         try {
-            // Retrieve username from the session
+            // Validate that email and username are in the session
+            if (!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
+                throw new Exception("Session data missing: email or username.");
+            }
+    
+            // Retrieve username and email from the session
             $email = $_SESSION['email'];
             $username = $_SESSION['username'];
     
             // Establish database connection
             $db = Database::getConnection();
     
-            // Query activities for the specific username
-            $stmt = $db->prepare('SELECT DESCRIPTION, CREATED_AT FROM ACTIVITIES WHERE username = :username OR EMAIL = :email ORDER BY created_at DESC');
+            // Query activities for the specific username or email
+            $stmt = $db->prepare('
+                SELECT DESCRIPTION, CREATED_AT
+                FROM ACTIVITIES
+                WHERE username = :username OR EMAIL = :email
+                ORDER BY created_at DESC
+            ');
             $stmt->execute(['username' => $username, 'email' => $email]);
     
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            // If no activities found, return an empty array
+            if (empty($activities)) {
+                return [];
+            }
     
             // Format the created_at timestamp
             foreach ($activities as &$activity) {
@@ -64,10 +80,14 @@ class Dashboard {
     
             return $activities;
         } catch (PDOException $e) {
-            error_log('Activity log error: ' . $e->getMessage());
+            error_log('Database error in getActivityLog: ' . $e->getMessage());
+            return [];
+        } catch (Exception $e) {
+            error_log('General error in getActivityLog: ' . $e->getMessage());
             return [];
         }
     }
+    
     
     public static function CountDownElectionDay() {
         // Set the target election date (example: Jan 20, 2025, 00:00:00)
@@ -106,33 +126,51 @@ class Dashboard {
 
     public static function MyTimeline() {
         try {
-            $email = $_SESSION['email'];
+            // Validate if email exists in session
+            if (!isset($_SESSION['email'])) {
+                throw new Exception('Email is not set in session.');
+            }
     
+            $email = $_SESSION['email'];
             $db = Database::getConnection();
     
-            // Fetch data from both ARCHIVE_VOLUNTEER and VOLUNTEER_TBL
-            $stmtArchive = $db->prepare('SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED FROM ARCHIVE_VOLUNTEER WHERE EMAIL = :email');
-            $stmtArchive->execute([':email' => $email]);
+            // Fetch combined data from both ARCHIVE_VOLUNTEER and VOLUNTEERS_TBL using UNION
+            $stmt = $db->prepare('
+                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED, "archive" AS source
+                FROM ARCHIVE_VOLUNTEER
+                WHERE EMAIL = :email
+                UNION
+                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED, "volunteer" AS source
+                FROM VOLUNTEERS_TBL
+                WHERE EMAIL = :email
+                ORDER BY DATE_APPROVED DESC
+            ');
+            $stmt->execute([':email' => $email]);
     
-            $stmtVolunteer = $db->prepare('SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
-            $stmtVolunteer->execute([':email' => $email]);
+            $timelines = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-            // Fetch all results from both tables
-            $timelines = array_merge($stmtArchive->fetchAll(PDO::FETCH_ASSOC), $stmtVolunteer->fetchAll(PDO::FETCH_ASSOC));
+            // If no data found, return an empty array
+            if (empty($timelines)) {
+                return [];
+            }
     
-            // Loop through the fetched data to extract the year from both sets
+            // Loop through the fetched data to extract the year from the DATE_APPROVED
             foreach ($timelines as &$timeline) {
-                $approvedDate = $timeline['DATE_APPROVED'];
-                $year = date('Y', strtotime($approvedDate)); // Get the year from the date
-                $timeline['YEAR'] = $year; // Add the extracted year to the timeline data
+                // Use DateTime for better flexibility and compatibility
+                $approvedDate = new DateTime($timeline['DATE_APPROVED']);
+                $timeline['YEAR'] = $approvedDate->format('Y'); // Extract the year
             }
     
             return $timelines; // Return the combined array with the year included
         } catch (PDOException $e) {
-            error_log('Timeline Error: ' . $e->getMessage());
+            error_log('Timeline database error: ' . $e->getMessage());
+            return []; // Return an empty array in case of error
+        } catch (Exception $e) {
+            error_log('General error in MyTimeline: ' . $e->getMessage());
             return []; // Return an empty array in case of error
         }
     }
+    
 
 
     public static function getvalidId(){
@@ -148,4 +186,60 @@ class Dashboard {
         }catch (PDOException $e) {
         }
     }
+
+    public static function mapOverview() {
+        try {
+            $email = $_SESSION['email'];
+    
+            $db = Database::getConnection();
+    
+            // Check if the email exists in the volunteers_tbl first
+            $stmt = $db->prepare('SELECT email FROM VOLUNTEERS_TBL WHERE email = :email');
+            $stmt->execute(['email' => $email]);
+            $existsInVolunteer = $stmt->fetchColumn() > 0;
+    
+            if ($existsInVolunteer) {
+                // If email exists in volunteers_tbl, fetch data from that table
+                $stmt = $db->prepare('SELECT
+                    p.latitude,
+                    p.longitude,
+                    v.email,
+                    v.assigned_polling_place
+                    FROM VOLUNTEERS_TBL AS v
+                    INNER JOIN POLLING_PLACE AS p
+                    ON v.assigned_polling_place = p.polling_place_name
+                    WHERE v.email = :email');
+                $stmt->execute(['email' => $email]);
+                $location = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+                // Return the location data from volunteers_tbl
+                return $location;
+            } else {
+                // If email does not exist in volunteers_tbl, fall back to registration table
+                $stmt = $db->prepare('SELECT email FROM registration WHERE email = :email');
+                $stmt->execute(['email' => $email]);
+                $existsInRegistration = $stmt->fetchColumn() > 0;
+    
+                // If the email exists in registration, return specific data
+                if ($existsInRegistration) {
+                    return [
+                        'latitude' => '12.34',  // Example latitude for registration
+                        'longitude' => '56.78', // Example longitude for registration
+                        'assigned_mission' => 'Registration Mission' // Example mission for registration
+                    ];
+                }
+    
+                // If the email is not found in either table, return default location
+                return [
+                    'latitude' => '',  // Default latitude
+                    'longitude' => '', // Default longitude
+                    'assigned_mission' => '' // Default mission
+                ];
+            }
+    
+        } catch (PDOException $e) {
+            error_log('Map overview error: ' . $e->getMessage());
+        }
+    }
+    
 }
