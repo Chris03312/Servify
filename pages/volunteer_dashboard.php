@@ -170,9 +170,9 @@
                                 <div id="map" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
                             </div>
                             <script>
-                                var latitude = <?php echo $location['latitude']; ?>;
-                                var longitude = <?php echo $location['longitude']; ?>;
-                                var polling = '<?php echo htmlspecialchars($location['assigned_polling_place']); ?>';
+                                var latitude = <?php echo isset($location['latitude']) && $location['latitude'] !== '' ? $location['latitude'] : 'null'; ?>;
+                                var longitude = <?php echo isset($location['longitude']) && $location['longitude'] !== '' ? $location['longitude'] : 'null'; ?>;
+                                var polling = '<?php echo htmlspecialchars($location['assigned_polling_place'] ?? ''); ?>';
                                 </script>
                             <script src="js/leafletmap.js"></script>
                         </div>

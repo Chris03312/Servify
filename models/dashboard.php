@@ -29,7 +29,7 @@ class Dashboard {
             // If data is from REGISTRATION table, set 'volunteer_assignment' and 'assigned_mission' to "not assigned yet"
             if (!$existsInVolunteer) {
                 $userData['ASSIGNED_ASSIGNMENT'] = 'not assigned yet';
-                $userData['ASSIGNED_MISSION'] = 'not assigned yet';
+                $userData['ASSIGNED_POLLING_PLACE'] = 'not assigned yet';
             }
 
             return $userData;
@@ -214,20 +214,7 @@ class Dashboard {
     
                 // Return the location data from volunteers_tbl
                 return $location;
-            } else {
-                // If email does not exist in volunteers_tbl, fall back to registration table
-                $stmt = $db->prepare('SELECT email FROM registration WHERE email = :email');
-                $stmt->execute(['email' => $email]);
-                $existsInRegistration = $stmt->fetchColumn() > 0;
-    
-                // If the email exists in registration, return specific data
-                if ($existsInRegistration) {
-                    return [
-                        'latitude' => '12.34',  // Example latitude for registration
-                        'longitude' => '56.78', // Example longitude for registration
-                        'assigned_mission' => 'Registration Mission' // Example mission for registration
-                    ];
-                }
+            }
     
                 // If the email is not found in either table, return default location
                 return [
@@ -235,8 +222,6 @@ class Dashboard {
                     'longitude' => '', // Default longitude
                     'assigned_mission' => '' // Default mission
                 ];
-            }
-    
         } catch (PDOException $e) {
             error_log('Map overview error: ' . $e->getMessage());
         }
