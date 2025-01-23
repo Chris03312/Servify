@@ -126,33 +126,25 @@ class Dashboard {
 
     public static function MyTimeline() {
         try {
-            // Validate if email exists in session
-            if (!isset($_SESSION['email'])) {
-                throw new Exception('Email is not set in session.');
-            }
     
             $email = $_SESSION['email'];
             $db = Database::getConnection();
     
             // Fetch combined data from both ARCHIVE_VOLUNTEER and VOLUNTEERS_TBL using UNION
             $stmt = $db->prepare('
-                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED, "archive" AS source
+                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_POLLING_PLACE, DATE_APPROVED, "archive" AS source
                 FROM ARCHIVE_VOLUNTEER
                 WHERE EMAIL = :email
                 UNION
-                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_MISSION, DATE_APPROVED, "volunteer" AS source
+                SELECT ASSIGNED_ASSIGNMENT, ASSIGNED_POLLING_PLACE, DATE_APPROVED, "volunteer" AS source
                 FROM VOLUNTEERS_TBL
                 WHERE EMAIL = :email
                 ORDER BY DATE_APPROVED DESC
-            ');
+            ');                 
             $stmt->execute([':email' => $email]);
     
             $timelines = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-            // If no data found, return an empty array
-            if (empty($timelines)) {
-                return [];
-            }
+
     
             // Loop through the fetched data to extract the year from the DATE_APPROVED
             foreach ($timelines as &$timeline) {

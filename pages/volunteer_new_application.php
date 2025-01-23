@@ -158,7 +158,7 @@
 
                             <div class="col-md-3 mb-3"> 
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" name="birthMonth" class="form-select" readonly aria-readonly="true" required>
+                                <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true" required>
                                     <option value="January" <?php echo ($userInfo['BIRTHMONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
                                     <option value="February" <?php echo ($userInfo['BIRTHMONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
                                     <option value="March" <?php echo ($userInfo['BIRTHMONTH'] === 'March') ? 'selected' : " "; ?>>March</option>

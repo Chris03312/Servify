@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 function(error) {
                     console.error('Error getting user location:', error.message);
-                    alert('Unable to retrieve your location. Please check your browser settings.');
+                    alert('Unable to retrieve your location. Ple    ase check your browser settings.');
                 }
             );
         } else {

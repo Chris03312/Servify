@@ -22,7 +22,7 @@ class Attendance {
                 'SURNAME' => 'SURNAME',
                 'VOLUNTEERS_ID' => 'N/A',
                 'ROLE' => 'Unspecified Role',
-                'ASSIGNED_MISSION' => 'No Mission Assigned'
+                'ASSIGNED_POLLING_PLACE' => 'No polling plac assigned'
             ];
         } catch (PDOException $e) {
             error_log("Error in getting attendance info: " . $e->getMessage());
@@ -33,7 +33,7 @@ class Attendance {
                 'SURNAME' => 'SURNAME',
                 'VOLUNTEERS_ID' => 'N/A',
                 'ROLE' => 'Unspecified Role',
-                'ASSIGNED_MISSION' => 'No Mission Assigned'
+                'ASSIGNED_POLLING_PLACE' => 'No Polling place assigned'
             ];
         }
     }

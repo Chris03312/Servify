@@ -232,7 +232,7 @@
                                             <div class="timeline-content">
                                                 <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
                                                 <p class="text-muted">
-                                                    <?php echo $timeline['ASSIGNED_MISSION'] ?? ""; ?> <!-- Display assigned mission -->
+                                                    <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?> <!-- Display assigned mission -->
                                                 </p>
                                             </div>
                                         </li>

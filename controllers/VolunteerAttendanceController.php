@@ -1,12 +1,14 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../models/Attendance.php';
 require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Notification.php';
 
-class VolunteerAttendanceController {
+class VolunteerAttendanceController
+{
 
-    public static function VolunteerAttendances(){
+    public static function VolunteerAttendances()
+    {
 
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');

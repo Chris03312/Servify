@@ -39,7 +39,7 @@
                             <div>
                                 <h4><?php echo $attendances['FIRST_NAME'] . " " . $attendances['MIDDLE_NAME'] ." ". $attendances['SURNAME'] ?? " "; ?></h4>
                             <p><strong>Membership no:</strong> <?php echo $attendances['VOLUNTEERS_ID'] ?? " "; ?></p>
-                            <p><?php echo $attendances['ROLE'] ." - ".$attendances['ASSIGNED_MISSION'] ?? " "; ?></p>
+                            <p><?php echo $attendances['ROLE'] ." - ".$attendances['ASSIGNED_POLLING_PLACE'] ?? " "; ?></p>
                         </div>
                         </div>
 
@@ -64,31 +64,28 @@
                      <script src="js/attendancetime.js"></script>   
                 </div>
 
-                <?php if (!empty($attendance['allAttendances'])): ?>
-                    <?php foreach ($attendance['allAttendances'] as $attendanceRecord): ?>
-                        <div class="col-12">
-                            <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
-                                <!-- Display formatted date -->
-                                <h5 class="text-center">
-                                    <?php echo htmlspecialchars(date("D, M d, Y", strtotime($attendanceRecord['DATE']))) ?? "N/A"; ?>
-                                </h5>
+                <?php if (!empty($attendance['allAttendances'][0])): ?>
+                    <div class="col-12">
+                        <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
+                            <!-- Display formatted date -->
+                            <h5 class="text-center">
+                                <?php echo htmlspecialchars(date("D, M d, Y", strtotime($attendance['allAttendances'][0]['DATE']))) ?? "N/A"; ?>
+                            </h5>
 
-                                <div>
-                                    <!-- Display time-in and time-out -->
-                                    <div class="time-in">
-                                        <h3>TIME IN: <?php echo htmlspecialchars($attendanceRecord['TIME_IN'] ?? "N/A"); ?> </h3>
-                                    </div>
-                                    <div class="time-out">
-                                        <h3>TIME OUT: <?php echo htmlspecialchars($attendanceRecord['TIME_OUT'] ?? "N/A"); ?> </h3>
-                                    </div>
+                            <div>
+                                <!-- Display time-in and time-out -->
+                                <div class="time-in">
+                                    <h3>TIME IN: <?php echo htmlspecialchars($attendance['allAttendances'][0]['TIME_IN'] ?? "N/A"); ?> </h3>
+                                </div>
+                                <div class="time-out">
+                                    <h3>TIME OUT: <?php echo htmlspecialchars($attendance['allAttendances'][0]['TIME_OUT'] ?? "N/A"); ?> </h3>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 <?php else: ?>
                     <p>No attendance records found.</p>
                 <?php endif; ?>
-
             </div>
         </div>
 
