@@ -244,7 +244,7 @@ class VolunteerNewApplicationController {
             
                 if ($account) {
                     $username = $account['USERNAME'];
-                    $currentDate = date('Y-m-d H:i:s');
+                    $currentDate = date('F j, Y H:i:s');
                     $description = 'You submitted an application form. Click here to check the status of your registration.';
             
                     // Insert activity into the ACTIVITES table
@@ -252,18 +252,21 @@ class VolunteerNewApplicationController {
                     (
                         username, 
                         email, 
-                        description
+                        description,
+                        created_at
                         ) VALUES 
                          (
                          :username, 
                          :email, 
-                         :description
+                         :description,
+                         :created_at
                          )');
 
                     $stmt->execute([
                         ':username' => $username,
                         ':email' => $email,
                         ':description' => $description,
+                        ':created_at' => $currentDate
                     ]);
                 } else {
                     error_log('Error: Email not found in ACCOUNTS. Activity not inserted.');

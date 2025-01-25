@@ -49,8 +49,10 @@
                         <div class="d-flex flex-column">
                             <span class="text-muted">Enter your details below to create your account and get started.</span>
                         </div>
-                    </div>
 
+                        <spam class="text-muted"></spam>
+                    </div>
+                        
                     <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST">
                         <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">

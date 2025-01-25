@@ -13,7 +13,7 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="coordinator_dashboard.php" class="nav-link">
+                    <a href="/coordinator_dashboard" class="nav-link">
                         <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
 
@@ -46,7 +46,6 @@
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
                 
-
                 <li class="sidebar-item">
                     <a href="#" class="nav-link"><i class="fa-solid fa-file-zipper me-2"></i>Archive</a>
                 </li>
@@ -116,8 +115,8 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">My Profile</a></li>
-                        <li><a class="dropdown-item" href="coordinator_profile_settings.php">Profile Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="/coordinator_profile_settings">Profile Settings</a></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>

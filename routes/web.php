@@ -3,6 +3,11 @@
 require_once __DIR__ . '/../core/helpers.php'; 
 require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../models/Parish.php';
+
+require_once __DIR__ . '/../controllers/CoordinatorDashboardController.php';
+require_once __DIR__ . '/../controllers/CoordinatorProfileSettingsController.php';
+require_once __DIR__ . '/../controllers/CoordinatorChangesPassController.php';
+
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
 require_once __DIR__ . '/../controllers/VolunteerAttendanceController.php';
 require_once __DIR__ . '/../controllers/VolunteerRegistrationStatusController.php';
@@ -10,6 +15,8 @@ require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
+
+
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
@@ -43,6 +50,10 @@ $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'Vo
 
 $router->add('/announcements', [AnnouncementsController::class, 'Announcements']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
+
+$router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'CoordinatorDashboard']);
+$router->add('/coordinator_change_pass', [CoordinatorChangesPassController::class, 'CoordinatorChangePass']);
+$router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsController::class, 'CoordinatorProfileSettings']);
 
 
 

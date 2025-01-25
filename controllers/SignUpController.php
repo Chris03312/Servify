@@ -1,7 +1,10 @@
 <?php
 
 require_once __DIR__ . '/../models/signup.php';
+require __DIR__ .'/../package/vendor/autoload.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class SignUpController {
 
@@ -24,6 +27,8 @@ class SignUpController {
     
     public static function SignUp() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $config = require __DIR__. '/../configuration/smtp_config.php';
 
             // Capture form data
             $parish = $_POST['parish'] ?? " ";
@@ -62,18 +67,17 @@ class SignUpController {
             $usernameExists = $stmtCheck->fetchColumn(1) > 0;
 
             // Check for errors
+            $errors = [];
+
             if ($emailExists) {
-                $errors[] = 'Email is already registered.';
+                $errors['email'] = 'Email already exists.';
             }
+            
             if ($usernameExists) {
-                $errors[] = 'Username is already taken.';
+                $errors['username'] = 'Username already exists.';
             }
-
-            // Validate password match
-            if ($password !== $confirmPassword) {
-                $errors[] = 'Passwords do not match.';
-            }
-
+            
+            
             if (empty($errors)) {
                 // Begin a transaction
                 try {
@@ -110,15 +114,42 @@ class SignUpController {
                     // Insert into ACCOUNTS table
                     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
                     $stmt = $db->prepare('
-                        INSERT INTO ACCOUNTS (ACCOUNT_ID, USERNAME, EMAIL, PASSWORD) 
-                        VALUES (:account_id, :username, :email, :password)
+                        INSERT INTO ACCOUNTS (ACCOUNT_ID, ROLE, USERNAME, EMAIL, PASSWORD) 
+                        VALUES (:account_id, :role, :username, :email, :password)
                     ');
                     $stmt->execute([
                         ':account_id' => $registrationId, // Insert registration_id as account_id
+                        ':role' => $role,
                         ':username' => $username,
                         ':email' => $email,
                         ':password' => $hashedPassword
                     ]);
+
+                    // Initialize PHPMailer
+                    $mail = new PHPMailer(true);
+                    // Server settings
+                    $mail->isSMTP();
+                    $mail->Host       = $config['SMTP_HOST'];
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = $config['SMTP_USER'];
+                    $mail->Password   = $config['SMTP_PASSWORD'];
+                    $mail->SMTPSecure = $config['SMTP_SECURE'];
+                    $mail->Port       = $config['SMTP_PORT'];
+                    // Recipients
+                    $mail->setFrom($config['SMTP_USER']);
+                    $mail->addAddress($email);
+                    // Content
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Welcome to Servify!';
+                    $mail->Body    = '<p>Dear ' . htmlspecialchars($firstName) . ',</p>
+                                        <p>Thank you for signing up!</p>
+                                        <p><a href="https://servify.infinityfreeapp.com/login">Click here</a> to complete your profile </p><br>
+                                        <p>Best regards,<br>Servify</p>';
+                                        
+                    $mail->AltBody = 'Thank you for signing up!';
+                
+                    // Send email
+                    $mail->send();
 
                     // Commit the transaction
                     $db->commit();
@@ -139,7 +170,7 @@ class SignUpController {
                 redirect('/signup');
             }
         }
-    }        
+    } 
 }
 
 ?>

@@ -40,7 +40,6 @@ class Dashboard {
     }
     
     
-
     public static function getActivityLog() {
         try {
             // Validate that email and username are in the session
@@ -71,11 +70,21 @@ class Dashboard {
                 return [];
             }
     
+            // Get the current date
+            $currentDate = (new DateTime())->format('Y-m-d');
+    
             // Format the created_at timestamp
             foreach ($activities as &$activity) {
                 $date = new DateTime($activity['CREATED_AT']);
-                // Format to 'Mon, 2025-01-17 08:48 AM'
-                $activity['FORMATTED_DATE'] = $date->format('D, h:i A');
+                $activityDate = $date->format('Y-m-d');
+    
+                if ($activityDate === $currentDate) {
+                    // If the activity is from today, show 'Today'
+                    $activity['FORMATTED_DATE'] = 'Today, ' . $date->format('h:i A');
+                } else {
+                    // Otherwise, show the full date with the day
+                    $activity['FORMATTED_DATE'] = $date->format('D, h:i A');
+                }
             }
     
             return $activities;
@@ -219,4 +228,14 @@ class Dashboard {
         }
     }
     
+    public static function coordinatorInfo() {
+        try {
+            $db = Database::getConnection();
+            $email = $_SESSION['email'];
+
+            $stmt = $db->prepare('SELECT PARISH FROM PROFILE');
+        }catch (PDOException $e) {
+            error_log('Error geting coordinator info'. $e->getMessage());
+        }
+    }
 }

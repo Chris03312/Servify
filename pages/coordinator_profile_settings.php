@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
 
 
@@ -51,7 +51,7 @@
                     </div>
                 </a>
                 
-                <a href="coordinator_change_pass.php" class="btn d-flex flex-row justify-content-between align-items-center">
+                <a href="/coordinator_change_pass" class="btn d-flex flex-row justify-content-between align-items-center">
                     <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                         <div>
                             <i class="fa-solid fa-lock fs-5"></i>

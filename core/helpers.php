@@ -11,9 +11,10 @@ function view($template, $data = []) {
     }
 }
 
-function redirect($path) {
-    header("Location: $path");
-    exit;
+function redirect($url) {
+    header("Location: $url");
+    exit; // Ensure the script stops execution after the redirect
 }
+
 
 

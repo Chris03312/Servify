@@ -67,23 +67,6 @@
                     <div class="mb-3 text-center">
                         <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
                     </div>
-                    <script>
-        document.getElementById('login-button').addEventListener('click', function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    function (position) {
-                        alert(`Location permission granted. Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
-                    },
-                    function () {
-                        alert('Location permission denied or unavailable.');
-                    }
-                );
-            } else {
-                alert('Geolocation is not supported by your browser.');
-            }
-        });
-    </script>
-
                    </form>
 
                    <div class="mb-3 text-center form">
