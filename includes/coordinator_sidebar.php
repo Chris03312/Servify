@@ -18,7 +18,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+                    <a href="coordinator_announcements.php" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
                 </li>
 
                 <li class="sidebar-item">
