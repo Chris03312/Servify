@@ -19,7 +19,7 @@ class Sidebarinfo {
                 $stmt = $db->prepare('SELECT * FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
             } else {
                 // Fetch data from REGISTRATION table
-                $stmt = $db->prepare('SELECT * FROM REGISTRATION WHERE EMAIL = :email');
+                $stmt = $db->prepare('SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email');
             }
             
             $stmt->execute(['email' => $email]);

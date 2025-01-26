@@ -20,7 +20,7 @@ class Dashboard {
                 $stmt = $db->prepare('SELECT * FROM VOLUNTEERS_TBL WHERE EMAIL = :email');
             } else {
                 // Fetch data from REGISTRATION table
-                $stmt = $db->prepare('SELECT * FROM REGISTRATION WHERE EMAIL = :email');
+                $stmt = $db->prepare('SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email');
             }
             
             $stmt->execute(['email' => $email]);
@@ -207,8 +207,8 @@ class Dashboard {
                     v.email,
                     v.assigned_polling_place
                     FROM VOLUNTEERS_TBL AS v
-                    INNER JOIN POLLING_PLACE AS p
-                    ON v.assigned_polling_place = p.polling_place_name
+                    INNER JOIN PRECINCT_TABLE AS p
+                    ON v.assigned_polling_place = p.polling_place
                     WHERE v.email = :email');
                 $stmt->execute(['email' => $email]);
                 $location = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -48,7 +48,7 @@ class SignUpController {
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
             $confirmPassword = $_POST['confirmPassword'] ?? '';
-            $registration_date = date('F d, Y');
+            $profile_date_created = date('F d, Y');
             $role = 'Volunteer'; // Registration date format
             
             // Validation: Check if email or username already exists in a single query
@@ -56,7 +56,7 @@ class SignUpController {
             
             // Prepare a query to check both email and username existence at once
             $stmtCheck = $db->prepare('
-                SELECT COUNT(*) FROM REGISTRATION WHERE EMAIL = :email
+                SELECT COUNT(*) FROM VPROFILE_TABLE WHERE EMAIL = :email
                 UNION
                 SELECT COUNT(*) FROM ACCOUNTS WHERE USERNAME = :username
             ');
@@ -85,13 +85,13 @@ class SignUpController {
 
                     // Insert into REGISTRATION table
                     $stmt = $db->prepare('
-                        INSERT INTO REGISTRATION 
-                        (REGISTRATION_DATE, PARISH, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, ZIPCODE, EMAIL) 
+                        INSERT INTO VPROFILE_TABLE 
+                        (PROFILE_DATE_CREATED, PARISH, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, ZIPCODE, EMAIL) 
                         VALUES 
-                        (:registration_date, :parish, :role, :surname, :firstName, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :streetaddress, :barangay, :zipCode, :email)
+                        (:profile_date_created, :parish, :role, :surname, :firstName, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :streetaddress, :barangay, :zipCode, :email)
                     ');
                     $stmt->execute([
-                        ':registration_date' => $registration_date,
+                        ':profile_date_created' => $profile_date_created,
                         ':parish' => $parish,
                         ':role' => $role,
                         ':surname' => $surname,
@@ -109,7 +109,7 @@ class SignUpController {
                     ]);
 
                     // Get the last inserted registration_id
-                    $registrationId = $db->lastInsertId();
+                    $vprofileId = $db->lastInsertId();
 
                     // Insert into ACCOUNTS table
                     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -118,7 +118,7 @@ class SignUpController {
                         VALUES (:account_id, :role, :username, :email, :password)
                     ');
                     $stmt->execute([
-                        ':account_id' => $registrationId, // Insert registration_id as account_id
+                        ':account_id' => $vprofileId, // Insert registration_id as account_id
                         ':role' => $role,
                         ':username' => $username,
                         ':email' => $email,

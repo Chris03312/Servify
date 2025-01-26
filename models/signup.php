@@ -10,9 +10,9 @@ class Signup {
             $db = Database::getConnection();
             
             // Modify query to optionally filter barangays by city
-            $query = 'SELECT BARANGAY_NAME, MUNICIPALITY FROM BARANGAYS';
+            $query = 'SELECT DISTINCT BARANGAY_NAME, `MUNICIPALITY/CITY` FROM PRECINCT_TABLE';
             if ($city) {
-                $query .= ' WHERE MUNICIPALITY = :city';
+                $query .= ' WHERE MUNICIPALITY/CITY = :city';
             }
             
             $stmt = $db->prepare($query);
@@ -24,7 +24,7 @@ class Signup {
             $barangays = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $barangays;
         } catch (PDOException $e) {
-            error_log('Error: ' . $e->getMessage());
+            error_log('Error: BARANGAYS ' . $e->getMessage());
             return [];  // Return an empty array on error
         }
     }
@@ -32,12 +32,12 @@ class Signup {
     public static function cities() {
         try {
             $db = Database::getConnection();
-            $stmt = $db->prepare('SELECT DISTINCT MUNICIPALITY FROM BARANGAYS');
+            $stmt = $db->prepare('SELECT DISTINCT `MUNICIPALITY/CITY` FROM PRECINCT_TABLE');
             $stmt->execute();
             $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $cities;
         } catch (PDOException $e) {
-            error_log('Error: ' . $e->getMessage());
+            error_log('Error: CITIES ' . $e->getMessage());
             return [];  // Return an empty array on error
         }
     }

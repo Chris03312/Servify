@@ -37,15 +37,15 @@ class VolunteerNewApplicationController {
             $db = Database::getConnection();
     
             // First query: Retrieve the registration ID based on the email
-            $stmt = $db->prepare("SELECT * FROM REGISTRATION WHERE EMAIL = :email");
+            $stmt = $db->prepare("SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email");
             $stmt->execute(['email' => $email]);
     
             // Fetch the result and store the registration_id in a variable
-            $registration = $stmt->fetch(PDO::FETCH_ASSOC);
+            $vprofile = $stmt->fetch(PDO::FETCH_ASSOC);
     
-            if ($registration) {
-                $registration_id = $registration['REGISTRATION_ID']; // Store the registration_id in a variable
-                $parish = $registration['PARISH'];
+            if ($vprofile) {
+                $vprofile_id = $vprofile['vprofile']; // Store the registration_id in a variable
+                $parish = $vprofile['PARISH'];
                 $role = "Volunteer";
     
                 // Declare your input fields
@@ -100,7 +100,7 @@ class VolunteerNewApplicationController {
                 // Second query: Insert the registration_id and other input fields into the APPLICATION_INFO table
                 $stmt = $db->prepare("INSERT INTO APPLICATION_INFO 
                     (
-                    REGISTRATION_ID,
+                    VPROFILE_ID,
                     PRECINCT_NO, 
                     PARISH, 
                     ROLE,
@@ -129,7 +129,7 @@ class VolunteerNewApplicationController {
                     STATUS
                     ) VALUES 
                         (
-                        :registration_id, 
+                        :vprofile_id, 
                         :precinctNo,
                         :parish, 
                         :role,
@@ -159,7 +159,7 @@ class VolunteerNewApplicationController {
                         )");
     
                 $stmt->execute([
-                    ':registration_id' => $registration_id,
+                    ':vprofile_id' => $vprofile_id,
                     ':precinctNo' => $precinctNumber,
                     ':parish' => $parish,
                     ':role' => $role,

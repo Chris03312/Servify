@@ -37,8 +37,8 @@
 
         <!--DASHBOARD BANNER-->
         <div class="dashboardBanner mb-4">
-            <p>January 15, 2025</p>
-            <h4>Welcome back, Vicmar!</h4>
+            <p><?php echo $currentDate; ?></p>
+            <h4>Welcome back, <?php echo $username; ?>!</h4>
         </div>
 
         <div class="container-fluid">
@@ -168,41 +168,41 @@
                                 <div class="col-sm-4 mb-2">
                                     <select class="form-select group1-dropdown" name="city" id="city" disabled>
                                         <option value="" disabled selected>Select Municipality</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['cities'] as $city): ?>
+                                            <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
                                     <select class="form-select group1-dropdown" name="district" id="district" disabled>
                                         <option value="" disabled selected>Select District</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['districts'] as $district): ?>
+                                            <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
                                     <select class="form-select group1-dropdown" name="barangay" id="barangay" disabled>
                                         <option value="" disabled selected>Select Barangay</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['barangays'] as $barangay): ?>
+                                            <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
                                     <select class="form-select group1-dropdown" name="parish" id="parish" disabled> 
                                         <option value="" disabled selected>Select Parish</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['parishes'] as $parish): ?>
+                                            <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
                                     <select class="form-select group1-dropdown" name="school" id="school" disabled>
                                         <option value="" disabled selected>Select School</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['pollingPlaces'] as $polling_place): ?>
+                                            <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
                             <h5>Pending Application</h5>
 
                             <div class="text-center">
-                                <h4 class="text-danger">5</h4>
+                                <h4 class="text-danger"><?php echo $pendingApps; ?></h4>
                                 <a href="#" class="btn text-primary">Review</a>
                             </div>
                         </div>
@@ -305,9 +305,6 @@
                             <div class="d-flex justify-content-center">
                                 <a href="#" class="btn text-primary">View Attendance</a>
                             </div>
-                            
-
-
                         </div>
                     </div>
                 </div>
@@ -320,22 +317,20 @@
                                 <div class="col-md-2">
                                     <!-- TEXT ON THE LEFT -->
                                     <div class="d-flex flex-column justify-content-start align-items-start">
-                                                <p>Total Volunteers in:</p>
-                                                <div class="text-center mt-2">
-                                                    <span class="text-muted">Caloocan City</span>
-                                                    <h4 class="text-danger">500</h4>
-                                                </div>
-
-                                                <div class="text-center mt-2">
-                                                    <span class="text-muted">Malabon City</span>
-                                                    <h4 class="text-danger">1000</h4>
-                                                </div>
-
-                                                <div class="text-center mt-2">
-                                                    <span class="text-muted">Navotas City</span>
-                                                    <h4 class="text-danger">1500</h4>
-                                                </div>
-                                            </div>
+                                        <p>Total Volunteers in:</p>
+                                        <div class="text-center mt-2">
+                                            <span class="text-muted">Caloocan City</span>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['caloocan_count']); ?></h4>
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <span class="text-muted">Malabon City</span>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['malabon_count']); ?></h4>
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <span class="text-muted">Navotas City</span>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['navotas_count']); ?></h4>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-10">
@@ -347,12 +342,19 @@
                                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                                 </iframe>
                                             </div>
+                                            <script>
+                                                var malabonCoordinates = '14.6578504,120.9511261';
+                                                var caloocanCoordinates = '14.651348,120.9724002';
+                                                var navotasCoordinates = '14.6571862,120.9479692';
+                                                var caloocalData = <?php echo $totalCities['caloocan_count']; ?>
+                                                var malabonData = <?php echo $totalCities['malabon_count']; ?>
+                                                var navotasData = <?php echo $totalCities['malabon_count']; ?>
+                                            </script>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -367,45 +369,55 @@
                         <div class="row mt-3">
                                 <div class="col-sm-3 mb-2">
                                     <select class="form-select group2-dropdown" disabled name="city" id="city">
-                                        <option value="" disabled selected>Select Municipality</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                    <option value="" disabled selected>Select Municipality</option>
+                                        <?php foreach($dropdownData['cities'] as $city): ?>
+                                            <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-2">
                                     <select class="form-select group2-dropdown" disabled name="district" id="district">
                                         <option value="" disabled selected>Select District</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['districts'] as $district): ?>
+                                            <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-2">
                                     <select class="form-select group2-dropdown" disabled name="barangay" id="barangay">
                                         <option value="" disabled selected>Select Barangay</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['barangays'] as $barangay): ?>
+                                            <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-2">
                                     <select class="form-select group2-dropdown" disabled name="parish" id="parish">
                                         <option value="" disabled selected>Select Parish</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['parishes'] as $parish): ?>
+                                            <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-2">
                                     <select class="form-select group2-dropdown" disabled name="school" id="school">
                                         <option value="" disabled selected>Select School</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
+                                        <?php foreach($dropdownData['pollingPlaces'] as $polling_place): ?>
+                                            <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <script src="js/dropdownFilter.js"></script>
+                                <script>
+                                    var cities = <?= json_encode($dropdownData['cities']); ?>;
+                                    var districts = <?= json_encode($dropdownData['districts']); ?>;
+                                    var barangays = <?= json_encode($dropdownData['barangays']); ?>;
+                                    var parishes = <?= json_encode($dropdownData['parishes']); ?>;
+                                    var pollingPlaces = <?= json_encode($dropdownData['pollingPlaces']); ?>;
+                                </script>
+
+                                <!-- Link to your external JS file -->
+                                <script src="../js/dropdown.js"></script>
+
                             </div>
 
                             <div class="row d-flex justify-content-end">
@@ -417,7 +429,7 @@
                             <!--TABLE-->
 
                             <div class="table-responsive my-3">
-                                <table class="table">
+                                <table id="volunteerTable" class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Membership ID</th>
@@ -429,36 +441,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="">
-                                            <td scope="row">R1C1</td>
-                                            <td>R1C2</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>Action</td>
+                                    <tbody>
+                                    <?php if (!empty($volunteers)): ?>
+                                        <?php foreach ($volunteers as $volunteer): ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
+                                                <td><?= htmlspecialchars($volunteer['PRECINCT_NO']); ?></td>
+                                                <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['MIDDLE_NAME'] . ' ' . $volunteer['SURNAME']); ?></td>
+                                                <td><?= htmlspecialchars($volunteer['POLLING_PLACE']); ?></td>
+                                                <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
+                                                <td>
+                                                    <a href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a> |
+                                                    <a href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="6">No volunteers found.</td>
                                         </tr>
-                                        <tr class="">
-                                            <td scope="row">R1C1</td>
-                                            <td>R1C2</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>Action</td>
-                                        </tr>
-                                        <tr class="">
-                                            <td scope="row">R1C1</td>
-                                            <td>R1C2</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>R1C3</td>
-                                            <td>Action</td>
-                                        </tr>
+                                    <?php endif; ?>
+
                                     </tbody>
                                 </table>
                             </div>
-                            
-
-
                     </div>
                 </div>
           

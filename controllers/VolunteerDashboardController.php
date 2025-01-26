@@ -9,8 +9,6 @@ class VolunteerDashboardController {
 
     public static function VolunteerDashboard() {
 
-        LoginController::checkRememberMe();
-
         // If not logged in, redirect to login
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');

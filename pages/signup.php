@@ -165,8 +165,8 @@
                             <select id="city" class="form-select" name="city" required>
                                 <option selected disabled value="">Select City</option>
                                 <?php foreach ($cities as $city): ?>
-                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY']); ?>">
-                                        <?php echo htmlspecialchars($city['MUNICIPALITY']); ?>
+                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
+                                        <?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
