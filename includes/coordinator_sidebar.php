@@ -21,9 +21,18 @@
                     <a href="coordinator_announcements.php" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="nav-link">
-                    <i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                    <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item ms-3">
+                            <a href="coordinator_volunteer_management.php" class="nav-link border-bottom"><i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Pending Application</a>
+                        </li>
+                    </ul>
                 </li>
                 
                 <li class="sidebar-item">
