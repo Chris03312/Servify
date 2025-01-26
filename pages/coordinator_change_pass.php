@@ -24,7 +24,7 @@
 <body>
 
   <?php
-  include('includes/coordinator_sidebar.php');
+  include('../includes/coordinator_sidebar.php');
   ?>
 
 
@@ -34,79 +34,88 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="card">
+          <div class="card-header py-3 bg-primary"></div>
           <div class="card-body">
-            <form action="" method="post" class="needs-validation px-5 py-3" novalidate>
-              <h5 class="text-primary text-center mb-5">Change Password</h5>
-
-              <!--CURRENT PASSWORD-->
-              <div class="col mb-5">
-                <label for="current-password"><span class="text-primary">Current Password</span></label>
-                <input type="password" class="form-control" name="current-password" id="current-password" required>
-                <div class="invalid-feedback">
-                  Please input current password.
-                </div>
+            <div class="row align-items-center">
+              <div class="col-lg-4">
+                <img src="../img/servify-logo-with-text.png" alt="Servify Logo" class="img-fluid">
               </div>
+              <div class="col-lg-8">
+                <form action="" method="post" class="needs-validation px-5 py-3" novalidate>
+                  <h5 class="text-primary text-center">Set your New Password</h5>
+                  <p class="text-muted text-center mb-5">Please Update your password for security.</p>
 
-              <!--NEW PASSWORD-->
-              <div class="col mb-3">
-                <label for="new-password"><span class="text-primary">Create New Password</span></label>
-                <input type="password" class="form-control" name="new-password" id="new-password" required>
-                <div class="invalid-feedback">
-                  Please input new password.
-                </div>
-              </div>
-
-              <!--CONFIRM NEW PASSWORD-->
-              <div class="col mb-4">
-                <label for="confirm-new-password"><span class="text-primary">Confirm New Password</span></label>
-                <input type="password" class="form-control" name="confirm-new-password" id="confirm-new-password"
-                  required>
-                <div class="invalid-feedback">
-                  Re-enter new password.
-                </div>
-              </div>
-
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary px-4">Change password</button>
-              </div>
-
-              <!--MODAL - CHANGE PASSWORD CONFIRMATION-->
-              <div class="modal fade" id="changePassConfirmationModal" tabindex="-1"
-                aria-labelledby="changePassConfirmationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                    </div>
-                    <div class="modal-body">
-                      <h4 class="text-center text-danger">Change Password???</h4>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-outline-secondary px-4"
-                        data-bs-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#changePasswordConfirmed">Confirm</button>
+                  <!--CURRENT PASSWORD-->
+                  <div class="col mb-5">
+                    <label for="current-password"><span class="text-primary">Current Password</span></label>
+                    <input type="password" class="form-control" name="current-password" id="current-password" required>
+                    <div class="invalid-feedback">
+                      Please input current password.
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <!--MODAL - CONFIRMED CHANGE PASSWORD-->
-              <div class="modal fade" id="changePasswordConfirmed" tabindex="-1"
-                aria-labelledby="changePasswordConfirmedLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                    </div>
-                    <div class="modal-body">
-                      <h4 class="text-center text-danger">Password Changed Successfully!</h4>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-primary px-4"
-                        data-bs-dismiss="modal">Close</button>
+                  <!--NEW PASSWORD-->
+                  <div class="col mb-3">
+                    <label for="new-password"><span class="text-primary">Create New Password</span></label>
+                    <input type="password" class="form-control" name="new-password" id="new-password" required>
+                    <div class="invalid-feedback">
+                      Please input new password.
                     </div>
                   </div>
-                </div>
+
+                  <!--CONFIRM NEW PASSWORD-->
+                  <div class="col mb-4">
+                    <label for="confirm-new-password"><span class="text-primary">Confirm New Password</span></label>
+                    <input type="password" class="form-control" name="confirm-new-password" id="confirm-new-password"
+                      required>
+                    <div class="invalid-feedback">
+                      Re-enter new password.
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary px-4">Change password</button>
+                  </div>
+
+                  <!--MODAL - CHANGE PASSWORD CONFIRMATION-->
+                  <div class="modal fade" id="changePassConfirmationModal" tabindex="-1"
+                    aria-labelledby="changePassConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                        </div>
+                        <div class="modal-body">
+                          <h4 class="text-center text-danger">Change Password???</h4>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-outline-secondary px-4"
+                            data-bs-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#changePasswordConfirmed">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--MODAL - CONFIRMED CHANGE PASSWORD-->
+                  <div class="modal fade" id="changePasswordConfirmed" tabindex="-1"
+                    aria-labelledby="changePasswordConfirmedLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                        </div>
+                        <div class="modal-body">
+                          <h4 class="text-center text-danger">Password Changed Successfully!</h4>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-primary px-4"
+                            data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
