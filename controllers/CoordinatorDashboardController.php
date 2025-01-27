@@ -14,7 +14,7 @@ class CoordinatorDashboardController{
 
         $cityFilter = isset($_GET['city']) ? $_GET['city'] : '';
 
-
+        $chartData = CoordinatorDashboard::chartsData();
         $dropdownData = CoordinatorDashboard::getDropdownG2();
         $totalCities = CoordinatorDashboard::getTotalCities();
         $volunteersTbl = CoordinatorDashboard::getVolunteers($cityFilter);
@@ -31,7 +31,8 @@ class CoordinatorDashboardController{
             'volunteers' => $volunteersTbl,
             'pendingApps' => $pendingApp,
             'totalCities' => $totalCities,
-            'dropdownData' => $dropdownData,  // Pass the dropdown data to the view
+            'dropdownData' => $dropdownData,
+            'chartData' => $chartData,            // Pass the dropdown data to the view
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],

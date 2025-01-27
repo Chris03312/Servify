@@ -19,10 +19,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
 
     <!--JS CHART CDN-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
 </head>
 
 <body>
@@ -58,7 +62,7 @@
                                         <span class="text-danger fw-bold">DAYS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -67,7 +71,7 @@
                                         <span class="text-danger fw-bold">HRS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -76,7 +80,7 @@
                                         <span class="text-danger fw-bold">MNS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-column justify-content-center align-items-center">
@@ -219,6 +223,10 @@
                                     <!--Bar Chart Canvas-->
                                     <canvas id="volunteerBarChart"></canvas>
                                     <!--VOLUNTEER BAR CHART-->
+                                    <script>
+                                        const schools = <?php echo json_encode($chartData); ?>;
+                                        console.log(schools);
+                                    </script>
                                     <script src="../js/volunteer_bar_chart.js"></script>
                                 </div>
                             </div>
@@ -336,23 +344,22 @@
                                 <div class="col-md-10">
                                     <!-- MAP ON THE RIGHT -->
                                     <div class="mt-2">
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph"
-                                                    style="border:0; width: 100%; height: 500px;" allowfullscreen=""
-                                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                                </iframe>
+                                            <div id="mapcities" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
                                             </div>
                                             <script>
-                                                var malabonCoordinates = '14.6578504,120.9511261';
-                                                var caloocanCoordinates = '14.651348,120.9724002';
-                                                var navotasCoordinates = '14.6571862,120.9479692';
-                                                var caloocalData = <?php echo $totalCities['caloocan_count']; ?>
-                                                var malabonData = <?php echo $totalCities['malabon_count']; ?>
-                                                var navotasData = <?php echo $totalCities['malabon_count']; ?>
+                                                // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
+                                                var malabonData = <?php echo json_encode($totalCities['malabon_count']); ?>;
+                                                var caloocanData = <?php echo json_encode($totalCities['caloocan_count']); ?>;
+                                                var navotasData = <?php echo json_encode($totalCities['navotas_count']); ?>;
+                                                
+                                                // Log the values to check if they're correctly passed
+                                                console.log('Malabon Volunteers:', malabonData);
+                                                console.log('Caloocan Volunteers:', caloocanData);
+                                                console.log('Navotas Volunteers:', navotasData);
                                             </script>
+                                        <script src="../js/leafletmapcities.js" defer></script>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

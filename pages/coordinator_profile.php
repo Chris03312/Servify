@@ -47,7 +47,7 @@
                         </div>
 
                         <!--FORM-->
-                        <form action="" method="post" class="row p-2 needs-validation" novalidate>
+                        <form action="/coordinator_profile/submit" method="post" class="row p-2 needs-validation" novalidate>
 
                             <p><strong>Assigned as Coordinator at :</strong></p>
 
@@ -142,11 +142,13 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality</label>
-                                <select id="city" class="form-select" required>
+                                <select id="city" name="municipality" class="form-select" required>
                                     <option selected disabled value="">Select City/Municipality</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
+                                    <?php foreach ($cities as $city): ?>
+                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
+                                        <?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select city.
@@ -159,6 +161,13 @@
                                 <div class="invalid-feedback">
                                     Please input barangay.
                                 </div>
+                                <script>
+                                // Pass the cities and barangays data to JavaScript
+                                var cities = <?php echo json_encode($cities); ?>;
+                                var barangays = <?php echo json_encode($barangays); ?>;
+                                console.log(barangays);  // Log barangays to check the data
+                            </script>
+                            <script src="js/signup.js"></script>
                             </div>
 
                             <div class="col-md-4 mb-3">
@@ -169,10 +178,9 @@
                                 </div>
                             </div>
 
-
                             <div class="col-md-7 mb-3">
                                 <label for="orgMembership" class="form-label">Parish Organization Membership</label>
-                                <select id="orgMembership" class="form-select" required>
+                                <select id="orgMembership" name="orgMembership" class="form-select" required>
                                     <option selected disabled value="">Select Membership</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
@@ -185,7 +193,7 @@
 
                             <div class="col-md-5 mb-3">
                                 <label for="othersOrgMembership" class="form-label">Others</label>
-                                <input type="text" class="form-control" id="othersOrgMembership" name="othersOrgMembership" readonly>
+                                <input type="text" name="others" class="form-control" id="othersOrgMembership" name="othersOrgMembership" readonly>
                                 <div class="invalid-feedback">
                                     Please input.
                                 </div>
@@ -202,7 +210,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
-                                <select id="prevExperienceMonth" class="form-select" required>
+                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select" required>
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
@@ -251,7 +259,6 @@
                                 </div>
                             </div>
 
-
                             <div class="d-flex flex-row justify-content-center align-items-center gap-4">
                                 <button type="button" class="btn btn-outline-secondary px-5">Cancel</button>
                                 <button type="submit" class="btn btn-primary px-5">Confirm</button>
@@ -273,7 +280,7 @@
                                             <button type="button" class="btn btn-outline-secondary px-4"
                                                 data-bs-dismiss="modal">Cancel</button>
                                             <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#changePasswordConfirmed">Confirm</button>
-                                        </div>
+                                        </div>  
                                     </div>
                                 </div>
                             </div>

@@ -72,6 +72,7 @@ class CoordinatorDashboard {
             // SQL to count each city
             $stmt = $db->prepare('
                 SELECT 
+                    assigned_polling_place,
                     SUM(CASE WHEN CITY = :caloocanCity THEN 1 ELSE 0 END) AS caloocan_count,
                     SUM(CASE WHEN CITY = :malabonCity THEN 1 ELSE 0 END) AS malabon_count,
                     SUM(CASE WHEN CITY = :navotasCity THEN 1 ELSE 0 END) AS navotas_count
@@ -135,5 +136,40 @@ class CoordinatorDashboard {
         }
     }
     
+
+ public static function chartsData() {
+    try {
+        $db = Database::getConnection();
+
+        // SQL query to count volunteers by polling place
+        $query = '
+            SELECT 
+                p.polling_place, 
+                COUNT(v.volunteers_id) AS volunteers
+            FROM 
+                VOLUNTEERS_TBL AS v
+            INNER JOIN 
+                PRECINCT_TABLE AS p
+            ON 
+                v.assigned_polling_place = p.polling_place
+            GROUP BY 
+                p.polling_place
+        ';
+
+        // Prepare and execute the query
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+
+        // Fetch the results as an associative array
+        $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $chartsData;
+    } catch (PDOException $e) {
+        // Log the error and return an empty array
+        error_log('Error in getting chart data: ' . $e->getMessage());
+        return [];
+    }
+}
+
 
 }

@@ -58,7 +58,7 @@
                                         <span class="text-danger fw-bold">DAYS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -67,7 +67,7 @@
                                         <span class="text-danger fw-bold">HRS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -76,7 +76,7 @@
                                         <span class="text-danger fw-bold">MNS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-column justify-content-center align-items-center">

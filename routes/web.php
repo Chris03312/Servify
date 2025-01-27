@@ -8,6 +8,8 @@ require_once __DIR__ . '/../controllers/CoordinatorDashboardController.php';
 require_once __DIR__ . '/../controllers/CoordinatorProfileSettingsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorChangesPassController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAnnouncementsController.php';
+require_once __DIR__ . '/../controllers/CoordinatorProfileController.php';
+
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
 require_once __DIR__ . '/../controllers/VolunteerAttendanceController.php';
@@ -55,6 +57,8 @@ $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 $router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'ShowCoordinatorDashboard']);
 $router->add('/coordinator_change_pass', [CoordinatorChangesPassController::class, 'CoordinatorChangePass']);
 $router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsController::class, 'CoordinatorProfileSettings']);
+$router->add('/coordinator_profile', [CoordinatorProfileController::class, 'ShowConfirmProfile']);
+$router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
 
 

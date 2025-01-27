@@ -42,3 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         marker.bindPopup(`<strong>${markerText}</strong>`).openPopup();
     }
 });
+
+
+

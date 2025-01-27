@@ -1,4 +1,4 @@
-const availableData = [30, 70, 40, 3]; // Available Volunteers
+    const availableData = [30, 70, 40, 3]; // Available Volunteers
     const neededData = [60, 80, 50, 50];    // Needed Volunteers
 
     const ctx = document.getElementById('volunteerBarChart').getContext('2d');
