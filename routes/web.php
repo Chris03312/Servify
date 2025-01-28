@@ -14,6 +14,7 @@ require_once __DIR__ . '/../controllers/BarangayVolunteerDirectoryController.php
 require_once __DIR__ . '/../controllers/PollingAreaController.php';
 require_once __DIR__ . '/../controllers/ViewVolunteerProfile.php';
 require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
+require_once __DIR__ . '/../controllers/PendingSubmissionsController.php';
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -70,6 +71,7 @@ $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryControl
 $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea']);
 $router->add('/view_volunteer_profile', [ViewVolunteerProfile::class, 'ShowVolunteerProfile']);
 $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNewVolunteer']);
+$router->add('/pending_submissions', [PendingSubmissionsController::class, 'ShowPendingSubmissions']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
