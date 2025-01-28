@@ -2,7 +2,7 @@
 
 class Listofvolunteer {
 
-    public static function gelistofVolunteer() {
+    public static function getlistofVolunteer($district, $barangay, $pollingplace) {
         try{
             $db = Database::getConnection();
 
@@ -13,6 +13,7 @@ class Listofvolunteer {
                 FROM VOLUNTEER_TBL AS v
                 INNER JOIN MISSION AS m
                 ON v.ASSIGNED_MISSION = m.MISSION_NAME
+                WHERE DISTRICT = :district AND BARANGAY = :barangay
             ');
             $stmt->execute();
             $listofvolunteers = $stmt->fetchAll(PDO::FETCH_ASSOC);

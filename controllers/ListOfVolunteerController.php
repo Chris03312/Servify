@@ -13,7 +13,7 @@ class ListOfVolunteerController {
         $districtParam = $district ? '?District=' . urlencode($district) : '';
         $barangayParam = $barangay ? '?District=' . urlencode($district).'&Barangay='. urlencode($barangay) : '';
 
-        $listofvolunteers = Listofvolunteer::gelistofVolunteer();
+        $listofvolunteers = Listofvolunteer::getlistofVolunteer($district, $barangay, $pollingplace);
 
         view('list_of_volunteers', [
             'listofvolunteers' => $listofvolunteers,
