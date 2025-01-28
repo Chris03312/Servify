@@ -33,7 +33,7 @@
 
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
             <div>
-                <h4>BARANGAY VOLUNTEER DIRECTORY</h4>
+                <h4><?php echo strtoupper($district); ?> VOLUNTEER DIRECTORY</h4>
             </div>
 
             <div class="d-flex flex-row gap-3">
@@ -127,25 +127,32 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-2">
-                    <div class="card h-100">
-                        <form action="" method="GET">
-                            <div class="card-body">
-                                <div class="d-flex flex-row justify-content-between align-items-start">
-                                    <a href="/" class="btn border-0" role="button">
-                                        <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                            <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
-                                            <span>Barangay 123 Bagumbayan</span>
-                                        </div>
-                                    </a>
-                                    <div>
-                                        <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
-                                    </div>
+<?php if ($barangayLinks): ?>
+        <?php foreach ($barangayLinks as $barangay): ?>
+            <div class="col-md-3 mb-2">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between align-items-start">
+                            <a href="<?php echo $barangay['link']; ?>" class="btn border-0" role="button">
+                                <div class="d-flex flex-column justify-content-center align-items-start gap-2">
+                                    <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                                    <span><?php echo $barangay['name']; ?></span>
                                 </div>
+                            </a>
+                            <div>
+                                <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+            </div>
+        <?php endforeach; ?>
+<?php else: ?>
+    <div class="alert alert-info">
+        No barangay directory available for the selected district.
+    </div>
+<?php endif; ?>
+
             </div>
         </div>
 

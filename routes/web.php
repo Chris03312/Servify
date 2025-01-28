@@ -12,6 +12,7 @@ require_once __DIR__ . '/../controllers/CoordinatorProfileController.php';
 require_once __DIR__ . '/../controllers/CoordinatorVolunteerManagementController.php';
 require_once __DIR__ . '/../controllers/BarangayVolunteerDirectoryController.php';
 require_once __DIR__ . '/../controllers/PollingAreaController.php';
+require_once __DIR__ . '/../controllers/ListOFVolunteerController.php';
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -66,6 +67,8 @@ $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::
 $router->add('/coordinator_volunteer_management', [CoordinatorVolunteerManagementController::class, 'ShowVolunteerManagement']);
 $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryController::class, 'ShowBarangayDirectory']);
 $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea']);
+$router->add('/list_of_volunteer', [ListOfVolunteerController::class, 'ShowListOfVolunteer']);
+
 
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);

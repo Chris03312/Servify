@@ -33,7 +33,7 @@
 
 
             <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-                <h4>BARANGAY VOLUNTEER DIRECTORY</h4>
+                <h4><?php echo strtoupper($barangay); ?> VOLUNTEER DIRECTORY</h4>
             </div>
         
 
@@ -43,10 +43,10 @@
             <nav aria-label="breadcrumb" class="mb-5" style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb" id="breadcrumbList">
                     <li class="breadcrumb-item">
-                        <a href="coordinator_volunteer_management.php">Volunteer Management</a>
+                        <a href="/coordinator_volunteer_management">Volunteer Management</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="barangay_volunteer_directory.php">List of Barangay</a>
+                        <a href="/barangay_volunteer_directory<?php echo $districturl; ?>">List of Barangay</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Polling Area</li>
                 </ol>
@@ -81,12 +81,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-url="list_of_volunteers.php">
-                            <td scope="row">Camarin High School</td>
-                            <td>San Bartolome Parish</td>
-                            <td>In progress</td>
-                            <td><button type="button" class="btn text-danger delete-btn">Delete</button></td>
-                        </tr>
+                        <?php if($pollingLinks): ?>
+                            <?php foreach($pollingLinks as $polling): ?>
+                                <tr data-url="<?php echo $polling['link'] ?>">
+                                    <td scope="row"><?php echo $polling['name']; ?></td>
+                                    <td>San Bartolome Parish</td>
+                                    <td>Fully Staff</td>
+                                    <td><button type="button" class="btn text-danger delete-btn">Delete</button></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
 

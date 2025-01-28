@@ -7,8 +7,11 @@ class CoordinatorVolunteerManagementController {
 
     public static function ShowVolunteerManagement() {
 
-        $district = VolunteerManagement::DistrictList();
+        $districtLinks = VolunteerManagement::DistrictList();
+        
 
-        view('coordinator_volunteer_management');
+        view('coordinator_volunteer_management', [
+            'districtLinks' => $districtLinks
+        ]);
     }
 }

@@ -24,9 +24,8 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
-
 
     <!--MAIN CONTENT-->
     <main class="container-fluid p-5">

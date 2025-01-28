@@ -104,18 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }).addTo(map);
 
-    dataPoints.forEach(point => {
-        const marker = L.marker([point.latitude, point.longitude]).addTo(map);
-        const popupContent = `
-            <strong>${point.name}</strong><br>
-            Needed Volunteers: ${point.needed_volunteers}<br>
-            Volunteers Count: ${point.volunteers_count}
-        `;
-        marker.bindPopup(popupContent);
-    });
-
 });
-;
     </script>
 </body>
 </html>
