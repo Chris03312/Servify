@@ -12,12 +12,9 @@ require_once __DIR__ . '/../controllers/CoordinatorProfileController.php';
 require_once __DIR__ . '/../controllers/CoordinatorVolunteerManagementController.php';
 require_once __DIR__ . '/../controllers/BarangayVolunteerDirectoryController.php';
 require_once __DIR__ . '/../controllers/PollingAreaController.php';
-<<<<<<< HEAD
 require_once __DIR__ . '/../controllers/ListOFVolunteerController.php';
-=======
 require_once __DIR__ . '/../controllers/ViewVolunteerProfile.php';
 require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
->>>>>>> 9abdc3acc7e5203b72d3e60ccf9ea0ad74d3a386
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -72,14 +69,11 @@ $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::
 $router->add('/coordinator_volunteer_management', [CoordinatorVolunteerManagementController::class, 'ShowVolunteerManagement']);
 $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryController::class, 'ShowBarangayDirectory']);
 $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea']);
-<<<<<<< HEAD
 $router->add('/list_of_volunteer', [ListOfVolunteerController::class, 'ShowListOfVolunteer']);
 
 
-=======
 $router->add('/view_volunteer_profile', [ViewVolunteerProfile::class, 'ShowVolunteerProfile']);
 $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNewVolunteer']);
->>>>>>> 9abdc3acc7e5203b72d3e60ccf9ea0ad74d3a386
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

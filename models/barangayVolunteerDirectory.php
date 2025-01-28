@@ -40,7 +40,7 @@ class BarangayVolunteerDirectory {
                 $barangayName = $barangay['BARANGAY_NAME'];
                 $barangayLinks[] = [
                     'name' => $barangayName,
-                    'link' => '/polling_area?District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName),
+                    'link' => '/polling_area?District=' . urlencode($district) . '&Barangay='. urlencode($barangayName)
                 ];
             }
     
