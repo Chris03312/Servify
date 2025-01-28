@@ -117,7 +117,7 @@
                         <div>
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-md-flex flex-column d-none">
                             <span>Vicmar Guzman</span>
                             <small>Coordinator</small>
                         </div>
