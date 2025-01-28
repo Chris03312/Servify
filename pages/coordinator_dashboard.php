@@ -88,13 +88,13 @@
                                     <span class="text-danger fw-bold">SEC</span>
                                 </div>
                                 <script>
-                                // Pass the initial time values from PHP to JavaScript
-                                var days = <?php echo $days; ?>;
-                                var hours = <?php echo $hours; ?>;
-                                var minutes = <?php echo $minutes; ?>;
-                                var seconds = <?php echo $seconds; ?>;
-                            </script>
-                            <script src="../js/countdown.js"></script>
+                                    // Pass the initial time values from PHP to JavaScript
+                                    var days = <?php echo $days; ?>;
+                                    var hours = <?php echo $hours; ?>;
+                                    var minutes = <?php echo $minutes; ?>;
+                                    var seconds = <?php echo $seconds; ?>;
+                                </script>
+                                <script src="../js/countdown.js"></script>
                             </div>
                         </div>
                     </div>
@@ -166,45 +166,46 @@
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <h5>Overview of Volunteers</h5>
                                 <button type="button" id="filterButton" class="btn btn-outline-secondary">Filter</button>
+
                             </div>
 
-                            <div class="row mt-3">
+                            <div class="row mt-3 d-none" id="filterDiv">
                                 <div class="col-sm-4 mb-2">
-                                    <select class="form-select group1-dropdown" name="city" id="city" disabled>
+                                    <select class="form-select group1-dropdown" name="city" id="city">
                                         <option value="" disabled selected>Select Municipality</option>
-                                        <?php foreach($dropdownData['cities'] as $city): ?>
+                                        <?php foreach ($dropdownData['cities'] as $city): ?>
                                             <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
-                                    <select class="form-select group1-dropdown" name="district" id="district" disabled>
+                                    <select class="form-select group1-dropdown" name="district" id="district">
                                         <option value="" disabled selected>Select District</option>
-                                        <?php foreach($dropdownData['districts'] as $district): ?>
+                                        <?php foreach ($dropdownData['districts'] as $district): ?>
                                             <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
-                                    <select class="form-select group1-dropdown" name="barangay" id="barangay" disabled>
+                                    <select class="form-select group1-dropdown" name="barangay" id="barangay">
                                         <option value="" disabled selected>Select Barangay</option>
-                                        <?php foreach($dropdownData['barangays'] as $barangay): ?>
+                                        <?php foreach ($dropdownData['barangays'] as $barangay): ?>
                                             <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
-                                    <select class="form-select group1-dropdown" name="parish" id="parish" disabled> 
+                                    <select class="form-select group1-dropdown" name="parish" id="parish">
                                         <option value="" disabled selected>Select Parish</option>
-                                        <?php foreach($dropdownData['parishes'] as $parish): ?>
+                                        <?php foreach ($dropdownData['parishes'] as $parish): ?>
                                             <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 mb-2">
-                                    <select class="form-select group1-dropdown" name="school" id="school" disabled>
+                                    <select class="form-select group1-dropdown" name="school" id="school">
                                         <option value="" disabled selected>Select School</option>
-                                        <?php foreach($dropdownData['pollingPlaces'] as $polling_place): ?>
+                                        <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
                                             <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
                                         <?php endforeach; ?>
                                     </select>
@@ -246,26 +247,26 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <?php if(!empty($activities)): ?>
+                                <?php if (!empty($activities)): ?>
                                     <?php foreach ($activities as $activity): ?>
-                                <li class="list-group-item">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                            <div class="time">
-                                                <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
-                                            </div>
-                                            <div class="time">
-                                                <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
-                                            </div>
-                                            <div class="time">
-                                                <p><i class="bi bi-chevron-right"></i></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <?php endforeach; ?>
+                                        <li class="list-group-item">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                                    <div class="time">
+                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p><i class="bi bi-chevron-right"></i></p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
                                 <?php else: ?>
-                                    <p class ="text-center"> No Activities</p>
+                                    <p class="text-center"> No Activities</p>
                                 <?php endif; ?>
                             </ul>
 
@@ -344,20 +345,20 @@
                                 <div class="col-md-10">
                                     <!-- MAP ON THE RIGHT -->
                                     <div class="mt-2">
-                                            <div id="mapcities" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
-                                            </div>
-                                            <script>
-                                                // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
-                                                var malabonData = <?php echo json_encode($totalCities['malabon_count']); ?>;
-                                                var caloocanData = <?php echo json_encode($totalCities['caloocan_count']); ?>;
-                                                var navotasData = <?php echo json_encode($totalCities['navotas_count']); ?>;
-                                                
-                                                // Log the values to check if they're correctly passed
-                                                console.log('Malabon Volunteers:', malabonData);
-                                                console.log('Caloocan Volunteers:', caloocanData);
-                                                console.log('Navotas Volunteers:', navotasData);
-                                            </script>
-                                        <script src="../js/leafletmapcities.js" defer></script>
+                                        <div id="mapcities" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
+                                    </div>
+                                    <script>
+                                        // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
+                                        var malabonData = <?php echo json_encode($totalCities['malabon_count']); ?>;
+                                        var caloocanData = <?php echo json_encode($totalCities['caloocan_count']); ?>;
+                                        var navotasData = <?php echo json_encode($totalCities['navotas_count']); ?>;
+
+                                        // Log the values to check if they're correctly passed
+                                        console.log('Malabon Volunteers:', malabonData);
+                                        console.log('Caloocan Volunteers:', caloocanData);
+                                        console.log('Navotas Volunteers:', navotasData);
+                                    </script>
+                                    <script src="../js/leafletmapcities.js" defer></script>
                                 </div>
                             </div>
                         </div>
@@ -365,116 +366,116 @@
                 </div>
             </div>
 
-            
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="d-flex flex-row justify-content-between align-items-center">
-                            <h4>List of Volunteers</h4>
-                            <button type="button" id="filterButtonVol" class="btn btn-outline-secondary">Filter</button>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <h4>List of Volunteers</h4>
+                        <button type="button" id="filterButtonVol" class="btn btn-outline-secondary">Filter</button>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-sm-3 mb-2">
+                            <select class="form-select group2-dropdown" disabled name="city" id="city">
+                                <option value="" disabled selected>Select Municipality</option>
+                                <?php foreach ($dropdownData['cities'] as $city): ?>
+                                    <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+                        <div class="col-sm-3 mb-2">
+                            <select class="form-select group2-dropdown" disabled name="district" id="district">
+                                <option value="" disabled selected>Select District</option>
+                                <?php foreach ($dropdownData['districts'] as $district): ?>
+                                    <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <select class="form-select group2-dropdown" disabled name="barangay" id="barangay">
+                                <option value="" disabled selected>Select Barangay</option>
+                                <?php foreach ($dropdownData['barangays'] as $barangay): ?>
+                                    <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <select class="form-select group2-dropdown" disabled name="parish" id="parish">
+                                <option value="" disabled selected>Select Parish</option>
+                                <?php foreach ($dropdownData['parishes'] as $parish): ?>
+                                    <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <select class="form-select group2-dropdown" disabled name="school" id="school">
+                                <option value="" disabled selected>Select School</option>
+                                <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
+                                    <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <script>
+                            var cities = <?= json_encode($dropdownData['cities']); ?>;
+                            var districts = <?= json_encode($dropdownData['districts']); ?>;
+                            var barangays = <?= json_encode($dropdownData['barangays']); ?>;
+                            var parishes = <?= json_encode($dropdownData['parishes']); ?>;
+                            var pollingPlaces = <?= json_encode($dropdownData['pollingPlaces']); ?>;
+                        </script>
 
-                        <div class="row mt-3">
-                                <div class="col-sm-3 mb-2">
-                                    <select class="form-select group2-dropdown" disabled name="city" id="city">
-                                    <option value="" disabled selected>Select Municipality</option>
-                                        <?php foreach($dropdownData['cities'] as $city): ?>
-                                            <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3 mb-2">
-                                    <select class="form-select group2-dropdown" disabled name="district" id="district">
-                                        <option value="" disabled selected>Select District</option>
-                                        <?php foreach($dropdownData['districts'] as $district): ?>
-                                            <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3 mb-2">
-                                    <select class="form-select group2-dropdown" disabled name="barangay" id="barangay">
-                                        <option value="" disabled selected>Select Barangay</option>
-                                        <?php foreach($dropdownData['barangays'] as $barangay): ?>
-                                            <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3 mb-2">
-                                    <select class="form-select group2-dropdown" disabled name="parish" id="parish">
-                                        <option value="" disabled selected>Select Parish</option>
-                                        <?php foreach($dropdownData['parishes'] as $parish): ?>
-                                            <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3 mb-2">
-                                    <select class="form-select group2-dropdown" disabled name="school" id="school">
-                                        <option value="" disabled selected>Select School</option>
-                                        <?php foreach($dropdownData['pollingPlaces'] as $polling_place): ?>
-                                            <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <script>
-                                    var cities = <?= json_encode($dropdownData['cities']); ?>;
-                                    var districts = <?= json_encode($dropdownData['districts']); ?>;
-                                    var barangays = <?= json_encode($dropdownData['barangays']); ?>;
-                                    var parishes = <?= json_encode($dropdownData['parishes']); ?>;
-                                    var pollingPlaces = <?= json_encode($dropdownData['pollingPlaces']); ?>;
-                                </script>
+                        <!-- Link to your external JS file -->
+                        <script src="../js/dropdown.js"></script>
 
-                                <!-- Link to your external JS file -->
-                                <script src="../js/dropdown.js"></script>
+                    </div>
 
-                            </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-4">
+                            <input type="search" name="search" id="search" class="form-control" placeholder="Search mo rito pre">
+                        </div>
+                    </div>
 
-                            <div class="row d-flex justify-content-end">
-                                <div class="col-md-4">
-                                <input type="search" name="search" id="search" class="form-control" placeholder="Search mo rito pre">
-                                </div>
-                            </div>
+                    <!--TABLE-->
 
-                            <!--TABLE-->
-
-                            <div class="table-responsive my-3">
-                                <table id="volunteerTable" class="table">
-                                    <thead>
+                    <div class="table-responsive my-3">
+                        <table id="volunteerTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Membership ID</th>
+                                    <th scope="col">Precinct Number</th>
+                                    <th scope="col">Volunteer Name</th>
+                                    <th scope="col">Volunteer Precinct</th>
+                                    <th scope="col">Volunteer Role</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tbody>
+                                <?php if (!empty($volunteers)): ?>
+                                    <?php foreach ($volunteers as $volunteer): ?>
                                         <tr>
-                                            <th scope="col">Membership ID</th>
-                                            <th scope="col">Precinct Number</th>
-                                            <th scope="col">Volunteer Name</th>
-                                            <th scope="col">Volunteer Precinct</th>
-                                            <th scope="col">Volunteer Role</th>
-                                            <th scope="col">Action</th>
+                                            <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['PRECINCT_NO']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['MIDDLE_NAME'] . ' ' . $volunteer['SURNAME']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['POLLING_PLACE']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
+                                            <td>
+                                                <a href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a> |
+                                                <a href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tbody>
-                                    <?php if (!empty($volunteers)): ?>
-                                        <?php foreach ($volunteers as $volunteer): ?>
-                                            <tr>
-                                                <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
-                                                <td><?= htmlspecialchars($volunteer['PRECINCT_NO']); ?></td>
-                                                <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['MIDDLE_NAME'] . ' ' . $volunteer['SURNAME']); ?></td>
-                                                <td><?= htmlspecialchars($volunteer['POLLING_PLACE']); ?></td>
-                                                <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
-                                                <td>
-                                                    <a href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a> |
-                                                    <a href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="6">No volunteers found.</td>
-                                        </tr>
-                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="6">No volunteers found.</td>
+                                    </tr>
+                                <?php endif; ?>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-          
+            </div>
+
         </div>
 
 
@@ -485,6 +486,18 @@
     </div>
     </div>
 
+
+
+    <script>
+        document.getElementById('filterButton').addEventListener('click', function() {
+            const filterDiv = document.getElementById('filterDiv');
+            if (filterDiv.classList.contains('d-none')) {
+                filterDiv.classList.remove('d-none'); // Show the div
+            } else {
+                filterDiv.classList.add('d-none'); // Hide the div
+            }
+        });
+    </script>
 
 
 

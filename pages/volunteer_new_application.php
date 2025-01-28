@@ -30,8 +30,6 @@
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
 
-
-
         <div class="container-fluid">
             <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
