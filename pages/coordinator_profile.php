@@ -294,7 +294,7 @@
                                 </div>
                             </div>
 
-                            <span><strong>Previous PPCRV Experience <sup class="text-danger">*</sup></strong></span>
+                            <label for="prevExperienceDate" class="form-label"><strong>Previous PPCRV Experience <sup class="text-danger">*</sup></strong></label>
                             <div class="col-md-4 mb-3">
                                 <input type="text" class="form-control" id="prevExperienceDate" name="prevExperienceDate" placeholder="Date" required>
                                 <div class="invalid-feedback">
@@ -336,7 +336,7 @@
                             </div>
                             
 
-                            <div class="d-flex flex-row justify-content-center align-items-center gap-4 mt-5 mb-3">
+                            <div class="d-flex flex-row justify-content-center align-items-center gap-4 my-3 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">Confirm</button>
                             </div>
 
