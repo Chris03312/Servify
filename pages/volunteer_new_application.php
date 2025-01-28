@@ -33,7 +33,7 @@
 
 
         <div class="container-fluid">
-            <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data"needs-validation novalidate>
+            <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
                 <!--PHOTO AND NAME-->
                 <div class="d-flex flex-row justify-content-start align-items-center mb-3">
