@@ -371,12 +371,12 @@
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <h4>List of Volunteers</h4>
-                        <button type="button" id="filterButtonVol" class="btn btn-outline-secondary">Filter</button>
+                        <button type="button" id="filterButtonVol" class="btn btn-outline-secondary mb-3">Filter</button>
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="row mt-3 d-none" id="filterDivVol">
                         <div class="col-sm-3 mb-2">
-                            <select class="form-select group2-dropdown" disabled name="city" id="city">
+                            <select class="form-select group2-dropdown" name="city" id="city">
                                 <option value="" disabled selected>Select Municipality</option>
                                 <?php foreach ($dropdownData['cities'] as $city): ?>
                                     <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
@@ -384,7 +384,7 @@
                             </select>
                         </div>
                         <div class="col-sm-3 mb-2">
-                            <select class="form-select group2-dropdown" disabled name="district" id="district">
+                            <select class="form-select group2-dropdown" name="district" id="district">
                                 <option value="" disabled selected>Select District</option>
                                 <?php foreach ($dropdownData['districts'] as $district): ?>
                                     <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
@@ -392,7 +392,7 @@
                             </select>
                         </div>
                         <div class="col-sm-3 mb-2">
-                            <select class="form-select group2-dropdown" disabled name="barangay" id="barangay">
+                            <select class="form-select group2-dropdown" name="barangay" id="barangay">
                                 <option value="" disabled selected>Select Barangay</option>
                                 <?php foreach ($dropdownData['barangays'] as $barangay): ?>
                                     <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
@@ -400,7 +400,7 @@
                             </select>
                         </div>
                         <div class="col-sm-3 mb-2">
-                            <select class="form-select group2-dropdown" disabled name="parish" id="parish">
+                            <select class="form-select group2-dropdown" name="parish" id="parish">
                                 <option value="" disabled selected>Select Parish</option>
                                 <?php foreach ($dropdownData['parishes'] as $parish): ?>
                                     <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
@@ -408,7 +408,7 @@
                             </select>
                         </div>
                         <div class="col-sm-3 mb-2">
-                            <select class="form-select group2-dropdown" disabled name="school" id="school">
+                            <select class="form-select group2-dropdown" name="school" id="school">
                                 <option value="" disabled selected>Select School</option>
                                 <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
                                     <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
@@ -426,13 +426,15 @@
                         <!-- Link to your external JS file -->
                         <script src="../js/dropdown.js"></script>
 
-                    </div>
 
+                    </div>
                     <div class="row d-flex justify-content-end">
                         <div class="col-md-4">
                             <input type="search" name="search" id="search" class="form-control" placeholder="Search mo rito pre">
                         </div>
                     </div>
+
+
 
                     <!--TABLE-->
 
@@ -495,6 +497,15 @@
                 filterDiv.classList.remove('d-none'); // Show the div
             } else {
                 filterDiv.classList.add('d-none'); // Hide the div
+            }
+        });
+
+        document.getElementById('filterButtonVol').addEventListener('click', function() {
+            const filterDivVol = document.getElementById('filterDivVol');
+            if (filterDivVol.classList.contains('d-none')) {
+                filterDivVol.classList.remove('d-none'); // Show the div
+            } else {
+                filterDivVol.classList.add('d-none'); // Hide the div
             }
         });
     </script>
