@@ -45,7 +45,7 @@
                         <!--FORM-->
                         <form action="/coordinator_profile/submit" method="post" class="row p-2" >
 
-                            <p><strong>Assigned as Coordinator at :</strong></p>
+                            <p class="mb-5"><strong>Assigned as Coordinator at :</strong></p>
 
                             <div class="col-md-3 mb-3">
                                 <label for="municipality" class="form-label"><strong>Municipality <sup class="text-danger">*</sup></strong></label>
@@ -294,16 +294,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
-                                <label for="prevExperienceDate" class="form-label"><strong>Previous PPCRV Experience <sup class="text-danger">*</sup></strong></label>
+                            <span><strong>Previous PPCRV Experience <sup class="text-danger">*</sup></strong></span>
+                            <div class="col-md-4 mb-3">
                                 <input type="text" class="form-control" id="prevExperienceDate" name="prevExperienceDate" placeholder="Date" required>
                                 <div class="invalid-feedback">
                                     Please input date.
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
-                                <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
+                            <div class="col-md-4 mb-3">
                                 <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select" required>
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
@@ -324,15 +323,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
-                                <label for="prevExperienceYear" class="form-label">&nbsp;</label>
+                            <div class="col-md-4 mb-3">
                                 <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required>
                                 <div class="invalid-feedback">
                                     Please input year.
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="yearOfService" class="form-label"><strong>Year of Service <sup class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" placeholder="Auto generated" id="yearOfService" name="yearOfService" required>
                             </div>
