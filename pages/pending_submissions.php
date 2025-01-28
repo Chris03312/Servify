@@ -37,7 +37,7 @@
 
 
     <!--MAIN CONTENT-->
-    <main class="container-fluid p-3">
+    <main class="container p-3">
 
 
         <div>
@@ -45,20 +45,166 @@
         </div>
 
 
-        <ul class="nav nav-underline">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
+        <ul class="nav nav-underline mb-5">
+            <li class="nav-item">
+                <a class="nav-link active px-3" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-3" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-3" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-3" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+
+
+        <!--TABLE-->
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Submission Date/Time</th>
+                        <th scope="col">Application Type</th>
+                        <th scope="col">Volunteer Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td scope="row">Sacred Heart of Jesus Parish</td>
+                        <td>Vicariate of Sacred Heart of Jesus</td>
+                        <td>Caloocan District 1</td>
+                        <td>Active</td>
+                        <td>
+                            <div class="d-none d-md-flex flex-column">
+                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+
+                            <div class="d-flex d-md-none flex-column">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Edit</button>
+                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td scope="row">Sacred Heart of Jesus Parish</td>
+                        <td>Vicariate of Sacred Heart of Jesus</td>
+                        <td>Caloocan District 1</td>
+                        <td>Active</td>
+                        <td>
+                            <div class="d-none d-md-flex flex-column">
+                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+
+                            <div class="d-flex d-md-none flex-column">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Edit</button>
+                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Sacred Heart of Jesus Parish</td>
+                        <td>Vicariate of Sacred Heart of Jesus</td>
+                        <td>Caloocan District 1</td>
+                        <td>Active</td>
+                        <td>
+                            <div class="d-none d-md-flex flex-column">
+                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+
+                            <div class="d-flex d-md-none flex-column">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Edit</button>
+                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Sacred Heart of Jesus Parish</td>
+                        <td>Vicariate of Sacred Heart of Jesus</td>
+                        <td>Caloocan District 1</td>
+                        <td>Active</td>
+                        <td>
+                            <div class="d-none d-md-flex flex-column">
+                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+
+                            <div class="d-flex d-md-none flex-column">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Edit</button>
+                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Sacred Heart of Jesus Parish</td>
+                        <td>Vicariate of Sacred Heart of Jesus</td>
+                        <td>Caloocan District 1</td>
+                        <td>Active</td>
+                        <td>
+                            <div class="d-none d-md-flex flex-column">
+                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+
+                            <div class="d-flex d-md-none flex-column">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Edit</button>
+                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
 
 
 
