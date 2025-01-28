@@ -131,7 +131,7 @@
                         <div>
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-none d-md-flex flex-column">
                             <span><?php echo htmlspecialchars(($sidebarinfo['FIRST_NAME'] ?? " ") . ' ' . ($sidebarinfo['SURNAME'] ?? " ")); ?></span>
                             <small><?php echo htmlspecialchars(($sidebarinfo['ROLE'] ?? " ")); ?></small>
                         </div>

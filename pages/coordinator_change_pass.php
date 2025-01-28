@@ -23,15 +23,11 @@
 
 <body>
 
-  <?php
-  include('../includes/coordinator_sidebar.php');
-  ?>
-
 
   <!--MAIN CONTENT-->
-  <main class="container p-5">
+  <main class="container">
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center vh-100">
       <div class="col-md-10">
         <div class="card">
           <div class="card-header py-3 bg-primary"></div>
@@ -41,7 +37,7 @@
                 <img src="../img/servify-logo-with-text.png" alt="Servify Logo" class="img-fluid">
               </div>
               <div class="col-lg-8">
-                <form action="" method="post" class="needs-validation px-5 py-3" novalidate>
+                <form action="" method="post" class="px-5 py-3">
                   <h5 class="text-primary text-center">Set your New Password</h5>
                   <p class="text-muted text-center mb-5">Please Update your password for security.</p>
 
@@ -127,10 +123,6 @@
   </div>
   </div>
 
-
-
-  <!--SCRIPT FOR FORM VALIDATION-->
-  <script src="../js/change_pass.js"></script>
 
 
 
