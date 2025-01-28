@@ -1,4 +1,5 @@
 // Function to toggle dropdowns and button text for a specific group
+/*
 function toggleDropdowns(button, dropdownClass) {
     // Get all dropdowns in the specified group
     const dropdowns = document.querySelectorAll(`.${dropdownClass}`);
@@ -47,6 +48,7 @@ document.getElementById('city').addEventListener('change', function(event) {
     xhr.send();  // Send the AJAX request
 });
 
+*/
 
 
 

@@ -1,4 +1,5 @@
 // Function to toggle dropdowns and button text for a specific group
+/*
 function toggleDropdowns(button, dropdownClass) {
     // Get all dropdowns in the specified group
     const dropdowns = document.querySelectorAll(`.${dropdownClass}`);
@@ -21,3 +22,5 @@ document.getElementById('filterButton').addEventListener('click', function () {
 document.getElementById('filterButtonVol').addEventListener('click', function () {
     toggleDropdowns(this, 'group2-dropdown');
 });
+
+*/
