@@ -53,11 +53,11 @@
                         <spam class="text-muted"></spam>
                     </div>
                         
-                    <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST">
+                    <form action="/signup/submit" class="row mt-5" method="POST">
                         <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
                             <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
-                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish" placeholder="Type to search..." required>
+                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish" placeholder="Type to search..."  >
                             <datalist id="parishNameOptions">
                                 <option value="St. Francis of Assisi – Sta Quiteria Parish">
                                 <option value="Birhen ng Lourdes Parish">
@@ -99,14 +99,14 @@
 
                         <div class="col-md-3 mb-3">
                             <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="surname" name="surname" required>
+                            <input type="text" class="form-control" id="surname" name="surname" >
                             <div class="invalid-feedback">
                                 Please input surname.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            <input type="text" class="form-control" id="firstname" name="firstname" >
                             <div class="invalid-feedback">
                                 Please input first name.
                             </div>
@@ -124,7 +124,7 @@
                         <strong class="mb-3">Birth Day</strong>
                         <div class="col-md-4 mb-3">
                             <label for="birthMonth" class="form-label">Month<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="birthMonth" class="form-select" name="birthMonth" required>
+                            <select id="birthMonth" class="form-select" name="birthMonth" >
                                 <option selected disabled value="">Select month</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -146,14 +146,14 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="birthDate" class="form-label">Day<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthDate" name="birthDate" required>
+                            <input type="text" class="form-control" id="birthDate" name="birthDate" >
                             <div class="invalid-feedback">
                                 Please input birth date.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birthYear" class="form-label">Year<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthYear" name="birthYear" required>
+                            <input type="text" class="form-control" id="birthYear" name="birthYear" >
                             <div class="invalid-feedback">
                                 Please input birth year.
                             </div>
@@ -162,7 +162,7 @@
                         <strong class="mb-3">Address</strong>
                         <div class="col-md-12 mb-3">
                             <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="city" class="form-select" name="city" required>
+                            <select id="city" class="form-select" name="city" >
                                 <option selected disabled value="">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
@@ -181,7 +181,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="barangay" class="form-select" name="barangay" required>
+                            <select id="barangay" class="form-select" name="barangay" >
                                 <option selected disabled value="">Select Barangay</option>
                                 <!-- Barangay options will be populated dynamically using JavaScript -->
                             </select>
@@ -198,7 +198,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" >
                             <div class="invalid-feedback">
                                 Please input zipcode.
                             </div>
@@ -206,7 +206,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" >
                             <div class="invalid-feedback">
                                 Please input email address.
                             </div>
@@ -214,7 +214,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="username" class="form-label">Create Username<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" class="form-control" id="username" name="username" >
                             <div class="invalid-feedback">
                                 Please input username.
                             </div>
@@ -222,14 +222,14 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">Create Password<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password">
                             <div class="invalid-feedback">
                                 Please input password.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" >
                             <div class="invalid-feedback">
                                 Password did not match.
                             </div>
@@ -277,7 +277,6 @@
     </section>
 
 
-    <script src="../js/sign_up_form.js"></script>
 
 
     <!--BOOTSTRAP JS CDN LINK-->
