@@ -27,7 +27,7 @@
                             <a href="/coordinator_volunteer_management" class="nav-link border-bottom"><i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
+                            <a href="/Coordinator_Volunteer_Regform" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Pending Application</a>
@@ -117,7 +117,7 @@
                         <div>
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
-                        <div class="d-md-flex flex-column d-none">
+                        <div class="d-flex flex-column d-none">
                             <span>Vicmar Guzman</span>
                             <small>Coordinator</small>
                         </div>
