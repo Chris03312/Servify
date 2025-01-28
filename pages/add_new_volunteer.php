@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Application</title>
+    <title>Coordinator | Add New Volunteer</title>
     <link rel="stylesheet" href="../css/volunteer_application.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -18,16 +18,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 </head>
 
 <body>
 
     <?php
-    include('includes/coordinator_sidebar.php');
+    include('includes/volunteer_sidebar.php');
     ?>
 
 
@@ -37,84 +33,13 @@
         <div class="container-fluid">
             <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
+                <!--PHOTO AND NAME-->
+                <div class="d-flex flex-row justify-content-start align-items-center mb-3">
+                    <!--PHOTO-->
+                    <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
-                <div class="d-flex flex-row justify-content-between align-items-start">
-                    <!--PHOTO AND NAME-->
-                    <div class="d-flex flex-row justify-content-start align-items-center mb-3">
-                        <!--PHOTO-->
-                        <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
-
-                        <!--NAME-->
-                        <p>Ako si Jazer</p>
-                    </div>
-
-                    <!--BUTTONS - EDIT, PRINT, DELETE-->
-                    <div class="d-none d-md-flex flex-row justify-content-center align-items-center gap-2">
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#accessRestrictionModal">
-                            <i class="bi bi-pen text-primary fs-5"></i>
-                        </button>
-
-                        <button type="button" class="btn"><i class="bi bi-printer text-primary fs-5"></i></button>
-                        <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
-                    </div>
-
-                    <!--BUTTONS FOR SMALER SCREEN - EDIT, PRINT, DELETE-->
-
-                    <div class="d-md-none d-flex flex-row justify-content-center align-items-center gap-2">
-                        <div class="dropdown">
-                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></button>
-                            </button>
-                            <div class="dropdown-menu">
-                                <div class="d-flex flex-column flex-row justify-content-center align-items-center">
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#accessRestrictionModal">
-                            <i class="bi bi-pen text-primary fs-5"></i>
-                        </button>
-                                    <button type="button" class="btn"><i class="bi bi-printer text-primary fs-5"></i></button>
-                                    <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!--MODAL - EDIT ACCESS RESTRICTIONS-->
-                    <div class="modal fade" id="accessRestrictionModal" tabindex="-1" aria-labelledby="accessRestrictionModalLabel" aria-hidden="true" data-bs-backdrop="false">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary p-2">
-                                </div>
-                                <div class="modal-body">
-                                    <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-4">
-                                        <i class="bi bi-calendar"></i>
-                                        <span class="text-danger fs-4">Edit Access Restriction</span>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="datepicker" class="form-label mb-3">Select Date</label>
-
-                                        <p><strong>From:</strong></p>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                            <input type="text" id="datepicker" class="form-control">
-                                        </div>
-
-                                        <p><strong>To:</strong></p>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                            <input type="text" id="datepicker" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row justify-content-around align-items-center gap-3">
-                                        <button type="button" class="btn btn-outline-secondary px-5" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" name="yesSubmit" class="btn btn-primary px-5">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <!--NAME-->
+                    <p>Name</p>
                 </div>
 
                 <!--VOLUNTEER INFO-->
@@ -124,12 +49,6 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Upload & Agree</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#application-tab-pane" type="button" role="tab" aria-controls="application-tab-pane" aria-selected="false">Application History</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#remarks-tab-pane" type="button" role="tab" aria-controls="remarks-tab-pane" aria-selected="false">Remarks</button>
                     </li>
                 </ul>
                 <div class="tab-content border-start border-end border-bottom" id="myTabContent" style="border-top: 10px solid blue;">
@@ -235,7 +154,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-3 mb-3"> 
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
                                 <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true" required>
                                     <option value="January">January</option>
@@ -250,7 +169,7 @@
                                     <option value="January">January</option>
                                     <option value="January">January</option>
                                     <option value="January">January</option>
-
+                                    
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select birth month.
@@ -259,7 +178,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="birthYear" name="birthYear" placeholder="Year" readonly>
+                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" required  oninput="calculateAge()" readonly>
                                 <div class="invalid-feedback">
                                     Please input birth year.
                                 </div>
@@ -270,14 +189,13 @@
                                 <input type="text" class="form-control" id="age" name="age" value="" readonly>
                             </div>
 
-
                             <script>
-                                document.addEventListener("DOMContentLoaded", function() {
+                                document.addEventListener("DOMContentLoaded", function () {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
                                         const ageInput = document.getElementById('age');
-
+                                        
                                         const birthYear = parseInt(birthYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
 
@@ -293,7 +211,7 @@
                                     function calculateYearOfService() {
                                         const prevExperienceYearInput = document.getElementById('prevExperienceYear');
                                         const yearOfServiceInput = document.getElementById('yearOfService');
-
+                                        
                                         // Get the value of the previous experience year and the current year
                                         const prevExperienceYear = parseInt(prevExperienceYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
@@ -304,7 +222,7 @@
                                             yearOfServiceInput.value = currentYear - prevExperienceYear;
                                         } else {
                                             // Clear the year of service input for invalid year input
-                                            yearOfServiceInput.value = '';
+                                            yearOfServiceInput.value = ''; 
                                         }
                                     }
 
@@ -366,7 +284,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="city" name="city" required>
+                                <input type="text" class="form-control" readonly id="city" name="city" required >
                             </div>
 
                             <div class="col-md-4 mb-3">
@@ -389,7 +307,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"  required>
                                 <div class="invalid-feedback">
                                     Please input mobile number.
                                 </div>
@@ -525,14 +443,40 @@
                                 </div>
                             </div>
 
-
+                            <div class="mb-3 text-center">
+                                <button class="btn btn-outline-secondary px-4" id="nextBtn">Next</button>
+                            </div>
 
                         </div>
 
+                         <!--CONFIRMED MODAL-->
+                         <div class="modal fade" id="submittedSuccessfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary p-2">
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <img src="../img/icons8-checkmark-90.png" alt="">
+                                <h3 class="text-primary">SUCCESS!</h3>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                    <span>Thank you! Your form has been successfully submitted.</span>
+                                    <span>Please wait while we process your application.</span>
+                                    <span>You can check the status of your application soon.</span>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-around align-items-center mt-3">
+                                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                     </div>
 
-                    <!--DOCUMENTS-->
                     <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <div class="double-line-text">
                             <hr class="line">
@@ -590,7 +534,7 @@
 
                                     <?php foreach ($validId as $id): ?>
                                         <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->
-                                        <option></option>
+                                        <option value="<?= $id['NAME']; ?>"><?= $id['NAME']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
 
@@ -661,76 +605,44 @@
                                 <button class="btn btn-outline-primary px-4" type="submit">Submit</button>
                             </div>
 
+                            <!--CONFIRMATION-->
+                            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary p-2">
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../img/REMINDER LOGO.png" alt="">
+                                                <h3 class="text-danger">SUBMIT?</h3>
+                                                <p class="text-muted">Are you sure you want to submit the form?</p>
+                                                <p class="text-muted">Please note that once submitted, the details cannot be edited.</p>
+
+                                                <div class="d-flex flex-row justify-content-around align-items-center gap-3">
+                                                    <button type="button" class="btn btn-outline-secondary px-5" data-bs-dismiss="modal">No</button>
+                                                    <button type="submit" name="yesSubmit" class="btn btn-primary px-5">Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
-
-
+                           
 
                         </div>
 
 
                     </div>
-
-
-                    <!--APPLICATION HISTORY-->
-                    <div class="tab-pane fade p-3" id="application-tab-pane" role="tabpanel" aria-labelledby="application-tab" tabindex="0">
-
-                        <div class="table-responsive mt-3 table-primary">
-                            <table class="table align-middle">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th scope="col">Registration #</th>
-                                        <th scope="col">Registration Details</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row">R1C1</td>
-                                        <td>R1C2</td>
-                                        <td>R1C3</td>
-                                        <td><button type="button" class="btn text-primary">Action</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">R1C1</td>
-                                        <td>R1C2</td>
-                                        <td>R1C3</td>
-                                        <td><button type="button" class="btn text-primary">Action</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-
-                    </div>
-
-                    <!--REMARKS-->
-                    <div class="tab-pane fade p-3" id="remarks-tab-pane" role="tabpanel" aria-labelledby="remarks-tab" tabindex="0">
-
-                        <h1>Remarks</h1>
-
-
-
-
-                    </div>
-
-
                 </div>
+            </form>
 
 
-
-
-
-        </div>
-        </form>
-
-
-        <!--SAMPLE CODE PAG NAG YES SA CONFIRMATION-->
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['yesSubmit'])) {
-            echo "
+            <!--SAMPLE CODE PAG NAG YES SA CONFIRMATION-->
+            <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['yesSubmit'])) {
+        echo "
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var submittedSuccessfully = new bootstrap.Modal(document.getElementById('submittedSuccessfully'));
@@ -738,10 +650,14 @@
             });
         </script>
         ";
-        }
-        ?>
+    }
+    ?>
 
         </div>
+
+        
+
+
 
 
 
@@ -751,18 +667,10 @@
     </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr('#datepicker', {
-                dateFormat: 'Y-m-d', // Customize the format (e.g., YYYY-MM-DD)
-            });
-        });
-    </script>
-
-    <!-- Flatpickr JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
+
+    <script src="../js/volunteer_new_application.js"></script>
     <!--BOOTSTRAP JS CDN LINK-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
