@@ -6,3 +6,4 @@ return [
     'SMTP_PASSWORD' => 'txofovbbzqyxpalo',
     'SMTP_SECURE' => 'tls', // Use 'ssl' if using port 465
 ];
+    

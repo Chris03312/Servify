@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
 
 
@@ -141,10 +141,6 @@
                 </div>
 
             </div>
-
-
-
-
         </div>
 
     </main>

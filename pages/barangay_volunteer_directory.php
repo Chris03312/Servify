@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
 
 
@@ -98,7 +98,7 @@
             <nav aria-label="breadcrumb" class="mb-5" style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb" id="breadcrumbList">
                     <li class="breadcrumb-item">
-                        <a href="coordinator_volunteer_management.php">Volunteer Management</a>
+                        <a href="/coordinator_volunteer_management">Volunteer Management</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">List of Barangay</li>
                 </ol>
@@ -123,29 +123,27 @@
                                     <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-2">
                     <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex flex-row justify-content-between align-items-start">
-                                <a href="polling_area.php" class="btn border-0" role="button">
-                                    <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                        <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
-                                        <span>Barangay 123 Bagumbayan</span>
+                        <form action="" method="GET">
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-between align-items-start">
+                                    <a href="/" class="btn border-0" role="button">
+                                        <div class="d-flex flex-column justify-content-center align-items-start gap-2">
+                                            <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                                            <span>Barangay 123 Bagumbayan</span>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                                     </div>
-                                </a>
-
-                                <div>
-                                    <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                                 </div>
                             </div>
-
-
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ class Attendance {
                 'SURNAME' => 'SURNAME',
                 'VOLUNTEERS_ID' => 'N/A',
                 'ROLE' => 'Unspecified Role',
-                'ASSIGNED_POLLING_PLACE' => 'No polling plac assigned'
+                'ASSIGNED_POLLING_PLACE' => 'No polling place assigned'
             ];
         } catch (PDOException $e) {
             error_log("Error in getting attendance info: " . $e->getMessage());
@@ -47,7 +47,7 @@ public static function getAttendances() {
         $db = Database::getConnection();
 
         // Fetch the latest attendance record for the email, ordered by DATE DESC, limit 1
-        $stmt = $db->prepare("SELECT * FROM ATTENDANCES WHERE EMAIL = :email ORDER BY DATE DESC");
+        $stmt = $db->prepare("SELECT * FROM ATTENDANCES WHERE EMAIL = :email ORDER BY DATE LIMIT 1 DESC");
         $stmt->execute(["email" => $email]);
         $attendances = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

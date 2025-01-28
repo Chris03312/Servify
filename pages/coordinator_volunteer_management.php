@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
 
 
@@ -42,16 +42,15 @@
             </div>
         </div>
 
-
-
         <p class="text-muted">You currently have access to this folder:</p>
 
         <!--PARISH-->
         <div class="row mb-3">
 
             <div class="col-md-4 mb-3">
+                
                 <!--HYPERLINK-->
-                <a class="btn border border-primary" href="barangay_volunteer_directory.php" role="button">
+                <a class="btn border border-primary" href="/barangay_volunteer_directory" role="button">
                     <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                         <div class="image-container">
                             <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
@@ -59,7 +58,6 @@
 
                         <div class="parish-name text-center">
                             <h4>DISTRICT 1</h4>
-                            <p>Sacred Heart of Jesus Parish</p>
                         </div>
                     </div>
 
