@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/coordinator_sidebar.php');
+    include('includes/coordinator_sidebar.php');
     ?>
 
 
@@ -32,32 +32,28 @@
     <main class="container-fluid p-5">
 
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-            <h4>BARANGAY VOLUNTEER DIRECTORY</h4>
+            <h4><?php echo strtoupper($pollingplace); ?> VOLUNTEER DIRECTORY</h4>
         </div>
-
 
         <div class="mt-3">
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="mb-5" style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb" id="breadcrumbList">
                     <li class="breadcrumb-item">
-                        <a href="coordinator_volunteer_management.php">Volunteer Management</a>
+                        <a href="/coordinator_volunteer_management">Volunteer Management</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="barangay_volunteer_directory.php">List of Barangay</a>
+                    <a href="/barangay_volunteer_directory<?php echo $districturl; ?>">List of Barangay</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="polling_area.php">Polling Area</a>
+                        <a href="/polling_area<?php echo $barangayurl; ?>">Polling Area</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Name of School</li>
                 </ol>
             </nav>
 
             <!-- Main Content -->
-
-
             <div class="row mb-3">
-
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
@@ -139,7 +135,7 @@
                                 <div class="col">
                                     <div class="d-flex flex-column text-center">
                                         <h5 class="text-primary">0</h5>
-                                        <p>Total Volunteers</p>
+                                        <p><?php echo $listofvolunteers['volunteer_count']; ?></p>
                                     </div>
                                 </div>
                                 <div class="col">
