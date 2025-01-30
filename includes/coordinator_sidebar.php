@@ -48,8 +48,8 @@
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
-                <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                <li class="sidebar-item"> 
+                    <a href="/coordinator_inquiries" class="nav-link">
                     <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 

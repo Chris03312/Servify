@@ -21,6 +21,7 @@ require_once __DIR__ . '/../controllers/ApprovedSubmissionsController.php';
 require_once __DIR__ . '/../controllers/CancelledSubmissionsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAttendanceTrackingController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAchievementsController.php';
+require_once __DIR__ . '/../controllers/CoordinatorInquiryController.php';
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -86,6 +87,7 @@ $router->add('/approved_submissions', [ApprovedSubmissionsController::class, 'Sh
 $router->add('/cancelled_submissions', [CancelledSubmissionsController::class, 'ShowCancelledSubmissions']);
 $router->add('/coordinator_attendance_tracking', [CoordinatorAttendanceTrackingController::class, 'ShowCoordinatorAttendanceTracking']);
 $router->add('/coordinator_achievements', [CoordinatorAchievementsController::class, 'ShowCoordinatorAchievements']);
+$router->add('/coordinator_inquiries', [CoordinatorInquiryController::class, 'ShowCoordinatorInquiry']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
