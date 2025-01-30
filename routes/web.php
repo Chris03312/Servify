@@ -16,6 +16,9 @@ require_once __DIR__ . '/../controllers/ListOFVolunteerController.php';
 require_once __DIR__ . '/../controllers/ViewVolunteerProfile.php';
 require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
 require_once __DIR__ . '/../controllers/PendingSubmissionsController.php';
+require_once __DIR__ . '/../controllers/UnderReviewSubmissionsController.php';
+require_once __DIR__ . '/../controllers/ApprovedSubmissionsController.php';
+require_once __DIR__ . '/../controllers/CancelledSubmissionsController.php';
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -76,6 +79,9 @@ $router->add('/list_of_volunteer', [ListOfVolunteerController::class, 'ShowListO
 $router->add('/view_volunteer_profile', [ViewVolunteerProfile::class, 'ShowVolunteerProfile']);
 $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNewVolunteer']);
 $router->add('/pending_submissions', [PendingSubmissionsController::class, 'ShowPendingSubmissions']);
+$router->add('/under_review_submissions', [UnderReviewSubmissionsController::class, 'ShowUnderReviewSubmissions']);
+$router->add('/approved_submissions', [ApprovedSubmissionsController::class, 'ShowApprovedSubmissions']);
+$router->add('/cancelled_submissions', [CancelledSubmissionsController::class, 'ShowCancelledSubmissions']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordinator | Pending Submissions</title>
+    <title>Coordinator | Under Review Submissions</title>
     <link rel="stylesheet" href="../css/coordinator_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -38,7 +38,7 @@
 
         <div class="row align-items-center mb-5">
             <div class="col-md-4">
-                <h4>Pending Submissions</h4>
+                <h4>Under Review Submissions</h4>
             </div>
 
             <div class="col-md-8">
@@ -180,10 +180,10 @@
 
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/pending_submissions">Pending <small>(10)</small></a>
+                <a class="nav-link px-3" href="/pending_submissions">Pending <small>(10)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/under_review_submissions">Under Review <small>(10)</small></a>
+                <a class="nav-link active px-3" href="/under_review_submissions">Under Review <small>(10)</small></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link px-3" href="/approved_submissions">Approved/ Completed <small>(10)</small></a>
@@ -213,7 +213,7 @@
                         <td scope="row">January 1, 2025</td>
                         <td>New Volunteer</td>
                         <td>Caloocan District 1</td>
-                        <td>Pending</td>
+                        <td>Under Review</td>
                         <td>
                             <div class="d-none d-md-flex flex-column">
                                 <button type="button" class="btn btn-primary mb-2">Review</button>
@@ -238,7 +238,7 @@
                         <td scope="row">January 18, 2022</td>
                         <td>Renewal</td>
                         <td>Vicmar M. Guzman</td>
-                        <td>Pending</td>
+                        <td>Under Review</td>
                         <td>
                             <div class="d-none d-md-flex flex-column">
                                 <button type="button" class="btn btn-primary mb-2">Review</button>
