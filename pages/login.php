@@ -49,24 +49,30 @@
                             <span class="text-muted">Glad to see you again</span>
                             <span class="text-muted">Login to your account below.</span>
                         </div>
-                    </div>
-
-                    <form action="/login/submit" method="POST" class="row mt-5">
+                    </div>  
+                    <form id="loginForm" action="/login/submit" method="POST" class="row mt-5">
                    <div class="mb-3">
+                                
+                   <div class="validation text-danger text-center"></div>
+                   <script src="../js/login.js"></script>
+                    
+                    <!-- Input fields -->
+                   <div class="pt-3"> </div>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                     </div>
                     <div class="">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                     </div>
-                    <a href="#" class="mb-3 text-decoration-none">Forgot Password</a>
-                    <div>
-                        <input type="checkbox" name="remember_me" id="remember_me">
-                        <label for="remember_me">Remember Me</label>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="ms-1">
+                            <input type="checkbox" name="remember_me" id="remember_me">
+                            <label for="remember_me">Remember me</label>
+                        </div>
+                            <a href="#" class="text-decoration-none text-end pe-1">Forgot Password</a>
                     </div>
-
-                    <div class="mb-3 text-center">
-                        <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
-                    </div>
+                        <div class="mb-3 text-center">
+                            <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
+                        </div>
                    </form>
 
                    <div class="mb-3 text-center form">
