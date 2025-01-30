@@ -44,7 +44,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
