@@ -39,7 +39,7 @@
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_attendance_tracking" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
