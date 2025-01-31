@@ -74,7 +74,7 @@
 
                                 <div class="col-auto">
                                     <input type="radio" class="btn-check" name="experienceAsVolunteer" id="thinking-volunteer" autocomplete="off">
-                                    <label class="btn btn-outline-primary border-0 px-4" for="thinking-volunteer"><i class="bi bi-emoji-sunglasses fs-3"></i><br>Thinking</label>
+                                    <label class="btn btn-outline-primary border-0 px-4" for="thinking-volunteer"><i class="bi bi-question-circle fs-3"></i><br>Thinking</label>
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
 
                                 <div class="col-auto">
                                     <input type="radio" class="btn-check" name="experienceOnSystem" id="thinking-system" autocomplete="off">
-                                    <label class="btn btn-outline-primary border-0 px-4" for="thinking-system"><i class="bi bi-emoji-sunglasses fs-3"></i><br>Thinking</label>
+                                    <label class="btn btn-outline-primary border-0 px-4" for="thinking-system"><i class="bi bi-question-circle fs-3"></i><br>Thinking</label>
                                 </div>
                             </div>
 
