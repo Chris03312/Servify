@@ -97,7 +97,7 @@
                             <!--REPLY-->
                             <div class="my-3">
                                 <label for="reply" class="form-label"><strong>Reply:</strong></label>
-                                <textarea class="form-control" id="reply" rows="5" placeholder="Type here..." required></textarea>
+                                <textarea class="form-control" id="reply" rows="5" placeholder="Type here..." required style="resize: none;"></textarea>
                             </div>
                     </div>
                     <div class="modal-footer">
