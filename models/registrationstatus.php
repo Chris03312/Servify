@@ -43,7 +43,7 @@ class Registrationstatus {
                 } elseif ($status === 'Orientation and Training') {
                     $progressPercentage = 70;
                 } elseif ($status === 'Registered volunteer') {
-                    $progressPercentage = 100;
+                    $progressPercentage = 90;
                 }
     
                 // Add progress percentage to the returned data

@@ -58,7 +58,7 @@ $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationContro
 $router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationController::class, 'RenewalApplication']);
 $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'VolunteerAttendances']);
 
-$router->add('/announcements', [AnnouncementsController::class, 'Announcements']);
+$router->add('/announcements', [AnnouncementsController::class, 'ShowAnnouncements']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 
 $router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'ShowCoordinatorDashboard']);

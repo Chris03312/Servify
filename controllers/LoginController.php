@@ -30,7 +30,7 @@ class LoginController {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
                 if ($user['STATUS'] !== 'ACTIVE') {
-                    echo json_encode(['error' => 'Your account is not active. Please contact support.']);
+                    echo json_encode(['error' => 'Your account is seems inactive. Please contact support.']);
                     return;
                 }
     

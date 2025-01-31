@@ -137,39 +137,54 @@ class CoordinatorDashboard {
     }
     
 
- public static function chartsData() {
-    try {
-        $db = Database::getConnection();
-
-        // SQL query to count volunteers by polling place
-        $query = '
-            SELECT 
-                p.polling_place, 
-                COUNT(v.volunteers_id) AS volunteers
-            FROM 
-                VOLUNTEERS_TBL AS v
-            INNER JOIN 
-                PRECINCT_TABLE AS p
-            ON 
-                v.assigned_polling_place = p.polling_place
-            GROUP BY 
-                p.polling_place
-        ';
-
-        // Prepare and execute the query
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-
-        // Fetch the results as an associative array
-        $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $chartsData;
-    } catch (PDOException $e) {
-        // Log the error and return an empty array
-        error_log('Error in getting chart data: ' . $e->getMessage());
-        return [];
+    public static function chartsData() {
+        try {
+            $db = Database::getConnection();
+    
+            // SQL query to count volunteers by polling place
+            $query = '
+                SELECT 
+                    p.polling_place, 
+                    COUNT(DISTINCT v.volunteers_id) AS registered_volunteers, -- Ensures unique volunteers
+                    p.district,
+                    v.city,
+                    v.barangay,
+                    v.parish
+                FROM 
+                    VOLUNTEERS_TBL AS v
+                INNER JOIN 
+                    (SELECT DISTINCT polling_place, district FROM PRECINCT_TABLE) AS p
+                ON 
+                    v.assigned_polling_place = p.polling_place
+                GROUP BY 
+                    p.polling_place, p.district, v.city, v.barangay, v.parish
+            ';
+    
+            // Prepare and execute the query
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+    
+            // Fetch the results as an associative array
+            $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $chartsData;
+        } catch (PDOException $e) {
+            // Log the error and return an empty array
+            error_log('Error in getting chart data: ' . $e->getMessage());
+            return [];
+        }
     }
-}
+    
 
+    public static function coordinatorInfo() {
+        try {
+            $db = Database::getConnection();
+            $email = $_SESSION['email'];
+
+            $stmt = $db->prepare('SELECT PARISH FROM PROFILE');
+        }catch (PDOException $e) {
+            error_log('Error geting coordinator info'. $e->getMessage());
+        }
+    }
 
 }
