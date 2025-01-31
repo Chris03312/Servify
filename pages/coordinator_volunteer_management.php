@@ -47,18 +47,16 @@
         <!--PARISH-->
         <div class="row mb-3">
 
-        <?php if($districtLinks): ?>
-            <?php foreach($districtLinks as $district): ?>
             <div class="col-md-4 mb-3">
                 <!--HYPERLINK-->
-                <a class="btn border border-primary" href="<?php echo $district['link']; ?>" role="button">
+                <a class="btn border border-primary" href="" role="button">
                 <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                         <div class="image-container">
                             <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                         </div>
 
                         <div class="parish-name text-center">
-                            <h4><?php echo  $district['name']; ?></h4>
+                            <h4></h4>
                         </div>
                     </div>
                     <div class="row mt-4 justify-content-center">
@@ -83,12 +81,11 @@
                     </div>
                 </a>
             </div>
-            <?php endforeach ?>
-            <?php else: ?>
+           
                 <div class="parish-name text-center">
                     <h4> No districts</h4>
                 </div>
-            <?php endif; ?>
+
         </div>
 
 

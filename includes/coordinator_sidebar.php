@@ -39,22 +39,22 @@
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_attendance_tracking" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
-                <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                <li class="sidebar-item"> 
+                    <a href="/coordinator_inquiries" class="nav-link">
                     <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_feedback" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
                 
