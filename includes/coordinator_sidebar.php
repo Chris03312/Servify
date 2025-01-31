@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_feedback" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
                 
