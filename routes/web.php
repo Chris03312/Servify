@@ -23,6 +23,7 @@ require_once __DIR__ . '/../controllers/CoordinatorAttendanceTrackingController.
 require_once __DIR__ . '/../controllers/CoordinatorAchievementsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorInquiryController.php';
 require_once __DIR__ . '/../controllers/CoordinatorFeedbackController.php';
+require_once __DIR__ . '/../controllers/ReportsController.php';
 
 
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
@@ -90,6 +91,7 @@ $router->add('/coordinator_attendance_tracking', [CoordinatorAttendanceTrackingC
 $router->add('/coordinator_achievements', [CoordinatorAchievementsController::class, 'ShowCoordinatorAchievements']);
 $router->add('/coordinator_inquiries', [CoordinatorInquiryController::class, 'ShowCoordinatorInquiry']);
 $router->add('/coordinator_feedback', [CoordinatorFeedbackController::class, 'ShowCoordinatorFeedback']);
+$router->add('/reports', [ReportsController::class, 'ShowReports']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

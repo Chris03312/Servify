@@ -59,7 +59,7 @@
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link"><i class="fa-solid fa-file-zipper me-2"></i>Archive</a>
+                    <a href="/reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
                 
             </ul>
