@@ -222,7 +222,7 @@
         <section class="mb-3">
             <div class="row">
                 <!--AGE GROUPS-->
-                <div class="col-lg-4 mb-3">
+                <div class="col-sm-12 col-md-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="mb-3">Age Groups</h5>
@@ -263,7 +263,7 @@
                 </div>
 
                 <!--GRAPH-->
-                <div class="col-lg-5 mb-3">
+                <div class="col-sm-12 col-md-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="mb-3">Distribution of volunteers per precinct</h5>
@@ -273,7 +273,7 @@
                 </div>
 
                 <!--ATTENDANCE SUMMARY-->
-                <div class="col-lg-3 mb-3">
+                <div class="col-sm-12 col-md-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                         <h5 class="mb-3">Attendance Summary</h5>
