@@ -7,3 +7,5 @@ class CoordinatorAttendanceTrackingController {
         view('coordinator_attendance_tracking');
     }
 }
+
+?>
