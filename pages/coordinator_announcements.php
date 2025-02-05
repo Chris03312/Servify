@@ -1,3 +1,15 @@
+<?php
+// Fetch announcements from database
+try {
+    $db = Database::getConnection();
+    $stmt = $db->prepare("SELECT announcement_id, announcement_recipients, announcement_title, announcement_content, created_at FROM announcements ORDER BY created_at DESC");
+    $stmt->execute();
+    $announcements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    echo "<div class='alert alert-danger'>Error fetching announcements: " . $e->getMessage() . "</div>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +37,8 @@
 
 <style>
     #editor-container,
-    #edit-editor-container {
+    #edit-editor-container,
+    .edit-editor-container {
         height: 200px;
     }
 </style>
@@ -38,12 +51,12 @@
 
 
     <!--MAIN CONTENT-->
-    <main class="container p-5">
+    <main class="container py-2 p-md-5">
 
 
         <div class="d-flex flex-row justify-content-between align-items-center mb-5">
             <h4>Announcements</h4>
-            <button type="button" class="btn border-dark btn-light px-4" data-bs-toggle="modal" data-bs-target="#createAnnouncementModal">Create Announcement</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#createAnnouncementModal"><i class="bi bi-plus me-2"></i>Create Announcement</button>
 
             <!--MODAL - CREATE ANNOUNCEMENT-->
             <div class="modal fade" id="createAnnouncementModal" tabindex="-1" aria-labelledby="createAnnouncementModalLabel" aria-hidden="true">
@@ -56,27 +69,28 @@
                             <!--FORM-->
                             <div class="container mt-4">
                                 <p class="text-muted">Fill out this form below to create an announcement.</p>
-                                <form id="announcementForm" action="" method="POST">
+                                <form id="announcementForm" action="/coordinator_announcements/submit" method="POST">
                                     <div class="mb-3">
-                                        <select name="recepients" id="recepients" class="form-select" required>
-                                            <option value="" selected disabled>Select Recepients</option>
-                                            <option value="">...</option>
-                                            <option value="">...</option>
+                                        <select name="announcement_recipients" id="announcement_recipients" class="form-select" required>
+                                            <option value="" selected disabled>Select Recipients</option>
+                                            <option value="Volunteer">Volunteer</option>
+                                            <option value="Coordinator">Coordinator</option>
+                                            <option value="All">All</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Announcement Title" required>
+                                        <input type="text" class="form-control" id="announcement_title" name="announcement_title" placeholder="Announcement Title" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <div id="editor-container"></div>
                                         <!-- Hidden input to store the editor content -->
-                                        <input type="hidden" name="announcement_body" id="announcement_body">
+                                        <input type="hidden" name="announcement_content" id="announcement_content">
                                     </div>
 
                                     <div class="modal-footer justify-content-end gap-3">
                                         <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary px-5">Post</button>
+                                        <button type="submit" name="post-announcement-btn" class="btn btn-primary px-5">Post</button>
                                     </div>
 
                                 </form>
@@ -89,183 +103,214 @@
             </div>
         </div>
 
+        <?php
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
+            unset($_SESSION['success_message']);
+        }
+        ?>
 
 
-        <div class="card mb-2">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-start">
-                    <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-3">
-                        <!-- PROFILE PIC, NAME AND DATE POSTED -->
-                        <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                        <div class="d-flex flex-column">
-                            <span><strong>Vicmar M. Guzman</strong></span>
-                            <div class="d-flex justify-content-center align-items-center gap-3">
-                                <small class="text-muted">21 mins. ago</small>
-                                <small class="bg-primary rounded py-1 px-2 text-light">For volunteers only</small>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="dropdown">
-                        <button class="btn" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnnouncementModal">Edit</button></li>
-                            <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnnouncementModal">Delete</button></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- ANNOUNCEMENT TEXT -->
-                <p>Assignment #1</p>
-
-                <!-- COMMENT BUTTON -->
-                <div>
-                    <button type="button" class="btn btn-sm see-comment-btn border-0">See comment</button>
-                </div>
-
-                <!-- COMMENT SECTION -->
-                <div class="comment-section border p-3 rounded mt-2" style="display: none;">
-                    <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                        <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                        <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                        <div class="d-flex flex-column">
-                            <div>
-                                <span><strong>Vicmar M. Guzman</strong></span>
-                                <small class="text-muted">21 mins. ago</small>
-                            </div>
-                            <div>
-                                <p>Assignment agad hayup</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                        <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                        <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                        <div class="d-flex flex-column">
-                            <div>
-                                <span><strong>Vicmar M. Guzman</strong></span>
-                                <small class="text-muted">25 mins. ago</small>
-                            </div>
-                            <div>
-                                <p>AYAAAAWW KO NAAAAAAA</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- COMMENT BOX -->
-                    <form action="">
-                        <div class="d-flex flex-row justify-content-center align-items-center gap-1">
-                            <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                            <input type="text" class="form-control" name="comment" id="comment" placeholder="Add comment..." required>
-                            <button type="submit" class="btn border-0" name="comment-btn"><i class="bi bi-send send-icon"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!--MODAL - DELETE ANNOUNCEMENT CONFIRMATION-->
-        <div class="modal fade" id="deleteAnnouncementModal" tabindex="-1" aria-labelledby="deleteAnnouncementModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary"></div>
-                    <div class="modal-body">
-
-                        <div class="text-center">
-                            <img src="../img/icons8-announcement-90.png" alt="">
-
-                            <h5 class="text-center">Do you want to delete this announcement?</h5>
-                        </div>
-
-                        <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
-                            <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger px-5" data-bs-toggle="modal" data-bs-target="#announcementDeletedModal">Delete</button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!--MODAL - ANNOUNCEMENT DELETED SUCCESSFULLY-->
-        <div class="modal fade" id="announcementDeletedModal" tabindex="-1" aria-labelledby="announcementDeletedModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary"></div>
-                    <div class="modal-body">
-
-                        <div class="text-center">
-                            <img src="../img/icons8-announcement-90.png" alt="">
-
-                            <h5 class="text-center">Your announcement has been successfully deleted.</h5>
-                        </div>
-
-                        <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
-                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!--MODAL - EDIT ANNOUNCEMENT-->
-        <div class="modal fade" id="editAnnouncementModal" tabindex="-1" aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary"></div>
-                    <div class="modal-body">
-                        <h4 class="text-center text-primary">Edit Announcement</h4>
-
-                        <!--EDIT FORM-->
-                        <div class="container mt-4">
-                            <p class="text-muted">Edit this announcement for clarity and accuracy.</p>
-                            <form id="editAnnouncementForm" action="" method="POST">
-                                <div class="mb-3">
-                                    <select name="recepients" id="editRecepients" class="form-select" required>
-                                        <option value="" selected disabled>Select Recepients</option>
-                                        <option value="">...</option>
-                                        <option value="">...</option>
-                                    </select>
+        <!-- ANNOUNCEMENT CONTAINER -->
+        <?php if (!empty($announcements)): ?>
+            <?php foreach ($announcements as $announcement): ?>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-3">
+                                <!-- PROFILE PIC, NAME AND DATE POSTED -->
+                                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                                <div class="d-flex flex-column">
+                                    <span><strong>Vicmar M. Guzman</strong></span><!--NAME OF AUTHOR-->
+                                    <div class="d-flex justify-content-center align-items-center gap-3">
+                                        <small class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
+                                        <small class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="editTitle"
-                                        name="title"
-                                        placeholder="Announcement Title"
-                                        required />
-                                </div>
+                            </div>
 
-                                <div class="mb-3">
-                                    <div id="edit-editor-container"></div>
-                                    <!-- Hidden input to store the editor content -->
-                                    <input type="hidden" name="edit_announcement_body" id="edit_announcement_body">
-                                </div>
+                            <div class="dropdown">
+                                <button class="btn" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnnouncementModal<?= ($announcement['announcement_id']) ?>">Edit</button></li>
+                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>">Delete</button></li>
+                                </ul>
+                            </div>
+                        </div>
 
-                                <div class="modal-footer justify-content-end gap-3">
-                                    <button
-                                        type="button"
-                                        class="btn btn-outline-secondary px-4"
-                                        data-bs-dismiss="modal">
-                                        Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-primary px-5">Save</button>
+                        <!-- ANNOUNCEMENT CONTENT -->
+                        <h4><?= htmlspecialchars($announcement['announcement_title']) ?></h4>
+                        <span><?php echo html_entity_decode($announcement['announcement_content']); ?></span>
+
+
+
+
+                        <!-- COMMENT BUTTON -->
+                        <div>
+                            <button type="button" class="btn btn-sm see-comment-btn border-0">See comment</button>
+                        </div>
+
+                        <!-- COMMENT SECTION -->
+                        <div class="comment-section border p-3 rounded mt-2" style="display: none;">
+                            <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
+                                <!-- PROFILE PIC, NAME AND DATE COMMENT -->
+                                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        <span><strong>Vicmar M. Guzman</strong></span>
+                                        <small class="text-muted">21 mins. ago</small>
+                                    </div>
+                                    <div>
+                                        <p>Assignment agad hayup</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
+                                <!-- PROFILE PIC, NAME AND DATE COMMENT -->
+                                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        <span><strong>Vicmar M. Guzman</strong></span>
+                                        <small class="text-muted">25 mins. ago</small>
+                                    </div>
+                                    <div>
+                                        <p>AYAAAAWW KO NAAAAAAA</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- COMMENT BOX -->
+                            <form action="">
+                                <div class="d-flex flex-row justify-content-center align-items-center gap-1">
+                                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                                    <input type="text" class="form-control" name="comment" id="comment" placeholder="Add comment..." required>
+                                    <button type="submit" class="btn border-0" name="comment-btn"><i class="bi bi-send send-icon"></i></button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="text-muted">No announcements available.</p>
+        <?php endif; ?>
+
+
+
+        <!--MODAL - DELETE ANNOUNCEMENT CONFIRMATION-->
+        <?php if (!empty($announcements)): ?>
+            <?php foreach ($announcements as $announcement): ?>
+
+                <div class="modal fade" id="deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>" tabindex="-1" aria-labelledby="deleteAnnouncementModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary"></div>
+                            <div class="modal-body">
+
+                                <div class="text-center">
+                                    <img src="../img/icons8-announcement-90.png" alt="">
+
+                                    <h5 class="text-center">Do you want to delete this announcement?</h5>
+                                </div>
+
+                                <form action="/coordinator_announcements/delete" method="POST">
+                                    <input type="hidden" name="announcement_id" value="<?= $announcement['announcement_id']; ?>" />
+                                    <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
+                                        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger px-5" name="del-announcement-btn">Delete</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+
+        <!--MODAL - ANNOUNCEMENT DELETED SUCCESSFULLY-->
+        <?php if (!empty($announcements)): ?>
+            <?php foreach ($announcements as $announcement): ?>
+
+                <div class="modal fade" id="announcementDeletedModal<?= ($announcement['announcement_id']); ?>" tabindex="-1" aria-labelledby="announcementDeletedModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary"></div>
+                            <div class="modal-body">
+
+                                <div class="text-center">
+                                    <img src="../img/icons8-announcement-90.png" alt="">
+
+                                    <h5 class="text-center">Your announcement has been successfully deleted.</h5>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
+                                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+
+        <!--MODAL - EDIT ANNOUNCEMENT-->
+        <?php if (!empty($announcements)): ?>
+            <?php foreach ($announcements as $announcement): ?>
+                <div class="modal fade" id="editAnnouncementModal<?= $announcement['announcement_id'] ?>" tabindex="-1" aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary"></div>
+                            <div class="modal-body">
+                                <h4 class="text-center text-primary">Edit Announcement</h4>
+
+                                <!--EDIT FORM-->
+                                <div class="container mt-4">
+                                    <p class="text-muted">Edit this announcement for clarity and accuracy.</p>
+                                    <form id="editAnnouncementForm<?= $announcement['announcement_id'] ?>" action="/coordinator_announcements/update" method="POST">
+                                        <!-- Hidden input for announcement ID -->
+                                        <input type="hidden" name="announcement_id" value="<?= $announcement['announcement_id'] ?>">
+
+                                        <div class="mb-3">
+                                            <select name="edit_announcement_recipients" id="edit_announcement_recipients" class="form-select" required>
+                                                <option value="" selected disabled>Select Recipients</option>
+                                                <option value="Volunteer" <?= $announcement['announcement_recipients'] === 'Volunteer' ? 'selected' : '' ?>>Volunteer</option>
+                                                <option value="Coordinator" <?= $announcement['announcement_recipients'] === 'Coordinator' ? 'selected' : '' ?>>Coordinator</option>
+                                                <option value="All" <?= $announcement['announcement_recipients'] === 'All' ? 'selected' : '' ?>>All</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id="edit_announcement_title" name="edit_announcement_title" placeholder="Announcement Title" value="<?= $announcement['announcement_title'] ?>" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="edit-editor-container" id="edit-editor-container-<?= $announcement['announcement_id'] ?>"></div>
+                                            <!-- Hidden input to store the editor content -->
+                                            <input type="hidden" name="edit_announcement_content"
+                                                id="edit_announcement_content-<?= $announcement['announcement_id'] ?>"
+                                                value="<?= htmlspecialchars($announcement['announcement_content']) ?>">
+                                        </div>
+                                        <div class="modal-footer justify-content-end gap-3">
+                                            <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" name="edit-announcement-btn" class="btn btn-primary px-5">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
 
     </main>
     </div>
@@ -345,55 +390,16 @@
         });
     </script>
 
+
+
+
     <!-- Include Quill.js -->
     <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     <script>
         // Initialize Quill editor
         var quill = new Quill("#editor-container", {
-            theme: "snow", // "snow" is the default theme
-            placeholder: "Enter Announcement body (255 words)",
-            modules: {
-                toolbar: [
-                    ["bold", "italic", "underline"], // Text formatting
-                    [{
-                        list: "ordered"
-                    }, {
-                        list: "bullet"
-                    }], // Lists
-                    [{
-                        align: []
-                    }], // Alignment options
-                ],
-            },
-        });
-
-        // Handle form submission
-        const form = document.getElementById("announcementForm");
-        form.onsubmit = function(event) {
-            // Get the content from the Quill editor
-            const announcementBody = document.getElementById("announcement_body");
-            const quillContent = quill.root.innerHTML.trim(); // Trim whitespace
-
-            // Validate Quill editor content
-            if (
-                quillContent === "" || // Empty content
-                quillContent === "<p><br></p>" // Quill's representation of an empty editor
-            ) {
-                alert("Announcement body cannot be empty."); // Display an error message
-                event.preventDefault(); // Prevent form submission
-                return;
-            }
-
-            // Set the value of the hidden input for form submission
-            announcementBody.value = quillContent;
-        };
-    </script>
-
-    <script>
-        // Initialize Quill for the edit announcement form
-        var editQuill = new Quill("#edit-editor-container", {
             theme: "snow",
-            placeholder: "Edit Announcement body (255 words)",
+            placeholder: "Write your announcement here...",
             modules: {
                 toolbar: [
                     ["bold", "italic", "underline"],
@@ -409,18 +415,97 @@
             },
         });
 
-        // Handle submission for the edit announcement form
-        const editForm = document.getElementById("editAnnouncementForm");
-        editForm.onsubmit = function(event) {
-            const announcementBody = document.getElementById("edit_announcement_body");
-            const quillContent = editQuill.root.innerHTML.trim();
-            if (quillContent === "" || quillContent === "<p><br></p>") {
-                alert("Announcement body cannot be empty.");
-                event.preventDefault();
+        // Handle form submission
+        document.getElementById("announcementForm").addEventListener("submit", function(event) {
+            // Get the hidden input and Quill editor content
+            const announcementBody = document.getElementById("announcement_content");
+            const quillContent = quill.root.innerHTML.trim(); // Get content and trim whitespace
+
+            // Validate Quill editor content
+            if (!quill.getText().trim().length) { // Check if Quill text content is empty
+                alert("Announcement body cannot be empty."); // Show error message
+                event.preventDefault(); // Prevent form submission
                 return;
             }
+
+            // Set the value of the hidden input field to Quill content
             announcementBody.value = quillContent;
-        };
+        });
+    </script>
+
+
+
+
+    <script>
+        // Initialize Quill for each edit announcement form
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".edit-editor-container").forEach(function(editorContainer) {
+                let announcementId = editorContainer.id.replace("edit-editor-container-", ""); // Extract ID
+
+                let quill = new Quill("#edit-editor-container-" + announcementId, {
+                    theme: "snow",
+                    placeholder: "Edit Announcement body (255 words)",
+                    modules: {
+                        toolbar: [
+                            ["bold", "italic", "underline"],
+                            [{
+                                list: "ordered"
+                            }, {
+                                list: "bullet"
+                            }],
+                            [{
+                                align: []
+                            }],
+                        ],
+                    },
+                });
+
+                // Fetch the hidden input and set Quill's content
+                let hiddenInput = document.getElementById("edit_announcement_content-" + announcementId);
+                quill.root.innerHTML = hiddenInput.value; // Load stored content
+
+                // Fetch other inputs
+                let recipientSelect = document.getElementById("edit_announcement_recipients");
+                let titleInput = document.getElementById("edit_announcement_title");
+                let saveButton = document.querySelector(`#editAnnouncementForm${announcementId} button[name='edit-announcement-btn']`);
+
+                // Store initial values
+                const initialValues = {
+                    recipients: recipientSelect.value,
+                    title: titleInput.value,
+                    content: hiddenInput.value.trim(),
+                };
+
+                saveButton.disabled = true; // Disable save button initially
+
+                function checkChanges() {
+                    const hasChanged =
+                        recipientSelect.value !== initialValues.recipients ||
+                        titleInput.value !== initialValues.title ||
+                        quill.root.innerHTML.trim() !== initialValues.content;
+
+                    saveButton.disabled = !hasChanged;
+                } 
+
+                // Update hidden input on Quill text change
+                quill.on("text-change", function() {
+                    hiddenInput.value = quill.root.innerHTML;
+                    checkChanges();
+                });
+
+                // Detect changes in other input fields
+                recipientSelect.addEventListener("change", checkChanges);
+                titleInput.addEventListener("input", checkChanges);
+
+                // Prevent submission if no changes
+                document.getElementById("editAnnouncementForm" + announcementId).addEventListener("submit", function(event) {
+                    if (!quill.getText().trim().length) {
+                        alert("Announcement body cannot be empty.");
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
     </script>
 
 

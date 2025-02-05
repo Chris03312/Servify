@@ -83,7 +83,7 @@ a.nav-link,
     color: #ffffff !important;
     border-radius: 5px;
 }
-
+ 
 .nav-link[aria-current="page"]:hover,
 .nav-link:hover {
     background-color: blue;
@@ -91,7 +91,7 @@ a.nav-link,
     border-radius: 5px;
 }
 
-li {
+.sidebar-item {
     list-style-type: none;
 }
 

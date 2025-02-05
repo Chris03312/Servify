@@ -82,6 +82,9 @@ $router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsControl
 $router->add('/coordinator_profile', [CoordinatorProfileController::class, 'ShowConfirmProfile']);
 $router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
+$router->add('/coordinator_announcements/submit', [CoordinatorAnnouncementsController::class, 'ShowCreateAnnouncements']);
+$router->add('/coordinator_announcements/delete', [CoordinatorAnnouncementsController::class, 'ShowDeleteAnnouncements']);
+$router->add('/coordinator_announcements/update', [CoordinatorAnnouncementsController::class, 'ShowUpdateAnnouncements']);
 $router->add('/coordinator_volunteer_management', [CoordinatorVolunteerManagementController::class, 'ShowVolunteerManagement']);
 $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryController::class, 'ShowBarangayDirectory']);
 $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea']);
