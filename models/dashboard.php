@@ -129,7 +129,7 @@ class Dashboard {
     
             return $timelines; // Return the combined array with the year included
         } catch (PDOException $e) {
-            error_log(message: 'Timeline Error: ' . $e->getMessage());
+            error_log( 'Timeline Error: ' . $e->getMessage());
             return []; // Return an empty array in case of error
         }
     }

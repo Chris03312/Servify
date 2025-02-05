@@ -15,6 +15,11 @@ require_once __DIR__ . '/../controllers/SignUpController.php';
 require_once __DIR__ . '/../controllers/LogoutController.php';
 // require_once __DIR__ . '/../controllers/DashboardController.php';
 // require_once __DIR__ . '/../controllers/AuthController.php';
+require_once __DIR__ . '/../controllers/ContactUsController.php';
+require_once __DIR__ . '/../controllers/AnnouncementController.php';
+require_once __DIR__ . '/../controllers/CommentController.php';
+require_once __DIR__ . '/../models/Announcement.php';
+require_once __DIR__ . '/../models/Comment.php';
 
 $router = new Router();
 
@@ -34,6 +39,12 @@ $router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'Volu
 $router->add('/volunteer_registration_status', [VolunteerRegistrationStatusController::class, 'VolunteerRegistrationStatus']);
 $router->add('/volunteer_new_application', [VolunteerNewApplicationController::class, 'VolunteerNewApplication']);
 $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
+
+$router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
+$router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);
+
+$router->add('/Announcement', [AnnouncementController::class, 'ShowAnnouncements']);
+$router->add('/Announcement/submit', [AnnouncementController::class, 'Comments']);
 
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);

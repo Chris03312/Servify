@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('../includes/volunteer_sidebar.php');
+    include(__DIR__ . '/../includes/volunteer_sidebar.php');
     ?>
 
 
@@ -32,7 +32,7 @@
     <main class="container-fluid p-3">
 
 
-        <form action="">
+        <form action="/ContactUs/submit" method="POST">
 
             <div class="text-center">
                 <img src="../img/icons8-ask-90.png" alt="Contact Logo">
