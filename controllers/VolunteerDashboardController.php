@@ -9,10 +9,8 @@ class VolunteerDashboardController {
 
     public static function VolunteerDashboard() {
 
-        LoginController::checkRememberMe();
-
         // If not logged in, redirect to login
-        if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
 
@@ -25,19 +23,22 @@ class VolunteerDashboardController {
         $userInfo = Dashboard::getinfodashboard();
         $currentDate = date('F j, Y');
         $timelines = Dashboard::MyTimeline();
+        $locations = Dashboard::mapOverview();
 
         // Render the dashboard and pass all the necessary data
         view('volunteer_dashboard', [
+            'email' => $_SESSION['email'],
             'username' => $_SESSION['username'] ?? 'Guest',
             'userInfo' => $userInfo,
-            'sidebarinfo' => $sidebarinfo,
             'activities' => $activities,
             'currentDate' => $currentDate,
+            'timelines' => $timelines,
+            'sidebarinfo' => $sidebarinfo,
+            'location' => $locations,
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            'timelines' => $timelines,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count']
         ]);

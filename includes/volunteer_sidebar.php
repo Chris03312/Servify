@@ -13,7 +13,7 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="volunteer_dashboard.php" class="nav-link">
+                    <a href="/volunteer_dashboard" class="nav-link">
                         <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
                 <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i>My Application</a>
@@ -31,16 +31,20 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="achievements.php" class="nav-link">
+                    <a href="/achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="attendance.php" class="nav-link">
+                    <a href="/volunteer_attendance" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance</a>
                 </li>
 
                 <li class="sidebar-item">
+<<<<<<< HEAD
                     <a href="/Announcement" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+=======
+                    <a href="/announcements" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+>>>>>>> dc6d1e76664ef589b8bd751dfec95468eb8cf8c9
                 </li>
                 <li class="sidebar-item">
                     <a href="/ContactUs" class="nav-link">
@@ -131,7 +135,7 @@
                         <div>
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-none d-md-flex flex-column">
                             <span><?php echo htmlspecialchars(($sidebarinfo['FIRST_NAME'] ?? " ") . ' ' . ($sidebarinfo['SURNAME'] ?? " ")); ?></span>
                             <small><?php echo htmlspecialchars(($sidebarinfo['ROLE'] ?? " ")); ?></small>
                         </div>

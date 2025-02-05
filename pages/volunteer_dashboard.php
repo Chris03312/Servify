@@ -19,6 +19,10 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
 </head>
 
 <body>
@@ -54,7 +58,7 @@
                                         <span class="text-danger fw-bold">DAYS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -63,7 +67,7 @@
                                         <span class="text-danger fw-bold">HRS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
@@ -72,7 +76,7 @@
                                         <span class="text-danger fw-bold">MNS</span>
                                     </div>
                                     <div>
-                                        <h4>:</h4>
+                                        <h4></h4>
                                     </div>
                                 </div>
                                 <div class="col-3 d-flex flex-column justify-content-center align-items-center">
@@ -151,7 +155,7 @@
                                 <h4 class="text-light">Designated at:</h4>
                             </div>
                             <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_MISSION'] ?? " "); ?></h3>
+                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_POLLING_PLACE'] ?? " "); ?></h3>
                             </div>
                         </div>
                     </div>
@@ -163,14 +167,14 @@
                         </div>
                         <div class="card-body text-center d-flex flex-column gap-2">
                             <div class="ratio ratio-16x9 mt-2">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph"
-                                    style="border:10;"
-                                    allowfullscreen=""
-                                    loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+                                <div id="map" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
                             </div>
+                            <script>
+                                var latitude = <?php echo isset($location['latitude']) && $location['latitude'] !== '' ? $location['latitude'] : 'null'; ?>;
+                                var longitude = <?php echo isset($location['longitude']) && $location['longitude'] !== '' ? $location['longitude'] : 'null'; ?>;
+                                var polling = '<?php echo htmlspecialchars($location['assigned_polling_place'] ?? ''); ?>';
+                                </script>
+                            <script src="js/leafletmap.js"></script>
                         </div>
                     </div>
                 </div>
@@ -228,7 +232,7 @@
                                             <div class="timeline-content">
                                                 <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
                                                 <p class="text-muted">
-                                                    <?php echo $timeline['ASSIGNED_MISSION'] ?? ""; ?> <!-- Display assigned mission -->
+                                                    <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?> <!-- Display assigned mission -->
                                                 </p>
                                             </div>
                                         </li>

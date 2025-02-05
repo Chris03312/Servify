@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-primary px-5">Sign in</button>
+                        <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
                     </div>
                    </form>
 

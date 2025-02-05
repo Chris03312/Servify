@@ -11,7 +11,7 @@ class Application {
 
             $db = Database::getConnection();
 
-            $stmt = $db->prepare('SELECT * FROM REGISTRATION WHERE EMAIL = :email');
+            $stmt = $db->prepare('SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email');
             $stmt->execute([':email' => $email]);
             $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

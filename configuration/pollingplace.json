@@ -1,0 +1,728 @@
+[
+    {
+        "POLLING_PLACE": "ANDRES BONIFACIO ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9732945",
+        "LATITUDE": "14.6563394",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "A. BONIFACIO ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9732945",
+        "LATITUDE": "14.6563394",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "LIBIS TALISAY ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9708882",
+        "LATITUDE": "14.6556528",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "LIBIS TALISAY ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9698574",
+        "LATITUDE": "14.6548698",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KAUNLARAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9696686",
+        "LATITUDE": "14.647104",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CALOOCAN CENTRAL ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9740851",
+        "LATITUDE": "14.6502466",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MACARIO ASISTIO HIGH SCHOOL",
+        "LONGITUDE": "120.9633904",
+        "LATITUDE": "14.6494173",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SAMPALUKAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9731702",
+        "LATITUDE": "14.6440618",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "LERMA  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9724542",
+        "LATITUDE": "14.6400341",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KASARINLAN  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9691804",
+        "LATITUDE": "14.641985",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MAYPAJO  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.97316",
+        "LATITUDE": "14.63785",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MAYPAJO HIGH SCHOOL",
+        "LONGITUDE": "120.97316",
+        "LATITUDE": "14.63785",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 39)",
+        "LONGITUDE": "120.9965951",
+        "LATITUDE": "14.5489566",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 40)",
+        "LONGITUDE": "120.982511",
+        "LATITUDE": "14.638944",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 41)",
+        "LONGITUDE": "120.982339",
+        "LATITUDE": "14.640426",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 42)",
+        "LONGITUDE": "120.980518",
+        "LATITUDE": "14.639675",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 44)",
+        "LONGITUDE": "120.980088",
+        "LATITUDE": "14.641872",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 45)",
+        "LONGITUDE": "120.979078",
+        "LATITUDE": "14.640616",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "GRACE PARK  ELEMENTARY SCHOOL (MAIN)",
+        "LONGITUDE": "120.9768867",
+        "LATITUDE": "14.6455499",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CALOOCAN HIGH SCHOOL",
+        "LONGITUDE": "120.981693",
+        "LATITUDE": "14.651281",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "GREGORIA DE JESUS  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9805885",
+        "LATITUDE": "14.6506256",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "GOMBURZA  ELEMENTARY SCHOOL (FORMERLY C. APOSTOL  ELEMENTARY S...)",
+        "LONGITUDE": "120.977703",
+        "LATITUDE": "14.657402",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SAINT GABRIEL ACADEMY",
+        "LONGITUDE": "120.981094",
+        "LATITUDE": "14.658747",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BUENA PARK UNIVERSITY HILLS",
+        "LONGITUDE": "120.976829",
+        "LATITUDE": "14.661351",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MORNING BREEZE ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.988647",
+        "LATITUDE": "14.661636",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MORNING BREEZE ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.988647",
+        "LATITUDE": "14.6616361",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MARIA CLARA HIGH SCHOOL",
+        "LONGITUDE": "120.9855359",
+        "LATITUDE": "14.6484619",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "WORLD CITI COLLEGES (FORMERLY HOLY TRINITY)",
+        "LONGITUDE": "120.991572",
+        "LATITUDE": "14.656146",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CECILIO APOSTOL  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9855153",
+        "LATITUDE": "14.6478494",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "EULOGIO RODRIGUEZ  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9951727",
+        "LATITUDE": "14.6528844",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "EULOGIO RODRIGUEZ  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9633904",
+        "LATITUDE": "14.6528844",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "PHILIPPINE CULTURAL COLLEGE",
+        "LONGITUDE": "120.9927",
+        "LATITUDE": "14.648466",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TANDANG SORA INTEGRATED SCHOOL",
+        "LONGITUDE": "120.9924336",
+        "LATITUDE": "14.6475339",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG SILANG  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.985103",
+        "LATITUDE": "14.6425545",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "C. ARELLANO  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.991364",
+        "LATITUDE": "14.644397",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SAN JOSE  ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9891225",
+        "LATITUDE": "14.6391947",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG BARRIO NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.9947976",
+        "LATITUDE": "14.6654198",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG BARRIO ELEMENTARY SCHOOL",
+        "LONGITUDE": "0120.9926708",
+        "LATITUDE": "14.6645327",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG BARRIO ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9926708",
+        "LATITUDE": "14.6645327",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 154)",
+        "LONGITUDE": "120.99996",
+        "LATITUDE": "14.665358",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY. 155)",
+        "LONGITUDE": "0",
+        "LATITUDE": "0",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "EAST BAGONG BARRIO ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0018457",
+        "LATITUDE": "14.6680257",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAESA ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0016796",
+        "LATITUDE": "14.6737152",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAESA HIGH SCHOOL",
+        "LONGITUDE": "121.0012274",
+        "LATITUDE": "14.6741115",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "STA. QUITERIA ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.010025",
+        "LATITUDE": "14.680413",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TALIPAPA HIGH SCHOOL",
+        "LONGITUDE": "121.0166702",
+        "LATITUDE": "14.6900733",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGBAGUIN ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0045289",
+        "LATITUDE": "14.7160609",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CAYBIGA ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0068842",
+        "LATITUDE": "14.7187423",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "LLANO ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0141422",
+        "LATITUDE": "14.7318171",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DEPARO ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0219922",
+        "LATITUDE": "14.7415018",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "HOLY INFANT MONTESSORI CENTER",
+        "LONGITUDE": "121.022064",
+        "LATITUDE": "14.734806",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL COMPOUND",
+        "LONGITUDE": "121.033225",
+        "LATITUDE": "14.738878",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGUMBONG ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0226837",
+        "LATITUDE": "14.7482532",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "URDUJA ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0359062",
+        "LATITUDE": "14.743721",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CONGRESS ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.032693",
+        "LATITUDE": "14.753766",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CAMARIN HIGH SCHOOL",
+        "LONGITUDE": "121.0491662",
+        "LATITUDE": "14.762051",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CAMARIN ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.043413",
+        "LATITUDE": "14.7618073",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG SILANG ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.04566",
+        "LATITUDE": "14.776553",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KALAYAAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.04566",
+        "LATITUDE": "14.776553",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KALAYAAN NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "121.04566",
+        "LATITUDE": "14.776553",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SILANGANAN ELEMENTARY SCHOOL (MAIN)",
+        "LONGITUDE": "121.04566",
+        "LATITUDE": "14.776553",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG SILANG PUBLIC HIGH SCHOOL",
+        "LONGITUDE": "121.04566",
+        "LATITUDE": "14.776553",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CIELITO ZAMORA ELEMENTARY SCHOOL",
+        "LONGITUDE": "0",
+        "LATITUDE": "0",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CIELITO ZAMORA JUNIOR HIGH SCHOOL",
+        "LONGITUDE": "0",
+        "LATITUDE": "0",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CAMARIN D ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0566",
+        "LATITUDE": "14.756424",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CALOOCAN NORTH ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.0566",
+        "LATITUDE": "14.756424",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "HORACIO DELA COSTA HIGH SCHOOL",
+        "LONGITUDE": "121.070391",
+        "LATITUDE": "14.748419",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "AMPARO ELEMENTARY. SCHOOL",
+        "LONGITUDE": "121.070391",
+        "LATITUDE": "14.748419",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL COMP.",
+        "LONGITUDE": "121.07879",
+        "LATITUDE": "14.763258",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "PANGARAP  ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.091832",
+        "LATITUDE": "14.763441",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "PANGARAP HIGH SCHOOL",
+        "LONGITUDE": "121.091333",
+        "LATITUDE": "14.76442",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL (BRGY 183)",
+        "LONGITUDE": "121.082046",
+        "LATITUDE": "14.748698",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BARANGAY HALL COMPD.",
+        "LONGITUDE": "121.082541",
+        "LATITUDE": "14.764977",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MANUEL L. QUEZON (MLQ) ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.078746",
+        "LATITUDE": "14.769387",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TALA  ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.06832",
+        "LATITUDE": "14.766402",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NHC  ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.06832",
+        "LATITUDE": "14.766402",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "A. MABINI  ELEMENTARY SCHOOL",
+        "LONGITUDE": "121.06078",
+        "LATITUDE": "14.766395",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TALA HIGH SCHOOL",
+        "LONGITUDE": "121.059003",
+        "LATITUDE": "14.771544",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "ACACIA ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9687293",
+        "LATITUDE": "14.6675089",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "AMANG RODRIGUEZ ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9492261",
+        "LATITUDE": "14.6717892",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MALABON ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.941035",
+        "LATITUDE": "14.676775",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CATMON INTEGRATED SCHOOL",
+        "LONGITUDE": "120.962203",
+        "LATITUDE": "14.664627",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "CONCEPCION ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.9496",
+        "LATITUDE": "14.667914",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DAMPALIT ELEMENTARY SCHOOL (UNIT 1)",
+        "LONGITUDE": "120.940221",
+        "LATITUDE": "14.689256",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DAMPALIT INTEGRATED SCHOOL",
+        "LONGITUDE": "120.940221",
+        "LATITUDE": "14.689256",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MALABON ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.941037",
+        "LATITUDE": "14.676785",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MALABON NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.94196",
+        "LATITUDE": "14.676946",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SANTIAGO SYJUCO MEMORIAL SCHOOL",
+        "LONGITUDE": "120.950807",
+        "LATITUDE": "14.664862",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "LONGOS ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.957195",
+        "LATITUDE": "14.655281",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NINOY AQUINO ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.957195",
+        "LATITUDE": "14.655281",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "IMELDA ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.957195",
+        "LATITUDE": "14.655281",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MAYSILO ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.960919",
+        "LATITUDE": "14.677466",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "MUZON ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.949966",
+        "LATITUDE": "14.676504",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NIUGAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.955254",
+        "LATITUDE": "14.66719",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "PANGHULO NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.954206",
+        "LATITUDE": "14.687302",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "POTRERO ELEMENTARY SCHOOL (UNIT 1)",
+        "LONGITUDE": "120.978391",
+        "LATITUDE": "14.664472",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "POTRERO ELEMENTARY SCHOOL (MAIN)",
+        "LONGITUDE": "120.978391",
+        "LATITUDE": "14.664472",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGONG LOTE ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.978391",
+        "LATITUDE": "14.664472",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DELA PAZ ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.952514",
+        "LATITUDE": "14.662087",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SANTULAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.958858",
+        "LATITUDE": "14.68545",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TA—ONG INTEGRATED SCHOOL",
+        "LONGITUDE": "120.95154",
+        "LATITUDE": "14.65732",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TA—ONG ELEMENTARY SCHOOL (UNIT 1)",
+        "LONGITUDE": "120.95154",
+        "LATITUDE": "14.65732",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TINAJEROS ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.969912",
+        "LATITUDE": "14.671345",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TINAJEROS NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.969912",
+        "LATITUDE": "14.671345",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TONSUYA ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.957558",
+        "LATITUDE": "14.663705",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TUGATOG NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.966636",
+        "LATITUDE": "14.660033",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "EPIFANIO DELOS SANTOS ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.966636",
+        "LATITUDE": "14.660033",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BAGUMBAYAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.948411",
+        "LATITUDE": "14.658333",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NORTH BAY BOULEVARD NORTH ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.950456",
+        "LATITUDE": "14.647919",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "BANGKULASI ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.952733",
+        "LATITUDE": "14.651136",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DAANGHARI ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.940657",
+        "LATITUDE": "14.665812",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NAVOTAS NATIONAL HIGH SCHOOL",
+        "LONGITUDE": "120.948437",
+        "LATITUDE": "14.657947",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KAPITBAHAYAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.957561",
+        "LATITUDE": "14.64436",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "NAVOTAS ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.943819",
+        "LATITUDE": "14.66258",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SAN RAFAEL VILLAGE ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.964536",
+        "LATITUDE": "14.636998",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "SAN ROQUE ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.938492",
+        "LATITUDE": "14.669668",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TANGOS ELEMENTARY SCHOOL - 1",
+        "LONGITUDE": "120.932337",
+        "LATITUDE": "14.674045",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TANZA ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.933618",
+        "LATITUDE": "14.678907",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "DAGAT DAGATAN ELEMENTARY SCHOOL",
+        "LONGITUDE": "120.956353",
+        "LATITUDE": "14.6508",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "KAUNLARAN HIGH SCHOOL",
+        "LONGITUDE": "120.957687",
+        "LATITUDE": "14.645677",
+        "": ""
+    },
+    {
+        "POLLING_PLACE": "TANGOS ELEMENTARY SCHOOL (MOTHER)",
+        "LONGITUDE": "120.934669",
+        "LATITUDE": "14.673748",
+        "": ""
+    }
+]

@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../configuration/Database.php';
 
 class Registrationstatus {
-    
 
     public static function registrationstatus() {
         try {
@@ -68,3 +67,4 @@ class Registrationstatus {
         }
     }
 }
+

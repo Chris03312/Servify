@@ -76,8 +76,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <?php if (isset($statusInfo['REGISTRATION_ID'])): ?>
-                            <th scope="row"><?php echo $statusInfo['REGISTRATION_ID']; ?></th>
+                        <?php if (isset($statusInfo['VPROFILE_ID'])): ?>
+                            <th scope="row"><?php echo $statusInfo['VPROFILE_ID']; ?></th>
                         <?php endif; ?>
                             <td><?php echo $statusInfo['FIRST_NAME']." ".$statusInfo['MIDDLE_NAME']." ".$statusInfo['SURNAME']; ?></td>
                             <td><?php echo $statusInfo['STATUS']; ?></td>

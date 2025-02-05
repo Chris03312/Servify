@@ -10,7 +10,7 @@ class RenewalApplicationController {
             
             $db = Database::getConnection();
 
-            $stmt = $db->prepare('SELECT STATUS FROM REGISTRATION WHERE EMAIL = :email');
+            $stmt = $db->prepare('SELECT STATUS FROM VPROFILE_TABLE WHERE EMAIL = :email');
             $stmt->execute(['email' => $email]);
             $renewal = $stmt->fetch(PDO::FETCH_ASSOC);
 

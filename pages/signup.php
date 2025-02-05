@@ -49,33 +49,64 @@
                         <div class="d-flex flex-column">
                             <span class="text-muted">Enter your details below to create your account and get started.</span>
                         </div>
+
+                        <spam class="text-muted"></spam>
                     </div>
-
-                    <form action="/signup/submit" class="row mt-5 needs-validation" novalidate method="POST" >
-
+                        
+                    <form action="/signup/submit" class="row mt-5" method="POST">
+                        <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
-                            <label for="roleInOrganization" class="form-label">Role in Organization<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="roleInOrganization" class="form-select" name="role" required>
-                                <option selected disabled value="">Select Role</option>
-                                <option value="Volunteer">Volunteer</option>
-                                <option value="Coordinator">Coordinator</option>
-                                <option value="Admin">Admin</option>
-                            </select>
+                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
+                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish" placeholder="Type to search..."  >
+                            <datalist id="parishNameOptions">
+                                <option value="St. Francis of Assisi – Sta Quiteria Parish">
+                                <option value="Birhen ng Lourdes Parish">
+                                <option value="Our Lady of Lujan Parish">
+                                <option value="Sacred Heart of Jesus Parish">
+                                <option value="St. Peter & John Parish">
+                                <option value="St. Gabriel the Archangel Parish">
+                                <option value="Shrine of Our Lady of Grace">
+                                <option value="Sagrada Familia Parish">
+                                <option value="San Jose Parish (Agudo)">
+                                <option value="San Pancracio Parish">
+                                <option value="Hearts of Jesus & Mary Parish">
+                                <option value="Immaculate of Heart & Mary Parish">
+                                <option value="Mary Help of Christians Parish">
+                                <option value="Sacred Heart of Jesus Parish (Tugatog)">
+                                <option value="St. Joseph the Workman Parish">
+                                <option value="San Roque Cathedral">
+                                <option value="Holy Trinity Quasi-Parish">
+                                <option value="Exaltation of the Holy Cross Parish">
+                                <option value="Diocesan Shrine & Parish of Immaculate Concepcion">
+                                <option value="San Antonio de Padua Parish">
+                                <option value="San Bartolome Parish">
+                                <option value="Santa Cruz Parish">
+                                <option value="Sto. Rosario Parish">
+                                <option value="San Exequiel Moreno Parish">
+                                <option value="San Ildefonso Parish">
+                                <option value="Diocesan Shrine & Parish of San Jose de Navotas">
+                                <option value="San Lorenzo Ruiz & Companion Martyrs Parish">
+                                <option value="San Roque Parish de Navotas">
+                                <option value="St. Clare of Assisi Parish">
+                                <option value="Sto. Niño de Pasion Parish">
+                                <option value="Nustra Senora delos Remedios Quasi-Parish">
+                            </datalist>
+
                             <div class="invalid-feedback">
-                                Please select a role.
+                                Please input Parish.
                             </div>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="surname" name="surname" required>
+                            <input type="text" class="form-control" id="surname" name="surname" >
                             <div class="invalid-feedback">
                                 Please input surname.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            <input type="text" class="form-control" id="firstname" name="firstname" >
                             <div class="invalid-feedback">
                                 Please input first name.
                             </div>
@@ -93,7 +124,7 @@
                         <strong class="mb-3">Birth Day</strong>
                         <div class="col-md-4 mb-3">
                             <label for="birthMonth" class="form-label">Month<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="birthMonth" class="form-select" name="birthMonth" required>
+                            <select id="birthMonth" class="form-select" name="birthMonth" >
                                 <option selected disabled value="">Select month</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -115,14 +146,14 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="birthDate" class="form-label">Day<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthDate" name="birthDate" required>
+                            <input type="text" class="form-control" id="birthDate" name="birthDate" >
                             <div class="invalid-feedback">
                                 Please input birth date.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birthYear" class="form-label">Year<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthYear" name="birthYear" required>
+                            <input type="text" class="form-control" id="birthYear" name="birthYear" >
                             <div class="invalid-feedback">
                                 Please input birth year.
                             </div>
@@ -131,9 +162,13 @@
                         <strong class="mb-3">Address</strong>
                         <div class="col-md-12 mb-3">
                             <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="city" class="form-select" name="city" required>
+                            <select id="city" class="form-select" name="city" >
                                 <option selected disabled value="">Select City</option>
-                                <option value="Quezon City">Quezon City</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
+                                        <?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">
                                 Please select City.
@@ -144,21 +179,26 @@
                             <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
                             <input type="text" class="form-control" id="street" name="street">
                         </div>
-
                         <div class="col-md-4 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="barangay" class="form-select" name="barangay" required>
+                            <select id="barangay" class="form-select" name="barangay" >
                                 <option selected disabled value="">Select Barangay</option>
-                                <option value="PPP">PPP</option>
+                                <!-- Barangay options will be populated dynamically using JavaScript -->
                             </select>
                             <div class="invalid-feedback">
                                 Please select Barangay.
                             </div>
+                            <script>
+                                // Pass the cities and barangays data to JavaScript
+                                var cities = <?php echo json_encode($cities); ?>;
+                                var barangays = <?php echo json_encode($barangays); ?>;
+                                console.log(barangays);  // Log barangays to check the data
+                            </script>
+                            <script src="js/signup.js"></script>
                         </div>
-
                         <div class="col-md-4 mb-3">
                             <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" >
                             <div class="invalid-feedback">
                                 Please input zipcode.
                             </div>
@@ -166,7 +206,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" >
                             <div class="invalid-feedback">
                                 Please input email address.
                             </div>
@@ -174,7 +214,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="username" class="form-label">Create Username<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" class="form-control" id="username" name="username" >
                             <div class="invalid-feedback">
                                 Please input username.
                             </div>
@@ -182,14 +222,14 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">Create Password<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password">
                             <div class="invalid-feedback">
                                 Please input password.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" >
                             <div class="invalid-feedback">
                                 Password did not match.
                             </div>
@@ -210,7 +250,7 @@
                                             <img src="../img/icons8-checkmark-90 (1).png" alt="">
                                             <h3 class="text-primary">SUCCESS</h3>
                                             <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
-                                            has been created.</p>
+                                                has been created.</p>
                                             <p class="text-muted">Check your email for more details.</p>
                                             <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
                                         </div>
@@ -219,11 +259,7 @@
                             </div>
                         </div>
 
-                        </form>
-
-
-
-                   
+                    </form>
 
                     <div class="mb-3 text-center">
                         <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a></p>
@@ -241,7 +277,6 @@
     </section>
 
 
-    <script src="../js/sign_up_form.js"></script>
 
 
     <!--BOOTSTRAP JS CDN LINK-->

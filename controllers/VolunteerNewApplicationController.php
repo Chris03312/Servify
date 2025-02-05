@@ -8,7 +8,7 @@ require_once __DIR__ . '/../models/Notification.php';
 class VolunteerNewApplicationController {
 
     public static function VolunteerNewApplication() {
-        if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
 
@@ -37,15 +37,15 @@ class VolunteerNewApplicationController {
             $db = Database::getConnection();
     
             // First query: Retrieve the registration ID based on the email
-            $stmt = $db->prepare("SELECT REGISTRATION_ID FROM REGISTRATION WHERE EMAIL = :email");
+            $stmt = $db->prepare("SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email");
             $stmt->execute(['email' => $email]);
     
             // Fetch the result and store the registration_id in a variable
-            $registration = $stmt->fetch(PDO::FETCH_ASSOC);
+            $vprofile = $stmt->fetch(PDO::FETCH_ASSOC);
     
-            if ($registration) {
-                $registration_id = $registration['REGISTRATION_ID']; // Store the registration_id in a variable
-                $parish = "Sto. Rosario parish";
+            if ($vprofile) {
+                $vprofile_id = $vprofile['vprofile']; // Store the registration_id in a variable
+                $parish = $vprofile['PARISH'];
                 $role = "Volunteer";
     
                 // Declare your input fields
@@ -100,7 +100,7 @@ class VolunteerNewApplicationController {
                 // Second query: Insert the registration_id and other input fields into the APPLICATION_INFO table
                 $stmt = $db->prepare("INSERT INTO APPLICATION_INFO 
                     (
-                    REGISTRATION_ID,
+                    VPROFILE_ID,
                     PRECINCT_NO, 
                     PARISH, 
                     ROLE,
@@ -129,7 +129,7 @@ class VolunteerNewApplicationController {
                     STATUS
                     ) VALUES 
                         (
-                        :registration_id, 
+                        :vprofile_id, 
                         :precinctNo,
                         :parish, 
                         :role,
@@ -159,7 +159,7 @@ class VolunteerNewApplicationController {
                         )");
     
                 $stmt->execute([
-                    ':registration_id' => $registration_id,
+                    ':vprofile_id' => $vprofile_id,
                     ':precinctNo' => $precinctNumber,
                     ':parish' => $parish,
                     ':role' => $role,
@@ -237,6 +237,41 @@ class VolunteerNewApplicationController {
                     ':previous_ppcrv_precinct' => $previous_ppcrv_precinct,
                     ':preferred_ppcrv_vol_ass' => $preferred_ppcrv_vol_ass,
                 ]);
+
+                $stmt = $db->prepare('SELECT USERNAME FROM ACCOUNTS WHERE EMAIL = :email');
+                $stmt->execute([':email' => $email]);
+                $account = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+                if ($account) {
+                    $username = $account['USERNAME'];
+                    $currentDate = date('F j, Y H:i:s');
+                    $description = 'You submitted an application form. Click here to check the status of your registration.';
+            
+                    // Insert activity into the ACTIVITES table
+                    $stmt = $db->prepare('INSERT INTO ACTIVITIES 
+                    (
+                        username, 
+                        email, 
+                        description,
+                        created_at
+                        ) VALUES 
+                         (
+                         :username, 
+                         :email, 
+                         :description,
+                         :created_at
+                         )');
+
+                    $stmt->execute([
+                        ':username' => $username,
+                        ':email' => $email,
+                        ':description' => $description,
+                        ':created_at' => $currentDate
+                    ]);
+                } else {
+                    error_log('Error: Email not found in ACCOUNTS. Activity not inserted.');
+                }
+                    
     
                 // Redirect to volunteer registration status page
                 redirect('/volunteer_registration_status');
