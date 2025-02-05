@@ -6,6 +6,7 @@ require_once __DIR__ . '/../models/Parish.php';
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
 require_once __DIR__ . '/../controllers/VolunteerRegistrationStatusController.php';
 require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
+require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
@@ -39,6 +40,7 @@ $router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'Volu
 $router->add('/volunteer_registration_status', [VolunteerRegistrationStatusController::class, 'VolunteerRegistrationStatus']);
 $router->add('/volunteer_new_application', [VolunteerNewApplicationController::class, 'VolunteerNewApplication']);
 $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
+$router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationController::class, 'RenewalApplication']);
 
 $router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
 $router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);
