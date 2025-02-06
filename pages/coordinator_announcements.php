@@ -136,8 +136,8 @@ try {
                                     <i class="bi bi-three-dots"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnnouncementModal<?= ($announcement['announcement_id']) ?>">Edit</button></li>
-                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>">Delete</button></li>
+                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnnouncementModal<?= ($announcement['announcement_id']) ?>"><small><i class="bi bi-pen me-2"></i>Edit</small></button></li>
+                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>"><small><i class="bi bi-trash me-2"></i>Delete</button></small></li>
                                 </ul>
                             </div>
                         </div>
@@ -220,8 +220,8 @@ try {
                                 <form action="/coordinator_announcements/delete" method="POST">
                                     <input type="hidden" name="announcement_id" value="<?= $announcement['announcement_id']; ?>" />
                                     <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
-                                        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-danger px-5" name="del-announcement-btn">Delete</button>
+                                        <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger" name="del-announcement-btn">Delete</button>
                                     </div>
                                 </form>
 
