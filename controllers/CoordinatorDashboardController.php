@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../models/Dashboard.php';
 require_once __DIR__ . '/../models/coordinatorDashboard.php';
+require_once __DIR__ . '/../models/coorsidebarinfo.php';
 
 
 class CoordinatorDashboardController{
@@ -23,6 +24,8 @@ class CoordinatorDashboardController{
         $activities = Dashboard::getActivityLog();
         $currentDate = date('F j, Y');
 
+        $coordinator_info = Coorsidebarinfo::sidebarinfo();
+
         view('coordinator_dashboard', [
             'email' => $_SESSION['email'],
             'username' => $_SESSION['username'],
@@ -36,7 +39,10 @@ class CoordinatorDashboardController{
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
-            'seconds' => $countdown['seconds']
+            'seconds' => $countdown['seconds'],
+            
+            'coordinator_info' => $coordinator_info
+            
         ]);
     }
 }

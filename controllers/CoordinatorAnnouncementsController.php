@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../models/coorsidebarinfo.php';
 class CoordinatorAnnouncementsController
 {
 
@@ -8,8 +8,15 @@ class CoordinatorAnnouncementsController
     public static function ShowAnnouncements()
     {
 
-        view('coordinator_announcements');
+        $coordinator_info = Coorsidebarinfo::sidebarinfo();
+
+        view('coordinator_announcements', [
+            'coordinator_info' => $coordinator_info
+        ]);
     }
+
+
+
 
 
 
@@ -23,7 +30,7 @@ class CoordinatorAnnouncementsController
             try {
                 // Connect to the database
                 $db = Database::getConnection();
-
+ 
                 // Retrieve and sanitize inputs
                 $announcement_recipients = htmlspecialchars($_POST['announcement_recipients'] ?? '');
                 $announcement_title = htmlspecialchars($_POST['announcement_title'] ?? '');

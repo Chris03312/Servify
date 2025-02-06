@@ -122,7 +122,7 @@ try {
                                 <!-- PROFILE PIC, NAME AND DATE POSTED -->
                                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                                 <div class="d-flex flex-column">
-                                    <span><strong>Vicmar M. Guzman</strong></span><!--NAME OF AUTHOR-->
+                                    <span><strong><?php echo $coordinator_info['first_name'] . ' ' . $coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
                                     <div class="d-flex justify-content-center align-items-center gap-3">
                                         <small class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
                                         <small class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
@@ -145,10 +145,6 @@ try {
                         <!-- ANNOUNCEMENT CONTENT -->
                         <h4><?= htmlspecialchars($announcement['announcement_title']) ?></h4>
                         <span><?php echo html_entity_decode($announcement['announcement_content']); ?></span>
-
-
-
-
                         <!-- COMMENT BUTTON -->
                         <div>
                             <button type="button" class="btn btn-sm see-comment-btn border-0">See comment</button>
@@ -436,6 +432,7 @@ try {
 
 
 
+    <!-- UPDATE ANNOUNCEMENT SCRIPT -->
     <script>
         // Initialize Quill for each edit announcement form
         document.addEventListener("DOMContentLoaded", function() {
@@ -464,10 +461,12 @@ try {
                 let hiddenInput = document.getElementById("edit_announcement_content-" + announcementId);
                 quill.root.innerHTML = hiddenInput.value; // Load stored content
 
-                // Fetch other inputs
-                let recipientSelect = document.getElementById("edit_announcement_recipients");
-                let titleInput = document.getElementById("edit_announcement_title");
-                let saveButton = document.querySelector(`#editAnnouncementForm${announcementId} button[name='edit-announcement-btn']`);
+                // Fetch other inputs within the specific form context
+                let form = document.getElementById("editAnnouncementForm" + announcementId);
+                let recipientSelect = form.querySelector("#edit_announcement_recipients");
+                let titleInput = form.querySelector("#edit_announcement_title");
+                let saveButton = form.querySelector("button[name='edit-announcement-btn']");
+                let cancelButton = form.querySelector("button[data-bs-dismiss='modal']");
 
                 // Store initial values
                 const initialValues = {
@@ -485,7 +484,7 @@ try {
                         quill.root.innerHTML.trim() !== initialValues.content;
 
                     saveButton.disabled = !hasChanged;
-                } 
+                }
 
                 // Update hidden input on Quill text change
                 quill.on("text-change", function() {
@@ -497,8 +496,17 @@ try {
                 recipientSelect.addEventListener("change", checkChanges);
                 titleInput.addEventListener("input", checkChanges);
 
+                // Reset form fields to initial values when cancel button is clicked
+                cancelButton.addEventListener("click", function() {
+                    recipientSelect.value = initialValues.recipients;
+                    titleInput.value = initialValues.title;
+                    quill.root.innerHTML = initialValues.content;
+                    hiddenInput.value = initialValues.content;
+                    saveButton.disabled = true; // Disable save button initially
+                });
+
                 // Prevent submission if no changes
-                document.getElementById("editAnnouncementForm" + announcementId).addEventListener("submit", function(event) {
+                form.addEventListener("submit", function(event) {
                     if (!quill.getText().trim().length) {
                         alert("Announcement body cannot be empty.");
                         event.preventDefault();
