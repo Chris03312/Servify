@@ -121,8 +121,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span>Vicmar Guzman</span>
-                            <small>Coordinator</small>
+                            <span><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></span>
+                            <small><?php echo $coordinator_info['role'] ?? NULL  ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../models/coorsidebarinfo.php';
 class CoordinatorAnnouncementsController
 {
 
@@ -8,8 +8,15 @@ class CoordinatorAnnouncementsController
     public static function ShowAnnouncements()
     {
 
-        view('coordinator_announcements');
+        $coordinator_info = Coorsidebarinfo::sidebarinfo();
+
+        view('coordinator_announcements', [
+            'coordinator_info' => $coordinator_info
+        ]);
     }
+
+
+
 
 
 

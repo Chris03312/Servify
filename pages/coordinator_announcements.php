@@ -122,7 +122,7 @@ try {
                                 <!-- PROFILE PIC, NAME AND DATE POSTED -->
                                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                                 <div class="d-flex flex-column">
-                                    <span><strong>Vicmar M. Guzman</strong></span><!--NAME OF AUTHOR-->
+                                    <span><strong><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
                                     <div class="d-flex justify-content-center align-items-center gap-3">
                                         <small class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
                                         <small class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
@@ -145,10 +145,6 @@ try {
                         <!-- ANNOUNCEMENT CONTENT -->
                         <h4><?= htmlspecialchars($announcement['announcement_title']) ?></h4>
                         <span><?php echo html_entity_decode($announcement['announcement_content']); ?></span>
-
-
-
-
                         <!-- COMMENT BUTTON -->
                         <div>
                             <button type="button" class="btn btn-sm see-comment-btn border-0">See comment</button>
