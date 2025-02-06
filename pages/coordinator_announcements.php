@@ -122,7 +122,7 @@ try {
                                 <!-- PROFILE PIC, NAME AND DATE POSTED -->
                                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                                 <div class="d-flex flex-column">
-                                    <span><strong><?php echo $coordinator_info['first_name'] . ' ' . $coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
+                                    <span><strong><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
                                     <div class="d-flex justify-content-center align-items-center gap-3">
                                         <small class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
                                         <small class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
