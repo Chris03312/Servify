@@ -25,6 +25,7 @@ require_once __DIR__ . '/../controllers/CoordinatorAttendanceTrackingController.
 require_once __DIR__ . '/../controllers/CoordinatorAchievementsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorInquiryController.php';
 require_once __DIR__ . '/../controllers/CoordinatorFeedbackController.php';
+require_once __DIR__ . '/../controllers/ReportsController.php';
 
 require_once __DIR__ . '/../controllers/ViewVolunteerProfile.php';
 require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
@@ -35,6 +36,13 @@ require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
+
+
+
+require_once __DIR__ . '/../controllers/AdminDashboardController.php';
+require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
+require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
+require_once __DIR__ . '/../controllers/CaloocanDirectoryController.php';
 
 
 require_once __DIR__ . '/../controllers/LoginController.php';
@@ -82,6 +90,9 @@ $router->add('/coordinator_profile', [CoordinatorProfileController::class, 'Show
 $router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
 
+$router->add('/coordinator_announcements/submit', [CoordinatorAnnouncementsController::class, 'ShowCreateAnnouncements']);
+$router->add('/coordinator_announcements/delete', [CoordinatorAnnouncementsController::class, 'ShowDeleteAnnouncements']);
+$router->add('/coordinator_announcements/update', [CoordinatorAnnouncementsController::class, 'ShowUpdateAnnouncements']);
 $router->add('/coordinator_volunteer_management', [CoordinatorVolunteerManagementController::class, 'ShowVolunteerManagement']);
 $router->add('/district_volunteer_directory', [DistrictVolunteerDirectoryController::class, 'ShowDistrictDirectory']);
 $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryController::class, 'ShowBarangayDirectory']);
@@ -111,6 +122,14 @@ $router->add('/coordinator_attendance_tracking', [CoordinatorAttendanceTrackingC
 $router->add('/coordinator_achievements', [CoordinatorAchievementsController::class, 'ShowCoordinatorAchievements']);
 $router->add('/coordinator_inquiries', [CoordinatorInquiryController::class, 'ShowCoordinatorInquiry']);
 $router->add('/coordinator_feedback', [CoordinatorFeedbackController::class, 'ShowCoordinatorFeedback']);
+$router->add('/reports', [ReportsController::class, 'ShowReports']);
+
+
+
+$router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
+$router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
+$router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
+$router->add('/caloocan_directory', [CaloocanDirectoryController::class, 'ShowCaloocanDirectory']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

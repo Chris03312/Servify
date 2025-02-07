@@ -13,26 +13,26 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="/coordinator_dashboard" class="nav-link">
+                    <a href="/admin_dashboard" class="nav-link">
                         <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="/coordinator_announcements" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
-                </li>
 
-                <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-users me-2"></i>User Management</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        
                         <li class="sidebar-item ms-3">
-                            <a href="/coordinator_volunteer_management" class="nav-link border-bottom"><i class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                            <a href="/admin_coordinator_management" class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Coordinators</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/add_new_volunteer" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
-                            <a href="/pending_submissions" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Submissions</a>
+                            <a href="#" class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
                         </li>
                     </ul>
+                </li>
+                
+                <li class="sidebar-item">
+                    <a href="/admin_directory" class="nav-link">
+                    <i class="bi bi-folder-fill me-2"></i>Directories</a>
                 </li>
                 
                 <li class="sidebar-item">
@@ -41,22 +41,26 @@
                 </li>
 
                 <li class="sidebar-item">
+                    <a href="#" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+                </li>
+
+                <li class="sidebar-item">
                     <a href="/coordinator_achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
                 <li class="sidebar-item"> 
-                    <a href="/coordinator_inquiries" class="nav-link">
+                    <a href="#" class="nav-link">
                     <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_feedback" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="/reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+                    <a href="#" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
                 
             </ul>
@@ -118,8 +122,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></span>
-                            <small><?php echo $coordinator_info['role'] ?? NULL  ?></small>
+                            <span>Vicmar Guzman</span>
+                            <small>Admin</small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

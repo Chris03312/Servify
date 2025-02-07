@@ -16,5 +16,5 @@ class CoordinatorAttendanceTrackingController {
             'volunteersCounts' => $volunteersCounts
         ]);
     }
-    
+
 }

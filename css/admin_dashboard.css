@@ -1,0 +1,19 @@
+/**START OF MAIN CONTENT STYLE**/
+
+.dashboardBanner {
+    background: url('../img/DASHBOARD\ BANNER.png') center/cover no-repeat;
+    padding: 12px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.countdown {
+    background: url('../img/DASHBOARD\ BANNER.png') center/cover no-repeat;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.announcementCountdown {
+    background: url('../img/CALENDAR.png') center/cover no-repeat;
+    padding: 32px;
+}
