@@ -400,7 +400,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExpMonth" class="form-label">Month</label>
-                                <select id="prevExpMonth" name="prevExpMonth" class="form-select" aria-readonly="true" required disabled>
+                                <select id="prevExpMonth" name="prevExpMonth" class="form-select" aria-readonly="true" required disabled    >
                                     <option value="" disabled selected>Select month</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
