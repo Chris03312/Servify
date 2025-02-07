@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Application</title>
+    <title>Volunteer | New Application</title>
     <link rel="stylesheet" href="../css/volunteer_application.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -31,7 +31,7 @@
     <main class="container-fluid p-3">
 
         <div class="container-fluid">
-            <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
+            <form id="volunteerForm" method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
                 <!--PHOTO AND NAME-->
                 <div class="d-flex flex-row justify-content-start align-items-center mb-3">
@@ -39,7 +39,7 @@
                     <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
                     <!--NAME-->
-                    <p><?php echo $userInfo['FIRST_NAME'] ." ". $userInfo['MIDDLE_NAME'] ." ". $userInfo['SURNAME'] ?></p>
+                    <p><?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME'] ?></p>
                 </div>
 
                 <!--VOLUNTEER INFO-->
@@ -56,8 +56,6 @@
                     <!--VOLUNTEER INFO-->
                     <div class="tab-pane fade show active p-3" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 
-
-
                         <div class="row">
 
                             <div class="double-line-text">
@@ -69,68 +67,50 @@
                             <div class="row mb-3">
                                 <label for="precinctNumber" class="col-md-2 col-form-label">Precinct Number:<sup class="text-danger fw-bold">*</sup></label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber" required>
-                                    <div class="invalid-feedback">
-                                        Please input precinct number.
-                                    </div>
-                                </div>
+                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber">
+                                    <div class="invalid-feedback" id="error-precinctNumber"></div>
+                                    </div>  
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="firstname" name="firstName" value="<?php echo $userInfo['FIRST_NAME'] ?? " "; ?>" required>
-                                <div class="invalid-feedback">
-                                    Please input first name.
-                                </div>
+                                <input type="text" class="form-control" id="firstname" name="firstName" value="<?php echo $applicationInfo['FIRST_NAME'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="middlename" name="middleName" value="<?php echo $userInfo['MIDDLE_NAME']; ?>" required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
-                                </div>
+                                <input type="text" class="form-control" id="middlename" name="middleName" value="<?php echo $applicationInfo['MIDDLE_NAME']; ?>">
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="surname" name="surname" value="<?php echo $userInfo['SURNAME'] ?? " "; ?>"required>
-                                <div class="invalid-feedback">
-                                    Please input surname.
-                                </div>
+                                <input type="text" class="form-control" id="surname" name="surname" value="<?php echo $applicationInfo['SURNAME'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="suffix" name="suffix" value="<?php echo $userInfo['NAME_SUFFIX'] ?? " "; ?>"required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
-                                </div>
+                                <input type="text" class="form-control" id="suffix" name="suffix" value="<?php echo $applicationInfo['NAME_SUFFIX'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="sex" class="form-label">Sex<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" name="sex" class="form-select" required>
+                                <select id="sex" name="sex" class="form-select">
                                     <option selected disabled value="">Select Sex</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select sex.
-                                </div>
+                                    <div class="invalid-feedback" id="error-sex">Please select a gender.</div>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="Nickname" class="form-label">Nickname<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="Nickname" name="Nickname" required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
+                                <input type="text" class="form-control" id="Nickname" name="Nickname">
+                                    <div class="invalid-feedback" id="error-Nickname"></div>
                                 </div>
-                            </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="civilStauts" class="form-label">Civil Status<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="civilStatus" name="civilStatus" class="form-select" required>
+                                <select id="civilStatus" name="civilStatus" class="form-select">
                                     <option selected disabled value="">Select Status</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -141,46 +121,35 @@
                                     <option value="Annulled">Annulled</option>
                                     <option value="Single Parent">Single Parent</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select civil status.
-                                </div>
+                                <div class="invalid-feedback" id="error-civilStatus"></div>
                             </div>
 
                             <div class="col-md-2 mb-3">
                                 <label for="birthDate" class="form-label">Birth Day</label>
-                                <input type="text" class="form-control" readonly id="birthDate" name="birthDate" placeholder="Date" value="<?php echo $userInfo['BIRTHDATE'] ?? " "; ?>"required>
-                                <div class="invalid-feedback">
-                                    Please input birth date.
-                                </div>
+                                <input type="text" class="form-control" id="birthDate" name="birthDate" readonly value="<?php echo $applicationInfo['BIRTHDATE']; ?>" placeholder="Date">
                             </div>
 
-                            <div class="col-md-3 mb-3"> 
+                            <div class="col-md-3 mb-3">
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true" required>
-                                    <option value="January" <?php echo ($userInfo['BIRTHMONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
-                                    <option value="February" <?php echo ($userInfo['BIRTHMONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
-                                    <option value="March" <?php echo ($userInfo['BIRTHMONTH'] === 'March') ? 'selected' : " "; ?>>March</option>
-                                    <option value="April" <?php echo ($userInfo['BIRTHMONTH'] === 'April') ? 'selected' : " "; ?>>April</option>
-                                    <option value="May" <?php echo ($userInfo['BIRTHMONTH'] === 'May') ? 'selected' : " "; ?>>May</option>
-                                    <option value="June" <?php echo ($userInfo['BIRTHMONTH'] === 'June') ? 'selected' : " "; ?>>June</option>
-                                    <option value="July" <?php echo ($userInfo['BIRTHMONTH'] === 'July') ? 'selected' : " "; ?>>July</option>
-                                    <option value="August" <?php echo ($userInfo['BIRTHMONTH'] === 'August') ? 'selected' : " "; ?>>August</option>
-                                    <option value="September" <?php echo ($userInfo['BIRTHMONTH'] === 'September') ? 'selected' : " "; ?>>September</option>
-                                    <option value="October" <?php echo ($userInfo['BIRTHMONTH'] === 'October') ? 'selected' : " "; ?>>October</option>
-                                    <option value="November" <?php echo ($userInfo['BIRTHMONTH'] === 'November') ? 'selected' : " "; ?>>November</option>
-                                    <option value="December" <?php echo ($userInfo['BIRTHMONTH'] === 'December') ? 'selected' : " "; ?>>December</option>
+                                <select id="birthMonth" readonly name="birthMonth" class="form-select" aria-readonly="true">
+                                    <option value="January" <?php echo ($applicationInfo['BIRTHMONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
+                                    <option value="February" <?php echo ($applicationInfo['BIRTHMONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
+                                    <option value="March" <?php echo ($applicationInfo['BIRTHMONTH'] === 'March') ? 'selected' : " "; ?>>March</option>
+                                    <option value="April" <?php echo ($applicationInfo['BIRTHMONTH'] === 'April') ? 'selected' : " "; ?>>April</option>
+                                    <option value="May" <?php echo ($applicationInfo['BIRTHMONTH'] === 'May') ? 'selected' : " "; ?>>May</option>
+                                    <option value="June" <?php echo ($applicationInfo['BIRTHMONTH'] === 'June') ? 'selected' : " "; ?>>June</option>
+                                    <option value="July" <?php echo ($applicationInfo['BIRTHMONTH'] === 'July') ? 'selected' : " "; ?>>July</option>
+                                    <option value="August" <?php echo ($applicationInfo['BIRTHMONTH'] === 'August') ? 'selected' : " "; ?>>August</option>
+                                    <option value="September" <?php echo ($applicationInfo['BIRTHMONTH'] === 'September') ? 'selected' : " "; ?>>September</option>
+                                    <option value="October" <?php echo ($applicationInfo['BIRTHMONTH'] === 'October') ? 'selected' : " "; ?>>October</option>
+                                    <option value="November" <?php echo ($applicationInfo['BIRTHMONTH'] === 'November') ? 'selected' : " "; ?>>November</option>
+                                    <option value="December" <?php echo ($applicationInfo['BIRTHMONTH'] === 'December') ? 'selected' : " "; ?>>December</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select birth month.
-                                </div>
                             </div>
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" value="<?php echo $userInfo['BIRTHYEAR'] ?? " "; ?>" required  oninput="calculateAge()" readonly>
-                                <div class="invalid-feedback">
-                                    Please input birth year.
-                                </div>
+                                <input type="text" class="form-control" id="birthYear" name="birthYear" placeholder="Year" value="<?php echo $applicationInfo['BIRTHYEAR'] ?? " "; ?>" oninput="calculateAge()" readonly>
                             </div>
 
                             <div class="col-md-2 mb-3">
@@ -189,12 +158,12 @@
                             </div>
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
                                         const ageInput = document.getElementById('age');
-                                        
+
                                         const birthYear = parseInt(birthYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
 
@@ -210,7 +179,7 @@
                                     function calculateYearOfService() {
                                         const prevExperienceYearInput = document.getElementById('prevExperienceYear');
                                         const yearOfServiceInput = document.getElementById('yearOfService');
-                                        
+
                                         // Get the value of the previous experience year and the current year
                                         const prevExperienceYear = parseInt(prevExperienceYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
@@ -221,7 +190,7 @@
                                             yearOfServiceInput.value = currentYear - prevExperienceYear;
                                         } else {
                                             // Clear the year of service input for invalid year input
-                                            yearOfServiceInput.value = ''; 
+                                            yearOfServiceInput.value = '';
                                         }
                                     }
 
@@ -248,25 +217,22 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="citizenship" class="form-label">Citizenship<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="citizenship" name="citizenship" required>
-                                <div class="invalid-feedback">
-                                    Please input citizenship.
-                                </div>
+                                <input type="text" class="form-control" id="citizenship" name="citizenship">
+                                <div class="invalid-feedback" id="error-citizenship"></div>
+
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="occupation" class="form-label">Occupation<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="occupation" name="occupation" required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
-                                </div>
+                                <input type="text" class="form-control" id="occupation" name="occupation">
+                                <div class="invalid-feedback" id="error-occupation"></div>
+
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="companyName" class="form-label">Company Name<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
-                                </div>
+                                <input type="text" class="form-control" id="companyName" name="companyName">
+                                <div class="invalid-feedback" id="error-companyName"></div>
+
                             </div>
 
 
@@ -278,22 +244,22 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                                <input type="text" class="form-control" readonly id="street" name="streetAddress" value="<?php echo $userInfo['STREETADDRESS'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="street" name="streetAddress" value="<?php echo $applicationInfo['STREETADDRESS'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="city" name="city" value="<?php echo $userInfo['CITY'] ?? " "; ?>" required >
+                                <input type="text" class="form-control" readonly id="city" name="city" value="<?php echo $applicationInfo['CITY'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="barangay" name="barangay" value="<?php echo $userInfo['BARANGAY'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="barangay" name="barangay" value="<?php echo $applicationInfo['BARANGAY'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" value="<?php echo $userInfo['ZIPCODE'] ?? " "; ?>" required>
+                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" value="<?php echo $applicationInfo['ZIPCODE'] ?? " "; ?>">
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -301,23 +267,21 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="email" class="form-control" readonly id="email" name="email" value="<?php echo $userInfo['EMAIL'] ?? " "; ?>" required>
+                                <input type="email" class="form-control" readonly id="email" name="email" value="<?php echo $applicationInfo['EMAIL'] ?? " "; ?>">
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"  required>
-                                <div class="invalid-feedback">
-                                    Please input mobile number.
-                                </div>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
+                                <div class="invalid-feedback" id="error-mobileNumber"></div>
+
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="telNumber" class="form-label">Tel no.<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="telNumber" name="telNumber" required>
-                                <div class="invalid-feedback">
-                                    Write <strong>N/A</strong> if none.
-                                </div>
+                                <input type="text" class="form-control" id="telNumber" name="telNumber">
+                                <div class="invalid-feedback" id="error-telNumber"></div>
+
                             </div>
 
                             <div class="double-line-text">
@@ -327,38 +291,33 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="orgMembership" class="form-label">Parish Organization Membership<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="orgMembership" name="parish_org_membership" class="form-select" required>
+                                <label for="parish_org_membership" class="form-label">Parish Organization Membership<sup class="text-danger fw-bold">*</sup></label>
+                                <select id="parish_org_membership" name="parish_org_membership" class="form-select">
                                     <option selected disabled value="">Select Membership</option>
-                                    <option value="">...</option>
+                                    <option value="Ministry of Youth">Ministry of Youth</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select membership.
-                                </div>
+                                <div class="invalid-feedback" id="error-parish_org_membership"></div>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="othersOrgMembership" class="form-label">Others<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="othersOrgMembership" name="othersOrgMembership" required>
-                                <div class="invalid-feedback">
-                                    Please input.
-                                </div>
+                                <input type="text" class="form-control" id="othersOrgMembership" name="othersOrgMembership">
                             </div>
 
                             <span>Previous PPCRV Experience</span>
+
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceDate" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="prevExperienceDate" name="prevExperienceDate" placeholder="Date" required>
-                                <div class="invalid-feedback">
-                                    Please input date.
-                                </div>
+                                <input type="text" class="form-control" id="prevExperienceDate" name="prevExperienceDate" placeholder="Date">
+                                <div class="invalid-feedback" id="error-prevExperienceDate"></div>
+
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
-                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select" required>
+                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select">
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
@@ -373,73 +332,60 @@
                                     <option value="November">November</option>
                                     <option value="December">December</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select month.
-                                </div>
+                                <div class="invalid-feedback" id="error-prevExperienceMonth"></div>
+
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceYear" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required oninput="calculateYearOfService()">
-                                <div class="invalid-feedback">
-                                    Please input year.
-                                </div>
+                                <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" oninput="calculateYearOfService()">
+                                <div class="invalid-feedback" id="error-prevExperienceYear"></div>
                             </div>
 
                             <div class="col-md-2 mb-3">
                                 <label for="yearOfService" class="form-label">Year of Service<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" placeholder="Auto generated" readonly id="yearOfService" name="yearOfService" required>
+                                <input type="text" class="form-control" placeholder="Auto generated" readonly id="yearOfService" name="yearOfService">
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="prevAssignment" class="form-label">Previous PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="prevAssignment" name="prevPpcrvVolAss" class="form-select" required>
-                                    <option selected disabled value="">Select previous assignment</option>
-                                    <option value="">...</option>
+                                <label for="prevPpcrvVolAss" class="form-label">Previous PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
+                                <select id="prevPpcrvVolAss" name="prevPpcrvVolAss" class="form-select">
+                                    <option selected disabled value="">Select Assignment</option>
+                                    <option value="Poll Watcher">Poll Watcher</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select previous assignment.
-                                </div>
+                                <div class="invalid-feedback" id="error-prevPpcrvVolAss"></div>
                             </div>
 
 
                             <div class="col-md-6 mb-3">
                                 <label for="othersPrevAssignment" class="form-label">Others<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="othersPrevAssignment" name="othersPrevAssignment" required>
-                                <div class="invalid-feedback">
-                                    Please input.
-                                </div>
+                                <input type="text" class="form-control" id="othersPrevAssignment" name="othersPrevAssignment">
+
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="prevPrecinct" class="form-label">Previous Precinct<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="prevPrecinct" name="prevPrecinct" required>
-                                <div class="invalid-feedback">
-                                    Please input.
-                                </div>
+                                <input type="text" class="form-control" id="prevPrecinct" name="prevPrecinct">
+                                <div class="invalid-feedback" id="error-prevPrecinct"></div>
+
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="prefAssignment" class="form-label">Preferred PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="prefAssignment" name="prefPpcrvVolAss" class="form-select" required>
-                                    <option selected disabled value="">Select preferred assignment</option>
-                                    <option value="">...</option>
+                                <label for="prefPpcrvVolAss" class="form-label">Preferred PPCRV Volunteer Assignment<sup class="text-danger fw-bold">*</sup></label>
+                                <select id="prefPpcrvVolAss" name="prefPpcrvVolAss" class="form-select">
+                                    <option selected disabled value="">Select Assignment</option>
+                                    <option value="Poll Watcher">Poll Watcher</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select preferred assignment.
-                                </div>
+                                <div class="invalid-feedback" id="error-prefPpcrvVolAss"></div>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="othersPrefAssignment" class="form-label">Others<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="prefAssignment" name="prefAssignment" required>
-                                <div class="invalid-feedback">
-                                    Please input.
-                                </div>
+                                <input type="text" class="form-control" id="prefAssignment" name="prefAssignment">
                             </div>
 
                             <div class="mb-3 text-center">
@@ -448,31 +394,31 @@
 
                         </div>
 
-                         <!--CONFIRMED MODAL-->
-                         <div class="modal fade" id="submittedSuccessfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary p-2">
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <img src="../img/icons8-checkmark-90.png" alt="">
-                                <h3 class="text-primary">SUCCESS!</h3>
+                        <!--CONFIRMED MODAL-->
+                        <div class="modal fade" id="submittedSuccessfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary p-2">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <img src="../img/icons8-checkmark-90.png" alt="">
+                                            <h3 class="text-primary">SUCCESS!</h3>
 
-                                <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                    <span>Thank you! Your form has been successfully submitted.</span>
-                                    <span>Please wait while we process your application.</span>
-                                    <span>You can check the status of your application soon.</span>
-                                </div>
+                                            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                                <span>Thank you! Your form has been successfully submitted.</span>
+                                                <span>Please wait while we process your application.</span>
+                                                <span>You can check the status of your application soon.</span>
+                                            </div>
 
-                                <div class="d-flex flex-row justify-content-around align-items-center mt-3">
-                                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                                            <div class="d-flex flex-row justify-content-around align-items-center mt-3">
+                                                <button type="button" class="btn btn-primary px-5" id="redirectBtn" data-bs-dismiss="modal">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
                     </div>
 
@@ -525,10 +471,9 @@
                                 </ul>
                             </div>
 
-
                             <div class="col-md-7 mb-3">
                                 <label for="sex" class="form-label">Type of ID<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select mb-2" name="nameofId" required>
+                                <select id="sex" class="form-select mb-2" name="nameofId">
                                     <option selected disabled value="">Select type of ID</option>
 
                                     <?php foreach ($validId as $id): ?>
@@ -536,10 +481,8 @@
                                         <option value="<?= $id['NAME']; ?>"><?= $id['NAME']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <div class="invalid-feedback" id="error-nameofId"></div>
 
-                                <div class="invalid-feedback">
-                                    Please select type of ID.
-                                </div>
 
 
                                 <div class="file-upload">
@@ -557,30 +500,18 @@
                                         <p>Drag and drop your ID here</p>
                                         <p><strong>OR</strong></p>
                                         <label for="file-input" class="file-label btn btn-primary px-5">UPLOAD</label>
-                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none" name="validId" required />
-
-
-                                        <div class="invalid-feedback">
-                                            Please upload your photo.
-                                        </div>
-
+                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none" name="validId" />
+                                        <div class="invalid-feedback" id="error-validId"></div>
                                     </div>
                                 </div>
-
-
                             </div>
-
-
                         </div>
-
-
-                        <h4>Confirm your pledge to volunteer and support our mission.</h4>
-                        <p class="text-danger mb-4">Please check the box to confirm your acknowledgment and agreement before submitting.</p>
+                        <div class="invalid-feedback" id="error-checkPledge"></div>
 
                         <h4 class="text-primary">PPCRV Plege</h4>
                         <div class="row align-items-center">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <input class="form-check-input" type="checkbox" value="1" id="invalidCheck" name="checkPledge">
                                 <label class="form-check-label" for="invalidCheck">
                                     I pledge to work for the promotion of responsible voting and responsible citizenship as a faith response to
                                     the call for political renewal and social transformation. I also pledge to work for Clean, Honest, Accurate,
@@ -589,19 +520,10 @@
                                     noble task of seeking an elective position in government, I shall automatically resign from the PPCRV and return
                                     my membership card.
                                 </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-
-                                <div class="col-md-11">
-                                    <p>
-                                    </p>
-                                </div>
                             </div>
 
-
                             <div class="mb-3 text-center">
-                                <button class="btn btn-outline-primary px-4" type="submit">Submit</button>
+                                <button id="submitBtn" class="btn btn-outline-primary px-4" type="submit">Submit</button>
                             </div>
 
                             <!--CONFIRMATION-->
@@ -619,49 +541,18 @@
 
                                                 <div class="d-flex flex-row justify-content-around align-items-center gap-3">
                                                     <button type="button" class="btn btn-outline-secondary px-5" data-bs-dismiss="modal">No</button>
-                                                    <button type="submit" name="yesSubmit" class="btn btn-primary px-5">Yes</button>
+                                                    <button type="submit" id="yesSubmit" name="yesSubmit" class="btn btn-primary px-5">Yes</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                           
-
                         </div>
-
-
                     </div>
                 </div>
             </form>
-
-
-            <!--SAMPLE CODE PAG NAG YES SA CONFIRMATION-->
-            <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['yesSubmit'])) {
-        echo "
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var submittedSuccessfully = new bootstrap.Modal(document.getElementById('submittedSuccessfully'));
-                submittedSuccessfully.show();
-            });
-        </script>
-        ";
-    }
-    ?>
-
         </div>
-
-        
-
-
-
-
-
-
-
     </main>
     </div>
     </div>

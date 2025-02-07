@@ -227,14 +227,5 @@ class Dashboard {
         }
     }
     
-    public static function coordinatorInfo() {
-        try {
-            $db = Database::getConnection();
-            $email = $_SESSION['email'];
 
-            $stmt = $db->prepare('SELECT PARISH FROM PROFILE');
-        }catch (PDOException $e) {
-            error_log('Error geting coordinator info'. $e->getMessage());
-        }
-    }
 }

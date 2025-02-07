@@ -93,12 +93,15 @@
             </div>
 
 
-        <div class="mt-3">
+        <div class="mt-5">
             <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="mb-5" style="--bs-breadcrumb-divider: '>';">
+            <nav aria-label="breadcrumb" class="mb-4" style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb" id="breadcrumbList">
                     <li class="breadcrumb-item">
                         <a href="/coordinator_volunteer_management">Volunteer Management</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/district_volunteer_directory<?php echo $districturl; ?>">List of District</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">List of Barangay</li>
                 </ol>

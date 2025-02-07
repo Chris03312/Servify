@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance</title>
+    <title>Volunteer| Attendance</title>
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
@@ -58,7 +58,7 @@
                             timeIn: "<?php echo $attendance['timeIn']; ?>",  // Example: "14:30:00" or null
                             timeOut: "<?php echo $attendance['timeOut']; ?>", // Example: "17:00:00" or null
                             targetTimeOut: "17:00:00",
-                            targetTimeIn: "08:00:00"  // Fixed target time
+                            targetTimeIn: "05:00:00"  // Fixed target time
                         };
                     </script>
                      <script src="js/attendancetime.js"></script>   

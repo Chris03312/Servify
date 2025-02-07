@@ -12,13 +12,11 @@ class CoordinatorDashboardController{
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
-
-        $cityFilter = isset($_GET['city']) ? $_GET['city'] : '';
-
-        $chartData = CoordinatorDashboard::chartsData();
+        
+        $chartsData = CoordinatorDashboard::chartsData();
         $dropdownData = CoordinatorDashboard::getDropdownG2();
         $totalCities = CoordinatorDashboard::getTotalCities();
-        $volunteersTbl = CoordinatorDashboard::getVolunteers($cityFilter);
+        $volunteersTbl = CoordinatorDashboard::getVolunteers();
         $pendingApp = CoordinatorDashboard::PendingApp();
         $countdown = Dashboard::CountDownElectionDay();
         $activities = Dashboard::getActivityLog();
@@ -35,7 +33,7 @@ class CoordinatorDashboardController{
             'pendingApps' => $pendingApp,
             'totalCities' => $totalCities,
             'dropdownData' => $dropdownData,
-            'chartData' => $chartData,            // Pass the dropdown data to the view
+            'chartsData' => $chartsData,           
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],

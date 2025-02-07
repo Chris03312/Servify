@@ -4,7 +4,7 @@ require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Notification.php';
 
 class AnnouncementsController {
-    public static function Announcements() {
+    public static function ShowAnnouncements() {
 
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');

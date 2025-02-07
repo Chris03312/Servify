@@ -23,48 +23,32 @@ class CoordinatorDashboard {
     }
 
 
-    public static function getVolunteers($cityFilter = '') {
-        // Connect to the database
-        $db = Database::getConnection();
+    public static function getVolunteers() {
+        try{
+            $db = Database::getConnection();
 
-        // Base query
-        $query = '
-            SELECT 
-                v.VOLUNTEERS_ID,
-                v.PRECINCT_NO,
-                v.FIRST_NAME,
-                v.MIDDLE_NAME,
-                v.SURNAME,
-                v.ROLE,
-                p.POLLING_PLACE
-            FROM 
-                VOLUNTEERS_TBL v
-            INNER JOIN 
-                (
-                    SELECT DISTINCT PRECINCT_NO, POLLING_PLACE, `MUNICIPALITY/CITY`
-                    FROM PRECINCT_TABLE
-                ) p
-            ON 
-                v.PRECINCT_NO = p.PRECINCT_NO
-                AND v.`CITY` = p.`MUNICIPALITY/CITY`';
+            $stmt = $db->prepare('
+                SELECT 
+                    v.VOLUNTEERS_ID,
+                    v.ROLE,
+                    CONCAT(v.SURNAME, ", ", v.FIRST_NAME, " ", v.MIDDLE_NAME) AS `FULL NAME`,
+                    v.PRECINCT_NO,
+                    p.POLLING_PLACE
+                FROM VOLUNTEERS_TBL AS v
+                INNER JOIN PRECINCT_TABLE AS p
+                    ON v.BARANGAY = p.BARANGAY_NAME
+                GROUP BY v.VOLUNTEERS_ID, v.ROLE, v.PRECINCT_NO, p.POLLING_PLACE
+            ');
+            $stmt->execute();
+            $volunteersTbl = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Add WHERE clause if city filter is set
-        if ($cityFilter) {
-            $query .= ' WHERE p.`MUNICIPALITY/CITY` LIKE :city';
+            return $volunteersTbl;
+        }catch (PDOException $e) {
+            error_log('Error in getting volunteers data'. $e->getMessage());
         }
-
-        $stmt = $db->prepare($query);
-
-        // Bind parameter if city filter is set
-        if ($cityFilter) {
-            $stmt->bindParam(':city', $cityFilter, PDO::PARAM_STR);
-        }
-
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+
     public static function getTotalCities() {
         try {
             $db = Database::getConnection();
@@ -137,39 +121,56 @@ class CoordinatorDashboard {
     }
     
 
- public static function chartsData() {
-    try {
-        $db = Database::getConnection();
-
-        // SQL query to count volunteers by polling place
-        $query = '
-            SELECT 
-                p.polling_place, 
-                COUNT(v.volunteers_id) AS volunteers
-            FROM 
-                VOLUNTEERS_TBL AS v
-            INNER JOIN 
-                PRECINCT_TABLE AS p
-            ON 
-                v.assigned_polling_place = p.polling_place
-            GROUP BY 
-                p.polling_place
-        ';
-
-        // Prepare and execute the query
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-
-        // Fetch the results as an associative array
-        $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $chartsData;
-    } catch (PDOException $e) {
-        // Log the error and return an empty array
-        error_log('Error in getting chart data: ' . $e->getMessage());
-        return [];
+    public static function chartsData() {
+        try {
+            $db = Database::getConnection();
+    
+            // SQL query to count volunteers by polling place
+            $query = '
+                SELECT 
+                    p.polling_place, 
+                    COUNT(DISTINCT v.volunteers_id) AS registered_volunteers, -- Ensures unique volunteers
+                    p.district,
+                    v.city,
+                    v.barangay,
+                    v.parish
+                FROM 
+                    VOLUNTEERS_TBL AS v
+                INNER JOIN 
+                    (SELECT DISTINCT polling_place, district FROM PRECINCT_TABLE) AS p
+                ON 
+                    v.assigned_polling_place = p.polling_place
+                GROUP BY 
+                    p.polling_place, p.district, v.city, v.barangay, v.parish
+            ';
+    
+            // Prepare and execute the query
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+    
+            // Fetch the results as an associative array
+            $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $chartsData;
+        } catch (PDOException $e) {
+            // Log the error and return an empty array
+            error_log('Error in getting chart data: ' . $e->getMessage());
+            return [];
+        }
     }
-}
+    
+        
+    public static function coordinatorInfo() {
+        try {
+            $db = Database::getConnection();
+            $email = $_SESSION['email'];
+
+            $stmt = $db->prepare('SELECT PARISH FROM PROFILE');
+        }catch (PDOException $e) {
+            error_log('Error geting coordinator info'. $e->getMessage());
+        }
+    }
+
 
 
 }

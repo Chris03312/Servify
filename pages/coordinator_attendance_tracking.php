@@ -45,9 +45,9 @@
                     <div class="d-flex flex-row justify-content-start align-items-center">
                         <div><img src="../img/DPPAM LOGO.png" alt="Profile Picture" class="img-fluid" width="100px"></div>
                         <div class="d-flex flex-column">
-                            <span class="fs-4">Vicmar M. Guzman</span>
-                            <span class="fs-6"><strong>Membershio No: </strong></span>
-                            <span class="fs-6">Coordinator - Caloocan Parish</span>
+                            <span class="fs-4"><?php echo $getattedancecoorInfo['FIRST_NAME']." ".$getattedancecoorInfo['MIDDLE_NAME']." ".$getattedancecoorInfo['SURNAME'] ?? "";?></strong></span>
+                            <span class="fs-6"><strong>Membershio No: <?php echo$getattedancecoorInfo['CPROFILE_ID'] ?? ""; ?> </strong></span>
+                            <span class="fs-6">Coordinator - <?php echo $getattedancecoorInfo['MUNICIPALITY/CITY']." ".$getattedancecoorInfo['POLLING_PLACE'] ?? ""; ?></span>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@
             <div class="card-body">
                 <!--DATE-->
                 <div class="text-center mb-3">
-                    <span class="fs-5">Mon, January 13, 2025</span>
+                    <span class="fs-5"><?php echo date('D, F j, Y'); ?></span>
                 </div>
 
                 <div class="container px-5 d-flex flex-column gap-3">
@@ -175,24 +175,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if (!empty($volunteersCounts)): ?>  <!-- Notice the ! (negation) -->
+                        <?php foreach ($volunteersCounts as $volunteers): ?>
+                            <tr>
+                                <td scope="row"><?php echo htmlspecialchars($volunteers['DATE']); ?></td>
+                                <td><?php echo htmlspecialchars($volunteers['TIME_IN']); ?></td>
+                                <td><?php echo htmlspecialchars($volunteers['TIME_OUT']); ?></td>
+                                <td><?php echo htmlspecialchars($volunteers['VOLUNTEER_NAME']);?></td>
+                                <td><?php echo htmlspecialchars($volunteers['ROLE']); ?></td>
+                                <td><?php echo htmlspecialchars($volunteers['EMAIL']); ?></td>
+                                <td><?php echo htmlspecialchars($volunteers["POLLING_PLACE"]); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <td scope="row">Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
+                            <td colspan="7">No Volunteers found!</td>
                         </tr>
-                        <tr>
-                            <td scope="row">Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                        </tr>
+                    <?php endif; ?>
                     </tbody>
                     <tfoot>
 

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".validation").forEach(el => el.innerHTML = ""); // Clear previous errors
 
             if (data.success) {
-                // Show success modal
+                // Show success modal       
                 var successModal = new bootstrap.Modal(document.getElementById("SuccessModal"));
                 successModal.show();
                 document.getElementById("signupForm").reset();

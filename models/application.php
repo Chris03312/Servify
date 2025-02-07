@@ -4,7 +4,7 @@ require_once __DIR__ . '/../configuration/Database.php';
 
 class Application {
 
-    public static function getinfoapplication() {
+    public static function getinfoApplication() {
         try {
 
             $email = $_SESSION['email'];
@@ -13,9 +13,9 @@ class Application {
 
             $stmt = $db->prepare('SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email');
             $stmt->execute([':email' => $email]);
-            $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $applicationInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $userInfo;
+            return $applicationInfo;
         }catch (PDOException $e) {
             error_log("Get info error ". $e->getMessage());
         }
