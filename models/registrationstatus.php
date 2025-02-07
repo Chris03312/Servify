@@ -34,15 +34,15 @@ class Registrationstatus {
                 $progressPercentage = 0; // Default progress is 0%
     
                 // Determine progress based on the status
-                if ($status === 'For evaluation') {
+                if ($status === 'Pending') {
                     $progressPercentage = 20;
-                } elseif ($status === 'Approved') {
+                } elseif ($status === 'Under Review') {
                     $progressPercentage = 37;
                 } elseif ($status === 'Submit additional requirements') {
                     $progressPercentage = 53;
                 } elseif ($status === 'Orientation and Training') {
                     $progressPercentage = 70;
-                } elseif ($status === 'Registered volunteer') {
+                } elseif ($status === 'Approved/Complete') {
                     $progressPercentage = 90;
                 }
     

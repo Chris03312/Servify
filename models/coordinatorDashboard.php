@@ -23,48 +23,32 @@ class CoordinatorDashboard {
     }
 
 
-    public static function getVolunteers($cityFilter = '') {
-        // Connect to the database
-        $db = Database::getConnection();
+    public static function getVolunteers() {
+        try{
+            $db = Database::getConnection();
 
-        // Base query
-        $query = '
-            SELECT 
-                v.VOLUNTEERS_ID,
-                v.PRECINCT_NO,
-                v.FIRST_NAME,
-                v.MIDDLE_NAME,
-                v.SURNAME,
-                v.ROLE,
-                p.POLLING_PLACE
-            FROM 
-                VOLUNTEERS_TBL v
-            INNER JOIN 
-                (
-                    SELECT DISTINCT PRECINCT_NO, POLLING_PLACE, `MUNICIPALITY/CITY`
-                    FROM PRECINCT_TABLE
-                ) p
-            ON 
-                v.PRECINCT_NO = p.PRECINCT_NO
-                AND v.`CITY` = p.`MUNICIPALITY/CITY`';
+            $stmt = $db->prepare('
+                SELECT 
+                    v.VOLUNTEERS_ID,
+                    v.ROLE,
+                    CONCAT(v.SURNAME, ", ", v.FIRST_NAME, " ", v.MIDDLE_NAME) AS `FULL NAME`,
+                    v.PRECINCT_NO,
+                    p.POLLING_PLACE
+                FROM VOLUNTEERS_TBL AS v
+                INNER JOIN PRECINCT_TABLE AS p
+                    ON v.BARANGAY = p.BARANGAY_NAME
+                GROUP BY v.VOLUNTEERS_ID, v.ROLE, v.PRECINCT_NO, p.POLLING_PLACE
+            ');
+            $stmt->execute();
+            $volunteersTbl = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Add WHERE clause if city filter is set
-        if ($cityFilter) {
-            $query .= ' WHERE p.`MUNICIPALITY/CITY` LIKE :city';
+            return $volunteersTbl;
+        }catch (PDOException $e) {
+            error_log('Error in getting volunteers data'. $e->getMessage());
         }
-
-        $stmt = $db->prepare($query);
-
-        // Bind parameter if city filter is set
-        if ($cityFilter) {
-            $stmt->bindParam(':city', $cityFilter, PDO::PARAM_STR);
-        }
-
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+
     public static function getTotalCities() {
         try {
             $db = Database::getConnection();
@@ -175,7 +159,7 @@ class CoordinatorDashboard {
         }
     }
     
-
+        
     public static function coordinatorInfo() {
         try {
             $db = Database::getConnection();
@@ -186,5 +170,7 @@ class CoordinatorDashboard {
             error_log('Error geting coordinator info'. $e->getMessage());
         }
     }
+
+
 
 }

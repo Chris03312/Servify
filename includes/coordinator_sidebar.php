@@ -30,9 +30,6 @@
                             <a href="/add_new_volunteer" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Pending Application</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
                             <a href="/pending_submissions" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Submissions</a>
                         </li>
                     </ul>

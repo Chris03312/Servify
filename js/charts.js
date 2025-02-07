@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: { 
             responsive: true,
             scales: { 
-                x: { stacked: true },
-                y: { beginAtZero: true, stacked: true, suggestedMax: 30 } 
+                x: { beginAtZero: true, stacked: true, suggestedMax: 30 },
+                y: { stacked: true },
             },
             plugins: {
                 legend: { position: 'top' }, 

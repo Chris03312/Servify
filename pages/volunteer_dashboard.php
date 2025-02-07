@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Volunteer | Volunteer Dashboard</title>
     <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 

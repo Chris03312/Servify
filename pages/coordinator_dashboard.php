@@ -21,12 +21,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
-
     <!--JS CHART CDN-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> 
 </head>
 
 <body>
@@ -265,13 +265,9 @@
                                     <p class="text-center"> No Activities</p>
                                 <?php endif; ?>
                             </ul>
-
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
 
             <!--PENDING APPLICATION-->
@@ -341,7 +337,8 @@
                                 <div class="col-md-10">
                                     <!-- MAP ON THE RIGHT -->
                                     <div class="mt-2">
-                                        <div id="mapcities" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
+                                        <div id="map" class="ratio ratio-16x9 mt-2"></div>
+                                        <!-- Replace iframe with the Leaflet map -->
                                     </div>
                                     <script>
                                         // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
@@ -375,7 +372,7 @@
                         <div class="row mt-3" id="filterDivVol">
                             <div class="col-sm-3 mb-2">
                                 <select class="form-select group2-dropdown" name="city" id="city">
-                                    <option value="" disabled selected>Select Municipality</option>
+                                    <option value=""  selected>Select Municipality</option>
                                     <?php foreach ($dropdownData['cities'] as $city): ?>
                                         <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
                                     <?php endforeach; ?>
@@ -383,7 +380,7 @@
                             </div>
                             <div class="col-sm-3 mb-2">
                                 <select class="form-select group2-dropdown" name="district" id="district">
-                                    <option value="" disabled selected>Select District</option>
+                                    <option value=""  selected>Select District</option>
                                     <?php foreach ($dropdownData['districts'] as $district): ?>
                                         <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
                                     <?php endforeach; ?>
@@ -391,7 +388,7 @@
                             </div>
                             <div class="col-sm-3 mb-2">
                                 <select class="form-select group2-dropdown" name="barangay" id="barangay">
-                                    <option value="" disabled selected>Select Barangay</option>
+                                    <option value=""  selected>Select Barangay</option>
                                     <?php foreach ($dropdownData['barangays'] as $barangay): ?>
                                         <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
                                     <?php endforeach; ?>
@@ -399,7 +396,7 @@
                             </div>
                             <div class="col-sm-3 mb-2">
                                 <select class="form-select group2-dropdown" name="parish" id="parish">
-                                    <option value="" disabled selected>Select Parish</option>
+                                    <option value=""  selected>Select Parish</option>
                                     <?php foreach ($dropdownData['parishes'] as $parish): ?>
                                         <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
                                     <?php endforeach; ?>
@@ -407,7 +404,7 @@
                             </div>
                             <div class="col-sm-3 mb-2">
                                 <select class="form-select group2-dropdown" name="school" id="school">
-                                    <option value="" disabled selected>Select School</option>
+                                    <option value=""  selected>Select School</option>
                                     <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
                                         <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
                                     <?php endforeach; ?>
@@ -456,7 +453,7 @@
                                         <tr>
                                             <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['PRECINCT_NO']); ?></td>
-                                            <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['MIDDLE_NAME'] . ' ' . $volunteer['SURNAME']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['FULL NAME']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['POLLING_PLACE']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
                                             <td>

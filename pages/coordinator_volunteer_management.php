@@ -42,21 +42,23 @@
             </div>
         </div>
 
-        <p class="text-muted">You currently have access to this folder:</p>
+        <p class="text-muted">You currently have access to this Directory:</p>
 
         <!--PARISH-->
         <div class="row mb-3">
 
+        <?php if($Citylinks): ?>
+            <?php foreach($Citylinks as $cities): ?>
             <div class="col-md-4 mb-3">
                 <!--HYPERLINK-->
-                <a class="btn border border-primary" href="" role="button">
+                <a class="btn border border-primary" href="<?php echo $cities['link']; ?>" role="button">
                 <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                         <div class="image-container">
                             <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                         </div>
 
                         <div class="parish-name text-center">
-                            <h4></h4>
+                            <h4><?php echo  $cities['name']; ?></h4>
                         </div>
                     </div>
                     <div class="row mt-4 justify-content-center">
@@ -81,15 +83,14 @@
                     </div>
                 </a>
             </div>
-           
+            <?php endforeach ?>
+            <?php else: ?>
                 <div class="parish-name text-center">
-                    <h4> No districts</h4>
+                    <h4> No Cities found!</h4>
                 </div>
-
+            <?php endif; ?>
         </div>
-
-
-
+        
         <!--TABLE-->
 
         <div class="table-responsive">
@@ -103,12 +104,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php if(!empty($parishes)): ?>
+                        <?php foreach($parishes as $parish):?>
                     <tr class="">
-                        <td scope="row">Sacred Heart of Jesus Parish</td>
-                        <td>Vicariate of Sacred Heart of Jesus</td>
-                        <td>Caloocan District 1</td>
+                        <td scope="row"><?php echo $parish['PARISH_NAME'];?></td>
+                        <td><?php echo $parish['VICARIATE']; ?></td>
+                        <td><?php echo $parish['DISTRICT']; ?></td>
                         <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestAccessModal">Request Access</button></td>
                     </tr>
+                    <?php endforeach ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4" class="text-center">No parishes found</td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
 

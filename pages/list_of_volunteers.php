@@ -43,10 +43,13 @@
                         <a href="/coordinator_volunteer_management">Volunteer Management</a>
                     </li>
                     <li class="breadcrumb-item">
-                    <a href="/barangay_volunteer_directory<?php echo $districturl; ?>">List of Barangay</a>
+                        <a href="/polling_area<?php echo $districturl; ?>">List of District</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/polling_area<?php echo $barangayurl; ?>">Polling Area</a>
+                    <a href="/barangay_volunteer_directory<?php echo $barangayurl; ?>">List of Barangay</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/polling_area<?php echo $pollingplaceurl; ?>">Polling Area</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Name of School</li>
                 </ol>
@@ -135,7 +138,7 @@
                                 <div class="col">
                                     <div class="d-flex flex-column text-center">
                                         <h5 class="text-primary">0</h5>
-                                        <p><?php echo $listofvolunteers['volunteer_count']; ?></p>
+                                        <p>150</p>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -182,35 +185,9 @@
                     </div>
 
                 </div>
-
-
-
-
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <!--VOLUNTEER DIRECTORY-->
 
             <div class="d-flex flex-row justify-content-between align-items-center mb-3">
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">

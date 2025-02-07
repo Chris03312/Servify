@@ -46,7 +46,10 @@
                         <a href="/coordinator_volunteer_management">Volunteer Management</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/barangay_volunteer_directory<?php echo $districturl; ?>">List of Barangay</a>
+                        <a href="/district_volunteer_directory<?php echo $districturl; ?>">List of District</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/barangay_volunteer_directory<?php echo $barangayurl; ?>">List of Barangay</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Polling Area</li>
                 </ol>

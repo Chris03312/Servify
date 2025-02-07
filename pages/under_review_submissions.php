@@ -169,31 +169,22 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link px-3" href="/pending_submissions">Pending <small>(10)</small></a>
+                <a class="nav-link px-3" href="/pending_submissions">Pending <small>(<?php echo $pendingCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/under_review_submissions">Under Review <small>(10)</small></a>
+                <a class="nav-link active px-3" href="/under_review_submissions">Under Review <small>(<?php echo $underReviewCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/approved_submissions">Approved/ Completed <small>(10)</small></a>
+                <a class="nav-link px-3" href="/approved_submissions">Approved/Completed <small>(<?php echo $approvedCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled <small>(10)</small></a>
+                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled <small>(<?php echo $cancelledCount; ?>)</small></a>
             </li>
         </ul>
 
-
+    
         <!--TABLE-->
 
         <div class="table-responsive">
@@ -208,16 +199,20 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                <?php if (!empty($underreviewApplications)): ?>
+                    <?php foreach ($underreviewApplications as $application): ?>
                     <tr>
-                        <td scope="row">January 1, 2025</td>
-                        <td>New Volunteer</td>
-                        <td>Caloocan District 1</td>
-                        <td>Under Review</td>
+                    <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
+                        <td>New <?php echo $application['ROLE']; ?></td>
+                        <td><?php echo $application['CITY'] . $application['CITY']; ?></td>
+                        <td><?php echo $application['STATUS']; ?></td>
                         <td>
                             <div class="d-none d-md-flex flex-column">
                                 <button type="button" class="btn btn-primary mb-2">Review</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                    <form action ="/under_review_submissions/delete" method="POST">
+                                        <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                             </div>
 
                             <!--BTN FOR SMALLER SCREEN-->
@@ -228,51 +223,24 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
-                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
+                                        <form action ="/under_review_submissions/delete" method="POST">
+                                            <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                <button type="submit" class="dropdown-item btn btn-danger">Delete</a></button>
+                                        </form>                                    
                                     </ul>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td scope="row">January 18, 2022</td>
-                        <td>Renewal</td>
-                        <td>Vicmar M. Guzman</td>
-                        <td>Under Review</td>
-                        <td>
-                            <div class="d-none d-md-flex flex-column">
-                                <button type="button" class="btn btn-primary mb-2">Review</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </div>
-
-                            <!--BTN FOR SMALLER SCREEN-->
-                            <div class="d-flex d-md-none flex-column">
-                                <div class="dropdown">
-                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
-                                        <button type="button" class="dropdown-item btn btn-danger">Delete</button>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-
-
-
-
+                    <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="1">No volunteers found.</td>
+                            </tr>
+                        <?php endif; ?>
                 </tbody>
             </table>
         </div>
-
-
-
-
-
-
-
 
     </main>
     </div>

@@ -153,6 +153,7 @@ class SignUpController {
         // Separate function for validation
         private static function validateSignUp(array $input) {
             $errors = [];
+            $currentMonth = date('m');
             $currentYear = date('Y');
             $minimumYear = $currentYear - 18;
         
@@ -177,9 +178,11 @@ class SignUpController {
             if (empty($input['birthMonth'])) {
                 $errors['birthMonth'] = 'Birth month is required. Please select a month from January to December.';
             }
-            if (!preg_match('/^(1|2[0-9]|31)$/', $input['birthDate'])) {
-                $errors['birthDate'] = 'Birth date must be between 1 and 31.';
+
+            if(!preg_match('/^(1|2[0-9]|3[01])$/', $input['birthDate'])){
+                $errors['birthDate'] = 'Birth Date is required. Please input date from 1 to 30 ';
             }
+
             if (!preg_match('/^(19|20)\d{2}$/', $input['birthYear']) || $input['birthYear'] < 1900 || $input['birthYear'] > $minimumYear) {
                 $errors['birthYear'] = 'Birth year must be at least 18 years old.';
             }

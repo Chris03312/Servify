@@ -1,18 +1,22 @@
 <?php 
 
-require_once __DIR__ . '/../models/BarangayVolunteerDirectory.php';
+require_once __DIR__ . '/../models/VolunteerManagement.php';
 
 class BarangayVolunteerDirectoryController {
 
     public static function ShowBarangayDirectory() {
         // Get district from URL query string, default to null if not set
+        $city = $_GET['City'] ?? null;
         $district = $_GET['District'] ?? null;
         // Fetch the volunteer directory with the district filter if provided
-        $getBarangayDirectory = BarangayVolunteerDirectory::getBarangayDirectory($district);
+        $districturl = '?City=' . urlencode($city);
+
+        $getBarangayDirectory = VolunteerManagement::getBarangayDirectory($district, $city);
 
         // Render the view with the volunteer directory data
         view('barangay_volunteer_directory', [
             'district' => $district,
+            'districturl' => $districturl,
             'barangayLinks' => $getBarangayDirectory
         ]);
     }
