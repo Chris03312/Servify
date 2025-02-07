@@ -40,6 +40,7 @@ require_once __DIR__ . '/../controllers/AdminDashboardController.php';
 require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
 require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
 require_once __DIR__ . '/../controllers/CaloocanDirectoryController.php';
+require_once __DIR__ . '/../controllers/ViewCoordinatorDetailsController.php';
 
 
 require_once __DIR__ . '/../controllers/LoginController.php';
@@ -109,6 +110,7 @@ $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDas
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/caloocan_directory', [CaloocanDirectoryController::class, 'ShowCaloocanDirectory']);
+$router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

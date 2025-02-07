@@ -157,24 +157,24 @@
                             <div class="row mb-3">
                                 <label for="filterDistrict" class="col-sm-2 col-form-label">District:</label>
                                 <div class="col-sm-10">
-                                <select id="filterDistrict" class="form-select">
-                                    <option selected>Select District No.</option>
-                                    <option>...</option>
-                                </select>
+                                    <select id="filterDistrict" class="form-select">
+                                        <option selected>Select District No.</option>
+                                        <option>...</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="filterParishName" class="col-sm-2 col-form-label">Parish Assigned:</label>
                                 <div class="col-sm-10">
-                                <select id="filterParishName" class="form-select">
-                                    <option selected>Select Parish Name</option>
-                                    <option>...</option>
-                                </select>
+                                    <select id="filterParishName" class="form-select">
+                                        <option selected>Select Parish Name</option>
+                                        <option>...</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            
-                  
+
+
 
                             <div class="modal-footer">
                                 <button type="button" class="btn mb-2">Reset</button>
@@ -191,6 +191,14 @@
         </div>
 
 
+
+        <!-- SEARCH BAR -->
+        <section class="row mb-3">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><bi class="bi-search"></bi></span>
+                <input type="search" class="form-control" placeholder="Search name or email">
+            </div>
+        </section>
 
         <!-- TABLE -->
         <div class="table-responsive">
@@ -217,7 +225,7 @@
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
-                        <td><a href="#" class="btn btn-sm text-primary">View Details</a></td>
+                        <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
                     </tr>
 
                 </tbody>

@@ -36,7 +36,7 @@
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="/coordinator_attendance_tracking" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_achievements" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
@@ -122,7 +122,7 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span>Vicmar Guzman</span>
+                            <span>Vicmar</span>
                             <small>Admin</small>
                         </div>
                     </button>
