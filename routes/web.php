@@ -124,8 +124,6 @@ $router->add('/coordinator_inquiries', [CoordinatorInquiryController::class, 'Sh
 $router->add('/coordinator_feedback', [CoordinatorFeedbackController::class, 'ShowCoordinatorFeedback']);
 $router->add('/reports', [ReportsController::class, 'ShowReports']);
 
-
-
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
