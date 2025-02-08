@@ -4,7 +4,7 @@ require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Notification.php';
 
 class AchievementsController {
-    public static function Achievements(){
+    public static function Achievements(): void{
 
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
