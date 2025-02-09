@@ -11,7 +11,9 @@ class AdminDashboardController{
         // if (!isset($_SESSION['email']) || !$_SESSION['email']) {
         //     redirect('/login');
         // }
+        $chartsData = CoordinatorDashboard::chartsData();
         $adminsidebarinfo = Adminsidebarinfo::getsidebarinfo();
+        $totalCities = CoordinatorDashboard::getTotalCities();
         $countdown = Dashboard::CountDownElectionDay();
 
         view('admin_dashboard', [
@@ -22,6 +24,8 @@ class AdminDashboardController{
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
+            'chartsData' => $chartsData,          
+            'totalCities' => $totalCities, 
             'adminsidebarinfo' => $adminsidebarinfo
         ]);
     }

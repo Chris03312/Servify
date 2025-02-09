@@ -1,0 +1,50 @@
+{
+    "National": {
+        "format": "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+        "example": "1234-5678-9012-3456"
+    },
+    "ePhilID": {
+        "format": "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+        "example": "5678-9012-3456-7890"
+    },
+    "SSS ID": {
+        "format": "^\\d{2}-\\d{7}-\\d{1}$",
+        "example": "34-5678901-2"
+    },
+    "PRC ID": {
+        "format": "^\\d{2}-\\d{6}$",
+        "example": "12-345678"
+    },
+    "Postal ID": {
+        "format": "^\\d{4} \\d{4} \\d{4}$",
+        "example": "1234 5678 9012"
+    },
+    "Passport": {
+        "format": "^[A-Z]{2}\\d{7}$",
+        "example": "EC1234567"
+    },
+    "Driver's License": {
+        "format": "^[A-Z]\\d{2}-\\d{2}-\\d{6}$",
+        "example": "A12-34-567890"
+    },
+    "UMID": {
+        "format": "^\\d{4}-\\d{7}-\\d{1}$",
+        "example": "1234-5678901-2"
+    },
+    "NBI Clearance": {
+        "format": "^[A-Z0-9]{18}$",
+        "example": "ABC123456789012345"
+    },
+    "ACR i-Card": {
+        "format": "^[A-Z]{3}\\d{9}$",
+        "example": "ACR123456789"
+    },
+    "Government Office and GOCC ID": {
+        "format": "^[A-Z0-9-]+$",
+        "example": "GOCC-123456"
+    },
+    "IBP Card": {
+        "format": "^\\d{1,4}-\\d{4}$",
+        "example": "123-4567"
+    }
+}
