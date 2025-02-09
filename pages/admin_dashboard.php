@@ -25,7 +25,8 @@
     <!--JS CHART CDN-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> 
 
 </head>
 
@@ -41,8 +42,8 @@
 
         <!--DASHBOARD BANNER-->
         <div class="dashboardBanner mb-4">
-            <p>February 4, 2025</p>
-            <h4>Welcome back, Admin!</h4>
+            <p><?php echo date('F j, Y'); ?></p>
+            <h4>Welcome back, <?php echo $role; ?>!</h4>
         </div>
 
         <div class="container-fluid">
@@ -94,7 +95,7 @@
                                     var minutes = <?php echo $minutes; ?>;
                                     var seconds = <?php echo $seconds; ?>;
                                 </script>
-                                <!-- <script src="../js/countdown.js"></script> -->
+                                <script src="../js/countdown.js"></script>
                             </div>
                         </div>
                     </div>
@@ -228,10 +229,9 @@
                                     <canvas id="volunteerBarChart"></canvas>
                                     <!--VOLUNTEER BAR CHART-->
                                     <script>
-                                        const schools = <?php echo json_encode($chartData); ?>;
-                                        console.log(schools);
-                                    </script>
-                                    <script src="../js/volunteer_bar_chart.js"></script>
+                                    const allChartData = <?php echo json_encode($chartsData); ?>;
+                                </script>
+                                <script src="../js/charts.js"></script>
                                 </div>
                             </div>
 
@@ -332,15 +332,15 @@
                                         <p>Total Volunteers in:</p>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Caloocan City</span>
-                                            <h4 class="text-danger">5</h4>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['caloocan_count']); ?></h4>
                                         </div>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Malabon City</span>
-                                            <h4 class="text-danger">5</h4>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['malabon_count']); ?></h4>
                                         </div>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Navotas City</span>
-                                            <h4 class="text-danger">5</h4>
+                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['navotas_count']); ?></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -348,7 +348,8 @@
                                 <div class="col-md-10">
                                     <!-- MAP ON THE RIGHT -->
                                     <div class="mt-2">
-                                        <div id="mapcities" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
+                                        <div id="map" class="ratio ratio-16x9 mt-2"></div>
+                                        <!-- Replace iframe with the Leaflet map -->
                                     </div>
                                     <script>
                                         // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
@@ -362,7 +363,7 @@
                                         console.log('Navotas Volunteers:', navotasData);
                                     </script>
                                     <script src="../js/leafletmapcities.js" defer></script>
-                                </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

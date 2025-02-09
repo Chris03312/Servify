@@ -168,7 +168,7 @@ class VolunteerNewApplicationController {
                 if ($account) {
                     $username = $account['USERNAME'];
                     $currentDate = date('F j, Y H:i:s');
-                    $description = 'You submitted an application form. Click here to check the status of your registration.';
+                    $description = 'You submitted an application form with an Application ID of.'.' '.$application_id.' '.'Click here to check the status of your registration.';
 
                     $stmt = $db->prepare('INSERT INTO ACTIVITIES 
                     (
@@ -225,6 +225,7 @@ class VolunteerNewApplicationController {
             if (empty($input['prevPrecinct'])) $errors['prevPrecinct'] = 'Previous Precinct is required.';
             if (empty($input['prefPpcrvVolAss'])) $errors['prefPpcrvVolAss'] = 'Please select Preferred PPCRV Volunteer Assignment.';
             if (empty($input['nameofId'])) $errors['nameofId'] = 'Please select Type of ID.';
+            if(empty($input['IDNumber'])) $errors['IDNumber'] = 'ID Number is required.';
             if (empty($input['validId'])) $errors['validId'] = 'Please upload the ID here.';
             if (empty($input['checkPledge'])) $errors['checkPledge'] = 'Please check the box to confirm your acknowledgment and agreement before submitting.';
             

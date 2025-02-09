@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+
+
 </head>
 
 <body>
@@ -472,16 +476,26 @@
                             </div>
 
                             <div class="col-md-7 mb-3">
-                                <label for="sex" class="form-label">Type of ID<sup class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select mb-2" name="nameofId">
-                                    <option selected disabled value="">Select type of ID</option>
+                            <label for="sex" class="form-label">Type of ID<sup class="text-danger fw-bold">*</sup></label>
+                            <select id="nameofId" class="form-select mb-2" name="nameofId">
+                                <option selected disabled value="">Select type of ID</option>
+                                <?php foreach ($validId as $id): ?>
+                                    <option value="<?= $id['NAME']; ?>"><?= $id['NAME']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="invalid-feedback" id="error-nameofId"></div>
 
-                                    <?php foreach ($validId as $id): ?>
-                                        <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->
-                                        <option value="<?= $id['NAME']; ?>"><?= $id['NAME']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <div class="invalid-feedback" id="error-nameofId"></div>
+                            <label for="idNumber" class="form-label">ID Number<sup class="text-danger fw-bold">*</sup></label>
+                            <input type="text" name="IDNumber" id="IDNumber" class="form-control mb-2" disabled placeholder="Select ID type first">
+                            <div class="invalid-feedback" id="error-IDNumber"></div>
+
+                            <!-- Ensure jQuery is loaded -->
+                            <script src="../js/ImageEnhancement.js"></script>
+                            <script>
+                            
+                            </script>
+
+
 
 
 

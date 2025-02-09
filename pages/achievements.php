@@ -57,13 +57,26 @@
                             <div class="col-12 col-md-12 col-lg-6 col-xl-4 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
-                                            <h5>Years of Service: 2</h5>
-                                            <span>Since 2021</span>
-                                            <img src="../img/BRONZE BADGE.png" alt="Bronze Badge" class="img-fluid">
-                                            <h4>CONGRATULATIONS</h4>
-                                            <p>Consistently volunteered in at least two election cycles.</p>
-                                        </div>
+                                        <?php if (!empty($attendance_count) && !empty($years_of_service) && !empty($date_approved)) { ?>
+                                            <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
+                                                <h5>Years of Service: <?php echo $years_of_service; ?></h5>
+                                                <span>Since <?php echo date("F j, Y", strtotime($date_approved)); ?></span>
+
+                                                <?php if (!empty($badge)) { ?>
+                                                    <img src="../img/<?php echo htmlspecialchars($badge['IMG']); ?>" 
+                                                        alt="<?php echo htmlspecialchars($badge['DESCRIPTION']); ?>" 
+                                                        class="img-fluid ms-5">
+                                                    <h4>CONGRATULATIONS</h4>
+                                                    <p><?php echo htmlspecialchars($badge['DESCRIPTION']); ?></p>
+                                                <?php } else { ?>
+                                                    <h5>NO ACHIEVEMENTS YET</h5>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
+                                                <h5>NOT YET A VOLUNTEER</h5>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -71,57 +84,100 @@
 
                             <!--ACHIEVEMENT YOU CAN UNLOCK-->
                             <div class="col-12 col-md-12 col-lg-6 col-xl-4 mb-3">
-
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="container-fluid">
+                                        <div class="container-fluid text-center">
+                                            <h5>Achievements you can unlock...</h5><br>
 
-                                            <h5>Achievements you can unlock...</h5>
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+                                                    <?php if (!empty($attendance_count)) { ?>
+                                                        <?php if ($attendance_count >= 9) { ?>
+                                                            <h5 class="text-center">You unlocked all achievements! 🎉</h5>
+                                                        <?php } else { ?>
+                                                            <!-- Show only the NEXT unlockable badge -->
+                                                            <?php 
+                                                                $nextBadge = null;
+                                                                foreach ($badges as $badge) {
+                                                                    if ($attendance_count < $badge['COUNT']) {
+                                                                        $nextBadge = $badge;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            ?>
 
-                                            <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                                                            <?php if ($nextBadge) { ?>
+                                                                <div class="badge-item text-center">
+                                                                    <img src="../img/<?php echo $nextBadge['IMG']; ?>" alt="Next Badge" class="img-fluid">
+                                                                    <p class="mt-2"><?php echo $nextBadge['DESCRIPTION']; ?></p>
+                                                                </div>
+                                                            <?php } ?>
 
-                                                <div>
-                                                    <img src="../img/GOLD BADGE.png" alt="Gold Badge" class="img-fluid">
-                                                    <p>Consistently volunteered in at least two election cycles.</p>
+                                                            <!-- Hidden Achievements (Remove already shown one) -->
+                                                            <div class="collapse text-center" id="moreAchievements">
+                                                                <?php foreach ($badges as $badge) { ?>
+                                                                    <?php if ($attendance_count >= $badge['COUNT'] || $badge == $nextBadge) continue; ?>
+
+                                                                    <div class="badge-item text-center">
+                                                                        <img src="../img/<?php echo $badge['IMG']; ?>" alt="Locked Badge" class="img-fluid">
+                                                                        <p class="mt-2"><?php echo $badge['DESCRIPTION']; ?></p>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
+
+                                                            <!-- See More Button (Centered at Bottom) -->
+                                                            <?php if ($attendance_count < 9) { ?>
+                                                                <div class="d-flex justify-content-center w-100 mt-3">
+                                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#moreAchievements">
+                                                                        See More
+                                                                    </button>
+                                                                </div>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </div>
-                                                <div>
-                                                    <img src="../img/PLATINUM BADGE.png" alt="Platinum Badge" class="img-fluid">
-                                                    <p>Contribute to five or more election cycles.</p>
-                                                </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!--ALL ACHIEVEMENTS-->
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="container-fluid mb-3">
 
-                                            <h5 class="mb-3">All Achievements</h5>
-
+                                            <h5 class="text-center mb-4">All Achievements</h5>
                                             <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                                                <?php if ($getAchievementList): ?>
+                                                    <!-- Labels Row -->
+                                                    <div class="d-flex w-100 gap-2 fw-bold text-center">
+                                                        <div class="w-50">Achievement</div>
+                                                        <div class="w-50">Date Achieved</div>
+                                                    </div>
 
-                                                <div class="border w-100 p-2 rounded">
-                                                    <span>Achievement 'yarn.</span>
-                                                </div>
-                                                <div class="border w-100 p-2 rounded">
-                                                    <span>Achievement 'yarn.</span>
-                                                </div>
-                                                <div class="border w-100 p-2 rounded">
-                                                    <span>Achievement 'yarn.</span>
-                                                </div>
-                                                <div class="border w-100 p-2 rounded">
-                                                    <span>Achievement 'yarn.</span>
-                                                </div>
-                                                <div class="border w-100 p-2 rounded">
-                                                    <span>Achievement 'yarn.</span>
-                                                </div>
-
+                                                    <?php foreach ($getAchievementList as $achievement): ?>
+                                                        <div class="d-flex w-100 gap-2 align-items-center">
+                                                            <!-- Image & Name Container -->
+                                                            <div class="border rounded d-flex flex-column align-items-center w-50 pt-3">
+                                                                <img src="../img/<?php echo $achievement['ACHIEVEMENT_NAME']; ?>.png" 
+                                                                    alt="<?php echo $achievement['ACHIEVEMENT_NAME']; ?>" 
+                                                                    class="img-fluid" style="max-width: 100px;">
+                                                                <p class="mt-2 fw-bold"><?php echo $achievement['ACHIEVEMENT_NAME']; ?></p>
+                                                            </div>
+                                                            
+                                                            <!-- Date Achieved -->
+                                                            <div class="border p-2 rounded w-50 text-center">
+                                                                <span><?php echo date("F j, Y", strtotime($achievement['DATE_ACHIEVED'])); ?></span>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <div class="border w-100 p-2 rounded text-center">
+                                                        <span>No achievements yet.</span>
+                                                    </div>               
+                                                <?php endif; ?>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -136,54 +192,24 @@
                                     <div class="card-body">
                                         <section class="container-fluid mb-3">
                                             <ul class="timeline-with-icons">
+                                            <?php if(!empty($timelines)): ?>
+                                                <?php foreach ($timelines as $timeline): ?>
                                                 <li class="timeline-item mb-5">
                                                     <span class="timeline-year">
-                                                        2022
+                                                        <?php echo $timeline['YEAR'] ?? " "; ?>
                                                     </span>
 
                                                     <div class="timeline-content">
-                                                        <h5 class="fw-bold">Poll Watcher</h5>
+                                                        <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
                                                         <p class="text-muted">
-                                                            Maligaya Elementary School
+                                                            <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?>
                                                         </p>
                                                     </div>
                                                 </li>
-                                                <li class="timeline-item mb-5">
-                                                    <span class="timeline-year">
-                                                        2022
-                                                    </span>
-
-                                                    <div class="timeline-content">
-                                                        <h5 class="fw-bold">Poll Watcher</h5>
-                                                        <p class="text-muted">
-                                                            Maligaya Elementary School
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                                <li class="timeline-item mb-5">
-                                                    <span class="timeline-year">
-                                                        2022
-                                                    </span>
-
-                                                    <div class="timeline-content">
-                                                        <h5 class="fw-bold">Poll Watcher</h5>
-                                                        <p class="text-muted">
-                                                            Maligaya Elementary School
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                                <li class="timeline-item mb-5">
-                                                    <span class="timeline-year">
-                                                        2022
-                                                    </span>
-
-                                                    <div class="timeline-content">
-                                                        <h5 class="fw-bold">Poll Watcher</h5>
-                                                        <p class="text-muted">
-                                                            Maligaya Elementary School
-                                                        </p>
-                                                    </div>
-                                                </li>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
+                                                <p class ="text-center">No Timelines</p>
+                                            <?php endif; ?> 
                                             </ul>
                                         </section>
                                     </div>
