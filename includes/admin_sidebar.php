@@ -122,8 +122,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span>Vicmar</span>
-                            <small>Admin</small>
+                            <span><?php echo $adminsidebarinfo['FIRST_NAME'].' '. $adminsidebarinfo['SURNAME']; ?></span>
+                            <small><?php echo $role; ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

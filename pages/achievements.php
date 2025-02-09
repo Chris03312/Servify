@@ -57,40 +57,101 @@
                             <div class="col-12 col-md-12 col-lg-6 col-xl-4 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
-                                            <h5>Years of Service: 2</h5>
-                                            <span>Since 2021</span>
-                                            <img src="../img/BRONZE BADGE.png" alt="Bronze Badge" class="img-fluid">
-                                            <h4>CONGRATULATIONS</h4>
-                                            <p>Consistently volunteered in at least two election cycles.</p>
-                                        </div>
+                                    <?php if (!empty($attendance_count) && !empty($years_of_service) && !empty($date_approved)) { ?>
+                                            <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
+                                                <h5>Years of Service: <?php echo $years_of_service; ?></h5>
+                                                <span>Since <?php echo $date_approved; ?></span>
+                                                <?php if ($attendance_count >= 2 && $attendance_count <= 4) { ?>
+                                                    <img src="../img/BRONZE BADGE.png" alt="Bronze Badge" class="img-fluid ms-5">
+                                                    <h4>CONGRATULATIONS</h4>
+                                                    <p>Consistently volunteered in at least two election cycles.</p>
+                                                <?php } elseif($attendance_count >= 5 && $attendance_count <= 6) { ?>
+                                                    <img src="../img/SILVER BADGE.png" alt="Silver Badge" class="img-fluid ms-4">
+                                                    <h4>CONGRATULATIONS</h4>
+                                                    <p>Consistently volunteered in at least fifth times election cycles.</p>
+                                                <?php } elseif($attendance_count >= 7 && $attendance_count <= 8) { ?>
+                                                    <img src="../img/GOLD BADGE.png" alt="Gold Badge" class="img-fluid ms-4">
+                                                    <h4>CONGRATULATIONS</h4>
+                                                    <p>Consistently volunteered in at least seventh times election cycles.</p>
+                                                <?php } elseif($attendance_count >= 9) { ?>
+                                                    <img src="../img/PLATINUM BADGE.png" alt="Platinum Badge" class="img-fluid ms-1">
+                                                    <h4>CONGRATULATIONS</h4>
+                                                    <p>Consistently volunteered in at least ninth time election cycles.</p>
+                                                <?php } else { ?>
+                                                    <h5>NO ACHIVEMENTS YET </h5>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
+                                                <h5>NOT YET VOLUNTEER </h5>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <!--ACHIEVEMENT YOU CAN UNLOCK-->
                             <div class="col-12 col-md-12 col-lg-6 col-xl-4 mb-3">
-
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="container-fluid">
+                                        <div class="container-fluid text-center">
+                                            <h5>Achievements you can unlock...</h5><br>
 
-                                            <h5>Achievements you can unlock...</h5>
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+                                                    <?php if (!empty($attendance_count)) { ?>
+                                                        <?php if ($attendance_count >= 9) { ?>
+                                                            <h5 class="text-center">You unlocked all achievements! 🎉</h5>
+                                                        <?php } else { ?>
+                                                            <!-- Show only the NEXT unlockable badge -->
+                                                            <?php 
+                                                                $badges = [
+                                                                    ["count" => 2, "img" => "BRONZE BADGE.png", "desc" => "Consistently volunteered in at least two (2) election cycles."],
+                                                                    ["count" => 5, "img" => "SILVER BADGE.png", "desc" => "Contributed to five or more election cycles."],
+                                                                    ["count" => 7, "img" => "GOLD BADGE.png", "desc" => "Consistently volunteered in at least seven (7) election cycles."],
+                                                                    ["count" => 9, "img" => "PLATINUM BADGE.png", "desc" => "Contributed to nine or more election cycles."]
+                                                                ];
 
-                                            <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                                                                $nextBadge = null;
+                                                                foreach ($badges as $badge) {
+                                                                    if ($attendance_count < $badge['count']) {
+                                                                        $nextBadge = $badge;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            ?>
 
-                                                <div>
-                                                    <img src="../img/GOLD BADGE.png" alt="Gold Badge" class="img-fluid">
-                                                    <p>Consistently volunteered in at least two election cycles.</p>
+                                                            <?php if ($nextBadge) { ?>
+                                                                <div class="badge-item text-center">
+                                                                    <img src="../img/<?php echo $nextBadge['img']; ?>" alt="Next Badge" class="img-fluid">
+                                                                    <p class="mt-2"><?php echo $nextBadge['desc']; ?></p>
+                                                                </div>
+                                                            <?php } ?>
+
+                                                            <!-- Hidden Achievements (Remove already shown one) -->
+                                                            <div class="collapse text-center" id="moreAchievements">
+                                                                <?php foreach ($badges as $badge) { ?>
+                                                                    <?php if ($attendance_count >= $badge['count'] || $badge == $nextBadge) continue; ?>
+
+                                                                    <div class="badge-item text-center">
+                                                                        <img src="../img/<?php echo $badge['img']; ?>" alt="Locked Badge" class="img-fluid">
+                                                                        <p class="mt-2"><?php echo $badge['desc']; ?></p>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
+
+                                                            <!-- See More Button (Centered at Bottom) -->
+                                                            <?php if ($attendance_count < 9) { ?>
+                                                                <div class="d-flex justify-content-center w-100 mt-3">
+                                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#moreAchievements">
+                                                                        See More
+                                                                    </button>
+                                                                </div>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </div>
-                                                <div>
-                                                    <img src="../img/PLATINUM BADGE.png" alt="Platinum Badge" class="img-fluid">
-                                                    <p>Contribute to five or more election cycles.</p>
-                                                </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

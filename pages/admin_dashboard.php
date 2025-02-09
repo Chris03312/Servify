@@ -41,8 +41,8 @@
 
         <!--DASHBOARD BANNER-->
         <div class="dashboardBanner mb-4">
-            <p>February 4, 2025</p>
-            <h4>Welcome back, Admin!</h4>
+            <p><?php echo date('F j, Y'); ?></p>
+            <h4>Welcome back, <?php echo $role; ?>!</h4>
         </div>
 
         <div class="container-fluid">
@@ -94,7 +94,7 @@
                                     var minutes = <?php echo $minutes; ?>;
                                     var seconds = <?php echo $seconds; ?>;
                                 </script>
-                                <!-- <script src="../js/countdown.js"></script> -->
+                                <script src="../js/countdown.js"></script>
                             </div>
                         </div>
                     </div>
