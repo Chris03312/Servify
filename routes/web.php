@@ -36,6 +36,7 @@ require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
+require_once __DIR__ . '/../controllers/VolunteerApplicationDetailsController.php';
 
 
 
@@ -80,6 +81,7 @@ $router->add('/volunteer_new_application/validate', [VolunteerNewApplicationCont
 $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
 $router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationController::class, 'RenewalApplication']);
 $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'VolunteerAttendances']);
+$router->add('/volunteer_application_details', [VolunteerApplicationDetailsController::class, 'ShowVolunteerApplicationDetails']);
 
 $router->add('/announcements', [AnnouncementsController::class, 'ShowAnnouncements']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
