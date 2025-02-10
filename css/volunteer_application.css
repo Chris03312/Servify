@@ -12,7 +12,7 @@
   }
   
   .text {
-    white-space: nowrap; /* Prevent text from wrapping */
+    white-space: wrap; /* Prevent text from wrapping */
   }
 
   .file-upload {
