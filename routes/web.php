@@ -24,6 +24,8 @@ require_once __DIR__ . '/../controllers/CancelledSubmissionsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAttendanceTrackingController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAchievementsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorInquiryController.php';
+require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
+
 require_once __DIR__ . '/../controllers/CoordinatorFeedbackController.php';
 require_once __DIR__ . '/../controllers/ReportsController.php';
 
@@ -37,8 +39,6 @@ require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.ph
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
 require_once __DIR__ . '/../controllers/VolunteerApplicationDetailsController.php';
-
-
 
 require_once __DIR__ . '/../controllers/AdminDashboardController.php';
 require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
@@ -92,7 +92,7 @@ $router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsControl
 $router->add('/coordinator_profile', [CoordinatorProfileController::class, 'ShowConfirmProfile']);
 $router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
-$router->add('/add_new_volunteer/submit', [CoordinatorAnnouncementsController::class, 'CoordinatorAddVolunteer']);
+$router->add('/add_new_volunteer/submit', [AddNewVolunteerController::class, 'CoordinatorAddVolunteer']);
 
 $router->add('/coordinator_announcements/submit', [CoordinatorAnnouncementsController::class, 'ShowCreateAnnouncements']);
 $router->add('/coordinator_announcements/delete', [CoordinatorAnnouncementsController::class, 'ShowDeleteAnnouncements']);
