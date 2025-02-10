@@ -33,7 +33,7 @@
 
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-5">
             <div>
-                <h4>VOLUNTEER DIRECTORY BY PARISH</h4>
+                <h4><?php echo strtoupper($City); ?> VOLUNTEER DIRECTORY</h4>
             </div>
 
             <div class="d-flex flex-row gap-3">

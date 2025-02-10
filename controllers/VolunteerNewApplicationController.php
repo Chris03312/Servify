@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../configuration/Database.php'; // Include the Database class
 require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Application.php';
 require_once __DIR__ . '/../models/Notification.php';
@@ -12,8 +11,7 @@ class VolunteerNewApplicationController {
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
-
-        $sidebarinfo = Sidebarinfo::getsidebarinfo();
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
         $notifications = Notification::getNotification();
         $applicationInfo = Application::getinfoApplication();
         $validId = Dashboard::getvalidId();
@@ -21,7 +19,7 @@ class VolunteerNewApplicationController {
         view('volunteer_new_application', [
             'email' => $_SESSION['email'],
             'applicationInfo' => $applicationInfo,
-            'sidebarinfo' => $sidebarinfo,
+            'sidebarinfo' => $sidebarData,
             'validId' => $validId,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count'],

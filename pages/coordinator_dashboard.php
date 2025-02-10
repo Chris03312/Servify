@@ -42,7 +42,7 @@
         <!--DASHBOARD BANNER-->
         <div class="dashboardBanner mb-4">
             <p><?php echo $currentDate; ?></p>
-            <h4>Welcome back, <?php echo $coordinator_info['first_name']; ?>!</h4>
+            <h4>Welcome back, <?php echo $sidebarinfo['first_name']; ?>!</h4>
         </div>
 
         <div class="container-fluid">

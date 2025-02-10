@@ -492,14 +492,14 @@
                             </thead>
                             <tbody>
                             <tbody>
-                                <?php if (!empty($volunteers)): ?>
-                                    <?php foreach ($volunteers as $volunteer): ?>
+                                <?php if (!empty($volunteerPerParish)): ?>
+                                    <?php foreach($volunteerPerParish as $volunteer): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['VOLUNTEERS_NAME']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['PRECINCT_NO']); ?></td>
-                                            <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['MIDDLE_NAME'] . ' ' . $volunteer['SURNAME']); ?></td>
-                                            <td><?= htmlspecialchars($volunteer['POLLING_PLACE']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
+                                            <td><?= htmlspecialchars($volunteer['CPROFILE_NAME']); ?></td>
                                             <td>
                                                 <a href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a> |
                                                 <a href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>

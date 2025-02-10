@@ -1,6 +1,8 @@
 <?php 
 
 require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
+
 
 class BarangayVolunteerDirectoryController {
 
@@ -12,12 +14,14 @@ class BarangayVolunteerDirectoryController {
         $districturl = '?City=' . urlencode($city);
 
         $getBarangayDirectory = VolunteerManagement::getBarangayDirectory($district, $city);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         // Render the view with the volunteer directory data
         view('barangay_volunteer_directory', [
             'district' => $district,
             'districturl' => $districturl,
-            'barangayLinks' => $getBarangayDirectory
+            'barangayLinks' => $getBarangayDirectory,
+            'sidebarinfo' => $sidebarData
         ]);
     }
 }

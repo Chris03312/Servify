@@ -90,6 +90,7 @@ $router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsControl
 $router->add('/coordinator_profile', [CoordinatorProfileController::class, 'ShowConfirmProfile']);
 $router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
+$router->add('/add_new_volunteer/submit', [CoordinatorAnnouncementsController::class, 'CoordinatorAddVolunteer']);
 
 $router->add('/coordinator_announcements/submit', [CoordinatorAnnouncementsController::class, 'ShowCreateAnnouncements']);
 $router->add('/coordinator_announcements/delete', [CoordinatorAnnouncementsController::class, 'ShowDeleteAnnouncements']);

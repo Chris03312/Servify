@@ -16,7 +16,8 @@ class AchievementsController {
         $getBadges = Achievements::getBadges();
         $timelines = Dashboard::MyTimeline();
         $userData = Dashboard::getinfodashboard();
-        $sidebarinfo = Sidebarinfo::getsidebarinfo();
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+
         $notifications = Notification::getNotification();
         $getAchievements = Achievements::getAchievements();
         $badge = Achievements::getBadgeByAttendance($getAchievements['ATTENDANCE_COUNT']);
@@ -45,7 +46,7 @@ class AchievementsController {
 
         view('achievements', [
             'email' => $email,
-            'sidebarinfo' => $sidebarinfo,
+            'sidebarinfo' => $sidebarData,
             'getAchievementList' => $getAchievementList,
             'timelines' => $timelines,
             'notifications' => $notifications['notifications'],

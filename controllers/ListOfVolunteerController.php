@@ -17,8 +17,11 @@ class ListOfVolunteerController {
 
 
         $listofvolunteers = VolunteerManagement::getlistofVolunteer($city,$district, $barangay, $pollingplace);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+
 
         view('list_of_volunteers', [
+            'sidebarinfo' => $sidebarData,
             'listofvolunteers' => $listofvolunteers,
             'pollingplace' => $pollingplace,
             'pollingplaceurl' => $pollingplaceurl,

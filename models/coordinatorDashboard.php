@@ -7,7 +7,7 @@ class CoordinatorDashboard {
 
     public static function PendingApp() {
         try {
-            $status = 'For evaluation';
+            $status = 'Pending';
     
             $db = Database::getConnection();
             

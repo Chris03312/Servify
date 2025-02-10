@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/coorsidebarinfo.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
 class CoordinatorAnnouncementsController
 {
 
@@ -8,18 +8,12 @@ class CoordinatorAnnouncementsController
     public static function ShowAnnouncements()
     {
 
-        $coordinator_info = Coorsidebarinfo::sidebarinfo();
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         view('coordinator_announcements', [
-            'coordinator_info' => $coordinator_info
+            'coordinator_info' => $sidebarData
         ]);
     }
-
-
-
-
-
-
     // CREATING ANNOUNCEMENTS
     public static function ShowCreateAnnouncements()
     {
