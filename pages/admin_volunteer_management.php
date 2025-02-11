@@ -2,7 +2,6 @@
 // Assuming you have a database connection set up
 require_once __DIR__ . '/../configuration/Database.php';
 
-
 $query = "
     SELECT 
         app.APPLICATION_ID, 
@@ -11,7 +10,7 @@ $query = "
         add_info.PREFERRED_PPCRV_VOL_ASS
     FROM 
         application_info AS app
-    INNER JOIN 
+    INNER JOIN
         application_add_info AS add_info 
     ON 
         app.APPLICATION_ID= add_info.APPLICATION_ADD_ID
@@ -31,6 +30,7 @@ if($rows) {
                     <th>Parish</th>
                     <th>Preferred Mission</th>
                     <th>Action</th>
+                    <th>Remarks</th>
                 </tr>
             </thead>
             <tbody>";

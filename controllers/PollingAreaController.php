@@ -14,12 +14,15 @@ class PollingAreaController {
         $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);
 
         $getPollingDirectory = VolunteerManagement::getPollingPlace($city, $district, $barangay);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+
 
         view('polling_area', [
             'barangay' => $barangay,
             'districturl' => $districturl,
             'barangayurl' => $barangayurl,
-            'pollingLinks' => $getPollingDirectory
+            'pollingLinks' => $getPollingDirectory,
+            'sidebarinfo' => $sidebarData
         ]);
     }
 }

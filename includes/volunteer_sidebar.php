@@ -132,8 +132,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span><?php echo htmlspecialchars(($sidebarinfo['FIRST_NAME'] ?? " ") . ' ' . ($sidebarinfo['SURNAME'] ?? " ")); ?></span>
-                            <small><?php echo htmlspecialchars(($sidebarinfo['ROLE'] ?? " ")); ?></small>
+                            <span><?php echo htmlspecialchars(($sidebarinfo['FIRST_NAME'] ?? " ") . ' ' . ($sidebarinfo['SURNAME'] ?? "Guest")); ?></span>
+                            <small><?php echo htmlspecialchars(($sidebarinfo['ROLE'] ?? "Guest")); ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

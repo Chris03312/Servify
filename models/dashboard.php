@@ -39,65 +39,6 @@ class Dashboard {
         }
     }
     
-    
-    public static function getActivityLog() {
-        try {
-            // Validate that email and username are in the session
-            if (!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
-                throw new Exception("Session data missing: email or username.");
-            }
-    
-            // Retrieve username and email from the session
-            $email = $_SESSION['email'];
-            $username = $_SESSION['username'];
-    
-            // Establish database connection
-            $db = Database::getConnection();
-    
-            // Query activities for the specific username or email
-            $stmt = $db->prepare('
-                SELECT DESCRIPTION, CREATED_AT
-                FROM ACTIVITIES
-                WHERE username = :username OR EMAIL = :email
-                ORDER BY created_at DESC
-            ');
-            $stmt->execute(['username' => $username, 'email' => $email]);
-    
-            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-            // If no activities found, return an empty array
-            if (empty($activities)) {
-                return [];
-            }
-    
-            // Get the current date
-            $currentDate = (new DateTime())->format('Y-m-d');
-    
-            // Format the created_at timestamp
-            foreach ($activities as &$activity) {
-                $date = new DateTime($activity['CREATED_AT']);
-                $activityDate = $date->format('Y-m-d');
-    
-                if ($activityDate === $currentDate) {
-                    // If the activity is from today, show 'Today'
-                    $activity['FORMATTED_DATE'] = 'Today, ' . $date->format('h:i A');
-                } else {
-                    // Otherwise, show the full date with the day
-                    $activity['FORMATTED_DATE'] = $date->format('D, h:i A');
-                }
-            }
-    
-            return $activities;
-        } catch (PDOException $e) {
-            error_log('Database error in getActivityLog: ' . $e->getMessage());
-            return [];
-        } catch (Exception $e) {
-            error_log('General error in getActivityLog: ' . $e->getMessage());
-            return [];
-        }
-    }
-    
-    
     public static function CountDownElectionDay() {
         // Set the target election date (example: Jan 20, 2025, 00:00:00)
         $targetDate = '2025-05-09 00:00:00';
@@ -227,5 +168,29 @@ class Dashboard {
         }
     }
     
+    public static function getVolunteerPerParish() {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare('
+                SELECT
+                    v.VOLUNTEERS_ID,
+                    v.ROLE,
+                    v.PRECINCT_NO,
+                    CONCAT(v.FIRST_NAME, " ", COALESCE(v.MIDDLE_NAME, ""), " ", v.SURNAME) AS VOLUNTEERS_NAME,
+                    CONCAT(c.FIRST_NAME, " ", COALESCE(c.MIDDLE_NAME, ""), " ", c.SURNAME) AS CPROFILE_NAME
+                FROM VOLUNTEERS_TBL AS v
+                INNER JOIN CPROFILE_TABLE AS c 
+                ON v.PARISH = c.PARISH
+            ');
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Return all results
+
+        } catch (PDOException $e) {
+            error_log("Get volunteer per parish error: " . $e->getMessage());
+            return []; // Return an empty array if an error occurs
+        }
+    }
 
 }

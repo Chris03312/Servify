@@ -118,8 +118,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></span>
-                            <small><?php echo $coordinator_info['role'] ?? NULL  ?></small>
+                            <span><?php echo $sidebarinfo['first_name']. ' ' .$sidebarinfo['surname']; ?></span>
+                            <small><?php echo $sidebarinfo['role']; ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">

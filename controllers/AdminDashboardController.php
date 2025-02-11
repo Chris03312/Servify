@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../models/adminsidebarinfo.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
 require_once __DIR__ . '/../models/dashboard.php';
-
+require_once __DIR__ . '/../models/activityLog.php';
 
 class AdminDashboardController{
     
@@ -11,7 +11,14 @@ class AdminDashboardController{
         // if (!isset($_SESSION['email']) || !$_SESSION['email']) {
         //     redirect('/login');
         // }
-        $adminsidebarinfo = Adminsidebarinfo::getsidebarinfo();
+
+        $adminActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+
+
+        $chartsData = CoordinatorDashboard::chartsData();
+        $totalCities = CoordinatorDashboard::getTotalCities();
+        $volunteerPerParish = Dashboard::getVolunteerPerParish();
         $countdown = Dashboard::CountDownElectionDay();
 
         view('admin_dashboard', [
@@ -22,7 +29,11 @@ class AdminDashboardController{
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            'adminsidebarinfo' => $adminsidebarinfo
+            'chartsData' => $chartsData,          
+            'totalCities' => $totalCities, 
+            'activities' => $adminActivities,
+            'adminsidebarinfo' => $sidebarData,
+            'volunteerPerParish' => $volunteerPerParish
         ]);
     }
 }

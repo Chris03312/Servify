@@ -2,7 +2,9 @@
 
 require_once __DIR__ . '/../models/Dashboard.php';
 require_once __DIR__ . '/../models/coordinatorDashboard.php';
-require_once __DIR__ . '/../models/coorsidebarinfo.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
+require_once __DIR__ . '/../models/activityLog.php';
+
 
 
 class CoordinatorDashboardController{
@@ -12,6 +14,9 @@ class CoordinatorDashboardController{
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
+
+        $coordinatorActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
         
         $chartsData = CoordinatorDashboard::chartsData();
         $dropdownData = CoordinatorDashboard::getDropdownG2();
@@ -19,16 +24,13 @@ class CoordinatorDashboardController{
         $volunteersTbl = CoordinatorDashboard::getVolunteers();
         $pendingApp = CoordinatorDashboard::PendingApp();
         $countdown = Dashboard::CountDownElectionDay();
-        $activities = Dashboard::getActivityLog();
         $currentDate = date('F j, Y');
-
-        $coordinator_info = Coorsidebarinfo::sidebarinfo();
 
         view('coordinator_dashboard', [
             'email' => $_SESSION['email'],
             'username' => $_SESSION['username'],
             'currentDate' => $currentDate,
-            'activities' => $activities,
+            'activities' => $coordinatorActivities,
             'volunteers' => $volunteersTbl,
             'pendingApps' => $pendingApp,
             'totalCities' => $totalCities,
@@ -38,9 +40,7 @@ class CoordinatorDashboardController{
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            
-            'coordinator_info' => $coordinator_info
-            
+            'sidebarinfo' => $sidebarData,
         ]);
     }
 }

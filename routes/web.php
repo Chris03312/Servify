@@ -24,6 +24,8 @@ require_once __DIR__ . '/../controllers/CancelledSubmissionsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAttendanceTrackingController.php';
 require_once __DIR__ . '/../controllers/CoordinatorAchievementsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorInquiryController.php';
+require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
+
 require_once __DIR__ . '/../controllers/CoordinatorFeedbackController.php';
 require_once __DIR__ . '/../controllers/ReportsController.php';
 
@@ -36,11 +38,11 @@ require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
-
-
+require_once __DIR__ . '/../controllers/VolunteerApplicationDetailsController.php';
 
 require_once __DIR__ . '/../controllers/AdminDashboardController.php';
 require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
+require_once __DIR__ . '/../controllers/AdminVolunManagementController.php';
 require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
 require_once __DIR__ . '/../controllers/CaloocanDirectoryController.php';
 require_once __DIR__ . '/../controllers/ViewCoordinatorDetailsController.php';
@@ -80,6 +82,7 @@ $router->add('/volunteer_new_application/validate', [VolunteerNewApplicationCont
 $router->add('/volunteer_new_application/submit', [VolunteerNewApplicationController::class, 'NewApplication']);
 $router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationController::class, 'RenewalApplication']);
 $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'VolunteerAttendances']);
+$router->add('/volunteer_application_details', [VolunteerApplicationDetailsController::class, 'ShowVolunteerApplicationDetails']);
 
 $router->add('/announcements', [AnnouncementsController::class, 'ShowAnnouncements']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
@@ -90,6 +93,7 @@ $router->add('/coordinator_profile_settings', [CoordinatorProfileSettingsControl
 $router->add('/coordinator_profile', [CoordinatorProfileController::class, 'ShowConfirmProfile']);
 $router->add('/coordinator_profile/submit', [CoordinatorProfileController::class, 'ConfirmProfile']);
 $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::class, 'ShowAnnouncements']);
+$router->add('/add_new_volunteer/submit', [AddNewVolunteerController::class, 'CoordinatorAddVolunteer']);
 
 $router->add('/coordinator_announcements/submit', [CoordinatorAnnouncementsController::class, 'ShowCreateAnnouncements']);
 $router->add('/coordinator_announcements/delete', [CoordinatorAnnouncementsController::class, 'ShowDeleteAnnouncements']);
@@ -127,6 +131,7 @@ $router->add('/reports', [ReportsController::class, 'ShowReports']);
 
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
+$router->add('/admin_volunteer_management', [AdminVolunManagementController::class, 'ShowAdminVolunManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/caloocan_directory', [CaloocanDirectoryController::class, 'ShowCaloocanDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);

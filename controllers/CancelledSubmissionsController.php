@@ -1,6 +1,7 @@
 <?php 
 
 require_once __DIR__ . '/../models/volunteerManagement.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
 
 class CancelledSubmissionsController {
 
@@ -8,6 +9,7 @@ class CancelledSubmissionsController {
 
         $cancelledApplications = VolunteerManagement::getApplicationByStatus('Cancelled');
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled']);
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
 
         view('cancelled_submissions', [
@@ -15,7 +17,9 @@ class CancelledSubmissionsController {
             'pendingCount' => $countApplications['Pending'] ?? 0,
             'underReviewCount' => $countApplications['Under review'] ?? 0,
             'approvedCount' => $countApplications['Approved'] ?? 0,
-            'cancelledCount' => $countApplications['Cancelled'] ?? 0
+            'cancelledCount' => $countApplications['Cancelled'] ?? 0,
+            'coordinator_info' => $sidebarData
+
         ]);
     }
 

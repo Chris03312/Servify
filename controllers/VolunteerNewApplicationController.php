@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../configuration/Database.php'; // Include the Database class
 require_once __DIR__ . '/../models/Sidebarinfo.php';
 require_once __DIR__ . '/../models/Application.php';
 require_once __DIR__ . '/../models/Notification.php';
@@ -12,8 +11,7 @@ class VolunteerNewApplicationController {
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
-
-        $sidebarinfo = Sidebarinfo::getsidebarinfo();
+        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
         $notifications = Notification::getNotification();
         $applicationInfo = Application::getinfoApplication();
         $validId = Dashboard::getvalidId();
@@ -21,7 +19,7 @@ class VolunteerNewApplicationController {
         view('volunteer_new_application', [
             'email' => $_SESSION['email'],
             'applicationInfo' => $applicationInfo,
-            'sidebarinfo' => $sidebarinfo,
+            'sidebarinfo' => $sidebarData,
             'validId' => $validId,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count'],
@@ -168,7 +166,7 @@ class VolunteerNewApplicationController {
                 if ($account) {
                     $username = $account['USERNAME'];
                     $currentDate = date('F j, Y H:i:s');
-                    $description = 'You submitted an application form. Click here to check the status of your registration.';
+                    $description = 'You submitted an application form with an Application ID of.'.' '.$application_id.' '.'Click here to check the status of your registration.';
 
                     $stmt = $db->prepare('INSERT INTO ACTIVITIES 
                     (
@@ -225,6 +223,7 @@ class VolunteerNewApplicationController {
             if (empty($input['prevPrecinct'])) $errors['prevPrecinct'] = 'Previous Precinct is required.';
             if (empty($input['prefPpcrvVolAss'])) $errors['prefPpcrvVolAss'] = 'Please select Preferred PPCRV Volunteer Assignment.';
             if (empty($input['nameofId'])) $errors['nameofId'] = 'Please select Type of ID.';
+            if(empty($input['IDNumber'])) $errors['IDNumber'] = 'ID Number is required.';
             if (empty($input['validId'])) $errors['validId'] = 'Please upload the ID here.';
             if (empty($input['checkPledge'])) $errors['checkPledge'] = 'Please check the box to confirm your acknowledgment and agreement before submitting.';
             

@@ -62,6 +62,8 @@
                                 </div>
 
                                 <div class="modal-body">
+                                <div id="emptySearch" class="text-center text-danger" style="display: none;"></div>
+
 
 
                                     <div class="row align-items-center mb-3">
@@ -188,7 +190,7 @@
         <!--TABLE-->
 
         <div class="table-responsive">
-            <table class="table table-hover align-middle">
+            <table id="approve" class="table table-hover align-middle">
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">Submission Date/Time</th>
@@ -204,8 +206,8 @@
                     <?php foreach ($approvedApplications as $application): ?>
                     <tr>
                     <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
-                        <td>New <?php echo $application['ROLE']; ?></td>
-                        <td><?php echo $application['CITY'] . $application['CITY']; ?></td>
+                        <td><?php echo 'New '. $application['ROLE']; ?></td>
+                        <td><?php echo $application['FIRST_NAME'].' '.$application['SURNAME']; ?></td>
                         <td><?php echo $application['STATUS']; ?></td>
                         <td>
                             <div class="d-none d-md-flex flex-column">
@@ -270,6 +272,8 @@
     const searchInput = document.querySelector("#search"); // Volunteer Name search input
     const tableBody = document.querySelector("tbody"); // Table body
     const tableRows = document.querySelectorAll("tbody tr"); // All table rows
+    let emptySearchDiv = document.getElementById("emptySearch");
+
 
     // Create "No matches found" message
     const noMatchesMessage = document.createElement("tr");
@@ -311,7 +315,8 @@
             pollingPlace === "Select Polling Place" &&
             cancellationDate === ""
         ) {
-            alert("Please select at least one filter before searching.");
+            emptySearchDiv.textContent = "Please select at least one filter before searching.";
+            emptySearchDiv.style.display = "block"; // Show message
             return;
         }
 

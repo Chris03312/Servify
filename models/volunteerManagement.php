@@ -307,6 +307,4 @@ class VolunteerManagement {
         }
 
     }
-
-
 }
