@@ -363,7 +363,7 @@
                                         console.log('Navotas Volunteers:', navotasData);
                                     </script>
                                     <script src="../js/leafletmapcities.js" defer></script>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
