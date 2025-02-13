@@ -60,7 +60,7 @@
                                         <?php if (!empty($attendance_count) && !empty($years_of_service) && !empty($date_approved)) { ?>
                                             <div class="container-fluid d-flex flex-column justify-content-center align-items-center gap-1">
                                                 <h5>Years of Service: <?php echo $years_of_service; ?></h5>
-                                                <span>Since <?php echo date("F j, Y", strtotime($date_approved)); ?></span>
+                                                <span>Since <?php echo date("Y", strtotime($date_approved)); ?></span>
 
                                                 <?php if (!empty($badge)) { ?>
                                                     <img src="../img/<?php echo htmlspecialchars($badge['IMG']); ?>" 
@@ -128,7 +128,7 @@
                                                             <!-- See More Button (Centered at Bottom) -->
                                                             <?php if ($attendance_count < 9) { ?>
                                                                 <div class="d-flex justify-content-center w-100 mt-3">
-                                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#moreAchievements">
+                                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#moreAchievements" id="toggleButton">
                                                                         See More
                                                                     </button>
                                                                 </div>
@@ -137,6 +137,20 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
+                                            <script>
+                                                       document.addEventListener("DOMContentLoaded", function () {
+                                                        let toggleButton = document.getElementById("toggleButton");
+                                                        let moreAchievements = document.getElementById("moreAchievements");
+
+                                                        moreAchievements.addEventListener("shown.bs.collapse", function () {
+                                                            toggleButton.textContent = "See Less";
+                                                        });
+
+                                                        moreAchievements.addEventListener("hidden.bs.collapse", function () {
+                                                            toggleButton.textContent = "See More";
+                                                        });
+                                                    });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -484,6 +498,9 @@
                 }
             });
         });
+
+
+ 
     </script>
 
 

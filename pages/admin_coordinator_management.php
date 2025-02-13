@@ -216,19 +216,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tbody>
-
+                    <?php if(!empty($coordinatorManagement)): ?>
+                        <?php foreach($coordinatorManagement as $coordinators): ?>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td><?php echo $coordinators['CPROFILE_ID']; ?></td>
+                        <td><?php echo $coordinators['FIRST_NAME'].' '.$coordinators['SURNAME']; ?></td>
+                        <td><?php echo $coordinators['EMAIL']; ?></td>
+                        <td><?php echo $coordinators['MUNICIPALITY/CITY']; ?></td>
+                        <td><?php echo $coordinators['DISTRICT']; ?></td>
+                        <td><?php echo $coordinators['PARISH']; ?></td>
                         <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
                     </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <td class="text-primary">No Coordinators Data Available</td>
+                    <?php endif; ?>
 
-                </tbody>
+                </>
             </table>
         </div>
 

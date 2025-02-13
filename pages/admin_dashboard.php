@@ -149,7 +149,7 @@
                     <div class="card">
                         <div class="card-body text-center d-flex flex-column gap-2">
                             <div class="p-2 rounded">
-                                <h4>You are currently assigned as: <span class="text-primary fw-bold">Coordinator</span>
+                                <h4>You are currently assigned as: <span class="text-primary fw-bold "><br><?php echo $_SESSION['role']; ?></span>
                                 </h4>
                             </div>
                             <div class="bg-primary p-2 rounded">
@@ -234,11 +234,7 @@
                                 <script src="../js/charts.js"></script>
                                 </div>
                             </div>
-
-
                         </div>
-
-
                     </div>
                 </div>
 
