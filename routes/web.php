@@ -42,6 +42,7 @@ require_once __DIR__ . '/../controllers/VolunteerApplicationDetailsController.ph
 
 require_once __DIR__ . '/../controllers/AdminDashboardController.php';
 require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
+require_once __DIR__ . '/../controllers/AdminVolunManagementController.php';
 require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
 require_once __DIR__ . '/../controllers/CitiesDirectoryController.php';
 require_once __DIR__ . '/../controllers/ViewCoordinatorDetailsController.php';
@@ -129,6 +130,7 @@ $router->add('/reports', [ReportsController::class, 'ShowReports']);
 
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
+$router->add('/admin_volunteer_management', [AdminVolunManagementController::class, 'ShowAdminVolunManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);

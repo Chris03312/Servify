@@ -82,7 +82,6 @@
                             </div>
 
 
-                            <!--ACHIEVEMENT YOU CAN UNLOCK-->
                             <div class="col-12 col-md-12 col-lg-6 col-xl-4 mb-3">
                                 <div class="card mb-3">
                                     <div class="card-body">
