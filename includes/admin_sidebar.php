@@ -25,7 +25,7 @@
                             <a href="/admin_coordinator_management" class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Coordinators</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="#" class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
+                            <a href="/admin_volunteer_management" class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
                         </li>
                     </ul>
                 </li>
