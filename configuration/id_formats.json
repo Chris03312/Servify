@@ -1,5 +1,5 @@
 {
-    "National": {
+    "Philippine National Identity Card": {
         "format": "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
         "example": "1234-5678-9012-3456"
     },

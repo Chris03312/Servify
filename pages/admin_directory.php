@@ -77,11 +77,13 @@
                 </div>
 
                 <!-- CALOOCAN -->
+            <?php if(!empty($citiesDirectory)): ?>
+                <?php foreach($citiesDirectory as $directory): ?>
                 <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-between align-items-start">
-                                <a href="/caloocan_directory" class="btn border-0 archiveLink" data-url="" role="button">
+                                <a href="/cities_directory" class="btn border-0 archiveLink" data-url="" role="button">
                                     <div class="d-flex flex-column justify-content-center align-items-start gap-2">
                                         <div class="d-flex flex-row justify-content-center align-items-end gap-3">
                                             <div>
@@ -92,7 +94,7 @@
                                                 <small class="text-muted">Coordinators</small>
                                             </div>
                                         </div>
-                                        <span>CALOOCAN</span>
+                                        <span><?php echo $directory['MUNICIPALITY/CITY']; ?></span>
                                     </div>
                                 </a>
 
@@ -103,72 +105,35 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- MALABON -->
-                <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex flex-row justify-content-between align-items-start">
-                                <a href="" class="btn border-0 archiveLink" data-url="" role="button">
-                                    <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                        <div class="d-flex flex-row justify-content-center align-items-end gap-3">
-                                            <div>
-                                                <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                <?php endforeach; ?>
+                <?php else: ?>
+                        <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-between align-items-start">
+                                    <a href="/cities_directory" class="btn border-0 archiveLink" data-url="" role="button">
+                                        <div class="d-flex flex-column justify-content-center align-items-start gap-2">
+                                            <div class="d-flex flex-row justify-content-center align-items-end gap-3">
+                                                <div>
+                                                    <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="text-danger fs-3 fw-bold">NO</span>
+                                                    <small class="text-muted">Coordinators</small>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <span class="text-danger fs-3 fw-bold">10</span>
-                                                <small class="text-muted">Coordinators</small>
-                                            </div>
+                                            <span>NO CITY AVAILABLE</span>
                                         </div>
-                                        <span>MALABON</span>
-                                    </div>
-                                </a>
+                                    </a>
 
-                                <div>
-                                    <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                    <div>
+                                        <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- NAVOTAS -->
-                <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex flex-row justify-content-between align-items-start">
-                                <a href="" class="btn border-0 archiveLink" data-url="" role="button">
-                                    <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                        <div class="d-flex flex-row justify-content-center align-items-end gap-3">
-                                            <div>
-                                                <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
-                                            </div>
-                                            <div>
-                                                <span class="text-danger fs-3 fw-bold">10</span>
-                                                <small class="text-muted">Coordinators</small>
-                                            </div>
-                                        </div>
-
-                                        <span>NAVOTAS</span>
-                                    </div>
-                                </a>
-
-                                <div>
-                                    <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-              
-
-
-
-
-
-
-
+                <?php endif; ?>
             </div>
         </div>
 

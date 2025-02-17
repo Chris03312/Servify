@@ -46,7 +46,7 @@ class Achievements {
     
             // Get the corresponding badge
             $badgeData = self::getBadgeByAttendance($achievementBadge);
-    
+            
             return [
                 'DATE_APPROVED' => $sinceYear,
                 'YEARS_OF_SERVICE' => $yearsOfService,
