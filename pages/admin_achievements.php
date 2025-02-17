@@ -242,32 +242,7 @@
 
 
 
-        <!--PREVIEW CERTS-->
-        <!--
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", () => {
-                                            const previewButton = document.getElementById("previewButton");
-                                            const previewContainer = document.getElementById("previewContainer");
-                                            const previewImage = document.getElementById("previewImage");
-                                            const downloadButton = document.getElementById("downloadButton");
-
-                                            previewButton.addEventListener("click", () => {
-                                                // Toggle the visibility of the preview container
-                                                previewContainer.classList.toggle("d-none");
-
-
-                                                // Set the download link for the button dynamically (if needed)
-                                                const imageUrl = previewImage.src;
-                                                downloadButton.onclick = () => {
-                                                    const link = document.createElement("a");
-                                                    link.href = imageUrl;
-                                                    link.download = "Certificate_of_Appreciation.png";
-                                                    link.click();
-                                                };
-                                            });
-                                        });
-                                    </script>
-                            -->
+       
 
 
 
@@ -277,87 +252,6 @@
     </main>
     </div>
     </div>
-
-
-
-    <!--SCRIPT FOR PREVIEWING AND DOWNLOADING CERTIFICATES-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const imageCells = document.querySelectorAll(".image-cell");
-            const modalImage = document.getElementById("modalImage"); // Image in the modal
-            const modalDownloadBtn = document.querySelector(".modal-download-btn"); // Download button in the modal
-            const modalTitle = document.querySelector(".image-title"); // Modal title
-
-            // Function to handle image download
-            function downloadImage(imageSrc, fileName) {
-                const link = document.createElement("a");
-                link.href = imageSrc;
-                link.download = `${fileName}.png`; // Use the name for the downloaded file
-                document.body.appendChild(link); // Append the link to the DOM
-                link.click(); // Programmatically click the link
-                document.body.removeChild(link); // Clean up the DOM
-            }
-
-            // Loop through all rows with the class `.image-cell`
-            imageCells.forEach((cell) => {
-                cell.addEventListener("click", function(event) {
-                    // Check if the click happened on a button (or its child, like an <i>)
-                    const button = event.target.closest("button"); // Find the closest button to the click target
-                    if (button && button.classList.contains("download-btn")) {
-                        return; // Prevent modal display when clicking the "Download" button
-                    }
-
-                    const imgElement = cell.querySelector("img"); // Find the image in the cell
-                    const nameElement = cell.querySelector("td.text-nowrap"); // Find the name in the cell
-
-                    if (imgElement && nameElement) {
-                        // Set modal image source and alt attributes
-                        modalImage.src = imgElement.src;
-                        modalImage.alt = nameElement.textContent.trim();
-                        modalTitle.textContent = nameElement.textContent.trim();
-
-                        // Show the modal
-                        const imageModal = new bootstrap.Modal(
-                            document.getElementById("imageModal")
-                        );
-                        imageModal.show();
-
-                        // Now handle the download from within the modal
-                        modalDownloadBtn.setAttribute("href", imgElement.src);
-                        modalDownloadBtn.setAttribute("download", `${nameElement.textContent.trim()}.png`);
-                    }
-                });
-
-                // Add event listener for the "Download" button in the row (icon-based)
-                const downloadButton = cell.querySelector("button.download-btn");
-                if (downloadButton) {
-                    downloadButton.addEventListener("click", function(event) {
-                        event.preventDefault(); // Prevent default navigation
-
-                        const imgElement = cell.querySelector("img");
-                        const nameElement = cell.querySelector("td.text-nowrap");
-
-                        if (imgElement && nameElement) {
-                            downloadImage(imgElement.src, nameElement.textContent.trim());
-                        }
-                    });
-                }
-            });
-
-            // Add functionality for the modal "Download" button
-            modalDownloadBtn.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent default behavior
-
-                const imageSrc = modalImage.src; // Get the image source from the modal
-                const imageName = modalTitle.textContent.trim(); // Get the title from the modal
-
-                if (imageSrc && imageName) {
-                    downloadImage(imageSrc, imageName);
-                }
-            });
-        });
-    </script>
-
 
 
     <!--BOOTSTRAP JS CDN LINK-->

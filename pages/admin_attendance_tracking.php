@@ -44,13 +44,10 @@
             <article class="col-lg-4 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center text-primary">Total number of Volunteers</h5>
-
-                        <div class="d-flex flex-row justify-content-start align-items-center gap-5">
-                            <div>
-                                <i class="bi bi-person text-primary fs-1"></i>
-                            </div>
-                            <div>
+                        <div class="d-flex flex-row justify-content-start align-items-end">
+                            <div><i class="bi bi-person-fill text-primary fs-1"></i></div>
+                            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                <h5 class="text-center text-primary">Total number of Volunteers</h5>
                                 <h1 class="text-danger fw-bold">250</h1>
                             </div>
                         </div>
@@ -62,13 +59,10 @@
             <article class="col-lg-4 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center text-primary">Total number of Present</h5>
-
-                        <div class="d-flex flex-row justify-content-start align-items-center gap-5">
-                            <div>
-                                <i class="bi bi-person text-primary fs-1"></i>
-                            </div>
-                            <div>
+                        <div class="d-flex flex-row justify-content-start align-items-end">
+                            <div><i class="bi bi-person-fill-check text-primary fs-1"></i></div>
+                            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                <h5 class="text-center text-primary">Total number of Present</h5>
                                 <h1 class="text-danger fw-bold">250</h1>
                             </div>
                         </div>
@@ -80,13 +74,10 @@
             <article class="col-lg-4 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center text-primary">Total number of Absent</h5>
-
-                        <div class="d-flex flex-row justify-content-start align-items-center gap-5">
-                            <div>
-                                <i class="bi bi-person text-primary fs-1"></i>
-                            </div>
-                            <div>
+                        <div class="d-flex flex-row justify-content-start align-items-end">
+                            <div><i class="bi bi-person-fill-x text-primary fs-1"></i></div>
+                            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                <h5 class="text-center text-primary">Total number of Absent</h5>
                                 <h1 class="text-danger fw-bold">250</h1>
                             </div>
                         </div>
