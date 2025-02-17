@@ -36,7 +36,7 @@
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="admin_attendance_tracking" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="admin_achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
