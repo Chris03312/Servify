@@ -173,7 +173,7 @@
                         <td>200</td>
                         <td>150</td>
                         <td>50</td>
-                        <td><a href="#" class="btn btn-outline-primary">View</a></td>
+                        <td><a href="/precincts" class="btn btn-outline-primary">View</a></td>
                     </tr>
             </table>
         </div>
