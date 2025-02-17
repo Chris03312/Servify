@@ -72,7 +72,7 @@
     <div class="main">
         <nav class="navbar navbar-expand border-bottom navbar-light bg-light d-flex flex-row justify-content-between align-items-center p-2">
             <!-- Button for sidebar toggle -->
-            <button class="btn toggle-btn" type="button">
+            <button class="btn toggle-btn border-0" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 2.5h14v1H1v-1zm0 5h14v1H1v-1zm0 5h14v1H1v-1z" />
                 </svg>
@@ -82,7 +82,7 @@
                 <!--NOTIFICATIONS-->
                 <div class="dropdown">
 
-                    <button type="button" class="btn bellBtn position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn border-0 bellBtn position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-bell-fill fs-4"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-top: 15px;">
                             99+</span>
@@ -116,7 +116,7 @@
                 <!--PROFILE-->
 
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle d-flex flex-row justify-content-center align-items-center gap-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn border-0 dropdown-toggle d-flex flex-row justify-content-center align-items-center gap-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                         <div>
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">

@@ -47,10 +47,10 @@
                         <i class="bi bi-person-circle fs-5 me-2"></i>Corrdinator Name: <span>Name</span>
                     </div>
                     <div class="mb-2 d-flex flex-row justify-content-start align-items-center gap-2">
-                        <i class="bi bi-envelope-fill fs-5 me-2"></i>Email: <span>Name</span>
+                        <i class="bi bi-envelope-fill fs-5 me-2"></i>Email: <span>Email</span>
                     </div>
                     <div class="mb-2 d-flex flex-row justify-content-start align-items-center gap-2">
-                        <i class="bi bi-telephone-fill fs-5 me-2"></i>Mobile No: <span>Name</span>
+                        <i class="bi bi-telephone-fill fs-5 me-2"></i>Mobile No: <span>09123456789</span>
                     </div>
                 </div>
             </div>
