@@ -46,6 +46,10 @@ require_once __DIR__ . '/../controllers/AdminVolunManagementController.php';
 require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
 require_once __DIR__ . '/../controllers/CitiesDirectoryController.php';
 require_once __DIR__ . '/../controllers/ViewCoordinatorDetailsController.php';
+require_once __DIR__ . '/../controllers/AdminAttendanceController.php';
+require_once __DIR__ . '/../controllers/AdminAttendanceSummaryController.php';
+require_once __DIR__ . '/../controllers/AdminPrecinctsController.php';
+require_once __DIR__ . '/../controllers/AdminAchievementsController.php';
 
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
@@ -130,10 +134,13 @@ $router->add('/reports', [ReportsController::class, 'ShowReports']);
 
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
-$router->add('/admin_volunteer_management', [AdminVolunManagementController::class, 'ShowAdminVolunManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
+$router->add('/admin_attendance_tracking', [AdminAttendanceController::class,'ShowAdminAttendance']);
+$router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class,'ShowAdminAttendanceSummary']);
+$router->add('/precincts', [AdminPrecinctsController::class,'ShowAdminPrecincts']);
+$router->add('/admin_achievements', [AdminAchievementsController::class,'ShowAdminAchievements']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

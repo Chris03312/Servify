@@ -144,8 +144,11 @@ a.nav-link,
     }
 }
 
+/*
 @media (max-width: 768px) {
     #sidebar {
-        /* Sidebar styles already defined in 992px breakpoint */
+        /* Sidebar styles already defined in 992px breakpoint
     }
 }
+     */
+
