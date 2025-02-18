@@ -47,6 +47,7 @@ require_once __DIR__ . '/../controllers/AdminDirectoryController.php';
 require_once __DIR__ . '/../controllers/CitiesDirectoryController.php';
 require_once __DIR__ . '/../controllers/ViewCoordinatorDetailsController.php';
 require_once __DIR__ . '/../controllers/AdminAttendanceController.php';
+require_once __DIR__ . '/../controllers/AdminAttendanceSummaryController.php';
 require_once __DIR__ . '/../controllers/AdminPrecinctsController.php';
 require_once __DIR__ . '/../controllers/AdminAchievementsController.php';
 
@@ -137,6 +138,7 @@ $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDir
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
 $router->add('/admin_attendance_tracking', [AdminAttendanceController::class,'ShowAdminAttendance']);
+$router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class,'ShowAdminAttendanceSummary']);
 $router->add('/precincts', [AdminPrecinctsController::class,'ShowAdminPrecincts']);
 $router->add('/admin_achievements', [AdminAchievementsController::class,'ShowAdminAchievements']);
 

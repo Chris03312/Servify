@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Precincts</title>
+    <title>Admin | Attendance Summary</title>
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -38,7 +38,8 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin_attendance_tracking">Attendance Tracking</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Precincts</li>
+                <li class="breadcrumb-item"><a href="/precincts">Precincts</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Attendance Summary</li>
             </ol>
         </nav>
 
@@ -68,11 +69,19 @@
         <!-- SEARCH BAR -->
         <section class="d-flex justify-content-end align-items-center gap-2 my-3">
 
+            <div class="col-auto">
+                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                <select class="form-select" id="autoSizingSelect">
+                    <option value="All" selected>All</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
             <div class="input-group" style="width: 500px;">
                 <span class="input-group-text" id="basic-addon1">
                     <i class="bi bi-search"></i>
                 </span>
-                <input type="search" class="form-control" placeholder="Search precinct">
+                <input type="search" class="form-control" placeholder="Search volunteer name...">
             </div>
 
         </section>
@@ -85,10 +94,9 @@
                 <thead class="table-primary align-middle">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">List of Precinct</th>
-                        <th scope="col">Total number of Assigned Volunteers</th>
-                        <th scope="col">Total number of Present Volunteers</th>
-                        <th scope="col">Total number of Absent Volunteers</th>
+                        <th scope="col">Volunteer Name</th>
+                        <th scope="col">Role Assigned</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -97,11 +105,10 @@
                     <tr>
 
                         <td>1</td>
-                        <td>Parish</td>
-                        <td>200</td>
-                        <td>150</td>
-                        <td>50</td>
-                        <td><a href="/admin_attendance_summary" class="btn btn-outline-primary">View</a></td>
+                        <td>Vicmar</td>
+                        <td>Poll Watcher</td>
+                        <td>Active</td>
+                        <td><a href="#" class="btn btn-outline-primary">View</a></td>
                     </tr>
             </table>
         </div>
