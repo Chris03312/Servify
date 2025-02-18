@@ -4,9 +4,11 @@ require_once __DIR__ . '/../models/sidebarinfo.php';
 require_once __DIR__ . '/../models/dashboard.php';
 require_once __DIR__ . '/../models/activityLog.php';
 
-class AdminDashboardController{
-    
-    public static function ShowAdminDashboard(){
+class AdminDashboardController
+{
+
+    public static function ShowAdminDashboard()
+    {
 
         // if (!isset($_SESSION['email']) || !$_SESSION['email']) {
         //     redirect('/login');
@@ -14,6 +16,7 @@ class AdminDashboardController{
 
         $adminActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        $parishcoorCount = Dashboard::getCoorParishCount();
 
 
         $chartsData = CoordinatorDashboard::chartsData();
@@ -29,11 +32,12 @@ class AdminDashboardController{
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            'chartsData' => $chartsData,          
-            'totalCities' => $totalCities, 
+            'chartsData' => $chartsData,
+            'totalCities' => $totalCities,
             'activities' => $adminActivities,
             'adminsidebarinfo' => $sidebarData,
-            'volunteerPerParish' => $volunteerPerParish
+            'volunteerPerParish' => $volunteerPerParish,
+            'parishcoorCount' => $parishcoorCount
         ]);
     }
 }

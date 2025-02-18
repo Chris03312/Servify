@@ -33,28 +33,33 @@
 
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
             <div>
-                <h4>CALOOCAN DIRECTORY</h4>
+                <h4><?php echo $_GET['City']; ?> DIRECTORY</h4>
             </div>
 
             <div class="d-flex flex-row gap-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addNewParishModal"><i class="bi bi-plus me-2"></i>Add New Parish</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-filter me-2"></i>Filter</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#addNewParishModal"><i class="bi bi-plus me-2"></i>Add New Parish</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                        class="bi bi-filter me-2"></i>Filter</button>
             </div>
         </div>
 
         <!-- MODAL: ADD NEW PARISH -->
-        <div class="modal fade" id="addNewParishModal" tabindex="-1" aria-labelledby="addNewParishModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addNewParishModal" tabindex="-1" aria-labelledby="addNewParishModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Add New Parish</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">Add new parish by filling out the required details.</p>
+                            <p class="text-muted text-center mb-5">Add new parish by filling out the required details.
+                            </p>
 
                             <form id="registrationForm" class="row" action="" method="POST">
 
@@ -74,9 +79,9 @@
                                     <label for="coordinatorName" class="form-label">Coordinator Name</label>
                                     <input type="text" class="form-control" id="coordinatorName" name="coordinatorName">
                                 </div>
-                               
 
-                             
+
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn px-4 mb-2" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Register</button>
@@ -91,7 +96,7 @@
             </div>
         </div>
 
-        
+
 
 
 
@@ -103,7 +108,7 @@
                     <li class="breadcrumb-item">
                         <a href="/admin_directory">Cities Directory</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Caloocan</li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $_GET['City']; ?></li>
                 </ol>
             </nav>
 
@@ -127,31 +132,39 @@
                     </thead>
                     <tbody>
                     <tbody>
-
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>
-                                <button type="button" class="btn btn-sm text-primary"><i class="bi bi-eye me-2"></i>View</button>
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#editParishModal"><i class="bi bi-pen me-2"></i>Edit</button>
-                            </td>
-                        </tr>
-
+                        <?php if (!empty($listofparish)): ?>
+                            <?php foreach ($listofparish as $list): ?>
+                                <tr>
+                                    <td><?php echo $list['PARISHES_ID']; ?></td>
+                                    <td><?php echo $list['PARISH_NAME']; ?></td>
+                                    <td><?php echo $list['VICARIATE']; ?></td>
+                                    <td><?php echo $list['DISTRICT']; ?></td>
+                                    <td><?php echo $list['CNAME']; ?></td>
+                                    <td><?php echo $list['PRECINCT']; ?></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm text-primary"><i
+                                                class="bi bi-eye me-2"></i>View</button>
+                                        <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editParishModal"><i class="bi bi-pen me-2"></i>Edit</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <td> NO PARISH AVAILABLE </td>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <!-- MODAL: EDIT PARISH -->
-        <div class="modal fade" id="editParishModal" tabindex="-1" aria-labelledby="editParishModallabel" aria-hidden="true">
+        <div class="modal fade" id="editParishModal" tabindex="-1" aria-labelledby="editParishModallabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Edit Parish Details</h4>
@@ -178,9 +191,9 @@
                                     <label for="coordinatorName" class="form-label">Coordinator Name</label>
                                     <input type="text" class="form-control" id="coordinatorName" name="coordinatorName">
                                 </div>
-                               
 
-                             
+
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn px-4 mb-2" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Save</button>

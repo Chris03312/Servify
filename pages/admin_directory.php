@@ -37,7 +37,8 @@
             </div>
 
             <div class="d-flex flex-row">
-                <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#addNewBrgyModal"><i class="bi bi-plus me-2"></i>Add New Directory</button>
+                <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal"
+                    data-bs-target="#addNewBrgyModal"><i class="bi bi-plus me-2"></i>Add New Directory</button>
             </div>
         </div>
 
@@ -69,7 +70,8 @@
                                 </a>
 
                                 <div>
-                                    <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                    <button type="button" class="btn py-0 px-1"><i
+                                            class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -77,57 +79,60 @@
                 </div>
 
                 <!-- CALOOCAN -->
-            <?php if(!empty($citiesDirectory)): ?>
-                <?php foreach($citiesDirectory as $directory): ?>
-                <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex flex-row justify-content-between align-items-start">
-                                <a href="/cities_directory" class="btn border-0 archiveLink" data-url="" role="button">
+                <?php if (!empty($citiesDirectory)): ?>
+                    <?php foreach ($citiesDirectory as $directory): ?>
+                        <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-row justify-content-between align-items-start">
+                                        <a href="<?php echo $directory['link']; ?>" class="btn border-0 archiveLink" data-url=""
+                                            role="button">
+                                            <div class="d-flex flex-column justify-content-center align-items-start gap-2">
+                                                <div class="d-flex flex-row justify-content-center align-items-end gap-3">
+                                                    <div>
+                                                        <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                                                    </div>
+                                                    <div>
+                                                        <span
+                                                            class="text-danger fs-3 fw-bold"><?php echo $directory['coordinator_count']; ?></span>
+                                                        <small class="text-muted">Coordinators</small>
+                                                    </div>
+                                                </div>
+                                                <span><?php echo $directory['name']; ?></span>
+                                            </div>
+                                        </a>
+
+                                        <div>
+                                            <button type="button" class="btn py-0 px-1"><i
+                                                    class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-between align-items-start">
                                     <div class="d-flex flex-column justify-content-center align-items-start gap-2">
                                         <div class="d-flex flex-row justify-content-center align-items-end gap-3">
                                             <div>
                                                 <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
                                             </div>
                                             <div>
-                                                <span class="text-danger fs-3 fw-bold">10</span>
+                                                <span class="text-danger fs-3 fw-bold">0</span>
                                                 <small class="text-muted">Coordinators</small>
                                             </div>
                                         </div>
-                                        <span><?php echo $directory['MUNICIPALITY/CITY']; ?></span>
+                                        <span>NO CITY AVAILABLE</span>
                                     </div>
-                                </a>
-
-                                <div>
-                                    <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                        <div class="col-sm-12 col-md-6 col-xl-4 col-xxl-3 mb-2">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="d-flex flex-row justify-content-between align-items-start">
-                                    <a href="/cities_directory" class="btn border-0 archiveLink" data-url="" role="button">
-                                        <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                            <div class="d-flex flex-row justify-content-center align-items-end gap-3">
-                                                <div>
-                                                    <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="text-danger fs-3 fw-bold">NO</span>
-                                                    <small class="text-muted">Coordinators</small>
-                                                </div>
-                                            </div>
-                                            <span>NO CITY AVAILABLE</span>
-                                        </div>
                                     </a>
 
                                     <div>
-                                        <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                        <button type="button" class="btn py-0 px-1"><i
+                                                class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                                     </div>
                                 </div>
                             </div>
