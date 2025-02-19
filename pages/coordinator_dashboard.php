@@ -304,7 +304,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <a href="#" class="btn text-primary">View Attendance</a>
+                                <a href="/coordinator_attendance_tracking" class="btn text-primary">View Attendance</a>
                             </div>
                         </div>
                     </div>

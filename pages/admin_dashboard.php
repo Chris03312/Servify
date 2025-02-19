@@ -26,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> 
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
 </head>
 
@@ -149,7 +149,8 @@
                     <div class="card">
                         <div class="card-body text-center d-flex flex-column gap-2">
                             <div class="p-2 rounded">
-                                <h4>You are currently assigned as: <span class="text-primary fw-bold "><br><?php echo $_SESSION['role']; ?></span>
+                                <h4>You are currently assigned as: <span
+                                        class="text-primary fw-bold "><br><?php echo $_SESSION['role']; ?></span>
                                 </h4>
                             </div>
                             <div class="bg-primary p-2 rounded">
@@ -166,7 +167,9 @@
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <h5>Overview of Volunteers</h5>
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#overviewOfVolunteers" aria-expanded="false" aria-controls="overviewOfVolunteers">Filter
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#overviewOfVolunteers" aria-expanded="false"
+                                    aria-controls="overviewOfVolunteers">Filter
                                 </button>
 
                             </div>
@@ -177,7 +180,9 @@
                                         <select class="form-select group1-dropdown" name="city" id="city">
                                             <option value="" disabled selected>Select Municipality</option>
                                             <?php foreach ($dropdownData['cities'] as $city): ?>
-                                                <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
+                                                <option value="<?php echo $city['city'] ?? ' '; ?>">
+                                                    <?php echo $city['city'] ?? 'No cities available'; ?>
+                                                </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -185,7 +190,9 @@
                                         <select class="form-select group1-dropdown" name="district" id="district">
                                             <option value="" disabled selected>Select District</option>
                                             <?php foreach ($dropdownData['districts'] as $district): ?>
-                                                <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
+                                                <option value="<?php echo $district['district'] ?? ' '; ?>">
+                                                    <?php echo $district['district'] ?? 'No districts available'; ?>
+                                                </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -193,7 +200,9 @@
                                         <select class="form-select group1-dropdown" name="barangay" id="barangay">
                                             <option value="" disabled selected>Select Barangay</option>
                                             <?php foreach ($dropdownData['barangays'] as $barangay): ?>
-                                                <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
+                                                <option value="<?php echo $barangay['barangay'] ?? ' '; ?>">
+                                                    <?php echo $barangay['barangay'] ?? 'No barangays available'; ?>
+                                                </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -201,7 +210,9 @@
                                         <select class="form-select group1-dropdown" name="parish" id="parish">
                                             <option value="" disabled selected>Select Parish</option>
                                             <?php foreach ($dropdownData['parishes'] as $parish): ?>
-                                                <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
+                                                <option value="<?php echo $parish['parish'] ?? ' '; ?>">
+                                                    <?php echo $parish['parish'] ?? 'No parishes available'; ?>
+                                                </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -209,7 +220,9 @@
                                         <select class="form-select group1-dropdown" name="school" id="school">
                                             <option value="" disabled selected>Select School</option>
                                             <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
-                                                <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
+                                                <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>">
+                                                    <?php echo $polling_place['polling_place'] ?? 'No cities available'; ?>
+                                                </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -229,9 +242,9 @@
                                     <canvas id="volunteerBarChart"></canvas>
                                     <!--VOLUNTEER BAR CHART-->
                                     <script>
-                                    const allChartData = <?php echo json_encode($chartsData); ?>;
-                                </script>
-                                <script src="../js/charts.js"></script>
+                                        const allChartData = <?php echo json_encode($chartsData); ?>;
+                                    </script>
+                                    <script src="../js/charts.js"></script>
                                 </div>
                             </div>
                         </div>
@@ -252,10 +265,13 @@
                                             <a href="#" class="text-decoration-none text-dark">
                                                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                                                     <div class="time">
-                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
+                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?>
+                                                        </p>
                                                     </div>
                                                     <div class="time">
-                                                        <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
+                                                        <p class="text-center">
+                                                            <?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?>
+                                                        </p>
                                                     </div>
                                                     <div class="time">
                                                         <p><i class="bi bi-chevron-right"></i></p>
@@ -328,15 +344,21 @@
                                         <p>Total Volunteers in:</p>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Caloocan City</span>
-                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['caloocan_count']); ?></h4>
+                                            <h4 class="text-danger">
+                                                <?= htmlspecialchars($totalCities['caloocan_count']); ?>
+                                            </h4>
                                         </div>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Malabon City</span>
-                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['malabon_count']); ?></h4>
+                                            <h4 class="text-danger">
+                                                <?= htmlspecialchars($totalCities['malabon_count']); ?>
+                                            </h4>
                                         </div>
                                         <div class="text-center mt-2">
                                             <span class="text-muted">Navotas City</span>
-                                            <h4 class="text-danger"><?= htmlspecialchars($totalCities['navotas_count']); ?></h4>
+                                            <h4 class="text-danger">
+                                                <?= htmlspecialchars($totalCities['navotas_count']); ?>
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -369,44 +391,50 @@
 
             <!-- TOTAL PARISHES, COORDINATORS -->
             <div class="card mt-3">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <div class="d-flex flex-column justify-content-center align-items-center">
-                                <h1 class="text-danger">33</h1>
-                                <p class="text-muted">Total Parishes</p>
+                <?php foreach ($parishcoorCount as $count): ?>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <h1 class="text-danger"><?php echo $count['PARISHES']; ?></h1>
+                                    <p class="text-muted">Total Parishes</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="d-flex flex-column justify-content-center align-items-center">
-                                <h1 class="text-danger">33</h1>
-                                <p class="text-muted">Total Coordinators</p>
+                            <div class="col-md-4">
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <h1 class="text-danger"><?php echo $count['COORDINATOR']; ?></h1>
+                                    <p class="text-muted">Total Coordinators</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                                <a href="#" class="btn btn-outline-primary">Click to see details</a>
+                            <div class="col-md-4">
+                                <div class="d-flex flex-row justify-content-center align-items-center">
+                                    <a href="/admin_directory" class="btn btn-outline-primary">Click to see details</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
 
             <!-- Registered Volunteers Per Parish -->
             <div class="card mt-3">
                 <div class="card-body">
-                    <div class="d-flex flex-md-row flex-column justify-content-between align-items-md-center align-items-start gap-md-5 gap-1">
+                    <div
+                        class="d-flex flex-md-row flex-column justify-content-between align-items-md-center align-items-start gap-md-5 gap-1">
                         <h5>Registered Volunteers Per Parish</h5>
                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                             <div>
-                                <input type="search" name="search" id="search" class="form-control" placeholder="Search here...">
+                                <input type="search" name="search" id="search" class="form-control"
+                                    placeholder="Search here...">
                             </div>
 
                             <div>
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter</button>
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#listOfVolunteers" aria-expanded="false"
+                                    aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter</button>
                             </div>
                         </div>
 
@@ -418,7 +446,9 @@
                                 <select class="form-select group2-dropdown" name="city" id="city">
                                     <option value="" disabled selected>Select Municipality</option>
                                     <?php foreach ($dropdownData['cities'] as $city): ?>
-                                        <option value="<?php echo $city['city'] ?? ' '; ?>"><?php echo $city['city'] ?? 'No cities available'; ?></option>
+                                        <option value="<?php echo $city['city'] ?? ' '; ?>">
+                                            <?php echo $city['city'] ?? 'No cities available'; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -426,7 +456,9 @@
                                 <select class="form-select group2-dropdown" name="district" id="district">
                                     <option value="" disabled selected>Select District</option>
                                     <?php foreach ($dropdownData['districts'] as $district): ?>
-                                        <option value="<?php echo $district['district'] ?? ' '; ?>"><?php echo $district['district'] ?? 'No districts available'; ?></option>
+                                        <option value="<?php echo $district['district'] ?? ' '; ?>">
+                                            <?php echo $district['district'] ?? 'No districts available'; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -434,7 +466,9 @@
                                 <select class="form-select group2-dropdown" name="barangay" id="barangay">
                                     <option value="" disabled selected>Select Barangay</option>
                                     <?php foreach ($dropdownData['barangays'] as $barangay): ?>
-                                        <option value="<?php echo $barangay['barangay'] ?? ' '; ?>"><?php echo $barangay['barangay'] ?? 'No barangays available'; ?></option>
+                                        <option value="<?php echo $barangay['barangay'] ?? ' '; ?>">
+                                            <?php echo $barangay['barangay'] ?? 'No barangays available'; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -442,7 +476,9 @@
                                 <select class="form-select group2-dropdown" name="parish" id="parish">
                                     <option value="" disabled selected>Select Parish</option>
                                     <?php foreach ($dropdownData['parishes'] as $parish): ?>
-                                        <option value="<?php echo $parish['parish'] ?? ' '; ?>"><?php echo $parish['parish'] ?? 'No parishes available'; ?></option>
+                                        <option value="<?php echo $parish['parish'] ?? ' '; ?>">
+                                            <?php echo $parish['parish'] ?? 'No parishes available'; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -450,7 +486,9 @@
                                 <select class="form-select group2-dropdown" name="school" id="school">
                                     <option value="" disabled selected>Select School</option>
                                     <?php foreach ($dropdownData['pollingPlaces'] as $polling_place): ?>
-                                        <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>"><?php echo $polling_place['polling_place'] ?? 'No cities available'; ?></option>
+                                        <option value="<?php echo $polling_place['polling_place'] ?? ' '; ?>">
+                                            <?php echo $polling_place['polling_place'] ?? 'No cities available'; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -489,7 +527,7 @@
                             <tbody>
                             <tbody>
                                 <?php if (!empty($volunteerPerParish)): ?>
-                                    <?php foreach($volunteerPerParish as $volunteer): ?>
+                                    <?php foreach ($volunteerPerParish as $volunteer): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['VOLUNTEERS_NAME']); ?></td>
@@ -497,8 +535,11 @@
                                             <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
                                             <td><?= htmlspecialchars($volunteer['CPROFILE_NAME']); ?></td>
                                             <td>
-                                                <a href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a> |
-                                                <a href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>
+                                                <a
+                                                    href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a>
+                                                |
+                                                <a
+                                                    href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
