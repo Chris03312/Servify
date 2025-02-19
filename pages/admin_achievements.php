@@ -46,7 +46,7 @@
                 </li>
             </ul>
 
-            <div class="tab-content" id="pills-tabContent">
+             <div class="tab-content" id="pills-tabContent">
 
                 <!--BADGES-->
                 <div class="tab-pane fade" id="pills-badges" role="tabpanel" aria-labelledby="pills-badges-tab" tabindex="0">
@@ -204,38 +204,58 @@
 
                 <!--GOALS-->
                 <div class="tab-pane fade" id="pills-goals" role="tabpanel" aria-labelledby="pills-goals-tab" tabindex="0">
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row d-flex">
+                    <!-- Left Side - File Uploads -->
+                    <div class="col-md-6 d-flex flex-column gap-3">
+                        <!-- Generated ID Upload -->
+                        <div>
+                            <label for="fileElem1" class="form-label fw-bold">Generated ID</label>
+                            <div class="border p-4 rounded shadow-sm text-center drop-area" id="drop-area-1">
+                                <p>Drag & drop your file here <br> <strong>OR</strong></p>
+                                <input type="file" id="fileElem1" accept="image/*" multiple hidden>
+                                <button class="btn btn-primary" onclick="document.getElementById('fileElem1').click();">UPLOAD</button>
+                                <div id="file-list-1" class="mt-3"></div>
+                            </div>
+                        </div>
 
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            <div class="container-fluid">
-                                <div class="row mb-5">
-                                    <div class="col-md-4">
-                                        <div class="progress-text">
-                                            <h6>Progress <!--Count: 5/5--></h6>
-                                        </div>
-                                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 1%">25%</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h6 class="mb-3">On going goals</h6>
-
-                                <div class="row">
-                                    <div class="col-md-8 p-3 border">
-
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore sunt eligendi eveniet illum obcaecati ipsa deserunt laudantium ab reprehenderit in.</p>
-                                    </div>
-                                </div>
-
-
-
-
+                        <!-- Generated Certificates Upload -->
+                        <div>
+                            <label for="fileElem2" class="form-label fw-bold">Generated Certificates</label>
+                            <div class="border p-4 rounded shadow-sm text-center drop-area" id="drop-area-2">
+                                <p>Drag & drop your file here <br> <strong>OR</strong></p>
+                                <input type="file" id="fileElem2" accept="image/*" multiple hidden>
+                                <button class="btn btn-primary" onclick="document.getElementById('fileElem2').click();">UPLOAD</button>
+                                <div id="file-list-2" class="mt-3"></div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Right Side - Preview Section -->
+                    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+                        <label class="form-label fw-bold">Preview Here</label>
+                        <div class="border p-4 rounded shadow-sm text-center w-100" id="preview-container" style="height: 300px;">
+                            <p class="text-muted" id="preview-text">No preview available</p>
+                            <img id="preview-image" src="" alt="" class="img-fluid d-none" style="max-height: 100%; max-width: 100%;">
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-success" onclick="printPreview()">PRINT</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
             </div>
 
         </div>
@@ -252,6 +272,78 @@
     </main>
     </div>
     </div>
+
+
+<!-- JavaScript for Upload & Preview -->
+<script>
+    function setupDragAndDrop(dropAreaId, fileInputId, fileListId) {
+        const dropArea = document.getElementById(dropAreaId);
+        const fileInput = document.getElementById(fileInputId);
+        const fileList = document.getElementById(fileListId);
+        const previewContainer = document.getElementById("preview-container");
+        const previewText = document.getElementById("preview-text");
+        const previewImage = document.getElementById("preview-image");
+
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.classList.add("border-primary");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("border-primary");
+        });
+
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropArea.classList.remove("border-primary");
+            handleFiles(event.dataTransfer.files);
+        });
+
+        fileInput.addEventListener("change", () => {
+            handleFiles(fileInput.files);
+        });
+
+        function handleFiles(files) {
+            fileList.innerHTML = "<p class='text-info'>Uploading...</p>"; // Show uploading message
+            
+            setTimeout(() => { // Simulate upload delay
+                fileList.innerHTML = ""; // Clear uploading message
+                
+                for (let file of files) {
+                    let listItem = document.createElement("p");
+                    listItem.textContent = file.name;
+                    fileList.appendChild(listItem);
+
+                    if (file.type.startsWith("image/")) { // If file is an image, preview it
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            previewImage.src = e.target.result;
+                            previewImage.classList.remove("d-none");
+                            previewText.classList.add("d-none");
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }, 1000); // Simulated upload time (1 sec)
+        }
+    }
+
+    function printPreview() {
+        const previewContent = document.getElementById('preview-container').innerHTML;
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write('<html><head><title>Print Preview</title></head><body>');
+        newWindow.document.write(previewContent);
+        newWindow.document.write('</body></html>');
+        newWindow.document.close();
+        newWindow.print();
+    }
+
+    // Initialize drag-and-drop for both containers
+    document.addEventListener("DOMContentLoaded", function () {
+        setupDragAndDrop("drop-area-1", "fileElem1", "file-list-1");
+        setupDragAndDrop("drop-area-2", "fileElem2", "file-list-2");
+    });
+</script>
 
 
     <!--BOOTSTRAP JS CDN LINK-->
