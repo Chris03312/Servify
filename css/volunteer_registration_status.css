@@ -25,7 +25,6 @@
   .timeline-item img {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
   }
 
   .timeline-item img:hover {
@@ -61,56 +60,3 @@
     width: 0%;
     transition: width 0.3s ease;
   }
-
-  /**
-  .timeline-item:first-child:before {
-    content: 'Submit Volunteer Registration Form';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-
-  .timeline-item:nth-child(2):before {
-    content: 'To be reviewed by DPPAM Team';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-  .timeline-item:nth-child(3):before {
-    content: 'Application Approved';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-  .timeline-item:nth-child(4):before {
-    content: 'Submit Additional Requirements';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-  .timeline-item:nth-child(5):before {
-    content: 'Orientation and Training';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-  .timeline-item:nth-child(6):before {
-    content: 'Start Volunteering';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px;
-  }
-
-  **/

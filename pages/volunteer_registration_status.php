@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer | Registration Status</title>
     <link rel="stylesheet" href="../css/volunteer_registration_status.css">
+    <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
@@ -36,28 +37,28 @@
                 style="width: <?php echo $statusInfo['PROGRESS']; ?>%;"></div> <!-- Dynamically adjust width -->
             
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 20) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 1">
+                <img src="../img/icons8-signing-a-document-90 (1).png" alt="Step 1">
                 <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
             </div>
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 37) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 2">
+                <img src="../img/image-removebg-preview (3).png" alt="Step 2">
                 <div class="progress-step" data-content="To be reviewed by DPPAM Team"></div>
             </div>
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 53) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 3">
+                <img src="../img/image-removebg-preview.png" alt="Step 3">
                 <div class="progress-step" data-content="Application Approved"></div>
             </div>
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 80) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 4">
-                <div class="progress-step" data-content="Submit Additional Requirements"></div>
+                <img src="../img/icons8-identification-90.png" alt="Step 4">
+                <div class="progress-step" data-content="Generate ID"></div>
             </div>
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 100) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 5">
+                <img src="../img/icons8-calendar-90 (1).png" alt="Step 5">
                 <div class="progress-step" data-content="Orientation and Training"></div>
             </div>
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] == 100) ? 'active' : ''; ?>">
-                <img src="../img/icons8-announcement-90.png" alt="Step 6">
-                <div class="progress-step" data-content="Start Volunteering"></div>
+                <img src="../img/icons8-certificate-90 (1).png" alt="Step 6">
+                <div class="progress-step" data-content="Grant Certificate"></div>
             </div>
         </div>
 
@@ -81,6 +82,7 @@
                         <?php endif; ?>
                             <td><?php echo $statusInfo['FIRST_NAME']." ".$statusInfo['MIDDLE_NAME']." ".$statusInfo['SURNAME']; ?></td>
                             <td><?php echo $statusInfo['STATUS']; ?></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Action</button></td>
                             <!-- <td></td> -->
                         </tr>
                     </tbody>

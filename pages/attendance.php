@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer| Attendance</title>
+    <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
@@ -34,39 +35,49 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 mb-3">
-                    <div class="container-fluid d-flex flex-row justify-content-between align-items-center border p-3">
-                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                            <div><img src="../img/DPPAM LOGO.png" alt="Profile picture" class="img-fluid"
-                                    width="100px;"></div>
-                            <div>
-                                <h4><?php echo $attendancesinfo['FIRST_NAME'] . " " . $attendancesinfo['MIDDLE_NAME'] . " " . $attendancesinfo['SURNAME'] ?? " "; ?>
-                                </h4>
-                                <p><strong>Membership no:</strong>
-                                    <?php echo $attendancesinfo['VOLUNTEERS_ID'] ?? " "; ?>
-                                </p>
-                                <p><?php echo $attendancesinfo['ROLE'] . " - " . $attendancesinfo['ASSIGNED_POLLING_PLACE'] ?? " "; ?>
-                                </p>
-                            </div>
-                        </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container-fluid d-flex flex-row justify-content-between align-items-center">
+                                <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                    <div><img src="../img/DPPAM LOGO.png" alt="Profile picture" class="img-fluid"
+                                            width="100px;"></div>
+                                    <div>
+                                        <h4><?php echo $attendancesinfo['FIRST_NAME'] . " " . $attendancesinfo['MIDDLE_NAME'] . " " . $attendancesinfo['SURNAME'] ?? " "; ?>
+                                        </h4>
+                                        <p><strong>Membership no:</strong>
+                                            <?php echo $attendancesinfo['VOLUNTEERS_ID'] ?? " "; ?>
+                                        </p>
+                                        <p><?php echo $attendancesinfo['ROLE'] . " - " . $attendancesinfo['ASSIGNED_POLLING_PLACE'] ?? " "; ?>
+                                        </p>
+                                    </div>
+                                </div>
 
-                        <div class="qrCode">
-                            <img src="../img/PPCRV LOGO.png" alt="QR Code" class="img-fluid" width="100px;">
+                                <div class="qrCode">
+                                    <img src="../img/PPCRV LOGO.png" alt="QR Code" class="img-fluid" width="100px;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-12 mb-3">
-                    <div class="container-fluid text-center border p-3">
-                        <h5><span class="text-danger" id="messageLate"></span></h5>
-                        <h5><span class="text-warning" id="messageCountdown"></span></h5>
-                        <h5><span class="text-danger" id="messageOvertime"></span></h5>
-                        <h5><span class="text-success" id="messageCurrentTime"></span></h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container-fluid text-center">
+                                <h5><span class="text-danger" id="messageLate"></span></h5>
+                                <h5><span class="text-warning" id="messageCountdown"></span></h5>
+                                <h5><span class="text-danger" id="messageOvertime"></span></h5>
+                                <h5><span class="text-success" id="messageCurrentTime"></span></h5>
+                            </div>
+                        </div>
                     </div>
                     <!-- <script src="js/attendancetime.js"></script> -->
                 </div>
 
                 <div class="col-12">
-                    <div class="container-fluid border p-3" style="border-top: 40px solid blue !important;">
+                    <div class="card" style="border-top: 40px solid blue !important;">
+                        <div class="card-body">
+                        <div class="container-fluid">
                         <?php if (!empty($getAttendances)): ?>
                             <!-- Display formatted date -->
                             <h5 class="text-center">
@@ -100,6 +111,8 @@
                             </div>
                         <?php endif; ?>
                     </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,7 +125,9 @@
             };
 
             function getManilaTime() {
-                return new Date().toLocaleString("en-PH", { timeZone: "Asia/Manila" });
+                return new Date().toLocaleString("en-PH", {
+                    timeZone: "Asia/Manila"
+                });
             }
 
             function timeToDate(timeString) {
@@ -123,7 +138,7 @@
                 return date;
             }
 
-            window.onload = function () {
+            window.onload = function() {
                 var messageElementLate = document.getElementById('messageLate');
                 var messageElementCountdown = document.getElementById('messageCountdown');
                 var messageElementEarly = document.getElementById('messageEarly');
@@ -138,10 +153,10 @@
                 var timeOut = timeToDate(attendanceData.timeOut);
 
                 if (currentTime < targetTimeIn) {
-                    targetTimeIn.setDate(targetTimeIn.getDate() - 1);  // Handle clock-in before midnight
+                    targetTimeIn.setDate(targetTimeIn.getDate() - 1); // Handle clock-in before midnight
                 }
                 if (currentTime > targetTimeOut) {
-                    targetTimeOut.setDate(targetTimeOut.getDate() + 1);  // Handle clock-out after midnight
+                    targetTimeOut.setDate(targetTimeOut.getDate() + 1); // Handle clock-out after midnight
                 }
 
                 // Check if the user is late for clock-in
@@ -163,7 +178,7 @@
                         messageElementCountdown.textContent = "Time remaining until time-out: " + formatTime(remainingTime);
                         messageElementCountdown.classList.add("text-warning");
 
-                        var countdownInterval = setInterval(function () {
+                        var countdownInterval = setInterval(function() {
                             remainingTime -= 1000;
                             messageElementCountdown.textContent = "Time remaining until time-out: " + formatTime(remainingTime);
                             if (remainingTime <= 0) {
@@ -185,11 +200,11 @@
                 }
 
                 // ✅ Overtime Detection Logic with Persistence
-                var overtimeInterval = setInterval(function () {
+                var overtimeInterval = setInterval(function() {
                     // Recalculate timeOut if it's null (because it's '00:00:00')
                     if (timeOut === null || timeOut === "00:00:00") {
                         timeOut = new Date();
-                        timeOut.setHours(0, 0, 0, 0);  // Set it to the next day at midnight
+                        timeOut.setHours(0, 0, 0, 0); // Set it to the next day at midnight
                         timeOut.setDate(timeOut.getDate() + 1); // Move it to the next day
                     }
 
@@ -197,7 +212,7 @@
                     if (timeIn && (!timeOut || timeOut === null) && currentTime > targetTimeOut) {
                         console.log("Overtime condition triggered!"); // Debug log to see if it's triggered
                         messageElementOvertime.textContent = "Overtime! Please clock out.";
-                        messageElementOvertime.classList.add("text-danger");  // Ensure red color
+                        messageElementOvertime.classList.add("text-danger"); // Ensure red color
                     } else {
                         // If clocked out, stop showing overtime message
                         if (timeOut && timeOut !== null) {
@@ -206,10 +221,10 @@
                             clearInterval(overtimeInterval); // Stop checking once clocked out
                         }
                     }
-                }, 1000);  // Check every second if overtime condition still applies
+                }, 1000); // Check every second if overtime condition still applies
 
                 // Update the current time display
-                setInterval(function () {
+                setInterval(function() {
                     var currentTime = new Date(getManilaTime());
                     var hours = String(currentTime.getHours()).padStart(2, '0');
                     var minutes = String(currentTime.getMinutes()).padStart(2, '0');

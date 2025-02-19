@@ -162,7 +162,7 @@ try {
                                         <small class="text-muted">21 mins. ago</small>
                                     </div>
                                     <div>
-                                        <p>Assignment agad hayup</p>
+                                        <p>Lorem ipsum dolor sit amet.</p>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ try {
                                         <small class="text-muted">25 mins. ago</small>
                                     </div>
                                     <div>
-                                        <p>AYAAAAWW KO NAAAAAAA</p>
+                                        <p>Lorem ipsum dolor sit amet.</p>
                                     </div>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer | New Application</title>
     <link rel="stylesheet" href="../css/volunteer_application.css">
+    <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
@@ -34,7 +35,7 @@
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
 
-        <div class="container-fluid">
+        <div class="container-fluid bg-light p-3">
             <form id="volunteerForm" method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
                 <!--PHOTO AND NAME-->

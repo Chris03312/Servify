@@ -1,7 +1,7 @@
 <div class="wrapper">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="border-end">
+    <aside id="sidebar" class="border-end bg-light">
         <div class="sidebar-content">
             <!--LOGO SIDEBAR---->
             <div class="d-flex flex-row justify-content-start align-items-center">
@@ -18,13 +18,13 @@
                 </li>
                 <li class="sidebar-item"><a href="/volunteer_registration_status" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-file-export me-2"></i>My Application</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
+                        <li class="sidebar-item ms-2">
                             <a href="/volunteer_new_application" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>New Application</a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item ms-2">
                             <a href="/volunteer_registration_status" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Status</a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item ms-2">
                             <a href="/volunteer_renewal_application" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Renewal</a>
                         </li>
                     </ul>
