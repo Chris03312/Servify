@@ -33,9 +33,15 @@
 
         <div class="d-flex flex-row justify-content-between align-items-center mb-5">
             <h4>Volunteer Management</h4>
-
             <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-filter me-2"></i>Filter</button>
         </div>
+
+      <!-- MAP PREVIEW CONTAINER -->
+            <div id="mapPreviewContainer" class="container mt-3 p-3 mb-4 border rounded" style="display: none;">
+                <h5 class="text-primary">Map Preview</h5>
+                <div id="#" style="height: 200px;"></div>
+            </div>  
+
 
         <!-- MODAL FOR FILTER -->
         <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
@@ -229,13 +235,45 @@
         </div>
     </div>
 </main>
-    <script>
-        function toggleRemarks() {
-            var status = document.getElementById("statusSelect").value;
-            document.getElementById("reassignFields").style.display = status === "Re-assign" ? "block" : "none";
-            document.getElementById("rejectRemarks").style.display = status === "Reject" ? "block" : "none";
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to tabs and the map preview container
+        const pendingTab = document.getElementById("pending-tab");
+        const volunteerTab = document.getElementById("volunteer-tab");
+        const mapContainer = document.getElementById("mapPreviewContainer");
+
+        // Function to toggle the map container when switching tabs
+        function toggleMapPreview() {
+            if (pendingTab.classList.contains("active")) {
+                mapContainer.style.display = "block"; // Show map if "Pending" tab is active
+            } else {
+                mapContainer.style.display = "none"; // Hide map otherwise
+            }
         }
-    </script>
+
+        // Event Listeners for tab switching
+        pendingTab.addEventListener("click", toggleMapPreview);
+        volunteerTab.addEventListener("click", toggleMapPreview);
+
+        // Initialize the map (Leaflet.js)
+        var map = L.map('map').setView([14.5995, 120.9842], 12); // Centered on Manila
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+    });
+
+    // Function to show/hide remarks fields based on selected status
+    function toggleRemarks() {
+        var status = document.getElementById("statusSelect").value; // Get selected status value
+
+        // Show "Re-assign" fields if selected, otherwise hide
+        document.getElementById("reassignFields").style.display = status === "Re-assign" ? "block" : "none";
+
+        // Show "Reject" remarks field if selected, otherwise hide
+        document.getElementById("rejectRemarks").style.display = status === "Reject" ? "block" : "none";
+    }
+</script>
+
 
     <!--BOOTSTRAP JS CDN LINK-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
