@@ -26,71 +26,78 @@
     <?php
     include('includes/coordinator_sidebar.php');
     ?>
-  
+
 
     <!--MAIN CONTENT-->
     <main class="container-fluid p-5">
 
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-5">
-            <div>
-                <h4>VOLUNTEER DIRECTORY BY PARISH</h4>
+            <div class="mb-3 mb-lg-0">
+                <h4 class="text-uppercase fw-bold">Volunteer Directory by Parish</h4>
             </div>
 
-            <div class="d-flex flex-row gap-3">
-                <input type="search" class="form-control" name="search" id="search" placeholder="Search here">
-                <button type="button" class="btn btn-outline-secondary px-4">Filter</button>
+            <div class="d-flex flex-row gap-2 align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control" name="search" id="search" placeholder="Search here..."
+                        aria-label="search" aria-describedby="search-icon">
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary d-flex align-items-center">
+                    <i class="bi bi-filter me-2"></i>Filter
+                </button>
             </div>
         </div>
+
 
         <p class="text-muted">You currently have access to this Directory:</p>
 
         <!--PARISH-->
         <div class="row mb-3">
 
-        <?php if($Citylinks): ?>
-            <?php foreach($Citylinks as $cities): ?>
-            <div class="col-md-4 mb-3">
-                <!--HYPERLINK-->
-                <a class="btn border border-primary" href="<?php echo $cities['link']; ?>" role="button">
-                <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
-                        <div class="image-container">
-                            <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
-                        </div>
+            <?php if ($Citylinks): ?>
+                <?php foreach ($Citylinks as $cities): ?>
+                    <div class="col-md-4 mb-3">
+                        <!--HYPERLINK-->
+                        <a class="btn border bg-light border-primary" href="<?php echo $cities['link']; ?>" role="button">
+                            <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
+                                <div class="image-container">
+                                    <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
+                                </div>
 
-                        <div class="parish-name text-center">
-                            <h4><?php echo  $cities['name']; ?></h4>
-                        </div>
+                                <div class="parish-name text-center">
+                                    <h4><?php echo  $cities['name']; ?></h4>
+                                </div>
+                            </div>
+                            <div class="row mt-4 justify-content-center">
+                                <div class="col">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="text-primary">150</h5>
+                                        <p>Registered Volunteers</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="text-primary">150</h5>
+                                        <p>Assigned Volunteers</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="text-primary">150</h5>
+                                        <p>Unassigned Volunteers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="row mt-4 justify-content-center">
-                        <div class="col">
-                            <div class="d-flex flex-column">
-                                <h5 class="text-primary">150</h5>
-                                <p>Registered Volunteers</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-flex flex-column">
-                                <h5 class="text-primary">150</h5>
-                                <p>Assigned Volunteers</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-flex flex-column">
-                                <h5 class="text-primary">150</h5>
-                                <p>Unassigned Volunteers</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <?php endforeach ?>
+                <?php endforeach ?>
             <?php else: ?>
                 <div class="parish-name text-center">
                     <h4> No Cities found!</h4>
                 </div>
             <?php endif; ?>
         </div>
-        
+
         <!--TABLE-->
 
         <div class="table-responsive">
@@ -104,15 +111,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if(!empty($parishes)): ?>
-                        <?php foreach($parishes as $parish):?>
-                    <tr class="">
-                        <td scope="row"><?php echo $parish['PARISH_NAME'];?></td>
-                        <td><?php echo $parish['VICARIATE']; ?></td>
-                        <td><?php echo $parish['DISTRICT']; ?></td>
-                        <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestAccessModal">Request Access</button></td>
-                    </tr>
-                    <?php endforeach ?>
+                    <?php if (!empty($parishes)): ?>
+                        <?php foreach ($parishes as $parish): ?>
+                            <tr class="">
+                                <td scope="row"><?php echo $parish['PARISH_NAME']; ?></td>
+                                <td><?php echo $parish['VICARIATE']; ?></td>
+                                <td><?php echo $parish['DISTRICT']; ?></td>
+                                <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestAccessModal">Request Access</button></td>
+                            </tr>
+                        <?php endforeach ?>
                     <?php else: ?>
                         <tr>
                             <td colspan="4" class="text-center">No parishes found</td>
@@ -156,7 +163,7 @@
                         <div class="modal-body">
                             <div class="d-flex flex-column justify-content-center align-items-center gap-3">
                                 <img src="../img/icons8-checkmark-90.png" alt="Modal Logo" class="img-fluid">
-                                <p class="text-center">Your request to access the file has been successfully submitted. Please wait for the admin's 
+                                <p class="text-center">Your request to access the file has been successfully submitted. Please wait for the admin's
                                     approval. You will be notified once your request is processed.</p>
 
                                 <div class="d-flex flex-row justify-content-center align-items-center gap-3">

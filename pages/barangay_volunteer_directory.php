@@ -36,61 +36,66 @@
                 <h4><?php echo strtoupper($district); ?> VOLUNTEER DIRECTORY</h4>
             </div>
 
-            <div class="d-flex flex-row gap-3">
-                <input type="search" class="form-control" name="search" id="search" placeholder="Search here">
+
+            <div class="d-flex flex-row gap-2 align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control" name="search" id="search" placeholder="Search here..."
+                        aria-label="search" aria-describedby="search-icon">
+                </div>
                 <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#addNewBrgyModal">New</button>
             </div>
         </div>
 
         <!--MODAL - ADD NEW BRGY-->
         <div class="modal fade" id="addNewBrgyModal" tabindex="-1"
-                aria-labelledby="addNewBrgyModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary">
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex flex-column justify-content-center align-items-center gap-3">
-                                <img src="../img/icons8-announcement-90.png" alt="Modal Logo" class="img-fluid">
-                                <h5 class="text-center">Do you wish to add barangay?</h5>
+            aria-labelledby="addNewBrgyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                            <img src="../img/icons8-announcement-90.png" alt="Modal Logo" class="img-fluid">
+                            <h5 class="text-center">Do you wish to add barangay?</h5>
 
-                                <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#requestSuccessModal">Yes</button>
-                                </div>
+                            <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#requestSuccessModal">Yes</button>
                             </div>
-
-
                         </div>
+
 
                     </div>
+
                 </div>
             </div>
+        </div>
 
-                <!--MODAL - ADD NEW BRGY REQUEST SUCCESS-->
-            <div class="modal fade" id="requestSuccessModal" tabindex="-1"
-                aria-labelledby="requestSuccessModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary">
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex flex-column justify-content-center align-items-center gap-3">
-                                <img src="../img/icons8-checkmark-90.png" alt="Modal Logo" class="img-fluid">
-                                <p class="text-center">Your request to add barangay to the list has been successfully submitted. Please wait for the admin's approval. 
-                                    You will be notified once your request is processed.</p>
+        <!--MODAL - ADD NEW BRGY REQUEST SUCCESS-->
+        <div class="modal fade" id="requestSuccessModal" tabindex="-1"
+            aria-labelledby="requestSuccessModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                            <img src="../img/icons8-checkmark-90.png" alt="Modal Logo" class="img-fluid">
+                            <p class="text-center">Your request to add barangay to the list has been successfully submitted. Please wait for the admin's approval.
+                                You will be notified once your request is processed.</p>
 
-                                <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">OK</button>
-                                </div>
+                            <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">OK</button>
                             </div>
-
-
                         </div>
+
 
                     </div>
+
                 </div>
             </div>
+        </div>
 
 
         <div class="mt-5">
@@ -130,31 +135,31 @@
                     </div>
                 </div>
 
-<?php if ($barangayLinks): ?>
-        <?php foreach ($barangayLinks as $barangay): ?>
-            <div class="col-md-3 mb-2">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex flex-row justify-content-between align-items-start">
-                            <a href="<?php echo $barangay['link']; ?>" class="btn border-0" role="button">
-                                <div class="d-flex flex-column justify-content-center align-items-start gap-2">
-                                    <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
-                                    <span><?php echo $barangay['name']; ?></span>
+                <?php if ($barangayLinks): ?>
+                    <?php foreach ($barangayLinks as $barangay): ?>
+                        <div class="col-md-3 mb-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-row justify-content-between align-items-start">
+                                        <a href="<?php echo $barangay['link']; ?>" class="btn border-0" role="button">
+                                            <div class="d-flex flex-column justify-content-center align-items-start gap-2">
+                                                <i class="fa-solid fa-folder-closed text-primary fs-1"></i>
+                                                <span><?php echo $barangay['name']; ?></span>
+                                            </div>
+                                        </a>
+                                        <div>
+                                            <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                            <div>
-                                <button type="button" class="btn py-0 px-1"><i class="fa-solid fa-ellipsis-vertical text-primary"></i></button>
                             </div>
                         </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="alert alert-info">
+                        No barangay directory available for the selected district.
                     </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-<?php else: ?>
-    <div class="alert alert-info">
-        No barangay directory available for the selected district.
-    </div>
-<?php endif; ?>
+                <?php endif; ?>
 
             </div>
         </div>

@@ -165,7 +165,7 @@
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <h5>Overview of Volunteers</h5>
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#overviewOfVolunteers" aria-expanded="false" aria-controls="overviewOfVolunteers">Filter
+                                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#overviewOfVolunteers" aria-expanded="false" aria-controls="overviewOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
                                 </button>
 
                             </div>
@@ -215,7 +215,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-4 mb-3 mb-md-0">
                                     <!--Pie Chart Canvas-->
                                     <canvas id="volunteerPieChart"></canvas>
@@ -364,7 +364,7 @@
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <h4>List of Volunteers</h4>
-                        <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers">Filter
+                        <button class="btn btn-sm btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
                         </button>
                     </div>
 
@@ -437,10 +437,9 @@
 
 
                     <!--TABLE-->
-
                     <div class="table-responsive my-3">
-                        <table id="volunteerTable" class="table">
-                            <thead>
+                        <table id="volunteerTable" class="table table-bordered">
+                            <thead class="table-primary">
                                 <tr>
                                     <th scope="col">Membership ID</th>
                                     <th scope="col">Precinct Number</th>
