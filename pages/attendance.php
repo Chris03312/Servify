@@ -151,9 +151,34 @@
                     messageElementLate.classList.add("text-danger");
                 }
 
+                // Updated isTimeOutEarly function for accurate comparison
                 function isTimeOutEarly(timeOut, targetTimeOut) {
                     if (!timeOut) return false;
-                    return timeOut.getTime() < targetTimeOut.getTime();
+
+                    // Compare hour, minute, and second separately
+                    var targetTimeOutParts = targetTimeOut.split(':'); // Split target time (HH:MM:SS)
+                    var timeOutParts = timeOut.split(':'); // Split user timeOut (HH:MM:SS)
+
+                    var targetHour = parseInt(targetTimeOutParts[0]);
+                    var targetMinute = parseInt(targetTimeOutParts[1]);
+                    var targetSecond = parseInt(targetTimeOutParts[2]);
+
+                    var timeOutHour = parseInt(timeOutParts[0]);
+                    var timeOutMinute = parseInt(timeOutParts[1]);
+                    var timeOutSecond = parseInt(timeOutParts[2]);
+
+                    // Check if the clock-out time is earlier than the target clock-out time
+                    if (timeOutHour < targetHour) {
+                        return true; // Time out is earlier than target
+                    }
+                    if (timeOutHour === targetHour && timeOutMinute < targetMinute) {
+                        return true; // Time out is earlier than target
+                    }
+                    if (timeOutHour === targetHour && timeOutMinute === targetMinute && timeOutSecond < targetSecond) {
+                        return true; // Time out is earlier than target
+                    }
+
+                    return false; // Otherwise, it's not early
                 }
 
                 // Handle countdown until time-out
@@ -179,7 +204,7 @@
                 }
 
                 // Handle early clock-out
-                if (isTimeOutEarly(timeOut, targetTimeOut)) {
+                if (isTimeOutEarly(attendanceData.timeOut, attendanceData.targetTimeOut)) {
                     messageElementEarly.textContent = "Clocked out early!";
                     messageElementEarly.classList.add("text-info");
                 }
@@ -229,6 +254,7 @@
                     (seconds < 10 ? '0' : '') + seconds;
             }
         </script>
+
 
 
 

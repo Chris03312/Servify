@@ -34,64 +34,75 @@
                     <div class="card-body">
 
                         <div class="d-flex flex-row justify-content-between align-items-center">
-                            <div><img src="../img/servify-logo-with-text.png" alt="Servify Logo" class="img-fluid" width="200px"></div>
+                            <div><img src="../img/servify-logo-with-text.png" alt="Servify Logo" class="img-fluid"
+                                    width="200px"></div>
 
                             <div>
                                 <h5 class="text-primary text-center">Coordinator Profile Confirmation</h5>
-                                <p class="text-muted text-center mb-5">Review your profile carefully. Update incorrect details, then confirm if all is accurate to proceed.</p>
+                                <p class="text-muted text-center mb-5">Review your profile carefully. Update incorrect
+                                    details, then confirm if all is accurate to proceed.</p>
                             </div>
                         </div>
 
                         <!--FORM-->
-                        <form action="/coordinator_profile/submit" method="post" class="row p-2" >
+                        <form action="/coordinator_profile/submit" method="post" class="row p-2">
 
                             <p class="mb-5"><strong>Assigned as Coordinator at :</strong></p>
 
                             <div class="col-md-3 mb-3">
-                                <label for="municipality" class="form-label"><strong>Municipality <sup class="text-danger">*</sup></strong></label>
+                                <label for="municipality" class="form-label"><strong>Municipality <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" name="municipality" id="municipality">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="districtNumber" class="form-label"><strong>District No. <sup class="text-danger">*</sup></strong></label>
+                                <label for="districtNumber" class="form-label"><strong>District No. <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" name="districtNumber" id="districtNumber">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="barangay" class="form-label"><strong>Barangay <sup class="text-danger">*</sup></strong></label>
+                                <label for="barangay" class="form-label"><strong>Barangay <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" name="barangay" id="barangay">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="parishName" class="form-label"><strong>Parish Name <sup class="text-danger">*</sup></strong></label>
+                                <label for="parishName" class="form-label"><strong>Parish Name <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" name="parishName" id="parishName">
                             </div>
 
                             <p><strong>Name <sup class="text-danger">*</sup></strong></p>
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname" required>
+                                <input type="text" class="form-control" name="surname" id="surname"
+                                    placeholder="Surname" required>
                                 <div class="invalid-feedback">
                                     Please input surname.
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name" required>
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                    placeholder="First name" required>
                                 <div class="invalid-feedback">
                                     Please input first name.
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Middle Name" required>
+                                <input type="text" class="form-control" name="middleName" id="middleName"
+                                    placeholder="Middle Name" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" name="suffix" id="suffix" placeholder="Suffix (e.g. Jr., Sr., III, IV)" required>
+                                <input type="text" class="form-control" name="suffix" id="suffix"
+                                    placeholder="Suffix (e.g. Jr., Sr., III, IV)" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" name="nickname" id="nickname" placeholder="Nickname" required>
+                                <input type="text" class="form-control" name="nickname" id="nickname"
+                                    placeholder="Nickname" required>
                                 <div class="invalid-feedback">
                                     Please input nickname.
                                 </div>
@@ -99,7 +110,8 @@
 
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="sex" class="form-label"><strong>Sex <sup class="text-danger">*</sup></strong></label>
+                                    <label for="sex" class="form-label"><strong>Sex <sup
+                                                class="text-danger">*</sup></strong></label>
                                     <select id="sex" class="form-select" required>
                                         <option selected disabled value="">Select sex</option>
                                         <option value="Male">Male</option>
@@ -112,7 +124,8 @@
 
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="civilstatus" class="form-label"><strong>Civil Status <sup class="text-danger">*</sup></strong></label>
+                                    <label for="civilstatus" class="form-label"><strong>Civil Status <sup
+                                                class="text-danger">*</sup></strong></label>
                                     <select id="civilstatus" class="form-select" required>
                                         <option selected disabled value="">Civil Status</option>
                                         <option value="Single">Single</option>
@@ -128,8 +141,10 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="citizenship" class="form-label"><strong>Citizenship <sup class="text-danger">*</sup></strong></label>
-                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Filipino" required>
+                                    <label for="citizenship" class="form-label"><strong>Citizenship <sup
+                                                class="text-danger">*</sup></strong></label>
+                                    <input type="text" class="form-control" name="citizenship" id="citizenship"
+                                        placeholder="Filipino" required>
                                     <div class="invalid-feedback">
                                         Please input nickname.
                                     </div>
@@ -139,7 +154,8 @@
 
                             <span><strong>Birthdate <sup class="text-danger">*</sup></strong></span>
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder="Date" required>
+                                <input type="text" class="form-control" id="birthDate" name="birthDate"
+                                    placeholder="Date" required>
                                 <div class="invalid-feedback">
                                     Please input birth date.
                                 </div>
@@ -167,7 +183,8 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" id="birthYear" name="birthYear" placeholder="Year" required>
+                                <input type="text" class="form-control" id="birthYear" name="birthYear"
+                                    placeholder="Year" required>
                                 <div class="invalid-feedback">
                                     Please input birth year.
                                 </div>
@@ -181,15 +198,19 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="occupation" class="form-label"><strong>Occupation <sup class="text-danger">*</sup></strong></label>
-                                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Occupation" required>
+                                <label for="occupation" class="form-label"><strong>Occupation <sup
+                                            class="text-danger">*</sup></strong></label>
+                                <input type="text" class="form-control" id="occupation" name="occupation"
+                                    placeholder="Occupation" required>
                                 <div class="invalid-feedback">
                                     Please input Occupation.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="companyName" class="form-label"><strong>Company Name <sup class="text-danger">*</sup></strong></label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name" required>
+                                <label for="companyName" class="form-label"><strong>Company Name <sup
+                                            class="text-danger">*</sup></strong></label>
+                                <input type="text" class="form-control" id="companyName" name="companyName"
+                                    placeholder="Company Name" required>
                                 <div class="invalid-feedback">
                                     Please input Company Name.
                                 </div>
@@ -200,7 +221,8 @@
                             <p><strong>Contact Details <sup class="text-danger">*</sup></strong></p>
 
                             <div class="col-md-12 mb-3">
-                                <label for="street" class="form-label"><strong>Street/Unit/Bldg/Village <sup class="text-danger">*</sup></strong></label>
+                                <label for="street" class="form-label"><strong>Street/Unit/Bldg/Village <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="street" name="street" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
@@ -208,7 +230,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="city" class="form-label"><strong>City/Municipality <sup class="text-danger">*</sup></strong></label>
+                                <label for="city" class="form-label"><strong>City/Municipality <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <select id="city" name="municipality" class="form-select" required>
                                     <option selected disabled value="">Select City/Municipality</option>
                                     <?php foreach ($cities as $city): ?>
@@ -223,7 +246,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="barangay" class="form-label"><strong>Barangay <sup class="text-danger">*</sup></strong></label>
+                                <label for="barangay" class="form-label"><strong>Barangay <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="barangay" name="barangay" required>
                                 <div class="invalid-feedback">
                                     Please input barangay.
@@ -238,7 +262,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="zipcode" class="form-label"><strong>Zipcode <sup class="text-danger">*</sup></strong></label>
+                                <label for="zipcode" class="form-label"><strong>Zipcode <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="zipcode" name="zipcode" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
@@ -246,7 +271,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="email" class="form-label"><strong>Email <sup class="text-danger">*</sup></strong></label>
+                                <label for="email" class="form-label"><strong>Email <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="email" name="email" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
@@ -254,7 +280,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="mobileNumber" class="form-label"><strong>Mobile No. <sup class="text-danger">*</sup></strong></label>
+                                <label for="mobileNumber" class="form-label"><strong>Mobile No. <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
@@ -262,7 +289,8 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="telNumber" class="form-label"><strong>Tel No. <sup class="text-danger">*</sup></strong></label>
+                                <label for="telNumber" class="form-label"><strong>Tel No. <sup
+                                            class="text-danger">*</sup></strong></label>
                                 <input type="text" class="form-control" id="telNumber" name="telNumber" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
@@ -274,7 +302,8 @@
 
 
                             <div class="col-md-7 mb-3">
-                                <label for="orgMembership" class="form-label"><strong>Parish Organization Membership <sup class="text-danger">*</sup></strong></label>
+                                <label for="orgMembership" class="form-label"><strong>Parish Organization Membership
+                                        <sup class="text-danger">*</sup></strong></label>
                                 <select id="orgMembership" name="orgMembership" class="form-select" required>
                                     <option selected disabled value="">Select Membership</option>
                                     <option value="">...</option>
@@ -287,23 +316,28 @@
                             </div>
 
                             <div class="col-md-5 mb-3">
-                                <label for="prevAssignment" class="form-label"><strong>Previous PPCRV Assignment <sup class="text-danger">*</sup></strong></label>
-                                <input type="text" name="prevAssignment" class="form-control" id="prevAssignment" name="prevAssignment">
+                                <label for="prevAssignment" class="form-label"><strong>Previous PPCRV Assignment <sup
+                                            class="text-danger">*</sup></strong></label>
+                                <input type="text" name="prevAssignment" class="form-control" id="prevAssignment"
+                                    name="prevAssignment">
                                 <div class="invalid-feedback">
                                     Please input.
                                 </div>
                             </div>
 
-                            <label for="prevExperienceDate" class="form-label"><strong>Previous PPCRV Experience <sup class="text-danger">*</sup></strong></label>
+                            <label for="prevExperienceDate" class="form-label"><strong>Previous PPCRV Experience <sup
+                                        class="text-danger">*</sup></strong></label>
                             <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control" id="prevExperienceDate" name="prevExperienceDate" placeholder="Date" required>
+                                <input type="text" class="form-control" id="prevExperienceDate"
+                                    name="prevExperienceDate" placeholder="Date" required>
                                 <div class="invalid-feedback">
                                     Please input date.
                                 </div>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select" required>
+                                <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select"
+                                    required>
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
@@ -324,17 +358,20 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control" id="prevExperienceYear" name="prevExperienceYear" placeholder="Year" required>
+                                <input type="text" class="form-control" id="prevExperienceYear"
+                                    name="prevExperienceYear" placeholder="Year" required>
                                 <div class="invalid-feedback">
                                     Please input year.
                                 </div>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="yearOfService" class="form-label"><strong>Year of Service <sup class="text-danger">*</sup></strong></label>
-                                <input type="text" class="form-control" placeholder="Auto generated" id="yearOfService" name="yearOfService" required>
+                                <label for="yearOfService" class="form-label"><strong>Year of Service <sup
+                                            class="text-danger">*</sup></strong></label>
+                                <input type="text" class="form-control" placeholder="Auto generated" id="yearOfService"
+                                    name="yearOfService" required>
                             </div>
-                            
+
 
                             <div class="d-flex flex-row justify-content-center align-items-center gap-4 my-3 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">Confirm</button>
@@ -355,7 +392,8 @@
                                         <div class="modal-footer justify-content-center">
                                             <button type="button" class="btn btn-outline-secondary px-4"
                                                 data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#changePasswordConfirmed">Confirm</button>
+                                            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal"
+                                                data-bs-target="#changePasswordConfirmed">Confirm</button>
                                         </div>
                                     </div>
                                 </div>
@@ -394,7 +432,7 @@
 
 
 
-    
+
 
 
 

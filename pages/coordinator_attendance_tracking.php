@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--BOOTSTRAP CDN ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -43,11 +44,15 @@
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <!--PROFILE PICTURE AND DETAILS-->
                     <div class="d-flex flex-row justify-content-start align-items-center">
-                        <div><img src="../img/DPPAM LOGO.png" alt="Profile Picture" class="img-fluid" width="100px"></div>
+                        <div><img src="../img/DPPAM LOGO.png" alt="Profile Picture" class="img-fluid" width="100px">
+                        </div>
                         <div class="d-flex flex-column">
-                            <span class="fs-4"><?php echo $getattedancecoorInfo['FIRST_NAME']." ".$getattedancecoorInfo['MIDDLE_NAME']." ".$getattedancecoorInfo['SURNAME'] ?? "";?></strong></span>
-                            <span class="fs-6"><strong>Membershio No: <?php echo$getattedancecoorInfo['CPROFILE_ID'] ?? ""; ?> </strong></span>
-                            <span class="fs-6">Coordinator - <?php echo $getattedancecoorInfo['MUNICIPALITY/CITY']." ".$getattedancecoorInfo['POLLING_PLACE'] ?? ""; ?></span>
+                            <span
+                                class="fs-4"><?php echo $getattedancecoorInfo['FIRST_NAME'] . " " . $getattedancecoorInfo['MIDDLE_NAME'] . " " . $getattedancecoorInfo['SURNAME'] ?? ""; ?></strong></span>
+                            <span class="fs-6"><strong>Membershio No:
+                                    <?php echo $getattedancecoorInfo['CPROFILE_ID'] ?? ""; ?> </strong></span>
+                            <span class="fs-6">Coordinator -
+                                <?php echo $getattedancecoorInfo['MUNICIPALITY/CITY'] . " " . $getattedancecoorInfo['POLLING_PLACE'] ?? ""; ?></span>
                         </div>
                     </div>
 
@@ -62,7 +67,8 @@
 
         <div class="card mb-3">
             <div class="card-header bg-primary py-3">
-                <span class="fs-5 text-light"><i class="bi bi-stopwatch me-2"></i>Hours to be rendered: <strong>24 hours</strong></span>
+                <span class="fs-5 text-light"><i class="bi bi-stopwatch me-2"></i>Hours to be rendered: <strong>24
+                        hours</strong></span>
             </div>
 
             <div class="card-body text-center">
@@ -91,8 +97,9 @@
         <!--FILTER AND ADD ATTENDANCE BUTTON-->
         <div class="d-flex flex-row justify-content-end align-items-center gap-2 mb-3">
             <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary" id="attendanceFilter" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-filter me-2"></i>Filter</button>
-            </button>
+                <button type="button" class="btn btn-outline-secondary" id="attendanceFilter" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="bi bi-filter me-2"></i>Filter</button>
+                </button>
 
                 <div class="dropdown-menu">
                     <button class="dropdown-item">School 1</button>
@@ -102,13 +109,11 @@
                 </div>
             </div>
 
-            
 
-            <button type="button" class="btn btn-outline-secondary"><i class="bi bi-plus me-2"></i>Add Attendance</button>
+
+            <button type="button" class="btn btn-outline-secondary"><i class="bi bi-plus me-2"></i>Add
+                Attendance</button>
         </div>
-
-
-
         <div class="row">
 
             <div class="col-md-3 mb-3">
@@ -160,8 +165,7 @@
             </div>
 
             <!--TABLE-->
-            <div
-                class="table-responsive">
+            <div class="table-responsive">
                 <table class="table table-hover align-middle">
                     <thead class="table-primary text-nowrap">
                         <tr>
@@ -175,23 +179,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (!empty($volunteersCounts)): ?>  <!-- Notice the ! (negation) -->
-                        <?php foreach ($volunteersCounts as $volunteers): ?>
+                        <?php if (!empty($volunteersCounts)): ?> <!-- Notice the ! (negation) -->
+                            <?php foreach ($volunteersCounts as $volunteers): ?>
+                                <tr>
+                                    <td scope="row"><?php echo htmlspecialchars($volunteers['DATE']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers['TIME_IN']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers['TIME_OUT']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers['VOLUNTEER_NAME']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers['ROLE']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers['EMAIL']); ?></td>
+                                    <td><?php echo htmlspecialchars($volunteers["POLLING_PLACE"]); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td scope="row"><?php echo htmlspecialchars($volunteers['DATE']); ?></td>
-                                <td><?php echo htmlspecialchars($volunteers['TIME_IN']); ?></td>
-                                <td><?php echo htmlspecialchars($volunteers['TIME_OUT']); ?></td>
-                                <td><?php echo htmlspecialchars($volunteers['VOLUNTEER_NAME']);?></td>
-                                <td><?php echo htmlspecialchars($volunteers['ROLE']); ?></td>
-                                <td><?php echo htmlspecialchars($volunteers['EMAIL']); ?></td>
-                                <td><?php echo htmlspecialchars($volunteers["POLLING_PLACE"]); ?></td>
+                                <td colspan="7">No Volunteers found!</td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="7">No Volunteers found!</td>
-                        </tr>
-                    <?php endif; ?>
+                        <?php endif; ?>
                     </tbody>
                     <tfoot>
 
@@ -284,7 +288,9 @@
 
 
     <!--BOOTSTRAP JS CDN LINK-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 

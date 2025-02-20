@@ -2,9 +2,11 @@
 
 require_once __DIR__ . '/../models/VolunteerManagement.php';
 
-class ListOfVolunteerController {
+class ListOfVolunteerController
+{
 
-    public static function ShowListOfVolunteer() {
+    public static function ShowListOfVolunteer()
+    {
 
         $city = $_GET['City'];
         $district = $_GET['District'] ?? null;
@@ -12,11 +14,11 @@ class ListOfVolunteerController {
         $pollingplace = $_GET['PollingPlace'];
 
         $districturl = '?City=' . urlencode($city);
-        $barangayurl = '?City=' . urlencode($city).'&District='. urlencode($district);
-        $pollingplaceurl = '?City=' . urlencode($city).'&District='. urlencode($district).'&Barangay='. urlencode($barangay);
+        $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);
+        $pollingplaceurl = '?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangay);
 
 
-        $listofvolunteers = VolunteerManagement::getlistofVolunteer($city,$district, $barangay, $pollingplace);
+        $listofvolunteers = VolunteerManagement::getlistofVolunteer($city, $district, $barangay, $pollingplace);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
 

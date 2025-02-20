@@ -46,7 +46,7 @@
                         <a href="/polling_area<?php echo $districturl; ?>">List of District</a>
                     </li>
                     <li class="breadcrumb-item">
-                    <a href="/barangay_volunteer_directory<?php echo $barangayurl; ?>">List of Barangay</a>
+                        <a href="/barangay_volunteer_directory<?php echo $barangayurl; ?>">List of Barangay</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="/polling_area<?php echo $pollingplaceurl; ?>">Polling Area</a>
@@ -60,13 +60,15 @@
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
+                            <div
+                                class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                                 <div class="image-container">
                                     <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                                 </div>
 
                                 <div>
-                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team (AMVATT)</strong></p>
+                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team
+                                            (AMVATT)</strong></p>
                                 </div>
                             </div>
 
@@ -92,13 +94,15 @@
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
+                            <div
+                                class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                                 <div class="image-container">
                                     <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                                 </div>
 
                                 <div>
-                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team (AMVATT)</strong></p>
+                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team
+                                            (AMVATT)</strong></p>
                                 </div>
                             </div>
 
@@ -124,13 +128,15 @@
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
+                            <div
+                                class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                                 <div class="image-container">
                                     <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                                 </div>
 
                                 <div>
-                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team (AMVATT)</strong></p>
+                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team
+                                            (AMVATT)</strong></p>
                                 </div>
                             </div>
 
@@ -156,13 +162,15 @@
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
+                            <div
+                                class="d-flex flex-xl-row flex-md-column flex-sm-row justify-content-center align-items-center gap-2">
                                 <div class="image-container">
                                     <img src="../img/icons8-announcement-90.png" alt="Parish Logo" class="img-fluid">
                                 </div>
 
                                 <div>
-                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team (AMVATT)</strong></p>
+                                    <p class="text-center"><strong>Accountable Material Verifiable Audit Trail Team
+                                            (AMVATT)</strong></p>
                                 </div>
                             </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/helpers.php'; 
+require_once __DIR__ . '/../core/helpers.php';
 require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../models/Parish.php';
 
@@ -14,7 +14,7 @@ require_once __DIR__ . '/../controllers/CoordinatorVolunteerManagementController
 require_once __DIR__ . '/../controllers/DistrictVolunteerDirectoryController.php';
 require_once __DIR__ . '/../controllers/BarangayVolunteerDirectoryController.php';
 require_once __DIR__ . '/../controllers/PollingAreaController.php';
-require_once __DIR__ . '/../controllers/ListOFVolunteerController.php';
+require_once __DIR__ . '/../controllers/ListOfVolunteerController.php';
 
 require_once __DIR__ . '/../controllers/PendingSubmissionsController.php';
 require_once __DIR__ . '/../controllers/UnderReviewSubmissionsController.php';
@@ -137,10 +137,10 @@ $router->add('/admin_coordinator_management', [AdminCoorManagementController::cl
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
-$router->add('/admin_attendance_tracking', [AdminAttendanceController::class,'ShowAdminAttendance']);
-$router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class,'ShowAdminAttendanceSummary']);
-$router->add('/precincts', [AdminPrecinctsController::class,'ShowAdminPrecincts']);
-$router->add('/admin_achievements', [AdminAchievementsController::class,'ShowAdminAchievements']);
+$router->add('/admin_attendance_tracking', [AdminAttendanceController::class, 'ShowAdminAttendance']);
+$router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class, 'ShowAdminAttendanceSummary']);
+$router->add('/precincts', [AdminPrecinctsController::class, 'ShowAdminPrecincts']);
+$router->add('/admin_achievements', [AdminAchievementsController::class, 'ShowAdminAchievements']);
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
