@@ -150,6 +150,12 @@ $router->add('/volunteers', [LandingPageController::class, 'ShowVolunteers']);
 $router->add('/resources', [LandingPageController::class, 'ShowResources']);
 $router->add('/events', [LandingPageController::class, 'ShowEvents']);
 
+$router->add('/pollwatchers', [LandingPageController::class, 'ShowPollwatchers']);
+$router->add('/psv', [LandingPageController::class, 'ShowPSV']);
+$router->add('/upce', [LandingPageController::class, 'ShowUPCE']);
+$router->add('/vad', [LandingPageController::class, 'ShowVAD']);
+
+
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

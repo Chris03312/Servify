@@ -97,4 +97,32 @@ class LandingPageController
 
     }
 
+    // TYPES OF VOLUNTEER 
+
+    public static function ShowPollwatchers()
+    {
+
+        view('pollwatchers');
+
+    }
+    public static function ShowPSV()
+    {
+
+        view('psv');
+
+    }
+    public static function ShowUPCE()
+    {
+
+        view('upce');
+
+    }
+    public static function ShowVAD()
+    {
+
+        view('vad');
+
+    }
+
+
 }
