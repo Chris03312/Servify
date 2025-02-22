@@ -1,4 +1,7 @@
 /**START OF MAIN CONTENT STYLE**/
+body {
+  background-color: #EAEAEA !important;
+}
 
 .dashboardBanner {
     background: url('../img/DASHBOARD\ BANNER.png') center/cover no-repeat;

@@ -227,7 +227,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-4 mb-3 mb-md-0">
                                     <!--Pie Chart Canvas-->
                                     <canvas id="volunteerPieChart"></canvas>
@@ -363,14 +363,9 @@
                                     </div>
                                     <script>
                                         // Pass PHP data to JavaScript variables (DO NOT redeclare in JS)
-                                        var malabonData = <?php echo json_encode($totalCities['malabon_count']); ?>;
-                                        var caloocanData = <?php echo json_encode($totalCities['caloocan_count']); ?>;
-                                        var navotasData = <?php echo json_encode($totalCities['navotas_count']); ?>;
-
+                                        var heatmapData = <?php echo json_encode($heatmapData) ?>
                                         // Log the values to check if they're correctly passed
-                                        console.log('Malabon Volunteers:', malabonData);
-                                        console.log('Caloocan Volunteers:', caloocanData);
-                                        console.log('Navotas Volunteers:', navotasData);
+                                        console.log('data:', heatmapData);
                                     </script>
                                     <script src="../js/leafletmapcities.js" defer></script>
                                 </div>
@@ -387,7 +382,10 @@
                         <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
                             data-bs-target="#listOfVolunteers" aria-expanded="false"
                             aria-controls="listOfVolunteers">Filter
-                        </button>
+                            <button class="btn btn-sm btn-outline-secondary mb-3" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false"
+                                aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
+                            </button>
                     </div>
 
                     <div class="collapse" id="listOfVolunteers">
@@ -456,6 +454,7 @@
 
                         </div>
                     </div>
+                    <!-- SEARCH BAR -->
                     <div class="row d-flex justify-content-end">
                         <div class="col-md-4">
                             <input type="search" name="search" id="search" class="form-control"
@@ -463,13 +462,10 @@
                         </div>
                     </div>
 
-
-
                     <!--TABLE-->
-
                     <div class="table-responsive my-3">
-                        <table id="volunteerTable" class="table">
-                            <thead>
+                        <table id="volunteerTable" class="table table-bordered">
+                            <thead class="table-primary">
                                 <tr>
                                     <th scope="col">Membership ID</th>
                                     <th scope="col">Precinct Number</th>

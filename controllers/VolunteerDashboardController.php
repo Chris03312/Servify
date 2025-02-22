@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../models/Dashboard.php';
 require_once __DIR__ . '/../models/Sidebarinfo.php';
@@ -7,9 +7,11 @@ require_once __DIR__ . '/../models/activityLog.php';
 
 
 
-class VolunteerDashboardController {
+class VolunteerDashboardController
+{
 
-    public static function VolunteerDashboard() {
+    public static function VolunteerDashboard()
+    {
 
         // If not logged in, redirect to login
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {

@@ -2,7 +2,8 @@
 
 require_once __DIR__ . '/../configuration/Database.php';
 
-function getActivityLog($email, $username) {
+function getActivityLog($email, $username)
+{
     try {
         // Validate input
         if (empty($email) || empty($username)) {
@@ -34,7 +35,8 @@ function getActivityLog($email, $username) {
     }
 }
 
-function formatActivityDates($activities) {
+function formatActivityDates($activities)
+{
     $currentDate = (new DateTime())->format('Y-m-d');
 
     foreach ($activities as &$activity) {

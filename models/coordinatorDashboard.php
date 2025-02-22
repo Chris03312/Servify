@@ -1,20 +1,22 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../configuration/Database.php';
 
 
-class CoordinatorDashboard {
+class CoordinatorDashboard
+{
 
-    public static function PendingApp() {
+    public static function PendingApp()
+    {
         try {
             $status = 'Pending';
-    
+
             $db = Database::getConnection();
-            
+
             $stmt = $db->prepare('SELECT COUNT(APPLICATION_ID) AS count FROM APPLICATION_INFO WHERE STATUS = :status');
             $stmt->execute(['status' => $status]);
             $pendingApp = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             return $pendingApp['count']; // Return the scalar value directly
         } catch (PDOException $e) {
             error_log('Error in pendingApp: ' . $e->getMessage());
@@ -23,8 +25,9 @@ class CoordinatorDashboard {
     }
 
 
-    public static function getVolunteers() {
-        try{
+    public static function getVolunteers()
+    {
+        try {
             $db = Database::getConnection();
 
             $stmt = $db->prepare('
@@ -43,16 +46,17 @@ class CoordinatorDashboard {
             $volunteersTbl = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $volunteersTbl;
-        }catch (PDOException $e) {
-            error_log('Error in getting volunteers data'. $e->getMessage());
+        } catch (PDOException $e) {
+            error_log('Error in getting volunteers data' . $e->getMessage());
         }
     }
-    
 
-    public static function getTotalCities() {
+
+    public static function getTotalCities()
+    {
         try {
             $db = Database::getConnection();
-    
+
             // SQL to count each city
             $stmt = $db->prepare('
                 SELECT 
@@ -62,24 +66,25 @@ class CoordinatorDashboard {
                     SUM(CASE WHEN CITY = :navotasCity THEN 1 ELSE 0 END) AS navotas_count
                 FROM VOLUNTEERS_TBL
             ');
-    
+
             // Bind the city values
             $stmt->execute([
                 ':caloocanCity' => 'Caloocan city',
                 ':malabonCity' => 'Malabon city',
                 ':navotasCity' => 'Navotas city',
             ]);
-    
+
             $totalCities = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             return $totalCities; // Returns an associative array with counts for each city
         } catch (PDOException $e) {
             error_log('Error getting the total cities: ' . $e->getMessage());
             return [];
         }
     }
-    
-    public static function getDropdownG2() {
+
+    public static function getDropdownG2()
+    {
         try {
             $db = Database::getConnection();
 
@@ -87,17 +92,17 @@ class CoordinatorDashboard {
             $stmtCity = $db->prepare('SELECT DISTINCT `MUNICIPALITY/CITY` AS city FROM PRECINCT_TABLE');
             $stmtCity->execute();
             $cities = $stmtCity->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // Get distinct districts
             $stmtDistrict = $db->prepare('SELECT DISTINCT DISTRICT AS district FROM PRECINCT_TABLE');
             $stmtDistrict->execute();
             $districts = $stmtDistrict->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // Get distinct barangays
             $stmtBarangay = $db->prepare('SELECT DISTINCT BARANGAY_NAME AS barangay FROM PRECINCT_TABLE');
             $stmtBarangay->execute();
             $barangays = $stmtBarangay->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // Get distinct polling places
             $stmtParish = $db->prepare('SELECT PARISH_NAME AS parish FROM PARISHES');
             $stmtParish->execute();
@@ -106,7 +111,7 @@ class CoordinatorDashboard {
             $stmtPollingPlace = $db->prepare('SELECT DISTINCT POLLING_PLACE AS polling_place FROM PRECINCT_TABLE');
             $stmtPollingPlace->execute();
             $pollingPlaces = $stmtPollingPlace->fetchAll(PDO::FETCH_ASSOC);
-    
+
             return [
                 'cities' => $cities,
                 'districts' => $districts,
@@ -119,12 +124,13 @@ class CoordinatorDashboard {
             return [];
         }
     }
-    
 
-    public static function chartsData() {
+
+    public static function chartsData()
+    {
         try {
             $db = Database::getConnection();
-    
+
             // SQL query to count volunteers by polling place
             $query = '
                 SELECT 
@@ -143,14 +149,14 @@ class CoordinatorDashboard {
                 GROUP BY 
                     p.polling_place, p.district, v.city, v.barangay, v.parish
             ';
-    
+
             // Prepare and execute the query
             $stmt = $db->prepare($query);
             $stmt->execute();
-    
+
             // Fetch the results as an associative array
             $chartsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             return $chartsData;
         } catch (PDOException $e) {
             // Log the error and return an empty array
@@ -158,18 +164,66 @@ class CoordinatorDashboard {
             return [];
         }
     }
-    
-        
-    public static function coordinatorInfo() {
+
+
+    public static function coordinatorInfo()
+    {
         try {
             $db = Database::getConnection();
             $email = $_SESSION['email'];
 
             $stmt = $db->prepare('SELECT PARISH FROM PROFILE');
-        }catch (PDOException $e) {
-            error_log('Error geting coordinator info'. $e->getMessage());
+        } catch (PDOException $e) {
+            error_log('Error geting coordinator info' . $e->getMessage());
         }
     }
+
+    public static function heatMapAttendance()
+    {
+        try {
+            $db = Database::getConnection();
+
+            //     $stmt = $db->prepare('
+            //     SELECT 
+            //         v.POLLING_PLACE,
+            //         COUNT(a.ATTENDANCE_ID) AS ATTENDANCE_COUNT,
+            //         v.LATITUDE,
+            //         v.LONGITUDE,
+            //         COALESCE(p.needed_volunteers, 0) AS NEEDED_VOLUNTEERS
+            //     FROM (
+            //         SELECT DISTINCT POLLING_PLACE, LATITUDE, LONGITUDE 
+            //         FROM PRECINCT_TABLE
+            //     ) AS v
+            //     LEFT JOIN ATTENDANCES AS a 
+            //         ON v.POLLING_PLACE = a.POLLING_PLACE 
+            //         AND DATE(a.DATE) = CURDATE()
+            //     LEFT JOIN (
+            //         SELECT 
+            //             `POLLING PLACE`, 
+            //             SUM(
+            //                 LENGTH(`CLUSTERED / GROUPED PRECINCTS`) 
+            //                 - LENGTH(REPLACE(`CLUSTERED / GROUPED PRECINCTS`, ',', 
+            //                 '')) + 1
+            //             ) AS needed_volunteers
+            //         FROM PRECINCTS
+            //         WHERE `CLUSTERED / GROUPED PRECINCTS` IS NOT NULL 
+            //         AND `CLUSTERED / GROUPED PRECINCTS` <> \'\'
+            //         GROUP BY `POLLING PLACE`
+            //     ) AS p 
+            //     ON v.POLLING_PLACE = p.`POLLING PLACE`
+            //     GROUP BY v.POLLING_PLACE, v.LATITUDE, v.LONGITUDE, p.needed_volunteers
+            // ');
+
+
+
+            // $stmt->execute();
+            // return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log('Error in getting attendance for heatmap: ' . $e->getMessage());
+        }
+    }
+
+
 
 
 

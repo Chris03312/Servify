@@ -52,7 +52,7 @@ require_once __DIR__ . '/../controllers/AdminPrecinctsController.php';
 require_once __DIR__ . '/../controllers/AdminAchievementsController.php';
 
 require_once __DIR__ . '/../controllers/LoginController.php';
-require_once __DIR__ . '/../controllers/LandingPageController.php';
+require_once __DIR__ . '/../controllers/DPPAM-website/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
 require_once __DIR__ . '/../controllers/LogoutController.php';
 
@@ -134,6 +134,7 @@ $router->add('/reports', [ReportsController::class, 'ShowReports']);
 
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
+$router->add('/admin_volunteer_management', [AdminVolunManagementController::class, 'ShowAdminVolunManagement']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
 $router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
@@ -141,6 +142,16 @@ $router->add('/admin_attendance_tracking', [AdminAttendanceController::class, 'S
 $router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class, 'ShowAdminAttendanceSummary']);
 $router->add('/precincts', [AdminPrecinctsController::class, 'ShowAdminPrecincts']);
 $router->add('/admin_achievements', [AdminAchievementsController::class, 'ShowAdminAchievements']);
+
+$router->add('/whoweare', [LandingPageController::class, 'ShowWhoWeAre']);
+$router->add('/mission_vision', [LandingPageController::class, 'ShowMissionVission']);
+$router->add('/organization_profile', [LandingPageController::class, 'ShowOrganizationProfile']);
+$router->add('/volunteers', [LandingPageController::class, 'ShowVolunteers']);
+$router->add('/resources', [LandingPageController::class, 'ShowResources']);
+$router->add('/events', [LandingPageController::class, 'ShowEvents']);
+
+
+
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);

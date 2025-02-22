@@ -48,14 +48,18 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-primary float-end" data-bs-dismiss="modal">OK</button>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="d-flex align-items-center justify-content-center vh-100">
-            <h1 class="text-center">Wala pang renewal boss</h1>
+            <div class="d-flex flex-column align-items-center justify-content-center vh-100 gap-1">
+            <h1 class="text-primary fw-bold">Wait for further notice!</h1>
+            <p class="text-muted">Thank you for understanding!</p>
+            
+
             </div>
         </div>
 

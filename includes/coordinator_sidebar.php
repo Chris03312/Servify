@@ -1,7 +1,7 @@
 <div class="wrapper">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="border-end">
+    <aside id="sidebar" class="border-end bg-light">
         <div class="sidebar-content">
             <!--LOGO SIDEBAR---->
             <div class="d-flex flex-row justify-content-start align-items-center">

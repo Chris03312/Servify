@@ -1,12 +1,15 @@
 <?php
-class Router {
+class Router
+{
     private $routes = [];
 
-    public function add($route, $callback) {
+    public function add($route, $callback)
+    {
         $this->routes[$route] = $callback;
     }
 
-    public function run() {
+    public function run()
+    {
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         if (array_key_exists($path, $this->routes)) {
@@ -18,7 +21,8 @@ class Router {
     }
 
     // Add redirect functionality to Router class
-    public function redirect($url) {
+    public function redirect($url)
+    {
         header("Location: $url");
         exit(); // Ensure the script stops after the redirect
     }

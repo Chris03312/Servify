@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { "name": "KALAYAAN ELEMENTARY SCHOOL", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 60, "volunteers_count": 30 },
     { "name": "SILANGANAN ELEMENTARY SCHOOL (MAIN)", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 55, "volunteers_count": 20 },
     { "name": "BAGONG SILANG PUBLIC HIGH SCHOOL", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 75, "volunteers_count": 50 }
-];      
+];
 
     const heatPoints = dataPoints.map(point => {
         let intensity = point.needed_volunteers;
