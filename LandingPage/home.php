@@ -222,7 +222,7 @@
                 <div class="news-events-details">
                     <p>Stay informed about DPPAM’s upcoming events and activities. Join us in our mission
                         for clean and fair elections. Here’s our upcoming event—be part of it and make a difference!</p>
-                    <a href="events.php" class="btn">See More <i class="fa fa-arrow-right"></i></a>
+                    <a href="/events" class="btn">See More <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
