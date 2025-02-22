@@ -312,7 +312,10 @@
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <li><a href="/volunteers#vad">VAD</a></li>
+                        <li><a href="">UPCE</a></li>
+                        <li><a href="">VAD</a></li>
+                        <li><a href="">PSV</a></li>
+                        <li><a href="">Election Oberservers</a></li>
                     <?php endif; ?>
                 </ul>
             </li>
