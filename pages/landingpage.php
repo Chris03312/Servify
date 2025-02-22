@@ -141,7 +141,7 @@
                 <div class="volunteers-details">
                     <p>Here are the different roles and duties of volunteers who help ensure fair and
                         smooth elections. Learn more about the different types of Pollwatchers.</p>
-                    <a href="/index#aboutus" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
+                    <a href="/volunteers" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
