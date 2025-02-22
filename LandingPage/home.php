@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servify | DPPAM - Home</title>
-    <link rel="stylesheet" href="LandingPage/css/styles.css">
-    <link rel="stylesheet" href="LandingPage/css/contactus.css">
+    <title>DPPAM - Volunteer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contactus.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
 <body id="scrollbar">
-    <?php include("LandingPage/navbar.php"); ?>
+    <?php include("navbar.php"); ?>
 
     <section class="hero" id="home">
         <div class="hero-text">
@@ -23,7 +23,7 @@
             <p>Welcome to the official website of <strong>Diocese of Caloocan Public and Political Affairs Ministry
                     (DPPAM)</strong>. We are dedicated to empowering communities through active participation in free
                 and fair elections. Be a Volunteer today and make a difference!</p>
-            <a href="/signup" class="btn">BE A VOLUNTEER!</a>
+            <a href="#" class="btn">BE A VOLUNTEER!</a>
         </div>
     </section>
 
@@ -57,11 +57,11 @@
                     <span class="highlight-black1">to understand our</span><br>
                     <span class="highlight-black1">commitment to democracy.</span>
                 </h2>
-                <a href="/whoarewe" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
+                <a href="whoarewe.php" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
             </div>
 
             <div class="about-image">
-                <img src="LandingPage/img/quote2.jpg" alt="About Us Image">
+                <img src="img/quote2.jpg" alt="About Us Image">
             </div>
         </div>
     </section>
@@ -79,13 +79,13 @@
                 <div class="organization-details">
                     <p>People behind DPPAM. Dedicated leaders and coordinators working together
                         to uphold democratic values and ensure free and fair elections.</p>
-                    <a href="/organization_profile" class="btn">See More <i class="fa fa-arrow-right"></i></a>
+                    <a href="organization.php" class="btn">See More <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <main id="carousel">
                 <div class="item">
-                    <img src="LandingPage/images/1.jpg" alt="Sally Sharpe">
+                    <img src="images/1.jpg" alt="Sally Sharpe">
                     <div class="hover-box">
                         <h3 class="name">Sally Sharpe</h3>
                         <p class="occupation">Member since 2020</p>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="LandingPage/images/2.jpg" alt="Michael John">
+                    <img src="images/2.jpg" alt="Michael John">
                     <div class="hover-box">
                         <h3 class="name">Michael John</h3>
                         <p class="occupation">Member since 2020</p>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="LandingPage/images/3.jpg" alt="Mikayla Eddie">
+                    <img src="images/3.jpg" alt="Mikayla Eddie">
                     <div class="hover-box">
                         <h3 class="name">Mikayla Eddie</h3>
                         <p class="occupation">Member since 2020</p>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="LandingPage/images/4.jpg" alt="Eve Smith">
+                    <img src="images/4.jpg" alt="Eve Smith">
                     <div class="hover-box">
                         <h3 class="name">Eve Smith</h3>
                         <p class="occupation">Member since 2020</p>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="LandingPage/images/5.jpg" alt="Eve Smith">
+                    <img src="images/5.jpg" alt="Eve Smith">
                     <div class="hover-box">
                         <h3 class="name">Eve Smith</h3>
                         <p class="occupation">Member since 2020</p>
@@ -146,22 +146,22 @@
 
             <div class="volunteers-boxes">
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/upc.jpg" alt="Volunteer 1">
+                    <img src="img/upc.jpg" alt="Volunteer 1">
                     <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
                     <a href="volunteers.php" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/vad.jpg" alt="Volunteer 1">
+                    <img src="img/vad.jpg" alt="Volunteer 1">
                     <h3>Voters' Assistancee Desk (VAD)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/psv.jpg" alt="Volunteer 1">
+                    <img src="img/psv.jpg" alt="Volunteer 1">
                     <h3>Election Monitors or Observers (EO)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/eo.jpg" alt="Volunteer 1">
+                    <img src="img/eo.jpg" alt="Volunteer 1">
                     <h3>Polling Station Volunteers (PSV)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
@@ -187,22 +187,22 @@
 
             <div class="volunteers-boxes">
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/upc.jpg" alt="Volunteer 1">
+                    <img src="img/upc.jpg" alt="Volunteer 1">
                     <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/vad.jpg" alt="Volunteer 1">
+                    <img src="img/vad.jpg" alt="Volunteer 1">
                     <h3>Voters' Assistancee Desk (VAD)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/psv.jpg" alt="Volunteer 1">
+                    <img src="img/psv.jpg" alt="Volunteer 1">
                     <h3>Election Monitors or Observers (EO)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="LandingPage/img/eo.jpg" alt="Volunteer 1">
+                    <img src="img/eo.jpg" alt="Volunteer 1">
                     <h3>Polling Station Volunteers (PSV)</h3>
                     <a href="#" class="btn">See More</a>
                 </div>
@@ -222,13 +222,13 @@
                 <div class="news-events-details">
                     <p>Stay informed about DPPAM’s upcoming events and activities. Join us in our mission
                         for clean and fair elections. Here’s our upcoming event—be part of it and make a difference!</p>
-                    <a href="/events" class="btn">See More <i class="fa fa-arrow-right"></i></a>
+                    <a href="events.php" class="btn">See More <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="news-events-poster">
-                <img src="LandingPage/img/poster1.jpg" alt="Upcoming Election Poster" class="carousel-image">
-                <img src="LandingPage/img/poster2.jpg" alt="Upcoming Election Poster" class="carousel-image">
+                <img src="img/poster1.jpg" alt="Upcoming Election Poster" class="carousel-image">
+                <img src="img/poster2.jpg" alt="Upcoming Election Poster" class="carousel-image">
             </div>
 
 
@@ -241,7 +241,7 @@
                 <h3>VISIT THE NEAREST PARISH IN YOUR AREA FOR MORE QUESTIONS.</h3>
                 <p><span>Contact:</span> A. (02) 8288-9116</p>
                 <p><span>Mail:</span> example_email@gmail.com</p>
-                <img src="LandingPage/img/contactus-logo.png" alt="ddpam-logo">
+                <img src="img/contactus-logo.png" alt="ddpam-logo">
             </div>
             <div class="contactus-rightsection">
                 <h2 class="form-header">LEAVE YOUR MESSAGE HERE</h2>
@@ -258,14 +258,14 @@
         </div>
     </section>
 
+
     <?php include 'chatbotfolder/chatbot.php'; ?>
     <?php include 'footer.php'; ?>
 
-    <script src="LandingPage/js/card-slider.js"></script>
-    <script src="LandingPage/js/script.js"></script>
-    <script src="LandingPage/js/carousel1.js"></script>
-    <script src="LandingPage/js/index.js"></script>
-
+    <script src="js/card-slider.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/carousel1.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

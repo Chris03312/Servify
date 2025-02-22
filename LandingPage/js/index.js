@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
         { threshold: 0.3 }
     );
 
-    // Select multiple elements for observation
-    const hiddenElements = document.querySelectorAll(".organization-container, .about-container, .volunteers-container, .news-events-container, .bottom-info-section");
+    const hiddenElements = document.querySelectorAll(".organization-container, .about-container, .volunteers-container, .news-events-container, .bottom-info-section, .contactus-container, .resources-container");
     hiddenElements.forEach((el) => observer.observe(el));
 
     console.log("Observing elements:", hiddenElements.length); 
 });
+
 
 

@@ -304,11 +304,16 @@
             <li class="dropdown">
                 <a href="/volunteers" class="dropdown-toggles">Volunteers<i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#upce">UPCE</a></li>
-                    <li><a href="#vad">VAD</a></li>
-                    <li><a href="#psv">PSV</a></li>
-                    <li><a href="#eo">Election Observers</a></li>
-                    <li><a href="#pollwatchers">Types of Pollwatchers</a></li>
+                    <?php if ($volunteers): ?>
+                        <?php foreach ($volunteers as $volunteer): ?>
+                            <li><a href="/volunteers#<?php echo $volunteer['MISSION_DESCRIPTION'] ?? ' '; ?>">
+                                    <?php echo str_replace(['(', ')'], '', $volunteer['MISSION_DESCRIPTION'] ?? ''); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <li><a href="/volunteers#vad">VAD</a></li>
+                    <?php endif; ?>
                 </ul>
             </li>
             <li class="dropdown">

@@ -116,8 +116,8 @@
         </div>
     </div>
 
-    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
-    <?php include 'LandingPage/footer.php'; ?>
+    <?php include 'chatbotfolder/chatbot.php'; ?>
+    <?php include 'footer.php'; ?>
 
     <script src="LandingPage/js/carousel.js"></script>
     <script>

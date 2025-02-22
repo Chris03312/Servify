@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     let interval;
 
-    // Ensure dots are generated dynamically
-    dotsNav.innerHTML = ''; // Clear existing dots
+    dotsNav.innerHTML = ''; 
     images.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const allDots = document.querySelectorAll('.dot');
 
-    // Function to show image & update active dot
     function showImage(index) {
         images[currentIndex].classList.remove('active');
         allDots[currentIndex].classList.remove('active');
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         restartSlideshow();
     }
 
-    // Previous & Next Button Events
     prevBtn.addEventListener('click', () => {
         let newIndex = currentIndex - 1 < 0 ? images.length - 1 : currentIndex - 1;
         showImage(newIndex);
@@ -42,14 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
         showImage(newIndex);
     });
 
-    // Auto-Slideshow with Loading Line
     function startSlideshow() {
         interval = setInterval(() => {
             let newIndex = currentIndex + 1 >= images.length ? 0 : currentIndex + 1;
             showImage(newIndex);
         }, 7000);
         
-        // Reset & Apply Loading Line
         document.querySelector('.loading-line')?.remove();
         const loadingLine = document.createElement('div');
         loadingLine.classList.add('loading-line');
@@ -63,3 +58,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startSlideshow();
 });
+
+
+const images = document.querySelectorAll(".carousel-image");
+let currentIndex = 0;
+let interval;
+
+function showNextImage() {
+    images[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add("active");
+}
+
+function startCarousel() {
+    interval = setInterval(showNextImage, 2000);
+}
+
+function stopCarousel() {
+    clearInterval(interval);
+}
+
+images[currentIndex].classList.add("active");
+startCarousel();
+
+document.querySelector(".news-events-poster").addEventListener("mouseenter", stopCarousel);
+document.querySelector(".news-events-poster").addEventListener("mouseleave", startCarousel);

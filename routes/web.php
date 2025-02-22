@@ -52,7 +52,7 @@ require_once __DIR__ . '/../controllers/AdminPrecinctsController.php';
 require_once __DIR__ . '/../controllers/AdminAchievementsController.php';
 
 require_once __DIR__ . '/../controllers/LoginController.php';
-require_once __DIR__ . '/../controllers/DPPAM-website/LandingPageController.php';
+require_once __DIR__ . '/../controllers/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
 require_once __DIR__ . '/../controllers/LogoutController.php';
 
