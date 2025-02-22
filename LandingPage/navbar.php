@@ -302,7 +302,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="/volunteers" class="dropdown-toggles">Volunteers<i class="fa fa-chevron-down"></i></a>
+                <a href="/index#volunteers" class="dropdown-toggles">Volunteers<i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <?php if ($volunteers): ?>
                         <?php foreach ($volunteers as $volunteer): ?>
@@ -317,13 +317,13 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="/resources" class="dropdown-toggles">Resources<i class="fa fa-chevron-down"></i></a>
+                <a href="/index#resources" class="dropdown-toggles">Resources<i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="#guide">Volunteers Guide</a></li>
                     <li><a href="#guidelines">Elections Guidelines</a></li>
                 </ul>
             </li>
-            <li><a href="/events">Events</a></li>
+            <li><a href="/index#news-events">Events</a></li>
             <li><a href="/index#contactus">Contact Us</a></li>
         </ul>
     </nav>
