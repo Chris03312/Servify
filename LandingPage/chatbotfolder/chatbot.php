@@ -246,9 +246,9 @@
 
     <div class="chat-bot">
         <div class="chat-icon" id="chat-icon">
-            <img id="chatbotpic" src="LandingPage/chatbotfolder/images/chatbot.png"
-                onmouseenter="this.src='LandingPage/chatbotfolder/images/chatbot2.png'"
-                onmouseleave="this.src='LandingPage/chatbotfolder/images/chatbot.png'"
+            <img id="chatbotpic" src="/../LandingPage/chatbotfolder/images/chatbot.png"
+                onmouseenter="this.src='/../LandingPage/chatbotfolder/images/chatbot2.png'"
+                onmouseleave="this.src='/../LandingPage/chatbotfolder/images/chatbot.png'"
                 style="height: 50px; width: 50px; filter: invert();" alt="Chat Icon">
         </div>
         <div class="chat-box" id="chat-box">
@@ -272,23 +272,29 @@
     <script>
 
         function handleFAQClick(id, butts) {
-
-            fetch('LandingPage/chatbotfolder/index.php')
-                .then(response => response.json())
-                .then(data => console.log("Chatbot Data Loaded: ", data))
-                .catch(err => console.error('Chatbot fetch error:', err))
+            fetch('/../LandingPage/chatbotfolder/index.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
+                    console.log("Chatbot Data Loaded: ", data);
+
+                    if (!data || !data.question || !data.answer) {
+                        throw new Error("Invalid chatbot data format");
+                    }
 
                     const usermsg = document.createElement('div');
                     usermsg.classList.add('chat-message', 'user-message');
-                    usermsg.textContent = `${data.question[id]}`;
+                    usermsg.textContent = data.question[id] || "Question not found";
 
                     const botmsg = document.createElement('div');
                     botmsg.classList.add('chat-message', 'bot-message');
-                    botmsg.textContent = `${data.answer[id]}`;
+                    botmsg.textContent = data.answer[id] || "Answer not found";
 
                     document.getElementById('msgcon').appendChild(usermsg);
-
                     smoothScrollToBottom(document.getElementById('chat-content'));
 
                     setTimeout(() => {
@@ -307,19 +313,19 @@
                             if (faqConElement) {
                                 console.log('Updating faqcon with the message');
                                 faqConElement.innerHTML = `
-                <p style="text-align: center; color: #183251; margin: 0; font-size: 13px">
-                    Please contact our customer support if you have any concerns!
-                </p>
-            `;
+                            <p style="text-align: center; color: #183251; margin: 0; font-size: 13px">
+                                Please contact our customer support if you have any concerns!
+                            </p>
+                        `;
                             } else {
                                 console.log('faqcon element not found');
                             }
                         }
                     }, 500);
                 })
-                .catch(err => console.error('Something is wong', err));
-
+                .catch(err => console.error('Something is wrong:', err));
         }
+
 
         document.addEventListener("DOMContentLoaded", function () {
             const chatIcon = document.getElementById("chat-icon");
@@ -330,11 +336,11 @@
                 if (chatBox.style.display === "block") {
                     chatBox.style.bottom = '-20px';
                     chatBox.classList.add("closing");
-                    chatbot.onmouseenter = function oo() { chatbot.src = 'LandingPage/chatbotfolder/images/chatbot2.png' };
-                    chatbot.onmouseleave = function pp() { chatbot.src = 'LandingPage/chatbotfolder/images/chatbot.png' };
+                    chatbot.onmouseenter = function oo() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png' };
+                    chatbot.onmouseleave = function pp() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png' };
                     setTimeout(() => {
                         chatIcon.classList.remove("open");
-                        chatbot.src = 'LandingPage/chatbotfolder/images/chatbot.png';
+                        chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png';
                     }, 200);
                     setTimeout(function () {
                         chatBox.style.display = "none";
@@ -342,12 +348,12 @@
                 } else {
                     chatBox.style.bottom = '0';
                     chatBox.style.display = "block";
-                    chatbot.onmouseenter = function oo() { chatbot.src = 'LandingPage/chatbotfolder/images/chatbot.png' };
-                    chatbot.onmouseleave = function pp() { chatbot.src = 'LandingPage/chatbotfolder/images/chatbot2.png' };
+                    chatbot.onmouseenter = function oo() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png' };
+                    chatbot.onmouseleave = function pp() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png' };
                     chatBox.classList.remove("closing");
                     setTimeout(() => {
                         chatIcon.classList.add("open");
-                        chatbot.src = 'LandingPage/chatbotfolder/images/chatbot2.png';
+                        chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png';
                     }, 200);
                 }
             });
@@ -360,7 +366,7 @@
             });
         });
 
-        fetch('LandingPage/chatbotfolder/index.php')
+        fetch('/../LandingPage/chatbotfolder/index.php')
             .then(response => response.json())
             .then(data => {
 

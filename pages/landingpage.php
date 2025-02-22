@@ -262,7 +262,7 @@
     </section>
 
     <?php include 'LandingPage/footer.php'; ?>
-    <?php # include 'chatbotfolder/chatbot.php'; ?>
+    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
 
     <script src="LandingPage/js/card-slider.js"></script>
     <script src="LandingPage/js/script.js"></script>
