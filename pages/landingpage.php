@@ -141,7 +141,7 @@
                 <div class="volunteers-details">
                     <p>Here are the different roles and duties of volunteers who help ensure fair and
                         smooth elections. Learn more about the different types of Pollwatchers.</p>
-                    <a href="#about" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
+                    <a href="/index#aboutus" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -154,7 +154,7 @@
                 <div class="volunteer-box">
                     <img src="img/vad.jpg" alt="Volunteer 1">
                     <h3>Voters' Assistancee Desk (VAD)</h3>
-                    <a href="#" class="btn">See More</a>
+                    <a href="/vad" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
                     <img src="img/psv.jpg" alt="Volunteer 1">

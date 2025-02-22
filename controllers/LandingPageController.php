@@ -38,9 +38,11 @@ class LandingPageController
     public static function ShowOrganizationProfile()
     {
         $volunteers = Landingpage::Volunteers();
+        $coordinators = Landingpage::Coordinators();
 
         view('organization', [
-            'volunteers' => $volunteers
+            'volunteers' => $volunteers,
+            'coordinators' => $coordinators
         ]);
     }
 

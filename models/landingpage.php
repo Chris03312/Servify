@@ -18,4 +18,17 @@ class Landingpage
         }
 
     }
+
+    public static function Coordinators()
+    {
+        try {
+
+            $db = Database::getConnection();
+            $stmt = $db->prepare("SELECT * FROM CPROFILE_TABLE");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log('Error in Getting Coordinator at LandingPage' . $e->getMessage());
+        }
+    }
 }
