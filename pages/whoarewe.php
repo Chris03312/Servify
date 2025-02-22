@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servify | DPPAM - Volunteer</title>
+    <title>DPPAM - Volunteer</title>
     <link rel="stylesheet" href="LandingPage/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
@@ -41,27 +41,28 @@
             <div class="image-section">
                 <div class="image-container">
                     <div class="img-carousel">
-                        <img src="LandingPage/images/whoweare1.jpeg" class="active">
-                        <img src="LandingPage/images/whoweare2.jpg">
-                        <img src="LandingPage/images/whoweare3.jpg">
-                        <img src="LandingPage/images/whoweare4.jpg">
-                        <img src="LandingPage/images/whoweare5.jpeg">
+                        <img src="LandingPage/img/whoweare1.jpg" class="active">
+                        <img src="LandingPage/img/whoweare2.jpg">
+                        <img src="LandingPage/img/whoweare3.jpg">
+                        <img src="LandingPage/img/whoweare4.jpg">
+                        <img src="LandingPage/img/whoweare5.jpg">
+                        <img src="LandingPage/img/whoweare6.jpg">
                     </div>
                 </div>
 
                 <div class="carousel-controls">
                     <div class="nav-buttons">
-                        <button class="prev-btn">&lt;</button> <!-- Left Arrow -->
-                        <button class="next-btn">&gt;</button> <!-- Right Arrow -->
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
                     </div>
-                    <div id="dots-nav"></div> <!-- Dots Navigation -->
+                    <div id="dots-nav"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="content-container">
-        <img src="LandingPage/img/coat.png" alt="PPCRV Image" class="left-image">
+        <img src="LandingPage/img/logo.jpg" alt="PPCRV Image" class="left-image">
         <div class="additional-info">
             <p>
                 The Three (3) major symbols of the Coat of Arms represent the three jurisdictions that comprise the
@@ -116,8 +117,9 @@
         </div>
     </div>
 
-    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
     <?php include 'LandingPage/footer.php'; ?>
+    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
+
 
     <script src="LandingPage/js/carousel.js"></script>
     <script>

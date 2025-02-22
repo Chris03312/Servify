@@ -47,11 +47,12 @@
                         <div class="image-section">
                             <div class="image-container">
                                 <div class="img-carousel">
-                                    <img src="LandingPage/images/whoweare1.jpeg" class="active">
-                                    <img src="LandingPage/images/whoweare2.jpg">
-                                    <img src="LandingPage/images/whoweare3.jpg">
-                                    <img src="LandingPage/images/whoweare4.jpg">
-                                    <img src="LandingPage/images/whoweare5.jpeg">
+                                    <img src="LandingPage/img/whoweare1.jpg" class="active">
+                                    <img src="LandingPage/img/whoweare2.jpg">
+                                    <img src="LandingPage/img/whoweare3.jpg">
+                                    <img src="LandingPage/img/whoweare4.jpg">
+                                    <img src="LandingPage/img/whoweare5.jpg">
+                                    <img src="LandingPage/img/whoweare6.jpg">
                                 </div>
                             </div>
 
@@ -99,20 +100,21 @@
                     <div class="image-section">
                         <div class="image-container">
                             <div class="img-carousel">
-                                <img src="LandingPage/images/whoweare1.jpeg" class="active">
-                                <img src="LandingPage/images/whoweare2.jpg">
-                                <img src="LandingPage/images/whoweare3.jpg">
-                                <img src="LandingPage/images/whoweare4.jpg">
-                                <img src="LandingPage/images/whoweare5.jpeg">
+                                <img src="LandingPage/img/whoweare1.jpg" class="active">
+                                <img src="LandingPage/img/whoweare2.jpg">
+                                <img src="LandingPage/img/whoweare3.jpg">
+                                <img src="LandingPage/img/whoweare4.jpg">
+                                <img src="LandingPage/img/whoweare5.jpg">
+                                <img src="LandingPage/img/whoweare6.jpg">
                             </div>
                         </div>
 
                         <div class="carousel-controls">
                             <div class="nav-buttons">
-                                <button class="prev-btn">&lt;</button> <!-- Left Arrow -->
-                                <button class="next-btn">&gt;</button> <!-- Right Arrow -->
+                                <button class="prev-btn">&lt;</button>
+                                <button class="next-btn">&gt;</button>
                             </div>
-                            <div id="dots-nav"></div> <!-- Dots Navigation -->
+                            <div id="dots-nav"></div>
                         </div>
                     </div>
                 </div>

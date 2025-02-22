@@ -66,3 +66,12 @@
         href="#">Accessibility Statement</a></p>
   </div>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".join-button").click(function () {
+      window.location.href = "/signup";
+    });
+  });
+</script>

@@ -26,7 +26,7 @@ class LandingPageController
         ]);
     }
 
-    public static function ShowMissionVission()
+    public static function ShowMissionVision()
     {
         $volunteers = Landingpage::Volunteers();
 

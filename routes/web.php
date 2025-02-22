@@ -144,13 +144,11 @@ $router->add('/precincts', [AdminPrecinctsController::class, 'ShowAdminPrecincts
 $router->add('/admin_achievements', [AdminAchievementsController::class, 'ShowAdminAchievements']);
 
 $router->add('/whoweare', [LandingPageController::class, 'ShowWhoWeAre']);
-$router->add('/mission_vision', [LandingPageController::class, 'ShowMissionVission']);
+$router->add('/mission_vision', [LandingPageController::class, 'ShowMissionVision']);
 $router->add('/organization_profile', [LandingPageController::class, 'ShowOrganizationProfile']);
 $router->add('/volunteers', [LandingPageController::class, 'ShowVolunteers']);
 $router->add('/resources', [LandingPageController::class, 'ShowResources']);
 $router->add('/events', [LandingPageController::class, 'ShowEvents']);
-
-
 
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
