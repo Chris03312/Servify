@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
+
+
+footer {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px 40px;
+}
+
+footer .footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 100px;
+  gap: 0;
+}
+
+footer .logo-section {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+footer .logo {
+  width: 170px;
+  margin-bottom: 10px;
+}
+
+footer .cta-section {
+  text-align: left;
+  margin: 0;
+  padding-left: 100px;
+  max-width: 1000px;
+}
+
+footer .cta-section p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+footer .cta-section h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+
+
+footer .join-button {
+  background-color: #00A1E4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100%; 
+  max-width: 300px; 
+  text-align: center; 
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+footer .join-button:hover {
+  background-color: #85daff; 
+  color: #262626;
+}
+
+footer .links-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+footer .links-section .icons-section {
+  display: flex;
+  gap: 15px;
+  margin-left: 130px;
+}
+
+footer .links-section .links {
+  display: flex;
+  gap: 100px;
+  margin-left: 90px;
+}
+
+footer .social-link {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer .social-link:hover {
+  color: #00b0ff;
+}
+
+footer .links-section h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+footer .footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+footer .footer-links li {
+  margin-bottom: 3px;
+}
+
+footer .footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+footer .contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 80px;
+}
+
+footer .contact-us h4 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+footer .contact-us p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+footer .footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 10px;
+}
+
+footer .footer-bottom a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer .footer-bottom a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&family=Abyssinica+SIL&display=swap');
+
+html {
+    scroll-behavior: smooth; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F2F2F2;
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+
+
+/* NAVBAR */
+.navbar-container {
+    position: fixed; 
+    top: 20px; 
+    left: 20px; 
+    right: 20px; 
+    z-index: 1000; 
+    background: linear-gradient(to right, 
+        #E8F6FF 21%,   
+        #B0E0FE 65%,  
+        #50CCFA 91%,  
+        #3AA7CF 100%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 15px;
+    padding: 10px 30px; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    margin-right: 70px;
+    gap: 30px; 
+    position: relative;
+}
+
+.nav-links li {
+    position: relative; 
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #262626;
+    font-size: 17px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 8px;
+}
+
+.nav-links li a:hover {
+    color: #007BFF;
+}
+
+
+
+/* ABOUT US & RESOURCES DROPDOWN */
+.dropdown-menu {
+    list-style: none;
+    position: absolute;
+    left: -25px;
+    background: #ffffff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+    display: none; 
+    padding: 10px 0;
+    z-index: 1000;
+    min-width: 160px; 
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px; 
+    font-size: 15px;
+    color: #333; 
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f8ff; 
+    color: #007BFF;
+}
+
+.nav-links li:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle i {
+    margin-left: 5px; 
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li:hover .dropdown-toggle i {
+    transform: rotate(180deg); 
+}
+
+
+
+/* NAVBAR LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.ser {
+    color: #CF000A;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fy {
+    color: #4FA3E5;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center; 
+    padding: 0 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100vh;
+    flex-wrap: wrap; 
+    box-sizing: border-box; 
+}
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    height: 400px;
+    padding: 50px 0px 20px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.card-icon {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 80px;  /* Increase the size of the container to allow padding */
+    height: 80px; /* Adjust the height to match the width */
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 2rem;
+    padding: 10px; /* Add padding inside the circle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon img {
+    width: 60px;  /* Adjust the size of the image to fit within the padded circle */
+    height: 60px;
+    object-fit: cover; /* Make sure the image covers the circle without stretching */
+    border-radius: 50%; /* Ensure the image stays circular */
+}
+
+
+.card-title {
+    font-size: 21px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4FA3E5;
+    padding: 10px 0; 
+    margin: 20px 0 0; 
+    text-align: center;
+}
+
+.card-content {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 220px; 
+    padding-right: 10px; 
+    text-align: left; 
+    font-family: 'Abyssinica SIL', serif;
+}
+
+.card-content p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.card-content ul {
+    list-style-type: disc;
+    padding-left: 50px;
+}
+
+.card-content ul li {
+    margin-bottom: 5px;
+}
+
+
+.second-additional-info {
+    margin-top: -50px; 
+    margin-bottom: 100px; 
+    padding: 0 90px;
+    background-color: #F2F2F2; 
+    text-align: left;
+}
+
+.second-additional-info p {
+    font-family: 'Abyssinica SIL', serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #3f3f3f;
+}
+
+.second-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.second-image {
+    width: 500px; 
+    height: auto;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.second-additional-info {
+    flex: 1;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+.blue {
+    color: blue;
+    font-weight: bold;
+}
+
+.brown {
+    color: rgb(116, 66, 1);
+    font-weight: bold;
+}
+
+
+.mission-vision {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+.mission-vision-container {
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    padding: 0 70px; 
+    gap: 0; 
+    width: 100%;
+}
+
+.mission-vision-text-content,
+.mission-vision-image-section {
+    flex: 1; 
+    height: 100%; 
+}
+
+.mission-vision-text-content {
+    padding: 0px 0px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mission-vision-text-content p {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    color: #2e2e2e;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 100;
+}
+
+.highlight-smallblue { color: #4FA3E5; }
+
+.section-title {
+    background-color: #4FA3E5;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%; 
+    text-align: center;
+}
+
+.section-title h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    padding: 7px 0; 
+}
+
+.custom-checklist {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.custom-checklist li {
+    position: relative;
+    padding-left: 45px;
+    font-size: 19px;
+    line-height: 2;
+    color: #2e2e2e;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 100;
+}
+
+.custom-checklist li::before {
+    content: "\2713";
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    color: #007bff; 
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.mission-vision-text-content p,
+.mission-vision-text-content ul {
+    padding: 0 50px; 
+}
+
+.mission-vision-image-section {
+    max-width: 650px; 
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.mission-vision-image-container {
+    max-width: 650px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.mission-vision-image-container img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 0;
+}
+
+
+
+
+
+
+
+
+

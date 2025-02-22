@@ -1,13 +1,15 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../models/volunteerManagement.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
 
 
 
-class PendingSubmissionsController {
+class PendingSubmissionsController
+{
 
-    public static function ShowPendingSubmissions() {
+    public static function ShowPendingSubmissions()
+    {
 
         $pendingApplications = VolunteerManagement::getApplicationByStatus('Pending');
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled']);
@@ -25,7 +27,8 @@ class PendingSubmissionsController {
         ]);
     }
 
-    public static function deletePendingSubmissions() {
+    public static function deletePendingSubmissions()
+    {
         try {
             $db = Database::getConnection();
 

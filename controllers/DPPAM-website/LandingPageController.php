@@ -7,30 +7,30 @@ class LandingPageController
     public static function Showlandingpage()
     {
 
-        view('/../DPPAM-website/home');
+        view('/../LandingPage/home');
     }
 
     public static function ShowContactUs()
     {
 
-        view('/../DPPAM-website/contactus');
+        view('/../LandingPage/contactus');
 
     }
 
     public static function ShowWhoWeAre()
     {
 
-        view('/../DPPAM-website/whoarewe');
+        view('/../LandingPage/whoarewe');
     }
 
     public static function ShowMissionVission()
     {
-        view('/../DPPAM-website/mission-vision');
+        view('/../LandingPage/mission-vision');
     }
 
     public static function ShowOrganizationProfile()
     {
-        view('/../DPPAM-website/organization');
+        view('/../LandingPage/organization');
     }
 
     // VOLUNTEERS
@@ -38,38 +38,38 @@ class LandingPageController
     public static function ShowVolunteers()
     {
 
-        view('/../DPPAM-website/volunteers');
+        view('/../LandingPage/volunteers');
 
     }
 
     public static function ShowUPCE()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
     public static function ShowVAD()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
     public static function ShowPSV()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
     public static function ShowObservers()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
     public static function ShowTypesOfPollWatcher()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
 
@@ -78,19 +78,19 @@ class LandingPageController
     public static function ShowResources()
     {
 
-        view('/../DPPAM-website/resources');
+        view('/../LandingPage/resources');
 
     }
     public static function ShowVolunteersGuide()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
     public static function ShowElectionGuidelines()
     {
 
-        view('/../DPPAM-website/');
+        view('/../LandingPage/');
 
     }
 
@@ -99,7 +99,7 @@ class LandingPageController
     public static function ShowEvents()
     {
 
-        view('/../DPPAM-website/events');
+        view('/../LandingPage/events');
 
     }
 

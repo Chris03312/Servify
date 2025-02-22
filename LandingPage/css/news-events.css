@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&family=Abyssinica+SIL&display=swap');
+
+html {
+    scroll-behavior: smooth; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+
+
+
+
+.news-section {
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f9f9f9;
+    padding: 100px 0; 
+    overflow: hidden; 
+}
+
+.news-container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    gap: 20px;
+    padding: 20px; 
+    margin-top: 20px; 
+    flex-wrap: wrap; 
+}
+
+.left-box {
+    flex: 2;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 400px; 
+}
+
+.news-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #CF000A;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.news-meta i {
+    margin-right: 5px;
+    color: #666;
+}
+
+.news-content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+    font-family: 'Abyssinica SIL', serif;
+    margin-top: 10px;
+}
+
+.news-image {
+    width: 50%;  
+    height: 400px; 
+    object-fit: cover; 
+    border-radius: 5px; 
+}
+
+.image-container {
+    display: flex;  /* Enables flexbox to arrange items horizontally */
+    justify-content: space-between;  /* Distributes the images evenly across the container */
+    gap: 20px;  /* Optional: Adds space between the images */
+}
+
+.multiple-news-image {
+    width: 48%;  /* Makes each image take up 48% of the container's width */
+    height: 250px;  /* Fixed height for the image */
+    object-fit: cover;  /* Ensures the image fills the container without stretching or distorting */
+    border-radius: 8px;  /* Optional: Adds rounded corners to the image */
+}
+
+
+
+.events-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Take up the full height of the viewport */
+    padding: 20px; /* Padding around the container */
+    box-sizing: border-box; /* Ensures padding doesn't affect total height */
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.title-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title-container h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.highlight-red {
+    color: #CF000A;
+    font-weight: 900;
+    font-size: 36px;
+}
+
+.highlight-black {
+    color: rgb(31, 31, 31);
+    font-weight: 900;
+    font-size: 36px;
+}
+
+.highlight-blue {
+    color: #4FA3E5;
+    font-weight: 900;
+    font-size: 36;
+}
+
+.title-container p {
+    font-size: 15px;
+    color: #666;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+
+
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, auto); 
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* Align the content to the bottom */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer; 
+}
+
+.image-container {
+    width: 100%;
+    height: 450px; 
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    transition: top 0.5s ease, height 0.5s ease;
+    z-index: 1;
+}
+
+/* Text and button positioning */
+.box h3,
+.box p,
+.box .btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+    width: 80%; /* Makes the text elements wider */
+}
+
+/* Position title */
+.box h3 {
+    top: 60%;  /* Position the title 40% down the box */
+    margin-bottom: 10px; /* Space below the title */
+}
+
+/* Position description */
+.box p {
+    top: 55%;  /* Position description 55% down the box */
+    margin-bottom: 15px; /* Space below the description */
+}
+
+/* Position button */
+.box .btn {
+    top: 80%;  /* Position button 70% down the box */
+    padding: 10px 15px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Hover effect: Show overlay from below to up, reveal text and button */
+.box:hover::before {
+    top: 0; /* Move the overlay from below to the top */
+    height: 100%; /* Make the overlay take the full height */
+}
+
+.box:hover h3,
+.box:hover p,
+.box:hover .btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Move text and button up */
+}
+
+/* Image zoom effect */
+.box:hover .image-container img {
+    transform: scale(1.1);
+}
+
+/* Button hover effect */
+.box .btn:hover {
+    background: #218838;
+}
+
+
+
+
+.back-icon {
+    position: absolute;
+    left: 190px;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; /
+}
+
+.back-icon i {
+    color: #333; 
+}
+
+.back-icon:hover i {
+    color: #007bff; 
+}
+
+
+.gallery {
+    width: 100%;
+    max-width: 1200px; 
+    height: 60vmin; 
+    display: flex;
+    gap: 4px;
+    justify-content: space-between; 
+    margin: 0 auto; 
+}
+
+.gallery img {
+    height: 100%; 
+    width: calc(100% / 8 - 4px); 
+    object-fit: cover;
+    cursor: pointer;
+    transition: width 0.3s ease-in-out;
+}
+
+
+.gallery img:hover {
+    width: calc(100% / 10 * 8 - 4px); 
+}
+
+
+
+
+
+
+

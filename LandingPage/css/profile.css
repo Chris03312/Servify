@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&family=Abyssinica+SIL&display=swap');
+
+html {
+    scroll-behavior: smooth; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F2F2F2;
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+
+
+/* NAVBAR */
+.navbar-container {
+    position: fixed; 
+    top: 20px; 
+    left: 20px; 
+    right: 20px; 
+    z-index: 1000; 
+    background: linear-gradient(to right, 
+        #E8F6FF 21%,   
+        #B0E0FE 65%,  
+        #50CCFA 91%,  
+        #3AA7CF 100%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 15px;
+    padding: 10px 30px; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    margin-right: 70px;
+    gap: 30px; 
+    position: relative;
+}
+
+.nav-links li {
+    position: relative; 
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #262626;
+    font-size: 17px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 8px;
+}
+
+.nav-links li a:hover {
+    color: #007BFF;
+}
+
+
+
+/* ABOUT US & RESOURCES DROPDOWN */
+.dropdown-menu {
+    list-style: none;
+    position: absolute;
+    left: -25px;
+    background: #ffffff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+    display: none; 
+    padding: 10px 0;
+    z-index: 1000;
+    min-width: 160px; 
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px; 
+    font-size: 15px;
+    color: #333; 
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f8ff; 
+    color: #007BFF;
+}
+
+.nav-links li:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle i {
+    margin-left: 5px; 
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li:hover .dropdown-toggle i {
+    transform: rotate(180deg); 
+}
+
+
+
+/* NAVBAR LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.ser {
+    color: #CF000A;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fy {
+    color: #4FA3E5;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.org-profile {
+    min-height: calc(100vh - 80px); /* Keeps height dynamic based on viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 150px; /* Adds space at the top */
+    background: #f9f9f9;
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title-section h2 {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.highlight-red { color: #CF000A;}
+.highlight-black { color: #1f1f1f;}
+
+.title-section .subtitle {
+    font-size: 20px;
+    color: #2d2d2d;
+    font-family: 'Abyssinica SIL', serif;
+}
+  
+.accordion {
+    width: 70%;
+    margin: 20px auto;
+    text-align: left;
+    background-color: #ffffff;
+    padding: 35px;
+}
+.accordion-item {
+    background: #f1f1f1;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #3aa0ff; 
+
+}
+.accordion-header {
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4FA3E5;
+}
+.accordion-header:hover {
+    background: #e0e0e0;
+}
+.accordion-header .icon {
+    font-size: 1.5em;
+    transition: transform 0.3s;
+    color: #000000;
+}
+.accordion-header.active .icon {
+    content: '-';
+}
+.accordion-content {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: none;
+}
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-content .coordinator {
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+}
+
+.coordinator .name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.coordinator .contact {
+    font-size: 15px;
+    font-style: italic;
+    color: #4FA3E5;
+}
+
+.coordinator {
+    display: flex;
+    align-items: center; 
+    gap: 30px; 
+    padding: 15px;
+    max-width: 1000px;
+    margin: 10px auto;
+    border-bottom: 1px solid #ddd; 
+}
+
+.coordinator:last-child {
+    border-bottom: none;
+}
+
+.coordinator-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.coordinator-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+
+  
