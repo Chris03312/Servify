@@ -190,23 +190,27 @@
                 <div class="wrapper">
                     <div class="box-area">
                         <div class="resources-box">
-                            <img src="LandingPage/img/contactus-logo.png" alt="">
+                            <img src="LandingPage/img/2010.png" alt="">
                             <div class="overlay">
-                                <h1>Election Guidelines</h1>
-                                <p>Essential guidelines to ensure fair, transparent, and responsible participation in
-                                    the election process,
-                                    promoting integrity and upholding democratic values.</p>
-                                <a href="#" class="resources-btn">See More</a>
+                                <h1>2010</h1>
+                                <p>Volunteer's Educational Material</p>
+                                <a href="https://drive.google.com/file/d/1RNapGxo9u_LFNzeiTAGju03GZuJB7aiY/view" class="resources-btn">View Material</a>
                             </div>
                         </div>
                         <div class="resources-box">
-                            <img src="LandingPage/img/contactus-logo.png" alt="">
+                            <img src="LandingPage/img/2013.png" alt="">
                             <div class="overlay">
-                                <h1>Volunteer's Guidelines</h1>
-                                <p>An essential guide to help volunteers understand their roles, responsibilities, and
-                                    best practices for making
-                                    a meaningful impact.</p>
-                                <a href="#" class="resources-btn">See More</a>
+                                <h1>2013</h1>
+                                <p>Volunteer's Educational Material</p>
+                                <a href="https://drive.google.com/file/d/1dk1vCyRqEAfwzU9KcpLmB2EXU4bAHEFS/view" class="resources-btn">View Material</a>
+                            </div>
+                        </div>
+                        <div class="resources-box">
+                            <img src="LandingPage/img/2016.png" alt="">
+                            <div class="overlay">
+                                <h1>2016</h1>
+                                <p>Volunteer's Educational Material</p>
+                                <a href="https://drive.google.com/file/d/1rbchYMwtth16zX5kGuxGA6klNKMf20Na/view" class="resources-btn">View Material</a>
                             </div>
                         </div>
                     </div>

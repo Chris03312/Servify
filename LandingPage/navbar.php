@@ -320,13 +320,14 @@
                     <?php endif; ?>
                 </ul>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="/index#resources" class="dropdown-toggles">Resources<i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="#guide">Volunteers Guide</a></li>
                     <li><a href="#guidelines">Elections Guidelines</a></li>
                 </ul>
-            </li>
+            </li> -->
+            <li><a href="/index#resources">Resources</a></li>
             <li><a href="/index#news-events">Events</a></li>
             <li><a href="/index#contactus">Contact Us</a></li>
         </ul>
