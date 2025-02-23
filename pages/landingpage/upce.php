@@ -37,11 +37,11 @@
             <div class="image-section">
                 <div class="image-container">
                     <div class="img-carousel">
-                        <img src="img/whoweare1.jpg" class="active">
-                        <img src="img/whoweare2.jpg">
-                        <img src="img/whoweare3.jpg">
-                        <img src="img/whoweare4.jpg">
-                        <img src="img/whoweare5.jpeg">
+                        <img src="Landingpage/img/whoweare1.jpg" class="active">
+                        <img src="Landingpage/img/whoweare2.jpg">
+                        <img src="Landingpage/img/whoweare3.jpg">
+                        <img src="Landingpage/img/whoweare4.jpg">
+                        <img src="Landingpage/img/whoweare5.jpeg">
                     </div>
                 </div>
 

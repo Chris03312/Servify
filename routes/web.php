@@ -154,7 +154,13 @@ $router->add('/pollwatchers', [LandingPageController::class, 'ShowPollwatchers']
 $router->add('/psv', [LandingPageController::class, 'ShowPSV']);
 $router->add('/upce', [LandingPageController::class, 'ShowUPCE']);
 $router->add('/vad', [LandingPageController::class, 'ShowVAD']);
-$router->add('/oe', [LandingPageController::class, 'ShowEO']);
+$router->add('/eo', [LandingPageController::class, 'ShowEO']);
+
+$router->add('/announcement1', [LandingPageController::class, 'ShowAnnouncement1']);
+$router->add('/announcement2', [LandingPageController::class, 'ShowAnnouncement2']);
+$router->add('/announcement3', [LandingPageController::class, 'ShowAnnouncement3']);
+$router->add('/announcement4', [LandingPageController::class, 'ShowAnnouncement4']);
+$router->add('/announcement5', [LandingPageController::class, 'ShowAnnouncement5']);
 
 
 

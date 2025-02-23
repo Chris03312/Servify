@@ -57,7 +57,7 @@
                     <span class="highlight-black1">to understand our</span><br>
                     <span class="highlight-black1">commitment to democracy.</span>
                 </h2>
-                <a href="whoarewe.php" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
+                <a href="/whoarewee" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
             </div>
 
             <div class="about-image">

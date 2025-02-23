@@ -145,5 +145,56 @@ class LandingPageController
 
     }
 
+    // ANNOUNCEMENTS
+    public static function ShowAnnouncement1()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/announcement1', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+
+    public static function ShowAnnouncement2()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/announcement2', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+
+    public static function ShowAnnouncement3()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/announcement3', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+
+    public static function ShowAnnouncement4()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/announcement4', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+
+    public static function ShowAnnouncement5()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/announcement5', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+
 
 }

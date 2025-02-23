@@ -58,7 +58,7 @@
                     <span class="highlight-black1">to understand our</span><br>
                     <span class="highlight-black1">commitment to democracy.</span>
                 </h2>
-                <a href="/mission_vision" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
+                <a href="/whoweare" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
             </div>
 
             <div class="about-image">
@@ -147,24 +147,24 @@
 
             <div class="volunteers-boxes">
                 <div class="volunteer-box">
-                    <img src="img/upc.jpg" alt="Volunteer 1">
+                    <img src="Landingpage/img/upc.jpg" alt="Volunteer 1">
                     <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
                     <a href="/upce" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="img/vad.jpg" alt="Volunteer 1">
+                    <img src="Landingpage/img/vad.jpg" alt="Volunteer 1">
                     <h3>Voters' Assistancee Desk (VAD)</h3>
                     <a href="/vad" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="img/psv.jpg" alt="Volunteer 1">
+                    <img src="Landingpage/img/eo.jpg" alt="Volunteer 1">
                     <h3>Election Monitors or Observers (EO)</h3>
-                    <a href="/oe" class="btn">See More</a>
+                    <a href="/eo" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
-                    <img src="img/eo.jpg" alt="Volunteer 1">
+                    <img src="Landingpage/img/psv.jpg" alt="Volunteer 1">
                     <h3>Polling Station Volunteers (PSV)</h3>
-                    <a href="/Pollwatchers" class="btn">See More</a>
+                    <a href="/psv" class="btn">See More</a>
                 </div>
             </div>
         </div>

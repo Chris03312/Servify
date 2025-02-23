@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPPAM - Volunteer</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="LandingPage/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<?php include("navbar.php"); ?>
+<?php include("LandingPage/navbar.php"); ?>
     
     <div class="volunteer-types">
         <div class="volunteer-types-container">
@@ -34,11 +34,11 @@
             <div class="image-section">
                 <div class="image-container">
                     <div class="img-carousel">
-                        <img src="img/whoweare1.jpg" class="active">
-                        <img src="img/whoweare2.jpg">
-                        <img src="img/whoweare3.jpg">
-                        <img src="img/whoweare4.jpg">
-                        <img src="img/whoweare5.jpeg">
+                        <img src="Landingpage/img/whoweare1.jpg" class="active">
+                        <img src="Landingpage/img/whoweare2.jpg">
+                        <img src="Landingpage/img/whoweare3.jpg">
+                        <img src="Landingpage/img/whoweare4.jpg">
+                        <img src="Landingpage/img/whoweare5.jpeg">
                     </div>
                 </div>
 
@@ -53,10 +53,10 @@
         </div>
     </div>
     
-    <?php # include 'chatbotfolder/chatbot.php';?>
-    <?php include 'footer.php'; ?>
+    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
+    <?php include 'LandingPage/footer.php'; ?>
 
-    <script src="js/carousel.js"></script>
+    <script src="LandingPage/js/carousel.js"></script>
     <script>
         document.getElementById('hamburger-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');

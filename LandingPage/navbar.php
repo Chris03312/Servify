@@ -312,10 +312,11 @@
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <li><a href="">UPCE</a></li>
-                        <li><a href="">VAD</a></li>
-                        <li><a href="">PSV</a></li>
-                        <li><a href="">Election Oberservers</a></li>
+                        <li><a href="/upce">UPCE</a></li>
+                        <li><a href="/vad">VAD</a></li>
+                        <li><a href="/psv">PSV</a></li>
+                        <li><a href="/eo">EO</a></li>
+                        <li><a href="/eo">Types of Pollwatchers</a></li>
                     <?php endif; ?>
                 </ul>
             </li>
