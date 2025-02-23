@@ -83,13 +83,13 @@ footer .links-section {
 footer .links-section .icons-section {
   display: flex;
   gap: 15px;
-  margin-left: 130px;
+  margin-left: 160px;
 }
 
 footer .links-section .links {
   display: flex;
   gap: 100px;
-  margin-left: 90px;
+  margin-left: 130px;
 }
 
 footer .social-link {
