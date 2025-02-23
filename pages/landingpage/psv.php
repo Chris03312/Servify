@@ -30,6 +30,15 @@
                     <li>Ensure adherence to voting protocols.</li>
                     <li>Support election officials with logistical tasks.</li>
                 </ul>
+
+                <p>Qualifications:</p>
+                <ul>
+                    <li>Good communication and interpersonal skills.</li>
+                    <li>Ability to handle large crowds calmly and efficiently.</li>
+                    <li>Basic understanding of voting procedures.</li>
+                    <li>Physically fit to assist with logistical tasks.</li>
+                    <li>Commitment to maintaining a neutral and supportive role.</li>
+                </ul>
             </div>
 
             <div class="image-section">

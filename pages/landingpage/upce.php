@@ -32,6 +32,15 @@
                     <li>Answers questions and resolves concerns.</li>
                     <li>Ensures smooth voter flow at polling stations.</li>
                 </ul>
+
+                <p>Qualifications:</p>
+                <ul>
+                    <li>Strong communication and problem-solving skills.</li>
+                    <li>Patience and empathy when dealing with voters.</li>
+                    <li>Basic understanding of election procedures.</li>
+                    <li>Ability to handle high-pressure situations calmly.</li>
+                    <li>Commitment to maintaining neutrality and professionalism.</li>
+                </ul>
             </div>
 
             <div class="image-section">

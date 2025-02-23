@@ -28,9 +28,9 @@
         <ul class="footer-links">
           <li><a href="/index#home">Home</a></li>
           <li><a href="/index#about">About Us</a></li>
-          <li><a href="/volunteers">Volunteers</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/resources">Resources</a></li>
+          <li><a href="/index#volunteers">Volunteers</a></li>
+          <li><a href="/index#news-events">Events</a></li>
+          <li><a href="/index#resources">Resources</a></li>
           <li><a href="/index#contactus">Contact Us</a></li>
         </ul>
       </div>
@@ -47,7 +47,6 @@
         <ul class="footer-links">
           <li><a href="#">Volunteers Guide</a></li>
           <li><a href="#">Election Guidelines</a></li>
-          <li><a href="#">Precinct Finder</a></li>
         </ul>
       </div>
     </div>

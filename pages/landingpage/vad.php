@@ -24,10 +24,18 @@
                     What they do:
                 </p>
                 <ul>
-                    <li>Process Multiple Counts Simultaneously: Manages the encoding of multiple datasets at the same time to reduce processing time.</li>
-                    <li>Ensure Data Accuracy: Automatically checks for discrepancies and ensures reliable data encoding.</li>
-                    <li>Real-Time Data Handling: Updates information in real-time for faster reporting and decision-making.</li>
-                    <li>Maintain Data Integrity: Verifies consistency and prevents data errors during the encoding process.</li>
+                    <li>Manages the encoding of multiple datasets at the same time to reduce processing time.</li>
+                    <li>Automatically checks for discrepancies and ensures reliable data encoding.</li>
+                    <li>Updates information in real-time for faster reporting and decision-making.</li>
+                    <li>Verifies consistency and prevents data errors during the encoding process.</li>
+                </ul>
+                <p>Qualifications:</p>
+                <ul>
+                    <li>Strong analytical and data management skills.</li>
+                    <li>Proficiency with data encoding software and tools.</li>
+                    <li>Attention to detail to ensure accuracy.</li>
+                    <li>Ability to work under pressure and meet deadlines.</li>
+                    <li>Commitment to confidentiality and data security.</li>
                 </ul>
             </div>
 

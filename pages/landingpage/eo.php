@@ -30,6 +30,16 @@
                     <li>Maintain neutrality during the election.</li>
                     <li>Provide independent assessments of election integrity.</li>
                 </ul>
+                <p>
+                    Qualifications:
+                </p>
+                <ul>
+                    <li>Strong understanding of electoral laws and procedures.</li>
+                    <li>Impartial and non-partisan stance.</li>
+                    <li>Excellent observational and reporting skills.</li>
+                    <li>Commitment to fairness and transparency.</li>
+                    <li>Ability to remain neutral under pressure.</li>
+                </ul>
             </div>
 
             <div class="image-section">
