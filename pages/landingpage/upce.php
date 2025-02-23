@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPPAM - Volunteer</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="LandingPage/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
-<?php include("navbar.php"); ?>
-    
+    <?php include("LandingPage/navbar.php"); ?>
+
     <div class="volunteer-types">
         <div class="volunteer-types-container">
             <div class="volunteer-types-text-content">
                 <h1>
-                <span class="highlight-title">Unofficial Parallel Count Encoder (UPCE)</span>
+                    <span class="highlight-title">Unofficial Parallel Count Encoder (UPCE)</span>
                 </h1>
                 <p>
-                    The Unofficial Parallel Count Encoder (UPCE) is a tool designed to process and encode data 
+                    The Unofficial Parallel Count Encoder (UPCE) is a tool designed to process and encode data
                     in parallel, improving efficiency and accuracy in counting and encoding tasks.
                 </p>
                 <p>
@@ -45,24 +47,25 @@
 
                 <div class="carousel-controls">
                     <div class="nav-buttons">
-                        <button class="prev-btn">&lt;</button> 
-                        <button class="next-btn">&gt;</button> 
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
                     </div>
-                    <div id="dots-nav"></div> 
+                    <div id="dots-nav"></div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <?php # include 'chatbotfolder/chatbot.php';?>
-    <?php include 'footer.php'; ?>
 
-    <script src="js/carousel.js"></script>
+    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
+    <?php include 'LandingPage/footer.php'; ?>
+
+    <script src="LandingPage/js/carousel.js"></script>
     <script>
-        document.getElementById('hamburger-icon').addEventListener('click', function() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('active'); 
-    });
+        document.getElementById('hamburger-icon').addEventListener('click', function () {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
+
 </html>

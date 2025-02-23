@@ -58,7 +58,7 @@
                     <span class="highlight-black1">to understand our</span><br>
                     <span class="highlight-black1">commitment to democracy.</span>
                 </h2>
-                <a href="whoarewe.php" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
+                <a href="/mission_vision" class="btn">LEARN MORE <i class="fa fa-arrow-right"></i></a>
             </div>
 
             <div class="about-image">
@@ -80,7 +80,7 @@
                 <div class="organization-details">
                     <p>People behind DPPAM. Dedicated leaders and coordinators working together
                         to uphold democratic values and ensure free and fair elections.</p>
-                    <a href="organization.php" class="btn">See More <i class="fa fa-arrow-right"></i></a>
+                    <a href="/organization" class="btn">See More <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -141,7 +141,7 @@
                 <div class="volunteers-details">
                     <p>Here are the different roles and duties of volunteers who help ensure fair and
                         smooth elections. Learn more about the different types of Pollwatchers.</p>
-                    <a href="/volunteers" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
+                    <a href="/volunteer" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@
                 <div class="volunteer-box">
                     <img src="img/upc.jpg" alt="Volunteer 1">
                     <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
-                    <a href="volunteers.php" class="btn">See More</a>
+                    <a href="/upce" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
                     <img src="img/vad.jpg" alt="Volunteer 1">
@@ -159,12 +159,12 @@
                 <div class="volunteer-box">
                     <img src="img/psv.jpg" alt="Volunteer 1">
                     <h3>Election Monitors or Observers (EO)</h3>
-                    <a href="#" class="btn">See More</a>
+                    <a href="/oe" class="btn">See More</a>
                 </div>
                 <div class="volunteer-box">
                     <img src="img/eo.jpg" alt="Volunteer 1">
                     <h3>Polling Station Volunteers (PSV)</h3>
-                    <a href="#" class="btn">See More</a>
+                    <a href="/Pollwatchers" class="btn">See More</a>
                 </div>
             </div>
         </div>
@@ -227,7 +227,7 @@
                 <div class="news-events-details">
                     <p>Stay informed about DPPAM’s upcoming events and activities. Join us in our mission
                         for clean and fair elections. Here’s our upcoming event—be part of it and make a difference!</p>
-                    <a href="events.php" class="btn">See More <i class="fa fa-arrow-right"></i></a>
+                    <a href="/events" class="btn">See More <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 

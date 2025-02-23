@@ -11,7 +11,6 @@ class LandingPageController
     {
         $volunteers = Landingpage::Volunteers();
 
-
         view('landingpage', [
             'volunteers' => $volunteers
         ]);
@@ -102,25 +101,47 @@ class LandingPageController
     public static function ShowPollwatchers()
     {
 
-        view('pollwatchers');
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/pollwatchers', [
+            'volunteers' => $volunteers
+        ]);
 
     }
     public static function ShowPSV()
     {
+        $volunteers = Landingpage::Volunteers();
 
-        view('psv');
+        view('landingpage/psv', [
+            'volunteers' => $volunteers
+        ]);
 
     }
     public static function ShowUPCE()
     {
+        $volunteers = Landingpage::Volunteers();
 
-        view('upce');
+        view('landingpage/upce', [
+            'volunteers' => $volunteers
+        ]);
 
     }
     public static function ShowVAD()
     {
+        $volunteers = Landingpage::Volunteers();
 
-        view('vad');
+        view('landingpage/vad', [
+            'volunteers' => $volunteers
+        ]);
+
+    }
+    public static function ShowEO()
+    {
+        $volunteers = Landingpage::Volunteers();
+
+        view('landingpage/eo', [
+            'volunteers' => $volunteers
+        ]);
 
     }
 
