@@ -141,13 +141,13 @@
                 <div class="volunteers-details">
                     <p>Here are the different roles and duties of volunteers who help ensure fair and
                         smooth elections. Learn more about the different types of Pollwatchers.</p>
-                    <a href="/volunteer" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
+                    <a href="/pollwatchers" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="volunteers-boxes">
                 <div class="volunteer-box">
-                    <img src="Landingpage/img/upc.jpg" alt="Volunteer 1">
+                    <img src="Landingpage/img/upce.jpg" alt="Volunteer 1">
                     <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
                     <a href="/upce" class="btn">See More</a>
                 </div>

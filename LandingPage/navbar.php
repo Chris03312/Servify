@@ -316,7 +316,7 @@
                         <li><a href="/vad">VAD</a></li>
                         <li><a href="/psv">PSV</a></li>
                         <li><a href="/eo">EO</a></li>
-                        <li><a href="/eo">Types of Pollwatchers</a></li>
+                        <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
                     <?php endif; ?>
                 </ul>
             </li>
