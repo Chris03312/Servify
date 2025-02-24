@@ -54,17 +54,17 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin_inquiries" class="nav-link">
                         <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin_feedback" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+                    <a href="/admin_reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
 
             </ul>

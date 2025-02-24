@@ -50,6 +50,9 @@ require_once __DIR__ . '/../controllers/AdminAttendanceController.php';
 require_once __DIR__ . '/../controllers/AdminAttendanceSummaryController.php';
 require_once __DIR__ . '/../controllers/AdminPrecinctsController.php';
 require_once __DIR__ . '/../controllers/AdminAchievementsController.php';
+require_once __DIR__ . '/../controllers/AdminInquiryController.php';
+require_once __DIR__ . '/../controllers/AdminFeedbackController.php';
+require_once __DIR__ . '/../controllers/AdminReportsController.php';
 
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
@@ -142,6 +145,9 @@ $router->add('/admin_attendance_tracking', [AdminAttendanceController::class, 'S
 $router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class, 'ShowAdminAttendanceSummary']);
 $router->add('/precincts', [AdminPrecinctsController::class, 'ShowAdminPrecincts']);
 $router->add('/admin_achievements', [AdminAchievementsController::class, 'ShowAdminAchievements']);
+$router->add('/admin_inquiries', [AdminInquiryController::class, 'ShowAdminInquiry']);
+$router->add('/admin_feedback', [AdminFeedbackController::class, 'ShowAdminFeedback']);
+$router->add('/admin_reports', [AdminReportsController::class, 'ShowAdminReports']);
 
 $router->add('/whoweare', [LandingPageController::class, 'ShowWhoWeAre']);
 $router->add('/mission_vision', [LandingPageController::class, 'ShowMissionVision']);
