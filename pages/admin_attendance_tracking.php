@@ -90,15 +90,16 @@
 
         <!-- FILTER BUTTON AND SEARCH BAR -->
         <section class="d-flex justify-content-end align-items-center gap-2 mt-3 mb-5">
-            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
-                <i class="bi bi-filter me-2"></i>Filter
-            </button>
+            
             <div class="input-group" style="width: 500px;">
                 <span class="input-group-text" id="basic-addon1">
                     <i class="bi bi-search"></i>
                 </span>
                 <input type="search" class="form-control" placeholder="Search name or email">
             </div>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+                <i class="bi bi-filter me-2"></i>Filter
+            </button>
         </section>
 
 
@@ -127,10 +128,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="filterDistrict" class="col-sm-2 col-form-label">Vicariate:</label>
+                                <label for="filterVicariate" class="col-sm-2 col-form-label">Vicariate:</label>
                                 <div class="col-sm-10">
-                                    <select id="filterDistrict" class="form-select">
-                                        <option selected>Select District No.</option>
+                                    <select id="filterVicariate" class="form-select">
+                                        <option selected>Select Vicariate</option>
                                         <option>...</option>
                                     </select>
                                 </div>

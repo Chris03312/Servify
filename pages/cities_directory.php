@@ -39,7 +39,7 @@
             <div class="d-flex flex-row gap-2">
                 <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
                     data-bs-target="#addNewParishModal"><i class="bi bi-plus me-2"></i>Add New Parish</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#filterModal"><i
                         class="bi bi-filter me-2"></i>Filter</button>
             </div>
         </div>
@@ -88,6 +88,65 @@
                                 </div>
 
                             </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL: FILTER -->
+        <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="text-center text-primary">Filter</h4>
+
+                        <!--FORM-->
+                        <div class="container mt-2">
+                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred criteria from the available options and click "Apply" to view the filtered items.</p>
+
+
+                            <div class="row mb-3">
+                                <label for="filterVicariate" class="col-sm-2 col-form-label">Vicariate:</label>
+                                <div class="col-sm-10">
+                                    <select id="filterVicariate" class="form-select">
+                                        <option selected>Select Vicariate</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="filterDistrict" class="col-sm-2 col-form-label">District:</label>
+                                <div class="col-sm-10">
+                                    <select id="filterDistrict" class="form-select">
+                                        <option selected>Select District No.</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="filterCoorName" class="col-sm-2 col-form-label">Coordinator's Name:</label>
+                                <div class="col-sm-10">
+                                    <select id="filterCoorName" class="form-select">
+                                        <option selected>Select Coordinator's Name</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn mb-2">Reset</button>
+                                <button type="submit" class="btn btn-primary px-4">Apply</button>
+                            </div>
+
+
                         </div>
 
                     </div>

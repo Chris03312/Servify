@@ -142,28 +142,10 @@
             </div>
 
 
-            <!--COORDINATOR ASSIGNMENT-->
             <div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-                <!--COORDINATOR ASSIGNMENT-->
                 <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body text-center d-flex flex-column gap-2">
-                            <div class="p-2 rounded">
-                                <h4>You are currently assigned as: <span
-                                        class="text-primary fw-bold "><br><?php echo $_SESSION['role']; ?></span>
-                                </h4>
-                            </div>
-                            <div class="bg-primary p-2 rounded">
-                                <h4 class="text-light">Designated at:</h4>
-                            </div>
-                            <div>
-                                <h2>Maligaya Elementary School</h3>
-                            </div>
-                        </div>
-                    </div>
-
                     <!--OVERVIEW OF VOLUNTEERS-->
-                    <div class="card mt-3">
+                    <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <h5>Overview of Volunteers</h5>
