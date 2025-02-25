@@ -20,7 +20,7 @@
                 Neutral individuals or groups who observe the election process to ensure it is fair, 
                 transparent, and free from irregularities. They monitor everything from polling procedures to vote counting.
                 </p>
-                <p>
+                <p class="desc">
                     What they do:
                 </p>
                 <ul>
@@ -30,7 +30,7 @@
                     <li>Maintain neutrality during the election.</li>
                     <li>Provide independent assessments of election integrity.</li>
                 </ul>
-                <p>
+                <p class="desc">
                     Qualifications:
                 </p>
                 <ul>
