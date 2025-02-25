@@ -70,35 +70,36 @@ document.addEventListener("DOMContentLoaded", function() {
     typeWriter(); 
 });
 
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.counter');
-    
+
     const startCounting = (counter) => {
         const target = +counter.getAttribute('data-target');
-        const speed = 150; 
-        const increment = target / speed; 
-        let current = 0;  
-        
+        const speed = 150;
+        const increment = target / speed;
+        let current = 0;
+
         const updateNumber = () => {
             if (current < target) {
                 current += increment;
-                counter.innerText = Math.ceil(current).toLocaleString(); 
-                setTimeout(updateNumber, 10); 
+                counter.innerText = Math.ceil(current).toLocaleString();
+                setTimeout(updateNumber, 10);
             } else {
-                counter.innerText = target.toLocaleString(); 
+                counter.innerText = target.toLocaleString();
             }
         };
 
         updateNumber();
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                startCounting(entry.target); 
+                startCounting(entry.target);
+                observer.unobserve(entry.target); // Stop observing after animation starts
             }
         });
-    }, { threshold: 0.5 }); 
+    }, { threshold: 0.5 }); // Start counting when 50% visible
 
     counters.forEach(counter => {
         observer.observe(counter);
