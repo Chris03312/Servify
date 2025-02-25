@@ -271,8 +271,8 @@
                         -->
 
                         <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead>
+                            <table class="table table-hover table-bordered align-middle">
+                                <thead class="table-primary">
                                     <tr>
                                         <th scope="col"></th>
                                         <th scope="col">Title</th>
@@ -281,7 +281,7 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-group-divider">
+                               
                                     <tr class="image-cell">
                                         <th scope="row"><img src="../img/icons8-certificate-90.png" alt="Certificate Logo" width="30px"></th>
                                         <td class="text-nowrap">Certificate of Appreciation 1</td>

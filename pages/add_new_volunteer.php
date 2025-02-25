@@ -34,12 +34,30 @@
             <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
                 <!--PHOTO AND NAME-->
-                <div class="d-flex flex-row justify-content-start align-items-center mb-3">
-                    <!--PHOTO-->
-                    <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
+                <div class="d-flex flex-row align-items-center mb-3">
+                    <!-- PHOTO -->
+                    <div class="upload-box me-3" id="drop-area">
+                        <i class="fas fa-camera upload-icon"></i>
+                        <img id="preview" src="" alt="Preview">
+                        <input type="file" id="file-input" accept="image/*">
+                    </div>
 
-                    <!--NAME-->
-                    <p>Name</p>
+                    <div class="d-flex flex-column">
+                        <!-- NAME -->
+                        <span>Nameeeeee</span>
+
+                        <!-- ROLE -->
+                        <span>Role</span>
+
+                        <!-- CHURCH -->
+                        <span>Church</span>
+
+                        <!-- MEMBER # -->
+                        <span>Membership no. :</span>
+
+                        <!-- STATUS -->
+                        <span>Status</span>
+                    </div>
                 </div>
 
                 <!--VOLUNTEER INFO-->
@@ -154,7 +172,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mb-3"> 
+                            <div class="col-md-3 mb-3">
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
                                 <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true" required>
                                     <option value="January">January</option>
@@ -169,7 +187,7 @@
                                     <option value="January">January</option>
                                     <option value="January">January</option>
                                     <option value="January">January</option>
-                                    
+
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select birth month.
@@ -178,7 +196,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control"  id="birthYear" name="birthYear" placeholder="Year" required  oninput="calculateAge()" readonly>
+                                <input type="text" class="form-control" id="birthYear" name="birthYear" placeholder="Year" required oninput="calculateAge()" readonly>
                                 <div class="invalid-feedback">
                                     Please input birth year.
                                 </div>
@@ -190,12 +208,12 @@
                             </div>
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
                                         const ageInput = document.getElementById('age');
-                                        
+
                                         const birthYear = parseInt(birthYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
 
@@ -211,7 +229,7 @@
                                     function calculateYearOfService() {
                                         const prevExperienceYearInput = document.getElementById('prevExperienceYear');
                                         const yearOfServiceInput = document.getElementById('yearOfService');
-                                        
+
                                         // Get the value of the previous experience year and the current year
                                         const prevExperienceYear = parseInt(prevExperienceYearInput.value, 10);
                                         const currentYear = new Date().getFullYear();
@@ -222,7 +240,7 @@
                                             yearOfServiceInput.value = currentYear - prevExperienceYear;
                                         } else {
                                             // Clear the year of service input for invalid year input
-                                            yearOfServiceInput.value = ''; 
+                                            yearOfServiceInput.value = '';
                                         }
                                     }
 
@@ -284,7 +302,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="city" name="city" required >
+                                <input type="text" class="form-control" readonly id="city" name="city" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
@@ -307,7 +325,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"  required>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
                                 <div class="invalid-feedback">
                                     Please input mobile number.
                                 </div>
@@ -449,31 +467,31 @@
 
                         </div>
 
-                         <!--CONFIRMED MODAL-->
-                         <div class="modal fade" id="submittedSuccessfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary p-2">
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <img src="../img/icons8-checkmark-90.png" alt="">
-                                <h3 class="text-primary">SUCCESS!</h3>
+                        <!--CONFIRMED MODAL-->
+                        <div class="modal fade" id="submittedSuccessfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary p-2">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <img src="../img/icons8-checkmark-90.png" alt="">
+                                            <h3 class="text-primary">SUCCESS!</h3>
 
-                                <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                    <span>Thank you! Your form has been successfully submitted.</span>
-                                    <span>Please wait while we process your application.</span>
-                                    <span>You can check the status of your application soon.</span>
-                                </div>
+                                            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                                                <span>Thank you! Your form has been successfully submitted.</span>
+                                                <span>Please wait while we process your application.</span>
+                                                <span>You can check the status of your application soon.</span>
+                                            </div>
 
-                                <div class="d-flex flex-row justify-content-around align-items-center mt-3">
-                                    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                                            <div class="d-flex flex-row justify-content-around align-items-center mt-3">
+                                                <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
                     </div>
 
@@ -629,7 +647,7 @@
                             </div>
 
 
-                           
+
 
                         </div>
 
@@ -641,8 +659,8 @@
 
             <!--SAMPLE CODE PAG NAG YES SA CONFIRMATION-->
             <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['yesSubmit'])) {
-        echo "
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['yesSubmit'])) {
+                echo "
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var submittedSuccessfully = new bootstrap.Modal(document.getElementById('submittedSuccessfully'));
@@ -650,12 +668,12 @@
             });
         </script>
         ";
-    }
-    ?>
+            }
+            ?>
 
         </div>
 
-        
+
 
 
 

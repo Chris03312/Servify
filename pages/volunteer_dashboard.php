@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <a href="#" class="text-decoration-none">See All Announcements</a>
+                                <a href="/announcements" class="text-decoration-none">See All Announcements</a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                                 <h4 class="text-light">Designated at:</h4>
                             </div>
                             <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_POLLING_PLACE'] ?? " "); ?></h3>
+                                <h3><?php echo htmlspecialchars($userInfo['ASSIGNED_POLLING_PLACE'] ?? " "); ?></h3>
                             </div>
                         </div>
                     </div>
