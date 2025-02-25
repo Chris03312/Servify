@@ -47,7 +47,7 @@
                         <i class="bi bi-send-fill me-2"></i>Contact Us</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/volunteer_feedback" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback</a>
                 </li>
             </ul>
