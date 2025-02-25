@@ -127,6 +127,8 @@ body {
     justify-content: space-between;
     padding: 0 5vw; 
     gap: 40px; 
+    flex-wrap: wrap;
+    margin-top: 60px;
 }
 
 .about {
@@ -663,6 +665,7 @@ main#carousel {
 .volunteer-box .btn:hover {
     background-color: #ffffff;  
 }
+
 
 /* TYPES OF VOLUNTEERS */
 .volunteer-types {
@@ -1221,69 +1224,399 @@ button:hover {
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
+    /* 1ST SECTION */
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-size: cover;
+        background-position: center;
+        background-image: url('../img/1.png');
+        height: 100vh;
+        min-height: 600px; 
+        overflow: hidden; 
+    }
+    
+    .hero-text {
+        margin-left: 0;
+        margin-top: 20px;
+        text-align: center;
+        padding: 10px;
+        max-width: 90%; 
+    }
+    
     .hero-text h2 {
         font-size: 2rem;
+        word-wrap: break-word; 
     }
-
+    
     .hero-text p {
-        font-size: 1rem;
+        font-size: 10px;
+    }
+    
+    .highlight-red,
+    .highlight-black,
+    .highlight-blue,
+    .highlight {
+        font-size: 40px;
+    }
+    
+    .btn {
+        font-size: 12px;
+        padding: 6px 14px;
     }
 
-    .hero-text {
-        max-width: 400px; 
-        padding: 20px;
-        border-radius: 8px;
-        margin-left: 10px; 
+
+    /* 2ND SECTION */
+    .bottom-info-section {
+        flex-direction: column;  
+        padding: 15px;
+        margin: 100px auto 50px;  
+        width: 85%;  
+    }
+
+    .info-box {
+        max-width: 100%;  
+        margin: 10px 0;  
+    }
+
+    .info-box h3 {
+        font-size: clamp(28px, 5vw, 50px); 
+    }
+
+    .info-box p {
+        font-size: clamp(12px, 3vw, 16px);  
+    }
+
+
+    /* 3RD SECTION */
+    .about-container {
+        flex-direction: column; 
+        padding: 10px;
+        text-align: center;
+    }
+
+    .about-text {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .about-text .highlight-black {
+        font-size: 25px; 
+    }
+
+    .highlight-red1, .highlight-black1, .highlight-blue1 {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .about-image {
+        margin: 5px 0 0; 
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%; 
+        margin: 0 auto;
+        display: block; 
+    }
+
+    /* ORGANIZATION */
+    .organization {
+        padding-top: 100px; 
+        padding-bottom: 100px;
+        height: auto; 
+    }
+
+    .organization-content {
+        flex-direction: column; 
+        gap: 30px; 
+        padding: 10px;
+    }
+
+    .organization-text h2 {
+        font-size: 26px; 
+        margin-left: 0; 
+        text-align: center; 
+    }
+
+    .organization-details {
+        margin-right: 0;
+        max-width: 100%; 
+        text-align: center; 
+        align-items: center;
+    }
+
+    .organization-details p {
+        font-size: 12px; 
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        align-self: center; 
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .highlight-white {
+        font-size: 30px; 
+    }
+    .highlight-blue{
+        font-size: 30px;
+    }
+
+    main#carousel {
+        flex-wrap: wrap; 
+        gap: 10px; 
+    }
+
+    .item {
+        width: 140px; 
+        height: 140px;
+    }
+
+    .hover-box {
+        width: 140px;
+        font-size: 11px;
+        z-index: 2;
+        bottom: -10px;
+    }
+
+    /* VOLUNTEERS */
+    .volunteers {
+        padding-top: 100px; 
+        padding-bottom: 100px;
+        height: auto; 
+    }
+
+    .volunteers-content {
+        flex-direction: column; 
+        gap: 30px; 
+        padding: 10px;
+    }
+
+    .volunteers-text h2 {
+        font-size: 26px; 
+        margin-left: 0; 
+        text-align: center; 
     }
 
     .highlight-red {
-        color: #CF000A;
-        font-weight: 900;
-        font-size: 40px;
-    }
-    
-    .highlight-black {
-        color: rgb(31, 31, 31);
-        font-weight: 900;
-        font-size: 40px;
-    }
-    
-    .highlight-blue {
-        color: #4FA3E5;
-        font-weight: 900;
-        font-size: 40px;
+        font-size: 30px; 
+        text-align: center;
     }
 
-    .btn {
-        font-size: 13px; 
-        padding: 8px 16px; 
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .hero{
-        height: 70vh; 
+    .volunteers-details {
+        margin-right: 0;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
     }
 
-    .logo-image {
-        width: 35px; 
-        height: 35px;
+    .volunteers-details p {
+        font-size: 12px;
+        line-height: 1.4;
     }
 
-    .hero-text h2 {
-        font-size: 20px; 
+    .volunteers-boxes {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+        padding: 0 20px;
     }
 
-    .hero-text p {
+    .volunteer-box {
+        height: 200px; 
+        text-align: center;
+    }
+
+    .volunteer-box h3 {
         font-size: 10px; 
+        margin: 10px 15px;
     }
 
-    .btn {
-        font-size: 12px; 
-        padding: 6px 14px; 
+    .volunteer-box img {
+        height: 50%; 
     }
+
+    .volunteer-box .btn {
+        font-size: 10px; 
+        padding: 5px 15px;
+        margin-left: 0;
+    }
+
+    /* RESOURCES */
+    .resources {
+        min-height: 100vh;
+        width: 100vw;
+        padding-top: 70px;
+        padding-bottom: 100px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('../img/ha.png');
+    }
+
+    .resource-content {
+        flex-direction: column;
+        gap: 40px;
+        padding: 10px;
+    }
+
+    .resources-text {
+        text-align: center;
+    }
+
+    .resources-text h2 {
+        font-size: 28px;
+        margin-left: 0;
+    }
+
+    .resources-details {
+        margin-right: 0;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .resources-details p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .box-area {
+        grid-template-columns: 1fr;  /* Single column for better stacking */
+        gap: 20px;
+    }
+
+    .resources-box {
+        width: 100%;
+        height: 250px;
+    }
+
+    .resources-box img {
+        padding: 10px;
+    }
+
+    .overlay h1 {
+        font-size: 22px;
+        margin-top: 25%;
+    }
+
+    .overlay a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .resources-btn {
+        width: 120px;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .news-events {
+        padding-top: 60px;
+        padding: 10px;
+        height: auto; /* Allow content height to adjust dynamically */
+    }
+
+    .news-events-content {
+        flex-direction: column;
+        gap: 40px;
+        padding: 10px;
+    }
+
+    .highlight-red {
+        font-size: 32px; /* Reduce the size for smaller screens */
+    }
+
+    .news-events-text {
+        text-align: center;
+    }
+
+    .news-events-text h2 {
+        font-size: 28px;
+        margin-left: 0;
+    }
+
+    .news-events-details {
+        margin-right: 0;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .news-events-details p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .news-events-poster {
+        width: 100%;
+        height: 250px; /* Smaller height for mobile */
+        margin: 0;
+    }
+
+    .carousel-image {
+        object-fit: cover;
+    }
+
+    .contactus {
+        padding: 20px 20px;
+        padding-top: 60px;
+        min-height: auto; /* Let the content height adjust dynamically */
+    }
+
+    .contactus-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contactus-leftsection,
+    .contactus-rightsection {
+        min-width: 100%;
+        padding: 20px;
+    }
+
+    .contactus-leftsection h3 {
+        font-size: 24px;
+    }
+
+    .contactus-leftsection p {
+        font-size: 14px;
+    }
+
+    .contactus-leftsection img {
+        max-width: 250px; 
+        margin-top: 15px;
+    }
+
+    .contactus-rightsection {
+        padding: 20px;
+    }
+
+    .contactus-rightsection h2 {
+        font-size: 24px;
+    }
+
+    .contactus-rightsection p {
+        font-size: 14px;
+    }
+
+    input, textarea {
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
 }
+
 
  
 

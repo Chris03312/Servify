@@ -49,12 +49,11 @@
     }
 
 
-
     /* ABOUT US & RESOURCES DROPDOWN */
     .dropdown-menu {
         list-style: none;
         position: absolute;
-        left: -25px;
+        left: -29px;
         background: #ffffff;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
@@ -93,7 +92,6 @@
     }
 
 
-
     /* NAVBAR LOGO */
     .logo {
         display: flex;
@@ -118,6 +116,7 @@
         font-weight: bold;
     }
 
+
     /* HAMBURGER MENU */
     .hamburger {
         display: none;
@@ -134,14 +133,14 @@
     }
 
     @media screen and (max-width: 768px) {
-        .logo-image {
-            width: 40px;
-            height: 40px;
-        }
-
-        .ser,
-        .fy {
-            font-size: 15px;
+        .navbar-container{
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            z-index: 1000;
         }
 
         .nav-links {
@@ -151,30 +150,25 @@
             padding: 10px;
             background-color: rgb(234, 234, 234);
             position: absolute;
-            top: 55px;
-            left: 88%;
+            top: 60px;
+            left: 80%;
             transform: translateX(-50%);
-            width: 37%;
+            width: 40%;
             border-radius: 5px;
             box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
-        .navbar {
-            flex-wrap: wrap;
-            padding: 0px 20px;
-            position: relative;
-            z-index: 10;
+        .dropdown-menu {
+            display: none;
+            top: 5px;
+            left: -175px;
+            border-radius: 5px;
+            
         }
 
-        .hero {
-            z-index: 1;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: none;
+        .dropdown.active .dropdown-menu {
+            display: block;
         }
 
         .hamburger {
@@ -195,58 +189,9 @@
             align-items: center;
         }
 
-        .hero-text h2 {
-            font-size: 2rem;
-        }
-
-        .hero-text p {
-            font-size: 1rem;
-        }
-
-        .hero-text {
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 8px;
-            margin-left: 10px;
-        }
-
-        .highlight-red {
-            color: #CF000A;
-            font-weight: 900;
-            font-size: 40px;
-        }
-
-        .highlight-black {
-            color: rgb(31, 31, 31);
-            font-weight: 900;
-            font-size: 40px;
-        }
-
-        .highlight-blue {
-            color: #4FA3E5;
-            font-weight: 900;
-            font-size: 40px;
-        }
-
-        .btn {
-            font-size: 13px;
-            padding: 8px 16px;
-            z-index: 11px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        body {
-            background: none;
-        }
-
         .ser,
         .fy {
             font-size: 16px;
-        }
-
-        .hero {
-            height: 70vh;
         }
 
         .logo-image {
@@ -263,20 +208,8 @@
             padding: 10px 15px;
         }
 
-        .hero-text h2 {
-            font-size: 20px;
-        }
-
-        .hero-text p {
-            font-size: 10px;
-        }
-
-        .btn {
-            font-size: 12px;
-            padding: 6px 14px;
-            z-index: 10;
-        }
     }
+
 </style>
 <div class="navbar-container">
     <nav class="navbar">
@@ -333,3 +266,43 @@
         </ul>
     </nav>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const dropdowns = document.querySelectorAll('.dropdown-toggles');
+  let clickedOnce = null; 
+
+  dropdowns.forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) { 
+        e.preventDefault(); 
+        const parentLi = this.parentElement;
+
+        if (clickedOnce !== parentLi) {
+          
+          document.querySelectorAll('.dropdown').forEach(dropdown => {
+            if (dropdown !== parentLi) {
+              dropdown.classList.remove('active'); 
+            }
+          });
+
+          parentLi.classList.toggle('active');
+          clickedOnce = parentLi; 
+        } else {
+          
+          window.location.href = this.getAttribute('href');
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.dropdown')) {
+      dropdowns.forEach(dropdown => dropdown.parentElement.classList.remove('active'));
+      clickedOnce = null;
+    }
+  });
+});
+
+</script>
+
