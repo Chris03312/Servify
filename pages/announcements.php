@@ -31,21 +31,23 @@
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
 
-
+    
         <h5>Announcements</h5>
 
+        <?php if ($announcements): ?>
+    <?php foreach ($announcements as $announcement): ?>
         <div class="border mb-2 p-3 rounded">
             <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-3">
-                <!-- PROFILE PIC, NAME AND DATE POSTED -->
+                <!-- PROFILE PIC, NAME, AND DATE POSTED -->
                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                 <div class="d-flex flex-column">
-                    <span><strong>Vicmar M. Guzman</strong></span>
-                    <span class="text-muted">21 mins. ago</span>
+                    <span><strong><?php echo htmlspecialchars($announcement['name']); ?></strong></span>
+                    <span class="text-muted">21 mins ago</span>
                 </div>
             </div>
 
             <!-- ANNOUNCEMENT TEXT -->
-            <p>Assignment #1</p>
+            <p><?php echo htmlspecialchars($announcement['content']); ?></p>
 
             <!-- COMMENT BUTTON -->
             <div>
@@ -54,170 +56,156 @@
 
             <!-- COMMENT SECTION -->
             <div class="comment-section border p-3 rounded mt-2" style="display: none;">
-                <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                    <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                    <div class="d-flex flex-column">
-                        <div>
-                            <span><strong>Vicmar M. Guzman</strong></span>
-                            <small class="text-muted">21 mins. ago</small>
-                        </div>
-                        <div>
-                            <p>Assignment agad hayup</p>
+                <?php 
+                $hasComments = false; // Flag to check if the announcement has comments
+                if ($comments): 
+                    foreach ($comments as $comment): 
+                        if ($comment['announcement_id'] == $announcement['announcement_id']): 
+                            $hasComments = true;
+                ?>
+                    <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
+                        <!-- PROFILE PIC, NAME, AND DATE COMMENT -->
+                        <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                        <div class="d-flex flex-column">
+                            <div>
+                            <span><strong><?php echo htmlspecialchars($comment['username']); ?></strong></span>
+                            <small class="text-muted time-elapsed" data-timestamp="<?php echo strtotime($comment['created_at']); ?>">
+                                <?php echo strtotime($comment['created_at']); ?>
+                            </small>
+
+
+                            </div>
+                            <div>
+                                <p><?php echo htmlspecialchars($comment['content']); ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                    <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                    <div class="d-flex flex-column">
-                        <div>
-                            <span><strong>Vicmar M. Guzman</strong></span>
-                            <small class="text-muted">25 mins. ago</small>
-                        </div>
-                        <div>
-                            <p>AYAAAAWW KO NAAAAAAA</p>
-                        </div>
-                    </div>
-                </div>
+                <?php 
+                        endif;
+                    endforeach;
+                endif; 
+                ?>
+
+                <!-- Show a message if no comments exist -->
+                <?php if (!$hasComments): ?>
+                    <p class="text-muted">No comments yet.</p>
+                <?php endif; ?>
 
                 <!-- COMMENT BOX -->
-                <form action="">
+                <form action="/Announcement/submit" method="POST" data-username="<?php echo htmlspecialchars($_SESSION['username'] ?? 'Anonymous'); ?>">
                     <div class="d-flex flex-row justify-content-center align-items-center gap-1">
                         <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                        <input type="text" class="form-control" name="comment" id="comment" placeholder="Add comment..." required>
-                        <button type="submit" class="btn border-0" name="comment-btn"><i class="bi bi-send send-icon"></i></button>
+                        <input type="hidden" name="announcement_id" value="<?php echo $announcement['announcement_id']; ?>">
+                        <input type="text" class="form-control" name="comment" placeholder="Add comment..." required>
+                        <button type="submit" class="btn border-0"><i class="bi bi-send send-icon"></i></button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="border mb-2 p-3 rounded">
-            <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-3">
-                <!-- PROFILE PIC, NAME AND DATE POSTED -->
-                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                <div class="d-flex flex-column">
-                    <span><strong>Vicmar M. Guzman</strong></span>
-                    <span class="text-muted">21 mins. ago</span>
-                </div>
-            </div>
-
-            <!-- ANNOUNCEMENT TEXT -->
-            <p>Announcementtttttttttt</p>
-
-            <!-- COMMENT BUTTON -->
-            <div>
-                <button type="button" class="btn btn-sm see-comment-btn border-0">See comment</button>
-            </div>
-
-            <!-- COMMENT SECTION -->
-            <div class="comment-section border p-3 rounded mt-2" style="display: none;">
-                <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                    <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                    <div class="d-flex flex-column">
-                        <div>
-                            <span><strong>Vicmar M. Guzman</strong></span>
-                            <small class="text-muted">21 mins. ago</small>
-                        </div>
-                        <div>
-                            <p>Sukooo na koooooooooo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                    <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                    <div class="d-flex flex-column">
-                        <div>
-                            <span><strong>Vicmar M. Guzman</strong></span>
-                            <small class="text-muted">25 mins. ago</small>
-                        </div>
-                        <div>
-                            <p>AYAAAAWW KO NAAAAAAA</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COMMENT BOX -->
-                <form action="">
-                    <div class="d-flex flex-row justify-content-center align-items-center gap-1">
-                        <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                        <input type="text" class="form-control" name="comment" id="comment" placeholder="Add comment..." required>
-                        <button type="submit" class="btn border-0" name="comment-btn"><i class="bi bi-send send-icon"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
 
 
 
         <script>
           document.addEventListener("DOMContentLoaded", () => {
-    // Toggle comment sections
-    const commentButtons = document.querySelectorAll(".see-comment-btn");
-
-    commentButtons.forEach((button) => {
+    document.querySelectorAll(".see-comment-btn").forEach((button) => {
         button.addEventListener("click", () => {
             const commentSection = button.closest(".border").querySelector(".comment-section");
-
-            if (commentSection.style.display === "none" || commentSection.style.display === "") {
-                commentSection.style.display = "block";
-                button.textContent = "Hide comment";
-            } else {
-                commentSection.style.display = "none";
-                button.textContent = "See comment";
-            }
+            commentSection.style.display = (commentSection.style.display === "none" || commentSection.style.display === "") ? "block" : "none";
+            button.textContent = commentSection.style.display === "block" ? "Hide comment" : "See comment";
         });
     });
 
-    // Change send icon color based on input
-    const commentInputs = document.querySelectorAll("input.form-control[name='comment']");
+    document.querySelectorAll("form").forEach((form) => {   
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-    commentInputs.forEach((input) => {
-        const sendIcon = input.closest("form").querySelector(".send-icon");
+            const input = form.querySelector("input[name='comment']");
+            const announcementId = form.querySelector("input[name='announcement_id']").value;
+            const commentSection = form.closest(".comment-section");
+            const username = form.getAttribute("data-username") || "Anonymous"; // ✅ Get the correct username
 
-        input.addEventListener("input", () => {
-            // Check if the input has non-whitespace content
-            if (input.value.trim().length > 0) {
-                sendIcon.style.color = "blue"; // Change icon color to blue
-            } else {
-                sendIcon.style.color = ""; // Reset icon color (default)
-            }
-        });
-
-        // Handle form submission without reloading the page
-        const form = input.closest("form");
-        form.addEventListener("submit", (event) => {
-            event.preventDefault(); // Prevent the form from reloading the page
-
-            const comment = input.value.trim(); // Get the trimmed input value
-            if (comment.length === 0) {
-                alert("Please enter a valid comment."); // Notify the user
+            if (!input || !announcementId || !commentSection) {
+                alert("Error: Form elements missing.");
                 return;
             }
 
-            // Example of dynamically appending the comment to the comment section
-            const commentSection = form.closest(".comment-section");
-            const newComment = document.createElement("div");
-            newComment.className = "d-flex flex-row justify-content-start align-items-start gap-2 mb-3";
+            const comment = input.value.trim();
+            if (comment.length === 0) {
+                alert("Please enter a valid comment.");
+                return;
+            }
 
-            newComment.innerHTML = `
-                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                <div class="d-flex flex-column">
-                    <div>
-                        <span><strong>Vicmar M. Guzman</strong></span>
-                        <small class="text-muted">Just now</small>
-                    </div>
-                    <div>
-                        <p>${comment}</p>
-                    </div>
-                </div>
-            `;
+            const formData = new FormData();
+            formData.append("comment", comment);
+            formData.append("announcement_id", announcementId);
 
-            commentSection.insertBefore(newComment, form); // Add the new comment above the form
-            input.value = ""; // Clear the input field
-            sendIcon.style.color = ""; // Reset icon color
+            try {
+                const response = await fetch("/Announcement/submit", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json(); // Parse JSON response
+
+                if (!result.success) {
+                    throw new Error(result.error || "Failed to submit comment.");
+                }
+
+                // Create new comment element with the correct name
+                const newComment = document.createElement("div");
+                newComment.classList.add("d-flex", "flex-row", "justify-content-start", "align-items-start", "gap-2", "mb-3");
+                newComment.innerHTML = `
+                    <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
+                    <div class="d-flex flex-column">
+                        <div>
+                            <span><strong>${username}</strong></span> <!-- ✅ Correctly displays user's name -->
+                            <small class="text-muted">Just now</small>
+                        </div>
+                        <div>
+                            <p>${comment}</p>
+                        </div>
+                    </div>
+                `;
+
+                commentSection.insertBefore(newComment, form);
+                input.value = "";
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Something went wrong. Please try again.");
+            }
         });
+    });
+});
+
+function timeAgo(timestamp) {
+    if (!timestamp) return "Invalid date"; // Check if it's null or undefined
+
+    timestamp = parseInt(timestamp, 10); // Convert to a number safely
+    if (isNaN(timestamp)) return "Invalid date"; // Ensure it's valid
+
+    const now = new Date();
+    const seconds = Math.floor((now - new Date(timestamp * 1000)) / 1000);
+
+    if (seconds < 60) return seconds + " secs ago";
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + " mins ago";
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + " hrs ago";
+    const days = Math.floor(hours / 24);
+    return days + " days ago";
+}
+
+// Update timestamps
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".time-elapsed").forEach(el => {
+        const timestamp = el.getAttribute("data-timestamp");
+        console.log("Timestamp from HTML:", timestamp); // Debugging log
+        if (timestamp) {
+            el.innerText = timeAgo(timestamp);
+        }
     });
 });
 

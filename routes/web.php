@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../core/helpers.php';
 require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../models/Parish.php';
-
 require_once __DIR__ . '/../controllers/CoordinatorDashboardController.php';
 require_once __DIR__ . '/../controllers/CoordinatorProfileSettingsController.php';
 require_once __DIR__ . '/../controllers/CoordinatorChangesPassController.php';
@@ -15,7 +14,6 @@ require_once __DIR__ . '/../controllers/PollingAreaController.php';
 require_once __DIR__ . '/../controllers/ListOFVolunteerController.php';
 require_once __DIR__ . '/../controllers/ViewVolunteerProfile.php';
 require_once __DIR__ . '/../controllers/AddNewVolunteerController.php';
-
 require_once __DIR__ . '/../controllers/VolunteerDashboardController.php';
 require_once __DIR__ . '/../controllers/VolunteerAttendanceController.php';
 require_once __DIR__ . '/../controllers/VolunteerRegistrationStatusController.php';
@@ -23,7 +21,6 @@ require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
 require_once __DIR__ . '/../controllers/AnnouncementsController.php';
-
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/LandingPageController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
@@ -67,11 +64,14 @@ $router->add('/coordinator_announcements', [CoordinatorAnnouncementsController::
 $router->add('/coordinator_volunteer_management', [CoordinatorVolunteerManagementController::class, 'ShowVolunteerManagement']);
 $router->add('/barangay_volunteer_directory', [BarangayVolunteerDirectoryController::class, 'ShowBarangayDirectory']);
 $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea']);
+
 $router->add('/list_of_volunteer', [ListOfVolunteerController::class, 'ShowListOfVolunteer']);
+
 
 
 $router->add('/view_volunteer_profile', [ViewVolunteerProfile::class, 'ShowVolunteerProfile']);
 $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNewVolunteer']);
+
 
 // $router->add('/dashboard', [DashboardController::class, 'dashboard']);
 // $router->add('/parishes', [ParishController::class, 'getParishes']);
@@ -81,5 +81,6 @@ $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNe
 $router->add('/logout', [LogoutController::class, 'Logout']);
 
 $router->run();
+
 
 

@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 require_once __DIR__ . '/../configuration/Database.php';
 
 class Dashboard {
@@ -239,3 +238,4 @@ class Dashboard {
         }
     }
 }
+ 
