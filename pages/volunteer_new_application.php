@@ -96,7 +96,7 @@
                                 <label for="parishAssigned" class="form-label">Parish Assigned:<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <select id="parishAssigned" name="parishAssigned" class="form-select">
-                                    <option selected disabled value="">Select Status</option>
+                                    <option selected disabled value="">Select Parish</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
                                     <option value="">...</option>
