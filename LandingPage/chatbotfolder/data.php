@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "DPPAM";
+$db = "dppam";
 $conn = new mysqli(
     $host,
     $user,

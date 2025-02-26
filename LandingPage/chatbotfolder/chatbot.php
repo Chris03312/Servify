@@ -17,14 +17,14 @@
     .chat-bot {
         font-family: "Poppins", serif;
         position: fixed;
-        bottom: 20px;
-        right: 5px;
+        bottom: 0px;
+        right: 10px;
         z-index: 9999;
     }
 
     .chat-icon {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         background-color: #f1f1f1;
         box-shadow: 0;
         border-radius: 50%;
@@ -49,12 +49,12 @@
     }
     .chat-box {
         width: 350px;
-        height: 650px;
+        height: 450px;
         background: white;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         position: absolute;
-        bottom: 100px;
+        bottom: 70px;
         right: 0;
         display: none;
         flex-direction: column;
@@ -66,18 +66,21 @@
         color: #f1f1f1;
     }
     .chat-header img{
-        margin: 10px 0 0 5px;
+        margin: 5px 0 0 5px;
         width: 50px;
         height: 50px;
     }
     .chat-header h4{
-        margin-left: 5px;
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 14px;
     }
     .chat-content {
         flex-grow: 1;
         padding: 10px;
         overflow-y: auto;
         max-height: 450px;
+        margin-left: -10px;
     }
 
     .message-container {
@@ -103,9 +106,9 @@
         text-align: center; 
         padding: 10px;
         border-top: 1px solid #ccc;
-        min-height: 230px;
-        
+        min-height: 200px;
     }
+    
     .chat-input p{
         text-align: center;
         margin-bottom: 10px;
@@ -122,12 +125,12 @@
         background-color: white; 
         border: 1px solid #ccc;  
         color: black; 
-        padding: 12px 15px;
-        font-size: 14px;
+        padding: 12px 12px;
+        font-size: 12px;
         width: 100%;
         text-align: center;
         cursor: pointer;
-        border-radius: 8px;
+        border-radius: 5px;
         transition: background-color 0.3s ease, color 0.3s ease;
         min-width: 300px;
         max-width: 300px;
@@ -168,27 +171,26 @@
         display: flex;
         align-items: center;
         text-align: left;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .user-message {
         background-color: #007DAC;
         color: white;
-        border: 2px solid #0056b3;
     }
 
     .bot-message {
-        background-color: #f1f1f1;
+        background-color:rgb(255, 255, 255);
         color: black;
-        border: 2px solid #ccc;
+        border: 1px solid #ccc;
     }
 
     .faq-container{
-        gap: 10px;
+        gap: 5px;
     }
 
     .faqbut:hover {
-        background-color: #f8f8f8;
+        background-color:rgb(255, 255, 255);
     }
 
 </style>
@@ -205,7 +207,7 @@
 
     <div class="chat-bot">
         <div class="chat-icon" id="chat-icon">
-        <img id="chatbotpic" src="/../LandingPage/chatbotfolder/images/chatimg.png" style="height: 50px; width: 50px;" alt="Chat Icon">
+        <img id="chatbotpic" src="/../LandingPage/chatbotfolder/images/chatimg.png" style="height: 30px; width: 30px;" alt="Chat Icon">
         </div>
         <div class="chat-box" id="chat-box">
             <div class="chat-header">
@@ -228,7 +230,7 @@
             </div>
     
             <div class="chat-input">
-                <p id="faq-text" style="margin: 0 0 5px 0; padding: 0; font-weight: bold; font-size: 18px; color: #007DAC;">
+                <p id="faq-text" style="margin: 0 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; color: #007DAC;">
                     Ask me these questions!
                 </p>
                 <div id="faqcon" class="faq-container" style="display: flex; flex-direction: column; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: auto; overflow-y: hidden;">
@@ -313,7 +315,7 @@ function handleFAQClick(id, button) {
                 const faqConElement = document.getElementById('faqcon');
                 if (faqConElement) {
                     faqConElement.innerHTML = `
-                        <p style="text-align: center; color: #007DAC; margin: 0; font-size: 18px">
+                        <p style="text-align: center; color: #007DAC; margin: 10px 0; font-size: 12px">
                             For more questions, please contact us at 09283947182 or email us at dppam@gmail.com. 
                             You can also visit the nearest parish based on your location for assistance.
                         </p>
