@@ -250,7 +250,7 @@
                     <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="1">No volunteers found.</td>
+                                <td colspan="5" class="text-danger">No volunteers found.</td>
                             </tr>
                         <?php endif; ?>
                 </tbody>

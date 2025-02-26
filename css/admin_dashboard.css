@@ -66,3 +66,8 @@ body {
   .timeline-content {
     margin-left: 50px;
   }
+
+  .drop-area{
+    border: 2px dashed blue !important;
+    
+  }

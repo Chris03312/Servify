@@ -167,7 +167,7 @@
                                 <h5>Overview of Volunteers</h5>
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#overviewOfVolunteers" aria-expanded="false"
-                                    aria-controls="overviewOfVolunteers">Filter
+                                    aria-controls="overviewOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
                                 </button>
 
                             </div>
@@ -379,13 +379,10 @@
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <h4>List of Volunteers</h4>
-                        <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#listOfVolunteers" aria-expanded="false"
-                            aria-controls="listOfVolunteers">Filter
-                            <button class="btn btn-sm btn-outline-secondary mb-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false"
-                                aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
-                            </button>
+                        <button class="btn btn-outline-secondary mb-3" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false"
+                            aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
+                        </button>
                     </div>
 
                     <div class="collapse" id="listOfVolunteers">
@@ -457,8 +454,12 @@
                     <!-- SEARCH BAR -->
                     <div class="row d-flex justify-content-end">
                         <div class="col-md-4">
-                            <input type="search" name="search" id="search" class="form-control"
-                                placeholder="Search mo rito pre">
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                                <input type="search" name="search" id="search" class="form-control"
+                                    placeholder="Search here...">
+                            </div>
                         </div>
                     </div>
 
