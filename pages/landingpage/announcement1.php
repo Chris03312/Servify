@@ -90,6 +90,8 @@
     <?php include 'LandingPage/footer.php'; ?>
 
     <script src="LandingPage/js/carousel.js"></script>
+    <script src="LandingPage/js/toggle.js"></script>
+    
     <script>
         document.getElementById('hamburger-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');

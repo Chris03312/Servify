@@ -223,15 +223,30 @@
                                     Address: ' . $application['STREETADDRESS'] . ', ' . $application['BARANGAY'] . ', ' . $application['CITY'] . '<br>
                                     Preferred Role: ' . $application['PREFERRED_PPCRV_VOL_ASS']; ?>
                                 </td>
-                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME']; ?></td>
-                                <td><?php echo $application['STATUS']; ?></td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];
+                                ; ?></td>
                                 <td>
-                                    <div class="d-none d-md-flex flex-column">
-                                        <button type="button" class="btn btn-primary mb-2">Review</button>
+                                    <select name="status" class="form-select">
+                                        <?php
+                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        foreach ($statuses as $status) {
+                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
+                                            echo "<option value='$status' $selected>$status</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="d-none d-md-flex flex-row gap-2">
+                                        <form action="/under_review_submissions/review" method="POST">
+                                            <input type="hidden" name="application_id"
+                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <button type="submit" class="btn btn-primary mb-2">Review</button>
+                                        </form>
                                         <form action="/under_review_submissions/delete" method="POST">
                                             <input type="hidden" name="application_id"
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Cancel</button>
                                         </form>
                                     </div>
 
@@ -242,7 +257,11 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
+                                                <form action="/approved_submissions/review" method="POST">
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
+                                                </form>
                                                 <form action="/under_review_submissions/delete" method="POST">
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
@@ -257,7 +276,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="1">No volunteers found.</td>
+                            <td colspan="5" class="text-danger">No volunteers found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

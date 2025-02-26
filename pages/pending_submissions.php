@@ -61,8 +61,12 @@
 
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    <<<<<<< HEAD <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
+                                        =======
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                        >>>>>>> 3ed4b2528e2e9c24ec37c298978763e6565bc74d
                                 </div>
 
                                 <div class="modal-body">
@@ -223,10 +227,22 @@
                                     Address: ' . $application['STREETADDRESS'] . ', ' . $application['BARANGAY'] . ', ' . $application['CITY'] . '<br>
                                     Preferred Role: ' . $application['PREFERRED_PPCRV_VOL_ASS']; ?>
                                 </td>
-                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME']; ?></td>
-                                <td><?php echo $application['STATUS']; ?></td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];
+                                ; ?></td>
                                 <td>
-                                    <div class="d-none d-md-flex flex-column">
+
+                                    <select name="status" class="form-select">
+                                        <?php
+                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        foreach ($statuses as $status) {
+                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
+                                            echo "<option value='$status' $selected>$status</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="d-none d-md-flex flex-row gap-2">
                                         <form action="/pending_submissions/review" method="POST">
                                             <input type="hidden" name="application_id"
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
@@ -246,7 +262,11 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
+                                                <form action="/pending_submissions/review" method="POST">
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
+                                                </form>
                                                 <form action="/pending_submissions/delete" method="POST">
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
@@ -261,7 +281,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5">No volunteers found.</td>
+                            <td colspan="5" class="text-danger">No volunteers found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

@@ -25,7 +25,6 @@
 
     <?php
     include('includes/coordinator_sidebar.php');
-    echo 'application id: ' . $applicationId;
     ?>
 
     <!--MAIN CONTENT-->

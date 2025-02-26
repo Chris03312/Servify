@@ -78,14 +78,14 @@ a.nav-link,
 }
 
 
-.nav-link[aria-current="page"]{
+.sidebar-nav .nav-link[aria-current="page"]{
     background-color: blue;
     color: #ffffff !important;
     border-radius: 5px;
 }
  
-.nav-link[aria-current="page"]:hover,
-.nav-link:hover {
+.sidebar-nav .nav-link[aria-current="page"]:hover,
+.sidebar-nav .nav-link:hover {
     background-color: blue;
     color: #ffffff !important;
     border-radius: 5px;

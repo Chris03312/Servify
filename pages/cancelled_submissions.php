@@ -217,9 +217,11 @@
             <table id="cancel" class="table table-hover align-middle">
                 <thead class="table-primary">
                     <tr>
-                        <th scope="col">Submission Date/Time</th>
+                        <th scope="col">Cancellation Date/Time</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Volunteer Name</th>
+                        <th scope="col">Assigned as</th>
+                        <th scope="col">Assigned to</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -234,20 +236,37 @@
                                     Address: ' . $application['STREETADDRESS'] . ', ' . $application['BARANGAY'] . ', ' . $application['CITY'] . '<br>
                                     Preferred Role: ' . $application['PREFERRED_PPCRV_VOL_ASS']; ?>
                                 </td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];
+                                ; ?></td>
+                                <td><?php echo $application['PREFERRED_PPCRV_VOL_ASS'];
+                                ; ?></td>
+                                <td><?php echo $application['PREVIOUS_PPCRV_PRECINCT'];
+                                ; ?></td>
                                 <td>
-                                    <?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'] ?>
+                                    <select name="status" class="form-select">
+                                        <?php
+                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        foreach ($statuses as $status) {
+                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
+                                            echo "<option value='$status' $selected>$status</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </td>
-                                <td><?php echo $application['STATUS']; ?></td>
                                 <td>
-                                    <div class="d-none d-md-flex flex-column">
-                                        <a href="/cancelled_submissions/review?application_id=<?php echo urlencode($application['APPLICATION_ID']); ?>"
-                                            class="btn btn-primary mb-2">Review</a>
-
+                                    <div class="d-none d-md-flex flex-row gap-2">
+                                        <form action="/cancelled_submissions/review" method="POST">
+                                            <input type="hidden" name="application_id"
+                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <button type="submit" class="btn btn-primary mb-2">Review</button>
+                                        </form>
                                         <form action="/cancelled_submissions/delete" method="POST">
                                             <input type="hidden" name="application_id"
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#reassignModal">Re-assign</button>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -257,12 +276,22 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
+                                                <form action="/cancelled_submissions/review" method="POST">
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
+                                                </form>
                                                 <form action="/cancelled_submissions/delete" method="POST">
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                                     <button type="submit"
                                                         class="dropdown-item btn btn-danger">Delete</a></button>
+                                                </form>
+                                                <form action="" method="POST">
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="Submit"
+                                                        class="dropdown-item btn btn-primary">Re-assign</button>
                                                 </form>
                                             </ul>
                                         </div>
@@ -273,6 +302,8 @@
                     <?php else: ?>
                         <tr>
                             <td colspan="1">No volunteers found.</td>
+                            <td colspan="7" class="text-danger">No volunteers found.</td>
+
                         </tr>
                     <?php endif; ?>
                 </tbody>
@@ -281,6 +312,156 @@
     </main>
     </div>
     </div>
+
+    <!-- MODAL: RE-ASSIGN -->
+    <div class="modal fade" id="reassignModal" tabindex="-1" aria-labelledby="reassignModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="text-light">Volunteer Reassignment Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p class="text-muted">
+                        Reassign a volunteer to a new precinct or role as needed.
+                    </p>
+
+                    <form action="" method="post">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="volunteerID" class="col-form-label"><strong>Volunteer ID:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="volunteerID" class="form-control"
+                                    value="<?php echo $application['APPLICATION_ID']; ?>" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="volunteerName" class="col-form-label"><strong>Volunteer
+                                        Name:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="volunteerName" class="form-control"
+                                    value="<?php echo $application['FIRST_NAME'] . ' ' . $application['MIDDLE_NAME'] . ' ' . $application['SURNAME']; ?>"
+                                    disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="currentPrecinct" class="col-form-label"><strong>Current
+                                        Precinct:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="currentPrecinct" class="form-control" value="Juan Dela Cruz"
+                                    disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="currentRole" class="col-form-label"><strong>Current Role:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="currentRole" class="form-control"
+                                    value="<?php echo $application['PREFERRED_PPCRV_VOL_ASS']; ?>" disabled>
+                            </div>
+                        </div>
+
+                        <form action="/cancelled_submissions/reassign" method="POST">
+                            <input type="hidden" name="application_id"
+                                value="<?php echo $application['application_id']; ?>" <h5 class="mt-5 mb-3">New
+                            Assignment</h5>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <label for="city" class="col-form-label"><strong>City:</strong></label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="city" name="city" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <label for="barangay" class="col-form-label"><strong>Barangay:</strong></label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="barangay" name="barangay" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <label for="new-precinct" class="col-form-label"><strong>New
+                                            Precinct:</strong></label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="new-precinct" name="new-precinct" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <label for="new-role" class="col-form-label"><strong>New Role:</strong></label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="new-role" name="new-role" class="form-control">
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                            <button type="button" class="btn btn-outline-secondary px-4">Cancel</button>
+                            <button type="Submit" class="btn btn-primary px-5" data-bs-toggle="modal"
+                                data-bs-target="#reassignConfirmModal">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- MODAL: RE-ASSIGN CONFIRMATION -->
+    <div class="modal fade" id="reassignConfirmModal" tabindex="-1" aria-labelledby="reassignConfirmModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="text-light">Volunteer Reassignment Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+
+
+                    <p class="text-center fs-1 text-primary"><i class="bi bi-exclamation-square-fill"></i></p>
+                    <p class="text-center text-success">Available Slots</p>
+                    <p class="text-center text-muted">
+                        This precinct has open slots. Only [X] more volunteers are needed.
+                    </p>
+
+
+
+                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-secondary px-4">Cancel</button>
+                        <button type="search" class="btn btn-primary px-5">Re-assign</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 
     <!--SCRIPT FOR DATE PICKER-->

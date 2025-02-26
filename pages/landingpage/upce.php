@@ -22,7 +22,7 @@
                     The Unofficial Parallel Count Encoder (UPCE) is a tool designed to process and encode data
                     in parallel, improving efficiency and accuracy in counting and encoding tasks.
                 </p>
-                <p>
+                <p class="desc">
                     What they do:
                 </p>
                 <ul>
@@ -33,7 +33,7 @@
                     <li>Ensures smooth voter flow at polling stations.</li>
                 </ul>
 
-                <p>Qualifications:</p>
+                <p class="desc">Qualifications:</p>
                 <ul>
                     <li>Strong communication and problem-solving skills.</li>
                     <li>Patience and empathy when dealing with voters.</li>

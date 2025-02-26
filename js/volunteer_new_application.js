@@ -157,6 +157,7 @@
     });
 })();
  */
+
 document.addEventListener("DOMContentLoaded", function () {
     function displayValidationErrors(errors) {
         document.querySelectorAll('.invalid-feedback').forEach(el => el.style.display = 'none');
@@ -195,29 +196,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("submitBtn").addEventListener("click", function (event) {
         event.preventDefault();
-    
+
         var formData = new FormData(document.getElementById('volunteerForm'));
-    
+
         fetch('/volunteer_new_application/submit', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Submit response:', data);
-    
-            if (data.status === 'success') {
-                    window.location.href = '/volunteer_registration_status';                 
-            } else if (data.status === 'error') {
-                displayValidationErrors(data.errors);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.json())
+            .then(data => {
+                console.log('Submit response:', data);
+
+                if (data.status === 'success') {
+                    window.location.href = '/volunteer_registration_status';
+                } else if (data.status === 'error') {
+                    displayValidationErrors(data.errors);
+                }
+            })
+            .catch(error => console.error('Error:', error));
     });
 });
-    
-    
-    
+
+
+
 
 
 
@@ -323,6 +324,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+
+// UPLOAD 1X1 PHOTO
+const dropArea = document.getElementById('drop-area');
+const fileInput = document.getElementById('file-input');
+const previewImage = document.getElementById('preview');
+const uploadIcon = document.querySelector('.upload-icon');
+
+// Click event to open file input
+dropArea.addEventListener('click', () => fileInput.click());
+
+// Handle file selection
+fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        displayImage(file);
+    }
+});
+
+// Drag and drop functionality
+dropArea.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    dropArea.classList.add('drag-over');
+});
+
+dropArea.addEventListener('dragleave', () => {
+    dropArea.classList.remove('drag-over');
+});
+
+dropArea.addEventListener('drop', (event) => {
+    event.preventDefault();
+    dropArea.classList.remove('drag-over');
+    const file = event.dataTransfer.files[0];
+    if (file) {
+        displayImage(file);
+    }
+});
+
+function displayImage(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        previewImage.src = reader.result;
+        previewImage.style.display = 'block';
+        uploadIcon.style.display = 'none';
+    };
+}
 
 
 

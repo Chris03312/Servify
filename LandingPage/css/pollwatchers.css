@@ -111,3 +111,39 @@ section{
     margin-left: 50px;
 } */
 
+@media (max-width: 768px) {
+    section {
+      padding: 50px 20px;
+    }
+  
+    .main-title {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  
+    .content {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .content .image {
+      width: 90%;
+      height: 200px;
+    }
+  
+    .content .text-box {
+      max-width: 90%;
+      padding: 20px;
+      transform: translate(0, 20px);
+      margin-top: 0px;
+    }
+  
+    .content .text-box h3 {
+      font-size: 12px;
+    }
+  
+    .content .text-box p {
+      font-size: 10px;
+    }
+  }

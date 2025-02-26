@@ -27,7 +27,7 @@
 
 <body>
 
-    <?php       
+    <?php
     include('includes/volunteer_sidebar.php');
     ?>
 
@@ -39,7 +39,7 @@
         <div class="dashboardBanner mb-4">
             <p><?php echo $currentDate; ?></p>
             <h4>Welcome back, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Guest'); ?>!</h4>
-            </div>
+        </div>
 
         <div class="container-fluid">
             <!--COUNTDOWN, ANNOUNCEMENT, BADGE-->
@@ -84,13 +84,13 @@
                                     <span class="text-danger fw-bold">SEC</span>
                                 </div>
                                 <script>
-                                // Pass the initial time values from PHP to JavaScript
-                                var days = <?php echo $days; ?>;
-                                var hours = <?php echo $hours; ?>;
-                                var minutes = <?php echo $minutes; ?>;
-                                var seconds = <?php echo $seconds; ?>;
-                            </script>
-                            <script src="../js/countdown.js"></script>
+                                    // Pass the initial time values from PHP to JavaScript
+                                    var days = <?php echo $days; ?>;
+                                    var hours = <?php echo $hours; ?>;
+                                    var minutes = <?php echo $minutes; ?>;
+                                    var seconds = <?php echo $seconds; ?>;
+                                </script>
+                                <script src="../js/countdown.js"></script>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <a href="#" class="text-decoration-none">See All Announcements</a>
+                                <a href="/announcements" class="text-decoration-none">See All Announcements</a>
                             </div>
                         </div>
                     </div>
@@ -148,14 +148,27 @@
                             <div class="bg-primary p-2 rounded">
                                 <h4 class="text-light">You are currently assigned as:</h4>
                             </div>
-                            <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT'] ?? " "); ?></h2>
+
+                            <div class="accordion" id="accordionRole">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRole" aria-expanded="false" aria-controls="collapseRole">
+                                        <h3><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT'] ?? " "); ?></h3>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseRole" class="accordion-collapse collapse" data-bs-parent="#accordionRole">
+                                        <div class="accordion-body">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ab fuga est nisi molestias consequatur, ut repellat deleniti aperiam itaque!</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="bg-primary p-2 rounded">
                                 <h4 class="text-light">Designated at:</h4>
                             </div>
                             <div>
-                                <h2><?php echo htmlspecialchars($userInfo['ASSIGNED_POLLING_PLACE'] ?? " "); ?></h3>
+                                <h3><?php echo htmlspecialchars($userInfo['ASSIGNED_POLLING_PLACE'] ?? " "); ?></h3>
                             </div>
                         </div>
                     </div>
@@ -173,7 +186,7 @@
                                 var latitude = <?php echo isset($location['latitude']) && $location['latitude'] !== '' ? $location['latitude'] : 'null'; ?>;
                                 var longitude = <?php echo isset($location['longitude']) && $location['longitude'] !== '' ? $location['longitude'] : 'null'; ?>;
                                 var polling = '<?php echo htmlspecialchars($location['assigned_polling_place'] ?? ''); ?>';
-                                </script>
+                            </script>
                             <script src="js/leafletmap.js"></script>
                         </div>
                     </div>
@@ -187,26 +200,26 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <?php if(!empty($activities)): ?>
-                                    <?php foreach($activities as $activity): ?>
-                                    <li class="list-group-item">
-                                        <a href="#" class="text-decoration-none text-dark">
-                                            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                                <div class="time">
-                                                    <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
+                                <?php if (!empty($activities)): ?>
+                                    <?php foreach ($activities as $activity): ?>
+                                        <li class="list-group-item">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                                    <div class="time">
+                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p><i class="bi bi-chevron-right"></i></p>
+                                                    </div>
                                                 </div>
-                                                <div class="time">
-                                                    <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
-                                                </div>
-                                                <div class="time">
-                                                    <p><i class="bi bi-chevron-right"></i></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
                                     <?php endforeach; ?>
                                 <?php else: ?>
-                                    <p class ="text-center"> No Activities</p>
+                                    <p class="text-center"> No Activities</p>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -222,24 +235,24 @@
                             <!--TIMELINE CONTENT-->
                             <section class="px-2">
                                 <ul class="timeline-with-icons">
-                                <?php if(!empty($timelines)): ?>
-                                    <?php foreach ($timelines as $timeline): ?>
-                                        <li class="timeline-item mb-5">
-                                            <span class="timeline-year">
-                                                <?php echo $timeline['YEAR'] ?? " "; ?> <!-- Display the extracted year -->
-                                            </span>
+                                    <?php if (!empty($timelines)): ?>
+                                        <?php foreach ($timelines as $timeline): ?>
+                                            <li class="timeline-item mb-5">
+                                                <span class="timeline-year">
+                                                    <?php echo $timeline['YEAR'] ?? " "; ?> <!-- Display the extracted year -->
+                                                </span>
 
-                                            <div class="timeline-content">
-                                                <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
-                                                <p class="text-muted">
-                                                    <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?> <!-- Display assigned mission -->
-                                                </p>
-                                            </div>
-                                        </li>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <p class ="text-center">No Timelines</p>
-                                <?php endif; ?>    
+                                                <div class="timeline-content">
+                                                    <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
+                                                    <p class="text-muted">
+                                                        <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?> <!-- Display assigned mission -->
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p class="text-center">No Timelines</p>
+                                    <?php endif; ?>
                                 </ul>
                             </section>
 

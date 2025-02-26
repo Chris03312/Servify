@@ -41,14 +41,21 @@
                 enctype="multipart/form-data">
                 <!--FORM-->
                 <!--PHOTO AND NAME-->
-                <div class="d-flex flex-row justify-content-start align-items-center mb-3">
-                    <!--PHOTO-->
-                    <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
+                <div class="d-flex flex-row align-items-center mb-3">
+                    <!-- PHOTO -->
+                    <div class="upload-box me-3" id="drop-area">
+                        <i class="fas fa-camera upload-icon"></i>
+                        <img id="preview" src="" alt="Preview">
+                        <input type="file" id="file-input" accept="image/*">
+                    </div>
 
-                    <!--NAME-->
-                    <p><?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME'] ?>
+                    <!-- NAME -->
+                    <p class="m-0">
+                        <?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME']; ?>
                     </p>
                 </div>
+
+                
 
                 <!--VOLUNTEER INFO-->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -78,13 +85,23 @@
                                 <hr class="line">
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="precinctNumber" class="col-md-2 col-form-label">Precinct Number:<sup
+                            <div class="col-md-4 mb-3">
+                                <label for="firstname" class="form-label">Precinct Number:<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber">
-                                    <div class="invalid-feedback" id="error-precinctNumber"></div>
-                                </div>
+                                <input type="text" class="form-control" id="precinctNumber" name="precinctNumber">
+                                <div class="invalid-feedback" id="error-precinctNumber"></div>
+                            </div>
+
+                            <div class="col-md-8 mb-3">
+                                <label for="parishAssigned" class="form-label">Parish Assigned:<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <select id="parishAssigned" name="parishAssigned" class="form-select">
+                                    <option selected disabled value="">Select Parish</option>
+                                    <option value="">...</option>
+                                    <option value="">...</option>
+                                    <option value="">...</option>
+                                </select>
+                                <div class="invalid-feedback" id="error-civilStatus"></div>
                             </div>
 
                             <div class="col-md-3 mb-3">
@@ -187,7 +204,7 @@
                             </div>
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
