@@ -297,21 +297,28 @@
                                     value="<?php echo $applicationInfo['STREETADDRESS'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="city" name="city"
                                     value="<?php echo $applicationInfo['CITY'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="barangay" name="barangay"
                                     value="<?php echo $applicationInfo['BARANGAY'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
+                                <label for="district" class="form-label">District<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" readonly id="district" name="district"
+                                    value="<?php echo $applicationInfo['DISTRICT'] ?? " "; ?>">
+                            </div>
+
+                            <div class="col-md-3 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="zipcode" name="zipcode"
