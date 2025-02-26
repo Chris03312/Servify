@@ -109,10 +109,6 @@
         min-height: 200px;
     }
     
-    .chat-input p{
-        text-align: center;
-        margin-bottom: 10px;
-    }
 
     .chat-input input {
         flex-grow: 1;
@@ -193,6 +189,64 @@
         background-color:rgb(255, 255, 255);
     }
 
+    .chat-input p{
+        margin: 0 0 5px 0; 
+        padding: 0; 
+        font-weight: bold; 
+        font-size: 14px; 
+        color: #007DAC;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+
+    @media screen and (max-width: 768px) {
+    .chat-box{
+        width: 300px;
+        height: 400px;
+    }
+
+    .chat-icon {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .chat-header h4 {
+        font-size: 10px;
+    }
+
+    .chat-content {
+        padding: 8px;
+    }
+
+    .chat-input {
+        padding: 8px;
+        min-height: 150px;
+    }
+
+    .chat-input input {
+        width: 50%;
+        font-size: 8px;
+        padding: 0px;
+    }
+
+    .chat-input button {
+        min-width: 250px;
+        max-width: 250px;
+        padding: 8px;
+        font-size: 10px;
+    }
+
+    .chat-input p{
+        margin: 0 0 5px 0; 
+        font-size: 11px; 
+    }
+
+}
+
+
 </style>
 </head>
 <body>
@@ -230,7 +284,7 @@
             </div>
     
             <div class="chat-input">
-                <p id="faq-text" style="margin: 0 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; color: #007DAC;">
+                <p id="faq-text">
                     Ask me these questions!
                 </p>
                 <div id="faqcon" class="faq-container" style="display: flex; flex-direction: column; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: auto; overflow-y: hidden;">
