@@ -41,13 +41,14 @@
                 <!-- PROFILE PIC, NAME, AND DATE POSTED -->
                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                 <div class="d-flex flex-column">
-                    <span><strong><?php echo htmlspecialchars($announcement['name']); ?></strong></span>
+                    <span><strong><?php echo htmlspecialchars($announcement['announcement_author']); ?></strong></span>
                     <span class="text-muted">21 mins ago</span>
                 </div>
             </div>
 
             <!-- ANNOUNCEMENT TEXT -->
-            <p><?php echo htmlspecialchars($announcement['content']); ?></p>
+            <h4><?= htmlspecialchars($announcement['announcement_title']) ?></h4>
+            <p><?php echo htmlspecialchars($announcement['announcement_content']); ?></p>
 
             <!-- COMMENT BUTTON -->
             <div>
@@ -69,9 +70,9 @@
                         <div class="d-flex flex-column">
                             <div>
                             <span><strong><?php echo htmlspecialchars($comment['username']); ?></strong></span>
-                            <small class="text-muted time-elapsed" data-timestamp="<?php echo strtotime($comment['created_at']); ?>">
-                                <?php echo strtotime($comment['created_at']); ?>
-                            </small>
+                                <small class="text-muted time-elapsed" data-timestamp="<?php echo strtotime($comment['created_at']); ?>">
+                                    <?php echo date("m/d/Y, h:i A", strtotime($comment['created_at'])); ?>
+                                </small>
 
 
                             </div>
@@ -92,7 +93,7 @@
                 <?php endif; ?>
 
                 <!-- COMMENT BOX -->
-                <form action="/Announcement/submit" method="POST" data-username="<?php echo htmlspecialchars($_SESSION['username'] ?? 'Anonymous'); ?>">
+                <form action="/announcement/submit" method="POST" data-username="<?php echo htmlspecialchars($_SESSION['username'] ?? 'Anonymous'); ?>">
                     <div class="d-flex flex-row justify-content-center align-items-center gap-1">
                         <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                         <input type="hidden" name="announcement_id" value="<?php echo $announcement['announcement_id']; ?>">
@@ -142,7 +143,7 @@
             formData.append("announcement_id", announcementId);
 
             try {
-                const response = await fetch("/Announcement/submit", {
+                const response = await fetch("/announcements/submit", {
                     method: "POST",
                     body: formData,
                 });
@@ -163,7 +164,7 @@
                             <span><strong>${username}</strong></span> <!-- ✅ Correctly displays user's name -->
                             <small class="text-muted">Just now</small>
                         </div>
-                        <div>
+                        <div>   
                             <p>${comment}</p>
                         </div>
                     </div>
@@ -180,35 +181,51 @@
     });
 });
 
-function timeAgo(timestamp) {
-    if (!timestamp) return "Invalid date"; // Check if it's null or undefined
+function formatTimestamp(timestamp) {
+    if (!timestamp) return "Invalid date";
 
-    timestamp = parseInt(timestamp, 10); // Convert to a number safely
-    if (isNaN(timestamp)) return "Invalid date"; // Ensure it's valid
+    timestamp = Number(timestamp);
+    if (isNaN(timestamp)) return "Invalid date";
 
-    const now = new Date();
-    const seconds = Math.floor((now - new Date(timestamp * 1000)) / 1000);
+    // Convert UNIX timestamp (seconds) to milliseconds
+    let date = new Date(timestamp * 1000);
 
-    if (seconds < 60) return seconds + " secs ago";
-    const minutes = Math.floor(seconds / 60);
-    if (minutes < 60) return minutes + " mins ago";
-    const hours = Math.floor(minutes / 60);
-    if (hours < 24) return hours + " hrs ago";
-    const days = Math.floor(hours / 24);
-    return days + " days ago";
+    // Format using Intl.DateTimeFormat to ensure correct Manila Timezone
+    return new Intl.DateTimeFormat("en-US", { 
+        timeZone: "Manila", 
+        year: "numeric", 
+        month: "2-digit", 
+        day: "2-digit", 
+        hour: "2-digit", 
+        minute: "2-digit", 
+        second: "2-digit", 
+        hour12: true
+    }).format(date);
 }
 
-// Update timestamps
-document.addEventListener("DOMContentLoaded", function () {
+// Function to update all timestamps dynamically
+function updateTimes() {
+    console.log("Updating timestamps...");
     document.querySelectorAll(".time-elapsed").forEach(el => {
         const timestamp = el.getAttribute("data-timestamp");
-        console.log("Timestamp from HTML:", timestamp); // Debugging log
         if (timestamp) {
-            el.innerText = timeAgo(timestamp);
+            let newTime = formatTimestamp(timestamp);
+            if (el.innerText !== newTime) {
+                el.innerText = newTime;
+            }
         }
     });
-});
+}
 
+
+// Run once on page load
+document.addEventListener("DOMContentLoaded", updateTimes);
+
+// Auto-update timestamps every 30 seconds
+setInterval(() => {
+    console.log("Auto-updating timestamps..."); // Debugging log
+    updateTimes();
+}, 30000);
         </script>
 
 
@@ -225,5 +242,4 @@ document.addEventListener("DOMContentLoaded", function () {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
-
 </html>

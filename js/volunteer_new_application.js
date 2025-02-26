@@ -157,6 +157,67 @@
     });
 })();
  */
+document.addEventListener("DOMContentLoaded", function () {
+    function displayValidationErrors(errors) {
+        document.querySelectorAll('.invalid-feedback').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(el => el.classList.remove('is-invalid'));
+
+        Object.entries(errors).forEach(([field, message]) => {
+            console.log(`Field: ${field}, Message: ${message}`); // Debugging
+
+            var errorElement = document.getElementById('error-' + field);
+            var inputElement = document.querySelector(`[name="${field}"]`);
+
+            if (errorElement && inputElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                inputElement.classList.add('is-invalid');
+
+                // Remove validation message when user inputs new data
+                inputElement.addEventListener("input", function () {
+                    errorElement.style.display = 'none';
+                    inputElement.classList.remove('is-invalid');
+                }, { once: true }); // Ensures event listener is not added multiple times
+            } else {
+                console.warn('Missing input or error element for:', field);
+            }
+        });
+    }
+
+    // Handle "Next" button - Only moves to the next tab, no validation
+    document.getElementById("nextBtn").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var nextTab = new bootstrap.Tab(document.querySelector('#profile-tab'));
+        nextTab.show();
+    });
+
+
+    document.getElementById("submitBtn").addEventListener("click", function (event) {
+        event.preventDefault();
+    
+        var formData = new FormData(document.getElementById('volunteerForm'));
+    
+        fetch('/volunteer_new_application/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Submit response:', data);
+    
+            if (data.status === 'success') {
+                    window.location.href = '/volunteer_registration_status';                 
+            } else if (data.status === 'error') {
+                displayValidationErrors(data.errors);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+    
+    
+    
 
 
 
@@ -173,97 +234,97 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressBar = document.getElementById("progress-bar");
     const uploadStatus = document.getElementById("upload-status");
     const uploadImage = document.querySelector("#drop-area img"); // Select the image inside the drop area
-  
+
     // Highlight drop area when dragging files
     dropArea.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      dropArea.classList.add("dragover");
+        e.preventDefault();
+        dropArea.classList.add("dragover");
     });
-  
+
     dropArea.addEventListener("dragleave", () => {
-      dropArea.classList.remove("dragover");
+        dropArea.classList.remove("dragover");
     });
-  
+
     // Handle file drop
     dropArea.addEventListener("drop", (e) => {
-      e.preventDefault();
-      dropArea.classList.remove("dragover");
-      const files = e.dataTransfer.files;
-      handleFile(files[0]); // Process only the first file
-  
-      // Manually set the file to the input field (for file input value reflection)
-      fileInput.files = files;
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+        const files = e.dataTransfer.files;
+        handleFile(files[0]); // Process only the first file
+
+        // Manually set the file to the input field (for file input value reflection)
+        fileInput.files = files;
     });
-  
+
     // Handle file input change
     fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0]; // Get the first selected file
-      handleFile(file);
+        const file = e.target.files[0]; // Get the first selected file
+        handleFile(file);
     });
-  
+
     // Simulate the file upload process
     function handleFile(file) {
-      // Hide the image and any existing invalid feedback
-      invalidFeedback.style.display = "none";
-      if (uploadImage) {
-        uploadImage.style.display = "none"; // Hide the image
-      }
-  
-      if (file && file.type.startsWith("image/")) {
-        // Show uploading progress bar
-        uploadProgress.style.display = "block";
-  
-        // Clear any existing preview
-        preview.innerHTML = "";
-  
-        // Display the file name inside the input area
-        fileNameDisplay.textContent = file.name;
-  
-        // Simulate file upload with progress (for demo purposes)
-        let progress = 0;
-        const uploadInterval = setInterval(() => {
-          progress += 10; // Increase the progress by 10% every interval
-          progressBar.style.width = `${progress}%`;
-          uploadStatus.textContent = `Uploading... ${progress}%`;
-  
-          if (progress >= 100) {
-            clearInterval(uploadInterval);
-            uploadStatus.textContent = "Upload Complete!";
-            setTimeout(() => {
-              uploadProgress.style.display = "none"; // Hide the progress bar after completion
-            }, 1000); // Hide the progress bar after 1 second
-  
-            // Show image preview after upload complete
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const img = document.createElement("img");
-              img.src = e.target.result;
-              preview.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-          }
-        }, 500); // Update progress every 500ms
-      } else {
-        // Show the error message if the file is invalid
-        invalidFeedback.style.display = "block";
-        fileNameDisplay.textContent = ""; // Clear the file name display
-  
-        // Optionally, reset the file input field if the file is invalid
-        fileInput.value = "";
-      }
+        // Hide the image and any existing invalid feedback
+        invalidFeedback.style.display = "none";
+        if (uploadImage) {
+            uploadImage.style.display = "none"; // Hide the image
+        }
+
+        if (file && file.type.startsWith("image/")) {
+            // Show uploading progress bar
+            uploadProgress.style.display = "block";
+
+            // Clear any existing preview
+            preview.innerHTML = "";
+
+            // Display the file name inside the input area
+            fileNameDisplay.textContent = file.name;
+
+            // Simulate file upload with progress (for demo purposes)
+            let progress = 0;
+            const uploadInterval = setInterval(() => {
+                progress += 10; // Increase the progress by 10% every interval
+                progressBar.style.width = `${progress}%`;
+                uploadStatus.textContent = `Uploading... ${progress}%`;
+
+                if (progress >= 100) {
+                    clearInterval(uploadInterval);
+                    uploadStatus.textContent = "Upload Complete!";
+                    setTimeout(() => {
+                        uploadProgress.style.display = "none"; // Hide the progress bar after completion
+                    }, 1000); // Hide the progress bar after 1 second
+
+                    // Show image preview after upload complete
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }, 500); // Update progress every 500ms
+        } else {
+            // Show the error message if the file is invalid
+            invalidFeedback.style.display = "block";
+            fileNameDisplay.textContent = ""; // Clear the file name display
+
+            // Optionally, reset the file input field if the file is invalid
+            fileInput.value = "";
+        }
     }
-  
+
     // Prevent form submission if invalid file is selected
     document.querySelector("form").addEventListener("submit", (e) => {
-      const file = fileInput.files[0];
-      if (!file || !file.type.startsWith("image/")) {
-        e.preventDefault(); // Prevent form submission
-        invalidFeedback.style.display = "block"; // Show error feedback
-      }
+        const file = fileInput.files[0];
+        if (!file || !file.type.startsWith("image/")) {
+            e.preventDefault(); // Prevent form submission
+            invalidFeedback.style.display = "block"; // Show error feedback
+        }
     });
-  });
-  
-  
+});
 
-  
-    
+
+
+
+

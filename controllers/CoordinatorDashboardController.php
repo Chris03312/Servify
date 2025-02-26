@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../models/Dashboard.php';
 require_once __DIR__ . '/../models/coordinatorDashboard.php';
+require_once __DIR__ . '/../models/coorsidebarinfo.php';
 
 
 class CoordinatorDashboardController{
@@ -11,17 +12,17 @@ class CoordinatorDashboardController{
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
-
-        $cityFilter = isset($_GET['city']) ? $_GET['city'] : '';
-
-        $chartData = CoordinatorDashboard::chartsData();
+        
+        $chartsData = CoordinatorDashboard::chartsData();
         $dropdownData = CoordinatorDashboard::getDropdownG2();
         $totalCities = CoordinatorDashboard::getTotalCities();
-        $volunteersTbl = CoordinatorDashboard::getVolunteers($cityFilter);
+        $volunteersTbl = CoordinatorDashboard::getVolunteers();
         $pendingApp = CoordinatorDashboard::PendingApp();
         $countdown = Dashboard::CountDownElectionDay();
         $activities = Dashboard::getActivityLog();
         $currentDate = date('F j, Y');
+
+        $coordinator_info = Coorsidebarinfo::sidebarinfo();
 
         view('coordinator_dashboard', [
             'email' => $_SESSION['email'],
@@ -32,11 +33,14 @@ class CoordinatorDashboardController{
             'pendingApps' => $pendingApp,
             'totalCities' => $totalCities,
             'dropdownData' => $dropdownData,
-            'chartData' => $chartData,            // Pass the dropdown data to the view
+            'chartsData' => $chartsData,           
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
-            'seconds' => $countdown['seconds']
+            'seconds' => $countdown['seconds'],
+            
+            'coordinator_info' => $coordinator_info
+            
         ]);
     }
 }

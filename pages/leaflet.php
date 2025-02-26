@@ -77,15 +77,15 @@ document.addEventListener('DOMContentLoaded', function () {
     { "name": "KALAYAAN ELEMENTARY SCHOOL", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 60, "volunteers_count": 30 },
     { "name": "SILANGANAN ELEMENTARY SCHOOL (MAIN)", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 55, "volunteers_count": 20 },
     { "name": "BAGONG SILANG PUBLIC HIGH SCHOOL", "longitude": 121.04566, "latitude": 14.776553, "needed_volunteers": 75, "volunteers_count": 50 }
-];
+];      
 
     const heatPoints = dataPoints.map(point => {
         let intensity = point.needed_volunteers;
 
         if (point.volunteers_count >= point.needed_volunteers) {
-            intensity = point.needed_volunteers * 5;
+            intensity = point.needed_volunteers * 2;
         } else {
-            intensity = point.volunteers_count;
+            intensity = point.volunteers_count / 2;
         }
 
         return [point.latitude, point.longitude, intensity];
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let heatmap = L.heatLayer(heatPoints, {
         radius: 25,
-        blur: 37,
+        blur: 15,
         maxZoom: 20,
         gradient: {
             0.2: 'rgba(255, 0, 0, 0.4)',

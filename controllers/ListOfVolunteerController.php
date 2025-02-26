@@ -1,25 +1,29 @@
 <?php
 
-require_once __DIR__ . '/../models/listofvolunteer.php';
+require_once __DIR__ . '/../models/VolunteerManagement.php';
 
 class ListOfVolunteerController {
 
     public static function ShowListOfVolunteer() {
 
+        $city = $_GET['City'];
         $district = $_GET['District'] ?? null;
         $barangay = $_GET['Barangay'] ?? null;
         $pollingplace = $_GET['PollingPlace'];
 
-        $districtParam = $district ? '?District=' . urlencode($district) : '';
-        $barangayParam = $barangay ? '?District=' . urlencode($district).'&Barangay='. urlencode($barangay) : '';
+        $districturl = '?City=' . urlencode($city);
+        $barangayurl = '?City=' . urlencode($city).'&District='. urlencode($district);
+        $pollingplaceurl = '?City=' . urlencode($city).'&District='. urlencode($district).'&Barangay='. urlencode($barangay);
 
-        $listofvolunteers = Listofvolunteer::gelistofVolunteer();
+
+        $listofvolunteers = VolunteerManagement::getlistofVolunteer($city,$district, $barangay, $pollingplace);
 
         view('list_of_volunteers', [
             'listofvolunteers' => $listofvolunteers,
             'pollingplace' => $pollingplace,
-            'districturl' => $districtParam,
-            'barangayurl' => $barangayParam
+            'pollingplaceurl' => $pollingplaceurl,
+            'districturl' => $districturl,
+            'barangayurl' => $barangayurl
         ]);
     }
 }

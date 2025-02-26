@@ -6,7 +6,7 @@ class Announcement
     public static function getAnnouncement(){
         try{
             $db = Database::getConnection();
-            $query = $db->prepare('SELECT * FROM announcement');
+            $query = $db->prepare('SELECT * FROM announcements');
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -19,10 +19,11 @@ class Announcement
 
     public static function getComment() {
         $db = Database::getConnection();
-        $query = $db->query("SELECT comments.comments_id, comments.announcement_id, comments.content, accounts.username 
+        $query = $db->query("SELECT comments.comments_id, comments.announcement_id, comments.content, comments.created_at, accounts.username 
                              FROM comments 
                              JOIN accounts ON comments.username = accounts.username");
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $getComment = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $getComment;
     }
     
 }

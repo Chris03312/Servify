@@ -22,7 +22,11 @@ class ContactUsController{
             ':message' => $message,
             ':email' => $email
         ]);
+        
+        redirect('/contact_us');
+        
         return true;
+        
     } catch (PDOException $e) {
         error_log("Save message error: " . $e->getMessage());
         return false;

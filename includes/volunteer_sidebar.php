@@ -40,11 +40,7 @@
                 </li>
 
                 <li class="sidebar-item">
-<<<<<<< HEAD
-                    <a href="/Announcement" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
-=======
-                    <a href="/announcements" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
->>>>>>> dc6d1e76664ef589b8bd751dfec95468eb8cf8c9
+                    <a href="/announcement" class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/ContactUs" class="nav-link">

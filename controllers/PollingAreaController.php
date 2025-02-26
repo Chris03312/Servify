@@ -1,21 +1,24 @@
 <?php 
 
-require_once __DIR__ . '/../models/pollingareaDirectory.php';
+require_once __DIR__ . '/../models/VolunteerManagement.php';
 
 class PollingAreaController {
 
     public static function ShowPollingArea() {
 
+        $city = $_GET['City'] ?? null;
         $district = $_GET['District'] ?? null;
-        $barangay = $_GET['Barangay'] ?? null;
+        $barangay = $_GET['Barangay'] ?? null;  
 
-        $districtParam = $district ? '?District=' . urlencode($district) : '';
+        $districturl = '?City=' . urlencode($city);
+        $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);
 
-        $getPollingDirectory = PollingareaDirectory::getPollingPlace($district, $barangay);
+        $getPollingDirectory = VolunteerManagement::getPollingPlace($city, $district, $barangay);
 
         view('polling_area', [
             'barangay' => $barangay,
-            'districturl' => $districtParam,
+            'districturl' => $districturl,
+            'barangayurl' => $barangayurl,
             'pollingLinks' => $getPollingDirectory
         ]);
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+    <title>Servify | Sign Up</title>
     <link rel="stylesheet" href="../css/login_style.css">
     <!--BOOTSTRAP CSS CDN LINK-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -53,7 +53,7 @@
                         <spam class="text-muted"></spam>
                     </div>
                         
-                    <form action="/signup/submit" class="row mt-5" method="POST">
+                    <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
                         <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
                             <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
@@ -91,34 +91,27 @@
                                 <option value="Sto. Niño de Pasion Parish">
                                 <option value="Nustra Senora delos Remedios Quasi-Parish">
                             </datalist>
-
-                            <div class="invalid-feedback">
-                                Please input Parish.
-                            </div>
+                                <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="surname" name="surname" >
-                            <div class="invalid-feedback">
-                                Please input surname.
-                            </div>
+                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Ex. Dela Cruz">
+                            <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" >
-                            <div class="invalid-feedback">
-                                Please input first name.
-                            </div>
+                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Ex. Juan">
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="middlename" class="form-label">Middle name (Optional)</label>
-                            <input type="text" class="form-control" id="middlename" name="middlename">
+                            <input type="text" class="form-control" id="middlename" name="middleName">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="suffix" class="form-label">Suffix (Optional)</label>
-                            <input type="text" class="form-control" id="suffix" name="suffix">
+                            <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Ex. Jr">
                         </div>
 
                         <strong class="mb-3">Birth Day</strong>
@@ -139,24 +132,18 @@
                                 <option value="November">November</option>
                                 <option value="December">December</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select birth month.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="birthDate" class="form-label">Day<sup class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="birthDate" name="birthDate" >
-                            <div class="invalid-feedback">
-                                Please input birth date.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birthYear" class="form-label">Year<sup class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="birthYear" name="birthYear" >
-                            <div class="invalid-feedback">
-                                Please input birth year.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <strong class="mb-3">Address</strong>
@@ -170,14 +157,13 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select City.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                            <input type="text" class="form-control" id="street" name="street">
+                            <input type="text" class="form-control" id="street" name="street" placeholder="Ex. Blk# Lot#">
+                            <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
@@ -185,9 +171,7 @@
                                 <option selected disabled value="">Select Barangay</option>
                                 <!-- Barangay options will be populated dynamically using JavaScript -->
                             </select>
-                            <div class="invalid-feedback">
-                                Please select Barangay.
-                            </div>
+                            <div class="validation text-danger"></div>
                             <script>
                                 // Pass the cities and barangays data to JavaScript
                                 var cities = <?php echo json_encode($cities); ?>;
@@ -198,41 +182,31 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode" >
-                            <div class="invalid-feedback">
-                                Please input zipcode.
-                            </div>
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="email" class="form-control" id="email" name="email" >
-                            <div class="invalid-feedback">
-                                Please input email address.
-                            </div>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Ex. example1@gmail.com" >
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="username" class="form-label">Create Username<sup class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="username" name="username" >
-                            <div class="invalid-feedback">
-                                Please input username.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">Create Password<sup class="text-danger fw-bold">*</sup></label>
                             <input type="password" class="form-control" id="password" name="password">
-                            <div class="invalid-feedback">
-                                Please input password.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password<sup class="text-danger fw-bold">*</sup></label>
                             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" >
-                            <div class="invalid-feedback">
-                                Password did not match.
-                            </div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="mb-3 text-center">
@@ -252,8 +226,8 @@
                                             <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
                                                 has been created.</p>
                                             <p class="text-muted">Check your email for more details.</p>
-                                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
-                                        </div>
+                                            <button type="button" class="btn btn-primary px-5" id="redirectButton" data-bs-dismiss="modal">Done</button>
+                                            </div>
                                     </div>
                                 </div>
                             </div>

@@ -30,33 +30,33 @@
                             <a href="/add_new_volunteer" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration Form</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="#" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Pending Application</a>
+                            <a href="/pending_submissions" class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Submissions</a>
                         </li>
                     </ul>
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_attendance_tracking" class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_achievements" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
                 
-                <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                <li class="sidebar-item"> 
+                    <a href="/coordinator_inquiries" class="nav-link">
                     <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link">
+                    <a href="/coordinator_feedback" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
                 
                 <li class="sidebar-item">
-                    <a href="#" class="nav-link"><i class="fa-solid fa-file-zipper me-2"></i>Archive</a>
+                    <a href="/reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
                 
             </ul>
@@ -118,8 +118,8 @@
                             <img src="../img/DPPAM LOGO.png" alt="" class="img-fluid rounded-circle" style="width: 40px;">
                         </div>
                         <div class="d-none d-md-flex flex-column">
-                            <span>Vicmar Guzman</span>
-                            <small>Coordinator</small>
+                            <span><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></span>
+                            <small><?php echo $coordinator_info['role'] ?? NULL  ?></small>
                         </div>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
