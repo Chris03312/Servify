@@ -20,7 +20,7 @@
                 The Voter's Assistance Desk (VAD) is a team that helps voters at polling stations by providing information, guidance on the voting process, and 
                 assistance for those with special needs or questions.
                 </p>
-                <p>
+                <p class="desc">
                     What they do:
                 </p>
                 <ul>
@@ -29,7 +29,7 @@
                     <li>Updates information in real-time for faster reporting and decision-making.</li>
                     <li>Verifies consistency and prevents data errors during the encoding process.</li>
                 </ul>
-                <p>Qualifications:</p>
+                <p class="desc">Qualifications:</p>
                 <ul>
                     <li>Strong analytical and data management skills.</li>
                     <li>Proficiency with data encoding software and tools.</li>

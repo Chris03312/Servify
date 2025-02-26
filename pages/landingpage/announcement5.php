@@ -66,10 +66,12 @@
         </div>
     </section>
 
-    <?php # include 'chatbotfolder/chatbot.php';?>
-    <?php include 'footer.php'; ?>
+    <?php include 'LandingPage/chatbotfolder/chatbot.php'; ?>
+    <?php include 'LandingPage/footer.php'; ?>
 
-    <script src="js/sample.js"></script>
+    <script src="LandingPage/js/carousel.js"></script>
+    <script src="LandingPage/js/toggle.js"></script>
+    
     <script>
         document.getElementById('hamburger-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');

@@ -223,16 +223,32 @@
     </script>
 
     <script>
-        ScrollReveal({
-            reset: true,
-            distance: '60px',
-            duration: 2500,
-            delay: 400
-        });
+    // Initialize ScrollReveal settings
+    ScrollReveal({
+        reset: true,
+        distance: '60px',
+        duration: 2500,
+        delay: 400
+    });
 
-        ScrollReveal().reveal('.main-title', { delay: 300, origin: 'left'});
-        ScrollReveal().reveal('.sec-01 .image', { delay: 600, origin: 'bottom'});
-        ScrollReveal().reveal('.text-box', { delay: 700, origin: 'right'});
+    // Check if the device is mobile (screen width <= 768px)
+    if (window.innerWidth <= 768) {
+        // Mobile animations
+        ScrollReveal().reveal('.main-title', { delay: 300, origin: 'top' });
+        ScrollReveal().reveal('.sec-01 .image', { delay: 600, origin: 'left' });
+        ScrollReveal().reveal('.text-box', { delay: 700, origin: 'bottom' });
+    } else {
+        // Desktop animations
+        ScrollReveal().reveal('.main-title', { delay: 300, origin: 'left' });
+        ScrollReveal().reveal('.sec-01 .image', { delay: 600, origin: 'bottom' });
+        ScrollReveal().reveal('.text-box', { delay: 700, origin: 'right' });
+    }
+
+    // Re-apply the animations on window resize
+    window.addEventListener('resize', () => {
+        location.reload(); // Refresh the page to apply new animation flow
+    });
     </script>
+
 </body>
 </html>

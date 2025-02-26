@@ -161,34 +161,42 @@ footer .footer-bottom a:hover {
   }
 
   footer .footer-container {
-    flex-direction: column;
+    flex-direction: row;
     padding: 20px;
     align-items: center;
     text-align: center;
   }
 
   footer .logo {
-    width: 120px;
-    margin-bottom: 15px;
+    width: 80px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  footer .logo-section p{
+    font-size: 0px;
   }
 
   footer .cta-section {
     padding: 0;
-    max-width: 100%;
+    max-width: 1000px;
+    margin-left: 15px;
   }
 
   footer .cta-section p {
-    font-size: 16px;
+    font-size: 10px;
+    margin-bottom: 1px;
   }
 
   footer .cta-section h2 {
-    font-size: 32px;
+    font-size: 15px;
   }
 
   footer .join-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
+    width: 60%; 
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
   }
 
   footer .links-section {
@@ -198,41 +206,46 @@ footer .footer-bottom a:hover {
     margin-top: 30px;
   }
 
-  footer .links-section .icons-section,
-  footer .links-section .links {
-    margin-left: 0;
-    gap: 20px;
-    flex-direction: column;
+  footer .links-section .icons-section{
+    margin: 0;  
+    gap: 10px;
+    flex-direction: row;
     align-items: center;
   }
 
+  footer .links-section .links {
+    display: none;
+  }
+  
   footer .social-link {
     font-size: 1rem;
   }
 
   footer .links-section h4 {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   footer .footer-links a {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   footer .contact-us {
-    margin-left: 0;
+    margin: 0;
     align-items: center;
+    line-height: 1;
   }
 
   footer .contact-us h4 {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   footer .contact-us p {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   footer .footer-bottom {
     font-size: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 }

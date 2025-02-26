@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +7,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
     .chat-bot {
         font-family: "Poppins", serif;
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        right: 5px;
         z-index: 9999;
     }
 
     .chat-icon {
         width: 60px;
         height: 60px;
-        background-color: #00A1E4;
+        background-color: #f1f1f1;
         box-shadow: 0;
         border-radius: 50%;
         display: flex;
@@ -41,199 +43,156 @@
         0% {
             transform: translateY(0);
         }
-
         100% {
-            transform: translateY(-10px);
+            transform: translateY(-3px); 
         }
     }
-
-    .chat-icon.open {
-        bottom: 420px;
-    }
-
-    .chat-icon:hover {
-        animation: none;
-        box-shadow: 0 0 10px rgba(110, 245, 255, 0.5);
-    }
-
     .chat-box {
-        display: none;
-        width: 300px;
-        height: 400px;
-        background-color: rgb(171, 210, 255);
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        animation: slideIn 0.3s ease;
+        width: 350px;
+        height: 650px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         position: absolute;
-        bottom: 0;
+        bottom: 100px;
         right: 0;
-        overflow-y: auto;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateY(100%);
-        }
-
-        to {
-            transform: translateY(0);
-        }
-    }
-
-    .chat-content {
-        padding: 10px;
-        height: 285px;
-        max-height: 285px;
-        overflow-y: auto;
-        flex-grow: 1;
-    }
-
-    .chat-input {
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
+        display: none;
         flex-direction: column;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        margin-right: 10px;
     }
-
-    .chat-input input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        margin-right: 5px;
+    .chat-header{
+        background-color: #007DAC;
+        display: flex;
+        color: #f1f1f1;
     }
-
-    .chat-input button {
-        padding: 8px 15px;
-        background-color: #00A1E4;
-        color: #fff;
-        font-weight: bolder;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
+    .chat-header img{
+        margin: 10px 0 0 5px;
+        width: 50px;
+        height: 50px;
     }
-
-    .chat-box.closing {
-        animation: slideOut2 0.3s ease forwards;
+    .chat-header h4{
+        margin-left: 5px;
     }
-
-    @keyframes slideOut2 {
-        from {
-            transform: translateY(0);
-        }
-
-        to {
-            transform: translateY(100%);
-        }
-    }
-
-    .chat-box.opening {
-        animation: slideDown2 0.3s ease forwards;
-    }
-
-    @keyframes slideDown2 {
-        from {
-            transform: translateY(-100%);
-        }
-
-        to {
-            transform: translateY(0);
-        }
+    .chat-content {
+        flex-grow: 1;
+        padding: 10px;
+        overflow-y: auto;
+        max-height: 450px;
     }
 
     .message-container {
         display: flex;
         flex-direction: column;
-        overflow-x: hidden;
-    }
-
-    .chat-message {
-        max-width: 70%;
-        margin: 5px;
-        padding: 10px;
-        clear: both;
-        word-wrap: break-word;
-    }
-
-    @keyframes slideInFromLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideInFromRight {
-        from {
-            opacity: 0;
-            transform: translateX(100%);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
     }
 
     .user-message {
-        border-radius: 10px 10px 0 10px;
+        background-color: #007DAC;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 10px;
         align-self: flex-end;
-        background-color: rgb(191, 235, 238);
-        color: rgb(0, 27, 39);
-        font-weight: bold;
-        font-size: 15px;
-        animation: slideInFromRight 0.5s ease forwards;
+        margin: 5px;
+        max-width: 80%;
+    }
+
+    .chat-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        min-height: 230px;
+        
+    }
+    .chat-input p{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .chat-input input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .chat-input button {
+        background-color: white; 
+        border: 1px solid #ccc;  
+        color: black; 
+        padding: 12px 15px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        min-width: 300px;
+        max-width: 300px;
+    }
+
+    .message-wrapper {
+        display: flex;
+        max-width: 80%;
+    }
+
+    .bot-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .user-wrapper {
+        flex-direction: row-reverse; 
+        align-self: flex-end;
+    }
+
+    .avatar-container {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .chat-message {
+        padding: 10px 15px;
+        border-radius: 10px;
+        max-width: 70%;
+        word-wrap: break-word;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .user-message {
+        background-color: #007DAC;
+        color: white;
+        border: 2px solid #0056b3;
     }
 
     .bot-message {
-        border-radius: 10px 10px 10px 0;
-        align-self: flex-start;
-        background-color: #00A1E4;
-        color: white;
-        font-size: 15px;
-        animation: slideInFromLeft 0.5s ease forwards;
+        background-color: #f1f1f1;
+        color: black;
+        border: 2px solid #ccc;
     }
 
-    .faq-container::-webkit-scrollbar {
-        height: 3px;
-    }
-
-    .faq-container::-webkit-scrollbar-track {
-        background: rgb(171, 210, 255);
-    }
-
-    .faq-container::-webkit-scrollbar-thumb {
-        background: #888;
-    }
-
-    .faq-container::-webkit-scrollbar-thumb:hover {
-        background: #555;
-        cursor: pointer;
-    }
-
-    .faqbut {
-        max-height: 40px;
-        width: auto;
-        white-space: nowrap;
-        margin: 0 5px 0 5px;
-        opacity: 1;
-        transition: background-color 0.3s ease, color 0.3s ease, opacity 0.5s ease;
+    .faq-container{
+        gap: 10px;
     }
 
     .faqbut:hover {
-        background-color: z;
-        color: #183251;
+        background-color: #f8f8f8;
     }
+
 </style>
 </head>
-
 <body>
 
     <?php
@@ -241,176 +200,222 @@
 
     $sql = "SELECT * FROM faq";
     $result = $conn->query($sql);
-
+    
     ?>
 
     <div class="chat-bot">
         <div class="chat-icon" id="chat-icon">
-            <img id="chatbotpic" src="/../LandingPage/chatbotfolder/images/chatbot.png"
-                onmouseenter="this.src='/../LandingPage/chatbotfolder/images/chatbot2.png'"
-                onmouseleave="this.src='/../LandingPage/chatbotfolder/images/chatbot.png'"
-                style="height: 50px; width: 50px; filter: invert();" alt="Chat Icon">
+        <img id="chatbotpic" src="/../LandingPage/chatbotfolder/images/chatimg.png" style="height: 50px; width: 50px;" alt="Chat Icon">
         </div>
         <div class="chat-box" id="chat-box">
+            <div class="chat-header">
+                <img src="/../LandingPage/chatbotfolder/images/chatbot.png" alt="">
+                <h4>DDPAM Chatbot</h4>
+            </div>
             <!-- Chat conversation content goes here -->
             <div class="chat-content" id="chat-content">
                 <div id="msgcon" class="message-container">
-
+                    <!-- Static Bot Message -->
+                    <div class="message-wrapper bot-wrapper">
+                        <div class="avatar-container">
+                            <img src="/../LandingPage/chatbotfolder/images/chatbot.png" alt="Bot Avatar" class="avatar">
+                        </div>
+                        <div class="chat-message bot-message">
+                            <span class="message-text">Hey there! How can I help you today?</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+    
             <div class="chat-input">
-                <p style="margin: 0 0 5px 0; padding: 0; font-weight: bold; font-size: 15px; color: #183251;">Ask me
-                    these questions!</p>
-                <div id="faqcon" class="faq-container"
-                    style="display: flex; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: auto; overflow-y: hidden;">
-
+                <p id="faq-text" style="margin: 0 0 5px 0; padding: 0; font-weight: bold; font-size: 18px; color: #007DAC;">
+                    Ask me these questions!
+                </p>
+                <div id="faqcon" class="faq-container" style="display: flex; flex-direction: column; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: auto; overflow-y: hidden;">
                 </div>
             </div>
+
         </div>
     </div>
-    <script>
+<script>
 
-        function handleFAQClick(id, butts) {
-            fetch('/../LandingPage/chatbotfolder/index.php')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Chatbot Data Loaded: ", data);
+    
 
-                    if (!data || !data.question || !data.answer) {
-                        throw new Error("Invalid chatbot data format");
-                    }
+function updateVisibleButtons() {
+    const buttons = document.querySelectorAll('#faqcon button');
+    let visibleCount = 0;
 
-                    const usermsg = document.createElement('div');
-                    usermsg.classList.add('chat-message', 'user-message');
-                    usermsg.textContent = data.question[id] || "Question not found";
-
-                    const botmsg = document.createElement('div');
-                    botmsg.classList.add('chat-message', 'bot-message');
-                    botmsg.textContent = data.answer[id] || "Answer not found";
-
-                    document.getElementById('msgcon').appendChild(usermsg);
-                    smoothScrollToBottom(document.getElementById('chat-content'));
-
-                    setTimeout(() => {
-                        document.getElementById('msgcon').appendChild(botmsg);
-                        smoothScrollToBottom(document.getElementById('chat-content'));
-                    }, 1000);
-                    butts.style.opacity = '0';
-
-                    setTimeout(() => {
-                        butts.remove();
-                        console.log('Remaining buttons: ', document.querySelectorAll('.faqbut').length);
-
-                        if (document.querySelectorAll('.faqbut').length === 0) {
-                            const faqConElement = document.getElementById('faqcon');
-
-                            if (faqConElement) {
-                                console.log('Updating faqcon with the message');
-                                faqConElement.innerHTML = `
-                            <p style="text-align: center; color: #183251; margin: 0; font-size: 13px">
-                                Please contact our customer support if you have any concerns!
-                            </p>
-                        `;
-                            } else {
-                                console.log('faqcon element not found');
-                            }
-                        }
-                    }, 500);
-                })
-                .catch(err => console.error('Something is wrong:', err));
+    buttons.forEach(button => {
+        if (visibleCount < 3) {
+            button.style.display = 'inline-block';
+            visibleCount++;
+        } else {
+            button.style.display = 'none';
         }
+    });
+}
 
+function handleFAQClick(id, button) {
+    fetch('/../LandingPage/chatbotfolder/index.php')
+    .then(response => response.json())
+    .then(data => {
+        const msgCon = document.getElementById('msgcon');
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const chatIcon = document.getElementById("chat-icon");
-            const chatBox = document.getElementById("chat-box");
-            const chatbot = document.getElementById("chatbotpic");
+        const userWrapper = document.createElement('div');
+        userWrapper.classList.add('message-wrapper', 'user-wrapper');
 
-            chatIcon.addEventListener("click", function () {
-                if (chatBox.style.display === "block") {
-                    chatBox.style.bottom = '-20px';
-                    chatBox.classList.add("closing");
-                    chatbot.onmouseenter = function oo() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png' };
-                    chatbot.onmouseleave = function pp() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png' };
-                    setTimeout(() => {
-                        chatIcon.classList.remove("open");
-                        chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png';
-                    }, 200);
-                    setTimeout(function () {
-                        chatBox.style.display = "none";
-                    }, 300);
-                } else {
-                    chatBox.style.bottom = '0';
-                    chatBox.style.display = "block";
-                    chatbot.onmouseenter = function oo() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot.png' };
-                    chatbot.onmouseleave = function pp() { chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png' };
-                    chatBox.classList.remove("closing");
-                    setTimeout(() => {
-                        chatIcon.classList.add("open");
-                        chatbot.src = '/../LandingPage/chatbotfolder/images/chatbot2.png';
-                    }, 200);
+        const userAvatarContainer = document.createElement('div');
+        userAvatarContainer.classList.add('avatar-container');
+
+        const userAvatar = document.createElement('img');
+        userAvatar.src = '/../LandingPage/chatbotfolder/images/user (1).png'; 
+        userAvatar.classList.add('avatar');
+
+        const usermsg = document.createElement('div');
+        usermsg.classList.add('chat-message', 'user-message');
+        usermsg.textContent = data.question[id];
+
+        userAvatarContainer.appendChild(userAvatar);
+        userWrapper.appendChild(userAvatarContainer);
+        userWrapper.appendChild(usermsg);
+        msgCon.appendChild(userWrapper);
+
+        smoothScrollToBottom(document.getElementById('chat-content'));
+
+        setTimeout(() => {
+            const botWrapper = document.createElement('div');
+            botWrapper.classList.add('message-wrapper', 'bot-wrapper');
+
+            const botAvatarContainer = document.createElement('div');
+            botAvatarContainer.classList.add('avatar-container');
+            const botAvatar = document.createElement('img');
+            botAvatar.src = '/../LandingPage/chatbotfolder/images/chatbot.png'; // Replace with actual path
+            botAvatar.classList.add('avatar');
+
+            const botmsg = document.createElement('div');
+            botmsg.classList.add('chat-message', 'bot-message');
+            botmsg.innerHTML = data.answer[id];
+
+            botAvatarContainer.appendChild(botAvatar);
+            botWrapper.appendChild(botAvatarContainer);
+            botWrapper.appendChild(botmsg);
+            msgCon.appendChild(botWrapper);
+
+            smoothScrollToBottom(document.getElementById('chat-content'));
+        }, 1000);
+
+        button.remove();
+
+        updateVisibleButtons();
+
+        setTimeout(() => {
+            if (document.querySelectorAll('#faqcon button').length === 0) {
+                const faqConElement = document.getElementById('faqcon');
+                if (faqConElement) {
+                    faqConElement.innerHTML = `
+                        <p style="text-align: center; color: #007DAC; margin: 0; font-size: 18px">
+                            For more questions, please contact us at 09283947182 or email us at dppam@gmail.com. 
+                            You can also visit the nearest parish based on your location for assistance.
+                        </p>
+                    `;
                 }
-            });
+            }
+        }, 500);
+    })
+    .catch(err => console.error('Something is wrong', err));
+}
 
-            chatBox.addEventListener("animationend", function () {
-                if (!chatBox.style.display || chatBox.style.display === "block") {
-                    chatBox.classList.remove("closing");
-                    chatBox.style.bottom = '0';
-                }
-            });
+document.addEventListener('DOMContentLoaded', updateVisibleButtons);
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const chatIcon = document.getElementById("chat-icon");
+        const chatBox = document.getElementById("chat-box");
+        const chatbot = document.getElementById("chatbotpic"); 
+        
+        chatIcon.addEventListener("click", function () {
+            if (chatBox.style.display === "none" || chatBox.style.display ===""){
+                chatBox.style.display ="flex";
+                chatbot.src ="/../LandingPage/chatbotfolder/images/chatimgclose.png";
+            } else {
+                chatBox.style.display= "none";
+                chatbot.src ="/../LandingPage/chatbotfolder/images/chatimg.png";
+            }
+        })
         });
 
         fetch('/../LandingPage/chatbotfolder/index.php')
-            .then(response => response.json())
-            .then(data => {
+        .then(response => response.json())
+        .then(data => {
+        const faqContainer = document.getElementById('faqcon');
+        const faqText = document.getElementById('faq-text');
+        let allButtons = [];
 
-                for (let e in data.question) document.getElementById('faqcon').insertAdjacentHTML('beforeend', `
-            <button onclick="handleFAQClick('${e}', this)" class="faqbut" id="faqbut">${data.question[e]}</button>
-        `);
+        for (let e in data.question) {
+            const button = document.createElement('button');
+            button.textContent = data.question[e];
+            button.classList.add('faqbut');
+            button.onclick = function () {
+                handleFAQClick(e, this);
+                button.remove();
+                updateVisibleButtons();
+            };
+            button.style.display = 'none';
+            allButtons.push(button);
+            faqContainer.appendChild(button);
+        }
+        updateVisibleButtons();
 
-            })
-            .catch(err => console.error('Something is wrong', err));
-
-        function smoothScrollToBottom(element) {
-            // Get the current scroll position
-            const startScroll = element.scrollTop;
-            // Get the target scroll position (bottom of the element)
-            const targetScroll = element.scrollHeight - element.clientHeight;
-            // Calculate the distance to scroll
-            const distance = targetScroll - startScroll;
-            // Set the duration of the animation
-            const duration = 500; // in milliseconds
-            // Set the start time of the animation
-            const startTime = performance.now();
-
-            // Define the animation function
-            function scrollAnimation(currentTime) {
-                // Calculate the elapsed time since the start of the animation
-                const elapsedTime = currentTime - startTime;
-                // Calculate the progress of the animation (0 to 1)
-                const progress = Math.min(elapsedTime / duration, 1);
-                // Calculate the new scroll position based on the progress
-                const newScroll = startScroll + distance * progress;
-                // Scroll the element to the new position
-                element.scrollTop = newScroll;
-
-                // Continue the animation if not finished
-                if (progress < 1) {
-                    requestAnimationFrame(scrollAnimation);
+        function updateVisibleButtons() {
+            let visibleCount = 0;
+            allButtons.forEach(button => {
+                if (visibleCount < 3 && button.style.display === 'none') {
+                    button.style.display = 'inline-block';
+                    visibleCount++;
                 }
-            }
+            });
 
-            // Start the animation
-            requestAnimationFrame(scrollAnimation);
+            if (document.querySelectorAll('.faqbut').length === 0) {
+                faqText.style.display = 'none';
+            }
+        }
+    })
+    .catch(err => console.error('Something is wrong', err));
+
+    
+function smoothScrollToBottom(element) {
+        // Get the current scroll position
+        const startScroll = element.scrollTop;
+        // Get the target scroll position (bottom of the element)
+        const targetScroll = element.scrollHeight - element.clientHeight;
+        // Calculate the distance to scroll
+        const distance = targetScroll - startScroll;
+        // Set the duration of the animation
+        const duration = 500; // in milliseconds
+        // Set the start time of the animation
+        const startTime = performance.now();
+
+        // Define the animation function
+        function scrollAnimation(currentTime) {
+            // Calculate the elapsed time since the start of the animation
+            const elapsedTime = currentTime - startTime;
+            // Calculate the progress of the animation (0 to 1)
+            const progress = Math.min(elapsedTime / duration, 1);
+            // Calculate the new scroll position based on the progress
+            const newScroll = startScroll + distance * progress;
+            // Scroll the element to the new position
+            element.scrollTop = newScroll;
+
+            // Continue the animation if not finished
+            if (progress < 1) {
+                requestAnimationFrame(scrollAnimation);
+            }
         }
 
-    </script>
-</body>
+        // Start the animation
+        requestAnimationFrame(scrollAnimation);
+    }
 
+</script> 
+</body>
 </html>

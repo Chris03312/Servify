@@ -20,7 +20,7 @@
                 Volunteers who help manage the flow of voters at polling stations, guide people to their assigned areas, 
                 and ensure that voting procedures are followed smoothly and efficiently.
                 </p>
-                <p>
+                <p class="desc">
                     What they do:
                 </p>
                 <ul>
@@ -31,7 +31,7 @@
                     <li>Support election officials with logistical tasks.</li>
                 </ul>
 
-                <p>Qualifications:</p>
+                <p class="desc">Qualifications:</p>
                 <ul>
                     <li>Good communication and interpersonal skills.</li>
                     <li>Ability to handle large crowds calmly and efficiently.</li>

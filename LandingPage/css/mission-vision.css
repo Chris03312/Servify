@@ -345,4 +345,75 @@ body {
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .info-cards {
+        flex-direction: column;
+        padding: 0 30px;
+        margin-top: 150px;
+        margin-bottom: 100px;
+        height: auto;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+        padding: 40px 10px 20px;
+        margin-bottom: 30px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-content {
+        max-height: 200px;
+    }
+
+    .card-content p{
+        font-size: 14px;
+    }
+
+    .card-content ul{
+        font-size: 14px;
+    }
+
+    .second-container {
+        flex-direction: column;
+        padding: 30px;
+        margin-bottom: 100px;
+    }
+
+    .second-image {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .second-additional-info {
+        padding: 0 20px;
+    }
+
+    .second-additional-info p{
+        font-size: 14px;
+    }
+
+    .second-additional-info ul{
+        font-size: 14px;
+    }
+
+    .custom-numbering li {
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
+    .custom-numbering li::before {
+        left: -15px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}
+
+
+
 
