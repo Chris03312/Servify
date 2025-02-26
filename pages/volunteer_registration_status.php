@@ -82,6 +82,7 @@
                         <?php endif; ?>
                             <td><?php echo $statusInfo['FIRST_NAME']." ".$statusInfo['MIDDLE_NAME']." ".$statusInfo['SURNAME']; ?></td>
                             <td><?php echo $statusInfo['STATUS']; ?></td>
+                            <td></td>
                             <td><button class="btn btn-sm btn-outline-primary">Action</button></td>
                             <!-- <td></td> -->
                         </tr>
