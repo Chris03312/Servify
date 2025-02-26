@@ -7,7 +7,8 @@
     <title>Servify | Sign Up</title>
     <link rel="stylesheet" href="../css/login_style.css">
     <!--BOOTSTRAP CSS CDN LINK-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
 
@@ -34,7 +35,7 @@
                         </p>
 
                         <p class="text-center fs-6">
-                            If you are an official <strong>volunteer, coordinator,</strong> or <strong>administrator</strong>
+                            If you are an official <strong>volunteer</strong>
                             registering for the first time, kindly inform the system administrator or assigned
                             coordinator after completing your registration to expedite the approval process.
                         </p>
@@ -43,21 +44,25 @@
 
                 <div class="right col-lg-8 pt-4">
                     <div class="text-center">
-                        <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span></h1>
+                        <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span>
+                        </h1>
                         <h3>Sign Up Form</h3>
 
                         <div class="d-flex flex-column">
-                            <span class="text-muted">Enter your details below to create your account and get started.</span>
+                            <span class="text-muted">Enter your details below to create your account and get
+                                started.</span>
                         </div>
 
                         <spam class="text-muted"></spam>
                     </div>
-                        
+
                     <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
                         <!--PARISH NAMES-->
                         <div class="col-md-12 mb-3">
-                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
-                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish" placeholder="Type to search..."  >
+                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as
+                                    VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
+                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish"
+                                placeholder="Type to search...">
                             <datalist id="parishNameOptions">
                                 <option value="St. Francis of Assisi – Sta Quiteria Parish">
                                 <option value="Birhen ng Lourdes Parish">
@@ -91,17 +96,21 @@
                                 <option value="Sto. Niño de Pasion Parish">
                                 <option value="Nustra Senora delos Remedios Quasi-Parish">
                             </datalist>
-                                <div class="validation text-danger"></div>
+                            <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for="surname" class="form-label">Surname<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Ex. Dela Cruz">
+                            <label for="surname" class="form-label">Surname<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="surname" name="surname"
+                                placeholder="Ex. Dela Cruz">
                             <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="firstname" class="form-label">First name<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Ex. Juan">
+                            <label for="firstname" class="form-label">First name<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="firstname" name="firstname"
+                                placeholder="Ex. Juan">
                             <div class="validation text-danger"></div>
                         </div>
 
@@ -116,8 +125,9 @@
 
                         <strong class="mb-3">Birth Day</strong>
                         <div class="col-md-4 mb-3">
-                            <label for="birthMonth" class="form-label">Month<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="birthMonth" class="form-select" name="birthMonth" >
+                            <label for="birthMonth" class="form-label">Month<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <select id="birthMonth" class="form-select" name="birthMonth">
                                 <option selected disabled value="">Select month</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -136,20 +146,22 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label for="birthDate" class="form-label">Day<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthDate" name="birthDate" >
+                            <label for="birthDate" class="form-label">Day<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="birthDate" name="birthDate">
                             <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="birthYear" class="form-label">Year<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthYear" name="birthYear" >
+                            <label for="birthYear" class="form-label">Year<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="birthYear" name="birthYear">
                             <div class="validation text-danger"></div>
                         </div>
 
                         <strong class="mb-3">Address</strong>
                         <div class="col-md-12 mb-3">
                             <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="city" class="form-select" name="city" >
+                            <select id="city" class="form-select" name="city">
                                 <option selected disabled value="">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
@@ -161,13 +173,16 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for="street" class="form-label">Street/Unit/Bldg/Village<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="street" name="street" placeholder="Ex. Blk# Lot#">
+                            <label for="street" class="form-label">Street/Unit/Bldg/Village<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="street" name="street"
+                                placeholder="Ex. Blk# Lot#">
                             <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="barangay" class="form-select" name="barangay" >
+                            <label for="barangay" class="form-label">Barangay<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <select id="barangay" class="form-select" name="barangay">
                                 <option selected disabled value="">Select Barangay</option>
                                 <!-- Barangay options will be populated dynamically using JavaScript -->
                             </select>
@@ -181,8 +196,10 @@
                             <script src="js/signup.js"></script>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="district" class="form-label">District<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="district" name="district" placeholder="Ex. District 1">
+                            <label for="district" class="form-label">District<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="district" name="district"
+                                placeholder="Ex. District 1">
                             <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -193,24 +210,28 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Ex. example1@gmail.com" >
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Ex. example1@gmail.com">
                             <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="username" class="form-label">Create Username<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="username" name="username" >
+                            <label for="username" class="form-label">Create Username<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="username" name="username">
                             <div class="validation text-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="password" class="form-label">Create Password<sup class="text-danger fw-bold">*</sup></label>
+                            <label for="password" class="form-label">Create Password<sup
+                                    class="text-danger fw-bold">*</sup></label>
                             <input type="password" class="form-control" id="password" name="password">
                             <div class="validation text-danger"></div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="confirmPassword" class="form-label">Confirm Password<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" >
+                            <label for="confirmPassword" class="form-label">Confirm Password<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                             <div class="validation text-danger"></div>
                         </div>
 
@@ -219,7 +240,8 @@
                         </div>
 
                         <!--SUCCESS MODAL-->
-                        <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header bg-primary p-2">
@@ -228,11 +250,14 @@
                                         <div class="text-center">
                                             <img src="../img/icons8-checkmark-90 (1).png" alt="">
                                             <h3 class="text-primary">SUCCESS</h3>
-                                            <p class="text-muted">Your account on <strong><span class="text-danger">Serv</span><span class="text-primary">ify</span></strong>
+                                            <p class="text-muted">Your account on <strong><span
+                                                        class="text-danger">Serv</span><span
+                                                        class="text-primary">ify</span></strong>
                                                 has been created.</p>
                                             <p class="text-muted">Check your email for more details.</p>
-                                            <button type="button" class="btn btn-primary px-5" id="redirectButton" data-bs-dismiss="modal">Done</button>
-                                            </div>
+                                            <button type="button" class="btn btn-primary px-5" id="redirectButton"
+                                                data-bs-dismiss="modal">Done</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +266,8 @@
                     </form>
 
                     <div class="mb-3 text-center">
-                        <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a></p>
+                        <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a>
+                        </p>
                     </div>
 
                     <div class="mt-5">
@@ -259,7 +285,9 @@
 
 
     <!--BOOTSTRAP JS CDN LINK-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 

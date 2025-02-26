@@ -2,9 +2,11 @@
 // district
 require_once __DIR__ . '/../configuration/Database.php';
 
-class VolunteerManagement {
+class VolunteerManagement
+{
 
-    public static function getCityList() {
+    public static function getCityList()
+    {
         try {
             // Get the database connection
             $db = Database::getConnection();
@@ -39,36 +41,37 @@ class VolunteerManagement {
         }
     }
 
-    public static function getDistrictDirectory($city) {
+    public static function getDistrictDirectory($city)
+    {
         try {
             $db = Database::getConnection();
-    
+
             // Start with the base query
             $query = 'SELECT DISTINCT DISTRICT FROM PRECINCT_TABLE';
-    
+
             // If a city is provided, add a WHERE clause to filter by city
             if ($city) {
                 $query .= ' WHERE `MUNICIPALITY/CITY` = :city';
             }
-    
+
             // Prepare the SQL statement
             $stmt = $db->prepare($query);
-    
+
             // Execute the query, passing the city parameter if it's set
             if ($city) {
                 $stmt->execute([':city' => $city]);
             } else {
                 $stmt->execute(); // Execute without parameters if no city is provided
             }
-    
+
             // Fetch the result as an associative array
             $districts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // If no districts are found, return an empty array
             if (empty($districts)) {
                 return [];
             }
-    
+
             // Generate links for each district
             $districtLinks = [];
             foreach ($districts as $district) {
@@ -78,10 +81,10 @@ class VolunteerManagement {
                     'link' => '/barangay_volunteer_directory?City=' . urlencode($city) . '&District=' . urlencode($districtName)
                 ];
             }
-    
+
             // Return the district links
             return $districtLinks;
-    
+
         } catch (PDOException $e) {
             // Log any error that occurs while fetching the directory
             error_log('Error in getting the barangay directory: ' . $e->getMessage());
@@ -89,46 +92,47 @@ class VolunteerManagement {
         }
     }
 
-    public static function getBarangayDirectory($district, $city) {
+    public static function getBarangayDirectory($district, $city)
+    {
         try {
             $db = Database::getConnection();
-    
+
             // Start with the base query
             $query = 'SELECT DISTINCT BARANGAY_NAME FROM PRECINCT_TABLE';
 
             // Add conditions for district and city if provided
             $conditions = [];
             $params = [];
-            
+
             if ($district) {
                 $conditions[] = 'DISTRICT = :district';
                 $params[':district'] = $district;
             }
-            
+
             if ($city) {
                 $conditions[] = '`MUNICIPALITY/CITY` = :city';  // Ensure column name is correct
                 $params[':city'] = $city;
             }
-            
+
             // If there are conditions, append them to the query
             if (!empty($conditions)) {
                 $query .= ' WHERE ' . implode(' AND ', $conditions);
-            }            
-    
+            }
+
             // Prepare the SQL statement
             $stmt = $db->prepare($query);
-    
+
             // Execute the query with the provided parameters
             $stmt->execute($params);
-    
+
             // Fetch the result as an associative array
             $barangayDirectory = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // If no barangays are found, return an empty array
             if (empty($barangayDirectory)) {
                 return [];
             }
-    
+
             // Generate links for each barangay
             $barangayLinks = [];
             foreach ($barangayDirectory as $barangay) {
@@ -138,30 +142,31 @@ class VolunteerManagement {
                     'link' => '/polling_area?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName)
                 ];
             }
-    
+
             // Return the barangay links
             return $barangayLinks;
-    
+
         } catch (PDOException $e) {
             // Log any error that occurs while fetching the directory
             error_log('Error in getting the barangay directory: ' . $e->getMessage());
             return [];
         }
     }
-    
 
-    public static function getPollingPlace($city, $district, $barangay) {
+
+    public static function getPollingPlace($city, $district, $barangay)
+    {
         try {
             $db = Database::getConnection();
 
             // Start with the base query
             $query = 'SELECT DISTINCT POLLING_PLACE, BARANGAY_NAME FROM PRECINCT_TABLE';
-    
+
             // If a district is provided, add a WHERE clause to filter by district
             if ($district) {
                 $query .= ' WHERE DISTRICT = :district';
             }
-            
+
             // If a barangay is provided, add a WHERE clause to filter by barangay
             if ($barangay) {
                 $query .= ' AND BARANGAY_NAME = :barangay';
@@ -169,10 +174,10 @@ class VolunteerManagement {
             if ($barangay) {
                 $query .= ' AND `MUNICIPALITY/CITY` = :city';
             }
-    
+
             // Prepare the SQL statement
             $stmt = $db->prepare($query);
-    
+
             // Execute the query, passing the district and barangay parameters if they are set
             $params = [];
             if ($district) {
@@ -185,15 +190,15 @@ class VolunteerManagement {
                 $params[':city'] = $city;
             }
             $stmt->execute($params);
-    
+
             // Fetch the result as an associative array
             $barangayDirectory = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             // If no barangays are found, return an empty array
             if (empty($barangayDirectory)) {
                 return [];
             }
-    
+
             // Generate links for each barangay
             $pollingLinks = [];
             foreach ($barangayDirectory as $barangay) {
@@ -201,14 +206,14 @@ class VolunteerManagement {
                 $pollingPlace = $barangay['POLLING_PLACE']; // Fetch polling place here
                 $pollingLinks[] = [
                     'name' => $pollingPlace,
-                    'link' => '/list_of_volunteer?City='.urlencode($city).'&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
+                    'link' => '/list_of_volunteer?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
                 ];
             }
-    
+
             $stmt = $db->prepare('SELECT FROM');
             // Return the barangay links
             return $pollingLinks;
-    
+
         } catch (PDOException $e) {
             // Log any error that occurs while fetching the directory
             error_log('Error in getting the barangay directory: ' . $e->getMessage());
@@ -216,8 +221,9 @@ class VolunteerManagement {
         }
     }
 
-    public static function getlistofVolunteer($city, $district, $barangay, $pollingplace) {
-        try{
+    public static function getlistofVolunteer($city, $district, $barangay, $pollingplace)
+    {
+        try {
             $db = Database::getConnection();
 
             $stmt = $db->prepare('SELECT
@@ -233,33 +239,41 @@ class VolunteerManagement {
             $listofvolunteers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $listofvolunteers;
-        }catch (PDOException $e) {
-            error_log('Error in getting list of volunteer'. $e->getMessage());
+        } catch (PDOException $e) {
+            error_log('Error in getting list of volunteer' . $e->getMessage());
         }
     }
 
 
-    public static function getApplicationByStatus($status) {
+    public static function getApplicationByStatus($status)
+    {
         try {
             $db = Database::getConnection();
-    
+
             // Use a prepared statement with a status filter
-            $stmt = $db->prepare('SELECT * FROM APPLICATION_INFO WHERE status = :status'); 
-            $stmt->execute([':status' => $status]); 
+            $stmt = $db->prepare("
+            SELECT ai.*, aai.*
+            FROM APPLICATION_INFO ai
+            INNER JOIN APPLICATION_ADD_INFO aai
+             ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
+            WHERE ai.status = :status
+        ");
+            $stmt->execute([':status' => $status]);
             $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             return $applications; // Return the filtered applications
-    
+
         } catch (PDOException $e) {
             error_log('Error in getting applications: ' . $e->getMessage());
             return []; // Return an empty array on error
         }
     }
 
-    public static function countApplicationsByStatuses(array $statuses) {
+    public static function countApplicationsByStatuses(array $statuses)
+    {
         try {
             $db = Database::getConnection();
-    
+
             $counts = [];
             foreach ($statuses as $status) {
                 // Use a SQL COUNT query to get the total number of applications with the specified status
@@ -268,19 +282,20 @@ class VolunteerManagement {
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 $counts[$status] = $result['total'];
             }
-    
+
             return $counts; // Return the counts for each status
-    
+
         } catch (PDOException $e) {
             error_log('Error in counting applications: ' . $e->getMessage());
             return []; // Return an empty array on error
         }
     }
-    
-    public static function deleteApplications($application_id) {
+
+    public static function deleteApplications($application_id)
+    {
         try {
             $db = Database::getConnection();
-            
+
             // Prepare and execute the delete query
             $stmt = $db->prepare('DELETE FROM APPLICATION_INFO WHERE APPLICATION_ID = :application_id');
             $stmt->execute([':application_id' => $application_id]);
@@ -293,7 +308,8 @@ class VolunteerManagement {
         }
     }
 
-    public static function getParishes() {
+    public static function getParishes()
+    {
         try {
             $db = Database::getConnection();
             $stmt = $db->prepare('SELECT * FROM PARISHES');
@@ -301,7 +317,7 @@ class VolunteerManagement {
             $parishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $parishes;
-        }catch (PDOEXception $e) {
+        } catch (PDOEXception $e) {
             error_log('Error in getting parish: ' . $e->getMessage());
             return [];
         }

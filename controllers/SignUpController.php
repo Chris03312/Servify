@@ -183,8 +183,8 @@ class SignUpController
             $errors['birthMonth'] = 'Birth month is required. Please select a month from January to December.';
         }
 
-        if (!preg_match('/^(1|2[0-9]|3[01])$/', $input['birthDate'])) {
-            $errors['birthDate'] = 'Birth Date is required. Please input date from 1 to 30 ';
+        if (!preg_match('/^(0?[1-9]|1[0-9]|2[0-9]|30)$/', $input['birthDate'])) {
+            $errors['birthDate'] = 'Birth Date is required. Please input a number from 1 to 30.';
         }
 
         if (!preg_match('/^(19|20)\d{2}$/', $input['birthYear']) || $input['birthYear'] < 1900 || $input['birthYear'] > $minimumYear) {

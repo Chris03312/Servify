@@ -1,15 +1,19 @@
-<?php 
+<?php
+
 
 require_once __DIR__ . '/../models/sidebarinfo.php';
 
-class AdminInquiryController {
+class AdminInquiryController
+{
 
-    public static function ShowAdminInquiry() {
-        
+    public static function ShowAdminInquiry()
+    {
+
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         view('admin_inquiries', [
-            'sidebarinfo' => $sidebarData
+            'adminsidebarinfo' => $sidebarData,
+            'role' => $_SESSION['role']
         ]);
     }
 }

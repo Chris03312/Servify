@@ -48,17 +48,20 @@
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                         <input type="search" class="form-control" name="search" id="search" placeholder="Search here">
                     </div>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-sliders"></i></button>
-                    <button type="button" class="btn btn-outline-secondary d-md-block d-none"><i class="bi bi-plus me-2"></i>Add Submission</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#filterModal"><i class="bi bi-sliders"></i></button>
+                    <button type="button" class="btn btn-outline-secondary d-md-block d-none"><i
+                            class="bi bi-plus me-2"></i>Add Submission</button>
 
                     <!--FILTER MODAL-->
-                    <div class="modal fade" id="filterModal" tabindex="-1"
-                        aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-lg">
 
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
 
                                 <div class="modal-body">
@@ -68,7 +71,9 @@
 
                                     <div class="row align-items-center mb-3">
                                         <div class="col-auto">
-                                            <label for="submissionDate" class="col-form-label col-auto"><strong>Submission Date:</strong></label>
+                                            <label for="submissionDate"
+                                                class="col-form-label col-auto"><strong>Submission
+                                                    Date:</strong></label>
                                         </div>
                                         <div class="col-auto">
                                             <div class="input-group">
@@ -80,7 +85,8 @@
 
                                     <div class="row align-items-center mb-3">
                                         <div class="col-auto">
-                                            <label for="applicationType" class="col-form-label"><strong>Application Type:</strong></label>
+                                            <label for="applicationType" class="col-form-label"><strong>Application
+                                                    Type:</strong></label>
                                         </div>
                                         <div class="col-auto">
                                             <select id="applicationType" class="form-select">
@@ -113,7 +119,8 @@
 
                                     <div class="row align-items-center mb-3">
                                         <div class="col-auto">
-                                            <label for="pollingPlace" class="col-form-label"><strong>Polling Place:</strong></label>
+                                            <label for="pollingPlace" class="col-form-label"><strong>Polling
+                                                    Place:</strong></label>
                                         </div>
                                         <div class="col-auto">
                                             <select id="pollingPlace" class="form-select">
@@ -133,7 +140,9 @@
 
                                     <div class="row align-items-center mb-5">
                                         <div class="col-auto">
-                                            <label for="cancellationDate" class="col-form-label col-auto"><strong>Cancellation Date:</strong></label>
+                                            <label for="cancellationDate"
+                                                class="col-form-label col-auto"><strong>Cancellation
+                                                    Date:</strong></label>
                                         </div>
                                         <div class="col-auto">
                                             <div class="input-group">
@@ -161,7 +170,8 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <button type="button" class="dropdown-item"><i class="bi bi-plus me-2"></i>Add Submission</button>
+                                <button type="button" class="dropdown-item"><i class="bi bi-plus me-2"></i>Add
+                                    Submission</button>
                             </ul>
                         </div>
                     </div>
@@ -173,16 +183,20 @@
 
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link px-3" href="/pending_submissions">Pending <small>(<?php echo $pendingCount; ?>)</small></a>
+                <a class="nav-link px-3" href="/pending_submissions">Pending
+                    <small>(<?php echo $pendingCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/under_review_submissions">Under Review <small>(<?php echo $underReviewCount; ?>)</small></a>
+                <a class="nav-link px-3" href="/under_review_submissions">Under Review
+                    <small>(<?php echo $underReviewCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/approved_submissions">Approved/Completed <small>(<?php echo $approvedCount; ?>)</small></a>
+                <a class="nav-link active px-3" href="/approved_submissions">Approved/Completed
+                    <small>(<?php echo $approvedCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled <small>(<?php echo $cancelledCount; ?>)</small></a>
+                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled
+                    <small>(<?php echo $cancelledCount; ?>)</small></a>
             </li>
         </ul>
 
@@ -206,7 +220,11 @@
                         <?php foreach ($approvedApplications as $application): ?>
                             <tr>
                                 <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
-                                <td><?php echo 'New ' . $application['ROLE']; ?></td>
+                                <td><?php echo 'New ' . $application['ROLE'] . '<br><br>
+                                    Precinct no.: ' . $application['PRECINCT_NO'] . '<br>
+                                    Address: ' . $application['STREETADDRESS'] . ', ' . $application['BARANGAY'] . ', ' . $application['CITY'] . '<br>
+                                    Preferred Role: ' . $application['PREFERRED_PPCRV_VOL_ASS']; ?>
+                                </td>
                                 <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME']; ?></td>
                                 <td>
                                     <select name="status" class="form-select">
@@ -221,11 +239,16 @@
                                 </td>
                                 <td>
                                     <div class="d-none d-md-flex flex-row gap-2">
+                                        <form action="/approved_submissions/review" method="POST">
+                                            <input type="hidden" name="application_id"
+                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <button type="submit" class="btn btn-primary mb-2">Review</button>
+                                        </form>
                                         <form action="/approved_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <input type="hidden" name="application_id"
+                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                             <button type="submit" class="btn btn-danger">Reject</button>
                                         </form>
-                                        <button type="button" class="btn btn-primary mb-2">Review</button>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -235,10 +258,16 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
+                                                <form action="/approved_submissions/review" method="POST">
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
+                                                </form>
                                                 <form action="/approved_submissions/delete" method="POST">
-                                                    <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit" class="dropdown-item btn btn-danger">Delete</a></button>
+                                                    <input type="hidden" name="application_id"
+                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit"
+                                                        class="dropdown-item btn btn-danger">Delete</a></button>
                                                 </form>
                                             </ul>
                                         </div>
@@ -261,12 +290,12 @@
 
     <!--SCRIPT FOR DATE PICKER-->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             flatpickr('#submissionDate', {
                 dateFormat: 'M-d-Y', // Customize the format (e.g., YYYY-MM-DD)
             });
         });
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             flatpickr('#cancellationDate', {
                 dateFormat: 'M-d-Y', // Customize the format (e.g., YYYY-MM-DD)
             });
@@ -276,7 +305,7 @@
 
     <!--SCRIPT FOR FILTERING-->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const searchButton = document.querySelector("#filterModal .btn-primary"); // Search button
             const resetButton = document.querySelector("#filterModal .btn-outline-secondary"); // Reset button
             const searchInput = document.querySelector("#search"); // Volunteer Name search input
@@ -298,7 +327,7 @@
             }
 
             // Function to filter table based on search input (Volunteer Name)
-            searchInput.addEventListener("keyup", function() {
+            searchInput.addEventListener("keyup", function () {
                 let searchValue = searchInput.value.toLowerCase().trim();
 
                 tableRows.forEach(row => {
@@ -309,7 +338,7 @@
                 checkIfEmpty();
             });
 
-            searchButton.addEventListener("click", function() {
+            searchButton.addEventListener("click", function () {
                 // Get filter values
                 let submissionDate = document.querySelector("#submissionDate").value.trim();
                 let applicationType = document.querySelector("#applicationType").value;
@@ -356,7 +385,7 @@
                 modal.hide();
             });
 
-            resetButton.addEventListener("click", function() {
+            resetButton.addEventListener("click", function () {
                 // Clear all input fields
                 document.querySelector("#submissionDate").value = "";
                 document.querySelector("#applicationType").selectedIndex = 0; // Reset to default option

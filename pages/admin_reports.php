@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--BOOTSTRAP CDN ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -85,11 +86,19 @@
 
         <!--LINE CHART: NUMBER OF VOLUNTEES-->
         <section class="mb-3">
-            <div class="card">
+            <div? class="card">
                 <div class="card-body">
                     <canvas id="volunteersPerYearChart"></canvas>
                 </div>
-            </div>
+                <script>
+                    var caloocan = <?php echo json_encode($numberofVolunteersGraphs['CALOOCAN'] ?? 0); ?>;
+                    var malabon = <?php echo json_encode($numberofVolunteersGraphs['MALABON'] ?? 0); ?>;
+                    var navotas = <?php echo json_encode($numberofVolunteersGraphs['NAVOTAS'] ?? 0); ?>;
+
+                    console.log('caloocan', caloocan);
+                    console.log('malabon', malabon);
+                    console.log('navotas', navotas);
+                </script>
         </section>
 
         <!--FILTER BUTTON-->
@@ -125,14 +134,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="row">2025</td>
-                                    <td>20</td>
-                                    <td>30</td>
-                                    <td>40</td>
-                                    <td>100</td>
-                                </tr>
-
+                                <?php if ($numberofVolunteers): ?>
+                                    <?php foreach ($numberofVolunteers as $numbers): ?>
+                                        <tr>
+                                            <td scope="row"><?php echo date("Y", strtotime($numbers['DATE_REGISTERED'])); ?>
+                                            </td>
+                                            <td><?php echo $numbers['CALOOCAN'] ?? ' '; ?></td>
+                                            <td><?php echo $numbers['MALABON'] ?? ' '; ?></td>
+                                            <td><?php echo $numbers['NAVOTAS'] ?? ' '; ?></td>
+                                            <td><?php echo $numbers['VOLUNTEERS'] ?? ' '; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -149,7 +162,8 @@
                         <label for="SelectListOfVolunteers" class="form-label me-2">
                             <h5>List of Volunteers</h5>
                         </label>
-                        <select class="form-select form-select-sm w-auto" name="SelectListOfVolunteers" id="SelectListOfVolunteers" aria-label="Filter by year">
+                        <select class="form-select form-select-sm w-auto" name="SelectListOfVolunteers"
+                            id="SelectListOfVolunteers" aria-label="Filter by year">
 
                             <option value="All">All</option>
                             <option value="New Volunteers">New Volunteers</option>
@@ -175,40 +189,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="row">2025</td>
-                                    <td>Vicmar Guzman</td>
-                                    <td>email@gmail.com</td>
-                                    <td>District 5/PPP</td>
-                                    <td>Xavier Parish/Coordinator Name</td>
-                                    <td>Jungler</td>
-                                    <td>Police Station 16</td>
-                                    <td>Single</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">2025</td>
-                                    <td>Vicmar Guzman</td>
-                                    <td>email@gmail.com</td>
-                                    <td>District 5/PPP</td>
-                                    <td>Xavier Parish/Coordinator Name</td>
-                                    <td>Jungler</td>
-                                    <td>Police Station 16</td>
-                                    <td>Single</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">2025</td>
-                                    <td>Vicmar Guzman</td>
-                                    <td>email@gmail.com</td>
-                                    <td>District 5/PPP</td>
-                                    <td>Xavier Parish/Coordinator Name</td>
-                                    <td>Jungler</td>
-                                    <td>Police Station 16</td>
-                                    <td>Single</td>
-                                    <td>2</td>
-                                </tr>
-
+                                <?php if ($volunteersList): ?>
+                                    <?php foreach ($volunteersList as $volunteers): ?>
+                                        <tr>
+                                            <td scope="row"><?php echo date("Y", strtotime($volunteers['DATE_APPROVED'])); ?>
+                                            </td>
+                                            <td><?php echo $volunteers['FIRST_NAME'] ?? ' ' . ' ' . $volunteers['SURNAME'] ?? ' '; ?>
+                                            </td>
+                                            <td><?php echo $volunteers['EMAIL'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['DISTRICT'] . ' / ' . $volunteers['BARANGAY'] ?? ' '; ?>
+                                            </td>
+                                            <td><?php echo $volunteers['PARISH'] . ' / ' . $volunteers['COORDINATOR'] ?? ' '; ?>
+                                            </td>
+                                            <td><?php echo $volunteers['ROLE'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['ASSIGNED_ASSIGNMENT'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['GENDER'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['YEARSOFSERVICE'] ?? ''; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -226,10 +225,10 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="mb-3">Age Groups</h5>
-                            
                             <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                 <div><span>Age 18-24: </span></div>
-                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="65"
+                                    aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-warning" style="width: 65%"><strong>65%</strong></div>
                                 </div>
                             </div>
@@ -237,7 +236,8 @@
 
                             <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                 <div><span>Age 25-34: </span></div>
-                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="45"
+                                    aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-success" style="width: 45%"><strong>45%</strong></div>
                                 </div>
                             </div>
@@ -245,7 +245,8 @@
 
                             <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                 <div><span>Age 34-44: </span></div>
-                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="75"
+                                    aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-info" style="width: 75%"><strong>75%</strong></div>
                                 </div>
                             </div>
@@ -253,7 +254,8 @@
 
                             <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                 <div><span>Age 45+: </span></div>
-                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress flex-grow-1" role="progressbar" aria-label="age" aria-valuenow="50"
+                                    aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar" style="width: 50%"><strong>50%</strong></div>
                                 </div>
                             </div>
@@ -267,7 +269,8 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="mb-3">Distribution of volunteers per precinct</h5>
-                            <canvas id="distributionOfVolunteersPerPrecinctBarChart"></canvas><!--distribution_of_volunteers_per_precinct_barChart-->
+                            <canvas
+                                id="distributionOfVolunteersPerPrecinctBarChart"></canvas><!--distribution_of_volunteers_per_precinct_barChart-->
                         </div>
                     </div>
                 </div>
@@ -276,20 +279,20 @@
                 <div class="col-sm-12 col-md-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                        <h5 class="mb-3">Attendance Summary</h5>
+                            <h5 class="mb-3">Attendance Summary</h5>
 
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5>Total Present</h5>
-                                <h1 class="text-primary">100</h1>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5>Total Present</h5>
+                                    <h1 class="text-primary">100</h1>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5>Total Absent</h5>
-                                <h1 class="text-primary">100</h1>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Total Absent</h5>
+                                    <h1 class="text-primary">100</h1>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -315,7 +318,9 @@
 
 
     <!--BOOTSTRAP JS CDN LINK-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 

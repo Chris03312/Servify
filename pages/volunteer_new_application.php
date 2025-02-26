@@ -429,9 +429,9 @@
                                     <?php foreach ($preferredMission as $mission): ?>
                                         <option value="<?php echo $mission['MISSION_NAME']; ?>">
                                             <?php echo $mission['MISSION_NAME']; ?>
-                                        <option selected value="Others">Others</option>
                                         </option>
                                     <?php endforeach; ?>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <div class="invalid-feedback" id="error-prevPpcrvVolAss"></div>
                             </div>
@@ -460,9 +460,9 @@
                                     <?php foreach ($preferredMission as $mission): ?>
                                         <option value="<?php echo $mission['MISSION_NAME']; ?>">
                                             <?php echo $mission['MISSION_NAME']; ?>
-                                        <option selected value="Others">Others</option>
                                         </option>
                                     <?php endforeach; ?>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <div class="invalid-feedback" id="error-prefPpcrvVolAss"></div>
                             </div>
