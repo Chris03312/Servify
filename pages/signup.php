@@ -161,7 +161,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
+                            <label for="street" class="form-label">Street/Unit/Bldg/Village<sup class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="street" name="street" placeholder="Ex. Blk# Lot#">
                             <div class="validation text-danger"></div>
                         </div>
@@ -181,7 +181,7 @@
                             <script src="js/signup.js"></script>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
+                            <label for="zipcode" class="form-label">Zipcode</label>
                             <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
                             <div class="validation text-danger"></div>
                         </div>
