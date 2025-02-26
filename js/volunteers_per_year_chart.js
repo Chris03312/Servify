@@ -4,15 +4,33 @@ document.addEventListener("DOMContentLoaded", function () {
     new Chart(ctx, {
         type: "line",
         data: {
-            labels: ["2020", "2021", "2022", "2023", "2024", "2025"],
-            datasets: [{
-                label: "Volunteers in Caloocan",
-                data: [120, 80, 120, 60, 100, 10], // Sample data
-                borderColor: "blue",
-                backgroundColor: "rgba(0, 0, 255, 0.2)",
-                borderWidth: 2,
-                fill: true
-            }]
+            labels: ["2020", "2021", "2022", "2023", "2024", "2025"], // Years
+            datasets: [
+                {
+                    label: "Volunteers in Caloocan",
+                    data: [120, 80, 120, 60, 100, 10], // Replace with dynamic data
+                    borderColor: "blue",
+                    backgroundColor: "rgba(0, 0, 255, 0.2)",
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: "Volunteers in Malabon",
+                    data: [60, 120, 100, 50, 80, 5], // Replace with dynamic data
+                    borderColor: "red",
+                    backgroundColor: "rgba(255, 0, 0, 0.2)",
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: "Volunteers in Navotas",
+                    data: [20, 90, 130, 70, 100, 20], // Replace with dynamic data
+                    borderColor: "green",
+                    backgroundColor: "rgba(0, 255, 0, 0.2)",
+                    borderWidth: 2,
+                    fill: true
+                }
+            ]
         },
         options: {
             responsive: true,
@@ -30,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 x: {
                     title: {
-                        display: false,
+                        display: true,
                         text: "Year",
                         font: {
                             size: 14

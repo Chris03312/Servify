@@ -15,8 +15,6 @@ class PendingSubmissionsController
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
-
-
         view('pending_submissions', [
             'pendingApplications' => $pendingApplications,
             'pendingCount' => $countApplications['Pending'] ?? 0,
@@ -59,4 +57,24 @@ class PendingSubmissionsController
             error_log('Validation error: ' . $e->getMessage());
         }
     }
+
+    public static function ReviewApplicationDetails()
+    {
+        try {
+            // Ensure the request is POST and has application_id
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['application_id']) || empty($_POST['application_id'])) {
+                throw new Exception("Invalid request.");
+            }
+            $application_id = $_POST['application_id'];
+
+            $_SESSION['application_id'] = $application_id;
+            // Redirect after deletion
+            redirect('/volunteer_application_details');
+        } catch (PDOException $e) {
+            error_log('Error deleting application: ' . $e->getMessage());
+        } catch (Exception $e) {
+            error_log('Validation error: ' . $e->getMessage());
+        }
+    }
+
 }

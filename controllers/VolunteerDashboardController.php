@@ -21,7 +21,6 @@ class VolunteerDashboardController
         $volunteerActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
-
         // Get countdown data
         $countdown = Dashboard::CountDownElectionDay();
         $notifications = Notification::getNotification();

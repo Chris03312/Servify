@@ -23,6 +23,27 @@ class Application
         }
     }
 
+    public static function reviewApplicationDetails($application_id)
+    {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare("
+            SELECT ai.*, aai.*
+            FROM APPLICATION_INFO ai
+            INNER JOIN APPLICATION_ADD_INFO aai
+             ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
+             WHERE APPLICATION_ID = :application_id
+        ");
+            $stmt->execute(['application_id' => $application_id]);
+            $applicationDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $applicationDetails;
+        } catch (PDOException $e) {
+            error_log('Error in getting the application details' . $e->getMessage());
+        }
+    }
+
     public static function preferredMission()
     {
         try {

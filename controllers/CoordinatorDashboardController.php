@@ -30,6 +30,7 @@ class CoordinatorDashboardController
         view('coordinator_dashboard', [
             'email' => $_SESSION['email'],
             'username' => $_SESSION['username'],
+            'coordinator_info' => $sidebarData,
             'currentDate' => $currentDate,
             'activities' => $coordinatorActivities,
             'volunteers' => $volunteersTbl,
