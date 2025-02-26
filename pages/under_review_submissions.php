@@ -206,14 +206,25 @@
                                 <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
                                 <td>New <?php echo 'New ' . $application['ROLE']; ?></td>
                                 <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];; ?></td>
-                                <td><?php echo $application['STATUS']; ?></td>
                                 <td>
-                                    <div class="d-none d-md-flex flex-column">
-                                        <button type="button" class="btn btn-primary mb-2">Review</button>
+                                    <select name="status" class="form-select">
+                                        <?php
+                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        foreach ($statuses as $status) {
+                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
+                                            echo "<option value='$status' $selected>$status</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="d-none d-md-flex flex-row gap-2">
+
                                         <form action="/under_review_submissions/delete" method="POST">
                                             <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Cancel</button>
                                         </form>
+                                        <button type="button" class="btn btn-primary mb-2">Review</button>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->

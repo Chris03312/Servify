@@ -20,7 +20,7 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- Flatpickr CSS -->
+    <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -64,7 +64,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                <div id="emptySearch" class="text-center text-danger" style="display: none;"></div>
+                                    <div id="emptySearch" class="text-center text-danger" style="display: none;"></div>
 
 
 
@@ -73,13 +73,13 @@
                                             <label for="submissionDate" class="col-form-label col-auto"><strong>Submission Date:</strong></label>
                                         </div>
                                         <div class="col-auto">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                            <input type="text" id="submissionDate" class="form-control">
-                                        </div>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                                <input type="text" id="submissionDate" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row align-items-center mb-3">
                                         <div class="col-auto">
                                             <label for="applicationType" class="col-form-label"><strong>Application Type:</strong></label>
@@ -138,13 +138,13 @@
                                             <label for="cancellationDate" class="col-form-label col-auto"><strong>Cancellation Date:</strong></label>
                                         </div>
                                         <div class="col-auto">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                            <input type="text" id="cancellationDate" class="form-control">
-                                        </div>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                                <input type="text" id="cancellationDate" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                         <button type="button" class="btn btn-outline-secondary px-4">Reset</button>
                                         <button type="search" class="btn btn-primary px-5">Search</button>
@@ -203,62 +203,219 @@
             <table id="cancel" class="table table-hover align-middle">
                 <thead class="table-primary">
                     <tr>
-                        <th scope="col">Submission Date/Time</th>
+                        <th scope="col">Cancellation Date/Time</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Volunteer Name</th>
+                        <th scope="col">Assigned as</th>
+                        <th scope="col">Assigned to</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                <?php if (!empty($cancelledApplications)): ?>
-                    <?php foreach ($cancelledApplications as $application): ?>
-                    <tr>
-                    <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
-                        <td><?php echo 'New '. $application['ROLE']; ?></td>
-                        <td><?php echo $application['FIRST_NAME'].' '.$application['SURNAME'];; ?></td>
-                        <td><?php echo $application['STATUS']; ?></td>
-                        <td>
-                            <div class="d-none d-md-flex flex-column">
-                                    <a href="/cancelled_submissions/review?application_id=<?php echo urlencode($application['APPLICATION_ID']); ?>" 
-                                    class="btn btn-primary mb-2">Review</a>
-
-                                <form action ="/cancelled_submissions/delete" method="POST">
-                                    <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-
-                            <!--BTN FOR SMALLER SCREEN-->
-                            <div class="d-flex d-md-none flex-column">
-                                <div class="dropdown">
-                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <button type="button" class="dropdown-item btn btn-primary mb-2">Review</button>
-                                        <form action ="/cancelled_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                <button type="submit" class="dropdown-item btn btn-danger">Delete</a></button>
-                                        </form>                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                        <?php else: ?>
+                    <?php if (!empty($cancelledApplications)): ?>
+                        <?php foreach ($cancelledApplications as $application): ?>
                             <tr>
-                                <td colspan="5" class="text-danger">No volunteers found.</td>
+                                <td scope="row"><?php echo $application['APPLICATION_DATE']; ?></td>
+                                <td><?php echo 'New ' . $application['ROLE']; ?></td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];; ?></td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];; ?></td>
+                                <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];; ?></td>
+                                <td>
+                                    <select name="status" class="form-select">
+                                        <?php
+                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        foreach ($statuses as $status) {
+                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
+                                            echo "<option value='$status' $selected>$status</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="d-none d-md-flex flex-row gap-2">
+                                        <form action="/cancelled_submissions/delete" method="POST">
+                                            <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassignModal">Re-assign</button>
+                                    </div>
+
+                                    <!--BTN FOR SMALLER SCREEN-->
+                                    <div class="d-flex d-md-none flex-column">
+                                        <div class="dropdown">
+                                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <button type="button" class="dropdown-item btn btn-primary mb-2">Re-assign</button>
+                                                <form action="/cancelled_submissions/delete" method="POST">
+                                                    <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
+                                                    <button type="submit" class="dropdown-item btn btn-danger">Delete</a></button>
+                                                </form>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="text-danger">No volunteers found.</td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </main>
     </div>
     </div>
+
+    <!-- MODAL: RE-ASSIGN -->
+    <div class="modal fade" id="reassignModal" tabindex="-1"
+        aria-labelledby="reassignModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="text-light">Volunteer Reassignment Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p class="text-muted">
+                        Reassign a volunteer to a new precinct or role as needed.
+                    </p>
+
+                    <form action="" method="post">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="volunteerID" class="col-form-label"><strong>Volunteer ID:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="volunteerID" class="form-control" value="Juan Dela Cruz" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="volunteerName" class="col-form-label"><strong>Volunteer Name:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="volunteerName" class="form-control" value="Juan Dela Cruz" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="currentPrecinct" class="col-form-label"><strong>Current Precinct:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="currentPrecinct" class="form-control" value="Juan Dela Cruz" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="currentRole" class="col-form-label"><strong>Current Role:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="currentRole" class="form-control" value="Juan Dela Cruz" disabled>
+                            </div>
+                        </div>
+
+
+                        <h5 class="mt-5 mb-3">New Assignment</h5>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="city" class="col-form-label"><strong>City:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="city" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="barangay" class="col-form-label"><strong>Barangay:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="barangay" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="new-precinct" class="col-form-label"><strong>New Precinct:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="new-precinct" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="new-role" class="col-form-label"><strong>New Role:</strong></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="new-role" class="form-control">
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-secondary px-4">Cancel</button>
+                        <button type="search" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#reassignConfirmModal">Submit</button>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: RE-ASSIGN CONFIRMATION -->
+    <div class="modal fade" id="reassignConfirmModal" tabindex="-1"
+        aria-labelledby="reassignConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="text-light">Volunteer Reassignment Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+
+
+                    <p class="text-center fs-1 text-primary"><i class="bi bi-exclamation-square-fill"></i></p>
+                    <p class="text-center text-success">Available Slots</p>
+                    <p class="text-center text-muted">
+                        This precinct has open slots. Only [X] more volunteers are needed.
+                    </p>
+
+
+
+                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-secondary px-4">Cancel</button>
+                        <button type="search" class="btn btn-primary px-5">Re-assign</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 
     <!--SCRIPT FOR DATE PICKER-->
@@ -276,106 +433,106 @@
     </script>
 
 
-<!--SCRIPT FOR FILTERING-->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const searchButton = document.querySelector("#filterModal .btn-primary"); // Search button
-    const resetButton = document.querySelector("#filterModal .btn-outline-secondary"); // Reset button
-    const searchInput = document.querySelector("#search"); // Volunteer Name search input
-    const tableBody = document.querySelector("tbody"); // Table body
-    const tableRows = document.querySelectorAll("tbody tr"); // All table rows
-    let emptySearchDiv = document.getElementById("emptySearch");
+    <!--SCRIPT FOR FILTERING-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchButton = document.querySelector("#filterModal .btn-primary"); // Search button
+            const resetButton = document.querySelector("#filterModal .btn-outline-secondary"); // Reset button
+            const searchInput = document.querySelector("#search"); // Volunteer Name search input
+            const tableBody = document.querySelector("tbody"); // Table body
+            const tableRows = document.querySelectorAll("tbody tr"); // All table rows
+            let emptySearchDiv = document.getElementById("emptySearch");
 
 
-    // Create "No matches found" message
-    const noMatchesMessage = document.createElement("tr");
-    noMatchesMessage.innerHTML = `<td colspan="5" class="text-center text-muted">No matches found</td>`;
-    noMatchesMessage.style.display = "none"; // Hidden by default
-    tableBody.appendChild(noMatchesMessage);
+            // Create "No matches found" message
+            const noMatchesMessage = document.createElement("tr");
+            noMatchesMessage.innerHTML = `<td colspan="5" class="text-center text-muted">No matches found</td>`;
+            noMatchesMessage.style.display = "none"; // Hidden by default
+            tableBody.appendChild(noMatchesMessage);
 
-    // Function to check if any rows are visible
-    function checkIfEmpty() {
-        let visibleRows = Array.from(tableRows).some(row => row.style.display !== "none");
-        noMatchesMessage.style.display = visibleRows ? "none" : "";
-    }
+            // Function to check if any rows are visible
+            function checkIfEmpty() {
+                let visibleRows = Array.from(tableRows).some(row => row.style.display !== "none");
+                noMatchesMessage.style.display = visibleRows ? "none" : "";
+            }
 
-    // Function to filter table based on search input (Volunteer Name)
-    searchInput.addEventListener("keyup", function () {
-        let searchValue = searchInput.value.toLowerCase().trim();
+            // Function to filter table based on search input (Volunteer Name)
+            searchInput.addEventListener("keyup", function() {
+                let searchValue = searchInput.value.toLowerCase().trim();
 
-        tableRows.forEach(row => {
-            let volunteerName = row.cells[2].textContent.toLowerCase(); // Volunteer Name column
-            row.style.display = volunteerName.includes(searchValue) ? "" : "none";
+                tableRows.forEach(row => {
+                    let volunteerName = row.cells[2].textContent.toLowerCase(); // Volunteer Name column
+                    row.style.display = volunteerName.includes(searchValue) ? "" : "none";
+                });
+
+                checkIfEmpty();
+            });
+
+            searchButton.addEventListener("click", function() {
+                // Get filter values
+                let submissionDate = document.querySelector("#submissionDate").value.trim();
+                let applicationType = document.querySelector("#applicationType").value;
+                let role = document.querySelector("#role").value;
+                let pollingPlace = document.querySelector("#pollingPlace").value;
+                let cancellationDate = document.querySelector("#cancellationDate").value.trim();
+
+                // Check if at least one filter is selected
+                if (
+                    submissionDate === "" &&
+                    applicationType === "Select application type" &&
+                    role === "Select Role" &&
+                    pollingPlace === "Select Polling Place" &&
+                    cancellationDate === ""
+                ) {
+                    emptySearchDiv.textContent = "Please select at least one filter before searching.";
+                    emptySearchDiv.style.display = "block"; // Show message
+                    return;
+                }
+
+                // Loop through table rows
+                tableRows.forEach(row => {
+                    let rowDate = row.cells[0].textContent.toLowerCase(); // Submission Date
+                    let rowType = row.cells[1].textContent.toLowerCase(); // Application Type
+                    let rowVolunteer = row.cells[2].textContent.toLowerCase(); // Volunteer Name
+                    let rowStatus = row.cells[3].textContent.toLowerCase(); // Status
+
+                    // Check if row matches filter criteria (allow empty fields to act as wildcards)
+                    let match =
+                        (submissionDate === "" || rowDate.includes(submissionDate.toLowerCase())) &&
+                        (applicationType === "Select application type" || rowType.includes(applicationType.toLowerCase())) &&
+                        (role === "Select Role" || rowVolunteer.includes(role.toLowerCase())) &&
+                        (pollingPlace === "Select Polling Place" || rowStatus.includes(pollingPlace.toLowerCase())) &&
+                        (cancellationDate === "" || rowDate.includes(cancellationDate.toLowerCase()));
+
+                    // Show/hide row based on match
+                    row.style.display = match ? "" : "none";
+                });
+
+                checkIfEmpty();
+
+                // Close modal after searching
+                let modal = bootstrap.Modal.getInstance(document.getElementById("filterModal"));
+                modal.hide();
+            });
+
+            resetButton.addEventListener("click", function() {
+                // Clear all input fields
+                document.querySelector("#submissionDate").value = "";
+                document.querySelector("#applicationType").selectedIndex = 0; // Reset to default option
+                document.querySelector("#role").selectedIndex = 0;
+                document.querySelector("#pollingPlace").selectedIndex = 0;
+                document.querySelector("#cancellationDate").value = "";
+                searchInput.value = ""; // Clear the volunteer name search bar
+
+                // Show all rows again
+                tableRows.forEach(row => {
+                    row.style.display = "";
+                });
+
+                checkIfEmpty();
+            });
         });
-
-        checkIfEmpty();
-    });
-
-    searchButton.addEventListener("click", function () {
-        // Get filter values
-        let submissionDate = document.querySelector("#submissionDate").value.trim();
-        let applicationType = document.querySelector("#applicationType").value;
-        let role = document.querySelector("#role").value;
-        let pollingPlace = document.querySelector("#pollingPlace").value;
-        let cancellationDate = document.querySelector("#cancellationDate").value.trim();
-
-        // Check if at least one filter is selected
-        if (
-            submissionDate === "" &&
-            applicationType === "Select application type" &&
-            role === "Select Role" &&
-            pollingPlace === "Select Polling Place" &&
-            cancellationDate === ""
-        ) {
-            emptySearchDiv.textContent = "Please select at least one filter before searching.";
-            emptySearchDiv.style.display = "block"; // Show message
-            return;
-        }
-
-        // Loop through table rows
-        tableRows.forEach(row => {
-            let rowDate = row.cells[0].textContent.toLowerCase(); // Submission Date
-            let rowType = row.cells[1].textContent.toLowerCase(); // Application Type
-            let rowVolunteer = row.cells[2].textContent.toLowerCase(); // Volunteer Name
-            let rowStatus = row.cells[3].textContent.toLowerCase(); // Status
-
-            // Check if row matches filter criteria (allow empty fields to act as wildcards)
-            let match =
-                (submissionDate === "" || rowDate.includes(submissionDate.toLowerCase())) &&
-                (applicationType === "Select application type" || rowType.includes(applicationType.toLowerCase())) &&
-                (role === "Select Role" || rowVolunteer.includes(role.toLowerCase())) &&
-                (pollingPlace === "Select Polling Place" || rowStatus.includes(pollingPlace.toLowerCase())) &&
-                (cancellationDate === "" || rowDate.includes(cancellationDate.toLowerCase()));
-
-            // Show/hide row based on match
-            row.style.display = match ? "" : "none";
-        });
-
-        checkIfEmpty();
-
-        // Close modal after searching
-        let modal = bootstrap.Modal.getInstance(document.getElementById("filterModal"));
-        modal.hide();
-    });
-
-    resetButton.addEventListener("click", function () {
-        // Clear all input fields
-        document.querySelector("#submissionDate").value = "";
-        document.querySelector("#applicationType").selectedIndex = 0; // Reset to default option
-        document.querySelector("#role").selectedIndex = 0;
-        document.querySelector("#pollingPlace").selectedIndex = 0;
-        document.querySelector("#cancellationDate").value = "";
-        searchInput.value = ""; // Clear the volunteer name search bar
-
-        // Show all rows again
-        tableRows.forEach(row => {
-            row.style.display = "";
-        });
-
-        checkIfEmpty();
-    });
-});
-</script>
+    </script>
 
     <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
