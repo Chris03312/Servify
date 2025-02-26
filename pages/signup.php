@@ -16,12 +16,12 @@
 
     <section class="login_bg">
 
-        <div class="container-md p-5">
+        <div class="container-md p-3 p-md-5">
 
             <div class="row align-items-center justify-content-center bg-light rounded">
 
                 <div class="loginLeftContainer col-lg-4 p-5">
-                    <div class="d-flex flex-row justify-content-around align-items-center gap-3">
+                    <div class="d-flex flex-row justify-content-around align-items-center gap-3 mb-5">
                         <img src="../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid loginLogo">
                         <img src="../img/DPPAM LOGO.png" alt="DPPAM Logo" class="img-fluid loginLogo">
                     </div>
@@ -172,14 +172,14 @@
                             <div class="validation text-danger"></div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="street" class="form-label">Street/Unit/Bldg/Village<sup
                                     class="text-danger fw-bold">*</sup></label>
                             <input type="text" class="form-control" id="street" name="street"
                                 placeholder="Ex. Blk# Lot#">
                             <div class="validation text-danger"></div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="barangay" class="form-label">Barangay<sup
                                     class="text-danger fw-bold">*</sup></label>
                             <select id="barangay" class="form-select" name="barangay">
@@ -195,7 +195,14 @@
                             </script>
                             <script src="js/signup.js"></script>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
+                            <label for="district" class="form-label">District<sup
+                                    class="text-danger fw-bold">*</sup></label>
+                            <input type="text" class="form-control" id="district" name="district"
+                                placeholder="Ex. District 1">
+                            <div class="validation text-danger"></div>
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <label for="zipcode" class="form-label">Zipcode</label>
                             <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
                             <div class="validation text-danger"></div>
