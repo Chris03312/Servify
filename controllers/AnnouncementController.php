@@ -11,6 +11,12 @@ class AnnouncementController {
     public static function ShowAnnouncements() {
         $sidebarinfo = Sidebarinfo::getsidebarinfo();
         $coordinator_info = Coorsidebarinfo::sidebarinfo();
+class AnnouncementController
+{
+
+    public static function ShowAnnouncements()
+    {
+
         $announcements = Announcement::getAnnouncement();
         $getComments = Announcement::getComment();
 
@@ -135,6 +141,13 @@ class AnnouncementController {
 
     // ADD COMMENTS TO ANNOUNCEMENTS
     public static function Comments() { 
+            'announcements' => $announcements,
+            'comments' => $comments
+        ]);
+    }
+
+    public static function Comments()
+    {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST["comment"], $_POST["announcement_id"]) && !empty($_POST["comment"])) {
                 $comment = trim($_POST["comment"]);
@@ -146,6 +159,7 @@ class AnnouncementController {
                     $stmt = $db->prepare("INSERT INTO comments (announcement_id, username, content) VALUES (?, ?, ?)");
                     $stmt->execute([$announcement_id, $username, $comment]);
 
+                    // Return success response
                     echo json_encode(["success" => true, "message" => "Comment submitted successfully."]);
                     exit;
                 } catch (PDOException $e) {
@@ -162,3 +176,10 @@ class AnnouncementController {
         }
     }
 }
+
+
+
+
+
+
+

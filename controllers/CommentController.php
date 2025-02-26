@@ -4,7 +4,8 @@ require_once __DIR__ . '/../models/Comment.php';
 
 class CommentController
 {
-    public function Comment() {
+    public function Comment()
+    {
         echo "This is the comment method.";
     }
     private $commentModel;
