@@ -106,7 +106,7 @@
         text-align: center; 
         padding: 10px;
         border-top: 1px solid #ccc;
-        min-height: 200px;
+        max-height: 100px;
     }
     
 
@@ -223,7 +223,7 @@
 
     .chat-input {
         padding: 8px;
-        min-height: 150px;
+        max-height: 100px;
     }
 
     .chat-input input {
@@ -287,7 +287,7 @@
                 <p id="faq-text">
                     Ask me these questions!
                 </p>
-                <div id="faqcon" class="faq-container" style="display: flex; flex-direction: column; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: auto; overflow-y: hidden;">
+                <div id="faqcon" class="faq-container" style="display: flex; flex-direction: column; width: 100%; padding: 0 2px 5px 5px; align-items: center; overflow-x: hidden; overflow-y: auto;">
                 </div>
             </div>
 
@@ -295,94 +295,97 @@
     </div>
 <script>
 
-    
+    function handleFAQClick(id, butts) {
+        fetch('/../LandingPage/chatbotfolder/index.php')
+        .then(response => response.json())
+        .then(data => {
+            const msgCon = document.getElementById('msgcon');
 
-function updateVisibleButtons() {
-    const buttons = document.querySelectorAll('#faqcon button');
-    let visibleCount = 0;
+            // Create user message wrapper
+            const userWrapper = document.createElement('div');
+            userWrapper.classList.add('message-wrapper', 'user-wrapper');
 
-    buttons.forEach(button => {
-        if (visibleCount < 3) {
-            button.style.display = 'inline-block';
-            visibleCount++;
-        } else {
-            button.style.display = 'none';
-        }
-    });
-}
+            // User avatar container
+            const userAvatarContainer = document.createElement('div');
+            userAvatarContainer.classList.add('avatar-container');
 
-function handleFAQClick(id, button) {
-    fetch('/../LandingPage/chatbotfolder/index.php')
-    .then(response => response.json())
-    .then(data => {
-        const msgCon = document.getElementById('msgcon');
+            // User avatar
+            const userAvatar = document.createElement('img');
+            userAvatar.src = 'LandingPage/chatbotfolder/images/user (1).png'; // Replace with actual path
+            userAvatar.classList.add('avatar');
 
-        const userWrapper = document.createElement('div');
-        userWrapper.classList.add('message-wrapper', 'user-wrapper');
+            // User message
+            const usermsg = document.createElement('div');
+            usermsg.classList.add('chat-message', 'user-message');
+            usermsg.textContent = data.question[id];
 
-        const userAvatarContainer = document.createElement('div');
-        userAvatarContainer.classList.add('avatar-container');
-
-        const userAvatar = document.createElement('img');
-        userAvatar.src = '/../LandingPage/chatbotfolder/images/user (1).png'; 
-        userAvatar.classList.add('avatar');
-
-        const usermsg = document.createElement('div');
-        usermsg.classList.add('chat-message', 'user-message');
-        usermsg.textContent = data.question[id];
-
-        userAvatarContainer.appendChild(userAvatar);
-        userWrapper.appendChild(userAvatarContainer);
-        userWrapper.appendChild(usermsg);
-        msgCon.appendChild(userWrapper);
-
-        smoothScrollToBottom(document.getElementById('chat-content'));
-
-        setTimeout(() => {
-            const botWrapper = document.createElement('div');
-            botWrapper.classList.add('message-wrapper', 'bot-wrapper');
-
-            const botAvatarContainer = document.createElement('div');
-            botAvatarContainer.classList.add('avatar-container');
-            const botAvatar = document.createElement('img');
-            botAvatar.src = '/../LandingPage/chatbotfolder/images/chatbot.png'; // Replace with actual path
-            botAvatar.classList.add('avatar');
-
-            const botmsg = document.createElement('div');
-            botmsg.classList.add('chat-message', 'bot-message');
-            botmsg.innerHTML = data.answer[id];
-
-            botAvatarContainer.appendChild(botAvatar);
-            botWrapper.appendChild(botAvatarContainer);
-            botWrapper.appendChild(botmsg);
-            msgCon.appendChild(botWrapper);
+            // Append elements
+            userAvatarContainer.appendChild(userAvatar);
+            userWrapper.appendChild(userAvatarContainer);
+            userWrapper.appendChild(usermsg);
+            msgCon.appendChild(userWrapper);
 
             smoothScrollToBottom(document.getElementById('chat-content'));
-        }, 1000);
 
-        button.remove();
+            setTimeout(() => {
+                // Create bot message wrapper
+                const botWrapper = document.createElement('div');
+                botWrapper.classList.add('message-wrapper', 'bot-wrapper');
 
-        updateVisibleButtons();
+                // Bot avatar container
+                const botAvatarContainer = document.createElement('div');
+                botAvatarContainer.classList.add('avatar-container');
 
-        setTimeout(() => {
-            if (document.querySelectorAll('#faqcon button').length === 0) {
+                // Bot avatar
+                const botAvatar = document.createElement('img');
+                botAvatar.src = 'LandingPage/chatbotfolder/images/chatbot.png'; // Replace with actual path
+                botAvatar.classList.add('avatar');
+
+                // Bot message
+                const botmsg = document.createElement('div');
+                botmsg.classList.add('chat-message', 'bot-message');
+                botmsg.innerHTML = data.answer[id];
+
+                // Append elements
+                botAvatarContainer.appendChild(botAvatar);
+                botWrapper.appendChild(botAvatarContainer);
+                botWrapper.appendChild(botmsg);
+                msgCon.appendChild(botWrapper);
+
+                smoothScrollToBottom(document.getElementById('chat-content'));
+            }, 1000);
+
+
+
+            butts.style.opacity = '0';
+
+            setTimeout(() => {
+            butts.remove();
+            console.log('Remaining buttons: ', document.querySelectorAll('.faqbut').length);
+
+            const faqTextElement = document.getElementById('faq-text');
+            if (document.querySelectorAll('.faqbut').length === 0) {
+                // Hide the faq-text if no buttons remain
+                if (faqTextElement) {
+                    faqTextElement.style.display = 'none';
+                }
+                
                 const faqConElement = document.getElementById('faqcon');
                 if (faqConElement) {
+                    console.log('Updating faqcon with the message');
                     faqConElement.innerHTML = `
-                        <p style="text-align: center; color: #007DAC; margin: 10px 0; font-size: 12px">
-                            For more questions, please contact us at 09283947182 or email us at dppam@gmail.com. 
-                            You can also visit the nearest parish based on your location for assistance.
-                        </p>
-                    `;
+                    <p style="text-align: center; color: #183251; margin: 0; font-size: 10px">
+                        For more questions, please contact us at 09283947182 or email us at dppam@gmail.com. You can also visit the nearest parish based on your location for assistance.
+                    </p>
+                `;
+                } else {
+                    console.log('faqcon element not found');
                 }
             }
-        }, 500);
-    })
-    .catch(err => console.error('Something is wrong', err));
-}
-
-document.addEventListener('DOMContentLoaded', updateVisibleButtons);
-
+            }, 500);
+            })
+                .catch(err => console.error('Something is wrong:', err));
+            }
 
         document.addEventListener("DOMContentLoaded", function() {
         const chatIcon = document.getElementById("chat-icon");
@@ -392,85 +395,54 @@ document.addEventListener('DOMContentLoaded', updateVisibleButtons);
         chatIcon.addEventListener("click", function () {
             if (chatBox.style.display === "none" || chatBox.style.display ===""){
                 chatBox.style.display ="flex";
-                chatbot.src ="/../LandingPage/chatbotfolder/images/chatimgclose.png";
+                chatbot.src ="LandingPage/chatbotfolder/images/chatimgclose.png";
             } else {
                 chatBox.style.display= "none";
-                chatbot.src ="/../LandingPage/chatbotfolder/images/chatimg.png";
+                chatbot.src ="LandingPage/chatbotfolder/images/chatimg.png";
             }
         })
         });
-
         fetch('/../LandingPage/chatbotfolder/index.php')
-        .then(response => response.json())
-        .then(data => {
-        const faqContainer = document.getElementById('faqcon');
-        const faqText = document.getElementById('faq-text');
-        let allButtons = [];
+            .then(response => response.json())
+            .then(data => {
+            const faqText = document.getElementById('faq-text');
 
-        for (let e in data.question) {
-            const button = document.createElement('button');
-            button.textContent = data.question[e];
-            button.classList.add('faqbut');
-            button.onclick = function () {
-                handleFAQClick(e, this);
-                button.remove();
-                updateVisibleButtons();
-            };
-            button.style.display = 'none';
-            allButtons.push(button);
-            faqContainer.appendChild(button);
-        }
-        updateVisibleButtons();
+                for (let e in data.question) document.getElementById('faqcon').insertAdjacentHTML('beforeend', `
+            <button onclick="handleFAQClick('${e}', this)" class="faqbut" id="faqbut">${data.question[e]}</button>`); 
+        });
 
-        function updateVisibleButtons() {
-            let visibleCount = 0;
-            allButtons.forEach(button => {
-                if (visibleCount < 3 && button.style.display === 'none') {
-                    button.style.display = 'inline-block';
-                    visibleCount++;
+        function smoothScrollToBottom(element) {
+            // Get the current scroll position
+            const startScroll = element.scrollTop;
+            // Get the target scroll position (bottom of the element)
+            const targetScroll = element.scrollHeight - element.clientHeight;
+            // Calculate the distance to scroll
+            const distance = targetScroll - startScroll;
+            // Set the duration of the animation
+            const duration = 500; // in milliseconds
+            // Set the start time of the animation
+            const startTime = performance.now();
+
+            // Define the animation function
+            function scrollAnimation(currentTime) {
+                // Calculate the elapsed time since the start of the animation
+                const elapsedTime = currentTime - startTime;
+                // Calculate the progress of the animation (0 to 1)
+                const progress = Math.min(elapsedTime / duration, 1);
+                // Calculate the new scroll position based on the progress
+                const newScroll = startScroll + distance * progress;
+                // Scroll the element to the new position
+                element.scrollTop = newScroll;
+
+                // Continue the animation if not finished
+                if (progress < 1) {
+                    requestAnimationFrame(scrollAnimation);
                 }
-            });
-
-            if (document.querySelectorAll('.faqbut').length === 0) {
-                faqText.style.display = 'none';
             }
+
+            // Start the animation
+            requestAnimationFrame(scrollAnimation);
         }
-    })
-    .catch(err => console.error('Something is wrong', err));
-
-    
-function smoothScrollToBottom(element) {
-        // Get the current scroll position
-        const startScroll = element.scrollTop;
-        // Get the target scroll position (bottom of the element)
-        const targetScroll = element.scrollHeight - element.clientHeight;
-        // Calculate the distance to scroll
-        const distance = targetScroll - startScroll;
-        // Set the duration of the animation
-        const duration = 500; // in milliseconds
-        // Set the start time of the animation
-        const startTime = performance.now();
-
-        // Define the animation function
-        function scrollAnimation(currentTime) {
-            // Calculate the elapsed time since the start of the animation
-            const elapsedTime = currentTime - startTime;
-            // Calculate the progress of the animation (0 to 1)
-            const progress = Math.min(elapsedTime / duration, 1);
-            // Calculate the new scroll position based on the progress
-            const newScroll = startScroll + distance * progress;
-            // Scroll the element to the new position
-            element.scrollTop = newScroll;
-
-            // Continue the animation if not finished
-            if (progress < 1) {
-                requestAnimationFrame(scrollAnimation);
-            }
-        }
-
-        // Start the animation
-        requestAnimationFrame(scrollAnimation);
-    }
 
 </script> 
 </body>

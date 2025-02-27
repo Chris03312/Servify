@@ -55,7 +55,7 @@
                     </p>
                 </div>
 
-                
+
 
                 <!--VOLUNTEER INFO-->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -297,21 +297,28 @@
                                     value="<?php echo $applicationInfo['STREETADDRESS'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="city" name="city"
                                     value="<?php echo $applicationInfo['CITY'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="barangay" name="barangay"
                                     value="<?php echo $applicationInfo['BARANGAY'] ?? " "; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
+                                <label for="district" class="form-label">District<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" readonly id="district" name="district"
+                                    value="<?php echo $applicationInfo['DISTRICT'] ?? " "; ?>">
+                            </div>
+
+                            <div class="col-md-3 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" readonly id="zipcode" name="zipcode"
@@ -331,7 +338,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber">
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" maxlength="13" placeholder="09XX-XXX-XXXX">
                                 <div class="invalid-feedback" id="error-mobileNumber"></div>
 
                             </div>
@@ -339,7 +346,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="telNumber" class="form-label">Tel no.<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="telNumber" name="telNumber">
+                                <input type="text" class="form-control" id="telNumber" name="telNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                 <div class="invalid-feedback" id="error-telNumber"></div>
 
                             </div>
@@ -369,18 +376,22 @@
                                     name="othersOrgMembership">
                             </div>
 
-                            <span>Previous PPCRV Experience</span>
+                            <span class="mb-2">Previous PPCRV Experience</span>
 
                             <div class="col-md-3 mb-3">
-                                <label for="prevExperienceDate" class="form-label">&nbsp;</label>
+                                <label for="prevExperienceDate" class="form-label">Date<sup
+                                        class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="prevExperienceDate"
-                                    name="prevExperienceDate" placeholder="Date">
+                                    name="prevExperienceDate" maxlength="2"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2)">
+
                                 <div class="invalid-feedback" id="error-prevExperienceDate"></div>
 
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
+                                <label for="prevExperienceMonth" class="form-label">Month<sup
+                                        class="text-danger fw-bold">*</sup></label>
                                 <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select">
                                     <option selected disabled value="">Select month</option>
                                     <option value="January">January</option>
@@ -401,9 +412,12 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="prevExperienceYear" class="form-label">&nbsp;</label>
+                                <label for="prevExperienceYear" class="form-label">Year<sup
+                                        class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="prevExperienceYear"
-                                    name="prevExperienceYear" placeholder="Year" oninput="calculateYearOfService()">
+                                    name="prevExperienceYear" placeholder="Year" maxlength="4"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4); calculateYearOfService();">
+
                                 <div class="invalid-feedback" id="error-prevExperienceYear"></div>
                             </div>
 
@@ -668,6 +682,21 @@
     </div>
 
 
+    <!-- SCRIPT FOR MOBILE NUMBER -->
+    <script>
+        document.getElementById("mobileNumber").addEventListener("input", function(event) {
+            let value = event.target.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+
+            // Apply formatting as "09XX-XXX-XXXX"
+            if (value.length > 4 && value.length <= 7) {
+                value = value.replace(/(\d{4})(\d{1,3})/, '$1-$2');
+            } else if (value.length > 7) {
+                value = value.replace(/(\d{4})(\d{3})(\d{1,4})/, '$1-$2-$3');
+            }
+
+            event.target.value = value;
+        });
+    </script>
 
 
     <script src="../js/volunteer_new_application.js"></script>
