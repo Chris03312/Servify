@@ -1,12 +1,14 @@
-<?php 
+<?php
 
-require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/volunteerManagement.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
 
 
-class BarangayVolunteerDirectoryController {
+class BarangayVolunteerDirectoryController
+{
 
-    public static function ShowBarangayDirectory() {
+    public static function ShowBarangayDirectory()
+    {
         // Get district from URL query string, default to null if not set
         $city = $_GET['City'] ?? null;
         $district = $_GET['District'] ?? null;

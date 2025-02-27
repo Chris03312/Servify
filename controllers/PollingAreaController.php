@@ -1,14 +1,16 @@
-<?php 
+<?php
 
-require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/volunteerManagement.php';
 
-class PollingAreaController {
+class PollingAreaController
+{
 
-    public static function ShowPollingArea() {
+    public static function ShowPollingArea()
+    {
 
         $city = $_GET['City'] ?? null;
         $district = $_GET['District'] ?? null;
-        $barangay = $_GET['Barangay'] ?? null;  
+        $barangay = $_GET['Barangay'] ?? null;
 
         $districturl = '?City=' . urlencode($city);
         $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);

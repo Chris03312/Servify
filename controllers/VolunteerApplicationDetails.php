@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../models/sidebarinfo.php';
-require_once __DIR__ . '/../models/Application.php';
+require_once __DIR__ . '/../models/application.php';
 
 class VolunteerApplicationDetails
 {

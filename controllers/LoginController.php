@@ -1,17 +1,19 @@
-<?php 
+<?php
 
 session_start();
 
-class LoginController {
+class LoginController
+{
 
-    public static function ShowLoginForm() {
+    public static function ShowLoginForm()
+    {
         view('login');
     }
-    
+
     public static function Login()
     {
         require_once __DIR__ . '/../configuration/Database.php';
-    
+
         $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
         $password = $_POST['password'] ?? '';
 
@@ -44,7 +46,7 @@ class LoginController {
             }
 
             // Ensure passwords are verified correctly
-            if (password_verify($password, $user['PASSWORD'])) { 
+            if (password_verify($password, $user['PASSWORD'])) {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['username'] = $user['USERNAME'];
@@ -53,12 +55,12 @@ class LoginController {
                 session_regenerate_id(true);
 
                 echo json_encode([
-                    'redirect' => $user['ROLE'] === 'Volunteer' 
-                        ? '/volunteer_dashboard' 
-                        : ($user['ROLE'] === 'Coordinator' 
-                            ? '/coordinator_dashboard' 
-                            : ($user['ROLE'] === 'Admin' 
-                                ? '/admin_dashboard' 
+                    'redirect' => $user['ROLE'] === 'Volunteer'
+                        ? '/volunteer_dashboard'
+                        : ($user['ROLE'] === 'Coordinator'
+                            ? '/coordinator_dashboard'
+                            : ($user['ROLE'] === 'Admin'
+                                ? '/admin_dashboard'
                                 : '/default_dashboard'))
                 ]);
             } else {

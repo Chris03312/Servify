@@ -1,11 +1,13 @@
-<?php 
+<?php
 
-require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/volunteerManagement.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
 
 
-class DistrictVolunteerDirectoryController {
-    public static function ShowDistrictDirectory()  {
+class DistrictVolunteerDirectoryController
+{
+    public static function ShowDistrictDirectory()
+    {
 
         $city = $_GET['City'] ?? null;
 

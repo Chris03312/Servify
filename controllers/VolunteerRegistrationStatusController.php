@@ -1,17 +1,19 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../models/registrationstatus.php';
 require_once __DIR__ . '/../models/application.php';
 require_once __DIR__ . '/../models/dashboard.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
-require_once __DIR__ . '/../models/notification.php';
+require_once __DIR__ . '/../models/Notification.php';
 
-class VolunteerRegistrationStatusController {
-    public static function VolunteerRegistrationStatus() {
+class VolunteerRegistrationStatusController
+{
+    public static function VolunteerRegistrationStatus()
+    {
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
             redirect('/login');
         }
-        
+
         // Get necessary data
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
         $notifications = Notification::getNotification();
@@ -27,6 +29,6 @@ class VolunteerRegistrationStatusController {
             'notifications' => $notifications['notifications'],
             'unread_count' => $notifications['unread_count']
         ]);
-        
+
     }
 }

@@ -1,0 +1,25 @@
+RewriteEngine On
+
+# Redirect all requests to index.php
+RewriteEngine On
+RewriteBase /
+
+# Prevent direct access to subdirectories or files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Deny access to sensitive folders
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Custom 404 Error Page
+ErrorDocument 404 /custom-404.html
+
+php_flag display_errors On
+php_value error_reporting E_ALL
+
+php_flag display_errors on
+php_value error_reporting 32767
+

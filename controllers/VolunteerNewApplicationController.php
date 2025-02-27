@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../models/Sidebarinfo.php';
-require_once __DIR__ . '/../models/Application.php';
+require_once __DIR__ . '/../models/sidebarinfo.php';
+require_once __DIR__ . '/../models/application.php';
 require_once __DIR__ . '/../models/Notification.php';
-require_once __DIR__ . '/../models/Dashboard.php';
+require_once __DIR__ . '/../models/dashboard.php';
 
 class VolunteerNewApplicationController
 {

@@ -1,9 +1,11 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../configuration/Database.php';
 
-class SidebarInfo {
-    public static function getSidebarInfo($email, $role) { // Accept email and role as arguments
+class SidebarInfo
+{
+    public static function getSidebarInfo($email, $role)
+    { // Accept email and role as arguments
         try {
             $db = Database::getConnection();
 

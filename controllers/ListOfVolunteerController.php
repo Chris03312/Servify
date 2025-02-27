@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/volunteerManagement.php';
 
 class ListOfVolunteerController
 {

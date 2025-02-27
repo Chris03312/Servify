@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../models/attendance.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
-require_once __DIR__ . '/../models/notification.php';
+require_once __DIR__ . '/../models/Notification.php';
 
 class VolunteerAttendanceController
 {

@@ -1,12 +1,14 @@
 <?php
 
-require_once __DIR__ . '/../models/VolunteerManagement.php';
+require_once __DIR__ . '/../models/volunteerManagement.php';
 require_once __DIR__ . '/../models/sidebarinfo.php';
 
 
-class CoordinatorVolunteerManagementController {
+class CoordinatorVolunteerManagementController
+{
 
-    public static function ShowVolunteerManagement() {
+    public static function ShowVolunteerManagement()
+    {
 
         $Citylinks = VolunteerManagement::getCityList();
         $parishes = VolunteerManagement::getParishes();
