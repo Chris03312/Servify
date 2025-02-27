@@ -38,10 +38,11 @@ require_once __DIR__ . '/../controllers/VolunteerRegistrationStatusController.ph
 require_once __DIR__ . '/../controllers/VolunteerNewApplicationController.php';
 require_once __DIR__ . '/../controllers/VolunteerRenewalApplicationController.php';
 require_once __DIR__ . '/../controllers/AchievementsController.php';
-require_once __DIR__ . '/../controllers/AnnouncementsController.php';
+require_once __DIR__ . '/../controllers/AnnouncementController.php';
 require_once __DIR__ . '/../controllers/VolunteerApplicationDetailsController.php';
 require_once __DIR__ . '/../controllers/VolFeedbackController.php';
 require_once __DIR__ . '/../controllers/VolunteerDetailsController.php';
+require_once __DIR__ . '/../controllers/ContactUsController.php';
 
 require_once __DIR__ . '/../controllers/AdminDashboardController.php';
 require_once __DIR__ . '/../controllers/AdminCoorManagementController.php';
@@ -95,8 +96,11 @@ $router->add('/volunteer_application_details', [VolunteerApplicationDetailsContr
 $router->add('/volunteer_feedback', [VolFeedbackController::class, 'ShowVolFeedback']);
 $router->add('/volunteer_details', [VolunteerDetailsController::class, 'ShowVolunteerDetails']);
 
-$router->add('/announcements', [AnnouncementsController::class, 'ShowAnnouncements']);
+$router->add('/announcements', [AnnouncementController::class, 'ShowAnnouncement']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
+
+$router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
+$router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);
 
 $router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'ShowCoordinatorDashboard']);
 $router->add('/coordinator_change_pass', [CoordinatorChangesPassController::class, 'CoordinatorChangePass']);

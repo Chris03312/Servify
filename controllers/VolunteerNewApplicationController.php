@@ -107,10 +107,10 @@ class VolunteerNewApplicationController
             // Insert into APPLICATION_INFO
             $stmt = $db->prepare("INSERT INTO APPLICATION_INFO (VPROFILE_ID, APPLICATION_DATE, PRECINCT_NO, PARISH, ROLE, 
                     FIRST_NAME, MIDDLE_NAME, SURNAME, NAME_SUFFIX, GENDER, NICKNAME, CIVIL_STATUS, BIRTHDATE, BIRTHMONTH, BIRTHYEAR, AGE, 
-                    CITIZENSHIP, OCCUPATION, COMPANY_NAME, STREETADDRESS, CITY, BARANGAY, ZIPCODE, EMAIL, MOBILE_NUMBER, TEL_NUMBER, VALID_ID, STATUS)
+                    CITIZENSHIP, OCCUPATION, COMPANY_NAME, STREETADDRESS, CITY, BARANGAY, DISTRICT, ZIPCODE, EMAIL, MOBILE_NUMBER, TEL_NUMBER, ID_NUMBER, VALID_ID, STATUS)
                     VALUES (:vprofile_id, :applicationDate, :precinctNo, :parish, :role, :firstName, :middleName, :surname, :suffix, :gender, :nickname, 
                     :civilStatus, :birthDate, :birthMonth, :birthYear, :age, :citizenship, :occupation, :companyName, :streetAddress, :city, :barangay, 
-                    :zipcode, :email, :mobileNumber, :telNumber, :validId, :status)");
+                    :district, :zipcode, :email, :mobileNumber, :telNumber, :idnumber, :validId, :status)");
 
             $stmt->execute([
                 ':vprofile_id' => $vprofile_id,
@@ -135,10 +135,12 @@ class VolunteerNewApplicationController
                 ':streetAddress' => $input['streetAddress'],
                 ':city' => $input['city'],
                 ':barangay' => $input['barangay'],
+                ':district' => $input['district'],
                 ':zipcode' => $input['zipcode'],
                 ':email' => $input['email'],
                 ':mobileNumber' => $input['mobileNumber'],
                 ':telNumber' => $input['telNumber'],
+                'idnumber' => $input['IDNumber'],
                 ':validId' => $newFileName,
                 ':status' => $input['status']
             ]);

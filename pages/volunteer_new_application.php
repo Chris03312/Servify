@@ -43,11 +43,7 @@
                 <!--PHOTO AND NAME-->
                 <div class="d-flex flex-row align-items-center mb-3">
                     <!-- PHOTO -->
-                    <div class="upload-box me-3" id="drop-area">
-                        <i class="fas fa-camera upload-icon"></i>
-                        <img id="preview" src="" alt="Preview">
-                        <input type="file" id="file-input" accept="image/*">
-                    </div>
+                    <div><img src="../img/DPPAM LOGO.png" width="100"></div>
 
                     <!-- NAME -->
                     <p class="m-0">
@@ -95,12 +91,8 @@
                             <div class="col-md-8 mb-3">
                                 <label for="parishAssigned" class="form-label">Parish Assigned:<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <select id="parishAssigned" name="parishAssigned" class="form-select">
-                                    <option selected disabled value="">Select Parish</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                </select>
+                                <input class="form-control" list="parishNameOptions" id="parishNameDataList"
+                                    value="<?php echo $applicationInfo['PARISH'] ?? ' '; ?>">
                                 <div class="invalid-feedback" id="error-civilStatus"></div>
                             </div>
 
@@ -204,7 +196,7 @@
                             </div>
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function() {
+                                document.addEventListener("DOMContentLoaded", function () {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
@@ -338,7 +330,8 @@
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" maxlength="13" placeholder="09XX-XXX-XXXX">
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
+                                    maxlength="13" placeholder="09XX-XXX-XXXX">
                                 <div class="invalid-feedback" id="error-mobileNumber"></div>
 
                             </div>
@@ -346,7 +339,8 @@
                             <div class="col-md-4 mb-3">
                                 <label for="telNumber" class="form-label">Tel no.<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="telNumber" name="telNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <input type="text" class="form-control" id="telNumber" name="telNumber"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                 <div class="invalid-feedback" id="error-telNumber"></div>
 
                             </div>
@@ -586,7 +580,7 @@
                                 <div class="invalid-feedback" id="error-IDNumber"></div>
 
                                 <!-- Ensure jQuery is loaded -->
-                                <script src="../js/ImageEnhancement.js"></script>
+                                <script src=""></script>
                                 <script>
 
                                 </script>
@@ -684,7 +678,7 @@
 
     <!-- SCRIPT FOR MOBILE NUMBER -->
     <script>
-        document.getElementById("mobileNumber").addEventListener("input", function(event) {
+        document.getElementById("mobileNumber").addEventListener("input", function (event) {
             let value = event.target.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
 
             // Apply formatting as "09XX-XXX-XXXX"
@@ -695,6 +689,45 @@
             }
 
             event.target.value = value;
+        });
+
+        $(document).ready(function () {
+            let idFormats = {};
+
+            // Load JSON File
+            $.getJSON("../configuration/id_formats.json", function (data) {
+                idFormats = data;
+            });
+
+            $('#nameofId').on('change', function () {
+                let selectedID = $('#nameofId').val();
+                let inputField = $('input[name="IDNumber"]');
+
+                if (selectedID && idFormats[selectedID]) {
+                    inputField.prop('disabled', false);
+                    inputField.attr('placeholder', "e.g. " + idFormats[selectedID].example);
+                    inputField.val('');
+                } else {
+                    inputField.prop('disabled', true);
+                    inputField.attr('placeholder', "Select ID type first");
+                    inputField.val('');
+                }
+            });
+
+            $('input[name="IDNumber"]').on('input', function () {
+                let selectedID = $('#nameofId').val();
+                let inputValue = $(this).val();
+
+                if (selectedID && idFormats[selectedID]) {
+                    let regex = new RegExp(idFormats[selectedID].format);
+
+                    if (regex.test(inputValue)) {
+                        $(this).removeClass("is-invalid").addClass("is-valid");
+                    } else {
+                        $(this).removeClass("is-valid").addClass("is-invalid");
+                    }
+                }
+            });
         });
     </script>
 

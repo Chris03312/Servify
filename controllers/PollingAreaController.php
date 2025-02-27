@@ -20,6 +20,7 @@ class PollingAreaController
 
 
         view('polling_area', [
+            'coordinator_info' => $sidebarData,
             'barangay' => $barangay,
             'districturl' => $districturl,
             'barangayurl' => $barangayurl,

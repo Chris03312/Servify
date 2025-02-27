@@ -17,13 +17,11 @@ class ListOfVolunteerController
         $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);
         $pollingplaceurl = '?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangay);
 
-
         $listofvolunteers = VolunteerManagement::getlistofVolunteer($city, $district, $barangay, $pollingplace);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
-
         view('list_of_volunteers', [
-            'sidebarinfo' => $sidebarData,
+            'coordinator_info' => $sidebarData,
             'listofvolunteers' => $listofvolunteers,
             'pollingplace' => $pollingplace,
             'pollingplaceurl' => $pollingplaceurl,

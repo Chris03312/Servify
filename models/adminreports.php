@@ -46,7 +46,7 @@ class Adminreports
 
             $stmt = $db->prepare('
             SELECT 
-                DATE_REGISTERED,S
+                DATE_REGISTERED,
                 SUM(CASE WHEN CITY = "Caloocan city" THEN 1 ELSE 0 END) AS CALOOCAN,
                 SUM(CASE WHEN CITY = "Malabon city" THEN 1 ELSE 0 END) AS MALABON,
                 SUM(CASE WHEN CITY = "Navotas city" THEN 1 ELSE 0 END) AS NAVOTAS,

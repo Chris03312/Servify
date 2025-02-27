@@ -49,6 +49,7 @@ class SignUpController
             'city' => htmlspecialchars($_POST['city'] ?? ''),
             'street' => htmlspecialchars($_POST['street'] ?? ''),
             'barangay' => htmlspecialchars($_POST['barangay'] ?? ''),
+            'district' => htmlspecialchars($_POST['district'] ?? ''),
             'zipCode' => htmlspecialchars($_POST['zipcode'] ?? ''),
             'email' => filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL),
             'username' => htmlspecialchars($_POST['username'] ?? ''),
@@ -97,9 +98,9 @@ class SignUpController
             // Insert into VPROFILE_TABLE
             $stmt = $db->prepare('
                     INSERT INTO VPROFILE_TABLE 
-                    (PROFILE_DATE_CREATED, PARISH, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, ZIPCODE, EMAIL)
+                    (PROFILE_DATE_CREATED, PARISH, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, DISTRICT, ZIPCODE, EMAIL)
                     VALUES
-                    (:profile_date_created, :parish, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :zipCode, :email)
+                    (:profile_date_created, :parish, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :district, :zipCode, :email)
                 ');
             $stmt->execute([
                 ':profile_date_created' => $input['profile_date_created'],
@@ -115,6 +116,7 @@ class SignUpController
                 ':city' => $input['city'],
                 ':street' => $input['street'],
                 ':barangay' => $input['barangay'],
+                ':district' => $input['district'],
                 ':zipCode' => $input['zipCode'],
                 ':email' => $input['email']
             ]);

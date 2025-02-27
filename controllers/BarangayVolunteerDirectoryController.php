@@ -20,6 +20,7 @@ class BarangayVolunteerDirectoryController
 
         // Render the view with the volunteer directory data
         view('barangay_volunteer_directory', [
+            'coordinator_info' => $sidebarData,
             'district' => $district,
             'districturl' => $districturl,
             'barangayLinks' => $getBarangayDirectory,

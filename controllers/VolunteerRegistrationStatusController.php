@@ -27,7 +27,7 @@ class VolunteerRegistrationStatusController
             'userInfo' => $userInfo,
             'statusInfo' => $statusInfo, // Make sure this variable is correctly passed
             'notifications' => $notifications['notifications'],
-            'unread_count' => $notifications['unread_count']
+            'unread_count' => $notifications['unread_count'],
         ]);
 
     }

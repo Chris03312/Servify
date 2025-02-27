@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer | Contact Us</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -25,7 +25,7 @@
 <body>
 
     <?php
-    include('includes/volunteer_sidebar.php');
+    include(__DIR__ . '/../includes/volunteer_sidebar.php');
     ?>
 
 
@@ -33,7 +33,7 @@
     <main class="container-fluid p-3">
 
 
-        <form action="">
+        <form action="/ContactUs/submit" method="POST">
 
             <div class="text-center">
                 <img src="../img/icons8-ask-90.png" alt="Contact Logo">

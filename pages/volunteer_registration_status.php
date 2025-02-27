@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--BOOTSTRAP CDN ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -33,9 +34,9 @@
         <h4>Volunteer Registration Status</h4>
 
         <div class="timeline mb-5">
-            <div class="timeline-progress" 
-                style="width: <?php echo $statusInfo['PROGRESS']; ?>%;"></div> <!-- Dynamically adjust width -->
-            
+            <div class="timeline-progress" style="width: <?php echo $statusInfo['PROGRESS']; ?>%;"></div>
+            <!-- Dynamically adjust width -->
+
             <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 20) ? 'active' : ''; ?>">
                 <img src="../img/icons8-signing-a-document-90 (1).png" alt="Step 1">
                 <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
@@ -62,10 +63,10 @@
             </div>
         </div>
 
-            <!--TABLE-->
-            <div class="mt-5">
-                    <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR'] ?? " "; ?></h5>
-                <div class="table-responsive">
+        <!--TABLE-->
+        <div class="mt-5">
+            <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR'] ?? " "; ?></h5>
+            <div class="table-responsive">
                 <table class="table table-bordered align-middle">
                     <thead class="table-primary">
                         <tr>
@@ -77,21 +78,21 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <?php if (isset($statusInfo['VPROFILE_ID'])): ?>
-                            <th scope="row"><?php echo $statusInfo['VPROFILE_ID']; ?></th>
-                        <?php endif; ?>
-                            <td><?php echo $statusInfo['FIRST_NAME']." ".$statusInfo['MIDDLE_NAME']." ".$statusInfo['SURNAME']; ?></td>
+                            <?php if (isset($statusInfo['VPROFILE_ID'])): ?>
+                                <th scope="row"><?php echo $statusInfo['VPROFILE_ID']; ?></th>
+                            <?php endif; ?>
+                            <td><?php echo $statusInfo['FIRST_NAME'] . " " . $statusInfo['MIDDLE_NAME'] . " " . $statusInfo['SURNAME']; ?>
+                            </td>
                             <td><?php echo $statusInfo['STATUS']; ?></td>
                             <td></td>
-                            <td><button class="btn btn-sm btn-outline-primary">Action</button></td>
                             <!-- <td></td> -->
                         </tr>
                     </tbody>
                 </table>
-                </div>
             </div>
+        </div>
 
-            <!--
+        <!--
             <button id="startProgress" class="mt-5">Start Progress</button>
             -->
     </main>
@@ -124,7 +125,9 @@
 
 
     <!--BOOTSTRAP JS CDN LINK-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 

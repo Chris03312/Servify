@@ -57,10 +57,12 @@ try {
 
         <div class="d-flex flex-row justify-content-between align-items-center mb-5">
             <h4>Announcements</h4>
-            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#createAnnouncementModal"><i class="bi bi-plus me-2"></i>Create Announcement</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                data-bs-target="#createAnnouncementModal"><i class="bi bi-plus me-2"></i>Create Announcement</button>
 
             <!--MODAL - CREATE ANNOUNCEMENT-->
-            <div class="modal fade" id="createAnnouncementModal" tabindex="-1" aria-labelledby="createAnnouncementModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createAnnouncementModal" tabindex="-1"
+                aria-labelledby="createAnnouncementModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-primary"></div>
@@ -72,7 +74,8 @@ try {
                                 <p class="text-muted">Fill out this form below to create an announcement.</p>
                                 <form id="announcementForm" action="/coordinator_announcements/submit" method="POST">
                                     <div class="mb-3">
-                                        <select name="announcement_recipients" id="announcement_recipients" class="form-select" required>
+                                        <select name="announcement_recipients" id="announcement_recipients"
+                                            class="form-select" required>
                                             <option value="" selected disabled>Select Recipients</option>
                                             <option value="Volunteer">Volunteer</option>
                                             <option value="Coordinator">Coordinator</option>
@@ -80,7 +83,8 @@ try {
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="announcement_title" name="announcement_title" placeholder="Announcement Title" required>
+                                        <input type="text" class="form-control" id="announcement_title"
+                                            name="announcement_title" placeholder="Announcement Title" required>
                                     </div>
 
                                     <div class="mb-3">
@@ -90,8 +94,10 @@ try {
                                     </div>
 
                                     <div class="modal-footer justify-content-end gap-3">
-                                        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" name="post-announcement-btn" class="btn btn-primary px-5">Post</button>
+                                        <button type="button" class="btn btn-outline-secondary px-4"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" name="post-announcement-btn"
+                                            class="btn btn-primary px-5">Post</button>
                                     </div>
 
                                 </form>
@@ -123,22 +129,27 @@ try {
                                 <!-- PROFILE PIC, NAME AND DATE POSTED -->
                                 <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                                 <div class="d-flex flex-column">
-                                    <span><strong><?php echo $coordinator_info['first_name']. ' ' .$coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
+                                    <span><strong><?php echo $coordinator_info['first_name'] . ' ' . $coordinator_info['surname'] ?></strong></span><!--NAME OF AUTHOR-->
                                     <div class="d-flex justify-content-center align-items-center gap-3">
-                                        <small class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
-                                        <small class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
+                                        <small
+                                            class="text-muted"><?= date("F j, Y, g:i a", strtotime($announcement['created_at'])); ?></small>
+                                        <small
+                                            class="badge text-bg-primary"><?= htmlspecialchars($announcement['announcement_recipients']); ?></small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="dropdown">
-                                <button class="btn" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnnouncementModal<?= ($announcement['announcement_id']) ?>"><small><i class="bi bi-pen me-2"></i>Edit</small></button></li>
-                                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>"><small><i class="bi bi-trash me-2"></i>Delete</button></small></li>
+                                    <li><button class="dropdown-item" data-bs-toggle="modal"
+                                            data-bs-target="#editAnnouncementModal<?= ($announcement['announcement_id']) ?>"><small><i
+                                                    class="bi bi-pen me-2"></i>Edit</small></button></li>
+                                    <li><button class="dropdown-item" data-bs-toggle="modal"
+                                            data-bs-target="#deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>"><small><i
+                                                    class="bi bi-trash me-2"></i>Delete</button></small></li>
                                 </ul>
                             </div>
                         </div>
@@ -153,39 +164,14 @@ try {
 
                         <!-- COMMENT SECTION -->
                         <div class="comment-section border p-3 rounded mt-2" style="display: none;">
-                            <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                                <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                                <div class="d-flex flex-column">
-                                    <div>
-                                        <span><strong>Vicmar M. Guzman</strong></span>
-                                        <small class="text-muted">21 mins. ago</small>
-                                    </div>
-                                    <div>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row justify-content-start align-items-start gap-2 mb-3">
-                                <!-- PROFILE PIC, NAME AND DATE COMMENT -->
-                                <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                                <div class="d-flex flex-column">
-                                    <div>
-                                        <span><strong>Vicmar M. Guzman</strong></span>
-                                        <small class="text-muted">25 mins. ago</small>
-                                    </div>
-                                    <div>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- COMMENT BOX -->
                             <form action="">
                                 <div class="d-flex flex-row justify-content-center align-items-center gap-1">
                                     <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
-                                    <input type="text" class="form-control" name="comment" id="comment" placeholder="Add comment..." required>
-                                    <button type="submit" class="btn border-0" name="comment-btn"><i class="bi bi-send send-icon"></i></button>
+                                    <input type="text" class="form-control" name="comment" id="comment"
+                                        placeholder="Add comment..." required>
+                                    <button type="submit" class="btn border-0" name="comment-btn"><i
+                                            class="bi bi-send send-icon"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -202,7 +188,8 @@ try {
         <?php if (!empty($announcements)): ?>
             <?php foreach ($announcements as $announcement): ?>
 
-                <div class="modal fade" id="deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>" tabindex="-1" aria-labelledby="deleteAnnouncementModalLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteAnnouncementModal<?= ($announcement['announcement_id']); ?>" tabindex="-1"
+                    aria-labelledby="deleteAnnouncementModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header bg-primary"></div>
@@ -215,7 +202,8 @@ try {
                                 </div>
 
                                 <form action="/coordinator_announcements/delete" method="POST">
-                                    <input type="hidden" name="announcement_id" value="<?= $announcement['announcement_id']; ?>" />
+                                    <input type="hidden" name="announcement_id"
+                                        value="<?= $announcement['announcement_id']; ?>" />
                                     <div class="d-flex flex-row justify-content-center align-items-center mt-5 gap-3">
                                         <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
                                         <button type="submit" class="btn btn-danger" name="del-announcement-btn">Delete</button>
@@ -235,7 +223,8 @@ try {
         <?php if (!empty($announcements)): ?>
             <?php foreach ($announcements as $announcement): ?>
 
-                <div class="modal fade" id="announcementDeletedModal<?= ($announcement['announcement_id']); ?>" tabindex="-1" aria-labelledby="announcementDeletedModalLabel" aria-hidden="true">
+                <div class="modal fade" id="announcementDeletedModal<?= ($announcement['announcement_id']); ?>" tabindex="-1"
+                    aria-labelledby="announcementDeletedModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header bg-primary"></div>
@@ -263,7 +252,8 @@ try {
         <!--MODAL - EDIT ANNOUNCEMENT-->
         <?php if (!empty($announcements)): ?>
             <?php foreach ($announcements as $announcement): ?>
-                <div class="modal fade" id="editAnnouncementModal<?= $announcement['announcement_id'] ?>" tabindex="-1" aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editAnnouncementModal<?= $announcement['announcement_id'] ?>" tabindex="-1"
+                    aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header bg-primary"></div>
@@ -273,31 +263,41 @@ try {
                                 <!--EDIT FORM-->
                                 <div class="container mt-4">
                                     <p class="text-muted">Edit this announcement for clarity and accuracy.</p>
-                                    <form id="editAnnouncementForm<?= $announcement['announcement_id'] ?>" action="/coordinator_announcements/update" method="POST">
+                                    <form id="editAnnouncementForm<?= $announcement['announcement_id'] ?>"
+                                        action="/coordinator_announcements/update" method="POST">
                                         <!-- Hidden input for announcement ID -->
-                                        <input type="hidden" name="announcement_id" value="<?= $announcement['announcement_id'] ?>">
+                                        <input type="hidden" name="announcement_id"
+                                            value="<?= $announcement['announcement_id'] ?>">
 
                                         <div class="mb-3">
-                                            <select name="edit_announcement_recipients" id="edit_announcement_recipients" class="form-select" required>
+                                            <select name="edit_announcement_recipients" id="edit_announcement_recipients"
+                                                class="form-select" required>
                                                 <option value="" selected disabled>Select Recipients</option>
-                                                <option value="Volunteer" <?= $announcement['announcement_recipients'] === 'Volunteer' ? 'selected' : '' ?>>Volunteer</option>
-                                                <option value="Coordinator" <?= $announcement['announcement_recipients'] === 'Coordinator' ? 'selected' : '' ?>>Coordinator</option>
+                                                <option value="Volunteer"
+                                                    <?= $announcement['announcement_recipients'] === 'Volunteer' ? 'selected' : '' ?>>Volunteer</option>
+                                                <option value="Coordinator"
+                                                    <?= $announcement['announcement_recipients'] === 'Coordinator' ? 'selected' : '' ?>>Coordinator</option>
                                                 <option value="All" <?= $announcement['announcement_recipients'] === 'All' ? 'selected' : '' ?>>All</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="edit_announcement_title" name="edit_announcement_title" placeholder="Announcement Title" value="<?= $announcement['announcement_title'] ?>" required />
+                                            <input type="text" class="form-control" id="edit_announcement_title"
+                                                name="edit_announcement_title" placeholder="Announcement Title"
+                                                value="<?= $announcement['announcement_title'] ?>" required />
                                         </div>
                                         <div class="mb-3">
-                                            <div class="edit-editor-container" id="edit-editor-container-<?= $announcement['announcement_id'] ?>"></div>
+                                            <div class="edit-editor-container"
+                                                id="edit-editor-container-<?= $announcement['announcement_id'] ?>"></div>
                                             <!-- Hidden input to store the editor content -->
                                             <input type="hidden" name="edit_announcement_content"
                                                 id="edit_announcement_content-<?= $announcement['announcement_id'] ?>"
                                                 value="<?= htmlspecialchars($announcement['announcement_content']) ?>">
                                         </div>
                                         <div class="modal-footer justify-content-end gap-3">
-                                            <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" name="edit-announcement-btn" class="btn btn-primary px-5">Save</button>
+                                            <button type="button" class="btn btn-outline-secondary px-4"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" name="edit-announcement-btn"
+                                                class="btn btn-primary px-5">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -413,7 +413,7 @@ try {
         });
 
         // Handle form submission
-        document.getElementById("announcementForm").addEventListener("submit", function(event) {
+        document.getElementById("announcementForm").addEventListener("submit", function (event) {
             // Get the hidden input and Quill editor content
             const announcementBody = document.getElementById("announcement_content");
             const quillContent = quill.root.innerHTML.trim(); // Get content and trim whitespace
@@ -436,8 +436,8 @@ try {
     <!-- UPDATE ANNOUNCEMENT SCRIPT -->
     <script>
         // Initialize Quill for each edit announcement form
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll(".edit-editor-container").forEach(function(editorContainer) {
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".edit-editor-container").forEach(function (editorContainer) {
                 let announcementId = editorContainer.id.replace("edit-editor-container-", ""); // Extract ID
 
                 let quill = new Quill("#edit-editor-container-" + announcementId, {
@@ -488,7 +488,7 @@ try {
                 }
 
                 // Update hidden input on Quill text change
-                quill.on("text-change", function() {
+                quill.on("text-change", function () {
                     hiddenInput.value = quill.root.innerHTML;
                     checkChanges();
                 });
@@ -498,7 +498,7 @@ try {
                 titleInput.addEventListener("input", checkChanges);
 
                 // Reset form fields to initial values when cancel button is clicked
-                cancelButton.addEventListener("click", function() {
+                cancelButton.addEventListener("click", function () {
                     recipientSelect.value = initialValues.recipients;
                     titleInput.value = initialValues.title;
                     quill.root.innerHTML = initialValues.content;
@@ -507,7 +507,7 @@ try {
                 });
 
                 // Prevent submission if no changes
-                form.addEventListener("submit", function(event) {
+                form.addEventListener("submit", function (event) {
                     if (!quill.getText().trim().length) {
                         alert("Announcement body cannot be empty.");
                         event.preventDefault();

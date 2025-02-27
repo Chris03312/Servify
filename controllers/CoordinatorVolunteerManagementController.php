@@ -16,6 +16,7 @@ class CoordinatorVolunteerManagementController
 
 
         view('coordinator_volunteer_management', [
+            'coordinator_info' => $sidebarData,
             'Citylinks' => $Citylinks,
             'parishes' => $parishes,
             'sidebarinfo' => $sidebarData

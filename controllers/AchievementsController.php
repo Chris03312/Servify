@@ -60,4 +60,6 @@ class AchievementsController
             'badge' => $badge
         ]);
     }
+
+    
 }

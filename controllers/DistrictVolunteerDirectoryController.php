@@ -16,6 +16,7 @@ class DistrictVolunteerDirectoryController
 
 
         view('district_volunteer_directory', [
+            'coordinator_info' => $sidebarData,
             'City' => $city,
             'Districtlinks' => $Districtlinks,
             "sidebarinfo" => $sidebarData

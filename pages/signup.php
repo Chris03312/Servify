@@ -148,15 +148,17 @@
                         <div class="col-md-4 mb-3">
                             <label for="birthDate" class="form-label">Day<sup
                                     class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthDate" name="birthDate" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <input type="text" class="form-control" id="birthDate" name="birthDate"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             <div class="validation text-danger">
-                                
+
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birthYear" class="form-label">Year<sup
                                     class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthYear" name="birthYear" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <input type="text" class="form-control" id="birthYear" name="birthYear"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             <div class="validation text-danger"></div>
                         </div>
 

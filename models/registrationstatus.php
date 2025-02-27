@@ -1,19 +1,21 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../configuration/Database.php';
 
-class Registrationstatus {
+class Registrationstatus
+{
 
-    public static function registrationstatus() {
+    public static function registrationstatus()
+    {
         try {
             $email = $_SESSION['email'];
-    
+
             $db = Database::getConnection();
-            
+
             $stmt = $db->prepare("SELECT * FROM APPLICATION_INFO WHERE EMAIL = :email");
             $stmt->execute([':email' => $email]);
             $registrationstatus = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             // If no registration data is found, display error and return default values
             if (!$registrationstatus) {
                 // Return default values and halt further processing
@@ -27,12 +29,12 @@ class Registrationstatus {
                     'PROGRESS' => 0               // Default progress
                 ];
             }
-    
+
             // If data is found, process and return the registration status
             if (isset($registrationstatus['STATUS'])) {
                 $status = $registrationstatus['STATUS'];
                 $progressPercentage = 0; // Default progress is 0%
-    
+
                 // Determine progress based on the status
                 if ($status === 'Pending') {
                     $progressPercentage = 20;
@@ -45,13 +47,13 @@ class Registrationstatus {
                 } elseif ($status === 'Approved/Complete') {
                     $progressPercentage = 90;
                 }
-    
+
                 // Add progress percentage to the returned data
                 $registrationstatus['PROGRESS'] = $progressPercentage;
             } else {
                 error_log('No Data or STATUS key missing');
             }
-    
+
             return $registrationstatus; // Return the whole registration status data array
         } catch (PDOException $e) {
             error_log('Registration status error: ' . $e->getMessage());
