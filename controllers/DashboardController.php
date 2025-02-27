@@ -7,7 +7,8 @@ require_once __DIR__ . '/../controllers/NotificationController.php';
 
 class DashboardController
 {
-    public static function dashboard() {
+    public static function dashboard()
+    {
         if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
             redirect('/login');
         }
