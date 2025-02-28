@@ -162,6 +162,10 @@ $router->add('/admin_inquiries', [AdminInquiryController::class, 'ShowAdminInqui
 $router->add('/admin_feedback', [AdminFeedbackController::class, 'ShowAdminFeedback']);
 $router->add('/admin_reports', [AdminReportsController::class, 'ShowAdminReports']);
 
+$router->add('/add_new_coordinator', [AdminCoorManagementController::class, 'ShowAddCoordinator']);
+
+
+
 $router->run();
 
 
