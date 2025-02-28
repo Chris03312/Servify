@@ -22,136 +22,140 @@
 
 <body>
 
-    <section class="login_bg">
+    <!-- MODAL: TERMS AND CONDITIONS -->
+    <!-- <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary p-2">
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="../img/icons8-checkmark-90.png" alt="">
+                        <h3 class="text-primary">SUCCESS!</h3>
 
-        <div class="container-md p-5">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                            <span>Thank you! Your form has been successfully submitted.</span>
+                            <span>Please wait while we process your application.</span>
+                            <span>You can check the status of your application soon.</span>
+                        </div>
 
-            <div class="row align-items-center justify-content-center bg-light rounded">
-                <div class="loginLeftContainer col-lg-6 p-5">
-                    <div class="d-flex flex-row justify-content-around align-items-center gap-3">
-                        <img src="../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid loginLogo">
-                        <img src="../img/DPPAM LOGO.png" alt="DPPAM Logo" class="img-fluid loginLogo">
-                    </div>
-
-                    <div>
-                        <p class="text-center fs-5">
-                            You are accessing a secure system of
-                            <strong>Diocese of Caloocan Public and Political Affairs Ministry (DPPAM).</strong>
-                            Any unauthorized use or actions beyond your permitted access are strictly prohibited
-                            and may lead to disciplinary measures, legal action, or criminal charges.
-                        </p>
-
-                        <p class="text-center fs-5">
-                            If you are an official <strong>volunteer, coordinator,</strong> or <strong>administrator</strong>
-                            registering for the first time, kindly inform the system administrator or assigned
-                            coordinator after completing your registration to expedite the approval process.
-                        </p>
+                        <div class="d-flex flex-row justify-content-around align-items-center mt-3">
+                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> -->
 
-                <div class="right col-lg-6 pt-4">
-                    <div class="text-center">
-                        <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span></h1>
-                        <h3>Welcome Back!</h3>
+    <section class="login_bg d-flex align-items-center justify-content-center vh-100">
 
-                        <div class="d-flex flex-column">
-                            <span class="text-muted">Glad to see you again</span>
-                            <span class="text-muted">Login to your account below.</span>
-                        </div>
-                    </div>
-                    <form id="loginForm" action="/login/submit" method="POST" class="row mt-5">
+        <div class="container">
 
+            <div class="row justify-content-center">
 
-                        <div class="mb-3">
-                            <div class="validation text-danger text-center"></div>
-                            <script src="../js/login.js"></script>
+                <div class="col-lg-6 col-md-8 col-12">
+                    <div class="card p-4">
+                        <div class="text-center">
+                            <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span></h1>
+                            <h3>Welcome Back!</h3>
 
-
-                            <label for="email" class="form-label visually-hidden">Email</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-envelope-fill text-primary"></i></span>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                            <div class="d-flex flex-column">
+                                <span class="text-muted">Glad to see you again</span>
+                                <span class="text-muted">Login to your account below.</span>
                             </div>
                         </div>
+                        <form id="loginForm" action="/login/submit" method="POST" class="row mt-5">
 
 
+                            <div class="mb-3">
+                                <div class="validation text-danger text-center"></div>
+                                <script src="../js/login.js"></script>
 
-                        <!-- <div class="mb-3">
 
-                            <div class="validation text-danger text-center"></div>
-                            <script src="../js/login.js"></script>
-
-                            Input fields
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                        </div> -->
-
-                        <!-- <div class="">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                        </div> -->
-
-                        <div class="mb-3">
-                            <label for="current-password" class="form-label visually-hidden">Current Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock text-primary"></i></span>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                                <span class="input-group-text toggle-password" style="cursor: pointer;">
-                                    <i class="fas fa-eye text-primary"></i>
-                                </span>
-                                <div class="invalid-feedback">
-                                    Please input current password.
+                                <label for="email" class="form-label visually-hidden">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope-fill text-primary"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                                 </div>
                             </div>
-                        </div>
 
-
-
-
-
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="ms-1">
-                                <input type="checkbox" name="remember_me" id="remember_me">
-                                <label for="remember_me">Remember me</label>
+                            <div class="mb-3">
+                                <label for="current-password" class="form-label visually-hidden">Current Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock text-primary"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                    <span class="input-group-text toggle-password" style="cursor: pointer;">
+                                        <i class="fas fa-eye text-primary"></i>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        Please input current password.
+                                    </div>
+                                </div>
                             </div>
-                            <a href="#" class="text-decoration-none text-end pe-1">Forgot Password</a>
-                        </div>
-                        <div class="mb-3 text-center">
-                            <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
-                        </div>
-                    </form>
 
-                    <div class="mb-3 text-center form">
-                        <p>Don't have an account? <a href="/signup" class="text-danger text-decoration-none">Sign Up!</a></p>
-                    </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="ms-1">
+                                    <input type="checkbox" name="remember_me" id="remember_me">
+                                    <label for="remember_me">Remember me</label>
+                                </div>
+                                <a href="#" class="text-decoration-none text-end pe-1">Forgot Password</a>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button type="submit" id="login-button" class="btn btn-primary px-5">Sign in</button>
+                            </div>
+                        </form>
 
-                    <div class="mt-5">
-                        <img src="../img/HANDS.png" alt="Hands" class="img-fluid loginHands">
+                        <div class="my-3 text-center form">
+                            <p>Don't have an account? <a href="/signup" class="text-danger text-decoration-none">Sign Up!</a></p>
+                        </div>
+
+                        <div class="mt-5">
+                            <img src="../img/HANDS.png" alt="Hands" class="img-fluid loginHands">
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
 
-
     </section>
 
-    <script>
-            document.querySelectorAll('.toggle-password').forEach(item => {
-                item.addEventListener('click', function() {
-                    const input = this.previousElementSibling; // Selects the input field
-                    const icon = this.querySelector('i'); // Selects the eye icon
 
-                    if (input.type === "password") {
-                        input.type = "text";
-                        icon.classList.remove("fa-eye");
-                        icon.classList.add("fa-eye-slash");
-                    } else {
-                        input.type = "password";
-                        icon.classList.remove("fa-eye-slash");
-                        icon.classList.add("fa-eye");
-                    }
-                });
+
+    <script>
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     var myModal = new bootstrap.Modal(document.getElementById("termsAndConditionsModal"));
+
+        //     // Show modal on page load
+        //     myModal.show();
+
+        //     // Event listener to show page content after modal is closed
+        //     var modalElement = document.getElementById("termsAndConditionsModal");
+        //     modalElement.addEventListener("hidden.bs.modal", function() {
+        //         document.getElementById("login_page_content").style.display = "block"; // Show page content
+        //     });
+        // });
+
+
+        // SHOW AND HIDE PASSWORD IN PASSWORD FIELD 
+        document.querySelectorAll('.toggle-password').forEach(item => {
+            item.addEventListener('click', function() {
+                const input = this.previousElementSibling; // Selects the input field
+                const icon = this.querySelector('i'); // Selects the eye icon
+
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                } else {
+                    input.type = "password";
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                }
             });
-        </script>
+        });
+    </script>
 
 
     <!--BOOTSTRAP JS CDN LINK-->

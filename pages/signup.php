@@ -14,13 +14,37 @@
 
 <body>
 
-    <section class="login_bg">
 
-        <div class="container-md p-3 p-md-5">
+    <!-- MODAL: TERMS AND CONDITIONS -->
+    <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary p-2">
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h3 class="text-primary">Terms and Conditions</h3>
 
-            <div class="row align-items-center justify-content-center bg-light rounded">
+                        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, facilis similique. Ad voluptate a inventore accusantium quasi ratione, sed, dolor blanditiis omnis accusamus quae eaque incidunt consequuntur. Doloremque animi ipsam, dicta aliquid blanditiis laboriosam illo optio, asperiores consectetur neque nam, culpa quae unde fuga reiciendis molestiae iure. Delectus fuga nostrum sunt dolorum quibusdam, temporibus blanditiis magnam quos obcaecati veritatis velit odio reprehenderit dolore enim assumenda debitis? Quibusdam dolor quam quis minima consectetur molestiae accusamus in inventore, ullam ad tempora eum. Autem dolorem, dolore suscipit minima sunt corrupti? Eaque cupiditate dolore iusto sint pariatur fugiat, quibusdam magnam dolor non velit inventore qui nulla repellat, maiores ex. Nobis doloremque error animi corrupti debitis non optio, corporis, laboriosam nam tempora nesciunt quidem repellat explicabo deserunt consectetur quam enim. Iure animi ab illo odio quia deserunt quam distinctio excepturi consequatur, enim repudiandae architecto ratione commodi autem dolore quos. Ab quaerat sint repellendus praesentium? Doloribus, quod assumenda consequuntur praesentium sit repellat incidunt nobis eveniet molestiae, blanditiis amet, deleniti vel. Rem, repudiandae, nam tenetur sit eos architecto laborum, excepturi pariatur mollitia ad facilis ratione ullam impedit! Illo, ea voluptate. Fugit alias delectus ratione vel temporibus ea officia, id consectetur obcaecati itaque nobis et nulla veritatis velit aperiam, aspernatur quo, blanditiis odio repellendus dicta. Quam vero officia praesentium fuga. Soluta inventore, dicta voluptatum cupiditate amet minus id magni ex veniam quo libero quas quisquam eum esse sed praesentium, adipisci illum excepturi fuga quia architecto numquam! Earum ex, laborum numquam placeat quod nemo exercitationem sunt voluptatibus sit. Sed eaque excepturi aspernatur repellendus. Harum quibusdam praesentium possimus commodi, nisi quaerat asperiores, nesciunt magnam culpa quam molestiae impedit perspiciatis deleniti sapiente blanditiis ex temporibus aliquam necessitatibus voluptate quisquam rerum iure distinctio. Mollitia eum ipsam quaerat incidunt at expedita facilis quis quasi maiores earum ratione enim debitis, error perspiciatis dolore optio dolorem deserunt cumque sequi odit? In deleniti velit quisquam ut omnis ab aut voluptas, sint officia, voluptatum sequi, reiciendis asperiores! Voluptas impedit excepturi ipsam quam officia consequatur adipisci ea itaque eveniet quos hic tempore optio, repellat quidem earum sunt nisi aliquam eaque assumenda ab corrupti iusto eos molestiae praesentium! Tempora magni perspiciatis eos nam rerum nostrum, ex minus recusandae architecto totam sint vel alias, ratione laborum eveniet nulla, quas libero fugiat quisquam natus vero? Laborum sapiente eligendi molestiae amet modi et reprehenderit cum atque? Reiciendis officiis dolorum nam tenetur voluptatum cumque sapiente maxime accusantium amet. Asperiores, vero, culpa blanditiis accusamus ipsa voluptas, ducimus officia rerum aliquam labore itaque dolor est consequuntur magni quisquam fuga aliquid quidem! Minima, quia sequi nulla eaque beatae sunt veritatis consequatur, corrupti fugiat laudantium, expedita voluptatum pariatur. Doloribus accusantium amet quo, ipsa molestias aperiam quidem autem a ut dignissimos sapiente dolorem aut, quibusdam totam dicta facilis animi aliquid fugiat consequatur aspernatur. Ducimus dignissimos id nobis, laudantium quibusdam quidem, eligendi esse nemo quisquam sequi qui iusto earum temporibus error? Dolorem consectetur iure sunt consequuntur, quam iste magnam maxime ratione odio vel dolorum sit iusto, rerum explicabo error, nulla sapiente cum necessitatibus voluptatem reiciendis inventore nesciunt obcaecati? Reiciendis!</p>
+                        </div>
 
-                <div class="loginLeftContainer col-lg-4 p-5">
+                        <div class="d-flex flex-row justify-content-around align-items-center mt-3">
+                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Okay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="login_bg d-flex align-items-center justify-content-center p-0 p-md-5">
+
+        <div class="container" id="sign_up_content" style="display: none;">
+
+            <div class="row justify-content-center">
+
+                <!-- <div class="loginLeftContainer col-lg-4 p-5">
                     <div class="d-flex flex-row justify-content-around align-items-center gap-3 mb-5">
                         <img src="../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid loginLogo">
                         <img src="../img/DPPAM LOGO.png" alt="DPPAM Logo" class="img-fluid loginLogo">
@@ -40,242 +64,244 @@
                             coordinator after completing your registration to expedite the approval process.
                         </p>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="right col-lg-8 pt-4">
-                    <div class="text-center">
-                        <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span>
-                        </h1>
-                        <h3>Sign Up Form</h3>
+                <div class="col-12">
+                    <div class="card p-4">
+                        <div class="text-center">
+                            <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span>
+                            </h1>
+                            <h3>Sign Up Form</h3>
 
-                        <div class="d-flex flex-column">
-                            <span class="text-muted">Enter your details below to create your account and get
-                                started.</span>
-                        </div>
-
-                        <spam class="text-muted"></spam>
-                    </div>
-
-                    <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
-                        <!--PARISH NAMES-->
-                        <div class="col-md-12 mb-3">
-                            <label for="parishNameDataList" class="form-label"><strong>You are currently registering as
-                                    VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
-                            <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish"
-                                placeholder="Type to search...">
-                            <datalist id="parishNameOptions">
-                                <option value="St. Francis of Assisi – Sta Quiteria Parish">
-                                <option value="Birhen ng Lourdes Parish">
-                                <option value="Our Lady of Lujan Parish">
-                                <option value="Sacred Heart of Jesus Parish">
-                                <option value="St. Peter & John Parish">
-                                <option value="St. Gabriel the Archangel Parish">
-                                <option value="Shrine of Our Lady of Grace">
-                                <option value="Sagrada Familia Parish">
-                                <option value="San Jose Parish (Agudo)">
-                                <option value="San Pancracio Parish">
-                                <option value="Hearts of Jesus & Mary Parish">
-                                <option value="Immaculate of Heart & Mary Parish">
-                                <option value="Mary Help of Christians Parish">
-                                <option value="Sacred Heart of Jesus Parish (Tugatog)">
-                                <option value="St. Joseph the Workman Parish">
-                                <option value="San Roque Cathedral">
-                                <option value="Holy Trinity Quasi-Parish">
-                                <option value="Exaltation of the Holy Cross Parish">
-                                <option value="Diocesan Shrine & Parish of Immaculate Concepcion">
-                                <option value="San Antonio de Padua Parish">
-                                <option value="San Bartolome Parish">
-                                <option value="Santa Cruz Parish">
-                                <option value="Sto. Rosario Parish">
-                                <option value="San Exequiel Moreno Parish">
-                                <option value="San Ildefonso Parish">
-                                <option value="Diocesan Shrine & Parish of San Jose de Navotas">
-                                <option value="San Lorenzo Ruiz & Companion Martyrs Parish">
-                                <option value="San Roque Parish de Navotas">
-                                <option value="St. Clare of Assisi Parish">
-                                <option value="Sto. Niño de Pasion Parish">
-                                <option value="Nustra Senora delos Remedios Quasi-Parish">
-                            </datalist>
-                            <div class="validation text-danger"></div>
-                        </div>
-
-                        <div class="col-md-3 mb-3">
-                            <label for="surname" class="form-label">Surname<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="surname" name="surname"
-                                placeholder="Ex. Dela Cruz">
-                            <div class="validation text-danger"></div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="firstname" class="form-label">First name<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="firstname" name="firstname"
-                                placeholder="Ex. Juan">
-                            <div class="validation text-danger"></div>
-                        </div>
-
-                        <div class="col-md-3 mb-3">
-                            <label for="middlename" class="form-label">Middle name (Optional)</label>
-                            <input type="text" class="form-control" id="middlename" name="middleName">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="suffix" class="form-label">Suffix (Optional)</label>
-                            <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Ex. Jr">
-                        </div>
-
-                        <strong class="mb-3">Birth Day</strong>
-                        <div class="col-md-4 mb-3">
-                            <label for="birthMonth" class="form-label">Month<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <select id="birthMonth" class="form-select" name="birthMonth">
-                                <option selected disabled value="">Select month</option>
-                                <option value="January">January</option>
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select>
-                            <div class="validation text-danger"></div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="birthDate" class="form-label">Day<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthDate" name="birthDate"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                            <div class="validation text-danger">
-
+                            <div class="d-flex flex-column">
+                                <span class="text-muted">Enter your details below to create your account and get
+                                    started.</span>
                             </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="birthYear" class="form-label">Year<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="birthYear" name="birthYear"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                            <div class="validation text-danger"></div>
+
+                            <spam class="text-muted"></spam>
                         </div>
 
-                        <strong class="mb-3">Address</strong>
-                        <div class="col-md-12 mb-3">
-                            <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
-                            <select id="city" class="form-select" name="city">
-                                <option selected disabled value="">Select City</option>
-                                <?php foreach ($cities as $city): ?>
-                                    <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
-                                        <?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="validation text-danger"></div>
-                        </div>
+                        <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
+                            <!--PARISH NAMES-->
+                            <div class="col-md-12 mb-3">
+                                <label for="parishNameDataList" class="form-label"><strong>You are currently registering as
+                                        VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
+                                <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish"
+                                    placeholder="Type to search...">
+                                <datalist id="parishNameOptions">
+                                    <option value="St. Francis of Assisi – Sta Quiteria Parish">
+                                    <option value="Birhen ng Lourdes Parish">
+                                    <option value="Our Lady of Lujan Parish">
+                                    <option value="Sacred Heart of Jesus Parish">
+                                    <option value="St. Peter & John Parish">
+                                    <option value="St. Gabriel the Archangel Parish">
+                                    <option value="Shrine of Our Lady of Grace">
+                                    <option value="Sagrada Familia Parish">
+                                    <option value="San Jose Parish (Agudo)">
+                                    <option value="San Pancracio Parish">
+                                    <option value="Hearts of Jesus & Mary Parish">
+                                    <option value="Immaculate of Heart & Mary Parish">
+                                    <option value="Mary Help of Christians Parish">
+                                    <option value="Sacred Heart of Jesus Parish (Tugatog)">
+                                    <option value="St. Joseph the Workman Parish">
+                                    <option value="San Roque Cathedral">
+                                    <option value="Holy Trinity Quasi-Parish">
+                                    <option value="Exaltation of the Holy Cross Parish">
+                                    <option value="Diocesan Shrine & Parish of Immaculate Concepcion">
+                                    <option value="San Antonio de Padua Parish">
+                                    <option value="San Bartolome Parish">
+                                    <option value="Santa Cruz Parish">
+                                    <option value="Sto. Rosario Parish">
+                                    <option value="San Exequiel Moreno Parish">
+                                    <option value="San Ildefonso Parish">
+                                    <option value="Diocesan Shrine & Parish of San Jose de Navotas">
+                                    <option value="San Lorenzo Ruiz & Companion Martyrs Parish">
+                                    <option value="San Roque Parish de Navotas">
+                                    <option value="St. Clare of Assisi Parish">
+                                    <option value="Sto. Niño de Pasion Parish">
+                                    <option value="Nustra Senora delos Remedios Quasi-Parish">
+                                </datalist>
+                                <div class="validation text-danger"></div>
+                            </div>
 
-                        <div class="col-md-3 mb-3">
-                            <label for="street" class="form-label">Street/Unit/Bldg/Village<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="street" name="street"
-                                placeholder="Ex. Blk# Lot#">
-                            <div class="validation text-danger"></div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="barangay" class="form-label">Barangay<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <select id="barangay" class="form-select" name="barangay">
-                                <option selected disabled value="">Select Barangay</option>
-                                <!-- Barangay options will be populated dynamically using JavaScript -->
-                            </select>
-                            <div class="validation text-danger"></div>
-                            <script>
-                                // Pass the cities and barangays data to JavaScript
-                                var cities = <?php echo json_encode($cities); ?>;
-                                var barangays = <?php echo json_encode($barangays); ?>;
-                                console.log(barangays);  // Log barangays to check the data
-                            </script>
-                            <script src="js/signup.js"></script>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="district" class="form-label">District<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="district" name="district"
-                                placeholder="Ex. District 1">
-                            <div class="validation text-danger"></div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zipcode" class="form-label">Zipcode</label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
-                            <div class="validation text-danger"></div>
-                        </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="surname" class="form-label">Surname<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="surname" name="surname"
+                                    placeholder="Ex. Dela Cruz">
+                                <div class="validation text-danger"></div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="firstname" class="form-label">First name<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="firstname" name="firstname"
+                                    placeholder="Ex. Juan">
+                                <div class="validation text-danger"></div>
+                            </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Ex. example1@gmail.com">
-                            <div class="validation text-danger"></div>
-                        </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="middlename" class="form-label">Middle name (Optional)</label>
+                                <input type="text" class="form-control" id="middlename" name="middleName">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="suffix" class="form-label">Suffix (Optional)</label>
+                                <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Ex. Jr">
+                            </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="username" class="form-label">Create Username<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="text" class="form-control" id="username" name="username">
-                            <div class="validation text-danger"></div>
-                        </div>
+                            <strong class="mb-3">Birth Day</strong>
+                            <div class="col-md-4 mb-3">
+                                <label for="birthMonth" class="form-label">Month<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <select id="birthMonth" class="form-select" name="birthMonth">
+                                    <option selected disabled value="">Select month</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                                <div class="validation text-danger"></div>
+                            </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="password" class="form-label">Create Password<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="password" name="password">
-                            <div class="validation text-danger"></div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="confirmPassword" class="form-label">Confirm Password<sup
-                                    class="text-danger fw-bold">*</sup></label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                            <div class="validation text-danger"></div>
-                        </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="birthDate" class="form-label">Day<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="birthDate" name="birthDate"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <div class="validation text-danger">
 
-                        <div class="mb-3 text-center">
-                            <button class="btn btn-primary px-4" type="submit">Sign Up</button>
-                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="birthYear" class="form-label">Year<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="birthYear" name="birthYear"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <div class="validation text-danger"></div>
+                            </div>
 
-                        <!--SUCCESS MODAL-->
-                        <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-primary p-2">
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="text-center">
-                                            <img src="../img/icons8-checkmark-90 (1).png" alt="">
-                                            <h3 class="text-primary">SUCCESS</h3>
-                                            <p class="text-muted">Your account on <strong><span
-                                                        class="text-danger">Serv</span><span
-                                                        class="text-primary">ify</span></strong>
-                                                has been created.</p>
-                                            <p class="text-muted">Check your email for more details.</p>
-                                            <button type="button" class="btn btn-primary px-5" id="redirectButton"
-                                                data-bs-dismiss="modal">Done</button>
+                            <strong class="mb-3">Address</strong>
+                            <div class="col-md-12 mb-3">
+                                <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
+                                <select id="city" class="form-select" name="city">
+                                    <option selected disabled value="">Select City</option>
+                                    <?php foreach ($cities as $city): ?>
+                                        <option value="<?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>">
+                                            <?php echo htmlspecialchars($city['MUNICIPALITY/CITY']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="validation text-danger"></div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label for="street" class="form-label">Street/Unit/Bldg/Village<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="street" name="street"
+                                    placeholder="Ex. Blk# Lot#">
+                                <div class="validation text-danger"></div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="barangay" class="form-label">Barangay<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <select id="barangay" class="form-select" name="barangay">
+                                    <option selected disabled value="">Select Barangay</option>
+                                    <!-- Barangay options will be populated dynamically using JavaScript -->
+                                </select>
+                                <div class="validation text-danger"></div>
+                                <script>
+                                    // Pass the cities and barangays data to JavaScript
+                                    var cities = <?php echo json_encode($cities); ?>;
+                                    var barangays = <?php echo json_encode($barangays); ?>;
+                                    console.log(barangays); // Log barangays to check the data
+                                </script>
+                                <script src="js/signup.js"></script>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="district" class="form-label">District<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="district" name="district"
+                                    placeholder="Ex. District 1">
+                                <div class="validation text-danger"></div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zipcode" class="form-label">Zipcode</label>
+                                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
+                                <div class="validation text-danger"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Ex. example1@gmail.com">
+                                <div class="validation text-danger"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Create Username<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="username" name="username">
+                                <div class="validation text-danger"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Create Password<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                <div class="validation text-danger"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                                <div class="validation text-danger"></div>
+                            </div>
+
+                            <div class="mb-3 mt-5 text-center">
+                                <button class="btn btn-primary px-4" type="submit">Sign Up</button>
+                            </div>
+
+                            <!--SUCCESS MODAL-->
+                            <div class="modal fade" id="SuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary p-2">
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="../img/icons8-checkmark-90 (1).png" alt="">
+                                                <h3 class="text-primary">SUCCESS</h3>
+                                                <p class="text-muted">Your account on <strong><span
+                                                            class="text-danger">Serv</span><span
+                                                            class="text-primary">ify</span></strong>
+                                                    has been created.</p>
+                                                <p class="text-muted">Check your email for more details.</p>
+                                                <button type="button" class="btn btn-primary px-5" id="redirectButton"
+                                                    data-bs-dismiss="modal">Done</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                        </form>
+
+                        <div class="mb-3 text-center">
+                            <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a>
+                            </p>
                         </div>
 
-                    </form>
-
-                    <div class="mb-3 text-center">
-                        <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a>
-                        </p>
-                    </div>
-
-                    <div class="mt-5">
-                        <img src="../img/HANDS.png" alt="Hands" class="img-fluid loginHands">
+                        <div class="mt-5 text-center">
+                            <img src="../img/HANDS.png" alt="Hands" class="img-fluid loginHands">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -285,6 +311,21 @@
 
     </section>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var myModal = new bootstrap.Modal(document.getElementById("termsAndConditionsModal"));
+
+            // Show modal on page load
+            myModal.show();
+
+            // Event listener to show page content after modal is closed
+            var modalElement = document.getElementById("termsAndConditionsModal");
+            modalElement.addEventListener("hidden.bs.modal", function() {
+                document.getElementById("sign_up_content").style.display = "block"; // Show page content
+            });
+        });
+    </script>
 
 
 
