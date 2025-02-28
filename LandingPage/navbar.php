@@ -1,3 +1,9 @@
+<?php
+if (!isset($allMissions)) {
+    $allMissions = Landingpage::Volunteers(); // ✅ Fetch all missions if not already available
+}
+?>
+
 <style>
     /* NAVBAR */
     .navbar-container {
@@ -235,24 +241,23 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="/index#volunteers" class="dropdown-toggles">Volunteers<i class="fa fa-chevron-down"></i></a>
+                <a href="/index#volunteers" class="dropdown-toggles">Volunteers <i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <?php if ($volunteers): ?>
-                        <?php foreach ($volunteers as $volunteer): ?>
-                            <li><a href="/volunteers?mission=<?php echo urlencode($volunteer['MISSION_DESCRIPTION'] ?? ''); ?>">
-                                    <?php echo str_replace(['(', ')'], '', $volunteer['MISSION_DESCRIPTION'] ?? ''); ?>
+                    <?php if (!empty($allMissions)): ?>
+                        <?php foreach ($allMissions as $mission): ?>
+                            <li>
+                                <a href="/volunteers?mission=<?php echo urlencode($mission['MISSION_DESCRIPTION']); ?>">
+                                    <?php echo htmlspecialchars($mission['MISSION_DESCRIPTION']); ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <!-- <li><a href="/upce">UPCE</a></li>
-                        <li><a href="/vad">VAD</a></li>
-                        <li><a href="/psv">PSV</a></li>
-                        <li><a href="/eo">EO</a></li> -->
+                        <li><a href="#">No missions available</a></li>
                     <?php endif; ?>
                     <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
                 </ul>
             </li>
+
             <!-- <li class="dropdown">
                 <a href="/index#resources" class="dropdown-toggles">Resources<i class="fa fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">

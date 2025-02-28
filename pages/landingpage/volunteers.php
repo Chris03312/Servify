@@ -11,7 +11,7 @@
 
 <?php include("LandingPage/navbar.php"); ?>
 
-<?php if (!empty($volunteers)): ?>
+    <?php if (!empty($volunteers)): ?>
         <?php foreach ($volunteers as $volunteer): ?>
             <section id="<?php echo htmlspecialchars($volunteer['MISSION_DESCRIPTION'] ?? ''); ?>">
                 <div class="volunteer-types border border-2">

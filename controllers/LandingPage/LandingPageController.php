@@ -48,26 +48,6 @@ class LandingPageController
 
     // VOLUNTEERS
 
-    // public static function ShowVolunteers()
-    // {
-    //     $allMissions = Landingpage::Volunteers(); // Get all missions for the navbar
-    //     $volunteers = $allMissions; // Default to all
-
-    //     // Get the selected mission from URL
-    //     $selected_mission = $_GET['mission'] ?? '';
-
-    //     // If a mission is selected, filter only that mission
-    //     if (!empty($selected_mission)) {
-    //         $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
-    //             return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
-    //         });
-    //     }
-
-    //     view('LandingPage/volunteers', [
-    //         'volunteers' => $volunteers,
-    //         'allMissions' => $allMissions // Pass all missions to the view for the navbar
-    //     ]);
-    // }
 
     // public static function ShowVolunteers()
     // {
@@ -82,20 +62,42 @@ class LandingPageController
 
     public static function ShowVolunteers()
     {
-        $volunteers = Landingpage::Volunteers(); 
+        $allMissions = Landingpage::Volunteers(); 
+        $volunteers = $allMissions; 
 
         $selected_mission = $_GET['mission'] ?? '';
 
         if (!empty($selected_mission)) {
-            $volunteers = array_filter($volunteers, function ($volunteer) use ($selected_mission) {
+            $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
                 return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
             });
         }
 
         view('LandingPage/volunteers', [
-            'volunteers' => $volunteers
+            'volunteers' => $volunteers,
+            'allMissions' => $allMissions 
         ]);
     }
+
+
+    // public static function ShowVolunteers()
+    // {
+    //     $allMissions = Landingpage::Volunteers(); 
+    //     $volunteers = $allMissions;
+
+    //     $selected_mission = $_GET['mission'] ?? '';
+
+    //     if (!empty($selected_mission)) {
+    //         $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
+    //             return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
+    //         });
+    //     }
+
+    //     view('LandingPage/volunteers', [
+    //         'volunteers' => $volunteers,
+    //         'allMissions' => $allMissions 
+    //     ]);
+    // }
     
     // RESOURCES
 

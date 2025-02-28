@@ -149,8 +149,8 @@
                 <?php if (!empty($allMissions)): ?>
                     <?php foreach ($allMissions as $mission): ?>
                         <div class="volunteer-box">
-                            <img src="Landingpage/img/default.jpg" alt="<?php echo htmlspecialchars($mission['MISSION_NAME']); ?>">
-                            <h3><?php echo htmlspecialchars($mission['MISSION_NAME']); ?></h3>
+                            <img src="Landingpage/img/default.jpg" alt="<?php echo htmlspecialchars($mission['MISSION_DESCRIPTION']); ?>">
+                            <h3><?php echo htmlspecialchars($mission['MISSION_DESCRIPTION']); ?></h3>
                             <a href="/volunteers?mission=<?php echo urlencode($mission['MISSION_DESCRIPTION']); ?>" class="btn">See More</a>
                         </div>
                     <?php endforeach; ?>
