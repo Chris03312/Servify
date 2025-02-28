@@ -139,36 +139,28 @@
                     </h2>
                 </div>
                 <div class="volunteers-details">
-                    <p>Here are the different roles and duties of volunteers who help ensure fair and
-                        smooth elections. Learn more about the different types of Pollwatchers.</p>
+                    <p>Here are the different roles and duties of volunteers who help ensure fair and smooth elections. 
+                    Learn more about the different types of Pollwatchers.</p>
                     <a href="/pollwatchers" class="btn">Types of Pollwatchers <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="volunteers-boxes">
-                <div class="volunteer-box">
-                    <img src="Landingpage/img/upce.jpg" alt="Volunteer 1">
-                    <h3>Unofficial Parallel Count Encoder (UPCE)</h3>
-                    <a href="/upce" class="btn">See More</a>
-                </div>
-                <div class="volunteer-box">
-                    <img src="Landingpage/img/vad.jpg" alt="Volunteer 1">
-                    <h3>Voters' Assistancee Desk (VAD)</h3>
-                    <a href="/vad" class="btn">See More</a>
-                </div>
-                <div class="volunteer-box">
-                    <img src="Landingpage/img/eo.jpg" alt="Volunteer 1">
-                    <h3>Election Monitors or Observers (EO)</h3>
-                    <a href="/eo" class="btn">See More</a>
-                </div>
-                <div class="volunteer-box">
-                    <img src="Landingpage/img/psv.jpg" alt="Volunteer 1">
-                    <h3>Polling Station Volunteers (PSV)</h3>
-                    <a href="/psv" class="btn">See More</a>
-                </div>
+                <?php if (!empty($allMissions)): ?>
+                    <?php foreach ($allMissions as $mission): ?>
+                        <div class="volunteer-box">
+                            <img src="Landingpage/img/default.jpg" alt="<?php echo htmlspecialchars($mission['MISSION_NAME']); ?>">
+                            <h3><?php echo htmlspecialchars($mission['MISSION_NAME']); ?></h3>
+                            <a href="/volunteers?mission=<?php echo urlencode($mission['MISSION_DESCRIPTION']); ?>" class="btn">See More</a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No volunteer types available.</p>
+                <?php endif; ?>
             </div>
         </div>
     </section>
+
 
     <section class="resources" id="resources">
         <div class="resources-container">

@@ -239,18 +239,18 @@
                 <ul class="dropdown-menu">
                     <?php if ($volunteers): ?>
                         <?php foreach ($volunteers as $volunteer): ?>
-                            <li><a href="/volunteers#<?php echo $volunteer['MISSION_DESCRIPTION'] ?? ' '; ?>">
+                            <li><a href="/volunteers?mission=<?php echo urlencode($volunteer['MISSION_DESCRIPTION'] ?? ''); ?>">
                                     <?php echo str_replace(['(', ')'], '', $volunteer['MISSION_DESCRIPTION'] ?? ''); ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <li><a href="/upce">UPCE</a></li>
+                        <!-- <li><a href="/upce">UPCE</a></li>
                         <li><a href="/vad">VAD</a></li>
                         <li><a href="/psv">PSV</a></li>
-                        <li><a href="/eo">EO</a></li>
-                        <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
+                        <li><a href="/eo">EO</a></li> -->
                     <?php endif; ?>
+                    <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
                 </ul>
             </li>
             <!-- <li class="dropdown">

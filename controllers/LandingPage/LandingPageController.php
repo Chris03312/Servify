@@ -25,6 +25,7 @@ class LandingPageController
         ]);
     }
 
+
     public static function ShowMissionVision()
     {
         $volunteers = Landingpage::Volunteers();
@@ -47,17 +48,55 @@ class LandingPageController
 
     // VOLUNTEERS
 
+    // public static function ShowVolunteers()
+    // {
+    //     $allMissions = Landingpage::Volunteers(); // Get all missions for the navbar
+    //     $volunteers = $allMissions; // Default to all
+
+    //     // Get the selected mission from URL
+    //     $selected_mission = $_GET['mission'] ?? '';
+
+    //     // If a mission is selected, filter only that mission
+    //     if (!empty($selected_mission)) {
+    //         $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
+    //             return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
+    //         });
+    //     }
+
+    //     view('LandingPage/volunteers', [
+    //         'volunteers' => $volunteers,
+    //         'allMissions' => $allMissions // Pass all missions to the view for the navbar
+    //     ]);
+    // }
+
+    // public static function ShowVolunteers()
+    // {
+
+    //     $volunteers = Landingpage::Volunteers();
+
+    //     view('volunteers', [
+    //         'volunteers' => $volunteers
+    //     ]);
+
+    // }
+
     public static function ShowVolunteers()
     {
+        $volunteers = Landingpage::Volunteers(); 
 
-        $volunteers = Landingpage::Volunteers();
+        $selected_mission = $_GET['mission'] ?? '';
+
+        if (!empty($selected_mission)) {
+            $volunteers = array_filter($volunteers, function ($volunteer) use ($selected_mission) {
+                return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
+            });
+        }
 
         view('LandingPage/volunteers', [
             'volunteers' => $volunteers
         ]);
-
     }
-
+    
     // RESOURCES
 
     public static function ShowResources()
@@ -95,6 +134,8 @@ class LandingPageController
         ]);
 
     }
+
+    
 
     // TYPES OF VOLUNTEER 
 
