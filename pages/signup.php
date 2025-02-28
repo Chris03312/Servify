@@ -16,7 +16,6 @@
 
 
     <!-- MODAL: TERMS AND CONDITIONS -->
-
     <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
@@ -89,6 +88,56 @@
                             </ol>
 
 
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: DATA PRIVACY POLICY -->
+    <div class="modal fade" id="dataPrivacyModal" tabindex="-1" aria-labelledby="dataPrivacyModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="bg-primary py-2">
+                    <h2 class="text-light text-center">Data Privacy Policy</h2>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h5 class="text-primary text-center">Diocesan Public and Political Affairs Ministry (DPPAM) Volunteer Registration</h5>
+
+                        <div>
+                            <p class="text-muted">The Diocesan Public and Political Affairs Ministry (DPPAM) is committed to protecting the privacy and security of all volunteers using the Servify system.</p>
+                            <p class="text-muted">By registering and using Servify, you acknowledge and agree to the collection, processing, and storage of your personal data as outlined in this policy.</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <h5>Collection of Personal Data</h5>
+                            <p>Servify collects necessary personal information, including but not limited to your name, contact details, parish affiliation, and volunteer role. This data is used solely for managing volunteer assignments, communication, and organizational reporting.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Use and Processing of Data</h5>
+                            <p>Your personal information is processed to facilitate volunteer coordination, track participation, and improve the system’s effectiveness. We do not sell, share, or distribute your data to third parties without consent, except as required by law or to fulfill the ministry’s objectives.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Data Security and Confidentiality</h5>
+                            <p>Servify implements appropriate security measures to safeguard your personal data from unauthorized access, alteration, disclosure, or destruction. Only authorized personnel and system administrators have access to this information.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>User Rights and Consent</h5>
+                            <p>You have the right to request access, updates, or deletion of your personal data. If you wish to withdraw consent or make modifications, you may contact the DPPAM administration. However, withdrawal may affect your ability to continue volunteering through the Servify system.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Retention and Disposal of Data</h5>
+                            <p>Personal data is retained only for as long as necessary to fulfill its intended purpose. Once no longer needed, data will be securely deleted or anonymized in accordance with data protection guidelines.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Policy Updates and Amendments</h5>
+                            <p>DPPAM reserves the right to update this Data Privacy Policy as needed. Volunteers will be notified of significant changes, and continued use of Servify constitutes acceptance of the updated policy.</p>
                         </div>
 
                         <div class="modal-footer">
@@ -319,7 +368,13 @@
                             <!-- TERMS AND CONDITIONS CHECKBOX -->
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="termsCheckbox">
-                                <label class="form-check-label" for="termsCheckbox">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsAndConditionsModal">Terms and Conditions</a>.
+                                <label class="form-check-label" for="termsCheckbox">I have read and agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsAndConditionsModal">Terms and Conditions</a>.
+                                </label>
+                                <div class="text-danger small" id="termsError" style="display: none;">You must agree before submitting.</div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="dataPrivacyCheckbox">
+                                <label class="form-check-label" for="dataPrivacyCheckbox">I have read and agree the <a href="#" data-bs-toggle="modal" data-bs-target="#dataPrivacyModal">Data Privacy Policy</a>.
                                 </label>
                                 <div class="text-danger small" id="termsError" style="display: none;">You must agree before submitting.</div>
                             </div>
@@ -380,15 +435,19 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let termsCheckbox = document.getElementById("termsCheckbox");
+            let dataPrivacyCheckbox = document.getElementById("dataPrivacyCheckbox");
             let signUpBtn = document.getElementById("signUpBtn");
 
             // Disable button initially
             signUpBtn.disabled = true;
 
-            // Enable/Disable button based on checkbox state
-            termsCheckbox.addEventListener("change", function() {
-                signUpBtn.disabled = !this.checked;
-            });
+            function updateButtonState() {
+                signUpBtn.disabled = !(termsCheckbox.checked && dataPrivacyCheckbox.checked);
+            }
+
+            // Listen for changes on both checkboxes
+            termsCheckbox.addEventListener("change", updateButtonState);
+            dataPrivacyCheckbox.addEventListener("change", updateButtonState);
         });
     </script>
 
