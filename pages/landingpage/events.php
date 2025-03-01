@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include("LandingPage/navbar.php"); ?>
+<?php include("LandingPage/navbar.php"); ?>
     <div class="events-container">
         <div class="content-container">
             <div class="title-container">
@@ -27,56 +27,22 @@
             </div>
 
             <div class="boxes-container">
-                <div class="box">
-                    <div class="image-container">
-                        <img src="Landingpage/img/n4.jpg" alt="Volunteer 1">
-                    </div>
-                    <h3>Diocese of Kalookan PPAM-PPCRV Meets with Caloocan Election Officers for 2025 Polls</h3>
-                    <!-- <p>Volunteers are vital in ensuring a smooth, fair, and transparent election process 
-                        by supporting voter education, precinct monitoring, and logistical tasks, helping 
-                        make every vote count.</p> -->
-                    <a href="/announcement1" class="btn">Read More</a>
-                </div>
-                <div class="box">
-                    <div class="image-container">
-                        <img src="Landingpage/img/e3.jpg" alt="Volunteer 2">
-                    </div>
-                    <h3>DPPAM-PPCRV Strengthens 2025 Election Preparations in Courtesy Call with COMELEC Navotas</h3>
-                    <!-- <p>DPPAM trained volunteers for the 2025 elections, preparing them for key roles 
-                        in ensuring a smooth and fair voting process.  Their efforts will help ensure 
-                        transparency and voter engagement.</p> -->
-                    <a href="/announcement2" class="btn">Read More</a>
-                </div>
-                <div class="box">
-                    <div class="image-container">
-                        <img src="Landingpage/img/event3.jpg" alt="Volunteer 1">
-                    </div>
-                    <h3>Ethical Leadership and Good Governance Seminar 2024: Empowering Leaders in Malabon</h3>
-                    <!-- <p>The Ethical Leadership and Good Governance Seminar 2024, hosted by DPPAM in Malabon, empowered community 
-                        leaders and barangay officials through expert talks by Prof. Ryan Aguinaldo and Prof. Alexander Gonzales 
-                        of PUP.</p> -->
-                    <a href="/announcement3" class="btn">Read More</a>
-                </div>
-                <div class="box">
-                    <div class="image-container">
-                        <img src="Landingpage/img/event4.jpg" alt="Volunteer 2">
-                    </div>
-                    <h3>Disaster Preparedness Seminar Held by Diocese of Kalookan in Malabon Parish Church</h3>
-                    <!-- <p>On August 31, 2024, the Diocese of Kalookan held a Disaster Preparedness Seminar at 
-                        St. Clare of Assisi Parish in Malabon, with Mr. Aldrin Sevilla of the Malabon City 
-                        DRRMO discussing disaster readiness. </p> -->
-                    <a href="/announcement4" class="btn">Read More</a>
-                </div>
-                <div class="box">
-                    <div class="image-container">
-                        <img src="Landingpage/img/event5.jpg" alt="Volunteer 2">
-                    </div>
-                    <h3>DPPAM Launches Voters' Education and Empowerment Trainers' Training in Kalookan</h3>
-                    <!-- <p>On July 8, 2023, the Diocese of Kalookan's Public & Political Affairs Ministry trained over 50 parish volunteers for the Voters' 
-                        Education and Empowerment Program, supporting the 2023 Barangay and SK Elections. </p> -->
-                    <a href="/announcement5" class="btn">Read More</a>
-                </div>
+                <?php if (!empty($events)): ?>
+                    <?php foreach ($events as $event): ?>
+                        <div class="box">
+                            <div class="image-container">
+                                <img src="Landingpage/img/<?php echo htmlspecialchars($event['announcement_image'] ?? 'default.jpg'); ?>" 
+                                    alt="<?php echo htmlspecialchars($event['announcement_title']); ?>">
+                            </div>
+                            <h3><?php echo htmlspecialchars($event['announcement_title']); ?></h3>
+                            <a href="/announcements?announcement=<?php echo urlencode($event['announcement_title']); ?>" class="btn">Read More</a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No events available.</p>
+                <?php endif; ?>
             </div>
+
         </div>
     </div>
 
