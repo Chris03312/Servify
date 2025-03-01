@@ -124,60 +124,64 @@ try {
 
 
         <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                document.querySelectorAll(".see-comment-btn").forEach((button) => {
-                    button.addEventListener("click", () => {
-                        const commentSection = button.closest(".border").querySelector(".comment-section");
-                        commentSection.style.display = (commentSection.style.display === "none" || commentSection.style.display === "") ? "block" : "none";
-                        button.textContent = commentSection.style.display === "block" ? "Hide comment" : "See comment";
-                    });
+           document.addEventListener("DOMContentLoaded", () => {
+    // Comment toggling for show/hide comments
+    document.querySelectorAll(".see-comment-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+            const commentSection = button.closest(".border").querySelector(".comment-section");
+            commentSection.style.display = (commentSection.style.display === "none" || commentSection.style.display === "") ? "block" : "none";
+            button.textContent = commentSection.style.display === "block" ? "Hide comment" : "See comment";
+        });
+    });
+
+    // Handle the comment submission
+    document.querySelectorAll("form").forEach((form) => {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const input = form.querySelector("input[name='comment']");
+            const announcementId = form.querySelector("input[name='announcement_id']").value;
+            const commentSection = form.closest(".comment-section");
+            const username = form.getAttribute("data-username") || "Anonymous";
+
+            if (!input || !announcementId || !commentSection) {
+                alert("Error: Form elements missing.");
+                return;
+            }
+
+            const comment = input.value.trim();
+            if (comment.length === 0) {
+                alert("Please enter a valid comment.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("comment", comment);
+            formData.append("announcement_id", announcementId);
+
+            try {
+                const response = await fetch("/announcement/submit", {
+                    method: "POST",
+                    body: formData,
                 });
 
-                document.querySelectorAll("form").forEach((form) => {
-                    form.addEventListener("submit", async (event) => {
-                        event.preventDefault();
+                const result = await response.json(); // Parse JSON response
 
-                        const input = form.querySelector("input[name='comment']");
-                        const announcementId = form.querySelector("input[name='announcement_id']").value;
-                        const commentSection = form.closest(".comment-section");
-                        const username = form.getAttribute("data-username") || "Anonymous"; // ✅ Get the correct username
+                if (!result.success) {
+                    throw new Error(result.error || "Failed to submit comment.");
+                }
 
-                        if (!input || !announcementId || !commentSection) {
-                            alert("Error: Form elements missing.");
-                            return;
-                        }
-
-                        const comment = input.value.trim();
-                        if (comment.length === 0) {
-                            alert("Please enter a valid comment.");
-                            return;
-                        }
-
-                        const formData = new FormData();
-                        formData.append("comment", comment);
-                        formData.append("announcement_id", announcementId);
-
-                        try {
-                            const response = await fetch("/announcements/submit", {
-                                method: "POST",
-                                body: formData,
-                            });
-
-                            const result = await response.json(); // Parse JSON response
-
-                            if (!result.success) {
-                                throw new Error(result.error || "Failed to submit comment.");
-                            }
-
-                            // Create new comment element with the correct name
-                            const newComment = document.createElement("div");
-                            newComment.classList.add("d-flex", "flex-row", "justify-content-start", "align-items-start", "gap-2", "mb-3");
-                            newComment.innerHTML = `
+                // Create new comment element
+                const newComment = document.createElement("div");
+                newComment.classList.add("d-flex", "flex-row", "justify-content-start", "align-items-start", "gap-2", "mb-3");
+                newComment.innerHTML = `
                     <img src="../img/DPPAM LOGO.png" alt="Profile Picture" width="50px">
                     <div class="d-flex flex-column">
                         <div>
-                            <span><strong>${username}</strong></span> <!-- ✅ Correctly displays user's name -->
-                            <small class="text-muted">Just now</small>
+                            <span><strong>${username}</strong></span>
+                            <small class="text-muted time-elapsed" data-timestamp="${Math.floor(Date.now() / 1000)}">
+                                Just now
+                            </small>
                         </div>
                         <div>   
                             <p>${comment}</p>
@@ -185,62 +189,65 @@ try {
                     </div>
                 `;
 
-                            commentSection.insertBefore(newComment, form);
-                            input.value = "";
+                commentSection.insertBefore(newComment, form);
+                input.value = "";
 
-                        } catch (error) {
-                            console.error("Error:", error);
-                            alert("Something went wrong. Please try again.");
-                        }
-                    });
-                });
-            });
-
-            function formatTimestamp(timestamp) {
-                if (!timestamp) return "Invalid date";
-
-                timestamp = Number(timestamp);
-                if (isNaN(timestamp)) return "Invalid date";
-
-                // Convert UNIX timestamp (seconds) to milliseconds
-                let date = new Date(timestamp * 1000);
-
-                // Format using Intl.DateTimeFormat to ensure correct Manila Timezone
-                return new Intl.DateTimeFormat("en-US", {
-                    timeZone: "Manila",
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hour12: true
-                }).format(date);
-            }
-
-            // Function to update all timestamps dynamically
-            function updateTimes() {
-                console.log("Updating timestamps...");
-                document.querySelectorAll(".time-elapsed").forEach(el => {
-                    const timestamp = el.getAttribute("data-timestamp");
-                    if (timestamp) {
-                        let newTime = formatTimestamp(timestamp);
-                        if (el.innerText !== newTime) {
-                            el.innerText = newTime;
-                        }
-                    }
-                });
-            }
-
-
-            // Run once on page load
-            document.addEventListener("DOMContentLoaded", updateTimes);
-
-            // Auto-update timestamps every 30 seconds
-            setInterval(() => {
-                console.log("Auto-updating timestamps..."); // Debugging log
+                // Update timestamps dynamically
                 updateTimes();
-            }, 30000);
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
+
+    // Function to format timestamp into human-readable "X ago" format
+   // Function to format timestamp into human-readable "X ago" format
+function formatTimestamp(timestamp) {
+    const now = new Date();
+    const diff = now.getTime() - timestamp * 1000; // Difference in milliseconds
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    // Handle time difference formatting
+    if (days > 0) {
+        return days + " day" + (days > 1 ? "s" : "") + " ago";
+    } else if (hours > 0) {
+        return hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+    } else if (minutes > 0) {
+        return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
+    } else if (seconds > 0) {
+        return seconds + " second" + (seconds > 1 ? "s" : "") + " ago";
+    } else {
+        return "Just now"; // When the timestamp is very recent
+    }
+}
+
+// Function to update all timestamps on the page
+function updateTimes() {
+    document.querySelectorAll(".time-elapsed").forEach(el => {
+        const timestamp = el.getAttribute("data-timestamp");
+        if (timestamp) {
+            let newTime = formatTimestamp(parseInt(timestamp)); // Make sure the timestamp is an integer
+            if (el.innerText !== newTime) {
+                el.innerText = newTime;
+            }
+        }
+    });
+}
+
+// Run once on page load to update timestamps
+updateTimes();
+
+// Auto-update timestamps every minute
+setInterval(() => {
+    updateTimes();
+}, 60000); // 60,000 ms = 1 minute
+ })
+
         </script>
 
 

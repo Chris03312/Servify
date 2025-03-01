@@ -49,7 +49,7 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="/ContactUs" class="nav-link">
-                        <i class="bi bi-send-fill me-2"></i>Contact Us</a>
+                        <i class="bi bi-send-fill me-2"></i>Inquiries</a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/volunteer_feedback" class="nav-link">

@@ -103,8 +103,10 @@ $router->add('/volunteer_renewal_application', [VolunteerRenewalApplicationContr
 $router->add('/volunteer_attendance', [VolunteerAttendanceController::class, 'VolunteerAttendances']);
 $router->add('/volunteer_application_details', [VolunteerApplicationDetailsController::class, 'ShowVolunteerApplicationDetails']);
 $router->add('/volunteer_feedback', [VolFeedbackController::class, 'ShowVolFeedback']);
+$router->add('/volunteer_feedback/submit', [VolFeedbackController::class, 'submitFeedback']);
 $router->add('/volunteer_details', [VolunteerDetailsController::class, 'ShowVolunteerDetails']);
-$router->add('/announcements', [AnnouncementController::class, 'ShowAnnouncement']);
+$router->add('/announcements', [AnnouncementController::class, 'ShowAnnouncements']);
+$router->add('/announcement/submit', [AnnouncementController::class, 'AddComment']);
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 $router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
 $router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);

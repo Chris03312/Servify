@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Inquiries</title>
     <link rel="stylesheet" href="../css/volunteer_dashboard.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -43,6 +43,7 @@
 
             <!--SUBJECT-->
             <div class="p-5 border">
+                <input type="hidden" class="form-control mb-3" name="name" id="name" value="<?php echo htmlspecialchars(($sidebarinfo['FIRST_NAME'] ?? " ") . ' ' . ($sidebarinfo['SURNAME'] )); ?>">
                 <input type="text" class="form-control mb-3" name="subject" id="subject" placeholder="Add Subject"
                     required>
                 <textarea name="message" id="message" class="form-control mb-3" rows="5"

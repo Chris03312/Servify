@@ -165,52 +165,53 @@
                             </div>
 
                             <div class="col-md-2 mb-3">
-                                <label for="birthDate" class="form-label">Birth Day</label>
-                                <input type="text" class="form-control" readonly id="birthDate" name="birthDate" placeholder="Date" required>
-                                <div class="invalid-feedback">
-                                    Please input birth date.
-                                </div>
-                            </div>
+    <label for="birthDate" class="form-label">Birth Day</label>
+    <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder="Date" required>
+    <div class="invalid-feedback">
+        Please input birth date.
+    </div>
+</div>
 
-                            <div class="col-md-3 mb-3">
-                                <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true" required>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
+<div class="col-md-3 mb-3">
+    <label for="birthMonth" class="form-label">&nbsp;</label>
+    <select id="birthMonth" name="birthMonth" class="form-select" required>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+    <div class="invalid-feedback">
+        Please select birth month.
+    </div>
+</div>
 
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select birth month.
-                                </div>
-                            </div>
+<div class="col-md-2 mb-3">
+    <label for="birthYear" class="form-label">&nbsp;</label>
+    <input type="number" class="form-control" id="birthYear" name="birthYear" placeholder="Year" required>
+    <div class="invalid-feedback">
+        Please input birth year.
+    </div>
+</div>
 
-                            <div class="col-md-2 mb-3">
-                                <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="birthYear" name="birthYear" placeholder="Year" required oninput="calculateAge()" readonly>
-                                <div class="invalid-feedback">
-                                    Please input birth year.
-                                </div>
-                            </div>
+<div class="col-md-2 mb-3">
+    <label for="age" class="form-label">Age<sup class="text-danger fw-bold">*</sup></label>
+    <input type="text" class="form-control" id="age" name="age" value="" readonly>
+</div>
 
-                            <div class="col-md-2 mb-3">
-                                <label for="age" class="form-label">Age<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="age" name="age" value="" readonly>
-                            </div>
 
                             <script>
                                 document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
+                                        const birthDateInput = document.getElementById('birthDate');
                                         const birthYearInput = document.getElementById('birthYear');
                                         const ageInput = document.getElementById('age');
 
@@ -297,22 +298,22 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                                <input type="text" class="form-control" readonly id="street" name="streetAddress" required>
+                                <input type="text" class="form-control" id="street" name="streetAddress" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="city" name="city" required>
+                                <input type="text" class="form-control" id="city" name="city" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="barangay" name="barangay" required>
+                                <input type="text" class="form-control" id="barangay" name="barangay" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" required>
+                                <input type="text" class="form-control" id="zipcode" name="zipcode" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -320,7 +321,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
-                                <input type="email" class="form-control" readonly id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
@@ -548,7 +549,7 @@
                             <div class="col-md-7 mb-3">
                                 <label for="sex" class="form-label">Type of ID<sup class="text-danger fw-bold">*</sup></label>
                                 <select id="sex" class="form-select mb-2" name="nameofId" required>
-                                    <option selected disabled value="">Select type of ID</option>
+                                    <option value="">Select type of ID</option>
 
                                     <?php foreach ($validId as $id): ?>
                                         <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->

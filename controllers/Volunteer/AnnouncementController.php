@@ -6,11 +6,11 @@ require_once __DIR__ . '/../../configuration/Database.php';
 
 class AnnouncementController
 {
-    public static function ShowAnnouncement()
+    public static function ShowAnnouncements()
     {
-
         if (!isset($_SESSION['email']) || !$_SESSION['email']) {
-            redirect('/login');
+            header('Location: /login');
+            exit;
         }
 
         // Fetch sidebar and coordinator info
@@ -18,13 +18,14 @@ class AnnouncementController
 
         // Fetch announcements and comments
         $notifications = Notification::getNotification();
-        // $announce = Announcement::getAnnouncement();
+        $announcement = Announcement::getAnnouncement();
         $getComments = Announcement::getComment();
 
+        // Fixed the typo in 'announcements'
         view('Volunteer/announcements', [
             'email' => $_SESSION['email'],
             'sidebarinfo' => $sidebarData,
-            // 'announcements ' => $announce,
+            'announcements' => $announcement, // Fixed the space here
             'comments' => $getComments,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count']
@@ -32,7 +33,7 @@ class AnnouncementController
     }
 
     // CREATE ANNOUNCEMENT
-    public static function CreateAnnouncement()
+    public static function CreateAnnouncements()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post-announcement-btn'])) {
             try {
@@ -46,6 +47,7 @@ class AnnouncementController
                     throw new Exception("All fields are required.");
                 }
 
+                // Check if content is not empty
                 if (empty(trim(strip_tags($announcement_content)))) {
                     throw new Exception("Announcement body cannot be empty.");
                 }
@@ -64,7 +66,7 @@ class AnnouncementController
     }
 
     // UPDATE ANNOUNCEMENT
-    public static function UpdateAnnouncement()
+    public static function UpdateAnnouncements()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit-announcement-btn'])) {
             try {
@@ -79,6 +81,7 @@ class AnnouncementController
                     throw new Exception("All fields are required.");
                 }
 
+                // Check if content is not empty
                 if (empty(trim(strip_tags($announcement_content)))) {
                     throw new Exception("Announcement body cannot be empty.");
                 }
@@ -102,7 +105,7 @@ class AnnouncementController
                 $stmt = $db->prepare("UPDATE announcements SET 
                     announcement_recipients = ?, 
                     announcement_title = ?, 
-                    announcement_content = ? 
+                    announcement_content = ?, 
                     WHERE announcement_id = ?");
                 $stmt->execute([$announcement_recipients, $announcement_title, $announcement_content, $announcement_id]);
 
@@ -117,7 +120,7 @@ class AnnouncementController
     }
 
     // DELETE ANNOUNCEMENT
-    public static function DeleteAnnouncement()
+    public static function DeleteAnnouncements()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['del-announcement-btn'])) {
             try {
@@ -181,3 +184,4 @@ class AnnouncementController
         }
     }
 }
+

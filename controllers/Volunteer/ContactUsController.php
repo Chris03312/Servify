@@ -19,12 +19,14 @@ class ContactUsController
         try {
             $db = Database::getConnection();
 
+            $name = $_POST['name'];
             $subject = $_POST['subject'];
             $message = $_POST['message'];
             $email = $_SESSION['email'];
-            $stmt = $db->prepare('INSERT INTO contact_us (subject, message, email) VALUES (:subject, :message, :email)');
+            $stmt = $db->prepare('INSERT INTO contact_us (name, subject, message, email) VALUES (:name, :subject, :message, :email)');
 
             $stmt->execute([
+                ':name' => $name,
                 ':subject' => $subject,
                 ':message' => $message,
                 ':email' => $email

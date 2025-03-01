@@ -2,7 +2,7 @@
 // Fetch announcements from database
 try {
     $db = Database::getConnection();
-    $stmt = $db->prepare("SELECT announcement_id, announcement_recipients, announcement_title, announcement_content, created_at FROM announcements ORDER BY created_at DESC");
+    $stmt = $db->prepare("SELECT announcement_id, announcement_author, announcement_recipients, announcement_title, announcement_content, created_at FROM announcements ORDER BY created_at DESC");
     $stmt->execute();
     $announcements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {

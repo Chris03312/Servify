@@ -28,7 +28,7 @@ class AchievementsController
         // Get user email and ID
         $username = $_SESSION['username'];
         $email = $_SESSION['email'];
-        $volunteer_id = $userData['VOLUNTEERS_ID']; // Adjust based on your session structure
+        $volunteer_id = $userData['VOLUNTEER_ID']; // Adjust based on your session structure
         $attendance_count = $getAchievements['ATTENDANCE_COUNT'];
 
         // Define achievement levels
