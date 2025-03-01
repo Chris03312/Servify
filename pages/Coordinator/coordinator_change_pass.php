@@ -24,8 +24,17 @@
 <body>
 
 
+
+
   <!--MAIN CONTENT-->
   <main class="container">
+
+    <!-- ALERT -->
+
+    <div class="alert alert-warning mt-3" role="alert">
+      <h4 class="alert-heading">Action Required!</h4>
+      <p>You are logging in for the first time. Please change your password to secure your account.</p>
+    </div>
 
     <div class="row justify-content-center align-items-center vh-100">
       <div class="col-md-10">
@@ -37,7 +46,7 @@
                 <img src="../img/servify-logo-with-text.png" alt="Servify Logo" class="img-fluid">
               </div>
               <div class="col-lg-8">
-                <form action="" method="post" class="px-5 py-3">
+                <form action="/coordinator_change_pass" method="post" class="px-5 py-3">
                   <h5 class="text-primary text-center">Set your New Password</h5>
                   <p class="text-muted text-center mb-5">Please Update your password for security.</p>
 
@@ -70,44 +79,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary px-4">Change password</button>
-                  </div>
-
-                  <!--MODAL - CHANGE PASSWORD CONFIRMATION-->
-                  <div class="modal fade" id="changePassConfirmationModal" tabindex="-1"
-                    aria-labelledby="changePassConfirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header bg-primary">
-                        </div>
-                        <div class="modal-body">
-                          <h4 class="text-center text-danger">Change Password???</h4>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                          <button type="button" class="btn btn-outline-secondary px-4"
-                            data-bs-dismiss="modal">Cancel</button>
-                          <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#changePasswordConfirmed">Confirm</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!--MODAL - CONFIRMED CHANGE PASSWORD-->
-                  <div class="modal fade" id="changePasswordConfirmed" tabindex="-1"
-                    aria-labelledby="changePasswordConfirmedLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header bg-primary">
-                        </div>
-                        <div class="modal-body">
-                          <h4 class="text-center text-danger">Password Changed Successfully!</h4>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                          <button type="button" class="btn btn-primary px-4"
-                            data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
+                    <button type="submit" class="btn btn-primary px-4" name="update_coordinator_pass">Change password</button>
                   </div>
                 </form>
               </div>

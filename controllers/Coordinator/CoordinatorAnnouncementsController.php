@@ -17,7 +17,8 @@ class CoordinatorAnnouncementsController
     // CREATING ANNOUNCEMENTS
     public static function ShowCreateAnnouncements()
     {
-        require_once __DIR__ . '/../configuration/Database.php';
+        require_once __DIR__ . '/../../configuration/database.php';
+
 
         // Check if the form is submitted
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post-announcement-btn'])) {
@@ -26,6 +27,7 @@ class CoordinatorAnnouncementsController
                 $db = Database::getConnection();
 
                 // Retrieve and sanitize inputs
+                $announcement_author = htmlspecialchars($_POST['announcement_author'] ?? '');
                 $announcement_recipients = htmlspecialchars($_POST['announcement_recipients'] ?? '');
                 $announcement_title = htmlspecialchars($_POST['announcement_title'] ?? '');
                 $announcement_content = $_POST['announcement_content']; // Preserve raw HTML
@@ -41,18 +43,18 @@ class CoordinatorAnnouncementsController
                 }
 
                 // Prepare SQL statement
-                $stmt = $db->prepare("INSERT INTO announcements (announcement_recipients, announcement_title, announcement_content, created_at) VALUES (?, ?, ?, NOW())");
+                $stmt = $db->prepare("INSERT INTO announcements (announcement_author, announcement_recipients, announcement_title, announcement_content, created_at) VALUES (?, ?, ?, ?, NOW())");
 
                 // Execute query
-                $stmt->execute([$announcement_recipients, $announcement_title, $announcement_content]);
+                $stmt->execute([$announcement_author, $announcement_recipients, $announcement_title, $announcement_content]);
 
                 // Success message
                 $_SESSION['success_message'] = "Announcement posted successfully!";
-                header('Location: Coordinator//coordinator_announcements');
+                header('Location: /coordinator_announcements');
                 exit;
             } catch (Exception $e) {
                 $_SESSION['error_message'] = "Error: " . $e->getMessage();
-                header('Location: Coordinator//coordinator_announcements');
+                header('Location: /coordinator_announcements');
             }
         }
     }
@@ -63,7 +65,7 @@ class CoordinatorAnnouncementsController
     // UPDATING ANNOUNCEMENTS
     public static function ShowUpdateAnnouncements()
     {
-        require_once __DIR__ . '/../configuration/Database.php';
+        require_once __DIR__ . '/../../configuration/Database.php';
 
         // Check if the form is submitted
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit-announcement-btn'])) {
@@ -73,6 +75,7 @@ class CoordinatorAnnouncementsController
 
                 // Retrieve and sanitize inputs
                 $announcement_id = $_POST['announcement_id'] ?? null;
+                $announcement_author = htmlspecialchars($_POST['edit_announcement_author'] ?? '');
                 $announcement_recipients = htmlspecialchars($_POST['edit_announcement_recipients'] ?? '');
                 $announcement_title = htmlspecialchars($_POST['edit_announcement_title'] ?? '');
                 $announcement_content = $_POST['edit_announcement_content'] ?? ''; // Preserve HTML
@@ -98,6 +101,7 @@ class CoordinatorAnnouncementsController
 
                 // Check if values have changed
                 if (
+                    $existingAnnouncement['announcement_author'] === $announcement_author &&
                     $existingAnnouncement['announcement_recipients'] === $announcement_recipients &&
                     $existingAnnouncement['announcement_title'] === $announcement_title &&
                     $existingAnnouncement['announcement_content'] === $announcement_content
@@ -107,13 +111,14 @@ class CoordinatorAnnouncementsController
 
                 // Prepare SQL statement for update
                 $stmt = $db->prepare("UPDATE announcements SET 
+                    announcement_author = ?,
                     announcement_recipients = ?, 
                     announcement_title = ?, 
                     announcement_content = ? 
                     WHERE announcement_id = ?");
 
                 // Execute query
-                $stmt->execute([$announcement_recipients, $announcement_title, $announcement_content, $announcement_id]);
+                $stmt->execute([$announcement_author, $announcement_recipients, $announcement_title, $announcement_content, $announcement_id]);
 
                 // Success message
                 $_SESSION['success_message'] = "Announcement updated successfully!";
