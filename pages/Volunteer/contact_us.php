@@ -33,7 +33,7 @@
     <main class="container-fluid p-3">
 
 
-        <form action="/ContactUs/submit" method="POST">
+        <form action="/ContactUs/submit" method="POST" id="contactForm" style="display: none;">
 
             <div class="text-center">
                 <img src="../img/icons8-ask-90.png" alt="Contact Logo">
@@ -86,6 +86,94 @@
 
 
 
+        <!-- TABLE -->
+        <div class="container-fluid p-5" id="inquiriesTable">
+            <h4 class="mb-5">Inquiries</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Subject</th>
+                            <th>Inquiry</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Time</td>
+                            <td>Subject</td>
+                            <td class="truncate-text">Inquiry</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td>Subject</td>
+                            <td class="truncate-text">Inquiry</td>
+                            <td><button type="button" class="btn border-0 p-0" data-bs-toggle="modal" data-bs-target="#messageBoxModal"><span class="badge bg-success">Responded</span></button></td>
+                        </tr>
+                        <!-- More rows can be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- MODAL FOR REPLYING IN INQUIRIES -->
+        <div class="modal fade" id="messageBoxModal" tabindex="-1" aria-labelledby="messageBoxModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary p-3">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-start align-items-start gap-2">
+                                    <!-- IMAGE -->
+                                    <div><img src="../../img/PPCRV LOGO.png" alt="Profile Picture" class="img-fluid" width="50px"></div>
+                                    <!-- NAME, DATE, AND TIME -->
+                                    <div class="d-flex flex-column">
+                                        <h5>Vicmar M. Guzman</h5>
+                                        <div class="d-flex flex-row gap-2">
+                                            <span>Feb. 28, 2025</span>
+                                            <span>08:44:55</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- REPLY CONTENT -->
+                                <p class="my-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam quidem reiciendis quis at numquam aliquam facilis unde saepe ducimus. Eos?</p>
+                            </div>
+
+                        </div>
+
+                        <form action="" method="POST" class="mt-4">
+                            <div class="d-flex flex-row justify-content-center align-items-center gap-1">
+                                <input type="text" class="form-control" name="comment" id="comment"
+                                    placeholder="Add reply..." required>
+                                <button type="submit" class="btn border-0" name="comment-btn"><i
+                                        class="bi bi-send send-icon"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MESSAGE ICON BUTTON TO SHOW THE MESSAGE BOX -->
+        <div class="container">
+            <div class="position-fixed bottom-0 end-0 p-3">
+                <button id="toggleFormBtn" type="button" class="btn btn-sm bg-primary text-light p-3 rounded-5 border-0">
+                    <i id="toggleIcon" class="bi bi-pen-fill"></i>
+                </button>
+            </div>
+        </div>
+
+
+
 
 
 
@@ -94,6 +182,26 @@
     </div>
 
 
+    <!-- JavaScript to toggle the form -->
+    <script>
+        document.getElementById("toggleFormBtn").addEventListener("click", function() {
+            var form = document.getElementById("contactForm");
+            var table = document.getElementById("inquiriesTable");
+            var icon = document.getElementById("toggleIcon");
+
+            if (form.style.display === "none" || form.style.display === "") {
+                form.style.display = "block";
+                table.style.display = "none"; // Hide table
+                icon.classList.remove("bi-pen-fill");
+                icon.classList.add("bi-chat-dots-fill"); // Change to message box icon
+            } else {
+                form.style.display = "none";
+                table.style.display = "block"; // Show table again
+                icon.classList.remove("bi-chat-dots-fill");
+                icon.classList.add("bi-pen-fill"); // Change back to pen icon
+            }
+        });
+    </script>
 
 
 
