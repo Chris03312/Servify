@@ -22,39 +22,15 @@
 
 <body>
 
-    <!-- MODAL: TERMS AND CONDITIONS -->
-    <!-- <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-primary p-2">
-                </div>
-                <div class="modal-body">
-                    <div class="text-center">
-                        <img src="../img/icons8-checkmark-90.png" alt="">
-                        <h3 class="text-primary">SUCCESS!</h3>
 
-                        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                            <span>Thank you! Your form has been successfully submitted.</span>
-                            <span>Please wait while we process your application.</span>
-                            <span>You can check the status of your application soon.</span>
-                        </div>
 
-                        <div class="d-flex flex-row justify-content-around align-items-center mt-3">
-                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Done</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <section class="login_bg d-flex align-items-center justify-content-center vh-100">
+    <section class="login_bg d-flex align-items-center justify-content-center vh-100 p-2">
 
         <div class="container">
 
             <div class="row justify-content-center">
 
-                <div class="col-lg-6 col-md-8 col-12">
+                <div class="col-lg-8 col-md-8 col-12">
                     <div class="card p-4">
                         <div class="text-center">
                             <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span></h1>
@@ -71,7 +47,6 @@
                             <div class="mb-3">
                                 <div class="validation text-danger text-center"></div>
                                 <script src="../js/login.js"></script>
-
 
                                 <label for="email" class="form-label visually-hidden">Email</label>
                                 <div class="input-group">
@@ -110,7 +85,7 @@
                             <p>Don't have an account? <a href="/signup" class="text-danger text-decoration-none">Sign Up!</a></p>
                         </div>
 
-                        <div class="mt-5">
+                        <div class="">
                             <img src="../img/HANDS.png" alt="Hands" class="img-fluid loginHands">
                         </div>
                     </div>
@@ -124,21 +99,6 @@
 
 
     <script>
-        // document.addEventListener("DOMContentLoaded", function() {
-        //     var myModal = new bootstrap.Modal(document.getElementById("termsAndConditionsModal"));
-
-        //     // Show modal on page load
-        //     myModal.show();
-
-        //     // Event listener to show page content after modal is closed
-        //     var modalElement = document.getElementById("termsAndConditionsModal");
-        //     modalElement.addEventListener("hidden.bs.modal", function() {
-        //         document.getElementById("login_page_content").style.display = "block"; // Show page content
-        //     });
-        // });
-
-
-        // SHOW AND HIDE PASSWORD IN PASSWORD FIELD 
         document.querySelectorAll('.toggle-password').forEach(item => {
             item.addEventListener('click', function() {
                 const input = this.previousElementSibling; // Selects the input field
@@ -152,6 +112,32 @@
                     input.type = "password";
                     icon.classList.remove("fa-eye-slash");
                     icon.classList.add("fa-eye");
+                }
+            });
+        });
+
+        // REMEMBER ME FUNCTIONALITY
+        document.addEventListener("DOMContentLoaded", function() {
+            const emailField = document.getElementById("email");
+            const passwordField = document.getElementById("password");
+            const rememberMeCheckbox = document.getElementById("remember_me");
+
+            // Load saved email & password if 'remember_me' was checked before
+            if (localStorage.getItem("rememberMe") === "true") {
+                emailField.value = localStorage.getItem("email") || "";
+                passwordField.value = atob(localStorage.getItem("password") || ""); // Decode password
+                rememberMeCheckbox.checked = true;
+            }
+
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                if (rememberMeCheckbox.checked) {
+                    localStorage.setItem("rememberMe", "true");
+                    localStorage.setItem("email", emailField.value);
+                    localStorage.setItem("password", btoa(passwordField.value)); // Encode password
+                } else {
+                    localStorage.removeItem("rememberMe");
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("password");
                 }
             });
         });

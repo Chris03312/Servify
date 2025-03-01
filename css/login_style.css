@@ -6,23 +6,23 @@
 
 
 /* Scrollbar Track */
-::-webkit-scrollbar {
+#termsAndConditionsModal ::-webkit-scrollbar, #dataPrivacyModal ::-webkit-scrollbar {
     width: 5px;
 }
 
 /* Scrollbar Thumb (the moving part) */
-::-webkit-scrollbar-thumb {
+#termsAndConditionsModal ::-webkit-scrollbar-thumb, #dataPrivacyModal ::-webkit-scrollbar-thumb {
     background: lightgray;
     border-radius: 10px;
 }
 
 /* Scrollbar Thumb on Hover */
-::-webkit-scrollbar-thumb:hover {
+#termsAndConditionsModal ::-webkit-scrollbar-thumb:hover, #dataPrivacyModal ::-webkit-scrollbar-thumb:hover {
     background: gray;
 }
 
 /* Scrollbar Track Background */
-::-webkit-scrollbar-track {
+#termsAndConditionsModal ::-webkit-scrollbar-track, #dataPrivacyModal ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
 }

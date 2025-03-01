@@ -17,20 +17,131 @@
 
     <!-- MODAL: TERMS AND CONDITIONS -->
     <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary p-2">
+                <div class="bg-primary py-2">
+                    <h2 class="text-light text-center">Terms and Conditions</h2>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center">
-                        <h3 class="text-primary">Terms and Conditions</h3>
+                    <div>
+                        <h5 class="text-primary text-center">Diocesan Public and Political Affairs Ministry (DPPAM) Volunteer Registration</h5>
 
-                        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, facilis similique. Ad voluptate a inventore accusantium quasi ratione, sed, dolor blanditiis omnis accusamus quae eaque incidunt consequuntur. Doloremque animi ipsam, dicta aliquid blanditiis laboriosam illo optio, asperiores consectetur neque nam, culpa quae unde fuga reiciendis molestiae iure. Delectus fuga nostrum sunt dolorum quibusdam, temporibus blanditiis magnam quos obcaecati veritatis velit odio reprehenderit dolore enim assumenda debitis? Quibusdam dolor quam quis minima consectetur molestiae accusamus in inventore, ullam ad tempora eum. Autem dolorem, dolore suscipit minima sunt corrupti? Eaque cupiditate dolore iusto sint pariatur fugiat, quibusdam magnam dolor non velit inventore qui nulla repellat, maiores ex. Nobis doloremque error animi corrupti debitis non optio, corporis, laboriosam nam tempora nesciunt quidem repellat explicabo deserunt consectetur quam enim. Iure animi ab illo odio quia deserunt quam distinctio excepturi consequatur, enim repudiandae architecto ratione commodi autem dolore quos. Ab quaerat sint repellendus praesentium? Doloribus, quod assumenda consequuntur praesentium sit repellat incidunt nobis eveniet molestiae, blanditiis amet, deleniti vel. Rem, repudiandae, nam tenetur sit eos architecto laborum, excepturi pariatur mollitia ad facilis ratione ullam impedit! Illo, ea voluptate. Fugit alias delectus ratione vel temporibus ea officia, id consectetur obcaecati itaque nobis et nulla veritatis velit aperiam, aspernatur quo, blanditiis odio repellendus dicta. Quam vero officia praesentium fuga. Soluta inventore, dicta voluptatum cupiditate amet minus id magni ex veniam quo libero quas quisquam eum esse sed praesentium, adipisci illum excepturi fuga quia architecto numquam! Earum ex, laborum numquam placeat quod nemo exercitationem sunt voluptatibus sit. Sed eaque excepturi aspernatur repellendus. Harum quibusdam praesentium possimus commodi, nisi quaerat asperiores, nesciunt magnam culpa quam molestiae impedit perspiciatis deleniti sapiente blanditiis ex temporibus aliquam necessitatibus voluptate quisquam rerum iure distinctio. Mollitia eum ipsam quaerat incidunt at expedita facilis quis quasi maiores earum ratione enim debitis, error perspiciatis dolore optio dolorem deserunt cumque sequi odit? In deleniti velit quisquam ut omnis ab aut voluptas, sint officia, voluptatum sequi, reiciendis asperiores! Voluptas impedit excepturi ipsam quam officia consequatur adipisci ea itaque eveniet quos hic tempore optio, repellat quidem earum sunt nisi aliquam eaque assumenda ab corrupti iusto eos molestiae praesentium! Tempora magni perspiciatis eos nam rerum nostrum, ex minus recusandae architecto totam sint vel alias, ratione laborum eveniet nulla, quas libero fugiat quisquam natus vero? Laborum sapiente eligendi molestiae amet modi et reprehenderit cum atque? Reiciendis officiis dolorum nam tenetur voluptatum cumque sapiente maxime accusantium amet. Asperiores, vero, culpa blanditiis accusamus ipsa voluptas, ducimus officia rerum aliquam labore itaque dolor est consequuntur magni quisquam fuga aliquid quidem! Minima, quia sequi nulla eaque beatae sunt veritatis consequatur, corrupti fugiat laudantium, expedita voluptatum pariatur. Doloribus accusantium amet quo, ipsa molestias aperiam quidem autem a ut dignissimos sapiente dolorem aut, quibusdam totam dicta facilis animi aliquid fugiat consequatur aspernatur. Ducimus dignissimos id nobis, laudantium quibusdam quidem, eligendi esse nemo quisquam sequi qui iusto earum temporibus error? Dolorem consectetur iure sunt consequuntur, quam iste magnam maxime ratione odio vel dolorum sit iusto, rerum explicabo error, nulla sapiente cum necessitatibus voluptatem reiciendis inventore nesciunt obcaecati? Reiciendis!</p>
+                        <div>
+                            <p class="text-muted">By registering as a volunteer for Servify, the official volunteer management system of the Diocesan Public and Political Affairs Ministry (DPPAM), you agree to comply with the following terms and conditions. </p>
+                            <p class="text-muted">Please read them carefully before proceeding with your registration.
+                            </p>
+
+                            <ol class="custom-list">
+                                <li>
+                                    <h5>Volunteer Responsibilities</h5>
+                                    <ol type="1">
+                                        <li>Volunteers must act in accordance with DPPAM’s mission and values, upholding integrity, respect, and responsibility.</li>
+                                        <li>All tasks assigned by coordinators or administrators must be performed diligently and in a timely manner.</li>
+                                        <li>Volunteers should communicate any challenges, absences, or concerns with their assigned coordinator.</li>
+                                        <li>Misconduct, negligence, or violation of these terms may result in suspension or termination of volunteer participation.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <h5 class="mt-3">Data Privacy & Security</h5>
+                                    <ol>
+                                        <li>By registering, you consent to DPPAM collecting, processing, and storing your personal information for volunteer management purposes.</li>
+                                        <li>Your information will be kept confidential and used solely for DPPAM operations, assignments, and communication. Servify will not share your data with third parties without consent, except as required by law.</li>
+                                        <li>You may request access, updates, or deletion of your personal data by contacting DPPAM’s administration.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <h5 class="mt-3">Code of Conduct</h5>
+                                    <ol>
+                                        <li>Volunteers shall treat fellow volunteers, coordinators, and the community with courtesy and respect.</li>
+                                        <li>Harassment, discrimination, or any form of misconduct will not be tolerated.</li>
+                                        <li>Volunteers must maintain professionalism, particularly when representing DPPAM in public engagements.</li>
+                                        <li>Any misuse of DPPAM’s name, system, or resources is strictly prohibited.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <h5 class="mt-3">System Usage & Compliance</h5>
+                                    <ol>
+                                        <li>Volunteers must use the Servify system responsibly and only for legitimate DPPAM volunteer activities.</li>
+                                        <li>Unauthorized access, data tampering, or sharing of confidential information is strictly forbidden.</li>
+                                        <li>Any suspicious activity should be reported immediately to DPPAM’s administration.</li>
+                                        <li>Servify strives to provide continuous access, but occasional maintenance or updates may cause temporary disruptions. The system administrators are not liable for data loss, service interruptions, or any technical issues beyond their control.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <h5 class="mt-3">Prohibited Activities</h5>
+                                    <ul>
+                                        <strong>Users are strictly prohibited from: </strong>
+                                        <li>Providing false information or impersonating others.</li>
+                                        <li>Using Servify for political campaigning, personal gain, or any unauthorized purpose.</li>
+                                        <li>Disrupting system operations, hacking, or engaging in cyberattacks.</li>
+                                        <li>Posting or sharing harmful, offensive, or inappropriate content.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h5 class="mt-3">Amendments & Termination</h5>
+                                    <ol>
+                                        <li>DPPAM reserves the right to modify these terms and conditions at any time.</li>
+                                        <li>Volunteers will be notified of any updates, and continued participation implies acceptance of the new terms.</li>
+                                        <li>DPPAM holds the right to terminate or suspend volunteer access if any of these terms are violated.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+
+
                         </div>
 
-                        <div class="d-flex flex-row justify-content-around align-items-center mt-3">
-                            <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Okay</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: DATA PRIVACY POLICY -->
+    <div class="modal fade" id="dataPrivacyModal" tabindex="-1" aria-labelledby="dataPrivacyModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="bg-primary py-2">
+                    <h2 class="text-light text-center">Data Privacy Policy</h2>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h5 class="text-primary text-center">Diocesan Public and Political Affairs Ministry (DPPAM) Volunteer Registration</h5>
+
+                        <div>
+                            <p class="text-muted">The Diocesan Public and Political Affairs Ministry (DPPAM) is committed to protecting the privacy and security of all volunteers using the Servify system.</p>
+                            <p class="text-muted">By registering and using Servify, you acknowledge and agree to the collection, processing, and storage of your personal data as outlined in this policy.</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <h5>Collection of Personal Data</h5>
+                            <p>Servify collects necessary personal information, including but not limited to your name, contact details, parish affiliation, and volunteer role. This data is used solely for managing volunteer assignments, communication, and organizational reporting.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Use and Processing of Data</h5>
+                            <p>Your personal information is processed to facilitate volunteer coordination, track participation, and improve the system’s effectiveness. We do not sell, share, or distribute your data to third parties without consent, except as required by law or to fulfill the ministry’s objectives.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Data Security and Confidentiality</h5>
+                            <p>Servify implements appropriate security measures to safeguard your personal data from unauthorized access, alteration, disclosure, or destruction. Only authorized personnel and system administrators have access to this information.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>User Rights and Consent</h5>
+                            <p>You have the right to request access, updates, or deletion of your personal data. If you wish to withdraw consent or make modifications, you may contact the DPPAM administration. However, withdrawal may affect your ability to continue volunteering through the Servify system.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Retention and Disposal of Data</h5>
+                            <p>Personal data is retained only for as long as necessary to fulfill its intended purpose. Once no longer needed, data will be securely deleted or anonymized in accordance with data protection guidelines.</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Policy Updates and Amendments</h5>
+                            <p>DPPAM reserves the right to update this Data Privacy Policy as needed. Volunteers will be notified of significant changes, and continued use of Servify constitutes acceptance of the updated policy.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -40,31 +151,10 @@
 
     <section class="login_bg d-flex align-items-center justify-content-center p-0 p-md-5">
 
-        <div class="container" id="sign_up_content" style="display: none;">
+        <div class="container">
 
             <div class="row justify-content-center">
 
-                <!-- <div class="loginLeftContainer col-lg-4 p-5">
-                    <div class="d-flex flex-row justify-content-around align-items-center gap-3 mb-5">
-                        <img src="../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid loginLogo">
-                        <img src="../img/DPPAM LOGO.png" alt="DPPAM Logo" class="img-fluid loginLogo">
-                    </div>
-
-                    <div>
-                        <p class="text-center fs-6">
-                            You are accessing a secure system of
-                            <strong>Diocese of Caloocan Public and Political Affairs Ministry (DPPAM).</strong>
-                            Any unauthorized use or actions beyond your permitted access are strictly prohibited
-                            and may lead to disciplinary measures, legal action, or criminal charges.
-                        </p>
-
-                        <p class="text-center fs-6">
-                            If you are an official <strong>volunteer</strong>
-                            registering for the first time, kindly inform the system administrator or assigned
-                            coordinator after completing your registration to expedite the approval process.
-                        </p>
-                    </div>
-                </div> -->
 
                 <div class="col-12">
                     <div class="card p-4">
@@ -83,9 +173,9 @@
 
                         <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
                             <!--PARISH NAMES-->
-                            <div class="col-md-12 mb-3">
-                                <label for="parishNameDataList" class="form-label"><strong>You are currently registering as
-                                        VOLUNTEER at:<sup class="text-danger">*</sup></strong></label>
+                            <div class="col-md-6 mb-3">
+                                <label for="parishNameDataList" class="form-label">You are currently registering as
+                                    VOLUNTEER at:<sup class="text-danger">*</sup></label>
                                 <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish"
                                     placeholder="Type to search...">
                                 <datalist id="parishNameOptions">
@@ -124,6 +214,14 @@
                                 <div class="validation text-danger"></div>
                             </div>
 
+
+                            <div class="col-md-6 mb-3">
+                                <label for="precinctNumber" class="form-label">Precinct No.<sup
+                                        class="text-danger fw-bold">*</sup></label>
+                                <input type="text" class="form-control" id="precinctNumber" name="precinctNumber"
+                                    placeholder="Ex. 0007A">
+                                <div class="validation text-danger"></div>
+                            </div>
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname<sup
                                         class="text-danger fw-bold">*</sup></label>
@@ -264,8 +362,31 @@
                                 <div class="validation text-danger"></div>
                             </div>
 
+                            <hr class="text-dark">
+
+
+                            <!-- TERMS AND CONDITIONS CHECKBOX -->
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="termsCheckbox">
+                                <label class="form-check-label" for="termsCheckbox">I have read and agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsAndConditionsModal">Terms and Conditions</a>.
+                                </label>
+                                <div class="text-danger small" id="termsError" style="display: none;">You must agree before submitting.</div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="dataPrivacyCheckbox">
+                                <label class="form-check-label" for="dataPrivacyCheckbox">I have read and agree the <a href="#" data-bs-toggle="modal" data-bs-target="#dataPrivacyModal">Data Privacy Policy</a>.
+                                </label>
+                                <div class="text-danger small" id="termsError" style="display: none;">You must agree before submitting.</div>
+                            </div>
+
+                            <small><i>By clicking "I Agree" or proceeding with registration, you confirm that:</i></small>
+                            <small><i>You have read and understood these Terms and Conditions.</i></small>
+                            <small><i>You agree to abide by all DPPAM’s policies and guidelines.</i></small>
+                            <small><i>You consent to the processing of your personal data for volunteer activities.</i></small>
+                            <small><i>If you have any questions or concerns, please contact DPPAM’s administration.</i></small>
+
                             <div class="mb-3 mt-5 text-center">
-                                <button class="btn btn-primary px-4" type="submit">Sign Up</button>
+                                <button class="btn btn-primary px-4" type="submit" id="signUpBtn" disabled>Sign Up</button>
                             </div>
 
                             <!--SUCCESS MODAL-->
@@ -291,7 +412,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </form>
 
                         <div class="mb-3 text-center">
@@ -314,16 +434,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var myModal = new bootstrap.Modal(document.getElementById("termsAndConditionsModal"));
+            let termsCheckbox = document.getElementById("termsCheckbox");
+            let dataPrivacyCheckbox = document.getElementById("dataPrivacyCheckbox");
+            let signUpBtn = document.getElementById("signUpBtn");
 
-            // Show modal on page load
-            myModal.show();
+            // Disable button initially
+            signUpBtn.disabled = true;
 
-            // Event listener to show page content after modal is closed
-            var modalElement = document.getElementById("termsAndConditionsModal");
-            modalElement.addEventListener("hidden.bs.modal", function() {
-                document.getElementById("sign_up_content").style.display = "block"; // Show page content
-            });
+            function updateButtonState() {
+                signUpBtn.disabled = !(termsCheckbox.checked && dataPrivacyCheckbox.checked);
+            }
+
+            // Listen for changes on both checkboxes
+            termsCheckbox.addEventListener("change", updateButtonState);
+            dataPrivacyCheckbox.addEventListener("change", updateButtonState);
         });
     </script>
 
