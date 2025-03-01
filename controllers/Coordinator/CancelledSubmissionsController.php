@@ -9,8 +9,8 @@ class CancelledSubmissionsController
     public static function ShowCancelledSubmissions()
     {
 
-        $cancelledApplications = VolunteerManagement::getApplicationByStatus('Cancelled');
-        $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled']);
+        $cancelledApplications = VolunteerManagement::getApplicationByStatus(['Cancelled', 'Rejected']);
+        $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled', 'Requesting for Approval']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
 

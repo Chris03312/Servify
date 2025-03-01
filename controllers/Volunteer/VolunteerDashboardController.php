@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../models/Dashboard.php';
+require_once __DIR__ . '/../../models/Accounts.php';
 require_once __DIR__ . '/../../models/Sidebarinfo.php';
 require_once __DIR__ . '/../../models/Notification.php';
 require_once __DIR__ . '/../../models/ActivityLog.php';
@@ -20,6 +21,7 @@ class VolunteerDashboardController
 
         $volunteerActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        $accountsData = Accounts::getAccounts($_SESSION['email']);
 
         // Get countdown data
         $countdown = Dashboard::CountDownElectionDay();
@@ -32,13 +34,13 @@ class VolunteerDashboardController
         // Render the dashboard and pass all the necessary data
         view('Volunteer/volunteer_dashboard', [
             'email' => $_SESSION['email'],
-            'username' => $_SESSION['username'] ?? 'Guest',
             'userInfo' => $userInfo,
             'activities' => $volunteerActivities,
             'currentDate' => $currentDate,
             'timelines' => $timelines,
             'sidebarinfo' => $sidebarData,
             'location' => $locations,
+            'accountsData' => $accountsData,
             'days' => $countdown['days'],
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],

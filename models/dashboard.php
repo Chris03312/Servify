@@ -99,7 +99,6 @@ class Dashboard
 
             $timelines = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
             // Loop through the fetched data to extract the year from the DATE_APPROVED
             foreach ($timelines as &$timeline) {
                 // Use DateTime for better flexibility and compatibility
@@ -117,7 +116,6 @@ class Dashboard
         }
     }
 
-
     public static function getvalidId()
     {
         try {
@@ -131,7 +129,6 @@ class Dashboard
             return []; // Return an empty array in case of error
         }
     }
-
 
     public static function mapOverview()
     {

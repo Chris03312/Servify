@@ -38,6 +38,7 @@ class SignUpController
         // Capture and sanitize input
         $input = [
             'parish' => htmlspecialchars($_POST['parish'] ?? ''),
+            'precinct_no' => htmlspecialchars($_POST['precinctNumber'] ?? ''),
             'role' => 'Volunteer',
             'surname' => htmlspecialchars($_POST['surname'] ?? ''),
             'firstname' => htmlspecialchars($_POST['firstname'] ?? ''),
@@ -98,13 +99,14 @@ class SignUpController
             // Insert into VPROFILE_TABLE
             $stmt = $db->prepare('
                     INSERT INTO VPROFILE_TABLE 
-                    (PROFILE_DATE_CREATED, PARISH, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, DISTRICT, ZIPCODE, EMAIL)
+                    (PROFILE_DATE_CREATED, PARISH, PRECINCT_NO, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, DISTRICT, ZIPCODE, EMAIL)
                     VALUES
-                    (:profile_date_created, :parish, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :district, :zipCode, :email)
+                    (:profile_date_created, :parish, :precinct_no, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :district, :zipCode, :email)
                 ');
             $stmt->execute([
                 ':profile_date_created' => $input['profile_date_created'],
                 ':parish' => $input['parish'],
+                ':precinct_no' => $input['precinct_no'],
                 ':role' => $input['role'],
                 ':surname' => $input['surname'],
                 ':firstname' => $input['firstname'],
@@ -166,14 +168,38 @@ class SignUpController
         if (empty($input['email']) || !filter_var($input['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Invalid email address.';
         }
-        if (empty($input['username']) || !preg_match('/^[a-zA-Z0-9]+$/', $input['username'])) {
-            $errors['username'] = 'Username must contain only letters and numbers.';
+        if (empty($input['username']) || !preg_match('/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/', $input['username'])) {
+            $errors['username'] = 'Userame field is required.';
         }
-        if (empty($input['surname']) || !preg_match('/^[a-zA-Z]+$/', $input['surname'])) {
-            $errors['surname'] = 'Surname must contain only letters.';
+        if (empty($input['surname']) || !preg_match('/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/', $input['surname'])) {
+            $errors['surname'] = 'Surname field is required.';
         }
-        if (empty($input['firstname']) || !preg_match('/^[a-zA-Z]+$/', $input['firstname'])) {
-            $errors['firstname'] = 'First name must contain only letters.';
+        if (empty($input['firstname']) || !preg_match('/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/', $input['firstname'])) {
+            $errors['firstname'] = 'First name field is required.';
+        }
+        if (empty($input['middleName']) || !preg_match('/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/', $input['middleName'])) {
+            $errors['middleName'] = 'Middle name field is required.';
+        }
+        if (empty($input['precinct_no'])) {
+            $errors['precinctNumber'] = 'Precinct number is required.';
+        }
+        if (empty($input['street'])) {
+            $errors['street'] = 'Street address is required.';
+        }
+        if (empty($input['city'])) {
+            $errors['city'] = 'City is required.';
+        }
+        if (empty($input['barangay'])) {
+            $errors['barangay'] = 'Baraangay is required.';
+        }
+        if (empty($input['nameSuffix'])) {
+            $errors['nameSuffix'] = 'N/A if none.';
+        }
+        if (empty($input['district'])) {
+            $errors['district'] = 'District is required.';
+        }
+        if (empty($input['zipCode'])) {
+            $errors['zipcode'] = 'N/A if none.';
         }
         if (strlen($input['password']) < 8) {
             $errors['password'] = 'Password must be at least 8 characters long.';
@@ -182,22 +208,16 @@ class SignUpController
             $errors['confirmPassword'] = 'Passwords do not match.';
         }
         if (empty($input['birthMonth'])) {
-            $errors['birthMonth'] = 'Birth month is required. Please select a month from January to December.';
+            $errors['birthMonth'] = 'Birth month is required.';
         }
-
+        if (empty($input['parish'])) {
+            $errors['parish'] = 'Please select a parish.';
+        }
         if (!preg_match('/^(0?[1-9]|1[0-9]|2[0-9]|31)$/', $input['birthDate'])) {
-            $errors['birthDate'] = 'Birth Date is required. Please input a number from 1 to 31.';
+            $errors['birthDate'] = 'Please enter birthdate.';
         }
-
         if (!preg_match('/^(19|20)\d{2}$/', $input['birthYear']) || $input['birthYear'] < 1900 || $input['birthYear'] > $minimumYear) {
-            $errors['birthYear'] = 'Birth year must be at least 18 years old.';
-        }
-
-        $requiredFields = ['parish', 'city', 'street', 'barangay', 'zipCode'];
-        foreach ($requiredFields as $field) {
-            if (empty($input[$field])) {
-                $errors[$field] = ucfirst(str_replace('_', ' ', $field)) . ' is required.';
-            }
+            $errors['birthYear'] = 'Birth year is required. Must be at least 18 years old.';
         }
 
         return $errors;

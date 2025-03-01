@@ -29,6 +29,13 @@ class VolunteerNewApplicationController
             'unread_count' => $notifications['unread_count'],
         ]);
     }
+
+    public static function easyRandomAlphanumeric($length)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle($characters), 0, $length);
+    }
+
     public static function NewApplication()
     {
         require_once __DIR__ . '/../../configuration/Database.php';
@@ -47,6 +54,8 @@ class VolunteerNewApplicationController
                 echo json_encode(['status' => 'error', 'message' => 'Registration not found for the provided email.']);
                 return;
             }
+
+            $randomID = self::easyRandomAlphanumeric(8);
 
             $vprofile_id = $vprofile['VPROFILE_ID'];
             $parish = $vprofile['PARISH'];
@@ -105,14 +114,15 @@ class VolunteerNewApplicationController
 
             $db->beginTransaction();
             // Insert into APPLICATION_INFO
-            $stmt = $db->prepare("INSERT INTO APPLICATION_INFO (VPROFILE_ID, APPLICATION_DATE, PRECINCT_NO, PARISH, ROLE, 
+            $stmt = $db->prepare("INSERT INTO APPLICATION_INFO (APPLICATION_ID, VPROFILE_ID, APPLICATION_DATE, PRECINCT_NO, PARISH, ROLE, 
                     FIRST_NAME, MIDDLE_NAME, SURNAME, NAME_SUFFIX, GENDER, NICKNAME, CIVIL_STATUS, BIRTHDATE, BIRTHMONTH, BIRTHYEAR, AGE, 
                     CITIZENSHIP, OCCUPATION, COMPANY_NAME, STREETADDRESS, CITY, BARANGAY, DISTRICT, ZIPCODE, EMAIL, MOBILE_NUMBER, TEL_NUMBER, ID_NUMBER, VALID_ID, STATUS)
-                    VALUES (:vprofile_id, :applicationDate, :precinctNo, :parish, :role, :firstName, :middleName, :surname, :suffix, :gender, :nickname, 
+                    VALUES (:application_id, :vprofile_id, :applicationDate, :precinctNo, :parish, :role, :firstName, :middleName, :surname, :suffix, :gender, :nickname, 
                     :civilStatus, :birthDate, :birthMonth, :birthYear, :age, :citizenship, :occupation, :companyName, :streetAddress, :city, :barangay, 
                     :district, :zipcode, :email, :mobileNumber, :telNumber, :idnumber, :validId, :status)");
 
             $stmt->execute([
+                ':application_id' => $randomID,
                 ':vprofile_id' => $vprofile_id,
                 ':applicationDate' => $input['applicationDate'],
                 ':precinctNo' => $input['precinctNumber'],
@@ -145,8 +155,6 @@ class VolunteerNewApplicationController
                 ':status' => $input['status']
             ]);
 
-            $application_id = $db->lastInsertId();
-
             // Insert into APPLICATION_ADD_INFO
             $stmt = $db->prepare("INSERT INTO APPLICATION_ADD_INFO (APPLICATION_ADD_ID, PARISH_ORG_MEMBERSHIP, PREVIOUS_EXP_DATE, PREVIOUS_EXP_MONTH, PREVIOUS_EXP_YEAR, 
                     PREVIOUS_EXP_YRS, PREVIOUS_PPCRV_VOL_ASS, PREVIOUS_PPCRV_PRECINCT, PREFERRED_PPCRV_VOL_ASS)
@@ -154,7 +162,7 @@ class VolunteerNewApplicationController
                     :previous_ppcrv_vol_ass, :previous_ppcrv_precinct, :preferred_ppcrv_vol_ass)");
 
             $stmt->execute([
-                ':application_id' => $application_id,
+                ':application_id' => $randomID,
                 ':parish_org_membership' => $input['parish_org_membership'],
                 ':previous_exp_date' => $input['prevExperienceDate'],
                 ':previous_exp_month' => $input['prevExperienceMonth'],
@@ -173,7 +181,7 @@ class VolunteerNewApplicationController
             if ($account) {
                 $username = $account['USERNAME'];
                 $currentDate = date('F j, Y H:i:s');
-                $description = 'You submitted an application form with an Application ID of.' . ' ' . $application_id . ' ' . 'Click here to check the status of your registration.';
+                $description = 'You submitted an application form with an Application ID of.' . ' ' . $randomID . ' ' . 'Click here to check the status of your registration.';
 
                 $stmt = $db->prepare('INSERT INTO ACTIVITIES 
                     (

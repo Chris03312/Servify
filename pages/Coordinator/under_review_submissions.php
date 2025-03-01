@@ -243,11 +243,6 @@
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                             <button type="submit" class="btn btn-primary mb-2">Review</button>
                                         </form>
-                                        <form action="/under_review_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Cancel</button>
-                                        </form>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -261,12 +256,6 @@
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                                     <button type="submit" class="dropdown-item btn btn-primary">Review</button>
-                                                </form>
-                                                <form action="/under_review_submissions/delete" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit"
-                                                        class="dropdown-item btn btn-danger">Delete</a></button>
                                                 </form>
                                             </ul>
                                         </div>

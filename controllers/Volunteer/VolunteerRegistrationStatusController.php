@@ -18,7 +18,7 @@ class VolunteerRegistrationStatusController
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
         $notifications = Notification::getNotification();
         $userInfo = Dashboard::getinfodashboard();
-        $statusInfo = Registrationstatus::registrationstatus(); // Fetch all registration data
+        $statusInfo = Registrationstatus::registrationstatus();
 
         // Pass data to the view in a single variable
         view('Volunteer/volunteer_registration_status', [

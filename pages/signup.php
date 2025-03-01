@@ -17,7 +17,8 @@
 
     <!-- MODAL: TERMS AND CONDITIONS -->
 
-    <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" aria-labelledby="termsAndConditionsModalLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="bg-primary py-2">
@@ -25,10 +26,13 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <h5 class="text-primary text-center">Diocesan Public and Political Affairs Ministry (DPPAM) Volunteer Registration</h5>
+                        <h5 class="text-primary text-center">Diocesan Public and Political Affairs Ministry (DPPAM)
+                            Volunteer Registration</h5>
 
                         <div>
-                            <p class="text-muted">By registering as a volunteer for Servify, the official volunteer management system of the Diocesan Public and Political Affairs Ministry (DPPAM), you agree to comply with the following terms and conditions. </p>
+                            <p class="text-muted">By registering as a volunteer for Servify, the official volunteer
+                                management system of the Diocesan Public and Political Affairs Ministry (DPPAM), you
+                                agree to comply with the following terms and conditions. </p>
                             <p class="text-muted">Please read them carefully before proceeding with your registration.
                             </p>
 
@@ -36,36 +40,54 @@
                                 <li>
                                     <h5>Volunteer Responsibilities</h5>
                                     <ol type="1">
-                                        <li>Volunteers must act in accordance with DPPAM’s mission and values, upholding integrity, respect, and responsibility.</li>
-                                        <li>All tasks assigned by coordinators or administrators must be performed diligently and in a timely manner.</li>
-                                        <li>Volunteers should communicate any challenges, absences, or concerns with their assigned coordinator.</li>
-                                        <li>Misconduct, negligence, or violation of these terms may result in suspension or termination of volunteer participation.</li>
+                                        <li>Volunteers must act in accordance with DPPAM’s mission and values, upholding
+                                            integrity, respect, and responsibility.</li>
+                                        <li>All tasks assigned by coordinators or administrators must be performed
+                                            diligently and in a timely manner.</li>
+                                        <li>Volunteers should communicate any challenges, absences, or concerns with
+                                            their assigned coordinator.</li>
+                                        <li>Misconduct, negligence, or violation of these terms may result in suspension
+                                            or termination of volunteer participation.</li>
                                     </ol>
                                 </li>
                                 <li>
                                     <h5 class="mt-3">Data Privacy & Security</h5>
                                     <ol>
-                                        <li>By registering, you consent to DPPAM collecting, processing, and storing your personal information for volunteer management purposes.</li>
-                                        <li>Your information will be kept confidential and used solely for DPPAM operations, assignments, and communication. Servify will not share your data with third parties without consent, except as required by law.</li>
-                                        <li>You may request access, updates, or deletion of your personal data by contacting DPPAM’s administration.</li>
+                                        <li>By registering, you consent to DPPAM collecting, processing, and storing
+                                            your personal information for volunteer management purposes.</li>
+                                        <li>Your information will be kept confidential and used solely for DPPAM
+                                            operations, assignments, and communication. Servify will not share your data
+                                            with third parties without consent, except as required by law.</li>
+                                        <li>You may request access, updates, or deletion of your personal data by
+                                            contacting DPPAM’s administration.</li>
                                     </ol>
                                 </li>
                                 <li>
                                     <h5 class="mt-3">Code of Conduct</h5>
                                     <ol>
-                                        <li>Volunteers shall treat fellow volunteers, coordinators, and the community with courtesy and respect.</li>
-                                        <li>Harassment, discrimination, or any form of misconduct will not be tolerated.</li>
-                                        <li>Volunteers must maintain professionalism, particularly when representing DPPAM in public engagements.</li>
-                                        <li>Any misuse of DPPAM’s name, system, or resources is strictly prohibited.</li>
+                                        <li>Volunteers shall treat fellow volunteers, coordinators, and the community
+                                            with courtesy and respect.</li>
+                                        <li>Harassment, discrimination, or any form of misconduct will not be tolerated.
+                                        </li>
+                                        <li>Volunteers must maintain professionalism, particularly when representing
+                                            DPPAM in public engagements.</li>
+                                        <li>Any misuse of DPPAM’s name, system, or resources is strictly prohibited.
+                                        </li>
                                     </ol>
                                 </li>
                                 <li>
                                     <h5 class="mt-3">System Usage & Compliance</h5>
                                     <ol>
-                                        <li>Volunteers must use the Servify system responsibly and only for legitimate DPPAM volunteer activities.</li>
-                                        <li>Unauthorized access, data tampering, or sharing of confidential information is strictly forbidden.</li>
-                                        <li>Any suspicious activity should be reported immediately to DPPAM’s administration.</li>
-                                        <li>Servify strives to provide continuous access, but occasional maintenance or updates may cause temporary disruptions. The system administrators are not liable for data loss, service interruptions, or any technical issues beyond their control.</li>
+                                        <li>Volunteers must use the Servify system responsibly and only for legitimate
+                                            DPPAM volunteer activities.</li>
+                                        <li>Unauthorized access, data tampering, or sharing of confidential information
+                                            is strictly forbidden.</li>
+                                        <li>Any suspicious activity should be reported immediately to DPPAM’s
+                                            administration.</li>
+                                        <li>Servify strives to provide continuous access, but occasional maintenance or
+                                            updates may cause temporary disruptions. The system administrators are not
+                                            liable for data loss, service interruptions, or any technical issues beyond
+                                            their control.</li>
                                     </ol>
                                 </li>
                                 <li>
@@ -73,7 +95,8 @@
                                     <ul>
                                         <strong>Users are strictly prohibited from: </strong>
                                         <li>Providing false information or impersonating others.</li>
-                                        <li>Using Servify for political campaigning, personal gain, or any unauthorized purpose.</li>
+                                        <li>Using Servify for political campaigning, personal gain, or any unauthorized
+                                            purpose.</li>
                                         <li>Disrupting system operations, hacking, or engaging in cyberattacks.</li>
                                         <li>Posting or sharing harmful, offensive, or inappropriate content.</li>
                                     </ul>
@@ -81,9 +104,12 @@
                                 <li>
                                     <h5 class="mt-3">Amendments & Termination</h5>
                                     <ol>
-                                        <li>DPPAM reserves the right to modify these terms and conditions at any time.</li>
-                                        <li>Volunteers will be notified of any updates, and continued participation implies acceptance of the new terms.</li>
-                                        <li>DPPAM holds the right to terminate or suspend volunteer access if any of these terms are violated.</li>
+                                        <li>DPPAM reserves the right to modify these terms and conditions at any time.
+                                        </li>
+                                        <li>Volunteers will be notified of any updates, and continued participation
+                                            implies acceptance of the new terms.</li>
+                                        <li>DPPAM holds the right to terminate or suspend volunteer access if any of
+                                            these terms are violated.</li>
                                     </ol>
                                 </li>
                             </ol>
@@ -110,7 +136,8 @@
                 <div class="col-12">
                     <div class="card p-4">
                         <div class="text-center">
-                            <h1 class="fw-bolder"><span class="text-danger">Serv</span><span class="text-primary">ify</span>
+                            <h1 class="fw-bolder"><span class="text-danger">Serv</span><span
+                                    class="text-primary">ify</span>
                             </h1>
                             <h3>Sign Up Form</h3>
 
@@ -127,8 +154,8 @@
                             <div class="col-md-6 mb-3">
                                 <label for="parishNameDataList" class="form-label">You are currently registering as
                                     VOLUNTEER at:<sup class="text-danger">*</sup></label>
-                                <input class="form-control" list="parishNameOptions" id="parishNameDataList" name="parish"
-                                    placeholder="Type to search...">
+                                <input class="form-control" list="parishNameOptions" id="parishNameDataList"
+                                    name="parish" placeholder="Type to search...">
                                 <datalist id="parishNameOptions">
                                     <option value="St. Francis of Assisi – Sta Quiteria Parish">
                                     <option value="Birhen ng Lourdes Parish">
@@ -189,12 +216,14 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="middlename" class="form-label">Middle name (Optional)</label>
+                                <label for="middlename" class="form-label">Middle name</label>
                                 <input type="text" class="form-control" id="middlename" name="middleName">
+                                <div class="validation text-danger"></div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix (Optional)</label>
                                 <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Ex. Jr">
+                                <div class="validation text-danger"></div>
                             </div>
 
                             <strong class="mb-3">Birth Day</strong>
@@ -238,7 +267,8 @@
 
                             <strong class="mb-3">Address</strong>
                             <div class="col-md-12 mb-3">
-                                <label for="city" class="form-label">City<sup class="text-danger fw-bold">*</sup></label>
+                                <label for="city" class="form-label">City<sup
+                                        class="text-danger fw-bold">*</sup></label>
                                 <select id="city" class="form-select" name="city">
                                     <option selected disabled value="">Select City</option>
                                     <?php foreach ($cities as $city): ?>
@@ -282,12 +312,14 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode</label>
-                                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Ex. 1118">
+                                <input type="text" class="form-control" id="zipcode" name="zipcode"
+                                    placeholder="Ex. 1118">
                                 <div class="validation text-danger"></div>
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email<sup class="text-danger fw-bold">*</sup></label>
+                                <label for="email" class="form-label">Email<sup
+                                        class="text-danger fw-bold">*</sup></label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Ex. example1@gmail.com">
                                 <div class="validation text-danger"></div>
@@ -319,19 +351,26 @@
                             <!-- TERMS AND CONDITIONS CHECKBOX -->
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="termsCheckbox">
-                                <label class="form-check-label" for="termsCheckbox">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsAndConditionsModal">Terms and Conditions</a>.
+                                <label class="form-check-label" for="termsCheckbox">I agree to the <a href="#"
+                                        data-bs-toggle="modal" data-bs-target="#termsAndConditionsModal">Terms and
+                                        Conditions</a>.
                                 </label>
-                                <div class="text-danger small" id="termsError" style="display: none;">You must agree before submitting.</div>
+                                <div class="text-danger small" id="termsError" style="display: none;">You must agree
+                                    before submitting.</div>
                             </div>
 
-                            <small><i>By clicking "I Agree" or proceeding with registration, you confirm that:</i></small>
+                            <small><i>By clicking "I Agree" or proceeding with registration, you confirm
+                                    that:</i></small>
                             <small><i>You have read and understood these Terms and Conditions.</i></small>
                             <small><i>You agree to abide by all DPPAM’s policies and guidelines.</i></small>
-                            <small><i>You consent to the processing of your personal data for volunteer activities.</i></small>
-                            <small><i>If you have any questions or concerns, please contact DPPAM’s administration.</i></small>
+                            <small><i>You consent to the processing of your personal data for volunteer
+                                    activities.</i></small>
+                            <small><i>If you have any questions or concerns, please contact DPPAM’s
+                                    administration.</i></small>
 
                             <div class="mb-3 mt-5 text-center">
-                                <button class="btn btn-primary px-4" type="submit" id="signUpBtn" disabled>Sign Up</button>
+                                <button class="btn btn-primary px-4" type="submit" id="signUpBtn" disabled>Sign
+                                    Up</button>
                             </div>
 
                             <!--SUCCESS MODAL-->
@@ -360,7 +399,8 @@
                         </form>
 
                         <div class="mb-3 text-center">
-                            <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign in!</a>
+                            <p>Already registered? <a href="/login" class="text-danger text-decoration-none">Sign
+                                    in!</a>
                             </p>
                         </div>
 
@@ -378,7 +418,7 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let termsCheckbox = document.getElementById("termsCheckbox");
             let signUpBtn = document.getElementById("signUpBtn");
 
@@ -386,7 +426,7 @@
             signUpBtn.disabled = true;
 
             // Enable/Disable button based on checkbox state
-            termsCheckbox.addEventListener("change", function() {
+            termsCheckbox.addEventListener("change", function () {
                 signUpBtn.disabled = !this.checked;
             });
         });

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,25 +36,31 @@
             <h4>Coordinator Management</h4>
             <!-- BUTTONS -->
             <div>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#registerCoordinatorModal"><i class="bi bi-plus me-2"></i>Register new Coordinator</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-filter me-2"></i>Filter</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#registerCoordinatorModal"><i class="bi bi-plus me-2"></i>Register new
+                    Coordinator</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#filterModal"><i class="bi bi-filter me-2"></i>Filter</button>
 
             </div>
         </div>
 
         <!-- MODAL FOR REGISTER NEW COORDINATOR -->
-        <div class="modal fade" id="registerCoordinatorModal" tabindex="-1" aria-labelledby="registerCoordinatorModalLabel" aria-hidden="true">
+        <div class="modal fade" id="registerCoordinatorModal" tabindex="-1"
+            aria-labelledby="registerCoordinatorModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Register New Coordinator</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">Please fill in the following details to create a new coordinator account.</p>
+                            <p class="text-muted text-center mb-5">Please fill in the following details to create a new
+                                coordinator account.</p>
 
                             <form id="registrationForm" class="row" action="" method="POST">
 
@@ -111,9 +117,12 @@
                                 <div class="col-12 mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group mb-3">
-                                        <button class="btn btn-outline-secondary" type="button">Generate Password</button>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Generate password">
-                                        <button class="btn btn-outline-secondary" type="button"><i class="bi bi-clipboard"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button">Generate
+                                            Password</button>
+                                        <input type="text" class="form-control" placeholder=""
+                                            aria-label="Generate password">
+                                        <button class="btn btn-outline-secondary" type="button"><i
+                                                class="bi bi-clipboard"></i></button>
                                     </div>
                                 </div>
 
@@ -136,14 +145,16 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Filter</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred criteria from the available options and click "Apply" to view the filtered items.</p>
+                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred
+                                criteria from the available options and click "Apply" to view the filtered items.</p>
 
 
                             <div class="row mb-3">
@@ -196,7 +207,9 @@
         <!-- SEARCH BAR -->
         <section class="row mb-3">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><bi class="bi-search"></bi></span>
+                <span class="input-group-text" id="basic-addon1">
+                    <bi class="bi-search"></bi>
+                </span>
                 <input type="search" class="form-control" placeholder="Search name or email">
             </div>
         </section>
@@ -217,23 +230,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if(!empty($coordinatorManagement)): ?>
-                        <?php foreach($coordinatorManagement as $coordinators): ?>
-                    <tr>
-                        <td><?php echo $coordinators['CPROFILE_ID']; ?></td>
-                        <td><?php echo $coordinators['FIRST_NAME'].' '.$coordinators['SURNAME']; ?></td>
-                        <td><?php echo $coordinators['EMAIL']; ?></td>
-                        <td><?php echo $coordinators['MUNICIPALITY/CITY']; ?></td>
-                        <td><?php echo $coordinators['DISTRICT']; ?></td>
-                        <td><?php echo $coordinators['PARISH']; ?></td>
-                        <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
-                    </tr>
+                    <?php if (!empty($coordinatorManagement)): ?>
+                        <?php foreach ($coordinatorManagement as $coordinators): ?>
+                            <tr>
+                                <td><?php echo $coordinators['CPROFILE_ID']; ?></td>
+                                <td><?php echo $coordinators['FIRST_NAME'] . ' ' . $coordinators['SURNAME']; ?></td>
+                                <td><?php echo $coordinators['EMAIL']; ?></td>
+                                <td><?php echo $coordinators['MUNICIPALITY/CITY']; ?></td>
+                                <td><?php echo $coordinators['DISTRICT']; ?></td>
+                                <td><?php echo $coordinators['PARISH']; ?></td>
+                                <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
+                            </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <td class="text-primary">No Coordinators Data Available</td>
                     <?php endif; ?>
 
-                </>
+                    </>
             </table>
         </div>
 

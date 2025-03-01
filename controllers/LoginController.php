@@ -18,7 +18,7 @@ class LoginController
         $password = $_POST['password'] ?? '';
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo json_encode(['error' => 'Invalid email address.']);
+            echo json_encode(['error' => 'Please enter a valid Username or Password.']);
             return;
         }
 
@@ -36,7 +36,7 @@ class LoginController
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
-                echo json_encode(['error' => 'Invalid email or password.']);
+                echo json_encode(['error' => 'Please enter a valid Username or Password.']);
                 return;
             }
 
@@ -52,8 +52,6 @@ class LoginController
                 $_SESSION['username'] = $user['USERNAME'];
                 $_SESSION['role'] = $user['ROLE'];
 
-                session_regenerate_id(true);
-
                 echo json_encode([
                     'redirect' => $user['ROLE'] === 'Volunteer'
                         ? '/volunteer_dashboard'
@@ -64,7 +62,7 @@ class LoginController
                                 : '/default_dashboard'))
                 ]);
             } else {
-                echo json_encode(['error' => 'Invalid password.']);
+                echo json_encode(['error' => 'Oops! the username or password you entered is Incorrect. Please try again..']);
             }
         } catch (PDOException $e) {
             echo json_encode(['error' => 'An error occurred while processing your request. Please try again later.']);

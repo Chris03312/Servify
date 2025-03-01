@@ -34,38 +34,46 @@
         <h4>Volunteer Registration Status</h4>
 
         <div class="timeline mb-5">
-            <div class="timeline-progress" style="width: <?php echo $statusInfo['PROGRESS']; ?>%;"></div>
-            <!-- Dynamically adjust width -->
+            <?php if (!empty($statusInfo) && isset($statusInfo[0])): ?>
+                <?php $latestStatus = $statusInfo[0]; ?>
+                <div class="timeline-progress" style="width: <?php echo $latestStatus['PROGRESS']; ?>%;"></div>
+                <!-- Dynamically adjust width -->
 
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 20) ? 'active' : ''; ?>">
-                <img src="../img/icons8-signing-a-document-90 (1).png" alt="Step 1">
-                <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
-            </div>
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 37) ? 'active' : ''; ?>">
-                <img src="../img/image-removebg-preview (3).png" alt="Step 2">
-                <div class="progress-step" data-content="To be reviewed by DPPAM Team"></div>
-            </div>
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 53) ? 'active' : ''; ?>">
-                <img src="../img/image-removebg-preview.png" alt="Step 3">
-                <div class="progress-step" data-content="Application Approved"></div>
-            </div>
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 80) ? 'active' : ''; ?>">
-                <img src="../img/icons8-identification-90.png" alt="Step 4">
-                <div class="progress-step" data-content="Generate ID"></div>
-            </div>
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] >= 100) ? 'active' : ''; ?>">
-                <img src="../img/icons8-calendar-90 (1).png" alt="Step 5">
-                <div class="progress-step" data-content="Orientation and Training"></div>
-            </div>
-            <div class="timeline-item <?php echo ($statusInfo['PROGRESS'] == 100) ? 'active' : ''; ?>">
-                <img src="../img/icons8-certificate-90 (1).png" alt="Step 6">
-                <div class="progress-step" data-content="Grant Certificate"></div>
-            </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] >= 20) ? 'active' : ''; ?>">
+                    <img src="../img/icons8-signing-a-document-90 (1).png" alt="Step 1">
+                    <div class="progress-step" data-content="Submit Volunteer Registration Form"></div>
+                </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] >= 37) ? 'active' : ''; ?>">
+                    <img src="../img/image-removebg-preview (3).png" alt="Step 2">
+                    <div class="progress-step" data-content="To be reviewed by DPPAM Team"></div>
+                </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] >= 53) ? 'active' : ''; ?>">
+                    <img src="../img/image-removebg-preview.png" alt="Step 3">
+                    <div class="progress-step" data-content="Application Approved"></div>
+                </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] >= 80) ? 'active' : ''; ?>">
+                    <img src="../img/icons8-identification-90.png" alt="Step 4">
+                    <div class="progress-step" data-content="Generate ID"></div>
+                </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] >= 100) ? 'active' : ''; ?>">
+                    <img src="../img/icons8-calendar-90 (1).png" alt="Step 5">
+                    <div class="progress-step" data-content="Orientation and Training"></div>
+                </div>
+                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] == 100) ? 'active' : ''; ?>">
+                    <img src="../img/icons8-certificate-90 (1).png" alt="Step 6">
+                    <div class="progress-step" data-content="Grant Certificate"></div>
+                </div>
+            <?php endif; ?>
         </div>
 
         <!--TABLE-->
         <div class="mt-5">
-            <h5 class="text-center text-danger"><?php echo $statusInfo['ERROR'] ?? " "; ?></h5>
+            <h5 class="text-center text-danger">
+                <?php
+                // Display error if available. Note: In error cases, $statusInfo is an associative array.
+                echo is_array($statusInfo) && isset($statusInfo['ERROR']) ? $statusInfo['ERROR'] : "";
+                ?>
+            </h5>
             <div class="table-responsive">
                 <table class="table table-bordered align-middle">
                     <thead class="table-primary">
@@ -77,24 +85,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <?php if (isset($statusInfo['VPROFILE_ID'])): ?>
-                                <th scope="row"><?php echo $statusInfo['VPROFILE_ID']; ?></th>
-                            <?php endif; ?>
-                            <td><?php echo $statusInfo['FIRST_NAME'] . " " . $statusInfo['MIDDLE_NAME'] . " " . $statusInfo['SURNAME']; ?>
-                            </td>
-                            <td><?php echo $statusInfo['STATUS']; ?></td>
-                            <td></td>
-                            <!-- <td></td> -->
-                        </tr>
+                        <?php if (is_array($statusInfo) && !isset($statusInfo['ERROR'])): ?>
+                            <?php foreach ($statusInfo as $application): ?>
+                                <tr>
+                                    <th scope="row"><?php echo $application['APPLICATION_ID']; ?></th>
+                                    <td><?php echo $application['FIRST_NAME'] . " " . $application['MIDDLE_NAME'] . " " . $application['SURNAME']; ?>
+                                    </td>
+                                    <td><?php echo $application['STATUS']; ?></td>
+                                    <td><!-- Action buttons or links here --></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
-
-        <!--
-            <button id="startProgress" class="mt-5">Start Progress</button>
-            -->
     </main>
     </div>
     </div>

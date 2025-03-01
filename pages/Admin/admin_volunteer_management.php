@@ -47,56 +47,59 @@
 
         <!-- MODAL FOR FILTER -->
         <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h4 class="text-center text-primary">Filter</h4>
-                <p class="text-muted text-center mb-5">To filter results, select your preferred criteria and click "Apply".</p>
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="text-center text-primary">Filter</h4>
+                        <p class="text-muted text-center mb-5">To filter results, select your preferred criteria and
+                            click "Apply".</p>
 
-                <div class="row mb-3">
-                    <label for="filterCity" class="col-sm-2 col-form-label">City:</label>
-                    <div class="col-sm-10">
-                        <select id="filterCity" class="form-select">
-                            <option value="">Select City</option>
-                            <option value="Caloocan City">Caloocan City</option>
-                            <option value="Malabon City">Malabon City</option>
-                            <option value="Navotas City">Navotas City</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="filterDistrict" class="col-sm-2 col-form-label">District:</label>
-                    <div class="col-sm-10">
-                        <select id="filterDistrict" class="form-select">
-                            <option value="">Select District No.</option>
-                            <option value="District 1">District 1</option>
-                            <option value="District 2">District 2</option>
-                            <option value="District 3">District 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="filterParish" class="col-sm-2 col-form-label">Parish Assigned:</label>
-                    <div class="col-sm-10">
-                        <select id="filterParish" class="form-select">
-                            <option value="">Select Parish</option>
-                            <option value="St. Peter">St. Peter</option>
-                            <option value="St. Francis of Assisi – Sta Quiteria Parish">St. Francis of Assisi – Sta Quiteria Parish</option>
-                        </select>
-                    </div>
-                </div>
+                        <div class="row mb-3">
+                            <label for="filterCity" class="col-sm-2 col-form-label">City:</label>
+                            <div class="col-sm-10">
+                                <select id="filterCity" class="form-select">
+                                    <option value="">Select City</option>
+                                    <option value="Caloocan City">Caloocan City</option>
+                                    <option value="Malabon City">Malabon City</option>
+                                    <option value="Navotas City">Navotas City</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="filterDistrict" class="col-sm-2 col-form-label">District:</label>
+                            <div class="col-sm-10">
+                                <select id="filterDistrict" class="form-select">
+                                    <option value="">Select District No.</option>
+                                    <option value="District 1">District 1</option>
+                                    <option value="District 2">District 2</option>
+                                    <option value="District 3">District 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="filterParish" class="col-sm-2 col-form-label">Parish Assigned:</label>
+                            <div class="col-sm-10">
+                                <select id="filterParish" class="form-select">
+                                    <option value="">Select Parish</option>
+                                    <option value="St. Peter">St. Peter</option>
+                                    <option value="St. Francis of Assisi – Sta Quiteria Parish">St. Francis of Assisi –
+                                        Sta Quiteria Parish</option>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="modal-footer">
-                    <button type="button" id="resetFilter" class="btn">Reset</button>
-                    <button type="button" id="applyFilter" class="btn btn-primary px-4">Apply</button>
+                        <div class="modal-footer">
+                            <button type="button" id="resetFilter" class="btn">Reset</button>
+                            <button type="button" id="applyFilter" class="btn btn-primary px-4">Apply</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 
@@ -140,27 +143,24 @@
 
 
                     <tbody id="VolunteerTableBody">
-                    <?php foreach ($volunteers as $index => $volunteer): ?>
-                        <tr data-city="<?= htmlspecialchars($volunteer['city'] ?? '') ?>" 
-    data-district="<?= htmlspecialchars($volunteer['district'] ?? '') ?>" 
-    data-parish="<?= htmlspecialchars($volunteer['parish'] ?? '') ?>">
+                        <?php foreach ($volunteers as $volunteer): ?>
+                            <tr data-city="<?php echo htmlspecialchars($volunteer['CITY'] ?? ''); ?>"
+                                data-district="<?php echo htmlspecialchars($volunteer['DISTRICT'] ?? ''); ?>"
+                                data-parish="<?php echo htmlspecialchars($volunteer['PARISH'] ?? ''); ?>">
 
-                <td><?= $index + 1 ?></td>
-                <td><?= htmlspecialchars($volunteer['first_name'].' '.$volunteer['surname']) ?></td>
-                <td><?= htmlspecialchars($volunteer['email']) ?></td>
-                <td><?= htmlspecialchars($volunteer['city']) ?></td>
-                <td><?= htmlspecialchars($volunteer['district']) ?></td>
-                <td class="truncate-text"><?= htmlspecialchars($volunteer['parish']) ?></td>
-                <td><a href="volunteer_details.php?id=<?= $volunteer['vprofile_id'] ?>" class="btn btn-sm text-primary">View Details</a></td>
-            </tr>
-        <?php endforeach; ?>
+                                <td><?= htmlspecialchars($volunteer['VOLUNTEERS_ID']) ?></td>
+                                <td><?= htmlspecialchars($volunteer['FIRST_NAME'] . ' ' . $volunteer['SURNAME']) ?></td>
+                                <td><?= htmlspecialchars($volunteer['EMAIL']) ?></td>
+                                <td><?= htmlspecialchars($volunteer['CITY']) ?></td>
+                                <td><?= htmlspecialchars($volunteer['DISTRICT']) ?></td>
+                                <td class="truncate-text"><?= htmlspecialchars($volunteer['PARISH']) ?></td>
+                                <td><a href="/volunteer_details?id=<?= $volunteer['VOLUNTEERS_ID'] ?>"
+                                        class="btn btn-sm text-primary">View Details</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-
-
-
-
             <!--Pending Tab-->
 
             <div class="tab-pane fade p-3" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab"
@@ -178,18 +178,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>February 20, 2023</td>
-                            <td>Jazer</td>
-                            <td>Pogi</td>
-                            <td>St.Peter</td>
-                            <td><a href="#" class="btn btn-sm text-primary">View Details</a></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#listofVolunteerModal">Add Remarks</button>
-                            </td>
-                        </tr>
+                        <?php foreach ($pendingApprovals as $approval): ?>
+                            <tr>
+                                <td><?php echo $approval['APPLICATION_ID']; ?></td>
+                                <td><?php echo $approval['APPLICATION_DATE']; ?></td>
+                                <td><?php echo $approval['FIRST_NAME'] . ' ' . $approval['SURNAME']; ?></td>
+                                <td><?php echo 'New ' . $approval['ROLE'] . '<br><br>
+                                    Precinct no.: ' . $approval['PRECINCT_NO'] . '<br>
+                                    Address: ' . $approval['STREETADDRESS'] . ', ' . $approval['BARANGAY'] . ', ' . $approval['CITY'] . '<br>
+                                    Preferred Role: ' . $approval['PREFERRED_PPCRV_VOL_ASS']; ?>
+                                </td>
+                                <td><?php echo $approval['PARISH']; ?></td>
+                                <td>
+                                    <form action="/admin_volunteer_details/details" method="POST">
+                                        <input type="hidden" name="application_id"
+                                            value="<?= htmlspecialchars($approval['APPLICATION_ID']); ?>">
+                                        <button type="Submit" class="btn btn-sm text-primary">View Details</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#listofVolunteerModal">Add Remarks</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -212,6 +224,7 @@
                             <label for="statusSelect" class="form-label fw-bold">Status:</label>
                             <select class="form-select mb-3" id="statusSelect" onchange="toggleRemarks()">
                                 <option value="" selected disabled>Select Status</option>
+                                <option value="Reject">Aprroved</option>
                                 <option value="Reject">Reject</option>
                                 <option value="Re-assign">Re-assign</option>
                             </select>
@@ -296,81 +309,81 @@
 
 
 
-    document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM fully loaded, script running!");
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOM fully loaded, script running!");
 
-    document.getElementById("applyFilter").addEventListener("click", function () {
-        console.log("Apply button clicked!");
+            document.getElementById("applyFilter").addEventListener("click", function () {
+                console.log("Apply button clicked!");
 
-        let selectedCity = document.getElementById("filterCity").value.trim().toLowerCase();
-        let selectedDistrict = document.getElementById("filterDistrict").value.trim().toLowerCase();
-        let selectedParish = document.getElementById("filterParish").value.trim().toLowerCase();
+                let selectedCity = document.getElementById("filterCity").value.trim().toLowerCase();
+                let selectedDistrict = document.getElementById("filterDistrict").value.trim().toLowerCase();
+                let selectedParish = document.getElementById("filterParish").value.trim().toLowerCase();
 
-        console.log("Selected Filters:", { selectedCity, selectedDistrict, selectedParish });
+                console.log("Selected Filters:", { selectedCity, selectedDistrict, selectedParish });
 
-        let rows = document.querySelectorAll("#VolunteerTableBody tr");
+                let rows = document.querySelectorAll("#VolunteerTableBody tr");
 
-        let anyVisible = false; // Track if any row remains visible
+                let anyVisible = false; // Track if any row remains visible
 
-        rows.forEach(row => {
-            let city = (row.dataset.city || "").trim().toLowerCase();
-            let district = (row.dataset.district || "").trim().toLowerCase();
-            let parish = (row.dataset.parish || "").trim().toLowerCase();
+                rows.forEach(row => {
+                    let city = (row.dataset.city || "").trim().toLowerCase();
+                    let district = (row.dataset.district || "").trim().toLowerCase();
+                    let parish = (row.dataset.parish || "").trim().toLowerCase();
 
-            console.log("Row Data:", { city, district, parish });
+                    console.log("Row Data:", { city, district, parish });
 
-            let showRow = true;
+                    let showRow = true;
 
-            // Apply filtering ONLY IF an option is selected
-            if (selectedCity && city !== selectedCity) {
-                showRow = false;
-            }
-            if (selectedDistrict && district !== selectedDistrict) {
-                showRow = false;
-            }
-            if (selectedParish && parish !== selectedParish) {
-                showRow = false;
-            }
+                    // Apply filtering ONLY IF an option is selected
+                    if (selectedCity && city !== selectedCity) {
+                        showRow = false;
+                    }
+                    if (selectedDistrict && district !== selectedDistrict) {
+                        showRow = false;
+                    }
+                    if (selectedParish && parish !== selectedParish) {
+                        showRow = false;
+                    }
 
-            row.style.display = showRow ? "" : "none";
-            if (showRow) anyVisible = true; // Track visibility
+                    row.style.display = showRow ? "" : "none";
+                    if (showRow) anyVisible = true; // Track visibility
+                });
+
+                console.log("Filter applied!");
+
+                // Show "No results found" message if no rows are visible
+                let noResultsRow = document.getElementById("noResultsRow");
+                if (noResultsRow) noResultsRow.style.display = anyVisible ? "none" : "";
+
+                // Hide the modal properly
+                let filterModalEl = document.getElementById("filterModal");
+                let filterModal = bootstrap.Modal.getInstance(filterModalEl);
+                if (filterModal) {
+                    filterModal.hide();
+                }
+            });
+
+            document.getElementById("resetFilter").addEventListener("click", function () {
+                console.log("Reset button clicked!");
+
+                document.getElementById("filterCity").value = "";
+                document.getElementById("filterDistrict").value = "";
+                document.getElementById("filterParish").value = "";
+
+                let rows = document.querySelectorAll("#VolunteerTableBody tr");
+                rows.forEach(row => row.style.display = "");
+
+                // Hide "No results" message
+                let noResultsRow = document.getElementById("noResultsRow");
+                if (noResultsRow) noResultsRow.style.display = "none";
+
+                console.log("Filters reset, all rows visible.");
+            });
         });
 
-        console.log("Filter applied!");
+        // Script for trimming text
 
-        // Show "No results found" message if no rows are visible
-        let noResultsRow = document.getElementById("noResultsRow");
-        if (noResultsRow) noResultsRow.style.display = anyVisible ? "none" : "";
-
-        // Hide the modal properly
-        let filterModalEl = document.getElementById("filterModal");
-        let filterModal = bootstrap.Modal.getInstance(filterModalEl);
-        if (filterModal) {
-            filterModal.hide();
-        }
-    });
-
-    document.getElementById("resetFilter").addEventListener("click", function () {
-        console.log("Reset button clicked!");
-
-        document.getElementById("filterCity").value = "";
-        document.getElementById("filterDistrict").value = "";
-        document.getElementById("filterParish").value = "";
-
-        let rows = document.querySelectorAll("#VolunteerTableBody tr");
-        rows.forEach(row => row.style.display = "");
-
-        // Hide "No results" message
-        let noResultsRow = document.getElementById("noResultsRow");
-        if (noResultsRow) noResultsRow.style.display = "none";
-
-        console.log("Filters reset, all rows visible.");
-    });
-});
-
-// Script for trimming text
-
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".truncate-text").forEach(el => {
                 let text = el.innerText.trim();
                 let maxLength = 30; // Adjust max character length

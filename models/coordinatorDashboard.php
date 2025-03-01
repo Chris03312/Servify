@@ -24,7 +24,6 @@ class CoordinatorDashboard
         }
     }
 
-
     public static function getVolunteers()
     {
         try {

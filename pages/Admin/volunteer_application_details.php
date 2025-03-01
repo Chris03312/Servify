@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('includes/coordinator_sidebar.php');
+    include('includes/admin_sidebar.php');
     ?>
 
     <!--MAIN CONTENT-->
@@ -253,36 +253,20 @@
                             </div>
                         </article>
                         <div class="flex justify-center items-center h-screen">
-                            <a href="<?php echo ($applicationDetails['STATUS'] === 'Under Review')
-                                ? '/under_review_submissions'
-                                : '/pending_submissions'; ?>"
+                            <a href="/admin_volunteer_details"
                                 class="px-4 py-2 bg-gray-300 text-black font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none">
                                 Go Back
                             </a>
-                            <form action="<?php echo ($applicationDetails['STATUS'] === 'Under Review')
-                                ? '/volunteer_application_details/approved'
-                                : '/volunteer_application_details/reviewed'; ?>" method="POST"
+                            <form action="/admin_volunteer_details/approved" method="POST"
                                 class="flex flex-col items-center gap-4">
                                 <input type="hidden" name="application_id"
                                     value="<?php echo $applicationDetails['APPLICATION_ID']; ?>">
                                 <div class="flex gap-4">
                                     <button type="submit" name="proceed" class="px-4 py-2 bg-gray-300 rounded-lg">
-                                        <?php echo ($applicationDetails['STATUS'] === 'Under Review') ? 'Approve' : 'Proceed'; ?>
+                                        Approve
                                     </button>
                                 </div>
                             </form>
-                            <?php if ($applicationDetails['STATUS'] === 'Under Review'): ?>
-                                <form action="/under_review_submissions/reject" method="POST"
-                                    class="flex flex-col items-center gap-4">
-                                    <input type="hidden" name="application_id"
-                                        value="<?php echo $applicationDetails['APPLICATION_ID']; ?>">
-                                    <div class="flex gap-4">
-                                        <button type="submit" name="proceed" class="px-4 py-2 bg-gray-300 rounded-lg">
-                                            Reject
-                                        </button>
-                                    </div>
-                                </form>
-                            <?php endif; ?>
                         </div>
                     </section>
                 </div>

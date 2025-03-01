@@ -61,12 +61,11 @@
 
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
-                                    <<<<<<< HEAD <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
-                                        =======
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        >>>>>>> 3ed4b2528e2e9c24ec37c298978763e6565bc74d
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
 
                                 <div class="modal-body">
@@ -248,11 +247,6 @@
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                             <button type="submit" class="btn btn-primary mb-2">Review</button>
                                         </form>
-                                        <form action="/pending_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -266,12 +260,6 @@
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                                     <button type="submit" class="dropdown-item btn btn-primary">Review</button>
-                                                </form>
-                                                <form action="/pending_submissions/delete" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit"
-                                                        class="dropdown-item btn btn-danger">Delete</a></button>
                                                 </form>
                                             </ul>
                                         </div>

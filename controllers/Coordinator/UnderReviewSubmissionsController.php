@@ -11,9 +11,8 @@ class UnderReviewSubmissionsController
     public static function ShowUnderReviewSubmissions()
     {
 
-
         $underreviewApplications = VolunteerManagement::getApplicationByStatus('Under review');
-        $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled']);
+        $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled', 'Requesting for Approval']);
         $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         view('Coordinator/under_review_submissions', [
@@ -26,7 +25,7 @@ class UnderReviewSubmissionsController
         ]);
     }
 
-    public static function DeleteUnderreviewSubmissions()
+    public static function RejectUnderreviewSubmissions()
     {
         try {
             $db = Database::getConnection();
@@ -40,12 +39,14 @@ class UnderReviewSubmissionsController
 
             $db->beginTransaction();
             // Correct SQL syntax (fix table name if necessary)
-            $stmt = $db->prepare('DELETE FROM APPLICATION_INFO WHERE APPLICATION_ID = :application_id');
-            $stmt->execute([':application_id' => $application_id]);
+            $stmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status WHERE APPLICATION_ID = :application_id');
+            $stmt->execute([
+                ':status' => 'Cancelled',
+                ':application_id' => $application_id
+            ]);
 
-            // Redirect after deletion
             $db->commit();
-            redirect('/under_review_submissions');
+            redirect('/cancelled_submissions');
         } catch (PDOException $e) {
             $db->rollBack();
             error_log('Error deleting application: ' . $e->getMessage());
@@ -54,22 +55,5 @@ class UnderReviewSubmissionsController
         }
     }
 
-    public static function PendingReviewApplicationDetails()
-    {
-        try {
-            // Ensure the request is POST and has application_id
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['application_id']) || empty($_POST['application_id'])) {
-                throw new Exception("Invalid request.");
-            }
-            $application_id = $_POST['application_id'];
 
-            $_SESSION['application_id'] = $application_id;
-            // Redirect after deletion
-            redirect('/volunteer_application_details');
-        } catch (PDOException $e) {
-            error_log('Error deleting application: ' . $e->getMessage());
-        } catch (Exception $e) {
-            error_log('Validation error: ' . $e->getMessage());
-        }
-    }
 }

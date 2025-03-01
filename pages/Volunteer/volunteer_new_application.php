@@ -93,7 +93,6 @@
                                         class="text-danger fw-bold">*</sup></label>
                                 <input class="form-control" list="parishNameOptions" id="parishNameDataList"
                                     value="<?php echo $applicationInfo['PARISH'] ?? ' '; ?>">
-                                <div class="invalid-feedback" id="error-civilStatus"></div>
                             </div>
 
                             <div class="col-md-3 mb-3">

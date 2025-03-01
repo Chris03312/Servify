@@ -239,16 +239,11 @@
                                 </td>
                                 <td>
                                     <div class="d-none d-md-flex flex-row gap-2">
-                                        <form action="/approved_submissions/review" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-primary mb-2">Review</button>
-                                        </form>
-                                        <form action="/approved_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Reject</button>
-                                        </form>
+                                        <?php if ($application['STATUS'] === 'Requesting for Approval'): ?>
+                                            <label class="text-danger"><?php echo $application['STATUS']; ?></label>
+                                        <?php elseif ($application['STATUS'] === 'Approved'): ?>
+                                            <label class="text-success"><?php echo $application['STATUS']; ?></label>
+                                        <?php endif; ?>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -258,17 +253,15 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <form action="/approved_submissions/review" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
-                                                </form>
-                                                <form action="/approved_submissions/delete" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit"
-                                                        class="dropdown-item btn btn-danger">Delete</a></button>
-                                                </form>
+                                                <div class="d-md-none d-flex flex-row gap-2">
+                                                    <?php if ($application['STATUS'] === 'Requesting for Approval'): ?>
+                                                        <label
+                                                            class=" dropdown-item text-danger"><?php echo $application['STATUS']; ?></label>
+                                                    <?php elseif ($application['STATUS'] === 'Approved'): ?>
+                                                        <label
+                                                            class="dropdown-item text-success"><?php echo $application['STATUS']; ?></label>
+                                                    <?php endif; ?>
+                                                </div>
                                             </ul>
                                         </div>
                                     </div>
