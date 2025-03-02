@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../models/Profile.php';
 
@@ -38,13 +38,14 @@ class ProfileController
         }
     }
 
-    public static function updateProfile(){
+    public static function updateProfile()
+    {
         if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
             redirect('/login');
         }
-    
+
         $username = $_SESSION['username'];
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Collect form data (ensure you sanitize and validate as needed)
             $registration_id = $_POST['registration_id'];
@@ -59,14 +60,23 @@ class ProfileController
             $zipCode = $_POST['zip_code'];
             $precinctNumber = $_POST['precinct_number'];
             $email = $_POST['email'];
-        
+
             // Call the updateProfile method from the model
             $updateSuccess = Profile::updateProfile(
-                $registration_id, $surname, $firstName, $middleName, $nameSuffix, 
-                $birthDate, $streetAddress, $barangay, $municipality, $zipCode, 
-                $precinctNumber, $email
+                $registration_id,
+                $surname,
+                $firstName,
+                $middleName,
+                $nameSuffix,
+                $birthDate,
+                $streetAddress,
+                $barangay,
+                $municipality,
+                $zipCode,
+                $precinctNumber,
+                $email
             );
-        
+
             if ($updateSuccess) {
                 // Redirect to /profile after successful update
                 header("Location: /profile");
@@ -77,6 +87,6 @@ class ProfileController
             }
         }
     }
-    
-    
+
+
 }

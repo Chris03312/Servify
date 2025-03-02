@@ -2,9 +2,11 @@
 
 require_once __DIR__ . '/../configuration/Database.php';
 
-class CoordinatorManagement {
+class CoordinatorManagement
+{
 
-    public static function getCoordinatorManagement() {
+    public static function getCoordinatorManagement()
+    {
         try {
 
             $db = Database::getConnection();
@@ -14,8 +16,8 @@ class CoordinatorManagement {
             $coordinatorManagement = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $coordinatorManagement;
-        }catch (PDOException $e) {
-            error_log('Error in getting coordinator management data'. $e->getMessage());
+        } catch (PDOException $e) {
+            error_log('Error in getting coordinator management data' . $e->getMessage());
         }
 
     }

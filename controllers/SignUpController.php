@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/signup.php';
+require_once __DIR__ . '/../models/Signup.php';
 require __DIR__ . '/../package/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;

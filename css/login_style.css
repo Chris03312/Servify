@@ -3,15 +3,26 @@
     height: 100%;
 }
 
-.loginLogo {
-    width: 150px;
-    height: auto;
+
+
+/* Scrollbar Track */
+#termsAndConditionsModal ::-webkit-scrollbar, #dataPrivacyModal ::-webkit-scrollbar {
+    width: 5px;
 }
 
+/* Scrollbar Thumb (the moving part) */
+#termsAndConditionsModal ::-webkit-scrollbar-thumb, #dataPrivacyModal ::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 10px;
+}
 
-@media screen and (max-width: 768px) {
-    .loginLogo {
-        width: 80px;
-    }
-    
+/* Scrollbar Thumb on Hover */
+#termsAndConditionsModal ::-webkit-scrollbar-thumb:hover, #dataPrivacyModal ::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
+/* Scrollbar Track Background */
+#termsAndConditionsModal ::-webkit-scrollbar-track, #dataPrivacyModal ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
 }
