@@ -44,11 +44,6 @@
                         <p><?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME'] ?>
                         </p>
                     </div>
-
-                    <div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><i
-                                class="bi bi-pen me-2"></i>Edit Information</button>
-                    </div>
                 </div>
 
                 <!--NAV TABS-->
