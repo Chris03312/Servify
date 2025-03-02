@@ -52,6 +52,43 @@ class CoordinatorDashboard
     }
 
 
+
+    // view_volunteer_profile.php
+    public static function getVolunteerById($volunteerId)
+    {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare('
+            SELECT 
+                v.VOLUNTEERS_ID,
+                v.ROLE,
+                v.SURNAME, v.FIRST_NAME, v.MIDDLE_NAME, v.NAME_SUFFIX, v.NICKNAME, v.CIVIL_STATUS,
+                v.PRECINCT_NO,
+                p.POLLING_PLACE
+            FROM VOLUNTEERS_TBL AS v
+            INNER JOIN PRECINCT_TABLE AS p
+                ON v.BARANGAY = p.BARANGAY_NAME
+            WHERE v.VOLUNTEERS_ID = :volunteerId
+            LIMIT 1
+        ');
+
+            $stmt->execute(['volunteerId' => $volunteerId]);
+            $volunteer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$volunteer) {
+                error_log("⚠️ Volunteer with ID $volunteerId not found!");
+            }
+
+            return $volunteer;
+        } catch (PDOException $e) {
+            error_log('❌ Error in getVolunteerById(): ' . $e->getMessage());
+            return null;
+        }
+    }
+
+
+
     public static function getTotalCities()
     {
         try {
@@ -222,9 +259,4 @@ class CoordinatorDashboard
             error_log('Error in getting attendance for heatmap: ' . $e->getMessage());
         }
     }
-
-
-
-
-
 }
