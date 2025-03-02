@@ -73,7 +73,7 @@
     <!-- Main Component -->
     <div class="main">
         <nav
-            class="navbar navbar-expand border-bottom navbar-light bg-light d-flex flex-row justify-content-between align-items-center p-2">
+            class="navbar navbar-expand border-bottom navbar-light bg-light d-flex flex-row justify-content-between align-items-center p-2" id="navbarProfile">
             <!-- Button for sidebar toggle -->
             <button class="btn toggle-btn" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" viewBox="0 0 16 16">
