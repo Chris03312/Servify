@@ -488,7 +488,7 @@
                                             <td><?= htmlspecialchars($volunteer['ROLE']); ?></td>
                                             <td>
                                                 <a
-                                                    href="view.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a>
+                                                    href="view_volunteer_profile?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">View</a>
                                                 |
                                                 <a
                                                     href="delete.php?id=<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">Delete</a>

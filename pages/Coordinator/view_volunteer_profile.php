@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Application</title>
+    <title>Volunteer Profile</title>
     <link rel="stylesheet" href="../css/volunteer_application.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -35,7 +35,239 @@
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
 
-        <div class="container-fluid">
+        <!-- PRINTING FORM -->
+        <section class="container-fluid" id="printForm">
+            <!-- HEADER -->
+            <div class="d-flex flex-row justify-content-around align-items-center gap-5 mb-5">
+                <img src="../../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid" width="100px">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h5>PARISH PASTORAL COUNCIL FOR RESPONSIBLE VOTING</h5>
+                    <div class="text-center d-flex flex-column">
+                        <span>Rm. 301 Plus XII Catholic Center, 1175 U.N. Avenue, Paco, Manila</span>
+                        <span>Tel no.: 524-2855 / Telefax: 521-5005 / Fax no.: 528-0149</span>
+                        <span>Email: parishpcrv@yahoo.com / amb.htv@l-manila.com.ph * Website: www.ppcrv.org</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARISH AND PICTURE -->
+            <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+                <div class="d-flex flex-column justify-content-center align-items-start">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Arch/Diocese:</td>
+                                <td><span class="text-decoration-underline">Caloocan</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Parish:</td>
+                                <td><span class="text-decoration-underline">Sto. Rosario Parish</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">City:</td>
+                                <td><span class="text-decoration-underline">Malabon City</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div>
+                    <img src="../../img/PPCRV LOGO.png" alt="Volunter Picture" class="img-thumbnail" width="100px">
+                </div>
+            </div>
+
+            <div>
+                <h5 class="text-decoration-underline text-center mb-2">VOLUNTEER REGISTRATION FORM</h5>
+
+                <p>Date: Feb. 12, 2025</p>
+
+                <p>I wish to become a member of the PARISH PASTORAL COUNCIL FOR THE RESPONSIBLE VOTING (PPCRV) in promoting responsible voting and responsible citizenship.</p>
+
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Name:</div>
+                    <div class="col">
+                        <div class="form-line">Vicmar M. Guzman</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Nickname:</div>
+                    <div class="col">
+                        <div class="form-line">Bebe</div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Sex:</div>
+                    <div class="col">
+                        <div class="form-line">ge lang</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Civil Status:</div>
+                    <div class="col">
+                        <div class="form-line">Single</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Birthdate:</div>
+                    <div class="col">
+                        <div class="form-line">10/08/2002</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Age:</div>
+                    <div class="col">
+                        <div class="form-line">22</div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Citizenship:</div>
+                    <div class="col">
+                        <div class="form-line">Filipino</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Occupation:</div>
+                    <div class="col">
+                        <div class="form-line">Tambay</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Company Name:</div>
+                    <div class="col">
+                        <div class="form-line">Krusty Krab</div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end">
+                    <div class="col-auto fw-bold">Residence Address:</div>
+                    <div class="col">
+                        <div class="form-line">Block 34 Lot 13 Lily St. Maligaya Park Subd.</div> <!-- Underline -->
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-auto"><small>Street/Unit/Bldg/Village</small></div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col">
+                        <div class="form-line">Quezon City</div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Municipality</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-line">Pasong Putik Proper</div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Barangay</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-line">1118</div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Zipcode</small></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Email:</div>
+                    <div class="col">
+                        <div class="form-line">guzman.vicmar.10082002@gmail.com</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Mobile No.:</div>
+                    <div class="col">
+                        <div class="form-line">09566181202</div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Tel No.:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Parish Organization Membership:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Previous PPCRV Experience.:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Years of Service:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Previous PPCRV Volunteers Assignment:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Previous Precinct:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Preferred PPCRV Volunteers Assignment:</div>
+                    <div class="col">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <h5 class="text-decoration-underline text-center mb-2">PPCRV PLEDGE</h5>
+                <p>I pledge to work for the promotion of responsible voting and responsible citizenship as a faith response to the call for political renewal and social transformation. I also pledge to work for Clean, Honest, Accurate, Meaningful and Peaceful (CHAMP) elections without fear or favor, in a non-partisan manner, in the service of God and country. In the event that I choose to become involved in partisan politics or decide to take on the noble task of seeking an elective position in government, I shall automatically resign from the PPCRV and return my membership card.</p>
+
+
+
+                <div class="signature-section d-flex flex-column justify-content-end align-items-end me-5 mt-4">
+                    <div class="signature-line"></div>
+                    <span class="fw-bold">Applicant's Signature</span>
+                </div>
+
+
+                <div class="action-taken my-1">
+                    <span>Action Taken</span>
+                </div>
+
+
+                <div class="row align-items-end mb-3">
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Recommending Approval:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>PPC President/Parish Coordinator</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Approved By:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Parish Priest</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Noted By:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>District Coordinator</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-end justify-content-center mt-5 mb-3">
+                    <div class="col-auto fw-bold">Issued Membership No.:</div>
+                    <div class="col-2">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <div class="container-fluid" id="formContainer">
             <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
 
@@ -48,7 +280,7 @@
                             <i class="bi bi-pen text-primary fs-5"></i>
                         </button>
 
-                        <button type="button" class="btn"><i class="bi bi-printer text-primary fs-5"></i></button>
+                        <button type="button" class="btn" id="printBtn"><i class="bi bi-printer text-primary fs-5"></i></button>
                         <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
                     </div>
 
@@ -65,10 +297,8 @@
                                         data-bs-target="#accessRestrictionModal">
                                         <i class="bi bi-pen text-primary fs-5"></i>
                                     </button>
-                                    <button type="button" class="btn"><i
-                                            class="bi bi-printer text-primary fs-5"></i></button>
-                                    <button type="button" class="btn"><i
-                                            class="bi bi-trash text-danger fs-5"></i></button>
+                                    <button type="button" class="btn" id="printBtn"><i class="bi bi-printer text-primary fs-5"></i></button>
+                                    <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +370,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                             data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
-                            aria-selected="false">Upload & Agree</button>
+                            aria-selected="false">Documents/IDs</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
@@ -174,7 +404,7 @@
                                 <label for="precinctNumber" class="col-md-2 col-form-label">Precinct Number:<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber"
+                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['PRECINCT_NO']) : ''; ?>"
                                         required>
                                     <div class="invalid-feedback">
                                         Please input precinct number.
@@ -185,7 +415,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="firstname" name="firstName" required>
+                                <input type="text" class="form-control" id="firstname" name="firstName" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['FIRST_NAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input first name.
                                 </div>
@@ -194,7 +424,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="middlename" name="middleName" required>
+                                <input type="text" class="form-control" id="middlename" name="middleName" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['MIDDLE_NAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -203,7 +433,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="surname" name="surname" required>
+                                <input type="text" class="form-control" id="surname" name="surname" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['SURNAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input surname.
                                 </div>
@@ -212,7 +442,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="suffix" name="suffix" required>
+                                <input type="text" class="form-control" id="suffix" name="suffix" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['NAME_SUFFIX']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -233,25 +463,25 @@
                             <div class="col-md-3 mb-3">
                                 <label for="Nickname" class="form-label">Nickname<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="Nickname" name="Nickname" required>
+                                <input type="text" class="form-control" id="Nickname" name="Nickname" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['NICKNAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="civilStauts" class="form-label">Civil Status<sup
-                                        class="text-danger fw-bold">*</sup></label>
+                                <label for="civilStatus" class="form-label">Civil Status<sup class="text-danger fw-bold">*</sup></label>
                                 <select id="civilStatus" name="civilStatus" class="form-select" required>
-                                    <option selected disabled value="">Select Status</option>
-                                    <option value="Single">Single</option>
-                                    <option value="Married">Married</option>
-                                    <option value="Separated">Separated</option>
-                                    <option value="Divorced">Divorced</option>
-                                    <option value="Widowed">Widowed</option>
-                                    <option value="Widower">Widower</option>
-                                    <option value="Annulled">Annulled</option>
-                                    <option value="Single Parent">Single Parent</option>
+                                    <option disabled value="">Select Status</option>
+                                    <?php
+                                   $statuses = ["SINGLE", "MARRIED", "SEPARATED", "DIVORCED", "WIDOWED", "WIDOWER", "ANNULLED", "SINGLE PARENT"];
+                                    $selectedStatus = !empty($volunteer) ? $volunteer['CIVIL_STATUS'] : '';
+
+                                    foreach ($statuses as $status) {
+                                        $selected = ($status === $selectedStatus) ? 'selected' : '';
+                                        echo "<option value=\"$status\" $selected>$status</option>";
+                                    }
+                                    ?>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select civil status.
@@ -306,7 +536,7 @@
 
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
@@ -597,149 +827,20 @@
                         tabindex="0">
                         <div class="double-line-text">
                             <hr class="line">
-                            <h5 class="text">Upload & Agreement</h5>
+                            <h5 class="text">Documents/IDs</h5>
                             <hr class="line">
                         </div>
 
-                        <div class="upload-paragraph">
-                            <p>Upload at least one (1) valid primary ID. Ensure the name, address, and birthday match
-                                the details in your
-                                Volunteer Registration form.
-                            </p>
+
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold me-2">Type of ID:</span>
+                            <span>ID</span>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-5">
-
-                                <h4 class="text-danger">Accepted IDs</h4>
-
-                                <p><strong>For Filipino citizens aged 18 years old and above</strong></p>
-                                <strong>1 Primary ID</strong>
-                                <ul>
-                                    <li>Philippine National Identity Card</li>
-                                    <li>ePhilID</li>
-                                    <li>SSS ID (digitized with photo)</li>
-                                    <li>PRC ID</li>
-                                    <li>Postal ID (issued 2015 onwards)</li>
-                                    <li>Passport</li>
-                                    <li>Driver's License</li>
-                                    <li>UMID</li>
-                                    <li>NBI Clearance</li>
-                                    <li>ACR i-Card</li>
-                                    <li>Government Office and GOCC ID</li>
-                                    <li>IBP Card</li>
-                                </ul>
-                                <strong>Or Secondary IDs</strong>
-                                <ul>
-                                    <li>PhilHealth ID</li>
-                                    <li>TIN ID</li>
-                                    <li>Voter's ID</li>
-                                    <li>Police Clearance</li>
-                                    <li>Senior Citizen's Card</li>
-                                    <li>GSIS e-Card</li>
-                                    <li>OWWA ID or OFW e-Card</li>
-                                    <li>School ID</li>
-                                    <li>Barangay Certification (with photo, if applicable)</li>
-                                    <li>PPCRV ID</li>
-                                </ul>
-                            </div>
-
-
-                            <div class="col-md-7 mb-3">
-                                <label for="sex" class="form-label">Type of ID<sup
-                                        class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select mb-2" name="nameofId" required>
-                                    <option selected disabled value="">Select type of ID</option>
-
-                                    <?php foreach ($validId as $id): ?>
-                                        <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->
-                                        <option></option>
-                                    <?php endforeach; ?>
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Please select type of ID.
-                                </div>
-
-
-                                <div class="file-upload">
-                                    <div id="drop-area"
-                                        class="drop-area d-flex flex-column justify-content-center align-items-center">
-                                        <!-- Progress bar for uploading -->
-                                        <div id="upload-progress" class="upload-progress" style="display: none;">
-                                            <p id="upload-status" class="text-center">Uploading...</p>
-                                            <div class="progress">
-                                                <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
-                                            </div>
-                                        </div>
-                                        <div id="preview" class="preview"></div>
-                                        <span id="file-name" class="file-name"></span>
-                                        <img src="../img/icons8-identification-90.png" alt="">
-                                        <p>Drag and drop your ID here</p>
-                                        <p><strong>OR</strong></p>
-                                        <label for="file-input" class="file-label btn btn-primary px-5">UPLOAD</label>
-                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none"
-                                            name="validId" required />
-
-
-                                        <div class="invalid-feedback">
-                                            Please upload your photo.
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
+                        <!-- PREVIEW ID -->
+                        <div class="container mt-5">
+                            <img src="../../img/PPCRV LOGO.png" alt="Type of ID" class="img-thumbnail" width="120px;">
                         </div>
-
-
-                        <h4>Confirm your pledge to volunteer and support our mission.</h4>
-                        <p class="text-danger mb-4">Please check the box to confirm your acknowledgment and agreement
-                            before submitting.</p>
-
-                        <h4 class="text-primary">PPCRV Plege</h4>
-                        <div class="row align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                    I pledge to work for the promotion of responsible voting and responsible citizenship
-                                    as a faith response to
-                                    the call for political renewal and social transformation. I also pledge to work for
-                                    Clean, Honest, Accurate,
-                                    Meaningful and Peaceful (CHAMP) elections without fear or favor, in a non-partisan
-                                    manner, in the service of
-                                    God and country. In the event that I choose to become involved in partisan politics
-                                    or decide to take on the
-                                    noble task of seeking an elective position in government, I shall automatically
-                                    resign from the PPCRV and return
-                                    my membership card.
-                                </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-
-                                <div class="col-md-11">
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="mb-3 text-center">
-                                <button class="btn btn-outline-primary px-4" type="submit">Submit</button>
-                            </div>
-
-
-
-
-
-
-                        </div>
-
-
                     </div>
 
 
@@ -825,10 +926,15 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             flatpickr('#datepicker', {
                 dateFormat: 'Y-m-d', // Customize the format (e.g., YYYY-MM-DD)
             });
+        });
+
+        const printBtn = document.getElementById('printBtn');
+        printBtn.addEventListener('click', function() {
+            window.print();
         });
     </script>
 
