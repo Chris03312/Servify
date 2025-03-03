@@ -38,9 +38,16 @@
                     <!--PHOTO-->
                     <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
+<<<<<<< HEAD
                     <!--NAME-->
                     <p><?php echo $applicationDetails['FIRST_NAME'] . " " . $applicationDetails['MIDDLE_NAME'] . " " . $applicationDetails['SURNAME'] ?>
                     </p>
+=======
+                        <!--NAME-->
+                        <p><?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME'] ?>
+                        </p>
+                    </div>
+>>>>>>> 677575ee2d58491ee4fc92540b55917cae808e35
                 </div>
 
                 <div>

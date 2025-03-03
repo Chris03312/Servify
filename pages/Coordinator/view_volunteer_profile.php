@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Application</title>
+    <title>Volunteer Profile</title>
     <link rel="stylesheet" href="../css/volunteer_application.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
@@ -35,12 +35,244 @@
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
 
-        <div class="container-fluid">
+        <!-- PRINTING FORM -->
+        <section class="container-fluid" id="printForm">
+            <!-- HEADER -->
+            <div class="d-flex flex-row justify-content-around align-items-center gap-5 mb-5">
+                <img src="../../img/PPCRV LOGO.png" alt="PPCRV Logo" class="img-fluid" width="100px">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h5>PARISH PASTORAL COUNCIL FOR RESPONSIBLE VOTING</h5>
+                    <div class="text-center d-flex flex-column">
+                        <span>Rm. 301 Plus XII Catholic Center, 1175 U.N. Avenue, Paco, Manila</span>
+                        <span>Tel no.: 524-2855 / Telefax: 521-5005 / Fax no.: 528-0149</span>
+                        <span>Email: parishpcrv@yahoo.com / amb.htv@l-manila.com.ph * Website: www.ppcrv.org</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARISH AND PICTURE -->
+            <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+                <div class="d-flex flex-column justify-content-center align-items-start">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Arch/Diocese:</td>
+                                <td><span class="text-decoration-underline">Kalookan</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Parish:</td>
+                                <td><span class="text-decoration-underline">Sto. Rosario Parish</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">City:</td>
+                                <td><span class="text-decoration-underline"><?= !empty($volunteer) ? htmlspecialchars($volunteer['CITY']) : ''; ?></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div>
+                    <img src="../../img/PPCRV LOGO.png" alt="Volunter Picture" class="img-thumbnail" width="100px">
+                </div>
+            </div>
+
+            <div>
+                <h5 class="text-decoration-underline text-center mb-2">VOLUNTEER REGISTRATION FORM</h5>
+
+                <p>Date: Feb. 12, 2025</p>
+
+                <p>I wish to become a member of the PARISH PASTORAL COUNCIL FOR THE RESPONSIBLE VOTING (PPCRV) in promoting responsible voting and responsible citizenship.</p>
+
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Name:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['FULL NAME']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Nickname:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['NICKNAME']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Sex:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['GENDER']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Civil Status:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['CIVIL_STATUS']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Birthdate:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['BIRTHDATE']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Age:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['AGE']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Citizenship:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['CITIZENSHIP']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Occupation:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['OCCUPATION']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Company Name:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['COMPANY_NAME']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end">
+                    <div class="col-auto fw-bold">Residence Address:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['STREETADDRESS']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-auto"><small>Street/Unit/Bldg/Village</small></div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['CITY']) : ''; ?></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Municipality</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['BARANGAY']) : ''; ?>r</div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Barangay</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['ZIPCODE']) : ''; ?></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Zipcode</small></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Email:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['EMAIL']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Mobile No.:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['MOBILE_NUMBER']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Tel No.:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['TELEPHONE_NUMBER']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Parish Organization Membership:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PARISH_ORG_MEM']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Previous PPCRV Experience:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PPCRV_EXP']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Years of Service:</div>
+                    <div class="col">
+                        <div class="form-line" id="yearsOfServiceDisplay"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PPCRV_EXP_YEARS_OF_SERV']) : ''; ?></div><!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Previous PPCRV Volunteers Assignment:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PPCRV_VOL_ASS']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+                <div class="row align-items-end mb-2">
+                    <div class="col-auto fw-bold">Previous Precinct:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PRECINCT']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                    <div class="col-auto fw-bold">Preferred PPCRV Volunteers Assignment:</div>
+                    <div class="col">
+                        <div class="form-line"><?= !empty($volunteer) ? htmlspecialchars($volunteer['PREF_PPCRV_VOL_ASS']) : ''; ?></div> <!-- Underline -->
+                    </div>
+                </div>
+
+                <h5 class="text-decoration-underline text-center mb-2">PPCRV PLEDGE</h5>
+                <p>I pledge to work for the promotion of responsible voting and responsible citizenship as a faith response to the call for political renewal and social transformation. I also pledge to work for Clean, Honest, Accurate, Meaningful and Peaceful (CHAMP) elections without fear or favor, in a non-partisan manner, in the service of God and country. In the event that I choose to become involved in partisan politics or decide to take on the noble task of seeking an elective position in government, I shall automatically resign from the PPCRV and return my membership card.</p>
+
+
+
+                <div class="signature-section d-flex flex-column justify-content-end align-items-end me-5 mt-4">
+                    <div class="signature-line"></div>
+                    <span class="fw-bold">Applicant's Signature</span>
+                </div>
+
+
+                <div class="action-taken my-1">
+                    <span>Action Taken</span>
+                </div>
+
+
+                <div class="row align-items-end mb-3">
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Recommending Approval:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>PPC President/Parish Coordinator</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Approved By:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>Parish Priest</small></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">Noted By:</div>
+                        </div>
+                        <div class="form-line"></div> <!-- Underline -->
+                        <div class="row justify-content-center">
+                            <div class="col-auto"><small>District Coordinator</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-end justify-content-center mt-5 mb-3">
+                    <div class="col-auto fw-bold">Issued Membership No.:</div>
+                    <div class="col-2">
+                        <div class="form-line"></div> <!-- Underline -->
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <div class="container-fluid" id="formContainer">
             <form method="POST" action="/volunteer_new_application/submit" enctype="multipart/form-data">
                 <!--FORM-->
 
                 <div class="d-flex flex-row justify-content-between align-items-start mb-3">
-                    <h4>Volunteer's Profile</h4>
+                    <h4><a href="/coordinator_dashboard" class="btn border-0" role="button"><i class="bi bi-arrow-left-short fs-4"></i></a>Volunteer's Profile</h4>
                     <!--BUTTONS - EDIT, PRINT, DELETE-->
                     <div class="d-none d-md-flex flex-row justify-content-center align-items-center gap-2">
                         <button type="button" class="btn" data-bs-toggle="modal"
@@ -48,7 +280,7 @@
                             <i class="bi bi-pen text-primary fs-5"></i>
                         </button>
 
-                        <button type="button" class="btn"><i class="bi bi-printer text-primary fs-5"></i></button>
+                        <button type="button" class="btn" id="printBtn"><i class="bi bi-printer text-primary fs-5"></i></button>
                         <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
                     </div>
 
@@ -65,10 +297,8 @@
                                         data-bs-target="#accessRestrictionModal">
                                         <i class="bi bi-pen text-primary fs-5"></i>
                                     </button>
-                                    <button type="button" class="btn"><i
-                                            class="bi bi-printer text-primary fs-5"></i></button>
-                                    <button type="button" class="btn"><i
-                                            class="bi bi-trash text-danger fs-5"></i></button>
+                                    <button type="button" class="btn" id="printBtn"><i class="bi bi-printer text-primary fs-5"></i></button>
+                                    <button type="button" class="btn"><i class="bi bi-trash text-danger fs-5"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +313,7 @@
                     <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
                     <!--NAME-->
-                    <p>Ako si Jazer</p>
+                    <p><?= !empty($volunteer) ? htmlspecialchars($volunteer['FULL NAME']) : ''; ?></p>
                 </div>
 
 
@@ -140,7 +370,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                             data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
-                            aria-selected="false">Upload & Agree</button>
+                            aria-selected="false">Documents/IDs</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
@@ -174,7 +404,7 @@
                                 <label for="precinctNumber" class="col-md-2 col-form-label">Precinct Number:<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber"
+                                    <input type="text" class="form-control" id="precinctNumber" name="precinctNumber" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['PRECINCT_NO']) : ''; ?>"
                                         required>
                                     <div class="invalid-feedback">
                                         Please input precinct number.
@@ -185,7 +415,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="firstname" name="firstName" required>
+                                <input type="text" class="form-control" id="firstname" name="firstName" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['FIRST_NAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input first name.
                                 </div>
@@ -194,7 +424,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="middlename" name="middleName" required>
+                                <input type="text" class="form-control" id="middlename" name="middleName" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['MIDDLE_NAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -203,7 +433,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="surname" name="surname" required>
+                                <input type="text" class="form-control" id="surname" name="surname" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['SURNAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input surname.
                                 </div>
@@ -212,7 +442,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="suffix" name="suffix" required>
+                                <input type="text" class="form-control" id="suffix" name="suffix" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['NAME_SUFFIX']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -221,9 +451,9 @@
                             <div class="col-md-4 mb-3">
                                 <label for="sex" class="form-label">Sex<sup class="text-danger fw-bold">*</sup></label>
                                 <select id="sex" name="sex" class="form-select" required>
-                                    <option selected disabled value="">Select Sex</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option disabled value="">Select Status</option>
+                                    <option value="MALE" <?php echo ($volunteer['GENDER'] === 'MALE') ? 'selected' : " "; ?>>MALE</option>
+                                    <option value="FEMALE" <?php echo ($volunteer['GENDER'] === 'FEMALE') ? 'selected' : " "; ?>>FEMALE</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select sex.
@@ -233,25 +463,24 @@
                             <div class="col-md-3 mb-3">
                                 <label for="Nickname" class="form-label">Nickname<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="Nickname" name="Nickname" required>
+                                <input type="text" class="form-control" id="Nickname" name="Nickname" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['NICKNAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="civilStauts" class="form-label">Civil Status<sup
-                                        class="text-danger fw-bold">*</sup></label>
+                                <label for="civilStatus" class="form-label">Civil Status<sup class="text-danger fw-bold">*</sup></label>
                                 <select id="civilStatus" name="civilStatus" class="form-select" required>
-                                    <option selected disabled value="">Select Status</option>
-                                    <option value="Single">Single</option>
-                                    <option value="Married">Married</option>
-                                    <option value="Separated">Separated</option>
-                                    <option value="Divorced">Divorced</option>
-                                    <option value="Widowed">Widowed</option>
-                                    <option value="Widower">Widower</option>
-                                    <option value="Annulled">Annulled</option>
-                                    <option value="Single Parent">Single Parent</option>
+                                    <option disabled value="">Select Status</option>
+                                    <option value="SINGLE" <?php echo ($volunteer['CIVIL_STATUS'] === 'SINGLE') ? 'selected' : ''; ?>>SINGLE</option>
+                                    <option value="MARRIED" <?php echo ($volunteer['CIVIL_STATUS'] === 'MARRIED') ? 'selected' : ''; ?>>MARRIED</option>
+                                    <option value="SEPARATED" <?php echo ($volunteer['CIVIL_STATUS'] === 'SEPARATED') ? 'selected' : ''; ?>>SEPARATED</option>
+                                    <option value="DIVORCED" <?php echo ($volunteer['CIVIL_STATUS'] === 'DIVORCED') ? 'selected' : ''; ?>>DIVORCED</option>
+                                    <option value="WIDOWED" <?php echo ($volunteer['CIVIL_STATUS'] === 'WIDOWED') ? 'selected' : ''; ?>>WIDOWED</option>
+                                    <option value="WIDOWER" <?php echo ($volunteer['CIVIL_STATUS'] === 'WIDOWER') ? 'selected' : ''; ?>>WIDOWER</option>
+                                    <option value="ANNULLED" <?php echo ($volunteer['CIVIL_STATUS'] === 'ANNULLED') ? 'selected' : ''; ?>>ANNULLED</option>
+                                    <option value="SINGLE PARENT" <?php echo ($volunteer['CIVIL_STATUS'] === 'SINGLE PARENT') ? 'selected' : ''; ?>>SINGLE PARENT</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select civil status.
@@ -260,7 +489,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="birthDate" class="form-label">Birth Day</label>
-                                <input type="text" class="form-control" readonly id="birthDate" name="birthDate"
+                                <input type="text" class="form-control" readonly id="birthDate" name="birthDate" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['BIRTHDAY']) : ''; ?>"
                                     placeholder="Date" required>
                                 <div class="invalid-feedback">
                                     Please input birth date.
@@ -269,20 +498,20 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="birthMonth" class="form-label">&nbsp;</label>
-                                <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true"
-                                    required>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
-                                    <option value="January">January</option>
+                                <select id="birthMonth" name="birthMonth" class="form-select" required>
+                                    <option disabled value="">Select Month</option>
+                                    <option value="JANUARY" <?php echo ($volunteer['BIRTHMONTH'] === 'JANUARY') ? 'selected' : " "; ?>>JANUARY</option>
+                                    <option value="FEBRUARY" <?php echo ($volunteer['BIRTHMONTH'] === 'FEBRUARY') ? 'selected' : ''; ?>>FEBRUARY</option>
+                                    <option value="MARCH" <?php echo ($volunteer['BIRTHMONTH'] === 'MARCH') ? 'selected' : ''; ?>>MARCH</option>
+                                    <option value="APRIL" <?php echo ($volunteer['BIRTHMONTH'] === 'APRIL') ? 'selected' : ''; ?>>APRIL</option>
+                                    <option value="MAY" <?php echo ($volunteer['BIRTHMONTH'] === 'MAY') ? 'selected' : ''; ?>>MAY</option>
+                                    <option value="JUNE" <?php echo ($volunteer['BIRTHMONTH'] === 'JUNE') ? 'selected' : ''; ?>>JUNE</option>
+                                    <option value="JULY" <?php echo ($volunteer['BIRTHMONTH'] === 'JULY') ? 'selected' : ''; ?>>JULY</option>
+                                    <option value="AUGUST" <?php echo ($volunteer['BIRTHMONTH'] === 'AUGUST') ? 'selected' : ''; ?>>AUGUST</option>
+                                    <option value="SEPTEMBER" <?php echo ($volunteer['BIRTHMONTH'] === 'SEPTEMBER') ? 'selected' : ''; ?>>SEPTEMBER</option>
+                                    <option value="OCTOBER" <?php echo ($volunteer['BIRTHMONTH'] === 'OCTOBER') ? 'selected' : ''; ?>>OCTOBER</option>
+                                    <option value="NOVEMBER" <?php echo ($volunteer['BIRTHMONTH'] === 'NOVEMBER') ? 'selected' : ''; ?>>NOVEMBER</option>
+                                    <option value="DECEMBER" <?php echo ($volunteer['BIRTHMONTH'] === 'DECEMBER') ? 'selected' : ''; ?>>DECEMBER</option>
 
                                 </select>
                                 <div class="invalid-feedback">
@@ -292,7 +521,7 @@
 
                             <div class="col-md-2 mb-3">
                                 <label for="suffix" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="birthYear" name="birthYear"
+                                <input type="text" class="form-control" id="birthYear" name="birthYear" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['BIRTHYEAR']) : ''; ?>"
                                     placeholder="Year" readonly>
                                 <div class="invalid-feedback">
                                     Please input birth year.
@@ -306,7 +535,7 @@
 
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
@@ -327,6 +556,7 @@
                                     function calculateYearOfService() {
                                         const prevExperienceYearInput = document.getElementById('prevExperienceYear');
                                         const yearOfServiceInput = document.getElementById('yearOfService');
+                                        const yearsOfServiceDisplay = document.getElementById('yearsOfServiceDisplay'); // Get the div element
 
                                         // Get the value of the previous experience year and the current year
                                         const prevExperienceYear = parseInt(prevExperienceYearInput.value, 10);
@@ -335,12 +565,16 @@
                                         // Validate the previous experience year and calculate the year of service
                                         if (!isNaN(prevExperienceYear) && prevExperienceYear > 1900 && prevExperienceYear <= currentYear) {
                                             // Calculate the year of service
-                                            yearOfServiceInput.value = currentYear - prevExperienceYear;
+                                            const yearsOfService = currentYear - prevExperienceYear;
+                                            yearOfServiceInput.value = yearsOfService;
+                                            yearsOfServiceDisplay.textContent = yearsOfService; // Update the div display
                                         } else {
                                             // Clear the year of service input for invalid year input
                                             yearOfServiceInput.value = '';
+                                            yearsOfServiceDisplay.textContent = 'Invalid year'; // Show a default message
                                         }
                                     }
+
 
                                     // Attach the event listeners for input fields
                                     const birthYearInput = document.getElementById('birthYear');
@@ -366,7 +600,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="citizenship" class="form-label">Citizenship<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="citizenship" name="citizenship" required>
+                                <input type="text" class="form-control" id="citizenship" name="citizenship" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['CITIZENSHIP']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input citizenship.
                                 </div>
@@ -375,7 +609,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="occupation" class="form-label">Occupation<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="occupation" name="occupation" required>
+                                <input type="text" class="form-control" id="occupation" name="occupation" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['OCCUPATION']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -383,7 +617,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="companyName" class="form-label">Company Name<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" required>
+                                <input type="text" class="form-control" id="companyName" name="companyName" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['COMPANY_NAME']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -398,26 +632,26 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
-                                <input type="text" class="form-control" readonly id="street" name="streetAddress"
+                                <input type="text" class="form-control" readonly id="street" name="streetAddress" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['STREETADDRESS']) : ''; ?>"
                                     required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City/Municipality<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="city" name="city" required>
+                                <input type="text" class="form-control" readonly id="city" name="city" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['CITY']) : ''; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="barangay" name="barangay" required>
+                                <input type="text" class="form-control" readonly id="barangay" name="barangay" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['BARANGAY']) : ''; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" required>
+                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['ZIPCODE']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -426,13 +660,13 @@
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="email" class="form-control" readonly id="email" name="email" required>
+                                <input type="email" class="form-control" readonly id="email" name="email" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['EMAIL']) : ''; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['MOBILE_NUMBER']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input mobile number.
                                 </div>
@@ -441,7 +675,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="telNumber" class="form-label">Tel no.<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="telNumber" name="telNumber" required>
+                                <input type="text" class="form-control" id="telNumber" name="telNumber" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['TELEPHONE_NUMBER']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -457,10 +691,9 @@
                                 <label for="orgMembership" class="form-label">Parish Organization Membership<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <select id="orgMembership" name="parish_org_membership" class="form-select" required>
-                                    <option selected disabled value="">Select Membership</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
+                                    <option disabled value=""></option>
+                                    <option value="LOREM" <?php echo ($volunteer['PARISH_ORG_MEM'] === 'LOREM') ? 'selected' : " "; ?>>LOREM</option>
+                                    <option value="IPSUM" <?php echo ($volunteer['PARISH_ORG_MEM'] === 'IPSUM') ? 'selected' : ''; ?>>IPSUM</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select membership.
@@ -481,7 +714,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceDate" class="form-label">&nbsp;</label>
                                 <input type="text" class="form-control" id="prevExperienceDate"
-                                    name="prevExperienceDate" placeholder="Date" required>
+                                    name="prevExperienceDate" placeholder="Date" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PPCRV_EXP_DATE']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input date.
                                 </div>
@@ -491,19 +724,18 @@
                                 <label for="prevExperienceMonth" class="form-label">&nbsp;</label>
                                 <select id="prevExperienceMonth" name="prevExperienceMonth" class="form-select"
                                     required>
-                                    <option selected disabled value="">Select month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                    <option value="January" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'January') ? 'selected' : " "; ?>>January</option>
+                                    <option value="February" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'February') ? 'selected' : " "; ?>>February</option>
+                                    <option value="March" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'March') ? 'selected' : " "; ?>>March</option>
+                                    <option value="April" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'April') ? 'selected' : " "; ?>>April</option>
+                                    <option value="May" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'May') ? 'selected' : " "; ?>>May</option>
+                                    <option value="June" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'June') ? 'selected' : " "; ?>>June</option>
+                                    <option value="July" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'July') ? 'selected' : " "; ?>>July</option>
+                                    <option value="August" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'August') ? 'selected' : " "; ?>>August</option>
+                                    <option value="September" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'September') ? 'selected' : " "; ?>>September</option>
+                                    <option value="October" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'October') ? 'selected' : " "; ?>>October</option>
+                                    <option value="November" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'November') ? 'selected' : " "; ?>>November</option>
+                                    <option value="December" <?php echo ($volunteer['PREV_PPCRV_EXP_MONTH'] === 'December') ? 'selected' : " "; ?>>December</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select month.
@@ -513,7 +745,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="prevExperienceYear" class="form-label">&nbsp;</label>
                                 <input type="text" class="form-control" id="prevExperienceYear"
-                                    name="prevExperienceYear" placeholder="Year" required
+                                    name="prevExperienceYear" placeholder="Year" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PPCRV_EXP_YEAR']) : ''; ?>" required
                                     oninput="calculateYearOfService()">
                                 <div class="invalid-feedback">
                                     Please input year.
@@ -521,7 +753,7 @@
                             </div>
 
                             <div class="col-md-2 mb-3">
-                                <label for="yearOfService" class="form-label">Year of Service<sup
+                                <label for="yearOfService" class="form-label">Years of Service<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" placeholder="Auto generated" readonly
                                     id="yearOfService" name="yearOfService" required>
@@ -532,9 +764,8 @@
                                         class="text-danger fw-bold">*</sup></label>
                                 <select id="prevAssignment" name="prevPpcrvVolAss" class="form-select" required>
                                     <option selected disabled value="">Select previous assignment</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
+                                    <option value="PAUL WALKER" <?php echo ($volunteer['PREV_PPCRV_VOL_ASS'] === 'PAUL WALKER') ? 'selected' : " "; ?>>PAUL WALKER</option>
+                                    <option value="PAUL WALKERS" <?php echo ($volunteer['PREV_PPCRV_VOL_ASS'] === 'PAUL WALKERS') ? 'selected' : " "; ?>>PAUL WALKERS</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select previous assignment.
@@ -555,7 +786,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="prevPrecinct" class="form-label">Previous Precinct<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="prevPrecinct" name="prevPrecinct" required>
+                                <input type="text" class="form-control" id="prevPrecinct" name="prevPrecinct" value="<?= !empty($volunteer) ? htmlspecialchars($volunteer['PREV_PRECINCT']) : ''; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input.
                                 </div>
@@ -566,9 +797,8 @@
                                         class="text-danger fw-bold">*</sup></label>
                                 <select id="prefAssignment" name="prefPpcrvVolAss" class="form-select" required>
                                     <option selected disabled value="">Select preferred assignment</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
-                                    <option value="">...</option>
+                                    <option value="POLL WATCHER" <?php echo ($volunteer['PREF_PPCRV_VOL_ASS'] === 'POLL WATCHER') ? 'selected' : " "; ?>>POLL WATCHER</option>
+                                    <option value="POLL WATCHERS" <?php echo ($volunteer['PREF_PPCRV_VOL_ASS'] === 'POLL WATCHERS') ? 'selected' : " "; ?>>POLL WATCHERS</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select preferred assignment.
@@ -597,149 +827,20 @@
                         tabindex="0">
                         <div class="double-line-text">
                             <hr class="line">
-                            <h5 class="text">Upload & Agreement</h5>
+                            <h5 class="text">Documents/IDs</h5>
                             <hr class="line">
                         </div>
 
-                        <div class="upload-paragraph">
-                            <p>Upload at least one (1) valid primary ID. Ensure the name, address, and birthday match
-                                the details in your
-                                Volunteer Registration form.
-                            </p>
+
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold me-2">Type of ID:</span>
+                            <span>ID</span>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-5">
-
-                                <h4 class="text-danger">Accepted IDs</h4>
-
-                                <p><strong>For Filipino citizens aged 18 years old and above</strong></p>
-                                <strong>1 Primary ID</strong>
-                                <ul>
-                                    <li>Philippine National Identity Card</li>
-                                    <li>ePhilID</li>
-                                    <li>SSS ID (digitized with photo)</li>
-                                    <li>PRC ID</li>
-                                    <li>Postal ID (issued 2015 onwards)</li>
-                                    <li>Passport</li>
-                                    <li>Driver's License</li>
-                                    <li>UMID</li>
-                                    <li>NBI Clearance</li>
-                                    <li>ACR i-Card</li>
-                                    <li>Government Office and GOCC ID</li>
-                                    <li>IBP Card</li>
-                                </ul>
-                                <strong>Or Secondary IDs</strong>
-                                <ul>
-                                    <li>PhilHealth ID</li>
-                                    <li>TIN ID</li>
-                                    <li>Voter's ID</li>
-                                    <li>Police Clearance</li>
-                                    <li>Senior Citizen's Card</li>
-                                    <li>GSIS e-Card</li>
-                                    <li>OWWA ID or OFW e-Card</li>
-                                    <li>School ID</li>
-                                    <li>Barangay Certification (with photo, if applicable)</li>
-                                    <li>PPCRV ID</li>
-                                </ul>
-                            </div>
-
-
-                            <div class="col-md-7 mb-3">
-                                <label for="sex" class="form-label">Type of ID<sup
-                                        class="text-danger fw-bold">*</sup></label>
-                                <select id="sex" class="form-select mb-2" name="nameofId" required>
-                                    <option selected disabled value="">Select type of ID</option>
-
-                                    <?php foreach ($validId as $id): ?>
-                                        <!-- Assuming 'id' and 'name' are columns in the VALID_ID table -->
-                                        <option></option>
-                                    <?php endforeach; ?>
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Please select type of ID.
-                                </div>
-
-
-                                <div class="file-upload">
-                                    <div id="drop-area"
-                                        class="drop-area d-flex flex-column justify-content-center align-items-center">
-                                        <!-- Progress bar for uploading -->
-                                        <div id="upload-progress" class="upload-progress" style="display: none;">
-                                            <p id="upload-status" class="text-center">Uploading...</p>
-                                            <div class="progress">
-                                                <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
-                                            </div>
-                                        </div>
-                                        <div id="preview" class="preview"></div>
-                                        <span id="file-name" class="file-name"></span>
-                                        <img src="../img/icons8-identification-90.png" alt="">
-                                        <p>Drag and drop your ID here</p>
-                                        <p><strong>OR</strong></p>
-                                        <label for="file-input" class="file-label btn btn-primary px-5">UPLOAD</label>
-                                        <input id="file-input" type="file" accept="image/*" class="file-input d-none"
-                                            name="validId" required />
-
-
-                                        <div class="invalid-feedback">
-                                            Please upload your photo.
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
+                        <!-- PREVIEW ID -->
+                        <div class="container mt-5">
+                            <img src="../../img/PPCRV LOGO.png" alt="Type of ID" class="img-thumbnail" width="120px;">
                         </div>
-
-
-                        <h4>Confirm your pledge to volunteer and support our mission.</h4>
-                        <p class="text-danger mb-4">Please check the box to confirm your acknowledgment and agreement
-                            before submitting.</p>
-
-                        <h4 class="text-primary">PPCRV Plege</h4>
-                        <div class="row align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                    I pledge to work for the promotion of responsible voting and responsible citizenship
-                                    as a faith response to
-                                    the call for political renewal and social transformation. I also pledge to work for
-                                    Clean, Honest, Accurate,
-                                    Meaningful and Peaceful (CHAMP) elections without fear or favor, in a non-partisan
-                                    manner, in the service of
-                                    God and country. In the event that I choose to become involved in partisan politics
-                                    or decide to take on the
-                                    noble task of seeking an elective position in government, I shall automatically
-                                    resign from the PPCRV and return
-                                    my membership card.
-                                </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-
-                                <div class="col-md-11">
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="mb-3 text-center">
-                                <button class="btn btn-outline-primary px-4" type="submit">Submit</button>
-                            </div>
-
-
-
-
-
-
-                        </div>
-
-
                     </div>
 
 
@@ -825,10 +926,15 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             flatpickr('#datepicker', {
                 dateFormat: 'Y-m-d', // Customize the format (e.g., YYYY-MM-DD)
             });
+        });
+
+        const printBtn = document.getElementById('printBtn');
+        printBtn.addEventListener('click', function() {
+            window.print();
         });
     </script>
 

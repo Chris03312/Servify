@@ -31,12 +31,12 @@
                     <?php foreach ($events as $event): ?>
                         <div class="box">
                             <div class="image-container">
-                                <img src="Landingpage/img/<?php echo htmlspecialchars($event['announcement_image'] ?? 'default.jpg'); ?>" 
+                                <img src="../Landingpage/img/<?php echo htmlspecialchars($event['announcement_images'] ?? 'default.jpg'); ?>" 
                                     alt="<?php echo htmlspecialchars($event['announcement_title']); ?>">
                             </div>
                             <h3><?php echo htmlspecialchars($event['announcement_title']); ?></h3>
-                            <a href="/announcements?announcement=<?php echo urlencode($event['announcement_title']); ?>" class="btn">Read More</a>
-                        </div>
+                                <a href="/announcement2?announcements=<?php echo urlencode($event['announcement_title']); ?>" class="btn">Read More</a>
+                            </div>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>No events available.</p>

@@ -107,3 +107,33 @@
 #file-input {
   display: none;
 }
+
+
+
+/* PRINT FORM */
+
+.form-line {
+  border-bottom: 1px solid black;
+  flex-grow: 1;
+}
+.signature-line {
+  width: 200px;
+  border-top: 1px solid #000;
+}
+
+.action-taken {
+  border-top: 2px solid #000;
+}
+#printForm {
+  display: none;
+}
+
+@media print {
+  #formContainer, #sidebar, #navbarProfile{
+    display: none !important;
+  }
+
+  #printForm {
+    display: block;
+  }
+}

@@ -237,18 +237,7 @@
 
     <section class="contactus" id="contactus">
         <div class="contactus-container">
-            <!-- Success/Error Message -->
-            <?php if (isset($_SESSION['success'])): ?>
-                <div class="alert success">
-                    <?php echo $_SESSION['success']; ?>
-                    <?php unset($_SESSION['success']); ?>
-                </div>
-            <?php elseif (isset($_SESSION['error'])): ?>
-                <div class="alert error">
-                    <?php echo $_SESSION['error']; ?>
-                    <?php unset($_SESSION['error']); ?>
-                </div>
-            <?php endif; ?>
+
             <div class="contactus-leftsection">
                 <h3>VISIT THE NEAREST PARISH IN YOUR AREA FOR MORE QUESTIONS.</h3>
                 <!-- <p><span>Contact:</span> <?php #echo htmlspecialchars($contact['phone'] ?? 'N/A'); ?></p>
