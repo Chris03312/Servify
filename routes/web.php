@@ -40,6 +40,7 @@ require_once __DIR__ . '/../controllers/Volunteer/VolunteerApplicationDetailsCon
 require_once __DIR__ . '/../controllers/Volunteer/VolFeedbackController.php';
 require_once __DIR__ . '/../controllers/Volunteer/VolunteerDetailsController.php';
 require_once __DIR__ . '/../controllers/Volunteer/ContactUsController.php';
+require_once __DIR__ . '/../controllers/Volunteer/GenerateIDController.php';
 
 // ADMIN
 require_once __DIR__ . '/../controllers/Admin/AdminDashboardController.php';
@@ -106,6 +107,7 @@ $router->add('/announcement/submit', [AnnouncementController::class, 'AddComment
 $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 $router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
 $router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);
+$router->add('/generate_id', [GenerateIDController::class, 'ShowGenerateID']);
 
 // Coordinator
 $router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'ShowCoordinatorDashboard']);
