@@ -98,6 +98,20 @@ if (!isset($allMissions)) {
     }
 
 
+    .login-btn {
+        background-color: #007BFF;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+        background-color: #0056b3;
+    }
+    
+
     /* NAVBAR LOGO */
     .logo {
         display: flex;
@@ -268,6 +282,7 @@ if (!isset($allMissions)) {
             <li><a href="/index#resources">Resources</a></li>
             <li><a href="/index#news-events">Events</a></li>
             <li><a href="/index#contactus">Contact Us</a></li>
+            <li><a href="/login" class="login-btn">Login</a></li>
         </ul>
     </nav>
 </div>
