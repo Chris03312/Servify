@@ -31,7 +31,7 @@
                     <?php foreach ($events as $event): ?>
                         <div class="box">
                             <div class="image-container">
-                                <img src="Landingpage/img/<?php echo htmlspecialchars($event['announcement_image'] ?? 'default.jpg'); ?>" 
+                                <img src="../Landingpage/img/<?php echo htmlspecialchars($event['announcement_images'] ?? 'default.jpg'); ?>" 
                                     alt="<?php echo htmlspecialchars($event['announcement_title']); ?>">
                             </div>
                             <h3><?php echo htmlspecialchars($event['announcement_title']); ?></h3>

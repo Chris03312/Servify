@@ -38,13 +38,13 @@ class Landingpage
             $db = Database::getConnection();
 
             if ($title) {
-                $stmt = $db->prepare("SELECT * FROM announcements WHERE announcement_title = :title LIMIT 1");
+                $stmt = $db->prepare("SELECT * FROM event_announcement WHERE announcement_title = :title LIMIT 1");
                 $stmt->bindParam(':title', $title);
                 $stmt->execute();
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $result ?: null; 
             } else {
-                $stmt = $db->prepare("SELECT * FROM announcements ORDER BY announcement_date DESC");
+                $stmt = $db->prepare("SELECT * FROM event_announcement ORDER BY announcement_date DESC");
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
