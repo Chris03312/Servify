@@ -83,9 +83,9 @@ $conn->close();
 <body>
     <?php include("../adminIncludes/adminSidePanel.php"); ?>
     
-    <div class="container mt-4">
-        <div class="card shadow-lg p-4">
-            <h2 class="mb-4 text-center">Edit Event</h2>
+    <div class="container ">
+        <div class="admin-edit-event mt-3 p-4">
+            <h2 class="mb-4">Edit Event</h2>
             
             <form action="adminEditEvents.php?id=<?= $id ?>" id="updateEventForm" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="event_id" value="<?= $event['announcement_id']; ?>">
