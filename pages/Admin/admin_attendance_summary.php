@@ -37,8 +37,12 @@
 
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin_attendance_tracking">Attendance Tracking</a></li>
-                <li class="breadcrumb-item"><a href="/precincts">Precincts</a></li>
+                <li class="breadcrumb-item"><a
+                        href="/admin_attendance_tracking?token=<?php echo urlencode($_GET['token']); ?>">Attendance
+                        Tracking</a></li>
+                <li class="breadcrumb-item"><a
+                        href="/precincts?token=<?php echo urlencode($_GET['token'] ?? ''); ?>">Precincts</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Attendance Summary</li>
             </ol>
         </nav>
@@ -108,7 +112,8 @@
                         <td>Vicmar</td>
                         <td>Poll Watcher</td>
                         <td>Active</td>
-                        <td><a href="#" class="btn btn-outline-primary">View</a></td>
+                        <td><a href="/view_volunteer_attendance/view?token=<?php echo urlencode($_GET['token']); ?>"
+                                class="btn btn-outline-primary">View</a></td>
                     </tr>
             </table>
         </div>

@@ -182,30 +182,25 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link px-3" href="/pending_submissions">Pending
+                <a class="nav-link px-3"
+                    href="/pending_submissions?token=<?php echo urlencode($_GET['token']); ?>">Pending
                     <small>(<?php echo $pendingCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/under_review_submissions">Under Review
+                <a class="nav-link px-3"
+                    href="/under_review_submissions?token=<?php echo urlencode($_GET['token']); ?>">Under Review
                     <small>(<?php echo $underReviewCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/approved_submissions">Approved/Completed
+                <a class="nav-link px-3"
+                    href="/approved_submissions?token=<?php echo urlencode($_GET['token']); ?>">Approved/Completed
                     <small>(<?php echo $approvedCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/cancelled_submissions">Withdrawn/Cancelled
+                <a class="nav-link active px-3"
+                    href="/cancelled_submissions?token=<?php echo urlencode($_GET['token']); ?>">Withdrawn/Cancelled/Rejected
                     <small>(<?php echo $cancelledCount; ?>)</small></a>
             </li>
         </ul>
@@ -242,17 +237,7 @@
                                 ; ?></td>
                                 <td><?php echo $application['PREVIOUS_PPCRV_PRECINCT'];
                                 ; ?></td>
-                                <td>
-                                    <select name="status" class="form-select">
-                                        <?php
-                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
-                                        foreach ($statuses as $status) {
-                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
-                                            echo "<option value='$status' $selected>$status</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
+                                <td><?php echo $application['STATUS']; ?></td>
                                 <td>
                                     <div class="d-none d-md-flex flex-row gap-2">
                                         <form action="/cancelled_submissions/review" method="POST">
@@ -301,9 +286,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="1">No volunteers found.</td>
                             <td colspan="7" class="text-danger">No volunteers found.</td>
-
                         </tr>
                     <?php endif; ?>
                 </tbody>

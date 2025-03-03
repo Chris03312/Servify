@@ -10,17 +10,28 @@ class VolunteerAttendanceController
     public static function VolunteerAttendances()
     {
 
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
             redirect('/login');
         }
 
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
-        $notifications = Notification::getNotification();
-        $attendanceInfo = Attendance::getAttendanceInfo(); // info
-        $attendanceData = Attendance::getAttendances(); // time in time out
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+        $notifications = Notification::getNotification($email);
+        $attendanceInfo = Attendance::getAttendanceInfo($email); // info
+        $attendanceData = Attendance::getAttendances($email); // time in time out
 
         view('Volunteer/attendance', [
-            'email' => $_SESSION['email'],
+            'email' => $email,
             'sidebarinfo' => $sidebarData,
             'notifications' => $notifications['notifications'] ?? [],
             'unread_count' => $notifications['unread_count'] ?? 0,

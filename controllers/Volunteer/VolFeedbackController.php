@@ -8,14 +8,22 @@ class VolFeedbackController
     public static function ShowVolFeedback()
     {
         // Check if the user is logged in
-        if (!isset($_SESSION['email'])) {
-            // Redirect if not logged in
-            header("Location: /login");
-            exit;
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
         }
 
-        // Get sidebar data for the view (if applicable)
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
 
         // Render the feedback form
         view('Volunteer/volunteer_feedback', [

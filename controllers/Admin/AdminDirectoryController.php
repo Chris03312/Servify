@@ -9,12 +9,26 @@ class AdminDirectoryController
 
     public static function ShowAdminDirectory()
     {
+        session_start();
 
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
-        $citiesDirectory = AdminDirectory::getCitiesDirectory();
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+        $citiesDirectory = AdminDirectory::getCitiesDirectory($session_id);
 
         view('Admin/admin_directory', [
-            'role' => $_SESSION['role'],
+            'role' => $role,
             'citiesDirectory' => $citiesDirectory,
             'adminsidebarinfo' => $sidebarData
         ]);

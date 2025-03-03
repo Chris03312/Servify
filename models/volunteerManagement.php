@@ -5,7 +5,7 @@ require_once __DIR__ . '/../configuration/Database.php';
 class VolunteerManagement
 {
 
-    public static function getCityList()
+    public static function getCityList($session_id)
     {
         try {
             // Get the database connection
@@ -27,7 +27,7 @@ class VolunteerManagement
                 $CityName = $city['MUNICIPALITY/CITY'];
                 $Citylinks[] = [
                     'name' => $CityName,
-                    'link' => '/district_volunteer_directory?City=' . urlencode($CityName),
+                    'link' => '/district_volunteer_directory?token=' . urlencode($session_id) . '&City=' . urlencode($CityName),
                 ];
             }
 
@@ -41,7 +41,7 @@ class VolunteerManagement
         }
     }
 
-    public static function getDistrictDirectory($city)
+    public static function getDistrictDirectory($city, $session_id)
     {
         try {
             $db = Database::getConnection();
@@ -72,13 +72,15 @@ class VolunteerManagement
                 return [];
             }
 
-            // Generate links for each district
+            // Generate links for each districts
             $districtLinks = [];
             foreach ($districts as $district) {
                 $districtName = $district['DISTRICT'];
                 $districtLinks[] = [
                     'name' => $districtName,
-                    'link' => '/barangay_volunteer_directory?City=' . urlencode($city) . '&District=' . urlencode($districtName)
+                    'link' => '/barangay_volunteer_directory?token=' . urlencode($session_id) .
+                        '&City=' . urlencode($city) .
+                        '&District=' . urlencode($districtName)
                 ];
             }
 
@@ -92,7 +94,7 @@ class VolunteerManagement
         }
     }
 
-    public static function getBarangayDirectory($district, $city)
+    public static function getBarangayDirectory($district, $city, $session_id)
     {
         try {
             $db = Database::getConnection();
@@ -139,7 +141,10 @@ class VolunteerManagement
                 $barangayName = $barangay['BARANGAY_NAME'];
                 $barangayLinks[] = [
                     'name' => $barangayName,
-                    'link' => '/polling_area?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName)
+                    'link' => '/polling_area?token=' . urlencode($session_id) .
+                        '&City=' . urlencode($city) .
+                        '&District=' . urlencode($district) .
+                        '&Barangay=' . urlencode($barangayName)
                 ];
             }
 
@@ -154,7 +159,7 @@ class VolunteerManagement
     }
 
 
-    public static function getPollingPlace($city, $district, $barangay)
+    public static function getPollingPlace($session_id, $city, $district, $barangay)
     {
         try {
             $db = Database::getConnection();
@@ -206,7 +211,7 @@ class VolunteerManagement
                 $pollingPlace = $barangay['POLLING_PLACE']; // Fetch polling place here
                 $pollingLinks[] = [
                     'name' => $pollingPlace,
-                    'link' => '/list_of_volunteer?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
+                    'link' => '/list_of_volunteer?token=' . urlencode($session_id) . '&City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
                 ];
             }
 
@@ -250,24 +255,40 @@ class VolunteerManagement
         try {
             $db = Database::getConnection();
 
-            // Use a prepared statement with a status filter
-            $stmt = $db->prepare("
-            SELECT ai.*, aai.*
-            FROM APPLICATION_INFO ai
-            INNER JOIN APPLICATION_ADD_INFO aai
-             ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
-            WHERE ai.status = :status
-        ");
-            $stmt->execute([':status' => $status]);
-            $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (is_array($status)) {
+                // Build a comma-separated list of placeholders for the IN clause
+                $placeholders = implode(',', array_fill(0, count($status), '?'));
+                $query = "
+                SELECT ai.*, aai.*
+                FROM APPLICATION_INFO ai
+                INNER JOIN APPLICATION_ADD_INFO aai
+                  ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
+                WHERE ai.status IN ($placeholders)
+            ";
+                $stmt = $db->prepare($query);
+                $stmt->execute($status);
+            } else {
+                // Single status query
+                $query = "
+                SELECT ai.*, aai.*
+                FROM APPLICATION_INFO ai
+                INNER JOIN APPLICATION_ADD_INFO aai
+                  ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
+                WHERE ai.status = :status
+            ";
+                $stmt = $db->prepare($query);
+                $stmt->execute([':status' => $status]);
+            }
 
-            return $applications; // Return the filtered applications
+            $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $applications;
 
         } catch (PDOException $e) {
             error_log('Error in getting applications: ' . $e->getMessage());
             return []; // Return an empty array on error
         }
     }
+
 
     public static function countApplicationsByStatuses(array $statuses)
     {
@@ -291,22 +312,6 @@ class VolunteerManagement
         }
     }
 
-    public static function deleteApplications($application_id)
-    {
-        try {
-            $db = Database::getConnection();
-
-            // Prepare and execute the delete query
-            $stmt = $db->prepare('DELETE FROM APPLICATION_INFO WHERE APPLICATION_ID = :application_id');
-            $stmt->execute([':application_id' => $application_id]);
-
-            // Return true if at least one row was affected
-            return $stmt->rowCount() > 0;
-        } catch (PDOException $e) {
-            error_log('Error in deleting application: ' . $e->getMessage());
-            return false;
-        }
-    }
 
     public static function getParishes()
     {
@@ -323,4 +328,22 @@ class VolunteerManagement
         }
 
     }
+
+    public static function updateRemarks($applicationId, $remarks)
+    {
+        try {
+            $db = Database::getConnection();
+            $stmt = $db->prepare("UPDATE APPLICATION_INFO SET REMARKS = :remarks WHERE APPLICATION_ID = :application_id");
+            $stmt->execute([
+                ':remarks' => $remarks,
+                ':application_id' => $applicationId
+            ]);
+
+            return ($stmt->rowCount() > 0);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
 }

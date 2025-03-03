@@ -379,9 +379,9 @@
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <h4>List of Volunteers</h4>
-                        <button class="btn btn-outline-secondary mb-3" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#listOfVolunteers" aria-expanded="false"
-                            aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
+                        <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers"><i
+                                class="bi bi-filter me-2"></i>Filter
                         </button>
                     </div>
 

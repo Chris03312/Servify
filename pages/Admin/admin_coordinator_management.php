@@ -36,8 +36,11 @@
             <h4>Coordinator Management</h4>
             <!-- BUTTONS -->
             <div>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#registerCoordinatorModal"><i class="bi bi-plus me-2"></i>Register new Coordinator</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-filter me-2"></i>Filter</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#registerCoordinatorModal"><i class="bi bi-plus me-2"></i>Register new
+                    Coordinator</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#filterModal"><i class="bi bi-filter me-2"></i>Filter</button>
 
             </div>
         </div>
@@ -45,56 +48,65 @@
         <?php if (isset($_SESSION['alert'])): ?>
             <?php echo $_SESSION['alert']; ?>
             <?php unset($_SESSION['alert']); // ✅ Remove alert after displaying 
-            ?>
+                ?>
         <?php endif; ?>
 
         <!-- MODAL FOR REGISTER NEW COORDINATOR -->
-        <div class="modal fade" id="registerCoordinatorModal" tabindex="-1" aria-labelledby="registerCoordinatorModalLabel" aria-hidden="true">
+        <div class="modal fade" id="registerCoordinatorModal" tabindex="-1"
+            aria-labelledby="registerCoordinatorModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Register New Coordinator</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">Please fill in the following details to create a new coordinator account.</p>
+                            <p class="text-muted text-center mb-5">Please fill in the following details to create a new
+                                coordinator account.</p>
 
-                            <form id="registrationForm" class="row needs-validation" novalidate action="/add_new_coordinator" method="POST">
+                            <form id="registrationForm" class="row needs-validation" novalidate
+                                action="/add_new_coordinator" method="POST">
 
                                 <div class="col-md-12 mb-2">
                                     <label for="role" class="form-label visually-hidden">Role</label>
-                                    <input type="hidden" class="form-control uppercase-input" id="role" name="role" value="Coordinator" required>
+                                    <input type="hidden" class="form-control uppercase-input" id="role" name="role"
+                                        value="Coordinator" required>
                                     <div class="invalid-feedback">
                                         Please input surname.
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="surname" class="form-label">Surname</label>
-                                    <input type="text" class="form-control uppercase-input" id="surname" name="surname" required>
+                                    <input type="text" class="form-control uppercase-input" id="surname" name="surname"
+                                        required>
                                     <div class="invalid-feedback">
                                         Please input surname.
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="firstname" class="form-label">First name</label>
-                                    <input type="text" class="form-control uppercase-input" id="firstname" name="firstname" required>
+                                    <input type="text" class="form-control uppercase-input" id="firstname"
+                                        name="firstname" required>
                                     <div class="invalid-feedback">
                                         Please input firstname.
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="middlename" class="form-label">Middle name</label>
-                                    <input type="text" class="form-control uppercase-input" id="middlename" name="middlename" required>
+                                    <input type="text" class="form-control uppercase-input" id="middlename"
+                                        name="middlename" required>
                                     <div class="invalid-feedback">
                                         Input N/A if not applicable.
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="suffix" class="form-label">Suffix</label>
-                                    <input type="text" class="form-control uppercase-input" id="suffix" name="suffix" required>
+                                    <input type="text" class="form-control uppercase-input" id="suffix" name="suffix"
+                                        required>
                                     <div class="invalid-feedback">
                                         Input N/A if not applicable.
                                     </div>
@@ -151,18 +163,20 @@
                                 <div class="col-12 mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group mb-3">
-                                        <button class="btn btn-outline-secondary" type="button" id="generatePassword">Generate Password</button>
-                                        <input type="text" class="form-control" id="generated_password" name="generated_password" aria-label="Generate password" required>
-                                        <div class="invalid-feedback">
-                                            Please generate password.
-                                        </div>
+                                        <button class="btn btn-outline-secondary" type="button">Generate
+                                            Password</button>
+                                        <input type="text" class="form-control" placeholder=""
+                                            aria-label="Generate password">
+                                        <button class="btn btn-outline-secondary" type="button"><i
+                                                class="bi bi-clipboard"></i></button>
                                     </div>
 
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn px-4 mb-2" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary" name="register_new_coordinator">Register</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        name="register_new_coordinator">Register</button>
                                 </div>
 
                             </form>
@@ -179,14 +193,16 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Filter</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred criteria from the available options and click "Apply" to view the filtered items.</p>
+                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred
+                                criteria from the available options and click "Apply" to view the filtered items.</p>
 
 
                             <div class="row mb-3">
@@ -271,7 +287,14 @@
                                 <td><?php echo $coordinators['MUNICIPALITY/CITY']; ?></td>
                                 <td><?php echo $coordinators['DISTRICT']; ?></td>
                                 <td><?php echo $coordinators['PARISH']; ?></td>
-                                <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
+                                <td>
+                                    <form method="POST"
+                                        action="/admin_coordinator_management/view?token=<?php echo urlencode($_GET['token']); ?>">
+                                        <input type="hidden" name="coordinator_id"
+                                            value="<?php echo $coordinators['CPROFILE_ID'] ?>">
+                                        <button type="Submit" class="btn  btn-sm text-primary">View Details</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -288,7 +311,7 @@
         <script>
             // AUTO CAPITALIZE INPUT
             document.querySelectorAll(".uppercase-input").forEach(input => {
-                input.addEventListener("input", function() {
+                input.addEventListener("input", function () {
                     this.value = this.value.toUpperCase();
                 });
             });
@@ -313,7 +336,7 @@
                 })
             })()
 
-            document.getElementById("generatePassword").addEventListener("click", function() {
+            document.getElementById("generatePassword").addEventListener("click", function () {
                 const surname = document.getElementById("surname").value.trim();
 
                 if (surname === "") {

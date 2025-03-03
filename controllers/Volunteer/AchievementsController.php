@@ -11,16 +11,27 @@ class AchievementsController
 {
     public static function Achievements()
     {
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
             redirect('/login');
         }
 
-        $getBadges = Achievements::getBadges();
-        $timelines = Dashboard::MyTimeline();
-        $userData = Dashboard::getinfodashboard();
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
 
-        $notifications = Notification::getNotification();
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+
+        $getBadges = Achievements::getBadges();
+        $timelines = Dashboard::MyTimeline($email);
+        $userData = Dashboard::getinfodashboard($email);
+        $notifications = Notification::getNotification($email);
         $getAchievements = Achievements::getAchievements();
         $badge = Achievements::getBadgeByAttendance($getAchievements['ATTENDANCE_COUNT']);
         $getAchievementList = Achievements::getAchievementList();

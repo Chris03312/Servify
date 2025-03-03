@@ -56,8 +56,11 @@ require_once __DIR__ . '/../controllers/Admin/AdminAchievementsController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminInquiryController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminFeedbackController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminReportsController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminApprovalDetailsController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminVolunteerDetailsController.php';
 
-// LANDING PAGE
+
+// LANDING PAGES
 require_once __DIR__ . '/../controllers/LandingPage/LandingPageController.php';
 require_once __DIR__ . '/../controllers/LoginController.php';
 require_once __DIR__ . '/../controllers/SignUpController.php';
@@ -86,10 +89,6 @@ $router->add('/events', [LandingPageController::class, 'ShowEvents']);
 $router->add('/announcement2', [LandingPageController::class, 'ShowAnnouncement']);
 $router->add('/resources', [LandingPageController::class, 'ShowResources']);
 $router->add('/pollwatchers', [LandingPageController::class, 'ShowPollwatchers']);
-
-
-
-
 
 // Volunteer
 $router->add('/volunteer_dashboard', [VolunteerDashboardController::class, 'VolunteerDashboard']);
@@ -129,19 +128,26 @@ $router->add('/polling_area', [PollingAreaController::class, 'ShowPollingArea'])
 $router->add('/list_of_volunteer', [ListOfVolunteerController::class, 'ShowListOfVolunteer']);
 $router->add('/view_volunteer_profile', [ViewVolunteerProfileController::class, 'ShowVolunteerProfile']);
 $router->add('/add_new_volunteer', [AddNewVolunteerController::class, 'ShowAddNewVolunteer']);
+
 $router->add('/pending_submissions', [PendingSubmissionsController::class, 'ShowPendingSubmissions']);
-$router->add('/pending_submissions/review', [PendingSubmissionsController::class, 'ReviewApplicationDetails']);
+$router->add('/pending_submissions/review', [VolunteerApplicationDetails::class, 'ShowVolunteerApplicationDetails']);
+$router->add('/volunteer_application_details/reviewed', [VolunteerApplicationDetails::class, 'PendingSubmissionProceed']);
 $router->add('/pending_submissions/delete', [PendingSubmissionsController::class, 'DeletePendingSubmissions']);
+
 $router->add('/under_review_submissions', [UnderReviewSubmissionsController::class, 'ShowUnderReviewSubmissions']);
-$router->add('/under_review_submissions/review', [UnderReviewSubmissionsController::class, 'ReviewApplicationDetails']);
-$router->add('/under_review_submissions/delete', [UnderReviewSubmissionsController::class, 'DeleteUnderreviewSubmissions']);
+$router->add('/under_review_submissions/review', [VolunteerApplicationDetails::class, 'ShowVolunteerApplicationDetails']);
+$router->add('/volunteer_application_details/approved', [VolunteerApplicationDetails::class, 'UnderReviewSubmissionApproved']);
+$router->add('/under_review_submissions/reject', [UnderReviewSubmissionsController::class, 'RejectUnderreviewSubmissions']);
+
 $router->add('/approved_submissions', [ApprovedSubmissionsController::class, 'ShowApprovedSubmissions']);
-$router->add('/approved_submissions/review', [ApprovedSubmissionsController::class, 'ReviewApplicationDetails']);
-$router->add('/approved_submissions/delete', [ApprovedSubmissionsController::class, 'DeleteApprovedSubmissions']);
+$router->add('/approved_submissions/request', [ApprovedSubmissionsController::class, 'RequestApprovalSubmissions']);
+$router->add('/approved_submissions/remarks', [ApprovedSubmissionsController::class, 'updateRemarks']);
+
 $router->add('/cancelled_submissions', [CancelledSubmissionsController::class, 'ShowCancelledSubmissions']);
 $router->add('/cancelled_submissions/review', [CancelledSubmissionsController::class, 'ReviewApplicationDetails']);
 $router->add('/cancelled_submissions/delete', [CancelledSubmissionsController::class, 'DeleteCancelledSubmissions']);
 $router->add('/cancelled_submissions/reassign', [CancelledSubmissionsController::class, 'ReassignApplication']);
+
 $router->add('/coordinator_attendance_tracking', [CoordinatorAttendanceTrackingController::class, 'ShowCoordinatorAttendanceTracking']);
 $router->add('/coordinator_achievements', [CoordinatorAchievementsController::class, 'ShowCoordinatorAchievements']);
 $router->add('/coordinator_inquiries', [CoordinatorInquiryController::class, 'ShowCoordinatorInquiry']);
@@ -151,10 +157,16 @@ $router->add('/reports', [ReportsController::class, 'ShowReports']);
 // Admin
 $router->add('/admin_dashboard', [AdminDashboardController::class, 'ShowAdminDashboard']);
 $router->add('/admin_coordinator_management', [AdminCoorManagementController::class, 'ShowAdminCoorManagement']);
+$router->add('/admin_coordinator_management/view', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
+$router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
 $router->add('/admin_volunteer_management', [AdminVolunManagementController::class, 'ShowAdminVolunManagement']);
+$router->add('/admin_application_details/details', [AdminApprovalApplicationDetails::class, 'ShowApprovalApplicationDetails']);
+
+$router->add('/admin_volunteer_details/view', [AdminVolunteerDetails::class, 'ShowVolunteerDetails']);
+
+$router->add('/admin_volunteer_details/approved', [AdminApprovalApplicationDetails::class, 'ApprovedRequest']);
 $router->add('/admin_directory', [AdminDirectoryController::class, 'ShowAdminDirectory']);
 $router->add('/cities_directory', [CitiesDirectoryController::class, 'ShowCitiesDirectory']);
-$router->add('/view_coordinator_details', [ViewCoordinatorDetailsController::class, 'ShowViewCoordinatorDetails']);
 $router->add('/admin_attendance_tracking', [AdminAttendanceController::class, 'ShowAdminAttendance']);
 $router->add('/admin_attendance_summary', [AdminAttendanceSummaryController::class, 'ShowAdminAttendanceSummary']);
 $router->add('/precincts', [AdminPrecinctsController::class, 'ShowAdminPrecincts']);

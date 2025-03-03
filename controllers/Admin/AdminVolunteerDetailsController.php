@@ -1,13 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../../models/VolunteerManagement.php';
 require_once __DIR__ . '/../../models/Sidebarinfo.php';
+require_once __DIR__ . '/../../models/Application.php';
 
-
-class CoordinatorVolunteerManagementController
+class AdminVolunteerDetails
 {
 
-    public static function ShowVolunteerManagement()
+    public static function ShowVolunteerDetails()
     {
         session_start();
 
@@ -24,16 +23,18 @@ class CoordinatorVolunteerManagementController
         $email = $userSession['email'];
         $role = $userSession['role'];
 
+        $volunteer_id = $_POST['volunteer_id'];
+
         $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
-        $Citylinks = VolunteerManagement::getCityList($session_id);
-        $parishes = VolunteerManagement::getParishes();
+        $volunteerDetails = Application::AdminViewDetails($volunteer_id);
+        $applicationInfo = Application::getinfoApplication($email);
 
-
-        view('Coordinator/coordinator_volunteer_management', [
-            'coordinator_info' => $sidebarData,
-            'Citylinks' => $Citylinks,
-            'parishes' => $parishes,
-            'sidebarinfo' => $sidebarData
+        view('admin/admin_volunteer_details', [
+            'email' => $email,
+            'role' => $role,
+            'applicationInfo' => $applicationInfo,
+            'volunteersDetails' => $volunteerDetails,
+            'adminsidebarinfo' => $sidebarData
         ]);
     }
 }

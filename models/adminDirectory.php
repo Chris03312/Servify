@@ -5,7 +5,7 @@ require_once __DIR__ . '/../configuration/Database.php';
 class AdminDirectory
 {
 
-    public static function getCitiesDirectory()
+    public static function getCitiesDirectory($session_id)
     {
         try {
             $db = Database::getConnection();
@@ -31,7 +31,7 @@ class AdminDirectory
                 $citiesDirectory[] = [
                     'name' => $CityName,
                     'coordinator_count' => $countResult['coordinator_count'] ?? 0, // Default to 0 if NULL
-                    'link' => '/cities_directory?City=' . urlencode($CityName),
+                    'link' => '/cities_directory?token=' . urlencode($session_id) . '&City=' . urlencode($CityName),
                 ];
             }
 

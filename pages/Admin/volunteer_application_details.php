@@ -24,7 +24,7 @@
 <body>
 
     <?php
-    include('includes/coordinator_sidebar.php');
+    include('includes/admin_sidebar.php');
     ?>
 
     <!--MAIN CONTENT-->
@@ -38,16 +38,9 @@
                     <!--PHOTO-->
                     <img src="../img/DPPAM LOGO.png" alt="1x1 PIC" height="auto" width="100px">
 
-<<<<<<< HEAD
                     <!--NAME-->
                     <p><?php echo $applicationDetails['FIRST_NAME'] . " " . $applicationDetails['MIDDLE_NAME'] . " " . $applicationDetails['SURNAME'] ?>
                     </p>
-=======
-                        <!--NAME-->
-                        <p><?php echo $applicationInfo['FIRST_NAME'] . " " . $applicationInfo['MIDDLE_NAME'] . " " . $applicationInfo['SURNAME'] ?>
-                        </p>
-                    </div>
->>>>>>> 677575ee2d58491ee4fc92540b55917cae808e35
                 </div>
 
                 <div>
@@ -260,42 +253,21 @@
                             </div>
                         </article>
                         <div class="flex justify-center items-center h-screen">
-                            <a href="<?php echo ($applicationDetails['STATUS'] === 'Under Review')
-                                ? '/under_review_submissions?token=' . urlencode($_GET['token'])
-                                : '/pending_submissions?token=' . urlencode($_GET['token']); ?>"
+                            <a href="/under_review_submissions?token=<?php echo urlencode($_GET['token']); ?>"
                                 class="px-4 py-2 bg-gray-300 text-black font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none">
                                 Go Back
                             </a>
-                            <form action="<?php echo ($applicationDetails['STATUS'] === 'Under Review')
-                                ? '/volunteer_application_details/approved?token=' . urlencode($_GET['token'])
-                                : '/volunteer_application_details/reviewed?token=' . urlencode($_GET['token']); ?>"
+                            <form
+                                action="/admin_volunteer_details/approved?token=<?php echo urlencode($_GET['token']) ?>"
                                 method="POST" class="flex flex-col items-center gap-4">
                                 <input type="hidden" name="application_id"
                                     value="<?php echo $applicationDetails['APPLICATION_ID']; ?>">
-                                <input type="hidden" name="email" value="<?php echo $applicationDetails['EMAIL']; ?>">
-                                <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
-
                                 <div class="flex gap-4">
-                                    <button type="submit" name="proceed" class="px-4 py-2 bg-gray-300 rounded-lg">
-                                        <?php echo ($applicationDetails['STATUS'] === 'Under Review') ? 'Request for Approval' : 'Proceed'; ?>
+                                    <button type="submit" name="proceed" class="px-4 py-2 text-bg-primary rounded-lg">
+                                        Approve for Assignment
                                     </button>
                                 </div>
                             </form>
-                            <?php if ($applicationDetails['STATUS'] === 'Under Review'): ?>
-                                <form
-                                    action="/under_review_submissions/reject?token='.<?php echo urlencode($_GET['token']) ?>"
-                                    method="POST" class="flex flex-col items-center gap-4">
-                                    <input type="hidden" name="application_id"
-                                        value="<?php echo $applicationDetails['APPLICATION_ID']; ?>">
-                                    <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
-
-                                    <div class="flex gap-4">
-                                        <button type="submit" name="proceed" class="px-4 py-2 bg-gray-300 rounded-lg">
-                                            Reject
-                                        </button>
-                                    </div>
-                                </form>
-                            <?php endif; ?>
                         </div>
                     </section>
                 </div>

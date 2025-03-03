@@ -18,7 +18,7 @@ class VolunteerModel
     public static function getAllVolunteers()
     {
         $conn = self::getConnection();
-        $sql = "SELECT vprofile_id, first_name, surname, email, city, district, parish FROM vprofile_table";
+        $sql = "SELECT VOLUNTEERS_ID, FIRST_NAME, SURNAME, EMAIL, CITY, DISTRICT, PARISH FROM VOLUNTEERS_TBL";
 
         $stmt = $conn->prepare($sql); // ✅ Use `prepare()` instead of `query()`
         $stmt->execute();
@@ -26,17 +26,21 @@ class VolunteerModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // ✅ Correct PDO syntax
     }
 
-
-    // Fetch a single volunteer by ID
-    public static function getVolunteerById($id)
+    public static function getRequestingApproval()
     {
+
         $conn = self::getConnection();
-        $sql = "SELECT * FROM vprofile_table WHERE vprofile_id = ?";
+        $sql = ' 
+        SELECT ai.*, aai.*
+            FROM APPLICATION_INFO ai
+            INNER JOIN APPLICATION_ADD_INFO aai
+                ON ai.APPLICATION_ID = aai.APPLICATION_ADD_ID
+            WHERE ai.status = :status';
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
+        $stmt->execute(['status' => 'Requesting for Approval']);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }
 ?>

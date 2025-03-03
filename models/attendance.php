@@ -6,10 +6,9 @@ require_once __DIR__ . '/../configuration/Database.php';
 class Attendance
 {
 
-    public static function getAttendanceInfo()
+    public static function getAttendanceInfo($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 
@@ -40,10 +39,9 @@ class Attendance
         }
     }
 
-    public static function getattendancecoorInfo()
+    public static function getattendancecoorInfo($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 
@@ -70,24 +68,49 @@ class Attendance
         }
     }
 
-    public static function getVolunteerAttendance()
+    public static function getVolunteerAttendancebyParish($parish)
     {
         try {
             $db = Database::getConnection();
-            $stmt = $db->prepare('SELECT DATE(DATE) AS DATE, TIME_IN, TIME_OUT, VOLUNTEER_NAME, ROLE, EMAIL, POLLING_PLACE FROM ATTENDANCES');
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Prepare the SQL statement
+            $stmt = $db->prepare('
+                SELECT 
+                    DATE(DATE) AS DATE, 
+                    TIME_IN, 
+                    TIME_OUT, 
+                    VOLUNTEER_NAME, 
+                    ROLE, 
+                    EMAIL, 
+                    POLLING_PLACE 
+                FROM ATTENDANCES 
+                WHERE PARISH = :parish
+            ');
+
+            // Execute the query with the provided parameter
+            $stmt->execute(['parish' => $parish]);
+
+            // Fetch all results
+            $attendanceData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Debugging: Log if no records are found
+            if (empty($attendanceData)) {
+                error_log('No attendance records found for parish: ' . $parish);
+            }
+
+            return $attendanceData;
+
         } catch (PDOException $e) {
             error_log('Error in getting volunteer attendance: ' . $e->getMessage());
-            return []; // Return an empty array in case of error
+            return []; // Return an empty array in case of an error
         }
     }
 
 
-    public static function getAttendances()
+
+    public static function getAttendances($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 

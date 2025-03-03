@@ -20,7 +20,7 @@ class DashboardController
         $volunteers = Volunteers::getVolunteersBySearch($searchQuery);
 
         // Get categorized notifications using NotificationController
-        $notificationData = NotificationController::getNotifications();
+        $notificationData = NotificationController::getNotifications($email);
 
         // Pass the data to the dashboard view
         view('dashboard', [

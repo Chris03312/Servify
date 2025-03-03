@@ -8,22 +8,31 @@ class AnnouncementController
 {
     public static function ShowAnnouncements()
     {
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
-            header('Location: /login');
-            exit;
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
         }
 
-        // Fetch sidebar and coordinator info
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
 
         // Fetch announcements and comments
-        $notifications = Notification::getNotification();
+        $notifications = Notification::getNotification($email);
         $announcement = Announcement::getAnnouncement();
         $getComments = Announcement::getComment();
 
         // Fixed the typo in 'announcements'
         view('Volunteer/announcements', [
-            'email' => $_SESSION['email'],
+            'email' => $email,
             'sidebarinfo' => $sidebarData,
             'announcements' => $announcement, // Fixed the space here
             'comments' => $getComments,

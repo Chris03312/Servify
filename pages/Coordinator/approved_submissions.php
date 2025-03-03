@@ -22,7 +22,7 @@
 
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -180,22 +180,21 @@
             </div>
         </div>
 
-
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link px-3" href="/pending_submissions">Pending
+                <a class="nav-link px-3" href="/pending_submissions?token=<?php echo urlencode($_GET['token']); ?>">Pending
                     <small>(<?php echo $pendingCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/under_review_submissions">Under Review
+                <a class="nav-link px-3" href="/under_review_submissions?token=<?php echo urlencode($_GET['token']); ?>">Under Review
                     <small>(<?php echo $underReviewCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/approved_submissions">Approved/Completed
+                <a class="nav-link active px-3" href="/approved_submissions?token=<?php echo urlencode($_GET['token']); ?>">Approved/Completed
                     <small>(<?php echo $approvedCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled
+                <a class="nav-link px-3" href="/cancelled_submissions?token=<?php echo urlencode($_GET['token']); ?>">Withdrawn/Cancelled/Rejected
                     <small>(<?php echo $cancelledCount; ?>)</small></a>
             </li>
         </ul>
@@ -210,8 +209,8 @@
                         <th scope="col">Submission Date/Time</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Volunteer Name</th>
+                        <th scope="col">Remarks</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -227,28 +226,38 @@
                                 </td>
                                 <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME']; ?></td>
                                 <td>
-                                    <select name="status" class="form-select">
+                                    <form action="/approved_submissions/remarks" method="POST">
+                                    <select name="status" class="form-select"
+                                        data-application-id="<?= $application['APPLICATION_ID']; ?>"
+                                        data-current-value="<?= $application['REMARKS'] ?? 'Waiting for Approval'; ?>" 
+                                        <?php echo ($application['STATUS'] !== 'Approved') ? 'disabled' : ''; ?>>
                                         <?php
-                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
+                                        $statuses = ['Approved for Assignment', 'Generate ID', 'Orientation and Training', 'Generate Certificate', 'Complete'];
+                                        $remarks = $application['REMARKS'] ?? ''; // Ensure remarks is set
+                                        $remarksArray = explode(", ", $remarks); // Convert stored remarks into an array
+
+                                        // Display all statuses
                                         foreach ($statuses as $status) {
-                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
-                                            echo "<option value='$status' $selected>$status</option>";
+                                            $selected = in_array($status, $remarksArray) ? 'selected' : ''; // Mark as selected if in REMARKS
+                                            $disabled = in_array($status, $remarksArray) ? 'disabled' : ''; // Disable if already in REMARKS
+                                            echo "<option value='$status' $selected $disabled>$status</option>";
+                                        }
+
+                                        // If no valid status is found, default to "Waiting for Approval"
+                                        if (empty($remarks)) {
+                                            echo "<option value='Waiting for Approval' selected>Waiting for Approval</option>";
                                         }
                                         ?>
                                     </select>
+                                    </form>
                                 </td>
                                 <td>
                                     <div class="d-none d-md-flex flex-row gap-2">
-                                        <form action="/approved_submissions/review" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-primary mb-2">Review</button>
-                                        </form>
-                                        <form action="/approved_submissions/delete" method="POST">
-                                            <input type="hidden" name="application_id"
-                                                value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                            <button type="submit" class="btn btn-danger">Reject</button>
-                                        </form>
+                                        <?php if ($application['STATUS'] === 'Requesting for Approval'): ?>
+                                            <label class="text-danger"><?php echo $application['STATUS']; ?></label>
+                                        <?php elseif ($application['STATUS'] === 'Approved'): ?>
+                                            <label class="text-success"><?php echo $application['STATUS']; ?></label>
+                                        <?php endif; ?>
                                     </div>
 
                                     <!--BTN FOR SMALLER SCREEN-->
@@ -258,17 +267,15 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <form action="/approved_submissions/review" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit" class="dropdown-item btn btn-primary">Review</button>
-                                                </form>
-                                                <form action="/approved_submissions/delete" method="POST">
-                                                    <input type="hidden" name="application_id"
-                                                        value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
-                                                    <button type="submit"
-                                                        class="dropdown-item btn btn-danger">Delete</a></button>
-                                                </form>
+                                                <div class="d-md-none d-flex flex-row gap-2">
+                                                    <?php if ($application['STATUS'] === 'Requesting for Approval'): ?>
+                                                        <label
+                                                            class=" dropdown-item text-danger"><?php echo $application['STATUS']; ?></label>
+                                                    <?php elseif ($application['STATUS'] === 'Approved'): ?>
+                                                        <label
+                                                            class="dropdown-item text-success"><?php echo $application['STATUS']; ?></label>
+                                                    <?php endif; ?>
+                                                </div>
                                             </ul>
                                         </div>
                                     </div>
@@ -402,6 +409,74 @@
                 checkIfEmpty();
             });
         });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".form-select").forEach((select) => {
+        select.addEventListener("change", function () {
+            const applicationId = this.getAttribute("data-application-id");
+            let selectedRemark = this.value.trim();
+
+            if (!applicationId || !selectedRemark) {
+                alert("Invalid selection.");
+                return;
+            }
+
+            // Get current remarks and append new selection
+            let currentRemarks = this.getAttribute("data-current-value") || "";
+            let remarksArray = currentRemarks ? currentRemarks.split(", ") : [];
+
+            // Add new selection if not already included
+            if (!remarksArray.includes(selectedRemark)) {
+                // Confirm before updating
+                if (!confirm(`Are you sure you want to update remarks to: "${selectedRemark}"?`)) {
+                    this.value = currentRemarks; // Reset to previous value if canceled
+                    return;
+                }
+
+                remarksArray.push(selectedRemark);
+            }
+
+            let updatedRemarks = remarksArray.join(", ");
+
+            console.log("📌 Updated Remarks:", updatedRemarks);
+
+            // Send AJAX request to update the database
+            fetch("/approved_submissions/remarks", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({
+                    application_id: applicationId,
+                    remarks: updatedRemarks
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    alert("Remarks updated successfully!");
+
+                    // Disable previously selected remarks
+                    this.querySelectorAll("option").forEach(option => {
+                        if (remarksArray.includes(option.value)) {
+                            option.disabled = true;
+                        }
+                    });
+
+                    // Update current remarks dataset
+                    this.setAttribute("data-current-value", updatedRemarks);
+                }
+            })
+            .catch(error => {
+                console.error("❌ Fetch Error:", error);
+                alert("An error occurred while updating remarks.");
+            });
+        });
+    });
+});
+
+
     </script>
 
     <!-- Flatpickr JavaScript -->

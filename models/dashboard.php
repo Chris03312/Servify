@@ -5,10 +5,9 @@ require_once __DIR__ . '/../configuration/Database.php';
 class Dashboard
 {
 
-    public static function getinfodashboard()
+    public static function getinfodashboard($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 
@@ -77,11 +76,10 @@ class Dashboard
         ];
     }
 
-    public static function MyTimeline()
+    public static function MyTimeline($email)
     {
         try {
 
-            $email = $_SESSION['email'];
             $db = Database::getConnection();
 
             // Fetch combined data from both ARCHIVE_VOLUNTEER and VOLUNTEERS_TBL using UNION
@@ -98,7 +96,6 @@ class Dashboard
             $stmt->execute([':email' => $email]);
 
             $timelines = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 
             // Loop through the fetched data to extract the year from the DATE_APPROVED
             foreach ($timelines as &$timeline) {
@@ -117,7 +114,6 @@ class Dashboard
         }
     }
 
-
     public static function getvalidId()
     {
         try {
@@ -132,11 +128,9 @@ class Dashboard
         }
     }
 
-
-    public static function mapOverview()
+    public static function mapOverview($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 

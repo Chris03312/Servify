@@ -10,19 +10,30 @@ class VolunteerApplicationDetailsController
 
     public static function ShowVolunteerApplicationDetails()
     {
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
             redirect('/login');
         }
 
-        $sidebarinfo = Sidebarinfo::getsidebarinfo($_SESSION['email'], $_SESSION['role']);
-        $notifications = Notification::getNotification();
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+        $notifications = Notification::getNotification($email);
         $applicationInfo = Application::getinfoApplication();
         $validId = Dashboard::getvalidId();
 
         view('Volunteer/volunteer_application_details', [
-            'email' => $_SESSION['email'],
+            'email' => $email,
             'applicationInfo' => $applicationInfo,
-            'sidebarinfo' => $sidebarinfo,
+            'sidebarinfo' => $sidebarData,
             'validId' => $validId,
             'notifications' => $notifications['notifications'],  // List of notifications
             'unread_count' => $notifications['unread_count'],

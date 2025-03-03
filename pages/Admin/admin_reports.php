@@ -202,8 +202,8 @@
                                             <td><?php echo $volunteers['PARISH'] . ' / ' . $volunteers['COORDINATOR'] ?? ' '; ?>
                                             </td>
                                             <td><?php echo $volunteers['ROLE'] ?? ' '; ?></td>
-                                            <td><?php echo $volunteers['ASSIGNED_ASSIGNMENT'] ?? ' '; ?></td>
-                                            <td><?php echo $volunteers['GENDER'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['ASSIGNED_POLLING_PLACE'] ?? ' '; ?></td>
+                                            <td><?php echo $volunteers['STATUS'] ?? ' '; ?></td>
                                             <td><?php echo $volunteers['YEARSOFSERVICE'] ?? ''; ?></td>
                                         </tr>
                                     <?php endforeach; ?>

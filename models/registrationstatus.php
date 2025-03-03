@@ -1,60 +1,69 @@
 <?php
-
 require_once __DIR__ . '/../configuration/Database.php';
 
 class Registrationstatus
 {
-
-    public static function registrationstatus()
+    public static function registrationstatus($email)
     {
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 
-            $stmt = $db->prepare("SELECT * FROM APPLICATION_INFO WHERE EMAIL = :email");
+            // Order by APPLICATION_DATE descending (latest first)
+            $stmt = $db->prepare("SELECT * FROM APPLICATION_INFO WHERE EMAIL = :email ORDER BY APPLICATION_DATE DESC");
             $stmt->execute([':email' => $email]);
-            $registrationstatus = $stmt->fetch(PDO::FETCH_ASSOC);
+            $registrationstatus = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // If no registration data is found, display error and return default values
+            // If no registration data is found, return default values
             if (!$registrationstatus) {
-                // Return default values and halt further processing
                 return [
                     'ERROR' => "This user has no existing application",
                     'REGISTRATION_NO' => ' ',
                     'FIRST_NAME' => ' ',
                     'MIDDLE_NAME' => ' ',
                     'SURNAME' => ' ',
-                    'STATUS' => ' ',  // Set default status
-                    'PROGRESS' => 0               // Default progress
+                    'STATUS' => ' ',
+                    'PROGRESS' => 0
                 ];
             }
 
-            // If data is found, process and return the registration status
-            if (isset($registrationstatus['STATUS'])) {
-                $status = $registrationstatus['STATUS'];
-                $progressPercentage = 0; // Default progress is 0%
+            // Update progress for the latest record (first element)
+            if (!empty($registrationstatus)) {
+                $latestStatus = $registrationstatus[0];
+                $status = $latestStatus['STATUS'] ?? '';
+                $remarks = isset($latestStatus['REMARKS']) ? explode(',', $latestStatus['REMARKS']) : [];
+                $remarks = array_map('trim', $remarks); // Trim spaces
+                $progressPercentage = 0; // Default progress
 
-                // Determine progress based on the status
+                // Determine progress based on STATUS
                 if ($status === 'Pending') {
-                    $progressPercentage = 20;
+                    $progressPercentage = 3;
                 } elseif ($status === 'Under Review') {
+                    $progressPercentage = 20;
+                } elseif ($status === 'Requesting for Approval') {
+                    $progressPercentage = 20;
+                } elseif ($status === 'Approved') {
                     $progressPercentage = 37;
-                } elseif ($status === 'Submit additional requirements') {
-                    $progressPercentage = 53;
-                } elseif ($status === 'Orientation and Training') {
-                    $progressPercentage = 70;
+
+                    // Additional progress conditions based on REMARKS
+                    if (in_array('Generate ID', $remarks)) {
+                        $progressPercentage = 53.5;
+                    }
+                    if (in_array('Orientation and Training', $remarks)) {
+                        $progressPercentage = 69.5;
+                    }
+                    if (in_array('Generate Certificate', $remarks)) {
+                        $progressPercentage = 90;
+                    }
                 } elseif ($status === 'Approved/Complete') {
-                    $progressPercentage = 90;
+                    $progressPercentage = 100;
                 }
 
-                // Add progress percentage to the returned data
-                $registrationstatus['PROGRESS'] = $progressPercentage;
-            } else {
-                error_log('No Data or STATUS key missing');
+                // Update the progress for the latest record
+                $registrationstatus[0]['PROGRESS'] = $progressPercentage;
             }
 
-            return $registrationstatus; // Return the whole registration status data array
+            return $registrationstatus;
         } catch (PDOException $e) {
             error_log('Registration status error: ' . $e->getMessage());
             return [
@@ -63,8 +72,8 @@ class Registrationstatus
                 'FIRST_NAME' => ' ',
                 'MIDDLE_NAME' => ' ',
                 'SURNAME' => ' ',
-                'STATUS' => ' ',  // Default status for error
-                'PROGRESS' => 0  // Default progress for error
+                'STATUS' => ' ',
+                'PROGRESS' => 0
             ];
         }
     }

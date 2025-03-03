@@ -11,14 +11,51 @@ class AdminCoorManagementController
 {
     public static function ShowAdminCoorManagement()
     {
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $coordinatorManagement = CoordinatorManagement::getCoordinatorManagement();
 
         view('Admin/admin_coordinator_management', [
-            'role' => $_SESSION['role'],
+            'role' => $role,
             'coordinatorManagement' => $coordinatorManagement,
             'adminsidebarinfo' => $sidebarData
         ]);
+    }
+
+    public static function ViewCoordinatorDetails()
+    {
+        try {
+            // Ensure the request is POST and has application_id
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['coordinator_id']) || empty($_POST['coordinator_id'])) {
+                throw new Exception("Invalid request.");
+            }
+
+            $session_id = $_GET['token'];
+            $coordinator_id = $_POST['coordinator_id'];
+
+            $_SESSION['coordinator_id'] = $coordinator_id;
+            // Redirect after deletion
+            redirect('/view_coordinator_details?token=' . urlencode($session_id));
+        } catch (PDOException $e) {
+            error_log('Error deleting application: ' . $e->getMessage());
+        } catch (Exception $e) {
+            error_log('Validation error: ' . $e->getMessage());
+        }
     }
 
     public static function ShowAddCoordinator()

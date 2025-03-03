@@ -93,7 +93,6 @@
                                         class="text-danger fw-bold">*</sup></label>
                                 <input class="form-control" list="parishNameOptions" id="parishNameDataList"
                                     value="<?php echo $applicationInfo['PARISH'] ?? ' '; ?>">
-                                <div class="invalid-feedback" id="error-civilStatus"></div>
                             </div>
 
                             <div class="col-md-3 mb-3">
@@ -635,6 +634,8 @@
                             </div>
 
                             <div class="mb-3 text-center">
+                                <input type="hidden" name="hiddenemail" value="<?php echo $email ?>">
+                                <input type="hidden" id="token" value="<?php echo $_GET['token']; ?>">
                                 <button id="submitBtn" class="btn btn-outline-primary px-4"
                                     type="submit">Submit</button>
                             </div>
