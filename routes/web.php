@@ -82,9 +82,7 @@ $router->add('/organization_profile', [LandingPageController::class, 'ShowOrgani
 $router->add('/volunteers', [LandingPageController::class, 'ShowVolunteers']);
 $router->add('/resources', [LandingPageController::class, 'ShowResources']);
 $router->add('/events', [LandingPageController::class, 'ShowEvents']);
-$router->add('/announcements', [LandingPageController::class, 'ShowAnnouncement']);
-
-// $router->add('/announcements/{event}', [LandingPageController::class, 'ShowAnnouncement']);
+$router->add('/announcement2', [LandingPageController::class, 'ShowAnnouncement']);
 $router->add('/pollwatchers', [LandingPageController::class, 'ShowPollwatchers']);
 
 

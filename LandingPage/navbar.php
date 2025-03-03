@@ -254,7 +254,7 @@ if (!isset($allMissions)) {
                     <?php else: ?>
                         <li><a href="#">No missions available</a></li>
                     <?php endif; ?>
-                    <!-- <li><a href="/pollwatchers">Types of Pollwatchers</a></li> -->
+                    <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
                 </ul>
             </li>
 

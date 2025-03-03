@@ -35,8 +35,8 @@
                                     alt="<?php echo htmlspecialchars($event['announcement_title']); ?>">
                             </div>
                             <h3><?php echo htmlspecialchars($event['announcement_title']); ?></h3>
-                            <a href="/announcements?announcement=<?php echo urlencode($event['announcement_title']); ?>" class="btn">Read More</a>
-                        </div>
+                                <a href="/announcement2?announcements=<?php echo urlencode($event['announcement_title']); ?>" class="btn">Read More</a>
+                            </div>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>No events available.</p>
