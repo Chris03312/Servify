@@ -2,17 +2,21 @@
 
 class LogoutController
 {
+
     public static function Logout()
     {
-        session_unset();
-        session_destroy();
+        session_start();
+        $session_id = $_GET['token'] ?? '';
 
-        // Clear the remember me cookie
-        if (isset($_COOKIE['remember_token'])) {
-            setcookie('remember_token', '', time() - 3600, '/', '', true, true);
+        if (isset($_SESSION['sessions'][$session_id])) {
+            unset($_SESSION['sessions'][$session_id]); // Remove only this user's session
+
+            error_log($session_id);
+            redirect('/login');
+
+        } else {
+            echo json_encode(['error' => 'Session not found']);
         }
-
-        redirect('/login');
     }
 
 }

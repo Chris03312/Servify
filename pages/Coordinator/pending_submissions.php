@@ -185,19 +185,23 @@
 
         <ul class="nav nav-underline mb-5">
             <li class="nav-item">
-                <a class="nav-link active px-3" href="/pending_submissions">Pending
+                <a class="nav-link active px-3"
+                    href="/pending_submissions?token=<?php echo urlencode($_GET['token']); ?>">Pending
                     <small>(<?php echo $pendingCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/under_review_submissions">Under Review
+                <a class="nav-link px-3"
+                    href="/under_review_submissions?token=<?php echo urlencode($_GET['token']); ?>">Under Review
                     <small>(<?php echo $underReviewCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/approved_submissions">Approved/Completed
+                <a class="nav-link px-3"
+                    href="/approved_submissions?token=<?php echo urlencode($_GET['token']); ?>">Approved/Completed
                     <small>(<?php echo $approvedCount; ?>)</small></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="/cancelled_submissions">Withdrawn/Cancelled
+                <a class="nav-link px-3"
+                    href="/cancelled_submissions?token=<?php echo urlencode($_GET['token']); ?>">Withdrawn/Cancelled/Rejected
                     <small>(<?php echo $cancelledCount; ?>)</small></a>
             </li>
         </ul>
@@ -212,7 +216,7 @@
                         <th scope="col">Submission Date/Time</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Volunteer Name</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Remarks</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -228,21 +232,12 @@
                                 </td>
                                 <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME'];
                                 ; ?></td>
-                                <td>
-
-                                    <select name="status" class="form-select">
-                                        <?php
-                                        $statuses = ['Pending', 'Approved for Assignment', 'Generate ID', 'Completed', 'Generate Certificate', 'Returned for update', 'Rejected']; // List of statuses
-                                        foreach ($statuses as $status) {
-                                            $selected = ($application['STATUS'] == $status) ? 'selected' : '';
-                                            echo "<option value='$status' $selected>$status</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
+                                <td><?php echo $application['STATUS']; ?></td>
                                 <td>
                                     <div class="d-none d-md-flex flex-row gap-2">
-                                        <form action="/pending_submissions/review" method="POST">
+                                        <form
+                                            action="/pending_submissions/review?token=<?php echo urlencode($_GET['token']); ?>"
+                                            method="POST">
                                             <input type="hidden" name="application_id"
                                                 value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                             <button type="submit" class="btn btn-primary mb-2">Review</button>
@@ -256,7 +251,9 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <form action="/pending_submissions/review" method="POST">
+                                                <form
+                                                    action="/pending_submissions/review?token=<?php echo urlencode($_GET['token']); ?>"
+                                                    method="POST">
                                                     <input type="hidden" name="application_id"
                                                         value="<?php echo htmlspecialchars($application['APPLICATION_ID']); ?>">
                                                     <button type="submit" class="dropdown-item btn btn-primary">Review</button>

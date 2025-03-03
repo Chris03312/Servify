@@ -6,34 +6,41 @@ require_once __DIR__ . '/../../models/Sidebarinfo.php';
 require_once __DIR__ . '/../../models/Notification.php';
 require_once __DIR__ . '/../../models/ActivityLog.php';
 
-
-
 class VolunteerDashboardController
 {
-
     public static function VolunteerDashboard()
     {
+        session_start();
 
-        // If not logged in, redirect to login
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
             redirect('/login');
         }
 
-        $volunteerActivities = getActivityLog($_SESSION['email'], $_SESSION['username']);
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
-        $accountsData = Accounts::getAccounts($_SESSION['email']);
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $username = $userSession['username'];
+        $role = $userSession['role'];
 
-        // Get countdown data
+        // Fetch dashboard data
+        $volunteerActivities = getActivityLog($email, $username);
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+        $accountsData = Accounts::getAccounts($email);
         $countdown = Dashboard::CountDownElectionDay();
-        $notifications = Notification::getNotification();
-        $userInfo = Dashboard::getinfodashboard();
+        $notifications = Notification::getNotification($email);
+        $userInfo = Dashboard::getinfodashboard($email);
         $currentDate = date('F j, Y');
-        $timelines = Dashboard::MyTimeline();
-        $locations = Dashboard::mapOverview();
+        $timelines = Dashboard::MyTimeline($email);
+        $locations = Dashboard::mapOverview($email);
 
-        // Render the dashboard and pass all the necessary data
+        // Render the dashboard with session-specific data
         view('Volunteer/volunteer_dashboard', [
-            'email' => $_SESSION['email'],
+            'token' => $session_id,
+            'email' => $email,
             'userInfo' => $userInfo,
             'activities' => $volunteerActivities,
             'currentDate' => $currentDate,
@@ -45,7 +52,7 @@ class VolunteerDashboardController
             'hours' => $countdown['hours'],
             'minutes' => $countdown['minutes'],
             'seconds' => $countdown['seconds'],
-            'notifications' => $notifications['notifications'],  // List of notifications
+            'notifications' => $notifications['notifications'],
             'unread_count' => $notifications['unread_count']
         ]);
     }

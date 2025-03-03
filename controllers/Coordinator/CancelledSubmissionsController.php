@@ -8,10 +8,24 @@ class CancelledSubmissionsController
 
     public static function ShowCancelledSubmissions()
     {
+        session_start();
 
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $cancelledApplications = VolunteerManagement::getApplicationByStatus(['Cancelled', 'Rejected']);
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled', 'Requesting for Approval']);
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
 
         view('Coordinator/cancelled_submissions', [

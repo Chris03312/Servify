@@ -1,26 +1,28 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../configuration/Database.php';
 
 
-class Signup {
+class Signup
+{
 
-    public static function barangays($city = null) {
+    public static function barangays($city = null)
+    {
         try {
             $db = Database::getConnection();
-            
+
             // Modify query to optionally filter barangays by city
             $query = 'SELECT DISTINCT BARANGAY_NAME, `MUNICIPALITY/CITY` FROM PRECINCT_TABLE';
             if ($city) {
                 $query .= ' WHERE MUNICIPALITY/CITY = :city';
             }
-            
+
             $stmt = $db->prepare($query);
             if ($city) {
                 $stmt->bindParam(':city', $city);
             }
             $stmt->execute();
-            
+
             $barangays = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $barangays;
         } catch (PDOException $e) {
@@ -28,8 +30,9 @@ class Signup {
             return [];  // Return an empty array on error
         }
     }
-    
-    public static function cities() {
+
+    public static function cities()
+    {
         try {
             $db = Database::getConnection();
             $stmt = $db->prepare('SELECT DISTINCT `MUNICIPALITY/CITY` FROM PRECINCT_TABLE');

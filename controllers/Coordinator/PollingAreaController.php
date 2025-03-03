@@ -8,15 +8,31 @@ class PollingAreaController
     public static function ShowPollingArea()
     {
 
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+
         $city = $_GET['City'] ?? null;
         $district = $_GET['District'] ?? null;
         $barangay = $_GET['Barangay'] ?? null;
 
-        $districturl = '?City=' . urlencode($city);
-        $barangayurl = '?City=' . urlencode($city) . '&District=' . urlencode($district);
+        $districturl = '?token=' . urlencode($session_id) . '&City=' . urlencode($city);
+        $barangayurl = '?token=' . urlencode($session_id) . '&City=' . urlencode($city) . '&District=' . urlencode($district);
 
-        $getPollingDirectory = VolunteerManagement::getPollingPlace($city, $district, $barangay);
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        $getPollingDirectory = VolunteerManagement::getPollingPlace($session_id, $city, $district, $barangay);
 
 
         view('Coordinator/polling_area', [

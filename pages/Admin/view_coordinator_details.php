@@ -164,20 +164,23 @@
                             <span class="mb-3"><strong>Assigned as Coordinator at:</strong></span>
                             <div class="col-md-3 mb-3">
                                 <label for="city" class="form-label">Municipality</label>
-                                <input type="text" class="form-control" id="city" name="city" required readonly>
+                                <input type="text" class="form-control" id="city" name="city"
+                                    value="<?php echo $coordinatorData['MUNICIPALITY/CITY']; ?>" required readonly>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="district" class="form-label">District No.</label>
-                                <input type="text" class="form-control" id="district" name="district" required readonly>
+                                <input type="text" class="form-control" id="district" name="district"
+                                    value="<?php echo $coordinatorData['DISTRICT']; ?>" required readonly>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="barangay" class="form-label">Barangay</label>
-                                <input type="text" class="form-control" id="barangay" name="barangay" required readonly>
+                                <input type="text" class="form-control" id="barangay" name="barangay"
+                                    value="<?php echo $coordinatorData['BARANGAY']; ?>" required readonly>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="parishName" class="form-label">Parish Name</label>
-                                <input type="text" class="form-control" id="parishName" name="parishName" required
-                                    readonly>
+                                <input type="text" class="form-control" id="parishName" name="parishName"
+                                    value="<?php echo $coordinatorData['PARISH']; ?>" required readonly>
                             </div>
 
 
@@ -186,51 +189,55 @@
                             <span><strong>Name:</strong></span>
                             <div class="col-md-3 mb-3">
                                 <label for="surname" class="form-label">Surname</label>
-                                <input type="text" class="form-control" id="surname" name="surname" required readonly>
+                                <input type="text" class="form-control" id="surname" name="surname"
+                                    value="<?php echo $coordinatorData['SURNAME']; ?>" required readonly>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstname" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstname" name="firstName" required
-                                    readonly>
+                                <input type="text" class="form-control" id="firstname" name="firstName"
+                                    value="<?php echo $coordinatorData['FIRST_NAME']; ?>" required readonly>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="middlename" class="form-label">Middle name</label>
-                                <input type="text" class="form-control" id="middlename" name="middleName" required
-                                    readonly>
+                                <input type="text" class="form-control" id="middlename" name="middleName"
+                                    value="<?php echo $coordinatorData['MIDDLE_NAME']; ?>" required readonly>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="suffix" class="form-label">Suffix</label>
                                 <input type="text" class="form-control" id="suffix" name="suffix"
-                                    placeholder="e.g., Jr., Sr., III, IV" required readonly>
+                                    placeholder="e.g., Jr., Sr., III, IV"
+                                    value="<?php echo $coordinatorData['SUFFIX']; ?>" required readonly>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="sex" class="form-label">Sex</label>
                                 <select id="sex" name="sex" class="form-select" required disabled>
-                                    <option selected disabled value="">Select Sex</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option disabled value="">Select Sex</option>
+                                    <option value="Male" <?php echo ($coordinatorData['SEX'] ?? '') === 'Male' ? 'selected' : ''; ?>>Male</option>
+                                    <option value="Female" <?php echo ($coordinatorData['SEX'] ?? '') === 'Female' ? 'selected' : ''; ?>>Female</option>
                                 </select>
+
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="Nickname" class="form-label">Nickname</label>
-                                <input type="text" class="form-control" id="Nickname" name="Nickname" required readonly>
+                                <input type="text" class="form-control" id="Nickname" name="Nickname"
+                                    value="<?php echo $coordinatorData['NICKNAME']; ?>" required readonly>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="civilStatus" class="form-label">Civil Status</label>
                                 <select id="civilStatus" name="civilStatus" class="form-select" required disabled>
-                                    <option selected disabled value="">Select Status</option>
-                                    <option value="Single">Single</option>
-                                    <option value="Married">Married</option>
-                                    <option value="Separated">Separated</option>
-                                    <option value="Divorced">Divorced</option>
-                                    <option value="Widowed">Widowed</option>
-                                    <option value="Widower">Widower</option>
-                                    <option value="Annulled">Annulled</option>
-                                    <option value="Single Parent">Single Parent</option>
+                                    <option disabled value="">Select Status</option>
+                                    <option value="Single" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Single' ? 'selected' : ''; ?>>Single</option>
+                                    <option value="Married" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Married' ? 'selected' : ''; ?>>Married</option>
+                                    <option value="Separated" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Separated' ? 'selected' : ''; ?>>Separated</option>
+                                    <option value="Divorced" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Divorced' ? 'selected' : ''; ?>>Divorced</option>
+                                    <option value="Widowed" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Widowed' ? 'selected' : ''; ?>>Widowed</option>
+                                    <option value="Widower" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Widower' ? 'selected' : ''; ?>>Widower</option>
+                                    <option value="Annulled" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Annulled' ? 'selected' : ''; ?>>Annulled</option>
+                                    <option value="Single Parent" <?php echo ($coordinatorData['CIVIL_STATUS'] ?? '') === 'Single Parent' ? 'selected' : ''; ?>>Single Parent</option>
                                 </select>
                             </div>
 
@@ -238,33 +245,34 @@
                             <div class="col-md-2 mb-3">
                                 <label for="birthDate" class="form-label">Date</label>
                                 <input type="text" class="form-control" id="birthDate" name="birthDate"
-                                    placeholder="Date" required readonly>
+                                    placeholder="Date" value="<?php echo $coordinatorData['BIRTH_DATE']; ?>" required
+                                    readonly>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="birthMonth" class="form-label">Month</label>
                                 <select id="birthMonth" name="birthMonth" class="form-select" aria-readonly="true"
                                     required disabled>
-                                    <option value="" disabled selected>Select month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                    <option value="" disabled>Select month</option>
+                                    <option value="January" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'January' ? 'selected' : ''; ?>>January</option>
+                                    <option value="February" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'February' ? 'selected' : ''; ?>>February</option>
+                                    <option value="March" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'March' ? 'selected' : ''; ?>>March</option>
+                                    <option value="April" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'April' ? 'selected' : ''; ?>>April</option>
+                                    <option value="May" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'May' ? 'selected' : ''; ?>>May</option>
+                                    <option value="June" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'June' ? 'selected' : ''; ?>>June</option>
+                                    <option value="July" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'July' ? 'selected' : ''; ?>>July</option>
+                                    <option value="August" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'August' ? 'selected' : ''; ?>>August</option>
+                                    <option value="September" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'September' ? 'selected' : ''; ?>>September</option>
+                                    <option value="October" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'October' ? 'selected' : ''; ?>>October</option>
+                                    <option value="November" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'November' ? 'selected' : ''; ?>>November</option>
+                                    <option value="December" <?php echo ($coordinatorData['BIRTH_MONTH'] ?? '') === 'December' ? 'selected' : ''; ?>>December</option>
                                 </select>
                             </div>
 
                             <div class="col-md-2 mb-3">
                                 <label for="birthYear" class="form-label">Year</label>
                                 <input type="text" class="form-control" id="birthYear" name="birthYear"
-                                    placeholder="Year" readonly>
+                                    placeholder="Year" value="<?php echo $coordinatorData['BIRTH_YEAR']; ?>" readonly>
                             </div>
 
                             <div class="col-md-2 mb-3">
@@ -333,8 +341,8 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="citizenship" class="form-label">Citizenship</label>
-                                <input type="text" class="form-control" id="citizenship" name="citizenship" required
-                                    readonly>
+                                <input type="text" class="form-control" id="citizenship" name="citizenship"
+                                    value="<?php echo $coordinatorData['CITIZENSHIP']; ?>" required readonly>
                                 <div class="invalid-feedback">
                                     Please input citizenship.
                                 </div>
@@ -342,16 +350,16 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="occupation" class="form-label">Occupation</label>
-                                <input type="text" class="form-control" id="occupation" name="occupation" required
-                                    readonly>
+                                <input type="text" class="form-control" id="occupation" name="occupation"
+                                    value="<?php echo $coordinatorData['OCCUPATION']; ?>" required readonly>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="companyName" class="form-label">Company Name</label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" required
-                                    readonly>
+                                <input type="text" class="form-control" id="companyName" name="companyName"
+                                    value="<?php echo $coordinatorData['COMPANY_NAME']; ?>" required readonly>
                                 <div class="invalid-feedback">
                                     Write <strong>N/A</strong> if none.
                                 </div>
@@ -367,23 +375,25 @@
                             <div class="col-md-12 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village (Optional)</label>
                                 <input type="text" class="form-control" readonly id="street" name="streetAddress"
-                                    required>
+                                    value="<?php echo $coordinatorData['STREETADDRESS']; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="city1" class="form-label">Municipality</label>
-                                <input type="text" class="form-control" readonly id="city1" name="city1" required>
+                                <input type="text" class="form-control" readonly id="city1" name="city1"
+                                    value="<?php echo $coordinatorData['MUNICIPALITY/CITY']; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="barangay1" class="form-label">Barangay</label>
                                 <input type="text" class="form-control" readonly id="barangay1" name="barangay1"
-                                    required>
+                                    value="<?php echo $coordinatorData['BARANGAY']; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode</label>
-                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode" required>
+                                <input type="text" class="form-control" readonly id="zipcode" name="zipcode"
+                                    value="<?php echo $coordinatorData['ZIPCODE']; ?>" required>
                                 <div class="invalid-feedback">
                                     Please input zipcode.
                                 </div>
@@ -391,19 +401,20 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" readonly id="email" name="email" required>
+                                <input type="email" class="form-control" readonly id="email" name="email"
+                                    value="<?php echo $coordinatorData['EMAIL']; ?>" required>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="mobileNumber" class="form-label">Mobile Number</label>
-                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required
-                                    readonly>
+                                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
+                                    value="<?php echo $coordinatorData['CELLPHONE_NO']; ?>" required readonly>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="telNumber" class="form-label">Tel no.</label>
-                                <input type="text" class="form-control" id="telNumber" name="telNumber" required
-                                    readonly>
+                                <input type="text" class="form-control" id="telNumber" name="telNumber"
+                                    value="<?php echo $coordinatorData['TELEPHONE_NO']; ?>" required readonly>
                             </div>
 
                             <div class="double-line-text">
@@ -414,52 +425,56 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="prevOrgMem" class="form-label">Parish Organization Membership</label>
-                                <input type="text" class="form-control" id="prevOrgMem" name="prevOrgMem" required
-                                    readonly>
+                                <input type="text" class="form-control" id="prevOrgMem" name="prevOrgMem"
+                                    value="<?php echo $coordinatorData['ORG_MEMBERSHIP']; ?>" required readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="prevAssignment" class="form-label">Previous PPCRV Assignment</label>
                                 <input type="text" class="form-control" id="prevAssignment" name="prevAssignment"
-                                    required readonly>
+                                    value="<?php echo $coordinatorData['PREVIOUS_PPCRV_VOL_ASS']; ?>" required readonly>
                             </div>
 
                             <span>Previous PPCRV Experience</span>
                             <div class="col-md-3 mb-3">
                                 <label for="prevExpDate" class="form-label">Date</label>
                                 <input type="text" class="form-control" readonly id="prevExpDate" name="prevExpDate"
-                                    placeholder="Date" required readonly>
+                                    placeholder="Date"
+                                    value="<?php echo $coordinatorData['PREVIOUS_PPCRV_EXP_DATE']; ?>" required
+                                    readonly>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExpMonth" class="form-label">Month</label>
                                 <select id="prevExpMonth" name="prevExpMonth" class="form-select" aria-readonly="true"
                                     required disabled>
-                                    <option value="" disabled selected>Select month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                    <option value="" disabled>Select month</option>
+                                    <option value="January" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'January' ? 'selected' : ''; ?>>January</option>
+                                    <option value="February" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'February' ? 'selected' : ''; ?>>February</option>
+                                    <option value="March" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'March' ? 'selected' : ''; ?>>March</option>
+                                    <option value="April" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'April' ? 'selected' : ''; ?>>April</option>
+                                    <option value="May" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'May' ? 'selected' : ''; ?>>May</option>
+                                    <option value="June" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'June' ? 'selected' : ''; ?>>June</option>
+                                    <option value="July" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'July' ? 'selected' : ''; ?>>July</option>
+                                    <option value="August" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'August' ? 'selected' : ''; ?>>August</option>
+                                    <option value="September" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'September' ? 'selected' : ''; ?>>September</option>
+                                    <option value="October" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'October' ? 'selected' : ''; ?>>October</option>
+                                    <option value="November" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'November' ? 'selected' : ''; ?>>November</option>
+                                    <option value="December" <?php echo ($coordinatorData['PREVIOUS_PPCRV_EXP_MONTH'] ?? '') === 'December' ? 'selected' : ''; ?>>December</option>
                                 </select>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="prevExpYear" class="form-label">Year</label>
                                 <input type="text" class="form-control" id="prevExpYear" name="prevExpYear"
-                                    placeholder="Year" readonly>
+                                    placeholder="Year"
+                                    value="<?php echo $coordinatorData['PREVIOUS_PPCRV_EXP_YEAR']; ?>" readonly>
                             </div>
 
                             <div class="col-md-3 mb-3">
                                 <label for="yearsOfServices" class="form-label">Years of service</label>
                                 <input type="text" class="form-control" id="yearsOfServices" name="yearsOfServices"
-                                    placeholder="Year" readonly>
+                                    placeholder="Year" value="<?php echo $coordinatorData['YEARS_SERVICE']; ?>"
+                                    readonly>
                             </div>
 
 

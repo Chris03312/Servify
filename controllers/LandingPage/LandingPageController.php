@@ -60,6 +60,25 @@ class LandingPageController
 
     // }
 
+        // public static function ShowVolunteers()
+    // {
+    //     $allMissions = Landingpage::Volunteers(); 
+    //     $volunteers = $allMissions;
+
+    //     $selected_mission = $_GET['mission'] ?? '';
+
+    //     if (!empty($selected_mission)) {
+    //         $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
+    //             return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
+    //         });
+    //     }
+
+    //     view('LandingPage/volunteers', [
+    //         'volunteers' => $volunteers,
+    //         'allMissions' => $allMissions 
+    //     ]);
+    // }
+
     public static function ShowVolunteers()
     {
         $allMissions = Landingpage::Volunteers(); 
@@ -79,25 +98,6 @@ class LandingPageController
         ]);
     }
 
-
-    // public static function ShowVolunteers()
-    // {
-    //     $allMissions = Landingpage::Volunteers(); 
-    //     $volunteers = $allMissions;
-
-    //     $selected_mission = $_GET['mission'] ?? '';
-
-    //     if (!empty($selected_mission)) {
-    //         $volunteers = array_filter($allMissions, function ($volunteer) use ($selected_mission) {
-    //             return $volunteer['MISSION_DESCRIPTION'] === $selected_mission;
-    //         });
-    //     }
-
-    //     view('LandingPage/volunteers', [
-    //         'volunteers' => $volunteers,
-    //         'allMissions' => $allMissions 
-    //     ]);
-    // }
     
     // RESOURCES
 
@@ -110,6 +110,7 @@ class LandingPageController
         ]);
 
     }
+
     public static function ShowVolunteersGuide()
     {
 
@@ -121,19 +122,6 @@ class LandingPageController
     {
 
         view('');
-
-    }
-
-    // EVENTS
-
-    public static function ShowEvents()
-    {
-
-        $volunteers = Landingpage::Volunteers();
-
-        view('LandingPage/events', [
-            'volunteers' => $volunteers
-        ]);
 
     }
 
@@ -151,42 +139,69 @@ class LandingPageController
         ]);
 
     }
-    public static function ShowPSV()
+    
+    // ANNOUNCEMENTS
+
+    // public static function ShowAnnouncement()
+    // {
+    //     $announcements = Landingpage::Volunteers();
+
+    //     view('LandingPage/announcements', [
+    //         'announcements' => $announcements
+    //     ]);
+    // }
+
+    // public static function ShowEvents()
+    // {
+    //     $events = Landingpage::Announcements();
+
+    //     view('LandingPage/events', [
+    //         'events' => $events
+    //     ]);
+    // }
+
+    // public static function ShowAnnouncement()
+    // {
+    //     if (!isset($_GET['event'])) {
+    //         view('LandingPage/announcement', ['announcement' => null]);
+    //         return;
+    //     }
+
+    //     $eventTitle = urldecode($_GET['event']);
+    //     $announcement = Landingpage::getAnnouncementByTitle($eventTitle);
+
+    //     view('LandingPage/announcements', [
+    //         'announcement' => $announcement
+    //     ]);
+    // }
+
+    public static function ShowEvents()
     {
-        $volunteers = Landingpage::Volunteers();
-
-        view('landingpage/psv', [
-            'volunteers' => $volunteers
+        $events = Landingpage::Announcements();
+    
+        view('landingpage/events', [
+            'events' => $events
         ]);
-
     }
-    public static function ShowUPCE()
+
+    public static function ShowAnnouncement()
     {
-        $volunteers = Landingpage::Volunteers();
+        $announcementTitle = $_GET['announcement'] ?? null;
 
-        view('landingpage/upce', [
-            'volunteers' => $volunteers
+        if (!$announcementTitle) {
+            die("Invalid request: No announcement selected.");
+        }
+
+        $announcement = Landingpage::Announcements($announcementTitle); // Fetch a single announcement
+
+        view('landingpage/announcement', [
+            'announcement' => $announcement
         ]);
-
     }
-    public static function ShowVAD()
-    {
-        $volunteers = Landingpage::Volunteers();
 
-        view('landingpage/vad', [
-            'volunteers' => $volunteers
-        ]);
 
-    }
-    public static function ShowEO()
-    {
-        $volunteers = Landingpage::Volunteers();
 
-        view('landingpage/eo', [
-            'volunteers' => $volunteers
-        ]);
 
-    }
 
     // ANNOUNCEMENTS
     public static function ShowAnnouncement1()
@@ -204,36 +219,6 @@ class LandingPageController
         $volunteers = Landingpage::Volunteers();
 
         view('landingpage/announcement2', [
-            'volunteers' => $volunteers
-        ]);
-
-    }
-
-    public static function ShowAnnouncement3()
-    {
-        $volunteers = Landingpage::Volunteers();
-
-        view('landingpage/announcement3', [
-            'volunteers' => $volunteers
-        ]);
-
-    }
-
-    public static function ShowAnnouncement4()
-    {
-        $volunteers = Landingpage::Volunteers();
-
-        view('landingpage/announcement4', [
-            'volunteers' => $volunteers
-        ]);
-
-    }
-
-    public static function ShowAnnouncement5()
-    {
-        $volunteers = Landingpage::Volunteers();
-
-        view('landingpage/announcement5', [
             'volunteers' => $volunteers
         ]);
 

@@ -253,17 +253,18 @@
                             </div>
                         </article>
                         <div class="flex justify-center items-center h-screen">
-                            <a href="/admin_volunteer_details"
+                            <a href="/under_review_submissions?token=<?php echo urlencode($_GET['token']); ?>"
                                 class="px-4 py-2 bg-gray-300 text-black font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none">
                                 Go Back
                             </a>
-                            <form action="/admin_volunteer_details/approved" method="POST"
-                                class="flex flex-col items-center gap-4">
+                            <form
+                                action="/admin_volunteer_details/approved?token=<?php echo urlencode($_GET['token']) ?>"
+                                method="POST" class="flex flex-col items-center gap-4">
                                 <input type="hidden" name="application_id"
                                     value="<?php echo $applicationDetails['APPLICATION_ID']; ?>">
                                 <div class="flex gap-4">
-                                    <button type="submit" name="proceed" class="px-4 py-2 bg-gray-300 rounded-lg">
-                                        Approve
+                                    <button type="submit" name="proceed" class="px-4 py-2 text-bg-primary rounded-lg">
+                                        Approve for Assignment
                                     </button>
                                 </div>
                             </form>

@@ -6,14 +6,16 @@ use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 
 // Encryption function (AES-256-CBC)
-function encrypt($data, $key) {
+function encrypt($data, $key)
+{
     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc')); // Generate a random initialization vector
     $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv); // Encrypt data
     return base64_encode($encrypted . '::' . $iv); // Return encrypted data with IV
 }
 
 // Decryption function (AES-256-CBC)
-function decrypt($data, $key) {
+function decrypt($data, $key)
+{
     list($encrypted_data, $iv) = explode('::', base64_decode($data), 2); // Split data and IV
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv); // Decrypt the data
 }
@@ -54,11 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encrypted QR Code Generator</title>
 </head>
+
 <body>
     <h1>Generate Encrypted QR Code for URL</h1>
     <form action="" method="post">
@@ -67,4 +71,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Generate Encrypted QR Code</button>
     </form>
 </body>
+
 </html>

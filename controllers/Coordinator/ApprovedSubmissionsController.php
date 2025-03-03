@@ -9,10 +9,24 @@ class ApprovedSubmissionsController
 
     public static function ShowApprovedSubmissions()
     {
+        session_start();
 
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $approvedApplications = VolunteerManagement::getApplicationByStatus(['Requesting for Approval', 'Approved']);
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled', 'Requesting for Approval']);
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         view('Coordinator/approved_submissions', [
             'approvedApplications' => $approvedApplications,
@@ -39,9 +53,10 @@ class ApprovedSubmissionsController
 
             $db->beginTransaction();
             // Correct SQL syntax (fix table name if necessary)
-            $stmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status WHERE APPLICATION_ID = :application_id');
+            $stmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status, REMARKS = :remarks WHERE APPLICATION_ID = :application_id');
             $stmt->execute([
                 ':status' => 'Request for Approval',
+                ':remarks' => 'Waiting for Approval',
                 ':application_id' => $application_id
             ]);
 
@@ -52,6 +67,34 @@ class ApprovedSubmissionsController
             error_log('Error deleting application: ' . $e->getMessage());
         } catch (Exception $e) {
             error_log('Validation error: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateRemarks()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $applicationId = $_POST['application_id'] ?? null;
+            $remarks = $_POST['remarks'] ?? '';
+
+            if (!$applicationId || empty($remarks)) {
+                echo json_encode(['error' => 'Invalid data received.']);
+                exit;
+            }
+
+            // Update remarks in the database
+            $db = Database::getConnection();
+            $stmt = $db->prepare("UPDATE APPLICATION_INFO SET REMARKS = :remarks WHERE APPLICATION_ID = :application_id");
+            $result = $stmt->execute([
+                ':remarks' => $remarks,
+                ':application_id' => $applicationId
+            ]);
+
+            if ($result) {
+                echo json_encode(['message' => 'Remarks updated successfully!', 'redirect' => '/approved_submissions']);
+            } else {
+                echo json_encode(['error' => 'Failed to update remarks']);
+            }
+            exit;
         }
     }
 

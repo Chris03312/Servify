@@ -180,8 +180,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($volunteersCounts)): ?> <!-- Notice the ! (negation) -->
-                            <?php foreach ($volunteersCounts as $volunteers): ?>
+                        <?php if (!empty($volunteersPerParish)): ?> <!-- Notice the ! (negation) -->
+                            <?php foreach ($volunteersPerParish as $volunteers): ?>
                                 <tr>
                                     <td scope="row"><?php echo htmlspecialchars($volunteers['DATE']); ?></td>
                                     <td><?php echo htmlspecialchars($volunteers['TIME_IN']); ?></td>

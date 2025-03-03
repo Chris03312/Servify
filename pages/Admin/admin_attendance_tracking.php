@@ -90,14 +90,15 @@
 
         <!-- FILTER BUTTON AND SEARCH BAR -->
         <section class="d-flex justify-content-end align-items-center gap-2 mt-3 mb-5">
-            
+
             <div class="input-group" style="width: 500px;">
                 <span class="input-group-text" id="basic-addon1">
                     <i class="bi bi-search"></i>
                 </span>
                 <input type="search" class="form-control" placeholder="Search name or email">
             </div>
-            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal"
+                data-bs-target="#filterModal">
                 <i class="bi bi-filter me-2"></i>Filter
             </button>
         </section>
@@ -108,14 +109,16 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h4 class="text-center text-primary">Filter</h4>
 
                         <!--FORM-->
                         <div class="container mt-2">
-                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred criteria from the available options and click "Apply" to view the filtered items.</p>
+                            <p class="text-muted text-center mb-5">To filter results, simply select your preferred
+                                criteria from the available options and click "Apply" to view the filtered items.</p>
 
 
                             <div class="row mb-3">
@@ -174,7 +177,8 @@
                         <td>200</td>
                         <td>150</td>
                         <td>50</td>
-                        <td><a href="/precincts" class="btn btn-outline-primary">View</a></td>
+                        <td><a href="/precincts?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="btn btn-outline-primary">View</a></td>
                     </tr>
             </table>
         </div>

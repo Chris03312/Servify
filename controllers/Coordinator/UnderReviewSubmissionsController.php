@@ -10,10 +10,24 @@ class UnderReviewSubmissionsController
 
     public static function ShowUnderReviewSubmissions()
     {
+        session_start();
 
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $underreviewApplications = VolunteerManagement::getApplicationByStatus('Under review');
         $countApplications = VolunteerManagement::countApplicationsByStatuses(['Pending', 'Under review', 'Approved', 'Cancelled', 'Requesting for Approval']);
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
 
         view('Coordinator/under_review_submissions', [
             'underreviewApplications' => $underreviewApplications,
@@ -36,17 +50,19 @@ class UnderReviewSubmissionsController
             }
 
             $application_id = $_POST['application_id'];
+            $token = $_POST['token'];
 
             $db->beginTransaction();
             // Correct SQL syntax (fix table name if necessary)
-            $stmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status WHERE APPLICATION_ID = :application_id');
+            $stmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status, REMARKS = :remarks WHERE APPLICATION_ID = :application_id');
             $stmt->execute([
                 ':status' => 'Cancelled',
+                ':remarks' => 'Reject',
                 ':application_id' => $application_id
             ]);
 
             $db->commit();
-            redirect('/cancelled_submissions');
+            redirect('/cancelled_submissions?token=' . urlencode($token));
         } catch (PDOException $e) {
             $db->rollBack();
             error_log('Error deleting application: ' . $e->getMessage());

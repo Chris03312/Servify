@@ -13,7 +13,7 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="/admin_dashboard" class="nav-link">
+                    <a href="/admin_dashboard?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
 
@@ -24,23 +24,24 @@
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item ms-3">
-                            <a href="/admin_coordinator_management" class="nav-link border-bottom"><i
-                                    class="bi bi-people-fill me-2"></i>Coordinators</a>
+                            <a href="/admin_coordinator_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Coordinators</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/admin_volunteer_management" class="nav-link border-bottom"><i
-                                    class="bi bi-people-fill me-2"></i>Volunteers</a>
+                            <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/admin_directory" class="nav-link">
+                    <a href="/admin_directory?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="bi bi-folder-fill me-2"></i>Directories</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="admin_attendance_tracking" class="nav-link">
+                    <a href="admin_attendance_tracking?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
@@ -49,22 +50,22 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="admin_achievements" class="nav-link">
+                    <a href="admin_achievements?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/admin_inquiries" class="nav-link">
+                    <a href="/admin_inquiries?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/admin_feedback" class="nav-link">
+                    <a href="/admin_feedback?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
-
                 <li class="sidebar-item">
-                    <a href="/admin_reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+                    <a href="/admin_reports?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
+                        <i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
 
             </ul>
@@ -144,7 +145,12 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">My Profile</a></li>
                         <li><a class="dropdown-item" href="/coordinator_profile_settings">Profile Settings</a></li>
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="/logout?token=<?php echo urlencode($_GET['token'] ?? ''); ?>">
+                                Logout
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

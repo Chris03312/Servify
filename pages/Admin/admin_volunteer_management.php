@@ -154,8 +154,15 @@
                                 <td><?= htmlspecialchars($volunteer['CITY']) ?></td>
                                 <td><?= htmlspecialchars($volunteer['DISTRICT']) ?></td>
                                 <td class="truncate-text"><?= htmlspecialchars($volunteer['PARISH']) ?></td>
-                                <td><a href="/volunteer_details?id=<?= $volunteer['VOLUNTEERS_ID'] ?>"
-                                        class="btn btn-sm text-primary">View Details</a></td>
+                                <td>
+                                    <form
+                                        action="/admin_volunteer_details/view?token=<?php echo urlencode($_GET['token']) ?>"
+                                        method="POST">
+                                        <input type="hidden" name="volunteer_id"
+                                            value="<?= htmlspecialchars($volunteer['VOLUNTEERS_ID']); ?>">
+                                        <button type="Submit" class="btn btn-sm text-primary">View Details</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -190,7 +197,9 @@
                                 </td>
                                 <td><?php echo $approval['PARISH']; ?></td>
                                 <td>
-                                    <form action="/admin_volunteer_details/details" method="POST">
+                                    <form
+                                        action="/admin_application_details/details?token=<?php echo urlencode($_GET['token']) ?>"
+                                        method="POST">
                                         <input type="hidden" name="application_id"
                                             value="<?= htmlspecialchars($approval['APPLICATION_ID']); ?>">
                                         <button type="Submit" class="btn btn-sm text-primary">View Details</button>

@@ -146,11 +146,11 @@
             </div>
 
             <div class="volunteers-boxes">
-                <?php if (!empty($allMissions)): ?>
-                    <?php foreach ($allMissions as $mission): ?>
+                <?php if (!empty($volunteers)): ?>
+                    <?php foreach ($volunteers as $mission): ?>
                         <div class="volunteer-box">
-                            <img src="Landingpage/img/default.jpg" alt="<?php echo htmlspecialchars($mission['MISSION_DESCRIPTION']); ?>">
-                            <h3><?php echo htmlspecialchars($mission['MISSION_DESCRIPTION']); ?></h3>
+                            <img src="Landingpage/img/amvatt.jpg" alt="<?php echo htmlspecialchars($mission['MISSION_NAME']); ?>">
+                            <h3><?php echo htmlspecialchars($mission['MISSION_NAME']); ?></h3>
                             <a href="/volunteers?mission=<?php echo urlencode($mission['MISSION_DESCRIPTION']); ?>" class="btn">See More</a>
                         </div>
                     <?php endforeach; ?>
@@ -158,6 +158,7 @@
                     <p>No volunteer types available.</p>
                 <?php endif; ?>
             </div>
+
         </div>
     </section>
 
@@ -236,22 +237,36 @@
 
     <section class="contactus" id="contactus">
         <div class="contactus-container">
+            <!-- Success/Error Message -->
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="alert success">
+                    <?php echo $_SESSION['success']; ?>
+                    <?php unset($_SESSION['success']); ?>
+                </div>
+            <?php elseif (isset($_SESSION['error'])): ?>
+                <div class="alert error">
+                    <?php echo $_SESSION['error']; ?>
+                    <?php unset($_SESSION['error']); ?>
+                </div>
+            <?php endif; ?>
             <div class="contactus-leftsection">
                 <h3>VISIT THE NEAREST PARISH IN YOUR AREA FOR MORE QUESTIONS.</h3>
+                <!-- <p><span>Contact:</span> <?php #echo htmlspecialchars($contact['phone'] ?? 'N/A'); ?></p>
+                <p><span>Mail:</span> <?php #echo htmlspecialchars($contact['email'] ?? 'N/A'); ?></p> -->
+                <!-- <img src="<?php #echo htmlspecialchars($contact['image'] ?? 'LandingPage/img/default-logo.png'); ?>" alt="contact-logo"> -->
                 <p><span>Contact:</span> A. (02) 8288-9116</p>
                 <p><span>Mail:</span> example_email@gmail.com</p>
                 <img src="LandingPage/img/contactus-logo.png" alt="ddpam-logo">
             </div>
             <div class="contactus-rightsection">
                 <h2 class="form-header">LEAVE YOUR MESSAGE HERE</h2>
-                <p class="form-text">We really appreciate you taking the time to get in touch. Please fill in the form
-                </p>
-                <form action="">
-                    <input type="email" id="form-input-email" name="form-input-email" placeholder="Your Email" required>
-                    <input type="text" id="form-input-name" name="form-input-name" placeholder="Name">
-                    <textarea name="form-textarea" id="form-textarea" rows="20" cols="100"
-                        placeholder="Write your message here..." style="resize: none;" required></textarea>
-                    <button type="submit" name="form-submit" id="form-submit">Submit</button>
+                <p class="form-text">We really appreciate you taking the time to get in touch. Please fill in the form.</p>
+
+                <form action="/send-message" method="POST">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="name" placeholder="Name" required>
+                    <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>

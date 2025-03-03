@@ -59,7 +59,7 @@
                     <img src="../img/icons8-calendar-90 (1).png" alt="Step 5">
                     <div class="progress-step" data-content="Orientation and Training"></div>
                 </div>
-                <div class="timeline-item <?php echo ($latestStatus['PROGRESS'] == 100) ? 'active' : ''; ?>">
+                <div class="timeline-item  <?php echo ($latestStatus['PROGRESS'] == 100) ? 'active' : ''; ?>">
                     <img src="../img/icons8-certificate-90 (1).png" alt="Step 6">
                     <div class="progress-step" data-content="Grant Certificate"></div>
                 </div>
@@ -92,7 +92,24 @@
                                     <td><?php echo $application['FIRST_NAME'] . " " . $application['MIDDLE_NAME'] . " " . $application['SURNAME']; ?>
                                     </td>
                                     <td><?php echo $application['STATUS']; ?></td>
-                                    <td><!-- Action buttons or links here --></td>
+                                    <td>
+                                        <?php
+                                        // Convert the remarks into an array
+                                        $remarksArray = array_map('trim', explode(',', $application['REMARKS']));
+
+                                        if ($application['STATUS'] === 'Approved') {
+                                            if (in_array('Generate ID', $remarksArray)) {
+                                                echo '<a href="#" class="text-decoration-none">Generate ID</a> ';
+                                            }
+                                            if (in_array('Orientation and Training', $remarksArray)) {
+                                                echo '<br><a href="#" class="text-decoration-none">Orientation and Training Schedule</a>';
+                                            }
+                                            if (in_array('Generate Certificate', $remarksArray)) {
+                                                echo '<br><a href="#" class="text-decoration-none">Generate Certificate</a>';
+                                            }
+                                        }
+                                        ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>

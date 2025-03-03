@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         var formData = new FormData(document.getElementById('volunteerForm'));
+        var token = document.getElementById("token")?.value || "";
 
         fetch('/volunteer_new_application/submit', {
             method: 'POST',
@@ -208,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log('Submit response:', data);
 
                 if (data.status === 'success') {
-                    window.location.href = '/volunteer_registration_status';
+                    window.location.href = "/volunteer_registration_status?token=" + encodeURIComponent(token);
                 } else if (data.status === 'error') {
                     displayValidationErrors(data.errors);
                 }

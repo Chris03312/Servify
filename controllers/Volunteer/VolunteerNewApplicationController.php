@@ -10,17 +10,29 @@ class VolunteerNewApplicationController
 
     public static function VolunteerNewApplication()
     {
-        if (!isset($_SESSION['email']) || !$_SESSION['email']) {
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
             redirect('/login');
         }
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
-        $notifications = Notification::getNotification();
-        $applicationInfo = Application::getinfoApplication();
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
+
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
+        $notifications = Notification::getNotification($email);
+        $applicationInfo = Application::getinfoApplication($email);
         $preferredMision = Application::preferredMission();
         $validId = Dashboard::getvalidId();
 
         view('Volunteer/volunteer_new_application', [
-            'email' => $_SESSION['email'],
+            'email' => $email,
             'applicationInfo' => $applicationInfo,
             'preferredMission' => $preferredMision,
             'sidebarinfo' => $sidebarData,
@@ -41,9 +53,10 @@ class VolunteerNewApplicationController
         require_once __DIR__ . '/../../configuration/Database.php';
 
         try {
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
+
+            $email = $_POST['hiddenemail'];
 
             // Retrieve the registration ID based on the email
             $stmt = $db->prepare("SELECT * FROM VPROFILE_TABLE WHERE EMAIL = :email");

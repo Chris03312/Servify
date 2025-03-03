@@ -42,7 +42,7 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="">
+                <form action="/volunteer_feedback/submit" method="POST">
 
                     <!--QUESTION #1-->
                     <section class="mb-5">
@@ -51,28 +51,28 @@
 
                             <div class="row">
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="happy-volunteer" autocomplete="off" required>
+                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="happy-volunteer" value="Happy" autocomplete="off" required>
                                     <label class="btn btn-outline-primary border-0 px-5" for="happy-volunteer"><i class="bi bi-emoji-smile fs-3"></i><br>Happy</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="cool-volunteer" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="cool-volunteer" value="Cool" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-5" for="cool-volunteer"><i class="bi bi-emoji-sunglasses fs-3"></i><br>Cool</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="sad-volunteer" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="sad-volunteer" value="Sad" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-5" for="sad-volunteer"><i class="bi bi-emoji-frown fs-3"></i><br>Sad</label>
 
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="disappointed-volunteer" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="disappointed-volunteer" value="Disappointed" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0" for="disappointed-volunteer"><i class="bi bi-emoji-dizzy fs-3"></i><br>Disappointed</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="thinking-volunteer" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceAsVolunteer" id="thinking-volunteer" value="Thinking" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-4" for="thinking-volunteer"><i class="bi bi-question-circle fs-3"></i><br>Thinking</label>
                                 </div>
                             </div>
@@ -87,28 +87,28 @@
 
                             <div class="row">
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="happy-system" autocomplete="off" required>
+                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="happy-system" value="Happy" autocomplete="off" required>
                                     <label class="btn btn-outline-primary border-0 px-5" for="happy-system"><i class="bi bi-emoji-smile fs-3"></i><br>Happy</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="cool-system" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="cool-system" value="Cool" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-5" for="cool-system"><i class="bi bi-emoji-sunglasses fs-3"></i><br>Cool</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="sad-system" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="sad-system" value="Sad" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-5" for="sad-system"><i class="bi bi-emoji-frown fs-3"></i><br>Sad</label>
 
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="disappointed-system" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="disappointed-system" value="Disappointed" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0" for="disappointed-system"><i class="bi bi-emoji-dizzy fs-3"></i><br>Disappointed</label>
                                 </div>
 
                                 <div class="col-auto">
-                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="thinking-system" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="experienceOnSystem" id="thinking-system" value="Thinking" autocomplete="off">
                                     <label class="btn btn-outline-primary border-0 px-4" for="thinking-system"><i class="bi bi-question-circle fs-3"></i><br>Thinking</label>
                                 </div>
                             </div>
@@ -120,18 +120,18 @@
                     <section class="mb-5">
                         <div>
                             <label for="suggestionTextarea" class="form-label">3. Any feedback or suggestions for improvement? We’d love to here them (Optional)</label>
-                            <textarea class="form-control" id="suggestionTextarea" rows="6" placeholder="Write your suggestions here..." style="resize: none;"></textarea>
+                            <textarea class="form-control" id="suggestionTextarea" name="feedback_text" rows="6" placeholder="Write your suggestions here..." style="resize: none;"></textarea>
                         </div>
                     </section>
 
                     <!--SUBMIT BUTTON-->
                     <section class="mb-5 d-flex justify-content-center gap-5">
                         <button type="button" class="btn border-0">Cancel</button>
-                        <button type="submit" class="btn btn-primary px-5">Submit</button>
+                        <button type="Submit" class="btn btn-primary px-5">Submit</button>
                     </section>
 
 
-                </form>
+                </form> 
             </div>
         </div>
 

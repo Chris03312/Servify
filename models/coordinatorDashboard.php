@@ -24,7 +24,7 @@ class CoordinatorDashboard
         }
     }
 
-    public static function getVolunteers()
+    public static function getVolunteers($parish)
     {
         try {
             $db = Database::getConnection();
@@ -39,8 +39,10 @@ class CoordinatorDashboard
                 FROM VOLUNTEERS_TBL AS v
                 INNER JOIN PRECINCT_TABLE AS p
                     ON v.BARANGAY = p.BARANGAY_NAME
+                WHERE v.PARISH = :parish
                 GROUP BY v.VOLUNTEERS_ID, v.ROLE, v.PRECINCT_NO, p.POLLING_PLACE
             ');
+            $stmt->execute(['parish' => $parish]);
             $stmt->execute();
             $volunteersTbl = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

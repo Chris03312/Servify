@@ -8,16 +8,30 @@ class AdminApprovalApplicationDetails
 
     public static function ShowApprovalApplicationDetails()
     {
+        session_start();
+
+        // Retrieve the session_id from GET or POST request
+        $session_id = $_GET['token'] ?? '';
+
+        // Check if the session exists for the given session_id
+        if (!isset($_SESSION['sessions'][$session_id])) {
+            redirect('/login');
+        }
+
+        // Fetch user session data
+        $userSession = $_SESSION['sessions'][$session_id];
+        $email = $userSession['email'];
+        $role = $userSession['role'];
 
         $application_id = $_POST['application_id'];
 
-        $sidebarData = SidebarInfo::getSidebarInfo($_SESSION['email'], $_SESSION['role']);
+        $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $applicationDetails = Application::reviewApplicationDetails($application_id);
-        $applicationInfo = Application::getinfoApplication();
+        $applicationInfo = Application::getinfoApplication($email);
 
         view('admin/volunteer_application_details', [
-            'email' => $_SESSION['email'],
-            'role' => $_SESSION['role'],
+            'email' => $email,
+            'role' => $role,
             'applicationId' => $application_id,
             'applicationInfo' => $applicationInfo,
             'applicationDetails' => $applicationDetails,
@@ -81,6 +95,13 @@ class AdminApprovalApplicationDetails
             $email = $selectedData['EMAIL'];
             $mobile_number = $selectedData['MOBILE_NUMBER'];
             $telephone_number = $selectedData['TEL_NUMBER'];
+            $prev_org_membership = $selectedData['PARISH_ORG_MEMBERSHIP'];
+            $prev_ppcrv_exp_date = $selectedData['PREVIOUS_EXP_MONTH'];
+            $prev_ppcrv_exp_month = $selectedData['PREVIOUS_EXP_MONTH'];
+            $prev_ppcrv_exp_year = $selectedData['PREVIOUS_EXP_YEAR'];
+            $prev_ppcrv_exp_yrs = $selectedData['PREVIOUS_EXP_YRS'];
+            $prev_precinct = $selectedData['PREVIOUS_PPCRV_VOL_ASS'];
+            $pref_ppcrv_vol_ass = $selectedData['PREFERRED_PPCRV_VOL_ASS'];
             $date_registered = $selectedData['APPLICATION_DATE'];
             $date_approved = date('F j, Y');
 
@@ -118,6 +139,14 @@ class AdminApprovalApplicationDetails
                         EMAIL,
                         MOBILE_NUMBER,
                         TELEPHONE_NUMBER,
+                        PARISH_ORG_MEM,
+                        PREV_PPCRV_EXP_DATE,
+                        PREV_PPCRV_EXP_MONTH,
+                        PREV_PPCRV_EXP_YEAR,
+                        PREV_PPCRV_EXP_YEARS_OF_SERV,
+                        PREV_PPCRV_VOL_ASS,
+                        PREV_PRECINCT,
+                        PREF_PPCRV_VOL_ASS,
                         DATE_REGISTERED,
                         DATE_APPROVED
                     ) VALUES (
@@ -150,6 +179,14 @@ class AdminApprovalApplicationDetails
                         :email,
                         :mobile_number,
                         :telephone_number,
+                        :parish_org_mem,
+                        :prev_ppcrv_exp_date,
+                        :prev_ppcrv_exp_month,
+                        :prev_ppcrv_exp_year,
+                        :prev_ppcrv_exp_yrs,
+                        :prev_ppcrv_vol_ass,
+                        :prev_precinct,
+                        :pref_ppcrv_vol_ass,
                         :date_registered,
                         :date_approved
                     )
@@ -185,18 +222,46 @@ class AdminApprovalApplicationDetails
                     ':email' => $email,
                     ':mobile_number' => $mobile_number,
                     ':telephone_number' => $telephone_number,
+                    ':parish_org_mem' => $prev_org_membership,
+                    ':prev_ppcrv_exp_date' => $prev_ppcrv_exp_date,
+                    ':prev_ppcrv_exp_month' => $prev_ppcrv_exp_month,
+                    ':prev_ppcrv_exp_year' => $prev_ppcrv_exp_year,
+                    ':prev_ppcrv_exp_yrs' => $prev_ppcrv_exp_yrs,
+                    ':prev_ppcrv_vol_ass' => $prev_precinct,
+                    ':prev_precinct' => $prev_precinct,
+                    ':pref_ppcrv_vol_ass' => $pref_ppcrv_vol_ass,
                     ':date_registered' => $date_registered,
                     ':date_approved' => $date_approved
                 ]);
 
-                $updatestmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status WHERE APPLICATION_ID = :application_id');
+                $updatestmt = $db->prepare('UPDATE APPLICATION_INFO SET STATUS = :status, REMARKS = :remarks WHERE APPLICATION_ID = :application_id');
                 $updatestmt->execute([
                     ':status' => 'Approved',
+                    ':remarks' => 'Approved for Assignment',
                     ':application_id' => $application_id
                 ]);
 
+                $selectstmt = $db->prepare('SELECT USERNAME FROM ACCOUNTS WHERE EMAIL = :email');
+                $selectstmt->execute([':email' => $email]);
+                $selectedAccounts = $selectstmt->fetch(PDO::FETCH_ASSOC);
+
+                $username = $selectedAccounts['USERNAME'];
+
+                $description = 'Your application is approved your preferred assignment is ' . $assigned_assignment . ' at the ' . $assigned_polling_place . '. Check your registration status here: ';
+                $created_at = date("F j, Y h:i:s");
+
+                $activity = $db->prepare('INSERT INTO ACTIVITIES (USERNAME, EMAIL, DESCRIPTION, CREATED_AT)
+                 VALUES (:username, :email, :description, :created_at)');
+                $activity->execute([
+                    ':username' => $username,
+                    ':email' => $email,
+                    ':description' => $description,
+                    ':created_at' => $created_at
+                ]);
+
+
                 $db->commit();
-                redirect('/admin_volunteer_management');
+                redirect('/admin_volunteer_management?token=' . urlencode($_GET['token']));
             } catch (PDOException $e) {
                 $db->rollBack();
                 error_log('Error in inserting into the volunteers table: ' . $e->getMessage());

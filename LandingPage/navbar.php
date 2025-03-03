@@ -139,7 +139,7 @@ if (!isset($allMissions)) {
     }
 
     @media screen and (max-width: 768px) {
-        .navbar-container{
+        .navbar-container {
             position: fixed;
             top: 15px;
             left: 15px;
@@ -170,7 +170,7 @@ if (!isset($allMissions)) {
             top: 5px;
             left: -175px;
             border-radius: 5px;
-            
+
         }
 
         .dropdown.active .dropdown-menu {
@@ -215,7 +215,6 @@ if (!isset($allMissions)) {
         }
 
     }
-
 </style>
 <div class="navbar-container">
     <nav class="navbar">
@@ -254,7 +253,7 @@ if (!isset($allMissions)) {
                     <?php else: ?>
                         <li><a href="#">No missions available</a></li>
                     <?php endif; ?>
-                    <li><a href="/pollwatchers">Types of Pollwatchers</a></li>
+                    <!-- <li><a href="/pollwatchers">Types of Pollwatchers</a></li> -->
                 </ul>
             </li>
 
@@ -273,41 +272,40 @@ if (!isset($allMissions)) {
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-  const dropdowns = document.querySelectorAll('.dropdown-toggles');
-  let clickedOnce = null; 
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdowns = document.querySelectorAll('.dropdown-toggles');
+        let clickedOnce = null;
 
-  dropdowns.forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-      if (window.innerWidth <= 768) { 
-        e.preventDefault(); 
-        const parentLi = this.parentElement;
+        dropdowns.forEach(toggle => {
+            toggle.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentLi = this.parentElement;
 
-        if (clickedOnce !== parentLi) {
-          
-          document.querySelectorAll('.dropdown').forEach(dropdown => {
-            if (dropdown !== parentLi) {
-              dropdown.classList.remove('active'); 
+                    if (clickedOnce !== parentLi) {
+
+                        document.querySelectorAll('.dropdown').forEach(dropdown => {
+                            if (dropdown !== parentLi) {
+                                dropdown.classList.remove('active');
+                            }
+                        });
+
+                        parentLi.classList.toggle('active');
+                        clickedOnce = parentLi;
+                    } else {
+
+                        window.location.href = this.getAttribute('href');
+                    }
+                }
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => dropdown.parentElement.classList.remove('active'));
+                clickedOnce = null;
             }
-          });
-
-          parentLi.classList.toggle('active');
-          clickedOnce = parentLi; 
-        } else {
-          
-          window.location.href = this.getAttribute('href');
-        }
-      }
+        });
     });
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.dropdown')) {
-      dropdowns.forEach(dropdown => dropdown.parentElement.classList.remove('active'));
-      clickedOnce = null;
-    }
-  });
-});
 
 </script>
-

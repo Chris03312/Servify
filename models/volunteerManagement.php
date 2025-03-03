@@ -5,7 +5,7 @@ require_once __DIR__ . '/../configuration/Database.php';
 class VolunteerManagement
 {
 
-    public static function getCityList()
+    public static function getCityList($session_id)
     {
         try {
             // Get the database connection
@@ -27,7 +27,7 @@ class VolunteerManagement
                 $CityName = $city['MUNICIPALITY/CITY'];
                 $Citylinks[] = [
                     'name' => $CityName,
-                    'link' => '/district_volunteer_directory?City=' . urlencode($CityName),
+                    'link' => '/district_volunteer_directory?token=' . urlencode($session_id) . '&City=' . urlencode($CityName),
                 ];
             }
 
@@ -41,7 +41,7 @@ class VolunteerManagement
         }
     }
 
-    public static function getDistrictDirectory($city)
+    public static function getDistrictDirectory($city, $session_id)
     {
         try {
             $db = Database::getConnection();
@@ -72,13 +72,15 @@ class VolunteerManagement
                 return [];
             }
 
-            // Generate links for each district
+            // Generate links for each districts
             $districtLinks = [];
             foreach ($districts as $district) {
                 $districtName = $district['DISTRICT'];
                 $districtLinks[] = [
                     'name' => $districtName,
-                    'link' => '/barangay_volunteer_directory?City=' . urlencode($city) . '&District=' . urlencode($districtName)
+                    'link' => '/barangay_volunteer_directory?token=' . urlencode($session_id) .
+                        '&City=' . urlencode($city) .
+                        '&District=' . urlencode($districtName)
                 ];
             }
 
@@ -92,7 +94,7 @@ class VolunteerManagement
         }
     }
 
-    public static function getBarangayDirectory($district, $city)
+    public static function getBarangayDirectory($district, $city, $session_id)
     {
         try {
             $db = Database::getConnection();
@@ -139,7 +141,10 @@ class VolunteerManagement
                 $barangayName = $barangay['BARANGAY_NAME'];
                 $barangayLinks[] = [
                     'name' => $barangayName,
-                    'link' => '/polling_area?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName)
+                    'link' => '/polling_area?token=' . urlencode($session_id) .
+                        '&City=' . urlencode($city) .
+                        '&District=' . urlencode($district) .
+                        '&Barangay=' . urlencode($barangayName)
                 ];
             }
 
@@ -154,7 +159,7 @@ class VolunteerManagement
     }
 
 
-    public static function getPollingPlace($city, $district, $barangay)
+    public static function getPollingPlace($session_id, $city, $district, $barangay)
     {
         try {
             $db = Database::getConnection();
@@ -206,7 +211,7 @@ class VolunteerManagement
                 $pollingPlace = $barangay['POLLING_PLACE']; // Fetch polling place here
                 $pollingLinks[] = [
                     'name' => $pollingPlace,
-                    'link' => '/list_of_volunteer?City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
+                    'link' => '/list_of_volunteer?token=' . urlencode($session_id) . '&City=' . urlencode($city) . '&District=' . urlencode($district) . '&Barangay=' . urlencode($barangayName) . '&PollingPlace=' . urlencode($pollingPlace),
                 ];
             }
 
@@ -323,4 +328,22 @@ class VolunteerManagement
         }
 
     }
+
+    public static function updateRemarks($applicationId, $remarks)
+    {
+        try {
+            $db = Database::getConnection();
+            $stmt = $db->prepare("UPDATE APPLICATION_INFO SET REMARKS = :remarks WHERE APPLICATION_ID = :application_id");
+            $stmt->execute([
+                ':remarks' => $remarks,
+                ':application_id' => $applicationId
+            ]);
+
+            return ($stmt->rowCount() > 0);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
 }

@@ -13,13 +13,14 @@
 
             <ul class="sidebar-nav mt-2">
                 <li class="sidebar-item">
-                    <a href="/coordinator_dashboard" class="nav-link">
+                    <a href="/coordinator_dashboard?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="bi bi-grid-fill me-2"></i>Dashboard</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_announcements" class="nav-link"><i
-                            class="bi bi-megaphone-fill me-2"></i>Announcements</a>
+                    <a href="/coordinator_announcements?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link"><i class="bi bi-megaphone-fill me-2"></i>Announcements</a>
                 </li>
 
                 <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
@@ -27,44 +28,51 @@
                             class="fa-solid fa-users me-2"></i>Volunteer Management</a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item ms-3">
-                            <a href="/coordinator_volunteer_management" class="nav-link border-bottom"><i
-                                    class="fa-solid fa-users me-2"></i>Volunteer Management</a>
+                            <a href="/coordinator_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i class="fa-solid fa-users me-2"></i>Volunteer
+                                Management</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/add_new_volunteer" class="nav-link border-bottom"><i
-                                    class="fa-solid fa-file-export me-2"></i>Registration Form</a>
+                            <a href="/add_new_volunteer?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Registration
+                                Form</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/pending_submissions" class="nav-link border-bottom"><i
+                            <a href="/pending_submissions?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i
                                     class="fa-solid fa-file-export me-2"></i>Submissions</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_attendance_tracking" class="nav-link">
+                    <a href="/coordinator_attendance_tracking?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="fa-solid fa-file-circle-check me-2"></i>Attendance Tracking</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_achievements" class="nav-link">
+                    <a href="/coordinator_achievements?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="fa-solid fa-award me-2"></i>Achievements</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_inquiries" class="nav-link">
+                    <a href="/coordinator_inquiries?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="fa-solid fa-circle-question me-2"></i>Inquiries</a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="/coordinator_feedback" class="nav-link">
+                    <a href="/coordinator_feedback?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
                         <i class="bi bi-chat-dots-fill me-2"></i></i>Feedback Form</a>
                 </li>
-
                 <li class="sidebar-item">
-                    <a href="/reports" class="nav-link"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+                    <a href="/coordinator_feedback?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                        class="nav-link">
+                        <i class="bi bi-bar-chart-line-fill me-2"></i></i>Reports</a>
                 </li>
-
             </ul>
         </div>
     </aside>
@@ -141,7 +149,12 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">My Profile</a></li>
                         <li><a class="dropdown-item" href="/coordinator_profile_settings">Profile Settings</a></li>
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="/logout?token=<?php echo urlencode($_GET['token'] ?? ''); ?>">
+                                Logout
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -39,6 +39,42 @@ class Adminreports
         }
     }
 
+    public static function AdminGetVolunteerList()
+    {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare('
+            SELECT
+                v.*,
+                CONCAT(p.FIRST_NAME, " ", COALESCE(p.MIDDLE_NAME, ""), " ", p.SURNAME) AS COORDINATOR,
+                p.DISTRICT
+            FROM VOLUNTEERS_TBL AS v
+            INNER JOIN CPROFILE_TABLE AS p
+            ON v.PARISH = p.PARISH
+            ');
+            $stmt->execute();
+            $volunteersList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $currentDate = date('Y');
+
+            foreach ($volunteersList as &$volunteer) {
+                if (!empty($volunteer['DATE_APPROVED'])) {
+                    $volunteer['YEARSOFSERVICE'] = $currentDate - date("Y", strtotime($volunteer['DATE_APPROVED']));
+                } else {
+                    $volunteer['YEARSOFSERVICE'] = 0; // Default if DATE_APPROVED is missing
+                }
+            }
+
+            return [
+                'volunteersList' => $volunteersList
+            ];
+        } catch (PDOException $e) {
+            error_log('Error in getting Volunteers List in admin reports: ' . $e->getMessage());
+            return ['volunteersList' => []]; // Return an empty structure to avoid errors
+        }
+    }
+
     public static function numberofVolunteerPerYear()
     {
         try {

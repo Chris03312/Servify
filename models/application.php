@@ -5,11 +5,9 @@ require_once __DIR__ . '/../configuration/Database.php';
 class Application
 {
 
-    public static function getinfoApplication()
+    public static function getinfoApplication($email)
     {
         try {
-
-            $email = $_SESSION['email'];
 
             $db = Database::getConnection();
 
@@ -44,6 +42,21 @@ class Application
         }
     }
 
+    public static function AdminViewDetails($volunteer_id)
+    {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare("SELECT * FROM VOLUNTEERS_TBL WHERE VOLUNTEERS_ID = :volunteer_id");
+            $stmt->execute(['volunteer_id' => $volunteer_id]);
+            $volunteersDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $volunteersDetails;
+        } catch (PDOException $e) {
+            error_log('Error in getting the application details' . $e->getMessage());
+        }
+    }
+
     public static function preferredMission()
     {
         try {
@@ -57,5 +70,7 @@ class Application
         }
 
     }
+
+
 
 }

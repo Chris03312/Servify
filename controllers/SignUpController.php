@@ -27,6 +27,13 @@ class SignUpController
         ]);
     }
 
+
+    public static function easyRandomAlphanumeric($length)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle($characters), 0, $length);
+    }
+
     public static function SignUp()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -94,16 +101,19 @@ class SignUpController
                 exit;
             }
 
+            $randomID = self::easyRandomAlphanumeric(8);
+
             $db->beginTransaction();
 
             // Insert into VPROFILE_TABLE
             $stmt = $db->prepare('
                     INSERT INTO VPROFILE_TABLE 
-                    (PROFILE_DATE_CREATED, PARISH, PRECINCT_NO, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, DISTRICT, ZIPCODE, EMAIL)
+                    (VPROFILE_ID, PROFILE_DATE_CREATED, PARISH, PRECINCT_NO, ROLE, SURNAME, FIRST_NAME, MIDDLE_NAME, NAME_SUFFIX, BIRTHMONTH, BIRTHDATE, BIRTHYEAR, CITY, STREETADDRESS, BARANGAY, DISTRICT, ZIPCODE, EMAIL)
                     VALUES
-                    (:profile_date_created, :parish, :precinct_no, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :district, :zipCode, :email)
+                    (:vprofile_id, :profile_date_created, :parish, :precinct_no, :role, :surname, :firstname, :middleName, :nameSuffix, :birthMonth, :birthDate, :birthYear, :city, :street, :barangay, :district, :zipCode, :email)
                 ');
             $stmt->execute([
+                'vprofile_id' => $randomID,
                 ':profile_date_created' => $input['profile_date_created'],
                 ':parish' => $input['parish'],
                 ':precinct_no' => $input['precinct_no'],
@@ -123,15 +133,13 @@ class SignUpController
                 ':email' => $input['email']
             ]);
 
-            $vprofileId = $db->lastInsertId();
-
             // Insert into ACCOUNTS
             $stmt = $db->prepare('
                     INSERT INTO ACCOUNTS (ACCOUNT_ID, ROLE, PARISH, USERNAME, EMAIL, PASSWORD)
                     VALUES (:account_id, :role, :parish, :username, :email, :password)
                 ');
             $stmt->execute([
-                ':account_id' => $vprofileId,
+                ':account_id' => $randomID,
                 ':role' => $input['role'],
                 ':parish' => $input['parish'],
                 ':username' => $input['username'],

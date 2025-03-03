@@ -45,6 +45,12 @@
             </div>
         </div>
 
+        <?php if (isset($_SESSION['alert'])): ?>
+            <?php echo $_SESSION['alert']; ?>
+            <?php unset($_SESSION['alert']); // ✅ Remove alert after displaying 
+                ?>
+        <?php endif; ?>
+
         <!-- MODAL FOR REGISTER NEW COORDINATOR -->
         <div class="modal fade" id="registerCoordinatorModal" tabindex="-1"
             aria-labelledby="registerCoordinatorModalLabel" aria-hidden="true">
@@ -62,56 +68,96 @@
                             <p class="text-muted text-center mb-5">Please fill in the following details to create a new
                                 coordinator account.</p>
 
-                            <form id="registrationForm" class="row" action="" method="POST">
+                            <form id="registrationForm" class="row needs-validation" novalidate
+                                action="/add_new_coordinator" method="POST">
 
+                                <div class="col-md-12 mb-2">
+                                    <label for="role" class="form-label visually-hidden">Role</label>
+                                    <input type="hidden" class="form-control uppercase-input" id="role" name="role"
+                                        value="Coordinator" required>
+                                    <div class="invalid-feedback">
+                                        Please input surname.
+                                    </div>
+                                </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="surname" class="form-label">Surname</label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
+                                    <input type="text" class="form-control uppercase-input" id="surname" name="surname"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Please input surname.
+                                    </div>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="firstname" class="form-label">First name</label>
-                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                    <input type="text" class="form-control uppercase-input" id="firstname"
+                                        name="firstname" required>
+                                    <div class="invalid-feedback">
+                                        Please input firstname.
+                                    </div>
                                 </div>
                                 <div class="col-md-3 mb-2">
                                     <label for="middlename" class="form-label">Middle name</label>
-                                    <input type="text" class="form-control" id="middlename" name="middlename">
+                                    <input type="text" class="form-control uppercase-input" id="middlename"
+                                        name="middlename" required>
+                                    <div class="invalid-feedback">
+                                        Input N/A if not applicable.
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="suffix" class="form-label">Suffix</label>
-                                    <input type="text" class="form-control" id="suffix" name="suffix">
+                                    <input type="text" class="form-control uppercase-input" id="suffix" name="suffix"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Input N/A if not applicable.
+                                    </div>
                                 </div>
 
                                 <span class="mb-2 mt-3">Assigned to:</span>
                                 <div class="col-md-4 mb-2">
                                     <label for="city" class="form-label visually-hidden">City</label>
-                                    <select id="city" class="form-select">
-                                        <option selected>Select City</option>
+                                    <select id="city" name="city" class="form-select" required>
+                                        <option selected disabled value="">Select City</option>
                                         <option>...</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        Please select city.
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-2">
                                     <label for="district" class="form-label visually-hidden">District No.</label>
-                                    <select id="district" class="form-select">
-                                        <option selected>Select District No.</option>
+                                    <select id="district" name="district" class="form-select" required>
+                                        <option selected disabled value="">Select District</option>
                                         <option>...</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        Please select district.
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-2">
                                     <label for="parishName" class="form-label visually-hidden">Parish Name</label>
-                                    <select id="parishName" class="form-select">
-                                        <option selected>Select Parish Name</option>
+                                    <select id="parishName" name="parishName" class="form-select" required>
+                                        <option selected disabled value="">Select Parish</option>
                                         <option>...</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        Please select Parish.
+                                    </div>
                                 </div>
 
                                 <span class="mb-2 mt-3">Account Details</span>
                                 <div class="col-md-6 mb-2">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">
+                                        Please input email address.
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username">
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                    <div class="invalid-feedback">
+                                        Please input username.
+                                    </div>
                                 </div>
 
                                 <div class="col-12 mb-3">
@@ -124,11 +170,13 @@
                                         <button class="btn btn-outline-secondary" type="button"><i
                                                 class="bi bi-clipboard"></i></button>
                                     </div>
+
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn px-4 mb-2" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        name="register_new_coordinator">Register</button>
                                 </div>
 
                             </form>
@@ -239,7 +287,14 @@
                                 <td><?php echo $coordinators['MUNICIPALITY/CITY']; ?></td>
                                 <td><?php echo $coordinators['DISTRICT']; ?></td>
                                 <td><?php echo $coordinators['PARISH']; ?></td>
-                                <td><a href="/view_coordinator_details" class="btn btn-sm text-primary">View Details</a></td>
+                                <td>
+                                    <form method="POST"
+                                        action="/admin_coordinator_management/view?token=<?php echo urlencode($_GET['token']); ?>">
+                                        <input type="hidden" name="coordinator_id"
+                                            value="<?php echo $coordinators['CPROFILE_ID'] ?>">
+                                        <button type="Submit" class="btn  btn-sm text-primary">View Details</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -253,7 +308,52 @@
 
 
 
+        <script>
+            // AUTO CAPITALIZE INPUT
+            document.querySelectorAll(".uppercase-input").forEach(input => {
+                input.addEventListener("input", function () {
+                    this.value = this.value.toUpperCase();
+                });
+            });
 
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+                'use strict'
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
+
+            document.getElementById("generatePassword").addEventListener("click", function () {
+                const surname = document.getElementById("surname").value.trim();
+
+                if (surname === "") {
+                    alert("Please enter a surname first!");
+                    return;
+                }
+
+                // Generate random number (4-digit)
+                const randomNumber = Math.floor(1000 + Math.random() * 9000);
+
+                // Format the password (Surname + Random Number)
+                const password = surname.toUpperCase() + randomNumber;
+
+                // Set the password field value
+                document.getElementById("generated_password").value = password;
+            });
+        </script>
 
 
 

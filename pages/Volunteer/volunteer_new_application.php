@@ -634,6 +634,8 @@
                             </div>
 
                             <div class="mb-3 text-center">
+                                <input type="hidden" name="hiddenemail" value="<?php echo $email ?>">
+                                <input type="hidden" id="token" value="<?php echo $_GET['token']; ?>">
                                 <button id="submitBtn" class="btn btn-outline-primary px-4"
                                     type="submit">Submit</button>
                             </div>

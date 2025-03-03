@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
 
     <!--BOOTSTRAP CSS CDN LINK-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--BOOTSTRAP CDN ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -100,7 +101,8 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
-                            <img src="../img/icons8-announcement-90.png" alt="Announcement Icon" class="img-fluid" height="30" width="30">
+                            <img src="../img/icons8-announcement-90.png" alt="Announcement Icon" class="img-fluid"
+                                height="30" width="30">
                             <span class="fw-bold text-primary">Announcements</span>
                         </div>
                         <div class="card-body">
@@ -127,7 +129,8 @@
                             <h5 class="card-title">CONGRATULATIONS</h5>
                             <p class="card-text">You earned a <strong>Gold Badge</strong></p>
                             <div>
-                                <img src="../img/GOLD BADGE.png" alt="Badge" class="img-fluid" height="auto" width="120">
+                                <img src="../img/GOLD BADGE.png" alt="Badge" class="img-fluid" height="auto"
+                                    width="120">
                             </div>
                         </div>
                     </div>
@@ -141,7 +144,8 @@
                     <!--VOLUNTEER ASSIGNMENT-->
                     <div class="card">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
-                            <img src="../img/icons8-pin-90.png" alt="Announcement Icon" class="img-fluid" height="30" width="30">
+                            <img src="../img/icons8-pin-90.png" alt="Announcement Icon" class="img-fluid" height="30"
+                                width="30">
                             <h5 class="fw-bold text-primary">Volunteer Assignment</h5>
                         </div>
                         <div class="card-body text-center d-flex flex-column gap-2">
@@ -152,13 +156,18 @@
                             <div class="accordion" id="accordionRole">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRole" aria-expanded="false" aria-controls="collapseRole">
-                                        <h3><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT'] ?? " "); ?></h3>
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseRole"
+                                            aria-expanded="false" aria-controls="collapseRole">
+                                            <h3><?php echo htmlspecialchars($userInfo['ASSIGNED_ASSIGNMENT'] ?? " "); ?>
+                                            </h3>
                                         </button>
                                     </h2>
-                                    <div id="collapseRole" class="accordion-collapse collapse" data-bs-parent="#accordionRole">
+                                    <div id="collapseRole" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionRole">
                                         <div class="accordion-body">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ab fuga est nisi molestias consequatur, ut repellat deleniti aperiam itaque!</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ab fuga
+                                                est nisi molestias consequatur, ut repellat deleniti aperiam itaque!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -175,12 +184,14 @@
                     <!-- MAP PREVIEW -->
                     <div class="card mt-2">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
-                            <img src="../img/icons8-location-90.png" alt="Announcement Icon" class="img-fluid" height="30" width="30">
+                            <img src="../img/icons8-location-90.png" alt="Announcement Icon" class="img-fluid"
+                                height="30" width="30">
                             <h5 class="fw-bold text-primary">Map Preview</h5>
                         </div>
                         <div class="card-body text-center d-flex flex-column gap-2">
                             <div class="ratio ratio-16x9 mt-2">
-                                <div id="map" class="ratio ratio-16x9 mt-2"></div> <!-- Replace iframe with the Leaflet map -->
+                                <div id="map" class="ratio ratio-16x9 mt-2"></div>
+                                <!-- Replace iframe with the Leaflet map -->
                             </div>
                             <script>
                                 var latitude = <?php echo isset($location['latitude']) && $location['latitude'] !== '' ? $location['latitude'] : 'null'; ?>;
@@ -206,10 +217,13 @@
                                             <a href="#" class="text-decoration-none text-dark">
                                                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                                                     <div class="time">
-                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?></p>
+                                                        <p class="text-center"><?php echo $activity['FORMATTED_DATE'] ?? " "; ?>
+                                                        </p>
                                                     </div>
                                                     <div class="time">
-                                                        <p class="text-center"><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? " "); ?></p>
+                                                        <p class="text-center">
+                                                            <?php echo htmlspecialchars($activity['DESCRIPTION']) . ' <a href="/volunteer_registration_status" class="text-decoration-none">Click here</a>'; ?>
+                                                        </p>
                                                     </div>
                                                     <div class="time">
                                                         <p><i class="bi bi-chevron-right"></i></p>
@@ -243,9 +257,11 @@
                                                 </span>
 
                                                 <div class="timeline-content">
-                                                    <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?></h5>
+                                                    <h5 class="fw-bold"><?php echo $timeline['ASSIGNED_ASSIGNMENT'] ?? " "; ?>
+                                                    </h5>
                                                     <p class="text-muted">
-                                                        <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?> <!-- Display assigned mission -->
+                                                        <?php echo $timeline['ASSIGNED_POLLING_PLACE'] ?? ""; ?>
+                                                        <!-- Display assigned mission -->
                                                     </p>
                                                 </div>
                                             </li>
@@ -275,7 +291,9 @@
 
 
     <!--BOOTSTRAP JS CDN LINK-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 

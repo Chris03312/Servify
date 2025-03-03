@@ -37,7 +37,9 @@
 
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin_attendance_tracking">Attendance Tracking</a></li>
+                <li class="breadcrumb-item"><a
+                        href="/admin_attendance_tracking?token=<?php echo urlencode($_GET['token']); ?>">Attendance
+                        Tracking</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Precincts</li>
             </ol>
         </nav>
@@ -101,7 +103,8 @@
                         <td>200</td>
                         <td>150</td>
                         <td>50</td>
-                        <td><a href="/admin_attendance_summary" class="btn btn-outline-primary">View</a></td>
+                        <td><a href="/admin_attendance_summary?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="btn btn-outline-primary">View</a></td>
                     </tr>
             </table>
         </div>
