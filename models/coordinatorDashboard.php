@@ -61,10 +61,10 @@ class CoordinatorDashboard
 
             $stmt = $db->prepare('
             SELECT 
-                v.VOLUNTEERS_ID,
-                v.ROLE,
-                v.SURNAME, v.FIRST_NAME, v.MIDDLE_NAME, v.NAME_SUFFIX, v.NICKNAME, v.CIVIL_STATUS,
-                v.PRECINCT_NO,
+                v.*,
+                CONCAT(v.SURNAME, ", ", v.FIRST_NAME, " ", v.MIDDLE_NAME) AS `FULL NAME`,
+                CONCAT(v.BIRTHMONTH, " ", v.BIRTHDAY, ", ", v.BIRTHYEAR) AS `BIRTHDATE`,
+                CONCAT(v.PREV_PPCRV_EXP_MONTH, " ", v.PREV_PPCRV_EXP_DATE, ", ", v.PREV_PPCRV_EXP_YEAR) AS `PREV_PPCRV_EXP`,
                 p.POLLING_PLACE
             FROM VOLUNTEERS_TBL AS v
             INNER JOIN PRECINCT_TABLE AS p
