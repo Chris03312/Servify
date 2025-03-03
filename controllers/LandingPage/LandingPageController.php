@@ -46,6 +46,46 @@ class LandingPageController
         ]);
     }
 
+    // public static function ShowAnnouncements()
+    // {
+    //     $volunteers = Landingpage::Volunteers();
+    //     $announcements = Landingpage::Announcements();
+
+    //     view('LandingPage/announcements', [
+    //         'volunteers' => $volunteers,
+    //         'announcements' => $announcements
+    //     ]);
+    // }
+
+    public static function ShowAnnouncement()
+    {
+        $announcementTitle = $_GET['announcements'] ?? null;
+
+        if (!$announcementTitle) {
+            die("Invalid request: No announcement selected.");
+        }
+
+        $announcements = Landingpage::Announcements($announcementTitle);
+
+        if (!$announcements) {
+            die("Error: No data found for this announcement.");
+        }
+
+        view('landingpage/announcements', [
+            'announcements' => $announcements
+        ]);
+    }
+
+
+    public static function ShowEvents()
+    {
+        $events = Landingpage::Announcements();
+    
+        view('landingpage/events', [
+            'events' => $events
+        ]);
+    }
+
     // VOLUNTEERS
 
 
@@ -137,7 +177,6 @@ class LandingPageController
         view('landingpage/pollwatchers', [
             'volunteers' => $volunteers
         ]);
-
     }
     
     // ANNOUNCEMENTS
@@ -175,29 +214,21 @@ class LandingPageController
     //     ]);
     // }
 
-    public static function ShowEvents()
-    {
-        $events = Landingpage::Announcements();
-    
-        view('landingpage/events', [
-            'events' => $events
-        ]);
-    }
+    // public static function ShowAnnouncement()
+    // {
+    //     $announcementTitle = $_GET['announcements'] ?? null;
 
-    public static function ShowAnnouncement()
-    {
-        $announcementTitle = $_GET['announcement'] ?? null;
+    //     if (!$announcementTitle) {
+    //         die("Invalid request: No announcement selected.");
+    //     }
 
-        if (!$announcementTitle) {
-            die("Invalid request: No announcement selected.");
-        }
+    //     $announcements = Landingpage::Announcements($announcementTitle); // Fetch a single announcement
 
-        $announcement = Landingpage::Announcements($announcementTitle); // Fetch a single announcement
+    //     view('landingpage/announcements', [
+    //         'announcements' => $announcements
+    //     ]);
+    // }
 
-        view('landingpage/announcement', [
-            'announcement' => $announcement
-        ]);
-    }
 
 
 

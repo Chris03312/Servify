@@ -10,16 +10,42 @@
 <body>
 <?php include("LandingPage/navbar.php"); ?>
 
-<?php if (!empty($announcement)): ?>
+<?php if (!empty($announcements) && is_array($announcements)): ?>
     <section class="news-section">
+        <a href="/events" class="back-icon">
+            <i class="fas fa-arrow-left"></i>
+        </a>
         <div class="news-container">
             <div class="left-box">
                 <div class="news-content">
-                    <h2 class="news-title"><?php echo htmlspecialchars($announcement['announcement_title']); ?></h2>
-                    <p class="news-meta"><i class="fas fa-calendar-alt"></i> 
-                        <?php echo htmlspecialchars($announcement['announcement_date'] ?? 'Date not available'); ?>
-                    </p>
-                    <p><?php echo nl2br(htmlspecialchars($announcement['announcement_description'] ?? 'No description available.')); ?></p>
+                    <h2 class="news-title">
+                        <?php echo isset($announcements['announcement_title']) ? htmlspecialchars($announcements['announcement_title']) : 'No Title Available'; ?>
+                    </h2>
+                    <div class="news-meta">
+                        <p><i class="fas fa-calendar-alt"></i>
+                            <?php echo isset($announcements['announcement_date']) ? htmlspecialchars($announcements['announcement_date']) : 'Date not available'; ?>
+                        </p>
+                        <p><i class="fas fa-user"></i>
+                            <?php echo isset($announcements['announcement_by']) ? htmlspecialchars($announcements['announcement_by']) : 'Author not available'; ?>
+                        </p>
+                    </div>
+                    <p>
+                        <?php echo isset($announcements['announcement_desc']) ? nl2br(htmlspecialchars($announcements['announcement_desc'])) : 'No description available.'; ?>
+                    </p> 
+                        
+                    <br>
+
+                    <div class="gallery">
+                        <img src="Landingpage/img/e1.jpg" alt="">
+                        <img src="Landingpage/img/e2.jpg" alt="">
+                        <img src="Landingpage/img/e3.jpg" alt="">
+                        <img src="Landingpage/img/e4.jpg" alt="">
+                        <img src="Landingpage/img/e5.jpg" alt="">
+                        <img src="Landingpage/img/e6.jpg" alt="">
+                        <img src="Landingpage/img/e7.jpg" alt="">
+                        <img src="Landingpage/img/e8.jpg" alt="">
+                    </div>                      
+                    <br>  
                 </div>
             </div>
         </div>
@@ -27,6 +53,7 @@
 <?php else: ?>
     <p>Announcement not found.</p>
 <?php endif; ?>
+
 
 
 
