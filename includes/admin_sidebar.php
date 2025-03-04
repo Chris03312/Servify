@@ -73,36 +73,20 @@
                 <li class="sidebar-item">
                     <a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
                     data-bs-target="#websiteManagementMenu" aria-expanded="false" aria-controls="websiteManagementMenu">
-                    <i class="bi bi-window-desktop me-2"></i>Website
+                    <i class="bi bi-window me-2"></i>Website
                     </a>
                     <ul id="websiteManagementMenu" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item ms-3">
-                            <a href="/adminEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage Events</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
                             <a href="/adminViewEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>View Events</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
-                            <a href="/adminEditEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Edit Events</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
-                            <a href="/adminFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage FAQ</a>
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Events</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="/adminViewFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>View FAQ</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
-                            <a href="/adminEditFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Edit FAQ</a>
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage FAQ</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage Information</a>
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Information</a>
                         </li>
 
                     </ul>

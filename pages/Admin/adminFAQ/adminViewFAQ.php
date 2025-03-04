@@ -9,41 +9,36 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-     <!--Font awesome CDN ICONS-->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--BOOTSTRAP CSS CDN LINK-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--BOOTSTRAP CDN ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!--Font awesome CDN ICONS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
-    .faq-container {
-        max-width: 85%;
-        margin-left: 270px; /* Push it to the right */
-        padding-top: 100px; /* Prevent overlap with navbar */
+
+    body{
+        background-color: #EAEAEA !important;
     }
-    .faq-card {
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        background-color: white;
-    }
-    .table-responsive {
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    .table th, .table td {
-        vertical-align: middle;
-        text-align: center;
-    }
+
 </style>
-<body class="bg-light">
+<body>
 
 <?php include('includes/admin_sidebar.php');?>
 
     <div class="container faq-container">
-        <div class="faq-card">
-            <h2 class="mb-4">Manage Frequently Asked Questions</h2>
+        <div class="faq-card m-4">
+            <h2 class="mb-3">Manage Frequently Asked Questions</h2>
+            <a href="/adminFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="btn btn-success mb-3">Add New FAQ</a>
 
             <?php
             #include("../adminIncludes/data.php"); // Database connection
@@ -86,10 +81,28 @@
 
             #$conn->close();
             ?>
-
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><?php #echo $row["question"; ?></td>
+                    <td><?php #echo $row["answer"]; ?></td>
+                        <td>
+                        <a href='../adminFAQ/adminEditFAQ.php?id=" . $row["id"] . "' class='btn btn-warning btn-sm'>Edit</a>
+                        <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteFaqModal' 
+                            data-faq-id='" . $row["id"] . "'>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="text-center mt-3">
-                <a href="../adminFAQ/adminFAQ.php" class="btn btn-success">Add New FAQ</a>
             </div>
         </div>
     </div>

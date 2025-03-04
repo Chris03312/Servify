@@ -8,92 +8,46 @@
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-     <!--Font awesome CDN ICONS-->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--BOOTSTRAP CSS CDN LINK-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--BOOTSTRAP CDN ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!--Font awesome CDN ICONS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <style>
     
     body {
-        display: flex;
-        min-height: 100vh;
-        margin: 0;
-        overflow-x: hidden;
-    }
-
-    .main-content {
-        margin-left: 270px; /* Push content to the right */
-        
-        padding: 20px;
-        width: calc(100% - 270px); /* Adjust width */
-    }
-
-    .navbar {
-        width: calc(100% - 250px);
-        margin-left: 250px;
-        position: fixed;
-        top: 0;
-        background: black;
-        color: white;
-        padding: 15px;
-        z-index: 1000;
-    }
-
-    /* Adjust event container */
-    .event-container {
-        max-width: 85%;
-        margin-left: 270px; /* Push it to the right */
-        padding-top: 60px; /* Prevent overlap with navbar */
-    }
-
-    /* Ensure table content is responsive */
-    .table-responsive {
-        border-radius: 10px;
-        overflow: hidden;
-        margin-top: 20px;
-    }
-
-    /* Improve table styling */
-    .table th, .table td {
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    /* Ensure images inside the table are properly sized */
-    .table img {
-        border-radius: 5px;
-        max-width: 100px;
-        height: auto;
-    }
-
-    /* Make buttons fit nicely */
-    .btn-sm {
-        padding: 5px 10px;
-        font-size: 14px;
+        background-color: #EAEAEA !important;
     }
 
 </style>
-<body class="bg-light">
+<body>
 <?php include('includes/admin_sidebar.php');?>
 
 <div class="container event-container">
     <div class="event-card mt-3">
-    <h2 class="mb-4">Event Announcements</h2>
-    <a href="adminEvents.php" class="btn btn-success mb-3"> Add New Event</a>
+        <h2 class="mb-4">Event Announcements</h2>
+        <a href="/adminEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="btn btn-success mb-3"> Add New Event</a>
     
     <?php #if ($result->num_rows > 0): ?>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
+        <table class="table">
+            <thead class="table-primary">
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                    <th>Author</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Actions</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -109,7 +63,7 @@
                         </td>
                         <td>
                         <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal" 
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteEventModal" 
                                 data-event-id="<?php #echo $row['announcement_id']; ?>">
                             Delete
                         </button>
