@@ -1,6 +1,6 @@
 <?php
 if (!isset($allMissions)) {
-    $allMissions = Landingpage::Volunteers(); // ✅ Fetch all missions if not already available
+    $allMissions = Landingpage::Volunteers(); 
 }
 ?>
 
@@ -28,17 +28,28 @@ if (!isset($allMissions)) {
         align-items: center;
     }
 
-    .nav-links {
+    /* .nav-links {
         list-style-type: none;
         display: flex;
         margin-right: 70px;
         gap: 30px;
         position: relative;
-    }
+    } */
 
     .nav-links li {
         position: relative;
     }
+
+    .nav-links {
+        list-style-type: none;
+        display: flex;
+        align-items: center; /* Ensures vertical alignment */
+        margin-right: 70px;
+        gap: 30px;
+        position: relative;
+    }
+
+
 
     .nav-links li a {
         text-decoration: none;
@@ -53,6 +64,11 @@ if (!isset($allMissions)) {
     .nav-links li a:hover {
         color: #007BFF;
     }
+
+    .nav-links li .login-btn a:hover {
+        color: #007BFF;
+    }
+    
 
 
     /* ABOUT US & RESOURCES DROPDOWN */
@@ -97,20 +113,28 @@ if (!isset($allMissions)) {
         transform: rotate(180deg);
     }
 
-
+    /* LOGIN BUTTON */
     .login-btn {
-        background-color: #007BFF;
         color: white;
-        padding: 12px 30px;
-        border-radius: 5px;
+        padding: 12px 40px; 
+        border-radius: 8px;
         font-weight: bold;
+        font-size: 17px;
+        text-align: center;
+        text-decoration: none;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        min-width: 120px; 
+        white-space: nowrap; 
         transition: background 0.3s ease;
+        border: 1px solid rgb(1, 96, 198); 
     }
 
     .login-btn:hover {
-        background-color: #0056b3;
+        background-color:rgb(1, 96, 198);
+        color: white !important; 
     }
-    
 
     /* NAVBAR LOGO */
     .logo {

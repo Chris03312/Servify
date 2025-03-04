@@ -6,7 +6,14 @@
     <title>DDPAM Admin Website</title>
     <link rel="stylesheet" href="../DDPAM Voting/css/styles.css">
     <link rel="stylesheet" href="../DPPAM Voting/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!--Font awesome CDN ICONS-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
@@ -17,9 +24,9 @@
     }
 </style>
 <body>
-    <?php
-    include("../adminIncludes/adminSidePanel.php")
-    ?>
+
+<?php include('includes/admin_sidebar.php');?>
+
     <div class="event-container">
     <div class="admin-faq mt-3">
         <h2 class="mb-4">Add Event</h2>

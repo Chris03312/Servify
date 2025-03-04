@@ -1,94 +1,32 @@
-<?php
-include("../adminIncludes/data.php"); // Include database connection
-
-// Fetch existing event details
-if (isset($_GET["id"])) {
-    $id = intval($_GET["id"]); // Sanitize input
-
-    $query = "SELECT * FROM event_announcement WHERE announcement_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $event = $result->fetch_assoc();
-
-    if (!$event) {
-        echo "<script>alert('Event not found.'); window.location.href='adminViewEvents.php';</script>";
-        exit();
-    }
-
-    $stmt->close();
-}
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = trim($_POST["title"]);
-    $date = trim($_POST["date"]);
-    $author = trim($_POST["author"]);
-    $description = trim($_POST["description"]);
-    $newImage = $_FILES["image"]["name"] ?? "";
-
-    if (!empty($title) && !empty($date) && !empty($author) && !empty($description)) {
-        // If new image is uploaded, process it
-        if (!empty($newImage)) {
-            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/LandingPage/img/";
-            $targetFilePath = $targetDir . basename($_FILES["image"]["name"]);
-            $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-            $allowedTypes = ["jpg", "jpeg", "png"];
-
-            if (!in_array($imageFileType, $allowedTypes)) {
-                echo "<script>alert('Invalid file type. Only JPG, JPEG, and PNG allowed.');</script>";
-            } elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
-                // Update query with new image
-                $updateQuery = "UPDATE event_announcement SET announcement_title = ?, announcement_date = ?, announcement_by = ?, announcement_desc = ?, announcement_images = ? WHERE announcement_id = ?";
-                $stmt = $conn->prepare($updateQuery);
-                $stmt->bind_param("sssssi", $title, $date, $author, $description, $newImage, $id);
-            } else {
-                echo "<script>alert('Error uploading new image.');</script>";
-                exit();
-            }
-        } else {
-            // Update query without changing the image
-            $updateQuery = "UPDATE event_announcement SET announcement_title = ?, announcement_date = ?, announcement_by = ?, announcement_desc = ? WHERE announcement_id = ?";
-            $stmt = $conn->prepare($updateQuery);
-            $stmt->bind_param("ssssi", $title, $date, $author, $description, $id);
-        }
-
-        if ($stmt->execute()) {
-            echo "<script>alert('Event updated successfully!'); window.location.href='adminViewEvents.php';</script>";
-        } else {
-            echo "<script>alert('Error: " . $stmt->error . "');</script>";
-        }
-
-        $stmt->close();
-    } else {
-        echo "<script>alert('Please fill in all fields.');</script>";
-    }
-}
-
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DDPAM Admin Website</title>
-    <link rel="stylesheet" href="../DPPAM Voting/css/styles.css">
+    <link rel="stylesheet" href="../DDPAM Voting/css/styles.css">
     <link rel="stylesheet" href="../DPPAM Voting/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!--Font awesome CDN ICONS-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
 </head>
 <style>
-    .container {
+    .event-container {
         max-width: 85%;
         margin-left: 270px; /* Push it to the right */
         padding-top: 60px; /* Prevent overlap with navbar */
     }
 </style>
 <body>
-    <?php include("../adminIncludes/adminSidePanel.php"); ?>
+
+<?php include('includes/admin_sidebar.php');?>
     
     <div class="container ">
         <div class="admin-edit-event mt-3">

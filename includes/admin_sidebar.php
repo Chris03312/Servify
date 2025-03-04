@@ -68,6 +68,7 @@
                     <a href="/admin_reports?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
                 </li>
+
                 <!-- WEBSITE -->
                 <li class="sidebar-item">
                     <a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
@@ -76,24 +77,32 @@
                     </a>
                     <ul id="websiteManagementMenu" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item ms-3">
-                            <a href="/admin_coordinator_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bi bi-window-desktop me-2"></i>Dashboard</a>
+                            <a href="/adminEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage Events</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Add Events</a>
-                        </li>
-                        <li class="sidebar-item ms-3">
-                            <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            <a href="/adminViewEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
                             class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>View Events</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Add FAQ</a>
+                            <a href="/adminEditEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Edit Events</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage FAQ</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminViewFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>View FAQ</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminEditFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Edit FAQ</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>View FAQ</a>
+                            class="nav-link border-bottom"><i class="bbi bi-window-desktop me-2"></i>Manage Information</a>
                         </li>
 
                     </ul>

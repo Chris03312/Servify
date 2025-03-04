@@ -1,10 +1,3 @@
-<?php
-include("../adminIncludes/data.php"); // Ensure this file contains the database connection
-
-// Fetch events from the database
-$query = "SELECT * FROM event_announcement ORDER BY announcement_date DESC";
-$result = $conn->query($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +5,13 @@ $result = $conn->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DDPAM Admin Website</title>
+    <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!--Font awesome CDN ICONS-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <style>
@@ -77,14 +76,14 @@ $result = $conn->query($query);
 
 </style>
 <body class="bg-light">
-<?php include("../adminIncludes/adminSidePanel.php"); ?>
+<?php include('includes/admin_sidebar.php');?>
 
 <div class="container event-container">
     <div class="event-card mt-3">
     <h2 class="mb-4">Event Announcements</h2>
     <a href="adminEvents.php" class="btn btn-success mb-3"> Add New Event</a>
     
-    <?php if ($result->num_rows > 0): ?>
+    <?php #if ($result->num_rows > 0): ?>
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
@@ -98,30 +97,30 @@ $result = $conn->query($query);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
+                <?php #while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row["announcement_id"]; ?></td>
-                        <td><?php echo $row["announcement_title"]; ?></td>
-                        <td><?php echo $row["announcement_date"]; ?></td>
-                        <td><?php echo $row["announcement_by"]; ?></td>
-                        <td><?php echo $row["announcement_desc"]; ?></td>
+                        <td><?php #echo $row["announcement_id"]; ?></td>
+                        <td><?php #echo $row["announcement_title"]; ?></td>
+                        <td><?php #echo $row["announcement_date"]; ?></td>
+                        <td><?php #echo $row["announcement_by"]; ?></td>
+                        <td><?php #echo $row["announcement_desc"]; ?></td>
                         <td>
-                            <img src="/LandingPage/img/<?php echo $row['announcement_images']; ?>" alt="Event Image" width="80">
+                            <img src="/LandingPage/img/<?php #echo $row['announcement_images']; ?>" alt="Event Image" width="80">
                         </td>
                         <td>
-                        <a href="adminEditEvents.php?id=<?= $row['announcement_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal" 
-                                data-event-id="<?php echo $row['announcement_id']; ?>">
+                                data-event-id="<?php #echo $row['announcement_id']; ?>">
                             Delete
                         </button>
                         </td>
                     </tr>
-                <?php endwhile; ?>
+                <?php #endwhile; ?>
             </tbody>
         </table>
-    <?php else: ?>
+    <?php #else: ?>
         <p class="text-center">No events found.</p>
-    <?php endif; ?>
+    <?php #endif; ?>
         </div>
 </div>
 <!-- Delete Confirmation Modal -->
@@ -164,6 +163,3 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 </html>
 
-<?php
-$conn->close();
-?>

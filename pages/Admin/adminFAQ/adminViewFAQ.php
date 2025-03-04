@@ -6,7 +6,14 @@
     <title>DDPAM Admin Website</title>
     <link rel="stylesheet" href="../DPPAM Voting/css/styles.css">
     <link rel="stylesheet" href="../DPPAM Voting/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!--Font awesome CDN ICONS-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
@@ -32,52 +39,52 @@
 </style>
 <body class="bg-light">
 
-    <?php include("../adminIncludes/adminSidePanel.php"); ?>
+<?php include('includes/admin_sidebar.php');?>
 
     <div class="container faq-container">
         <div class="faq-card">
             <h2 class="mb-4">Manage Frequently Asked Questions</h2>
 
             <?php
-            include("../adminIncludes/data.php"); // Database connection
+            #include("../adminIncludes/data.php"); // Database connection
 
             // Fetch FAQs
-            $query = "SELECT * FROM faq";
-            $result = $conn->query($query);
+            // $query = "SELECT * FROM faq";
+            // $result = $conn->query($query);
 
-            if ($result->num_rows > 0) {
-                echo "<div class='table-responsive'>";
-                echo "<table class='table table-bordered table-hover'>";
-                echo "<thead class='table-dark'>
-                        <tr>
-                            <th>Question</th>
-                            <th>Answer</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>";
-                echo "<tbody>";
+            // if ($result->num_rows > 0) {
+            //     echo "<div class='table-responsive'>";
+            //     echo "<table class='table table-bordered table-hover'>";
+            //     echo "<thead class='table-dark'>
+            //             <tr>
+            //                 <th>Question</th>
+            //                 <th>Answer</th>
+            //                 <th>Actions</th>
+            //             </tr>
+            //         </thead>";
+            //     echo "<tbody>";
 
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row["question"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($row["answer"]) . "</td>";
-                    echo "<td>
-                            <a href='../adminFAQ/adminEditFAQ.php?id=" . $row["id"] . "' class='btn btn-warning btn-sm'>Edit</a>
-                            <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteFaqModal' 
-                                    data-faq-id='" . $row["id"] . "'>
-                                Delete
-                            </button>
-                        </td>";
-                    echo "</tr>";
-                }
+            //     while ($row = $result->fetch_assoc()) {
+            //         echo "<tr>";
+            //         echo "<td>" . htmlspecialchars($row["question"]) . "</td>";
+            //         echo "<td>" . htmlspecialchars($row["answer"]) . "</td>";
+            //         echo "<td>
+            //                 <a href='../adminFAQ/adminEditFAQ.php?id=" . $row["id"] . "' class='btn btn-warning btn-sm'>Edit</a>
+            //                 <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteFaqModal' 
+            //                         data-faq-id='" . $row["id"] . "'>
+            //                     Delete
+            //                 </button>
+            //             </td>";
+            //         echo "</tr>";
+            //     }
 
-                echo "</tbody></table>";
-                echo "</div>";
-            } else {
-                echo "<p class='alert alert-warning text-center'>No FAQs found.</p>";
-            }
+            //     echo "</tbody></table>";
+            //     echo "</div>";
+            // } else {
+            //     echo "<p class='alert alert-warning text-center'>No FAQs found.</p>";
+            // }
 
-            $conn->close();
+            #$conn->close();
             ?>
 
 

@@ -59,6 +59,14 @@ require_once __DIR__ . '/../controllers/Admin/AdminReportsController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminApprovalDetailsController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminVolunteerDetailsController.php';
 
+require_once __DIR__ . '/../controllers/Admin/AdminViewEventsController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminEventsController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminEditEventsController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminFAQController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminViewFAQController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminEditFAQController.php';
+
+
 
 // LANDING PAGES
 require_once __DIR__ . '/../controllers/LandingPage/LandingPageController.php';
@@ -176,6 +184,16 @@ $router->add('/admin_feedback', [AdminFeedbackController::class, 'ShowAdminFeedb
 $router->add('/admin_reports', [AdminReportsController::class, 'ShowAdminReports']);
 
 $router->add('/add_new_coordinator', [AdminCoorManagementController::class, 'ShowAddCoordinator']);
+
+$router->add('/adminViewEvents', [AdminViewEventsController::class, 'ShowAdminViewEvents']);
+$router->add('/adminEditEvents', [AdminEditEventsController::class, 'ShowAdminEditEvents']);
+$router->add('/adminEvents', [AdminEventsController::class, 'ShowAdminEvents']);
+
+$router->add('/adminViewFAQ', [AdminViewFAQController::class, 'ShowAdminViewFAQ']);
+$router->add('/adminEditFAQ', [AdminEditFAQController::class, 'ShowAdminEditFAQ']);
+$router->add('/adminFAQ', [AdminFAQController::class, 'ShowAdminFAQ']);
+
+
 
 
 

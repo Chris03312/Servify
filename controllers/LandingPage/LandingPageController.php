@@ -6,13 +6,14 @@ require_once __DIR__ . '/../../models/Landingpage.php';
 class LandingPageController
 {
 
-    // ABOUT US
     public static function Showlandingpage()
     {
         $volunteers = Landingpage::Volunteers();
+        $coordinators = Landingpage::Coordinators(); 
 
         view('LandingPage/landingpage', [
-            'volunteers' => $volunteers
+            'volunteers' => $volunteers,
+            'coordinators'=> $coordinators
         ]);
     }
 
@@ -38,13 +39,25 @@ class LandingPageController
     public static function ShowOrganizationProfile()
     {
         $volunteers = Landingpage::Volunteers();
-        $coordinators = Landingpage::Coordinators();
-
+        $coordinators = Landingpage::Coordinators(); 
+        
         view('LandingPage/organization', [
             'volunteers' => $volunteers,
             'coordinators' => $coordinators
         ]);
     }
+
+
+    // public static function ShowOrganizationProfile()
+    // {
+    //     $volunteers = Landingpage::Volunteers();
+    //     $coordinators = Landingpage::Coordinators();
+
+    //     view('LandingPage/organization', [
+    //         'volunteers' => $volunteers,
+    //         'coordinators' => $coordinators
+    //     ]);
+    // }
 
     public static function ShowAnnouncement()
     {
@@ -180,7 +193,7 @@ class LandingPageController
     //         die("Invalid request: No announcement selected.");
     //     }
 
-    //     $announcements = Landingpage::Announcements($announcementTitle); // Fetch a single announcement
+    //     $announcements = Landingpage::Announcements($announcementTitle); 
 
     //     view('landingpage/announcements', [
     //         'announcements' => $announcements
