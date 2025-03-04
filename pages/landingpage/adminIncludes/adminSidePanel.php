@@ -65,11 +65,17 @@
         flex-grow: 1;
     }
     .navbar {
-        width: 100%;
+        width: calc(100% - 250px);
         margin-left: 250px;
+        position: fixed;
+        top: 0;
+        background: black;
+        color: white;
+        padding: 15px;
+        z-index: 1000;
     }
 </style>
-<nav class="navbar navbar-dark bg-dark px-3">
+    <nav class="navbar navbar-dark bg-dark px-3">
         <span class="navbar-brand mb-0 h1">Welcome to Website Admin Page</span>
     </nav>
     <div class="sidebar">

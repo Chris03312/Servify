@@ -50,9 +50,16 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit FAQ</title>
+    <title>DDPAM Admin Website</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    .container {
+        max-width: 85%;
+        margin-left: 270px; /* Push it to the right */
+        padding-top: 60px; /* Prevent overlap with navbar */
+    }
+</style>
 <body>
     <?php
     include("../adminIncludes/adminSidePanel.php")

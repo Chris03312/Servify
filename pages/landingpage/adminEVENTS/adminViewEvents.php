@@ -11,16 +11,78 @@ $result = $conn->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Events</title>
+    <title>DDPAM Admin Website</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
+<style>
+    
+    body {
+        display: flex;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        margin-left: 270px; /* Push content to the right */
+        
+        padding: 20px;
+        width: calc(100% - 270px); /* Adjust width */
+    }
+
+    .navbar {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+        position: fixed;
+        top: 0;
+        background: black;
+        color: white;
+        padding: 15px;
+        z-index: 1000;
+    }
+
+    /* Adjust event container */
+    .event-container {
+        max-width: 85%;
+        margin-left: 270px; /* Push it to the right */
+        padding-top: 60px; /* Prevent overlap with navbar */
+    }
+
+    /* Ensure table content is responsive */
+    .table-responsive {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    /* Improve table styling */
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /* Ensure images inside the table are properly sized */
+    .table img {
+        border-radius: 5px;
+        max-width: 100px;
+        height: auto;
+    }
+
+    /* Make buttons fit nicely */
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+</style>
 <body class="bg-light">
 <?php include("../adminIncludes/adminSidePanel.php"); ?>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Event Announcements</h2>
-    <a href="add_event.php" class="btn btn-success mb-3"> Add New Event</a>
+<div class="container event-container">
+    <div class="event-card mt-3">
+    <h2 class="mb-4">Event Announcements</h2>
+    <a href="adminEvents.php" class="btn btn-success mb-3"> Add New Event</a>
     
     <?php if ($result->num_rows > 0): ?>
         <table class="table table-bordered table-striped">
@@ -47,7 +109,7 @@ $result = $conn->query($query);
                             <img src="/LandingPage/img/<?php echo $row['announcement_images']; ?>" alt="Event Image" width="80">
                         </td>
                         <td>
-                            <a href="adminEditEvents.php?id=<?php echo $row['announcement_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="adminEditEvents.php?id=<?= $row['announcement_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEventModal" 
                                 data-event-id="<?php echo $row['announcement_id']; ?>">
                             Delete
@@ -60,7 +122,7 @@ $result = $conn->query($query);
     <?php else: ?>
         <p class="text-center">No events found.</p>
     <?php endif; ?>
-
+        </div>
 </div>
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="deleteEventLabel" aria-hidden="true">
