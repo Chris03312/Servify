@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDPAM admin Website</title>
+    <title>DDPAM Admin Website</title>
     <link rel="stylesheet" href="../DDPAM Voting/css/styles.css">
     <link rel="stylesheet" href="../DPPAM Voting/css/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<style>
+    .event-container {
+        max-width: 85%;
+        margin-left: 270px; /* Push it to the right */
+        padding-top: 60px; /* Prevent overlap with navbar */
+    }
+</style>
 <body>
     <?php
     include("../adminIncludes/adminSidePanel.php")
     ?>
-    <div class="container">
-    <div class="admin-faq mt-3 p-4">
+    <div class="event-container">
+    <div class="admin-faq mt-3">
         <h2 class="mb-4">Add Event</h2>
         <form action="../adminEVENTS/insertevent.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
