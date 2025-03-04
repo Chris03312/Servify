@@ -4,10 +4,10 @@ require_once __DIR__ . '/../../models/Sidebarinfo.php';
 require_once __DIR__ . '/../../models/AdminDirectory.php';
 
 
-class AdminEditEventsController
+class AdminEditVolunteerController
 {
 
-    public static function ShowAdminEditEvents()
+    public static function ShowAdminEditVolunteer()
     {
         session_start();
 
@@ -27,7 +27,7 @@ class AdminEditEventsController
         $sidebarData = SidebarInfo::getSidebarInfo($email, $role);
         $citiesDirectory = AdminDirectory::getCitiesDirectory($session_id);
 
-        view('Admin/adminEVENTS/adminEditEvents', [
+        view('Admin/adminVOLUNTEERS/adminEditVolunteers', [
             'role' => $role,
             'citiesDirectory' => $citiesDirectory,
             'adminsidebarinfo' => $sidebarData

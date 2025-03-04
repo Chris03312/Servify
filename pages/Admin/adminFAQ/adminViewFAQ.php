@@ -94,7 +94,7 @@
                     <td><?php #echo $row["question"; ?></td>
                     <td><?php #echo $row["answer"]; ?></td>
                         <td>
-                        <a href='../adminFAQ/adminEditFAQ.php?id=" . $row["id"] . "' class='btn btn-warning btn-sm'>Edit</a>
+                        <a href="/adminEditFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class='btn btn-warning btn-sm'>Edit</a>
                         <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteFaqModal' 
                             data-faq-id='" . $row["id"] . "'>Delete</button>
                         </td>

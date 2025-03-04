@@ -34,61 +34,67 @@
 
 <div class="container event-container">
     <div class="event-card mt-3">
-        <h2 class="mb-4">Event Announcements</h2>
-        <a href="/adminEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="btn btn-success mb-3"> Add New Event</a>
+        <h2 class="mb-4">Missions</h2>
+        <a href="/adminVolunteers?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="btn btn-success mb-3"> Add Mission</a>
     
     <?php #if ($result->num_rows > 0): ?>
         <table class="table">
             <thead class="table-primary">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Short Description</th>
+                    <th scope="col">Mission Acronym</th>
+                    <th scope="col">Work</th>
+                    <th scope="col">Qualification</th>
                     <th scope="col">Image</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php #while ($row = $result->fetch_assoc()): ?>
+                <?php 
+                // if ($result->num_rows > 0): 
+                //     while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php #echo $row["MISSIONS_ID"]; ?></td>
+                            <td><?php #echo $row["MISSION_NAME"]; ?></td>
+                            <td><?php #echo $row["MISSION_TYPE"]; ?></td>
+                            <td><?php #echo $row["MISSION_DESCRIPTION"]; ?></td>
+                            <td><?php #echo $row["MISSION_DESC"]; ?></td>
+                            <td><?php #echo $row["MISSION_WORK"]; ?></td>
+                            <td><?php #echo $row["MISSION_QUALIFICATION"]; ?></td>
+                            <td>
+                                <img src="/missions/img/<?php #echo $row['MISSION_IMAGE']; ?>" alt="Mission Image" width="80">
+                            </td>
+                            <td>
+                                <a href="/adminEditVolunteers?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteVolunteerModal" 
+                                    data-mission-id="<?php #echo $row['MISSIONS_ID']; ?>">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    <?php #endwhile;
+                #else: ?>
                     <tr>
-                        <td><?php #echo $row["announcement_id"]; ?></td>
-                        <td><?php #echo $row["announcement_title"]; ?></td>
-                        <td><?php #echo $row["announcement_date"]; ?></td>
-                        <td><?php #echo $row["announcement_by"]; ?></td>
-                        <td><?php #echo $row["announcement_desc"]; ?></td>
-                        <td>
-                            <img src="/LandingPage/img/<?php #echo $row['announcement_images']; ?>" alt="Event Image" width="80">
-                        </td>
-                        <td>
-                        <a href="/adminEditEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class='btn btn-warning btn-sm'>Edit</a>
-                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteEventModal" 
-                                data-event-id="<?php #echo $row['announcement_id']; ?>">
-                            Delete
-                        </button>
-                        </td>
+                        <td colspan="9" class="text-center">No missions available</td>
                     </tr>
-                <?php #endwhile; 
-                 #else: ?>
-                    <tr>
-                    <td colspan="7" class="text-center">No events available</td>
-                    </tr>
-    <?php #endif; ?>
+                <?php #endif; ?>
             </tbody>
         </table>
         </div>
 </div>
 <!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="deleteEventLabel" aria-hidden="true">
+<div class="modal fade" id="deleteVolunteerModal" tabindex="-1" aria-labelledby="deleteVolunteerLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteEventLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="deleteVolunteerLabel">Confirm Deletion</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this event?
+                Are you sure you want to delete this mission?
             </div>
             <div class="modal-footer">
                 <!-- Button that sends DELETE request -->
@@ -100,15 +106,15 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var deleteEventModal = document.getElementById("deleteEventModal");
+    var deleteVolunteerModal = document.getElementById("deleteVolunteerModal");
     var confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
 
     // Listen for modal show event
-    deleteEventModal.addEventListener("show.bs.modal", function(event) {
+    deleteVolunteerModal.addEventListener("show.bs.modal", function(event) {
         var button = event.relatedTarget; // Button that triggered the modal
         if (button) {
             var eventId = button.getAttribute("data-event-id"); // Get event ID
-            confirmDeleteBtn.href = "deleteevent.php?id=" + eventId;
+            confirmDeleteBtn.href = "#?id=" + eventId;
         }
     });
 });

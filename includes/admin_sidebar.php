@@ -81,6 +81,10 @@
                             class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Events</a>
                         </li>
                         <li class="sidebar-item ms-3">
+                            <a href="/adminViewVolunteers?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Volunteers</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
                             <a href="/adminViewFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
                             class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage FAQ</a>
                         </li>

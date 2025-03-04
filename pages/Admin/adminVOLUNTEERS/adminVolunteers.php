@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DDPAM Admin Website</title>
     <link rel="stylesheet" href="../DDPAM Voting/css/styles.css">
-    <link rel="stylesheet" href="../DPPAM Voting/css/bootstrap.css">
+    <link rel="stylesheet" href="../LandingPage/css/bootstrap.css">
     <link rel="stylesheet" href="../css/volunteer_sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--BOOTSTRAP CSS CDN LINK-->
@@ -33,34 +33,46 @@
 
 <?php include('includes/admin_sidebar.php');?>
 
-    <div class="event-container">
-    <div class="admin-faq m-5">
-        <h2 class="mb-4">Add Event</h2>
-        <form action="../adminEVENTS/insertevent.php" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Title</label>
-                <input type="text" name="title" class="form-control" required>
-            </div>
-
+<div class="mission-container">
+    <div class="admin-mission m-5">
+        <h2 class="mb-4">Add Mission</h2>
+        <form action="insertMission.php" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="col"> 
-                    <label class="form-label fw-semibold">Publish Date:</label>
-                    <input type="date" name="date" class="form-control" required>
+                <div class="col mb-3 md-4">
+                    <label class="form-label fw-semibold">Mission Name</label>
+                    <input type="text" name="mission_name" class="form-control" required>
                 </div>
-                <div class="col">
-                    <label class="form-label fw-semibold">Author</label>
-                    <input type="text" name="author" class="form-control" required>
+
+                <div class="col mb-3 md-4">
+                    <label class="form-label fw-semibold">Mission Type</label>
+                    <input type="text" name="mission_type" class="form-control" required>
+                </div>
+                    
+                <div class="col mb-3 md-4">
+                    <label class="form-label fw-semibold">Mission Acronym</label>
+                    <input type="text" name="mission_desc" class="form-control" rows="3" required>
                 </div>
             </div>
 
-            <div class="mb-3 mt-3">
+            <div class="mb-3">
                 <label class="form-label fw-semibold">Description</label>
-                <textarea name="description" class="form-control" rows="5" required></textarea>
+                <textarea name="mission_description" class="form-control" rows="3" required></textarea>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Work</label>
+                <textarea name="mission_work" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Qualification</label>
+                <textarea name="mission_qualification" class="form-control" rows="3" required></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="mb-1 fw-semibold">Upload Picture</label><br>
-                <input type="file" class="form-control" name="image" accept=".jpeg, .jpg, .png" onchange="previewImage(event)" required>
+                <input type="file" class="form-control" name="mission_image" accept=".jpeg, .jpg, .png" onchange="previewImage(event)" required>
             </div>
             <div class="mb-3">
                 <label class="form-label fw-semibold">Image Preview</label><br>
@@ -70,21 +82,18 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    </div>
-    <script>
-        function previewImage(event) {
-            let imagePreview = document.getElementById("imagePreview");
-            let file = event.target.files[0];
+</div>
 
-            if (file) {
-                let reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = "block";
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
+<script>
+function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+        var output = document.getElementById('imagePreview');
+        output.src = reader.result;
+        output.style.display = 'block';
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 </body>
 </html>

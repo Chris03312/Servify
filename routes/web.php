@@ -65,6 +65,10 @@ require_once __DIR__ . '/../controllers/Admin/AdminEditEventsController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminFAQController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminViewFAQController.php';
 require_once __DIR__ . '/../controllers/Admin/AdminEditFAQController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminViewVolunteerController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminEditVolunteerController.php';
+require_once __DIR__ . '/../controllers/Admin/AdminVolunteerController.php';
+
 
 
 
@@ -192,6 +196,11 @@ $router->add('/adminEvents', [AdminEventsController::class, 'ShowAdminEvents']);
 $router->add('/adminViewFAQ', [AdminViewFAQController::class, 'ShowAdminViewFAQ']);
 $router->add('/adminEditFAQ', [AdminEditFAQController::class, 'ShowAdminEditFAQ']);
 $router->add('/adminFAQ', [AdminFAQController::class, 'ShowAdminFAQ']);
+
+$router->add('/adminViewVolunteers', [AdminViewVolunteerController::class, 'ShowAdminViewVolunteer']);
+$router->add('/adminEditVolunteers', [AdminEditVolunteerController::class, 'ShowAdminEditVolunteer']);
+$router->add('/adminVolunteers', [AdminVolunteerController::class, 'ShowAdminVolunteer']);
+
 
 
 

@@ -25,53 +25,55 @@
     
 </head>
 <style>
-
+    body{
+        background-color: #EAEAEA !important;
+    }
 </style>
 <body>
 
 <?php include('includes/admin_sidebar.php');?>
     
-    <div class="container ">
-        <div class="admin-edit-event mt-3">
+    <div class="event-container">
+        <div class="admin-event m-5">
             <h2 class="mb-4">Edit Event</h2>
             
             <form action="adminEditEvents.php?id=<?= $id ?>" id="updateEventForm" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="event_id" value="<?= $event['announcement_id']; ?>">
 
                 <div class="mb-3">
-                    <label class="form-label">Title</label>
+                    <label class="form-label fw-semibold">Title</label>
                     <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($event['announcement_title']); ?>" required>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label">Publish Date</label>
+                        <label class="form-label fw-semibold">Publish Date</label>
                         <input type="date" name="date" class="form-control" value="<?= $event['announcement_date']; ?>" required>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Author</label>
+                        <label class="form-label fw-semibold">Author</label>
                         <input type="text" name="author" class="form-control" value="<?= htmlspecialchars($event['announcement_by']); ?>" required>
                     </div>
                 </div>
 
                 <div class="mb-3 mt-3">
-                    <label class="form-label">Description</label>
+                    <label class="form-label fw-semibold">Description</label>
                     <textarea name="description" class="form-control" rows="5" required><?= htmlspecialchars($event['announcement_desc']); ?></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Current Image</label><br>
+                    <label class="form-label fw-semibold">Current Image</label><br>
                     <img src="/LandingPage/img/<?= $event['announcement_images']; ?>" class="img-fluid img-thumbnail" width="200">
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Upload New Picture (Optional)</label>
+                    <label class="form-label fw-semibold">Upload New Picture (Optional)</label>
                     <input type="file" class="form-control" name="image" accept=".jpeg, .jpg, .png" onchange="previewImage(event)">
                     <small class="text-muted">Only upload if you want to change the image.</small>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">New Image Preview</label><br>
+                    <label class="form-label fw-semibold">New Image Preview</label><br>
                     <img id="imagePreview" class="img-fluid img-thumbnail" width="200" style="display: none;">
                 </div>
 
