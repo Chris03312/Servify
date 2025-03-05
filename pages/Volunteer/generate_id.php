@@ -31,12 +31,15 @@
 
     <!--MAIN CONTENT-->
     <main class="container-fluid p-3">
+        <button type="button" id="downloadPdfBtn" class="btn btn-sm btn-outline-secondary d-flex align-items-center float-end">
+            <i class="bi bi-download me-2"></i>Download ID
+        </button>
         <h4>Generate ID</h4>
 
 
         <div class="d-flex flex-md-row flex-column justify-content-center align-items-stretch gap-3">
             <!-- FRONT ID -->
-            <div class="card shadow-lg border-0 d-flex flex-column" style="width: 20rem; min-height: 100%;">
+            <div class="card shadow-lg border-0 d-flex flex-column" style="width: 25rem; min-height: 100%;">
                 <img src="../../img/ID_HEADER.png" class="card-img-top" alt="ID HEADER">
                 <div class="card-body flex-grow-1">
                     <!-- DPPAM LOGO AND TEXT -->
@@ -62,22 +65,27 @@
                         <img src="../../img/DPPAM LOGO.png" class="img-fluid rounded-circle" alt="PROFILE" style="width: 100px; border: 10px solid blue;">
 
                         <div class="mt-3 d-flex flex-column justify-content-center align-items-center gap-0" style="line-height: 1;">
-                            <span><h4>TAMAD</h4></span>
-                            <span>JUAN A.</span>
+                            <span>
+                                <h4><?php echo strtoupper($idInfo['SURNAME']) ?></h4>
+                            </span>
+                            <span><?php echo strtoupper($idInfo['FIRST_NAME'] . ' ' . substr($idInfo['MIDDLE_NAME'], 0, 1) . '.'); ?> </span>
                         </div>
 
-                        <p class="mt-3 text-muted">Volunteer</p>
+                        <p class="mt-3 text-muted"><?php echo $idInfo['ROLE'] ?></p>
+                        <span><?php echo strtoupper($idInfo['ASSIGNED_POLLING_PLACE']) ?></span>
+
                     </div>
                 </div>
                 <img src="../../img/ID_FOOTER.png" class="img-fluid" alt="ID FOOTER">
             </div>
 
             <!-- BACK ID -->
-            <div class="card shadow-lg border-0 d-flex flex-column" style="width: 20rem; min-height: 100%;">
+            <div class="card shadow-lg border-0 d-flex flex-column" style="width: 25rem; min-height: 100%;">
                 <img src="../../img/ID_HEADER.png" class="card-img-top" alt="ID HEADER">
                 <div class="card-body flex-grow-1">
                     <!-- DPPAM LOGO -->
                     <div class="position-absolute top-0 start-50 translate-middle-x" style="margin-top: 40px;">
+
                         <img src="../../img/DPPAM LOGO.png" alt="DPPAM LOGO" class="img-fluid" style="width: 70px;">
                     </div>
 
@@ -93,6 +101,10 @@
 
                         <!-- QC CODE -->
                         <div class="d-flex flex-column justify-content-center align-items-center gap-0">
+                            <form action="/generate_id/generateQrCode" method="POST">
+                                <input type="hidden" name="email" value="<?php echo $email ?>">
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Generate QR Code</button>
+                            </form>
                             <img src="../../img/DPPAM LOGO.png" alt="QR CODE" class="img-fluid" style="width: 80px;">
                             <small><strong>Scan QR Code to Record Attendance</strong></small>
 
@@ -100,7 +112,8 @@
                             <div class="d-flex flex-column justify-content-center align-items-center gap-0 mt-2">
                                 <small class="text-primary"><i class="bi bi-telephone-fill me-2"></i>09123456789</small>
                                 <small class="text-primary"><i class="bi bi-globe me-2"></i>www.servify.com</small>
-                                <small class="text-primary"><i class="bi bi-envelope-fill me-2"></i>sto.rosarioparish@dppam.gmail.com</small>
+                                <small class="text-primary"><i class="bi bi-envelope-fill me-2"></i><?php echo strtolower(str_replace(' ', '', $idInfo['PARISH'])) . '@dppam.gmail.com'; ?>
+
                             </div>
                         </div>
                     </div>
@@ -109,7 +122,6 @@
             </div>
         </div>
 
-
     </main>
     </div>
     </div>
@@ -117,6 +129,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        document.getElementById("downloadPdfBtn").addEventListener("click", function() {
+            const {
+                jsPDF
+            } = window.jspdf;
+            const doc = new jsPDF();
+
+            const frontId = document.querySelectorAll(".card")[0]; // First card (Front ID)
+            const backId = document.querySelectorAll(".card")[1]; // Second card (Back ID)
+
+            // Capture Front ID
+            html2canvas(frontId, {
+                scale: 2
+            }).then(canvas1 => {
+                let imgData1 = canvas1.toDataURL("image/png");
+
+                // Capture Back ID
+                html2canvas(backId, {
+                    scale: 2
+                }).then(canvas2 => {
+                    let imgData2 = canvas2.toDataURL("image/png");
+
+                    // Set document size to fit both images (A4 size)
+                    doc.addImage(imgData1, "PNG", 10, 10, 90, 120); // Front ID at top
+                    doc.addImage(imgData2, "PNG", 10, 140, 90, 120); // Back ID below
+
+                    // Save the final PDF
+                    doc.save("Volunteer_ID.pdf");
+                });
+            });
+        });
+    </script>
+
+
+
 
 </body>
 

@@ -107,6 +107,8 @@ $router->add('/achievements', [AchievementsController::class, 'Achievements']);
 $router->add('/ContactUs', [ContactUsController::class, 'ShowContactUs']);
 $router->add('/ContactUs/submit', [ContactUsController::class, 'ContactUs']);
 $router->add('/generate_id', [GenerateIDController::class, 'ShowGenerateID']);
+$router->add('generate_id/generateQrCode', [GenerateIDController::class, 'generateQrCode']);
+
 
 // Coordinator
 $router->add('/coordinator_dashboard', [CoordinatorDashboardController::class, 'ShowCoordinatorDashboard']);

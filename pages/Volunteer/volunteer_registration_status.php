@@ -99,7 +99,8 @@
 
                                         if ($application['STATUS'] === 'Approved') {
                                             if (in_array('Generate ID', $remarksArray)) {
-                                                echo '<a href="#" class="text-decoration-none">Generate ID</a> ';
+                                                echo '<a href="/generate_id?volunteers_id=' . urlencode($application['APPLICATION_ID']) .
+                                                    '&token=' . urlencode($_GET['token']) . '" class="text-decoration-none">Generate ID</a>';
                                             }
                                             if (in_array('Orientation and Training', $remarksArray)) {
                                                 echo '<br><a href="#" class="text-decoration-none">Orientation and Training Schedule</a>';

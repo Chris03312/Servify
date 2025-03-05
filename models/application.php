@@ -71,6 +71,22 @@ class Application
 
     }
 
+    public static function getidInformation($email)
+    {
+        try {
+            $db = Database::getConnection();
+
+            $stmt = $db->prepare("
+            SELECT * FROM VOLUNTEERS_TBL WHERE EMAIL = :email
+        ");
+            $stmt->execute(['email' => $email]);
+            $getidInformation = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $getidInformation;
+        } catch (PDOException $e) {
+            error_log('Error in getting the application details' . $e->getMessage());
+        }
+    }
 
 
 }

@@ -84,7 +84,8 @@
                             <div class="col-md-4 mb-3">
                                 <label for="firstname" class="form-label">Precinct Number:<sup
                                         class="text-danger fw-bold">*</sup></label>
-                                <input type="text" class="form-control" id="precinctNumber" name="precinctNumber">
+                                <input type="text" class="form-control" id="precinctNumber" name="precinctNumber"
+                                    value="<?php echo $applicationInfo['PRECINCT_NO'] ?? " "; ?>">
                                 <div class="invalid-feedback" id="error-precinctNumber"></div>
                             </div>
 
@@ -195,7 +196,7 @@
                             </div>
 
                             <script>
-                                document.addEventListener("DOMContentLoaded", function () {
+                                document.addEventListener("DOMContentLoaded", function() {
                                     // Function to calculate Age
                                     function calculateAge() {
                                         const birthYearInput = document.getElementById('birthYear');
@@ -679,7 +680,7 @@
 
     <!-- SCRIPT FOR MOBILE NUMBER -->
     <script>
-        document.getElementById("mobileNumber").addEventListener("input", function (event) {
+        document.getElementById("mobileNumber").addEventListener("input", function(event) {
             let value = event.target.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
 
             // Apply formatting as "09XX-XXX-XXXX"
@@ -692,15 +693,15 @@
             event.target.value = value;
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             let idFormats = {};
 
             // Load JSON File
-            $.getJSON("../configuration/id_formats.json", function (data) {
+            $.getJSON("../configuration/id_formats.json", function(data) {
                 idFormats = data;
             });
 
-            $('#nameofId').on('change', function () {
+            $('#nameofId').on('change', function() {
                 let selectedID = $('#nameofId').val();
                 let inputField = $('input[name="IDNumber"]');
 
@@ -715,7 +716,7 @@
                 }
             });
 
-            $('input[name="IDNumber"]').on('input', function () {
+            $('input[name="IDNumber"]').on('input', function() {
                 let selectedID = $('#nameofId').val();
                 let inputValue = $(this).val();
 

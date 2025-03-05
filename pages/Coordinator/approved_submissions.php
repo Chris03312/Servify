@@ -23,6 +23,8 @@
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -227,28 +229,28 @@
                                 <td><?php echo $application['FIRST_NAME'] . ' ' . $application['SURNAME']; ?></td>
                                 <td>
                                     <form action="/approved_submissions/remarks" method="POST">
-                                    <select name="status" class="form-select"
-                                        data-application-id="<?= $application['APPLICATION_ID']; ?>"
-                                        data-current-value="<?= $application['REMARKS'] ?? 'Waiting for Approval'; ?>" 
-                                        <?php echo ($application['STATUS'] !== 'Approved') ? 'disabled' : ''; ?>>
-                                        <?php
-                                        $statuses = ['Approved for Assignment', 'Generate ID', 'Orientation and Training', 'Generate Certificate', 'Complete'];
-                                        $remarks = $application['REMARKS'] ?? ''; // Ensure remarks is set
-                                        $remarksArray = explode(", ", $remarks); // Convert stored remarks into an array
+                                        <select name="status" class="form-select"
+                                            data-application-id="<?= $application['APPLICATION_ID']; ?>"
+                                            data-current-value="<?= $application['REMARKS'] ?? 'Waiting for Approval'; ?>"
+                                            <?php echo ($application['STATUS'] !== 'Approved') ? 'disabled' : ''; ?>>
+                                            <?php
+                                            $statuses = ['Approved for Assignment', 'Generate ID', 'Orientation and Training', 'Generate Certificate', 'Complete'];
+                                            $remarks = $application['REMARKS'] ?? ''; // Ensure remarks is set
+                                            $remarksArray = explode(", ", $remarks); // Convert stored remarks into an array
 
-                                        // Display all statuses
-                                        foreach ($statuses as $status) {
-                                            $selected = in_array($status, $remarksArray) ? 'selected' : ''; // Mark as selected if in REMARKS
-                                            $disabled = in_array($status, $remarksArray) ? 'disabled' : ''; // Disable if already in REMARKS
-                                            echo "<option value='$status' $selected $disabled>$status</option>";
-                                        }
+                                            // Display all statuses
+                                            foreach ($statuses as $status) {
+                                                $selected = in_array($status, $remarksArray) ? 'selected' : ''; // Mark as selected if in REMARKS
+                                                $disabled = in_array($status, $remarksArray) ? 'disabled' : ''; // Disable if already in REMARKS
+                                                echo "<option value='$status' $selected $disabled>$status</option>";
+                                            }
 
-                                        // If no valid status is found, default to "Waiting for Approval"
-                                        if (empty($remarks)) {
-                                            echo "<option value='Waiting for Approval' selected>Waiting for Approval</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                            // If no valid status is found, default to "Waiting for Approval"
+                                            if (empty($remarks)) {
+                                                echo "<option value='Waiting for Approval' selected>Waiting for Approval</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </form>
                                 </td>
                                 <td>
@@ -297,12 +299,12 @@
 
     <!--SCRIPT FOR DATE PICKER-->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             flatpickr('#submissionDate', {
                 dateFormat: 'M-d-Y', // Customize the format (e.g., YYYY-MM-DD)
             });
         });
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             flatpickr('#cancellationDate', {
                 dateFormat: 'M-d-Y', // Customize the format (e.g., YYYY-MM-DD)
             });
@@ -312,7 +314,7 @@
 
     <!--SCRIPT FOR FILTERING-->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const searchButton = document.querySelector("#filterModal .btn-primary"); // Search button
             const resetButton = document.querySelector("#filterModal .btn-outline-secondary"); // Reset button
             const searchInput = document.querySelector("#search"); // Volunteer Name search input
@@ -334,7 +336,7 @@
             }
 
             // Function to filter table based on search input (Volunteer Name)
-            searchInput.addEventListener("keyup", function () {
+            searchInput.addEventListener("keyup", function() {
                 let searchValue = searchInput.value.toLowerCase().trim();
 
                 tableRows.forEach(row => {
@@ -345,7 +347,7 @@
                 checkIfEmpty();
             });
 
-            searchButton.addEventListener("click", function () {
+            searchButton.addEventListener("click", function() {
                 // Get filter values
                 let submissionDate = document.querySelector("#submissionDate").value.trim();
                 let applicationType = document.querySelector("#applicationType").value;
@@ -392,7 +394,7 @@
                 modal.hide();
             });
 
-            resetButton.addEventListener("click", function () {
+            resetButton.addEventListener("click", function() {
                 // Clear all input fields
                 document.querySelector("#submissionDate").value = "";
                 document.querySelector("#applicationType").selectedIndex = 0; // Reset to default option
@@ -411,70 +413,72 @@
         });
 
 
-        document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".form-select").forEach((select) => {
-        select.addEventListener("change", function () {
-            const applicationId = this.getAttribute("data-application-id");
-            let selectedRemark = this.value.trim();
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".form-select").forEach((select) => {
+                select.addEventListener("change", function() {
+                    const applicationId = this.getAttribute("data-application-id");
+                    let selectedRemark = this.value.trim();
 
-            if (!applicationId || !selectedRemark) {
-                alert("Invalid selection.");
-                return;
-            }
+                    if (!applicationId || !selectedRemark) {
+                        alert("Invalid selection.");
+                        return;
+                    }
 
-            // Get current remarks and append new selection
-            let currentRemarks = this.getAttribute("data-current-value") || "";
-            let remarksArray = currentRemarks ? currentRemarks.split(", ") : [];
+                    // Get current remarks and append new selection
+                    let currentRemarks = this.getAttribute("data-current-value") || "";
+                    let remarksArray = currentRemarks ? currentRemarks.split(", ") : [];
 
-            // Add new selection if not already included
-            if (!remarksArray.includes(selectedRemark)) {
-                // Confirm before updating
-                if (!confirm(`Are you sure you want to update remarks to: "${selectedRemark}"?`)) {
-                    this.value = currentRemarks; // Reset to previous value if canceled
-                    return;
-                }
-
-                remarksArray.push(selectedRemark);
-            }
-
-            let updatedRemarks = remarksArray.join(", ");
-
-            console.log("📌 Updated Remarks:", updatedRemarks);
-
-            // Send AJAX request to update the database
-            fetch("/approved_submissions/remarks", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams({
-                    application_id: applicationId,
-                    remarks: updatedRemarks
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    alert("Error: " + data.error);
-                } else {
-                    alert("Remarks updated successfully!");
-
-                    // Disable previously selected remarks
-                    this.querySelectorAll("option").forEach(option => {
-                        if (remarksArray.includes(option.value)) {
-                            option.disabled = true;
+                    // Add new selection if not already included
+                    if (!remarksArray.includes(selectedRemark)) {
+                        // Confirm before updating
+                        if (!confirm(`Are you sure you want to update remarks to: "${selectedRemark}"?`)) {
+                            this.value = currentRemarks; // Reset to previous value if canceled
+                            return;
                         }
-                    });
 
-                    // Update current remarks dataset
-                    this.setAttribute("data-current-value", updatedRemarks);
-                }
-            })
-            .catch(error => {
-                console.error("❌ Fetch Error:", error);
-                alert("An error occurred while updating remarks.");
+                        remarksArray.push(selectedRemark);
+                    }
+
+                    let updatedRemarks = remarksArray.join(", ");
+
+                    console.log("📌 Updated Remarks:", updatedRemarks);
+
+                    // Send AJAX request to update the database
+                    fetch("/approved_submissions/remarks", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: new URLSearchParams({
+                                application_id: applicationId,
+                                remarks: updatedRemarks
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                alert("Error: " + data.error);
+                            } else {
+                                alert("Remarks updated successfully!");
+
+                                // Disable previously selected remarks
+                                this.querySelectorAll("option").forEach(option => {
+                                    if (remarksArray.includes(option.value)) {
+                                        option.disabled = true;
+                                    }
+                                });
+
+                                // Update current remarks dataset
+                                this.setAttribute("data-current-value", updatedRemarks);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("❌ Fetch Error:", error);
+                            alert("An error occurred while updating remarks.");
+                        });
+                });
             });
         });
-    });
-});
 
 
     </script>
