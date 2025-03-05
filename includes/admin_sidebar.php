@@ -18,18 +18,19 @@
                 </li>
 
 
-                <li class="sidebar-item"><a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i
-                            class="fa-solid fa-users me-2"></i>User Management</a>
-                    <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
+                <li class="sidebar-item">
+                    <a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#userManagementMenu" aria-expanded="false" aria-controls="userManagementMenu">
+                    <i class="fa-solid fa-users me-2"></i>User Management
+                    </a>
+                    <ul id="userManagementMenu" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item ms-3">
                             <a href="/admin_coordinator_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                                class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Coordinators</a>
+                            class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Coordinators</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
-                                class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
+                            class="nav-link border-bottom"><i class="bi bi-people-fill me-2"></i>Volunteers</a>
                         </li>
                     </ul>
                 </li>
@@ -66,6 +67,33 @@
                 <li class="sidebar-item">
                     <a href="/admin_reports?token=<?php echo urlencode($_GET['token'] ?? ''); ?>" class="nav-link">
                         <i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+                </li>
+
+                <!-- WEBSITE -->
+                <li class="sidebar-item">
+                    <a href="#" class="nav-link collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#websiteManagementMenu" aria-expanded="false" aria-controls="websiteManagementMenu">
+                    <i class="bi bi-window me-2"></i>Website
+                    </a>
+                    <ul id="websiteManagementMenu" class="sidebar-dropdown list-unstyled collapse">
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminViewEvents?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Events</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminViewVolunteers?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Volunteers</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/adminViewFAQ?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage FAQ</a>
+                        </li>
+                        <li class="sidebar-item ms-3">
+                            <a href="/admin_volunteer_management?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                            class="nav-link border-bottom"><i class="bi bi-window me-2"></i>Manage Information</a>
+                        </li>
+
+                    </ul>
                 </li>
 
             </ul>

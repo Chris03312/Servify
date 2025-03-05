@@ -10,11 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <?php
-    include("../adminIncludes/adminSidePanel.php")
-    ?>
-    <div class="container">
-        <h2>admin</h2>
-    </div>
+
 </body>
 </html>

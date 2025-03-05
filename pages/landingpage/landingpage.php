@@ -85,46 +85,24 @@
             </div>
 
             <main id="carousel">
-                <div class="item">
-                    <img src="LandingPage/img/c1.jpg" alt="Sally Sharpe">
-                    <div class="hover-box">
-                        <h3 class="name">Sally Sharpe</h3>
-                        <p class="occupation">Member since 2020</p>
-                        <p class="testimonial">Founder of DPPAM</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="LandingPage/img/c2.jpg" alt="Michael John">
-                    <div class="hover-box">
-                        <h3 class="name">Michael John</h3>
-                        <p class="occupation">Member since 2020</p>
-                        <p class="testimonial">Coordinator at DPPAM</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="LandingPage/img/c1.jpg" alt="Mikayla Eddie">
-                    <div class="hover-box">
-                        <h3 class="name">Mikayla Eddie</h3>
-                        <p class="occupation">Member since 2020</p>
-                        <p class="testimonial">Volunteer Leader at DPPAM</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="LandingPage/img/c2.jpg" alt="Eve Smith">
-                    <div class="hover-box">
-                        <h3 class="name">Eve Smith</h3>
-                        <p class="occupation">Member since 2020</p>
-                        <p class="testimonial">Core Team Member</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="LandingPage/img/c1.jpg" alt="Eve Smith">
-                    <div class="hover-box">
-                        <h3 class="name">Eve Smith</h3>
-                        <p class="occupation">Member since 2020</p>
-                        <p class="testimonial">Core Team Member</p>
-                    </div>
-                </div>
+                <?php if (!empty($coordinators)): ?>
+                    <?php foreach ($coordinators as $coordinator): ?>
+                        <?php 
+                            $startYear = date('Y') - (int)($coordinator['YEARS_SERVICE'] ?? 0);
+                        ?>
+                        <div class="item">
+                            <img src="LandingPage/img/<?php echo htmlspecialchars($coordinator['IMAGE'] ?? 'default.jpg'); ?>" 
+                                alt="<?php echo htmlspecialchars($coordinator['FIRST_NAME']); ?>">
+                            <div class="hover-box">
+                                <h3 class="name"><?php echo htmlspecialchars($coordinator['FIRST_NAME'] . " " . ($coordinator['SURNAME'] ?? '')); ?></h3>
+                                <p class="occupation">Member since <?php echo $startYear; ?></p>
+                                <p class="testimonial"><?php echo htmlspecialchars($coordinator['ORG_MEMBERSHIP'] ?? 'No organization listed'); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No coordinators available.</p>
+                <?php endif; ?>
             </main>
         </div>
     </section>
