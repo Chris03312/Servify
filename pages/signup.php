@@ -220,7 +220,7 @@
 
                         <form id="signupForm" action="/signup/submit" class="row mt-5" method="POST">
                             <!--PARISH NAMES-->
-                            <div class="col-md-6 mb-3">
+                            <div class="col-lg-6 col-md-12 mb-3">
                                 <label for="parishNameDataList" class="form-label">You are currently registering as
                                     VOLUNTEER at:<sup class="text-danger">*</sup></label>
                                 <input class="form-control" list="parishNameOptions" id="parishNameDataList"
@@ -262,21 +262,21 @@
                             </div>
 
 
-                            <div class="col-md-6 mb-3">
+                            <div class="col-lg-6 col-md-12 mb-3">
                                 <label for="precinctNumber" class="form-label">Precinct No.<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="precinctNumber" name="precinctNumber"
                                     placeholder="Ex. 0007A">
                                 <div class="validation text-danger"></div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="surname" class="form-label">Surname<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="surname" name="surname"
                                     placeholder="Ex. Dela Cruz">
                                 <div class="validation text-danger"></div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="firstname" class="form-label">First name<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="firstname" name="firstname"
@@ -284,12 +284,12 @@
                                 <div class="validation text-danger"></div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="middlename" class="form-label">Middle name</label>
                                 <input type="text" class="form-control" id="middlename" name="middleName">
                                 <div class="validation text-danger"></div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="suffix" class="form-label">Suffix (Optional)</label>
                                 <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Ex. Jr">
                                 <div class="validation text-danger"></div>
@@ -349,14 +349,14 @@
                                 <div class="validation text-danger"></div>
                             </div>
 
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="street" class="form-label">Street/Unit/Bldg/Village<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="street" name="street"
                                     placeholder="Ex. Blk# Lot#">
                                 <div class="validation text-danger"></div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="barangay" class="form-label">Barangay<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <select id="barangay" class="form-select" name="barangay">
@@ -372,14 +372,14 @@
                                 </script>
                                 <script src="js/signup.js"></script>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="district" class="form-label">District<sup
                                         class="text-danger fw-bold">*</sup></label>
                                 <input type="text" class="form-control" id="district" name="district"
                                     placeholder="Ex. District 1">
                                 <div class="validation text-danger"></div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-lg-3 col-md-6 mb-3">
                                 <label for="zipcode" class="form-label">Zipcode</label>
                                 <input type="text" class="form-control" id="zipcode" name="zipcode"
                                     placeholder="Ex. 1118">
