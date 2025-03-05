@@ -37,19 +37,20 @@
 
 
     <!--MAIN CONTENT-->
-    <main class="container-fluid p-3">
+    <main class="container-fluid p-0 p-md-3">
 
-        <!--DASHBOARD BANNER-->
-        <div class="dashboardBanner mb-4">
-            <p><?php echo $currentDate; ?></p>
-            <h4>Welcome back, <?php echo $sidebarinfo['first_name']; ?>!</h4>
-        </div>
+
 
         <div class="container-fluid">
+            <!--DASHBOARD BANNER-->
+            <div class="dashboardBanner mb-4">
+                <p><?php echo $currentDate; ?></p>
+                <h4>Welcome back, <?php echo $sidebarinfo['first_name'];?>!</h4>
+            </div>
             <!--COUNTDOWN, ANNOUNCEMENT, BADGE-->
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-4">
+            <div class="row g-3 mb-4">
                 <!-- COUNTDOWN -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                             <p class="card-text">
@@ -101,7 +102,7 @@
                 </div>
 
                 <!-- ANNOUNCEMENT -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
                             <img src="../img/icons8-announcement-90.png" alt="Announcement Icon" class="img-fluid"
@@ -126,7 +127,7 @@
                 </div>
 
                 <!-- BADGE -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                             <h5 class="card-title">CONGRATULATIONS</h5>

@@ -34,26 +34,28 @@
 
 
     <!--MAIN CONTENT-->
-    <main class="container-fluid p-3">
+    <main class="container-fluid p-0 p-md-3">
 
-        <!--DASHBOARD BANNER-->
-        <div class="dashboardBanner mb-4">
-            <p><?php echo $currentDate; ?></p>
-            <h4>Welcome back, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Guest'); ?>!</h4>
-        </div>
+
 
         <div class="container-fluid">
+            <!--DASHBOARD BANNER-->
+
+            <div class="dashboardBanner mb-4">
+                <p><?php echo $currentDate; ?></p>
+                <h4>Welcome back, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Guest'); ?>!</h4>
+            </div>
             <!--COUNTDOWN, ANNOUNCEMENT, BADGE-->
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-4">
+            <div class="row g-3 mb-4">
                 <!-- COUNTDOWN -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                             <p class="card-text">
                                 Here is the countdown timer showing the time left until <strong>election day.</strong>
                             </p>
                             <div class="row">
-                                <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
+                                <div class="col-auto d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <h2 class="countdown p-2" id="days"><?php echo $days; ?></h2>
                                         <span class="text-danger fw-bold">DAYS</span>
@@ -62,7 +64,7 @@
                                         <h4></h4>
                                     </div>
                                 </div>
-                                <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
+                                <div class="col-auto d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <h2 class="countdown p-2" id="hours"><?php echo $hours; ?></h2>
                                         <span class="text-danger fw-bold">HRS</span>
@@ -71,7 +73,7 @@
                                         <h4></h4>
                                     </div>
                                 </div>
-                                <div class="col-3 d-flex flex-row justify-content-center align-items-center gap-1">
+                                <div class="col-auto d-flex flex-row justify-content-center align-items-center gap-1">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <h2 class="countdown p-2" id="minutes"><?php echo $minutes; ?></h2>
                                         <span class="text-danger fw-bold">MNS</span>
@@ -80,7 +82,7 @@
                                         <h4></h4>
                                     </div>
                                 </div>
-                                <div class="col-3 d-flex flex-column justify-content-center align-items-center">
+                                <div class="col-auto d-flex flex-column justify-content-center align-items-center">
                                     <h2 class="countdown p-2" id="seconds"><?php echo $seconds; ?></h2>
                                     <span class="text-danger fw-bold">SEC</span>
                                 </div>
@@ -98,7 +100,7 @@
                 </div>
 
                 <!-- ANNOUNCEMENT -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="d-flex flex-row justify-content-start align-items-center gap-2 p-2">
                             <img src="../img/icons8-announcement-90.png" alt="Announcement Icon" class="img-fluid"
@@ -106,7 +108,7 @@
                             <span class="fw-bold text-primary">Announcements</span>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex flex-row justify-content-center align-items-center gap-5">
+                            <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center gap-5">
                                 <div class="announcementCountdown">
                                     <h1>10</h1>
                                 </div>
@@ -123,7 +125,7 @@
                 </div>
 
                 <!-- BADGE -->
-                <div class="col">
+                <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                             <h5 class="card-title">CONGRATULATIONS</h5>
