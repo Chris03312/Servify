@@ -151,7 +151,7 @@
                                 <h5>Overview of Volunteers</h5>
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#overviewOfVolunteers" aria-expanded="false"
-                                    aria-controls="overviewOfVolunteers">Filter
+                                    aria-controls="overviewOfVolunteers"><i class="bi bi-filter me-2"></i>Filter
                                 </button>
 
                             </div>
@@ -404,23 +404,35 @@
             <!-- Registered Volunteers Per Parish -->
             <div class="card mt-3">
                 <div class="card-body">
-                    <div
-                        class="d-flex flex-md-row flex-column justify-content-between align-items-md-center align-items-start gap-md-5 gap-1">
-                        <h5>Registered Volunteers Per Parish</h5>
-                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                            <div>
-                                <input type="search" name="search" id="search" class="form-control"
-                                    placeholder="Search here...">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+                        <h5 class="mb-2 mb-md-0">Registered Volunteers Per Parish</h5>
+
+                        <div class="d-flex flex-row justify-content-md-end align-items-center gap-2">
+                            <div class="input-group w-100 w-md-auto">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="search" name="search" id="search" class="form-control" placeholder="Search here...">
                             </div>
 
-                            <div>
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#listOfVolunteers" aria-expanded="false"
-                                    aria-controls="listOfVolunteers"><i class="bi bi-filter me-2"></i>Filter</button>
+                            <button class="btn btn-outline-secondary d-none d-md-flex align-items-center" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers">
+                                <i class="bi bi-filter me-2"></i>Filter
+                            </button>
+
+                            <div class="dropdown d-md-none d-block">
+                                <a class="btn border-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <button class="dropdown-item" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers">
+                                        <i class="bi bi-filter me-2"></i>Filter
+                                    </button>
+                                </ul>
                             </div>
                         </div>
-
                     </div>
+
 
                     <div class="collapse" id="listOfVolunteers">
                         <div class="row mt-3" id="filterDivVol">

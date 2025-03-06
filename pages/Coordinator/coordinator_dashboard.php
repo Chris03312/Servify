@@ -45,7 +45,7 @@
             <!--DASHBOARD BANNER-->
             <div class="dashboardBanner mb-4">
                 <p><?php echo $currentDate; ?></p>
-                <h4>Welcome back, <?php echo $sidebarinfo['first_name'];?>!</h4>
+                <h4>Welcome back, <?php echo $sidebarinfo['first_name']; ?>!</h4>
             </div>
             <!--COUNTDOWN, ANNOUNCEMENT, BADGE-->
             <div class="row g-3 mb-4">
@@ -378,12 +378,41 @@
 
             <div class="card mt-3">
                 <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between align-items-center">
+                    <!-- <div class="d-flex flex-row justify-content-between align-items-center">
                         <h4>List of Volunteers</h4>
                         <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
                             data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers"><i
                                 class="bi bi-filter me-2"></i>Filter
                         </button>
+                    </div> -->
+
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+                        <h5 class="mb-2 mb-md-0">List of Volunteers</h5>
+
+                        <div class="d-flex flex-row justify-content-md-end align-items-center gap-2">
+                            <div class="input-group w-100 w-md-auto">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="search" name="searchListofVol" id="searchListofVol" class="form-control" placeholder="Search here...">
+                            </div>
+
+                            <button class="btn btn-outline-secondary d-none d-md-flex align-items-center" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers">
+                                <i class="bi bi-filter me-2"></i>Filter
+                            </button>
+
+                            <div class="dropdown d-md-none d-block">
+                                <a class="btn border-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <button class="dropdown-item" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#listOfVolunteers" aria-expanded="false" aria-controls="listOfVolunteers">
+                                        <i class="bi bi-filter me-2"></i>Filter
+                                    </button>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="collapse" id="listOfVolunteers">
@@ -452,20 +481,10 @@
 
                         </div>
                     </div>
-                    <!-- SEARCH BAR -->
-                    <div class="row d-flex justify-content-end">
-                        <div class="col-md-4">
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
-                                <input type="search" name="search" id="search" class="form-control"
-                                    placeholder="Search here...">
-                            </div>
-                        </div>
-                    </div>
 
                     <!--TABLE-->
-                    <div class="table-responsive my-3">
+                    <div class="table-responsive my-5">
                         <table id="volunteerTable" class="table table-bordered">
                             <thead class="table-primary">
                                 <tr>
@@ -515,6 +534,54 @@
     </div>
 
 
+    <!-- JS FOR SEARCHING LIST OF VOLUNTEERS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchListofVol");
+            const tableRows = document.querySelectorAll("#volunteerTable tbody tr");
+            const tableBody = document.querySelector("#volunteerTable tbody");
+
+            searchInput.addEventListener("keyup", function() {
+            const query = searchInput.value.trim().toLowerCase();
+            let found = false;
+
+            tableRows.forEach(row => {
+                const membershipID = row.cells[0].textContent.trim().toLowerCase();
+                const precinctNumber = row.cells[1].textContent.trim().toLowerCase();
+                const volunteerName = row.cells[2].textContent.trim().toLowerCase();
+                const volunteerPrecinct = row.cells[3].textContent.trim().toLowerCase();
+                const volunteerRole = row.cells[4].textContent.trim().toLowerCase();
+
+                if (
+                membershipID.includes(query) ||
+                precinctNumber.includes(query) ||
+                volunteerName.includes(query) ||
+                volunteerPrecinct.includes(query) ||
+                volunteerRole.includes(query)
+                ) {
+                row.style.display = "";
+                found = true;
+                } else {
+                row.style.display = "none";
+                }
+            });
+
+            const noResultsRow = tableBody.querySelector("tr.no-results");
+            if (!found) {
+                if (!noResultsRow) {
+                const newNoResultsRow = document.createElement("tr");
+                newNoResultsRow.classList.add("no-results");
+                newNoResultsRow.innerHTML = `<td colspan="6" class="text-center text-danger">No volunteer/s found.</td>`;
+                tableBody.appendChild(newNoResultsRow);
+                }
+            } else {
+                if (noResultsRow) {
+                noResultsRow.remove();
+                }
+            }
+            });
+        });
+    </script>
 
 
 
