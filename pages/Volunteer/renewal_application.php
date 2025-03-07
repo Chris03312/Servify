@@ -194,7 +194,17 @@
 
         // NOT RENEWAL OK
         document.getElementById("NotRenewalOK").addEventListener("click", function() {
-            window.location.href = "/volunteer_dashboard"; // Replace with your actual dashboard URL
+            // Get the token from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token'); // Get the 'token' parameter
+
+            // Redirect with token if it exists
+            let redirectURL = "/volunteer_dashboard";
+            if (token) {
+                redirectURL += "?token=" + encodeURIComponent(token);
+            }
+
+            window.location.href = redirectURL;
         });
     </script>
 

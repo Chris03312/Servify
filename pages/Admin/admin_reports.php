@@ -52,13 +52,13 @@
                 <div class="card-body">
 
                     <div class="row">
-                        <div class="col-md-3 text-center">
+                        <div class="col-md-3 text-center mb-3 mb-md-0">
                             <p class="text-primary">Year</p>
                             <h1 class="text-primary">2025</h1>
                         </div>
 
                         <div class="col-md-9">
-                            <div class="d-flex flex-md-row flex-column gap-5">
+                            <!-- <div class="d-flex flex-md-row flex-column gap-5">
                                 <div class="text-center">
                                     <p class="text-primary">Total registered volunteers</p>
                                     <h1 class="text-primary">225</h1>
@@ -74,6 +74,32 @@
                                 <div class="text-center">
                                     <p class="text-primary">Total Absent</p>
                                     <h1 class="text-primary">225</h1>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="text-center">
+                                        <p class="text-primary">Total registered volunteers</p>
+                                        <h1 class="text-primary">225</h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="text-center">
+                                        <p class="text-primary">New volunteers onboarded</p>
+                                        <h1 class="text-primary">225</h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="text-center">
+                                        <p class="text-primary">Total Present</p>
+                                        <h1 class="text-primary">225</h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="text-center">
+                                        <p class="text-primary">Total Absent</p>
+                                        <h1 class="text-primary">225</h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
