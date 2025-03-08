@@ -27,6 +27,8 @@ require_once __DIR__ . '/../controllers/Coordinator/CoordinatorFeedbackControlle
 require_once __DIR__ . '/../controllers/Coordinator/ReportsController.php';
 require_once __DIR__ . '/../controllers/Coordinator/ViewVolunteerProfileController.php';
 require_once __DIR__ . '/../controllers/Coordinator/AddNewVolunteerController.php';
+require_once __DIR__ . '/../controllers/Coordinator/RenewalSubmissionController.php';
+
 
 // VOLUNTEERS
 require_once __DIR__ . '/../controllers/Volunteer/VolunteerDashboardController.php';
@@ -147,6 +149,7 @@ $router->add('/pending_submissions', [PendingSubmissionsController::class, 'Show
 $router->add('/pending_submissions/review', [VolunteerApplicationDetails::class, 'ShowVolunteerApplicationDetails']);
 $router->add('/volunteer_application_details/reviewed', [VolunteerApplicationDetails::class, 'PendingSubmissionProceed']);
 $router->add('/pending_submissions/delete', [PendingSubmissionsController::class, 'DeletePendingSubmissions']);
+$router->add('/renewals_submission', [RenewalSubmissionsController::class, 'ShowRenewalSubmissions']);
 
 $router->add('/under_review_submissions', [UnderReviewSubmissionsController::class, 'ShowUnderReviewSubmissions']);
 $router->add('/under_review_submissions/review', [VolunteerApplicationDetails::class, 'ShowVolunteerApplicationDetails']);

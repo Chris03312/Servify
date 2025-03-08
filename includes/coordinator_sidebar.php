@@ -42,6 +42,11 @@
                                 class="nav-link border-bottom"><i
                                     class="fa-solid fa-file-export me-2"></i>Submissions</a>
                         </li>
+
+                        <li class="sidebar-item ms-3">
+                            <a href="/renewals_submission?token=<?php echo urlencode($_GET['token'] ?? ''); ?>"
+                                class="nav-link border-bottom"><i class="fa-solid fa-file-export me-2"></i>Renewals</a>
+                        </li>
                     </ul>
                 </li>
 
